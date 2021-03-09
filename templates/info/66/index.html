@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$info_title#}</title>
+<meta name="keywords" content="{#$info_keywords#}" />
+<meta name="description" content="{#$info_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" >
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', template = '{#$templets_skin#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var fabuUrl = "{#getUrlPath service='member' type='user' template='manage' action='info'#}";
+</script>
+</head>
+<body>
+<!-- 顶部 s -->
+	<div class="top">
+		<div class="wrap fn-clear">
+			<div class="top-l fn-left">
+				<a href="{#$cfg_basehost#}" target="_blank">门户首页>></a>
+				<a href="javascript:;" class="icon-phone mobile">手机版
+					<div class="pop" style="display: none;">
+						<s></s>
+						<p>扫码访问<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150"></p>
+					</div>
+				</a>
+			</div>
+			<div class="top-r fn-right">
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+				<div class="loginBar-a fn-left">
+					<a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a>
+					<span>欢迎来到分类信息频道！ <a href="{#$cfg_basehost#}/logout.html" class="logout" class="exit">[退出]</a></span><em class="line">|</em>
+					<a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank">管理我的信息</a>
+				</div>
+				{#else#}
+				<div class="loginBar-b fn-left">
+					<div class="login-l fn-left">
+						<a href="{#$cfg_basehost#}/login.html">登录</a><em>|</em>
+						<a href="{#$cfg_basehost#}/register.html">注册</a>
+					</div>
+					<div class="login-r fn-left">
+						<a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type=qq" target="_blank"><img src="{#$templets_skin#}images/qqlogin.gif" alt=""></a>
+						<a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type=wechat" target="_blank"><img src="{#$templets_skin#}images/wechat_login2.png" alt=""></a>
+					</div>
+				</div>
+				{#/if#}
+				<div class="login-help fn-right">
+					<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">使用帮助</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 顶部 e -->
+
+<!-- 头部 s -->
+	<div class="header">
+		<div class="wrap fn-clear">
+			<div class="header-l fn-left">
+				<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}" /></a>
+			</div>
+			<div class="header-c fn-left">
+				<form action="" method="get" class="fn-clear">
+					<div class="search-nav">
+						<div class="search-nav-box">
+							<span>招聘求职</span><em></em>
+						</div>
+						<ul>
+							{#info action="type" return='type'#}
+		          <li>{#$type.typename#}</li>
+							{#/info#}
+						</ul>
+					</div>
+					<input type="text" name="" value="" placeholder="请输入关键字" class="inp-txt">
+					<input type="button" name="" value="搜索" class="inp-btn">
+				</form>
+			</div>
+			<div class="header-r fn-right">
+				<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">免费发布信息</a>
+			</div>
+		</div>
+	</div>
+<!-- 头部 e -->
+
+<!-- 总导航 s -->
+	<div class="nav">
+		<div class="wrap">
+			<ul>
+				<li class="on"><a href="javascript:;">分类首页</a></li>
+				{#info action="type" return='type'#}
+				<li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+				{#/info#}
+			</ul>
+		</div>
+	</div>
+<!-- 总导航 e -->
+
+<!-- 广告位 s -->
+	<div class="adv-1">
+		<div class="wrap">
+			{#myad title="二手信息_模板六_电脑端_广告一"#}
+		</div>
+	</div>
+<!-- 广告位 e -->
+
+<!-- 主要内容 s -->
+	<div class="wrap">
+		<div class="main">
+			<div class="infoBox fn-clear">
+				<div class="infoL fn-left">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[招聘职位：<em class="orange">4404</em>个，简历：<em class="orange">1363</em>份]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type="255"#}" target="_blank">招聘求职</a></h3>
+					</div>
+					<div class="info-box fn-clear">
+						<ul class="infotab fn-left">
+							{#info action="type" return='subtype' type="255" pageSize="11"#}
+			        <li><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></li>
+							{#/info#}
+							<li><a href="{#getUrlPath service='info' template='list' type="255"#}" target="_blank">更多职位>></a></li>
+						</ul>
+						<div class="infolist fn-left">
+							{#*
+							<div class="bline">
+								<a href="#"><i class="icon-1"></i>找 工 作</a><a href="#"><i class="icon-2"></i>找 人 才</a><a href="#"><i class="icon-3"></i>发 招 聘</a><a href="#"><i class="icon-4"></i>发 简 历</a>
+							</div>
+							*#}
+							<ul>
+								{#info action="ilist" return="ilist" typeid="255" pageSize="15"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="infoR fn-right">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[信息量：<em class="orange">2148</em>条]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type="197"#}" target="_blank">二手交易</a></h3>
+					</div>
+					<div class="bline">
+						{#info action="type" return='subtype' type="197" pageSize="8"#}
+						<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+						{#/info#}
+					</div>
+					<ul>
+						{#info action="ilist" return="ilist" typeid="197" pageSize="13"#}
+						<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+			</div>
+			<div class="infoBox fn-clear">
+				<div class="infoL fn-left">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[出售房源：<em class="orange">3875</em>套，出租房源：<em class="orange">2808</em>套]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type="243"#}" target="_blank">房产交易</a></h3>
+					</div>
+					<div class="info-box fn-clear">
+						<ul class="infotab fn-left">
+							{#info action="type" return='subtype' type="243" pageSize="11"#}
+			        <li><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></li>
+							{#/info#}
+							<li><a href="{#getUrlPath service='info' template='list' type="243"#}" target="_blank">进入频道>></a></li>
+						</ul>
+						<div class="infolist fn-left">
+							{#*
+							<div class="bline">
+								<a href="#"><i class="icon-5"></i>出售房源</a><a href="#"><i class="icon-6"></i>出租房源</a><a href="#"><i class="icon-7"></i>推荐看房</a><a href="#"><i class="icon-8"></i>新 楼 盘</a>
+							</div>
+							*#}
+							<ul>
+								{#info action="ilist" return="ilist" typeid="243" pageSize="15"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="infoR fn-right">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[信息量：<em class="orange">2148</em>条]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type="224"#}" target="_blank">车辆买卖</a></h3>
+					</div>
+					<div class="bline">
+						{#info action="type" return='subtype' type="224" pageSize="8"#}
+						<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+						{#/info#}
+					</div>
+					<ul>
+						{#info action="ilist" return="ilist" typeid="224" pageSize="13"#}
+						<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+			</div>
+
+			<!-- 广告位 s -->
+			<div class="adv-1">
+				{#myad title="二手信息_模板六_电脑端_广告二"#}
+			</div>
+			<!-- 广告位 e -->
+
+			<div class="infoBox">
+				<div class="info-tit">
+					{#*<span class="subtit fn-right">[信息量：<em class="orange">2163</em>条]</span>*#}
+					<h3><a href="{#getUrlPath service='info' template='list' type="328"#}" target="_blank">生活服务</a></h3>
+				</div>
+				<div class="infokind fn-clear">
+					<ul class="kindslist fn-left">
+						{#info action="type" return="type1" type="328" son="1" pageSize="14"#}
+						<li>
+							<a href="{#$type1.url#}" target="_blank">{#$type1.typename#}</a>
+							<div class="sub_kinds">
+								<ul>
+									{#info action="type" return="type2" type=$type1.id#}
+									<li><a href="{#$type2.url#}" target="_blank">{#$type2.typename#}</a></li>
+									{#/info#}
+								</ul>
+							</div>
+						</li>
+						{#/info#}
+						<li><a href="{#getUrlPath service='info' template='list' type="328"#}" target="_blank">生活信息>></a>
+						</li>
+					</ul>
+					<div class="item-box fn-right fn-clear">
+						<div class="itemL fn-left">
+							<div class="info-tit">
+								<span class="subtit fn-right">更多»</span>
+								<h3><a href="{#getUrlPath service='info' template='list' type='335'#}" target="_blank">家政服务</a></h3>
+							</div>
+							<ul>
+								{#info action="ilist" return="ilist" typeid="335" pageSize="8"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+							<div class="info-tit">
+								<span class="subtit fn-right">更多»</span>
+								<h3><a href="{#getUrlPath service='info' template='list' type='398'#}" target="_blank">教育培训</a></h3>
+							</div>
+							<ul>
+								{#info action="ilist" return="ilist" typeid="398" pageSize="8"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+						</div>
+						<div class="itemR fn-right">
+							<div class="info-tit">
+								<span class="subtit fn-right">更多»</span>
+								<h3><a href="{#getUrlPath service='info' template='list' type='391'#}" target="_blank">婚庆服务</a></h3>
+							</div>
+							<ul>
+								{#info action="ilist" return="ilist" typeid="391" pageSize="8"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+							<div class="info-tit">
+								<span class="subtit fn-right">更多»</span>
+								<h3><a href="{#getUrlPath service='info' template='list' type='334'#}" target="_blank">装修建材</a></h3>
+							</div>
+							<ul>
+								{#info action="ilist" return="ilist" typeid="334" pageSize="8"#}
+								<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" class="tag" target="_blank">[{#$ilist.typename#}]</a><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+								{#/info#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="infoBox fn-clear">
+				<div class="info-avg fn-left">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[信息量：<em class="orange">82</em>条]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type='290'#}" target="_blank">兼职实习</a></h3>
+					</div>
+					<div class="bline fn-clear">
+						{#info action="type" return='subtype' type="290" pageSize="8"#}
+						<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+						{#/info#}
+					</div>
+					<ul>
+						{#info action="ilist" return="ilist" typeid="290" pageSize="12"#}
+						<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+				<div class="info-avg fn-left">
+					<div class="info-tit">
+						{#*<span class="subtit fn-right">[信息量：<em class="orange">82</em>条]</span>*#}
+						<h3><a href="{#getUrlPath service='info' template='list' type='320'#}" target="_blank">宠物世界</a></h3>
+					</div>
+					<div class="bline fn-clear">
+						{#info action="type" return='subtype' type="320" pageSize="8"#}
+						<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+						{#/info#}
+					</div>
+					<ul>
+						{#info action="ilist" return="ilist" typeid="320" pageSize="12"#}
+						<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+				<div class="info-avg fn-left">
+					<div class="info-tit">
+						<h3><a href="{#getUrlPath service='info' template='list' type='398'#}" target="_blank">教育培训</a></h3>
+					</div>
+					<div class="bline fn-clear">
+						{#info action="type" return='subtype' type="398" pageSize="8"#}
+						<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+						{#/info#}
+					</div>
+					<ul>
+						{#info action="ilist" return="ilist" typeid="398" pageSize="12"#}
+						<li><span class="time">{#$ilist.pubdate|date_format:'%m-%d'#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 主要内容 e -->
+
+<!-- 底部 s -->
+	<div class="footer">
+		<div class="wrap">
+			<div class="footer-top fn-clear">
+				<div class="footer-url fn-left"><a href="{#$cfg_basehost#}">{#$cfg_basehost#}</a></div>
+				<div class="footer-label fn-right">
+					{#siteConfig action="singel"#}
+					<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><em>|</em>
+					{#/siteConfig#}
+					<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+				</div>
+			</div>
+			<div class="footer-bottom fn-clear">
+				<div class="footer-img fn-left">
+					<a href="#"><img src="{#$templets_skin#}images/bqico02.gif" alt="" /></a>
+					<a href="#"><img src="{#$templets_skin#}images/too07.gif" alt="" /></a>
+					<a href="#"><img src="{#$templets_skin#}images/too08.gif" alt="" /></a>
+				</div>
+				<div class="footer-info fn-right">
+					{#$cfg_powerby#}
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 底部 e -->
+
+<!-- 浮动层 s -->
+	<div class="floatNav">
+		<div class="float-li mobile">
+			<a href="javascript:;" class="bg"></a>
+			<div class="code box">
+				<p>扫描访问手机版</p><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" />
+			</div>
+		</div>
+		<div class="float-li tool">
+			<a href="javascript:;" class="bg"></a>
+			<div class="help-box box">
+				<div class="help-tit">分类小帮手</div>
+				<ul class="fn-clear">
+					<li><a href="{#$info_channelDomain#}">查看所有类别</a></li>
+					<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">免费发布信息</a></li>
+					<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank">修改我的信息</a></li>
+					<li><a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank">删除我的信息</a></li>
+				</ul>
+				<div class="help-tit">本站客服帮助</div>
+				<div class="link fn-clear">
+					<div class="link-l fn-left">
+						<p>{#$info_hotline#}</p>
+					</div>
+					<div class="link-r fn-left">
+						<a href="javascript:;"><img src="{#$templets_skin#}images/pa.gif" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="float-li top">
+			<a href="javascript:;" class="bg"></a>
+		</div>
+	</div>
+<!-- 浮动层 e -->
+
+
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=3"></script>
+</body>
+</html>
