@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:12px "Microsoft Yahei","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+input,button{font:14px "Microsoft Yahei","Arial Narrow"}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+a{text-decoration:none; color: #555}
+a:hover{color:#cd0200}
+i,em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+a:hover img{-webkit-transform:scale(1,1);}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+.l{float: left;}
+.r{float: right;}
+.t20{margin-top: 20px;}
+.t10{margin-top: 10px;}
+.o_h {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.clearfix:after {content: '';display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {*zoom: 1;}
+.wrap{width: 1000px; margin:0 auto;}
+.w1200 .wrap{width: 1200px;}
+
+
+

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>{#$article_title#}</title>
+<meta name="keywords" content="{#$article_keywords#}" />
+<meta name="description" content="{#$article_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" >
+<link rel="stylesheet" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+<div class="head">
+	<div class="navl wrap">
+		<a href="{#$cfg_basehost#}" target="_blank">网站首页</a>
+		{#$i = 0#}
+		{#siteConfig action="siteModule" return="module"#}
+		{#if $i < 7#}
+		<a href="{#$module.url#}" target="_blank">{#$module.name#}</a>
+		{#/if#}
+		{#$i = $i + 1#}
+		{#/siteConfig#}
+		<span class="l help" id="more">更多
+              <ul id="siteNavPart2" class="expandedPanel">
+								{#$i = 0#}
+								{#siteConfig action="siteModule" return="module"#}
+								{#if $i >= 7#}
+								<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+								{#/if#}
+								{#$i = $i + 1#}
+								{#/siteConfig#}
+              </ul>
+          </span>
+		{#if $userinfo#}
+		{#$userDomain = $member_userDomain#}
+		{#if $userinfo.userType == 2#}
+		{#$userDomain = $member_busiDomain#}
+		{#/if#}
+		<div class="r">
+			<div id="navLoginBefore">
+				<a class="f12" href="{#$userDomain#}">您好，欢迎<em>{#$userinfo.nickname#}</em>回来</a>
+				<a class="f12 center" href="{#$userDomain#}">会员中心</a>
+				<a class="f12" href="{#$cfg_basehost#}/logout.html">退出登录</a>
+			</div>
+		</div>
+		{#else#}
+		<div class="r">
+			<div id="navLoginAfter">
+        <a class="f12 login" href="{#$cfg_basehost#}/login.html">请登录</a>
+        <a class="f12" href="{#$cfg_basehost#}/register.html">免费注册</a>
+        <a class="m0" href="{#$cfg_basehost#}/api/login.php?type=qq"><font class="l QQ">QQ登录<i></i></font></a>
+        <a class="m0" href="{#$cfg_basehost#}/api/login.php?type=wechat"><font class="l weixin">微信登录<i></i></font></a>
+			</div>
+    </div>
+		{#/if#}
+	</div>
+</div>
+<!-- 广告位 -->
+<div class="gg wrap">{#myad title="新闻资讯_模板三_电脑端_广告一"#}</div>
+<!-- 搜索 -->
+<div class="l_s wrap">
+	<div class="l logo"><a href="{#$article_channelDomain#}"><img src="{#$article_logoUrl#}"></a></div>
+	<div class="r search">
+		<div class="sel l"><span class="l" id="local_news"><i>标题</i>
+            <ul class="expandedPanel">
+                  <li><a href="#" >作者</a></li>
+                  <li><a href="#" >关键字</a></li>
+              </ul>
+          </span><input class="l" type="text" value="输入关键词或者分类名称！" onfocus="if(value=='输入关键词或者分类名称！'){value=''}" onblur="if(value==''){value='输入关键词或者分类名称！'}"/></div>
+		<button type="submit" class="r">搜索</button>
+	</div>
+</div>
+<!-- 导航2 -->
+<div class="nav2">
+	<div class="nav2_con wrap">
+		<a class="on" href="{#$article_channelDomain#}">新闻首页</a>
+		{#article action="type" return="aa"#}
+		<a href="{#$aa.url#}">{#$aa.typename#}</a>
+		{#/article#}
+	</div>
+</div>
+<!-- 内容部分开始 -->
+<div class="wrap">
+	<div class="hot_news">
+	{#article action="alist" return="alist" flag="h,r" pageSize="1"#}
+	<h1 class="o_h"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title#}</a></h1>
+	{#/article#}
+	<p>
+		{#article action="alist" return="alist" flag="h" pageSize="3"#}
+		<a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title|strip_tags#}</a>
+		{#/article#}
+	</p>
+	</div>
+	<!-- 左边部分 -->
+	<div class="top_news">
+		<div class="l one">
+  			<div id="slideBox" class="slideBox">
+      			<div class="hd">
+      				<ul></ul>
+      			</div>
+      			<div class="bd">
+      				<ul>
+      					{#myad title="新闻资讯_模板三_电脑端_广告二"#}
+      				</ul>
+      			</div>
+      			<a class="prev" href="javascript:void(0)"></a>
+      			<a class="next" href="javascript:void(0)"></a>
+      		</div>
+
+  		    <div class="title"><h3 class="l">新加坡调研</h3><a href="#" class="r more">+更多</a></div>
+      		<div class="m-pk-wrap t20">
+                  <div class="u-pk-img l">
+                      <img src="{#$templets_skin#}upfile/dy.jpg">
+                  </div>
+                  <div class="u-pk-title">
+                       <a href="#" > 你认为慈悲杀人可以被原谅吗？</a>
+                  </div>
+                  <div class="u-pk-desc t10">抑郁症妻子捂死瘫痪丈夫，律师：慈悲杀人建议缓刑。<a href="#" >[详细]</a></div>
+                  <div class="m-vote">
+                      <div class="u-vote-btn u-agree l" id="agree">
+                          <span class="u-vote-option-0">可以</span>
+                      </div>
+                      <div class="u-vote-count l">
+                          <div class="u-vote-num u-vote-num-0 l">1557</div>
+
+                          <div class="u-vote-num u-vote-num-1 r">995</div>
+                      </div>
+                      <div class="u-vote-btn u-disagree r" id="disagree">
+                          <span class="u-vote-option-1">不可以</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="title"><h3 class="l">视频新闻</h3><a  href="{#getUrlPath service='article' template='list' typeid="2"#}"  class="r more">+更多</a></div>
+              <div class="video_news t20">
+              	<ul class="clearfix">
+									{#article action="alist" return="alist" typeid="2" flag="h" thumb="1" pageSize="2"#}
+              		<li class="l"><a href="{#$alist.url#}"><i></i><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}"></a><p><a href="{#$alist.url#}">{#$alist.title#}</a></p></li>
+									{#/article#}
+	          		</ul>
+              </div>
+              <ul class="video_list">
+								{#article action="alist" return="hlist" orderby="2" pageSize="6"#}
+              	<li><a href="{#$hlist.url#}"><i>{#$_bindex.hlist#}</i><span>{#$hlist.title#}</span><font>{#$hlist.pubdate|date_format:'%m-%d'#}</font></a></li>
+								{#/article#}
+              </ul>
+		</div>
+		<!-- 中间部分 -->
+		<div class="l two">
+			<div class="news_list ">
+					{#article action="alist" return="alist" flag="r,b" pageSize="3"#}
+  				<h2 class="o_h"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title#}</a></h2>
+  				<p>{#$alist.description|truncate:45#}<a href="{#$alist.url#}">[详细]</a></p>
+					{#/article#}
+			</div>
+			<p class="tjyw"><span>推荐要闻</span></p>
+			<div class="tjyw_list">
+  				<ul>
+						{#article action="alist" return="blist" typeid="32" flag="r" pageSize="5"#}
+  					<li{#if $_bindex.blist == 1#} class="b"{#/if#}><a href="{#$blist.url#}">{#$blist.title#}</a></li>
+						{#/article#}
+  				</ul>
+  				<ul>
+						{#article action="alist" return="clist" typeid="32" flag="r" page="2" pageSize="5"#}
+  					<li{#if $_bindex.clist == 1#} class="b"{#/if#}><a href="{#$clist.url#}">{#$clist.title#}</a></li>
+						{#/article#}
+  				</ul>
+  				<ul>
+						{#article action="alist" return="dlist" typeid="32" flag="r" page="3" pageSize="5"#}
+  					<li{#if $_bindex.dlist == 1#} class="b"{#/if#}><a href="{#$dlist.url#}">{#$dlist.title#}</a></li>
+						{#/article#}
+  				</ul>
+  			</div>
+		</div>
+		<!-- 右边部分 -->
+		<div class="r three">
+			 <div class="title"><h3 class="l">新闻分类</h3><a  href="{#getUrlPath service='article' template='list' typeid="15"#}" class="r more">+更多</a></div>
+			 {#article action="alist" return="alist" typeid="31" flag="h" thumb="1" pageSize="1"#}
+			 <dl class="last clearfix">
+            <dt>
+                <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+            </dt>
+            <dd class="u-rm-img  l">
+                <a href="{#$alist.url#}" class="img" target="_blank">
+                    <img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="">
+                </a>
+            </dd>
+            <dd class="u-rm-desc r">{#$alist.description|truncate:15#}<a href="{#$alist.url#}" target="_blank">[详细]</a></dd>
+        </dl>
+				{#/article#}
+				{#article action="alist" return="alist" typeid="15" orderby="2" pageSize="3"#}
+    		<dl class="classify classify1">
+            <dt class="o_h">
+                <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+            </dt>
+            <dd>{#$alist.description|truncate:30#}</dd>
+        </dl>
+				{#/article#}
+        <div class="title" style="margin-top:10px;"><h3 class="l">房产新闻</h3><a  href="{#getUrlPath service='article' template='list' typeid="95"#}"  class="r more" target="_blank">+更多</a></div>
+				{#article action="alist" return="alist" typeid="95" thumb="1" pageSize="2"#}
+        <div class="img_news"><a href="{#$alist.url#}" target="_blank"><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}"></a></div>
+        <p class="img_title"><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></p>
+				{#/article#}
+    		<a class="tougao" href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank"><img src="{#$templets_skin#}upfile/tougao.jpg"></a>
+		</div>
+	</div>
+	<!-- 广告位 -->
+	<div class="gg1">{#myad title="新闻资讯_模板三_电脑端_广告三"#}</div>
+  	<!-- 第一部分 国内快讯 -->
+  	<div class="gnkx">
+  		<div class="m-channel-hd" >
+          	<div class="u-channel-name u-channel1 l">国内快讯</div>
+          	<ul class="u-channel-link l">
+								{#article action='type' type='32'#}
+              	<li><a href="{#$row.url#}">{#$row.typename#}</a></li>
+								{#/article#}
+          	</ul>
+          	<a href="{#getUrlPath service='article' template='list' typeid="32"#}" class="r">更多>></a>
+  		</div>
+  		<div style="clear:both"></div>
+  		<div class="l gnkx_left">
+					{#article action="alist" typeid="32" return="alistd" flag="h,r" page="1" pageSize="2"#}
+      		<dl class="classify classify2">
+	            <dt class="o_h">
+	                <a href="{#$alistd.url#}" target="_blank">{#$alistd.title#}</a>
+	            </dt>
+	            <dd>{#$alistd.description|truncate:35#}<a href="{#$alistd.url#}" target="_blank">[详细]</a>
+	            </dd>
+	        </dl>
+					{#/article#}
+	        <ul class="t20">
+						{#article action="alist" typeid="32" return="alistl" flag="r" thumb="1" page="1" pageSize="3"#}
+	        	<li><a class="img" href="{#$alistl.url#}" target="_blank"><img src="{#changeFileSize url="{#$alistl.litpic#}" type="small"#}"></a><p><a href="{#$alistl.url#}" target="_blank">{#$alistl.title#}</a></p></li>
+						{#/article#}
+	        </ul>
+  		</div>
+
+  		<div class="l gnkx_mid">
+				{#article action="alist" typeid="32" return="alistr" page="1" pageSize="4"#}
+  			<dl class="classify">
+            <dt class="o_h">
+                <a href="{#$alistr.url#}">{#$alistr.title#}</a>
+            </dt>
+            <dd>{#$alistr.description|truncate:30#}<a href="{#$alistr.url#}">[详细]</a></dd>
+        </dl>
+				{#/article#}
+  		</div>
+
+  		<div class="r gnkx_right">
+  			<div class="title"><h3 class="l">热门</h3><a  href="{#getUrlPath service='article' template='list' typeid="32"#}"  class="r more">+更多</a></div>
+				{#article action="alist" return="alist" typeid="32" flag="h" page="1" thumb="1" pageSize="2"#}
+      		<dl class="clearfix">
+	            <dt>
+	                <a href="{#$alist.url#}" target="_blank" >{#$alist.title#}</a>
+	            </dt>
+	            <dd class="u-rm-img  l"><a href="{#$alist.url#}" class="img"><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt=""></a></dd>
+	            <dd class="u-rm-desc">{#$alist.description|truncate:20#}<a href="{#$alist.url#}" target="_blank">[详细]</a>
+	            </dd>
+	        </dl>
+					{#/article#}
+  		</div>
+  	</div>
+	<!-- 第二部分 国际新闻 -->
+  	<div class="gjxw gnkx">
+  		<div class="m-channel-hd" >
+          	<div class="u-channel-name u-channel1 l">国际新闻</div>
+          	<ul class="u-channel-link l">
+								{#article action='type' type='33'#}
+              	<li><a href="{#$row.url#}">{#$row.typename#}</a></li>
+								{#/article#}
+          	</ul>
+          	<a href="{#getUrlPath service='article' template='list' typeid="33"#}" class="r">更多>></a>
+  		</div>
+  		<div style="clear:both"></div>
+  		<div class="l gnkx_left">
+				{#article action="alist" typeid="33" return="alist" flag="h" page="1" pageSize="2"#}
+  			<dl class="classify classify2">
+            <dt class="o_h">
+                <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+            </dt>
+            <dd>{#$alist.description|truncate:30#}<a href="{#$alist.url#}" target="_blank">[详细]</a></dd>
+        </dl>
+				{#/article#}
+	        <ul class="t20">
+						{#article action="alist" typeid="33" return="aliste" flag="r" thumb="1" page="1" pageSize="3"#}
+	        	<li><a class="img" href="{#$aliste.url#}" target="_blank"><img src="{#changeFileSize url="{#$aliste.litpic#}" type="small"#}"></a><p><a href="{#$aliste.url#}" target="_blank">{#$aliste.description|truncate:20#}</a></p></li>
+						{#/article#}
+	        <ul>
+  		</div>
+
+  		<div class="l gnkx_mid">
+				{#article action="alist" typeid="33" return="alistf" page="2" pageSize="4"#}
+  			<dl class="classify">
+            <dt class="o_h">
+                <a href="{#$alistf.url#}" target="_blank">{#$alistf.title#}</a>
+            </dt>
+            <dd>{#$alistf.description|truncate:30#}<a href="{#$alistf.url#}" target="_blank">[详细]</a></dd>
+        </dl>
+				{#/article#}
+  		</div>
+
+  		<div class="r gnkx_right">
+          <div class="title"><h3 class="l">热门</h3><a  href="{#getUrlPath service='article' template='list' typeid="33"#}"  class="r more">+更多</a></div>
+					{#article action="alist" typeid="33" return="alist" thumb="1" flag="h" page="1" pageSize="2"#}
+          <dl class="clearfix">
+              <dt>
+                  <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+              </dt>
+              <dd class="u-rm-img  l">
+                  <a href="{#$alist.url#}" class="img" target="_blank">
+                      <img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="">
+                  </a>
+              </dd>
+              <dd class="u-rm-desc">{#$alist.description|truncate:20#}<a href="{#$alist.url#}" target="_blank">[详细]</a>
+              </dd>
+          </dl>
+					{#/article#}
+      </div>
+  	</div>
+	<!-- 第三部分 社会新闻 -->
+  	<div class="shxw gnkx">
+  		<div class="m-channel-hd" >
+          	<div class="u-channel-name u-channel1 l">社会新闻</div>
+          	<ul class="u-channel-link l">
+							{#article action='type' type='53'#}
+							<li><a href="{#$row.url#}">{#$row.typename#}</a></li>
+							{#/article#}
+          	</ul>
+          	<a href="{#getUrlPath service='article' template='list' typeid="53"#}" class="r">更多>></a>
+  		</div>
+  		<div style="clear:both"></div>
+  		<div class="l gnkx_left">
+				{#article action="alist" typeid="53" return="alist" flag="h,r" page="1" pageSize="2"#}
+      		<dl class="classify classify2">
+              <dt class="o_h">
+                  <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+              </dt>
+              <dd>{#$alist.description|truncate:30#}<a href="{#$alist.url#}" target="_blank">[详细]</a>
+              </dd>
+          </dl>
+					{#/article#}
+          <ul class="t20">
+						{#article action="alist" typeid="53" return="aliste" flag="r" thumb="1" page="1" pageSize="3"#}
+	        	<li><a class="img" href="{#$aliste.url#}" target="_blank"><img src="{#changeFileSize url="{#$aliste.litpic#}" type="small"#}"></a><p><a href="{#$aliste.url#}" target="_blank">{#$aliste.description|truncate:20#}</a></p></li>
+						{#/article#}
+          <ul>
+  		</div>
+
+  		<div class="l gnkx_mid">
+				{#article action="alist" typeid="53" return="alistf" page="2" pageSize="4"#}
+      		<dl class="classify">
+              <dt class="o_h">
+                  <a href="{#$alistf.url#}" target="_blank">{#$alistf.title#}</a>
+              </dt>
+              <dd>{#$alistf.description|truncate:30#}<a href="{#$alistf.url#}" target="_blank">[详细]</a>
+              </dd>
+          </dl>
+					{#/article#}
+  		</div>
+
+  		<div class="r gnkx_right">
+              <div class="title"><h3 class="l">热门</h3><a  href="{#getUrlPath service='article' template='list' typeid="53"#}"  class="r more">+更多</a></div>
+							{#article action="alist" typeid="53" return="alist" thumb="1" flag="h" page="1" pageSize="2"#}
+              <dl class="clearfix">
+                  <dt>
+                      <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+                  </dt>
+                  <dd class="u-rm-img  l">
+                      <a href="{#$alist.url#}" class="img" target="_blank">
+                          <img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="">
+                      </a>
+                  </dd>
+                  <dd class="u-rm-desc">{#$alist.description|truncate:20#}<a href="{#$alist.url#}" target="_blank">[详细]</a>
+                  </dd>
+              </dl>
+							{#/article#}
+          </div>
+  	</div>
+	<!-- 第四部分 军事新闻 -->
+  	<div class="jsxw gnkx">
+  		<div class="m-channel-hd" >
+          	<div class="u-channel-name u-channel1 l">经济新闻</div>
+          	<ul class="u-channel-link l">
+							{#article action='type' type='34'#}
+							<li><a href="{#$row.url#}">{#$row.typename#}</a></li>
+							{#/article#}
+          	</ul>
+          	<a href="{#getUrlPath service='article' template='list' typeid="34"#}" class="r">更多>></a>
+  		</div>
+  		<div style="clear:both"></div>
+  		<div class="l gnkx_left">
+				{#article action="alist" typeid="34" return="alist" flag="h,r" page="1" pageSize="2"#}
+  			<dl class="classify classify2">
+            <dt class="o_h">
+                <a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>
+            </dt>
+            <dd>{#$alist.description|truncate:30#}<a href="{#$alist.url#}" target="_blank">[详细]</a>
+            </dd>
+        </dl>
+				{#/article#}
+        <ul class="t20">
+					{#article action="alist" typeid="34" return="aliste" flag="r" thumb="1" page="1" pageSize="3"#}
+					<li><a class="img" href="{#$aliste.url#}" target="_blank"><img src="{#changeFileSize url="{#$aliste.litpic#}" type="small"#}"></a><p><a href="{#$aliste.url#}" target="_blank">{#$aliste.description|truncate:20#}</a></p></li>
+					{#/article#}
+        <ul>
+  		</div>
+
+  		<div class="l gnkx_mid">
+				{#article action="alist" typeid="34" return="alistf" page="2" pageSize="4"#}
+      		<dl class="classify">
+              <dt class="o_h">
+                  <a href="{#$alistf.url#}" target="_blank">{#$alistf.title#}</a>
+              </dt>
+              <dd>{#$alistf.description|truncate:30#}<a href="{#$alistf.url#}" target="_blank">[详细]</a>
+              </dd>
+          </dl>
+					{#/article#}
+  		</div>
+
+  		<div class="r gnkx_right">
+          <div class="title"><h3 class="l">热门</h3><a  href="{#getUrlPath service='article' template='list' typeid="34"#}"  class="r more">+更多</a></div>
+					{#article action="alist" typeid="34" return="alist" thumb="1" flag="h" page="1" pageSize="2"#}
+          <dl class="clearfix">
+              <dt>
+                  <a href="{#$alist.url#}" >{#$alist.title#}</a>
+              </dt>
+              <dd class="u-rm-img  l">
+                  <a href="{#$alist.url#}" class="img">
+                      <img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="">
+                  </a>
+              </dd>
+              <dd class="u-rm-desc">{#$alist.description|truncate:20#}<a href="{#$alist.url#}" >[详细]</a>
+              </dd>
+          </dl>
+					{#/article#}
+      </div>
+  	</div>
+	<!-- 第六部分 图片新闻 -->
+  	<div class="tpxw gnkx">
+  		<div class="m-channel-hd" >
+      	   <div class="u-channel-name u-channel1 l">图片新闻</div>
+          	<ul class="u-channel-link l">
+							{#article action='type' type='9'#}
+							<li><a href="{#$row.url#}">{#$row.typename#}</a></li>
+							{#/article#}
+          	</ul>
+      	   <a href="{#getUrlPath service='article' template='list' typeid="9"#}" class="r" target="_blank">更多>></a>
+  		</div>
+  		<div style="clear:both"></div>
+      	<div class="g-picture-wrap f-h320 f-pt30">
+                  <div class="g-picture-wrap-left l">
+                  <!-- 最左侧大图 -->
+											{#article action="alist" return="list1" typeid="10" thumb="1" orderby="2" pageSize="1"#}
+                      <div class="u-pic-box-big  f-scale1 l">
+                          <a href="{#$list1.url#}" target="_blank">
+                              <img src="{#changeFileSize url="{#$list1.litpic#}" type="large"#}">
+                          </a>
+                          <div class="u-pic-title f-fs20 ">
+                              <a href="{#$list1.url#}" target="_blank">{#$list1.title#}</a>
+                          </div>
+                      </div>
+											{#/article#}
+
+											{#article action="alist" return="list2" typeid="11" thumb="1" orderby="2" pageSize="4"#}
+                      <div class="u-pic-box-small l">
+                          <a href="{#$list2.url#}" target="_blank">
+                              <img src="{#changeFileSize url="{#$list2.litpic#}" type="large"#}">
+                          </a>
+                          <div class="u-pic-title  ">
+                              <a href="{#$list2.url#}" target="_blank">{#$list2.title#}</a>
+                          </div>
+                      </div>
+											{#/article#}
+                  </div>
+
+                  <!-- 最右侧两个图 -->
+                  <div class="g-picture-wrap-right l">
+										{#article action="alist" return="list3" typeid="12" thumb="1" orderby="2" pageSize="2"#}
+                      <div class="u-pic-box-small l">
+                          <a href="{#$list3.url#}"  target="_blank">
+                              <img src="{#changeFileSize url="{#$list3.litpic#}" type="large"#}">
+                          </a>
+                          <div class="u-pic-title  ">
+                              <a href="{#$list3.url#}" target="_blank">{#$list3.title#}</a>
+                          </div>
+                      </div>
+											{#/article#}
+                  </div>
+          </div>
+  	</div>
+  </div>
+<!-- 底部 -->
+<div class="foot">
+	<div class="about">
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+	</div>
+	<div class="info">
+		{#$cfg_powerby#}
+	</div>
+</div>
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

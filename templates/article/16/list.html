@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#} - {#$article_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/pace.js"></script> <!-- 页面加载进度 -->
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="新闻资讯_模板一_电脑端_广告四"#}</div>
+
+<!-- LOGO s -->
+<div class="wrap fn-clear">
+	<h1 class="logo"><a href="{#$article_channelDomain#}" title="{#$article_channelName#}"><img src="{#$article_logoUrl#}" alt="{#$article_channelName#}" /></a></h1>
+	<div class="tsearch fn-clear">
+		<form action="{#getUrlPath service='article' template='search'#}" method="post">
+			<input type="text" name="keywords" class="skeyword" placeholder="请输入关键字" value="请输入关键字" onFocus="if(value=='请输入关键字') {value='';this.style.color='#333'}" onBlur="if (value=='') {value='请输入关键字';this.style.color='#888'}" />
+			<input type="submit" id="sBtn" value="搜&nbsp;索" />
+		</form>
+	</div>
+</div>
+<!-- LOGO e -->
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li><a href="{#$article_channelDomain#}">首页</a></li>
+		{#getChannel service="article" tab="articletype"#}
+	</ul>
+</div>
+<!-- 导航 e -->
+
+<div class="wrap listnav fn-clear">
+	<div class="typetit"><i></i>{#$list_typename#}</div>
+	<ul class="fn-clear" data-id="{#$list_id#}">
+		{#getChannel service="article" action="type" type="{#$list_id#}"#}
+	</ul>
+</div>
+
+<div class="wrap fn-clear">
+	<div class="wmain">
+		<!-- 幻灯广告 s -->
+		<div class="slideshow_640_380">
+			<div id="slideshow640380">
+				{#myad service="article" typeid="{#$list_id#}" type="slide"#}
+			</div>
+			<div id="slidebtn640380" class="slidebtn"></div>
+			<a href="javascript:;" class="prev" id="slidebtn640380_prev"></a>
+			<a href="javascript:;" class="next" id="slidebtn640380_next"></a>
+		</div>
+		<!-- 幻灯广告 e -->
+
+		<!-- 今日头条 s -->
+		<div class="headline">
+			{#article action="alist" return="alist" typeid="{#$list_id#}" flag="h,b" page="1" pageSize="1"#}
+			<h1 class="title"><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h1>
+			<p>{#$alist.description#}</p>
+			{#/article#}
+		</div>
+		<!-- 今日头条 e -->
+
+		<div class="list-tit fn-clear"><h3>{#$list_typename#}</h3></div>
+		<div class="n-list">
+			<ul>
+				{#article action="alist" return="alist" group_img="1" page={#$page#} pageSize="20"#}
+				<li class="fn-clear">
+					{#if $alist.group_img#}<a href="{#$alist.url#}" target="_blank"><img class="pic" src="{#changeFileSize url="{#$alist.group_img[0].path#}" type="small"#}" alt="{#$alist.title|strip_tags#}"></a>
+					{#elseif $alist.litpic#}<a href="{#$alist.url#}" target="_blank"><img class="pic" src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}"></a>
+					{#/if#}
+					<h3><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h3>
+					<p class="info">{#$alist.source#}<span>{#$alist.pubdate|date_format:'%Y-%m-%d %H:%M:%S'#}</span></p>
+					{#if $alist.description != ""#}<p class="desc">{#$alist.description#}...<a href="{#$alist.url#}" target="_blank">全文</a></p>{#/if#}
+					<div class="btns fn-clear">
+						<a href="{#$alist.url#}#comment" target="_blank" class="reviewbtn" title="评论数">0</a>
+						<a href="javascript:;" class="sharebtn" data-title="{#$alist.title|strip_tags#}" data-url="{#$alist.url#}" data-pic="{#$alist.litpic#}"></a>
+					</div>
+				</li>
+				{#/article#}
+			</ul>
+		</div>
+
+		{#getPageList service='article' template='list' pageType='dynamic' typeid={#$list_id#} param="page=#page#"#}
+
+	</div>
+
+
+	<div class="wsidebar">
+		<div class="ad">{#myad title="新闻资讯_模板一_电脑端_广告五"#}</div>
+
+		<!-- 热门图片推荐 s -->
+		<div class="picrec">
+			<div class="hdt">
+				<h3>{#getTypeName service='article' typeid='2'#}</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="2"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="fn-clear">
+					{#article action="alist" return="alist" typeid="2" thumb="1" page="1" pageSize="8"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img onerror="javascript:this.src='{#$alist.litpic#}';" src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 热门图片推荐 e -->
+
+		<div class="ad">{#myad title="新闻资讯_模板一_电脑端_广告六"#}</div>
+		<div class="ad">{#myad title="新闻资讯_模板一_电脑端_广告七"#}</div>
+
+		<!-- 新闻点击排行 s -->
+		<div class="clickrank">
+			<div class="hdt">
+				<h3>新闻点击排行</h3>
+				<a href="{#$article_channelDomain#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="pic-list fn-clear">
+					{#article action="alist" return="alist" orderby="2" thumb="1" pageSize="4"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img onerror="javascript:this.src='{#$alist.litpic#}';" src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><span class="txt">{#$alist.title#}</span><span class="bg"></span></a></li>
+					{#/article#}
+				</ul>
+				<ul class="txt-list">
+					{#article action="alist" return="alist" orderby="2" thumb="0" pageSize="15"#}
+					<li><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 新闻点击排行 e -->
+
+		<!-- 视频新闻 s -->
+		<div class="video">
+			<div class="hdt">
+				<h3>{#getTypeName service='article' typeid='5'#}</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="5"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul>
+					{#article action="alist" return="alist" typeid="5" flag="r" thumb="1" pageSize="4"#}
+					<li>
+						<a href="{#$alist.url#}" target="_blank">
+						  <img onerror="javascript:this.src='{#$alist.litpic#}';" src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+						  <i></i><span>{#$alist.title#}</span><p>点击数：{#$alist.click#}</p>
+						</a>
+					</li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 视频新闻 e -->
+
+		<!-- 精彩图集 s -->
+		<div class="piclist">
+			<div class="hdt">
+				<h3>{#getTypeName service='article' typeid='8'#}</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="8"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="fn-clear">
+					{#article action="alist" return="alist" typeid="8" thumb="1" page="1" pageSize="8"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img onerror="javascript:this.src='{#$alist.litpic#}';" src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 精彩图集 e -->
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>
