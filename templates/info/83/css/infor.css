@@ -1,0 +1,689 @@
+.EXhand{
+	width: 675px;
+	float: left;
+	margin:0 22px;
+}
+
+
+
+
+/*幻灯片*/
+.flash{
+	width: 675px;
+	height: 350px;
+	overflow: hidden;
+	margin-top: 20px;
+	position: relative;
+}
+.flash .bd {height: 350px;}
+.flash img{
+	width: 100%;
+	height: 100%;
+}
+.flash .slideshow-item{
+	position: relative;
+	height: 350px;
+}
+.flash .slideinfo{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+.flash .slideinfo .bg{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    z-index: 1;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(.8, #000));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background: #333\0;
+    bottom: 0;
+}
+.flash .slideinfo h3{
+	z-index: 2;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+.flash .slideinfo h3 a{
+	color: #fff;
+	font-size: 18px;
+	width: 450px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.flash .hd{
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	z-index: 2;
+}
+.flash .hd ul li{
+	float: left;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #7d7c77;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.flash .hd ul li.on{
+	background: #fff;
+}
+
+
+/*公用导航栏*/
+.NewsNav {
+	background: #f4f4f4;
+	height: 50px;
+	line-height: 50px;
+	width: 675px;
+<<<<<<< HEAD
+	overflow: hidden;
+=======
+>>>>>>> 2.6
+}
+.NewsNav ul li {
+	float: left;
+	width: 75px;
+	text-align: center;
+	font-size: 16px;
+	position: relative;
+}
+.NewsNav ul li:after{
+	content:"";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 75px;
+	height: 2px;
+	background: #23b8f6;
+	display: none;
+}
+.NewsNav ul li.NewsNav_bc:after{
+	display: block;
+}
+.NewsNav ul li a{
+	display: block;
+<<<<<<< HEAD
+	font-weight: 600;
+=======
+>>>>>>> 2.6
+}
+.NewsNav ul li i{
+    width: 17px;
+    height: 10px;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -6px -7px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.NewsNav ul li:hover i{
+	background-position: -32px -65px;
+}
+<<<<<<< HEAD
+=======
+.NewsNav span{
+	float: left;
+	width: 75px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	position: relative;
+	font-size: 16px;
+}
+.NewsNav span a{
+	display: block;
+	font-weight: 600;
+	font-weight: normal;
+}
+.NewsNav span i{
+    width: 17px;
+    height: 10px;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -6px -7px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.NewsNav span:hover .more_list{
+	display: block;
+}
+.more_list{
+	position: absolute;
+	right: 0;
+	top: 50px;
+	width: 675px;
+	z-index: 3;
+	background: rgba(244, 244, 244, 0.86);
+	display: none;
+  -webkit-animation: topFadeIn .3s ease-out;
+  -moz-animation: topFadeIn .3s ease-out;
+  animation: topFadeIn .3s ease-out;
+}
+.more_list ul li{
+	float: left;
+}
+.more_list ul li a{
+	font-weight: normal;
+}
+
+>>>>>>> 2.6
+
+
+/*二手信息详细内容*/
+.EXhand_List{
+	width: 675px;
+}
+.EL_detail{
+	padding: 25px 5px;
+	border-bottom: 1px solid #dadada;
+}
+.EL_detail:hover{
+	background: rgba(241, 241, 241, 0.39);
+}
+.EL_detail .infor {
+	height: 60px;
+	width: 665px;
+	overflow: hidden;
+}
+.EL_detail .infor .infor_left{
+	float: left;
+	width: 488px;
+	overflow: hidden;
+}
+.EL_detail .infor .infor_left .infor_img{
+	float: left;
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+	overflow: hidden;
+	margin-right: 18px;
+}
+.EL_detail .infor .infor_left .infor_img img{
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+}
+.EL_detail .infor .infor_left .name{
+	font-size: 20px;
+	margin-top: 5px;
+}
+.EL_detail .infor .infor_left .name i{
+	vertical-align: text-bottom;
+	margin-left: 5px;
+	width: 25px;
+	height: 26px;
+	background: url(../images/infor.png) no-repeat;
+	display: inline-block;
+}
+.EL_detail .infor .infor_left .form{
+	color: #afafaf;
+	font-size: 14px;
+}
+.EL_detail .infor .infor_left .name i.VIP{
+	background-position: -2px -3px;
+}
+.EL_detail .infor .infor_left .name i.diamond{
+	background-position: -41px -6px;
+}
+.EL_detail .infor .infor_right{
+	float: right;
+	line-height: 60px;
+	color: #fa752d;
+	font-size: 16px;
+	font-weight: bold;
+}
+.EL_detail .infor .infor_right em{
+	font-size: 24px;
+	margin-left: 3px;
+}
+.EL_detail .ELD_title{
+	margin-top: 10px;
+	font-size: 20px;
+}
+.EL_detail .ELD_title a{
+	font-weight: bold;
+	margin-right: 5px;
+}
+.EL_detail .ELD_title i{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(../images/infor.png) no-repeat;
+	vertical-align: text-bottom;
+}
+.EL_detail .ELD_title i.top{
+	background-position: -82px -3px;
+}
+.EL_detail .ELD_title i.worry{
+	background-position: -128px -3px;
+}
+.EL_detail .ELD_title i.new{
+	background-position: -176px -3px;
+}
+.EL_detail .ELD_tips{
+<<<<<<< HEAD
+	margin-top: 10px;
+=======
+	margin-top: 10px;
+>>>>>>> 2.6
+}
+.EL_detail .ELD_tips a{
+	float: left;
+	padding: 0 5px;
+	color: #34bdf6;
+	border: 1px solid #34bdf6;
+	border-radius: 3px;
+	margin-right: 5px;
+}
+.EL_detail .Summarize {
+	font-size: 16px;
+	color: #a3a3a3;
+	margin-top: 10px;
+	height: 46px;
+	overflow: hidden;
+}
+.EL_detail .Summarize a{
+	margin-left: 5px;
+	font-size: 14px;
+}
+.EL_detail .all{
+	text-align: right;
+	font-size: 14px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.EL_detail .Tel{
+	font-size: 16px;
+	margin-top: 5px;
+}
+.EL_detail .Tel em{
+	color: #23b8f6;
+}
+.EL_detail ul{
+	width: 690px;
+	margin-top: 15px;
+}
+.EL_detail ul li{
+	float: left;
+	width: 160px;
+	height: 110px;
+	overflow: hidden;
+	margin-right: 8px;
+}
+.EL_detail ul li a{
+	display: block;
+	position: relative;
+	height: 110px;
+}
+.EL_detail ul li a img{
+	width: 160px;
+	height: 110px;
+}
+.EL_detail ul li a .Pic_Number{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(.8, #000));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background: #333\0;
+    height: 30px;
+    text-align: right;
+    color: #fff;
+    padding-right: 5px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.EL_detail .ELD_foot{
+	margin-top: 10px;
+}
+.EL_detail .ELD_foot .EF_left{
+	float: left;
+	width: 400px;
+	color: #b2b2b2;
+	font-size: 14px;
+	height: 26px;
+	line-height: 26px;
+}
+.EL_detail .ELD_foot .EF_right{
+	float: right;
+}
+.EL_detail .ELD_foot .EF_right i{
+	width: 26px;
+	height: 26px;
+	border-radius: 100%;
+	background: #ededed;
+	display: block;
+}
+.EL_detail .ELD_foot .EF_right .Share:hover i{
+	background: #23b8f6;
+}
+.EL_detail .ELD_foot .EF_right .Share{
+	position: relative;
+	width: 26px;
+	height: 26px;
+    float: left;
+    margin-right: 6px;
+}
+.EL_detail .ELD_foot .EF_right .Share a{
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	border-radius: 100%;
+	background: url(../images/infor.png) no-repeat;
+    padding: 0;
+    margin: 0;
+}
+.EL_detail .ELD_foot .EF_right .Share a:hover{
+	opacity: 1;
+}
+.EL_detail .ELD_foot .EF_right .Share_QQ a{
+	background-position: -224px -7px;
+}
+.EL_detail .ELD_foot .EF_right .Share_weixin a{
+	background-position: -299px -7px;
+}
+.EL_detail .ELD_foot .EF_right .Share_weibo a{
+	background-position: -261px -7px;
+}
+
+
+<<<<<<< HEAD
+/*
+.loading{
+	width: 100%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 14px;
+	background: #f8f8f8;
+	color: #bfbfbf;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.loading:hover{
+	background: #23b8f6;
+	color: #fff;
+}
+*/
+=======
+>>>>>>> 2.6
+
+.EXhand_List .load-add{
+	width: 100%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 14px;
+	background: #f8f8f8;
+	color: #bfbfbf;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.load-add:hover{
+	background: #23b8f6;
+	color: #fff;
+}
+.loading{
+    text-align: center;
+    margin: 50px 0;
+    font-size: 20px;
+}
+.loading img{
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+
+
+/*右侧资讯汇总*/
+.Information{
+	float: left;
+	width: 351px;
+	overflow: hidden;
+}
+.issue{
+	width: 371px;
+	height: 62px;
+	margin-top: 20px;
+}
+.issue a{
+	width: 170px;
+	height: 62px;
+	line-height: 62px;
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	text-align: center;
+	background: url(../images/btn_bc1.png) no-repeat;
+	background-size: 170px;
+	margin-right: 10px;
+}
+.infor_list{
+	width: 311px;
+	background: #f8f8f8;
+	margin-top: 20px;
+	border-top: 2px solid #23b8f6;
+	padding: 10px 20px;
+}
+.infor_list .infor_lead em{
+	float: left;
+	width: 65px;
+	font-weight: bold;
+	font-size: 16px;
+}
+.infor_list .infor_lead a{
+	font-size: 14px;
+	float: right;
+	color: #acacac;
+}
+.infor_list .infor_lead a i{
+	    width: 10px;
+    height: 21px;
+    display: inline-block;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -9px -15px;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+}
+.Release{
+	padding: 15px 0;
+	border-bottom: 1px dashed #cacaca;
+}
+.Release .Release_pic{
+	float: left;
+	width: 128px;
+	height: 82px;
+	margin-right: 15px;
+	background: url(../images/pic.png) no-repeat center;
+}
+.Release .Release_pic img{
+	width: 100%;
+	height: 100%;
+}
+.Release .Release_infor .RI_txt{
+	width: 168px;
+	height: 60px;
+	overflow: hidden;
+	font-size: 14px;
+}
+.Release .Release_infor .RI_txt em{
+	color: #23b8f6;
+}
+.Release .Release_infor .RI_price{
+	float: right;
+	font-size: 18px;
+	color: #fa752d;
+}
+.Release .Release_infor .RI_price em{
+	font-size: 16px;
+}
+.Rank{
+	padding: 15px 0;
+	border-bottom: 1px dashed #cacaca;
+	position: relative;
+}
+.Rank .Rank_pic{
+	float: left;
+	width: 128px;
+	height: 82px;
+	margin-right: 15px;
+	position: relative;
+	background: url(../images/pic.png) no-repeat center;
+}
+.Rank .Rank_pic img{
+	width: 100%;
+	height: 100%;
+}
+.Rank .Rank_pic i{
+	width: 49px;
+    height: 49px;
+    position: absolute;
+    right: -3px;
+    top: -5px;
+    background: url(../images/infor.png);
+}
+.Rank .Rank_pic i.first{
+    background-position: -51px -55px;
+}
+.Rank .Rank_pic i.second{
+    background-position: -116px -55px;
+}
+.Rank .Rank_pic i.third{
+    background-position: -186px -55px;
+}
+
+.Rank .Rank_title{
+	font-size: 14px;
+}
+.Rank .Popularity_values{
+	position: absolute;
+	bottom: 15px;
+	right: 0;
+	font-size: 14px;
+}
+.Rank .Popularity_values i{
+	width: 15px;
+	height: 20px;
+	display: inline-block;
+	background: url(../images/infor.png);
+	vertical-align: text-bottom;
+}
+.Rank .Popularity_values i.up{
+	background-position: -6px -48px;
+}
+.Rank .Popularity_values i.down{
+	background-position: -5px -71px;
+}
+.Rank .Popularity_values i.ping{
+	background-position: -25px -49px;
+}
+.Tool .Tool_up{
+	border-bottom: 1px dashed #cacaca;
+	padding:10px 0;
+}
+.Tool .Tool_down{
+	padding:10px 0;
+}
+.Tool ul li{
+	float: left;
+	width: 25%;
+	text-align: center;
+	font-size: 14px;
+}
+.Tool ul li i{
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+	display: block;
+}
+.Tool .Tool_up ul li.huafei i{
+	background: url(../images/tool-1.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_up ul li.liuliang i{
+	background: url(../images/tool-2.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_up ul li.shuidian i{
+	background: url(../images/tool-3.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_up ul li.gongjiao i{
+	background: url(../images/tool-4.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_down ul li.yiyuan i{
+	background: url(../images/tool-5.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_down ul li.dache i{
+	background: url(../images/tool-6.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_down ul li.weizhang i{
+	background: url(../images/tool-7.png) no-repeat center;
+	background-size: 40px;
+
+}
+.Tool .Tool_down ul li.zhushou i{
+	background: url(../images/tool-8.png) no-repeat center;
+	background-size: 45px;
+
+}
+.Qrcode{
+	margin-top: 20px;
+}
+.Qrcode ul{
+	width: 380px;
+}
+.Qrcode ul li{
+	width: 165px;
+	height: 200px;
+	float: left;
+	margin-right: 18px;
+}
+.Qrcode ul li img{
+	width: 146px;
+	height: 146px;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.Qrcode ul li p{
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.height{
+	height: auto!important;
+}
+.mnbtn{
+	height: 100px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	line-height: 100px;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 2.6
