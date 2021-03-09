@@ -1,0 +1,210 @@
+.crumbs .cont s,
+.crumbs .switch i,
+.sortbar .window i,
+.sortbar .rowlist i,
+.sort .price i,
+.sort .check i,
+.main .user i,
+.main .user .fov i,
+.pagination-pages i,
+.bmain .item i s,
+.bmain .pf .fov i,
+.filter .more i,
+.main .right .tel s {background-image: url('../images/listSprite.png'); background-repeat: no-repeat;}
+
+/* 面包屑 */
+.crumbs {padding: 15px 0 12px; font-size: 14px; line-height: 25px;}
+.crumbs .cont {float: left;}
+.crumbs .cont a {float: left;}
+.crumbs .cont s {float: left; margin: 8px 6px 0; width: 5px; height: 9px; overflow: hidden; background-position: -76px -43px;}
+.crumbs .count {float: right; position: relative; color: #707070; padding-right: 30px;}
+.crumbs .count strong {color: #f60; padding: 0 5px; font-size: 16px;}
+.crumbs .switch {position: absolute; right: 0; top: 2px; width: 20px; height: 20px; border-radius: 50%; border: 1px solid #aaa;}
+.crumbs .switch i {position: absolute; left: 50%; top: 50%; width: 9px; height: 5px; margin: -3px -4px; overflow: hidden; background-position: -28px -34px;}
+.crumbs a:hover.switch {border-color: #ff7300;}
+.crumbs a:hover.switch i {background-position: -46px -34px;}
+.crumbs .switch.curr i {background-position: -37px -34px; margin-top: -2px;}
+.crumbs a:hover.curr i {background-position: -55px -34px;}
+
+/* 筛选 */
+.filter {position: relative; border: 1px solid #e5e5e5; border-radius: 5px; background-color: #fafafa; padding: 10px 20px; font-size: 14px; margin-bottom: 15px;}
+.filter dt {float: left; width: 60px; text-align: right; color: #333; padding: 8px 0;}
+.filter dd {margin-left: 65px; padding: 3px 0;}
+.filter dd a {float: left; position: relative; margin: 5px 8px 5px 0; padding: 0 7px; color: #666;}
+.filter dd a:hover {text-decoration: underline; color: #fd5115;}
+.filter dd a.curr {background-color: #ff7300; color: #fff;}
+.filter dd a:hover.curr {text-decoration: none;}
+.filter dd a s {display: none; position: absolute; left: 50%; bottom: 0; height: 0; width: 0; margin: 0 0 -8px -2px; overflow: hidden; border: solid 4px transparent; border-top-color: #ff7300;}
+.filter dd a.curr s {display: block;}
+.filter .price {float: left; padding-top: 5px;}
+.filter .price .p1, .filter .price .p2 {width: 45px; padding: 0 4px; height: 20px; border: solid 1px #dfdfdf; line-height: normal; font-family: arial; margin: 0 4px;}
+.filter .price .btn {height: 21px; display: inline-block; padding: 0 10px; background: #ff7300; color: #fff; margin: 0 0 0 5px; vertical-align: top; line-height: 21px; font-size: 12px; cursor: pointer; white-space: nowrap; -webkit-border-radius: 2px; -webkit-background-clip: padding-box; -moz-border-radius: 2px; -moz-background-clip: padding; border-radius: 2px; background-clip: padding-box; border: 0;}
+.filter .more {position: absolute; left: 50%; bottom: -27px; width: 100px; height: 25px; text-align: center; line-height: 25px; font-size: 12px; border: 1px solid #e5e5e5; background-color: #fafafa; border-top-color: #fafafa;}
+.filter .more a {display: block;}
+.filter .more i {display: inline-block; vertical-align: middle; margin-left: 8px; width: 9px; height: 5px; background-position: -37px -34px;}
+.filter .more a:hover i {background-position: -55px -34px;}
+.filter .more.curr i {background-position: -28px -34px; margin-top: -3px;}
+.filter .more.curr a:hover i {background-position: -46px -34px;}
+.filter .subnav {display: none; clear: both; padding: 10px; background-color: #f2f2f2;}
+.filter .subnav div {display: none;}
+.filter .subnav a {margin: 2px 8px 3px 0;}
+
+/*关键字*/
+.filter-item {float: left; line-height: 16px; height: 16px; padding: 0 5px; border: 1px solid #ff7300; background: #ff7300; margin-left: 18px; margin-top: 4px; color: #fff;}
+.filter-item .close {color: #fff; margin-left: 7px; font-family: "\5b8b\4f53", "Microsoft YaHei", Arial;}
+.filter-item:hover{color: #fff;}
+
+/* 信息类型切换 + 顶部分页 */
+.sortbar {border-bottom: 5px solid #a7d500;}
+.sortbar .tabs {float: left;}
+.sortbar .tabs li {position: relative; z-index: 1; float: left; width: 115px; border: 1px solid #d7d7d7; text-align: center; font-size: 16px; border-bottom: 0; margin-right: -1px;}
+.sortbar .tabs li.curr {z-index: 2; background-color: #a7d500; border-color: #a7d500;}
+.sortbar .tabs li a {display: block; line-height: 38px;}
+.sortbar .tabs li a:hover {color: #333; text-decoration: underline;}
+.sortbar .tabs li.curr a {color: #fff;}
+.sortbar .views {float: right; line-height: 16px; padding-top: 10px;}
+.sortbar .views li {float: right; margin-left: 15px;}
+.sortbar .window, .sortbar .rowlist {font-size: 14px;}
+.sortbar .views a {display: block; color: #999; }
+.sortbar .views .curr a {color: #ff751a;}
+.sortbar .window i, .sortbar .rowlist i {float: left; width: 16px; height: 16px; margin-right: 5px;}
+.sortbar .window i {background-position: 0 -16px;}
+.sortbar .window.curr i {background-position: -16px -16px;}
+.sortbar .rowlist.curr i {background-position: -16px 0;}
+
+.sortbar .prev, .sortbar .next {position: relative; float: left; width: 16px; height: 17px; background-color: #ff751a; overflow: hidden;}
+.sortbar .diabled {background-color: #b5b5b5;}
+.sortbar .atpage {float: left; padding: 0 5px; font-size: 14px; color: #999;}
+.sortbar .atpage strong {font-weight: 500; color: #f60;}
+.sortbar .views li.tpage {margin-left: 20px;}
+.sortbar .tpage i {position: absolute; left: 50%; top: 50%; height: 0; width: 0; margin: -4px 0 0 -2px; overflow: hidden; border: solid 4px transparent; border-left-color: #fff;}
+.sortbar .tpage .prev i {border-right-color: #fff; border-left: transparent;}
+
+/* 排序 */
+.sort {border: 1px solid #e5e5e5; background-color: #fafafa; height: 45px; border-top: 0; border-radius: 0 0 5px 5px;}
+.sort ul {padding-left: 20px; font-size: 14px;}
+.sort li {float: left; height: 20px; line-height: 20px; margin: 13px 15px 0 0; padding-right: 15px; border-right: 1px dashed #dccec6;}
+.sort li a {display: block;}
+.sort li a:hover {color: #fd5115;}
+.sort .curr a {color: #fd5115;}
+.sort .price i {float: right; width: 7px; height: 9px; overflow: hidden; margin: 5px 0 0 5px; background-position: 0 -32px;}
+.sort .price a:hover i, .sort .curr i {background-position: -14px -32px;}
+.sort .price i.arrow-b {background-position: -7px -32px;}
+.sort .price a:hover i.arrow-b, .sort .curr i.arrow-b {background-position: -21px -32px;}
+.sort .check i {float: left; width: 13px; height: 13px; overflow: hidden; margin: 4px 5px 0 0; background-position: 0 -41px;}
+.sort li.pic a:hover, .sort li.today a:hover {color: #7d8ca1;}
+.sort li a:hover.check i {background-position: -26px -41px;}
+.sort li.curr a:hover.check {color: #fd5115;}
+.sort .curr .check i, .sort li.curr a:hover.check i {background-position: -13px -41px;}
+
+.loading, .failed {display: none; line-height: 30px; text-align: center; font-size: 15px; color: #666; padding: 100px 0;}
+
+/* 图文列表 */
+.main {padding-top: 10px; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
+.main .item {padding: 10px; height: 200px; border-bottom: 1px solid #e5e9f0;}
+.main .item:hover {-webkit-box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); -moz-box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); background-color: #f8f8f8;}
+.main .pic {float: left; width: 198px; height: 198px; border: 1px solid #eee; background-color: #fff;}
+.main .pic a {position: relative; display: block; width: 198px; height: 198px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.main .pic a i {display: inline-block; height: 100%; vertical-align: middle;}
+.main .pic a img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.main .pic a em {position: absolute; top: 50%;	left: 50%; width: 60px;	height: 60px;	margin: -30px 0 0 -30px; background: url('../images/play.png'); background-size: 60px 60px;}
+.main .right {float: right; position: relative; width: 200px; height: 200px; border-left: 1px solid #efefef;}
+.main .right .tel {position: absolute; left: 0; top: 70px; right: 30px; text-align: right; font-size: 20px; color: #f40;}
+.main .right .tel s {display: inline-block; _display: inline; width: 15px; height: 15px; margin-right: 5px; background-position: -6px -93px;}
+.main .right .tel span {display: block; color: #888; font-size: 12px;}
+.main .right .date {position: absolute; right: 30px; bottom: 20px; font-size: 18px;}
+.main .info {margin: 0 220px 0 230px;}
+.main .info h3 {height: 40px;}
+.main .info h3 a {float: left; max-width: 395px; font-size: 20px; color: #000; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.w1200 .main .info h3 a {max-width: 595px;}
+.main .info h3 a:hover {text-decoration: underline; color: #fd5115;}
+.main .info h3 i {float: left; margin: 6px 0 0 10px; height: 18px; padding: 0 5px; line-height: 17px; background-color: #ccc; color: #fff; font-size: 12px; font-style: normal; border-radius: 3px;}
+.main .info h3 i.jj {background-color: #000;}
+.main .info h3 i.hj {background-color: #ee0607;}
+.main .info h3 i.rc {background-color: #63b8f0;}
+.main .info h3 i.zd {background-color: #ffde01; color: #743820;}
+.main .info h3 i.dt {background-color: #1be519;}
+.main p {line-height: 35px; font-size: 14px;}
+.main .desc {color: #999999; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.main .type, .main .type a {color: #0066cc;}
+.main .type a {text-decoration: underline;}
+.main .type a:hover {color: #fd5115;}
+.main .user {padding-top: 5px; height: 32px; font-size: 14px; line-height: 32px;}
+.main .user .upic {float: left; color: #888;}
+.main .user .upic img {width: 26px; height: 26px; display: inline-block; border: 3px solid #f5f4f1; vertical-align: middle; margin-right: 5px;overflow: hidden;}
+.main .user a:hover.upic {color: #fd5115;}
+.main .user i {float: left; margin-left: 12px;}
+.main .user .per {width: 16px; height: 14px; background-position: -33px 0; margin-top: 9px;}
+.main .user .com {width: 16px; height: 16px; background-position: -33px -17px; margin-top: 9px;}
+.main .user .mob {width: 15px; height: 17px; background-position: -50px 0; margin-top: 8px;}
+.main .user .ema {width: 16px; height: 16px; background-position: -66px 0; margin-top: 9px;}
+.main .user .count {float: left; margin-left: 30px; color: #4b9808;margin-right: 30px;}
+.main .user a:hover.count {text-decoration: underline;}
+.main .user .count strong {color: #ee0607;}
+.main .user .fov {float: left; color: #888;}
+.main .user .fov i {float: left; width: 14px; height: 14px; margin: 9px 5px 0 0; background-position: -50px -18px;}
+.main .user .curr {color: #ff7d27;}
+.main .user .curr i {background-position: -65px -18px;}
+
+/* 大图列表 */
+.bmain {padding-top: 22px; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
+.bmain ul {width: 110%;}
+.bmain li {float: left; position: relative; min-height: 260px; width: 267px; margin-bottom: 30px;}
+.w1200 .bmain li {width: 250px;}
+.bmain .item {width: 200px;}
+.bmain .item:hover {position: absolute; z-index: 10; top: -15px; left: -15px; padding: 15px; background-color: #fff; -webkit-box-shadow: 0 0 20px 1px rgba(0,0,0,.2); -moz-box-shadow: 0 0 20px 1px rgba(0,0,0,.2); box-shadow: 0 0 20px 1px rgba(0,0,0,.2);}
+.bmain .pic {width: 198px; height: 198px; border: 1px solid #eee; background-color: #fff;}
+.bmain .pic a {position: relative; display: block; width: 198px; height: 198px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.bmain .pic a s {display: inline-block; height: 100%; vertical-align: middle;}
+.bmain .pic a img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.bmain .pic a em {position: absolute; top: 50%;	left: 50%; width: 60px;	height: 60px;	margin: -30px 0 0 -30px; background: url('../images/play.png'); background-size: 60px 60px;}
+.bmain .tags {position: absolute; z-index: 2; left: 0; top: 0; width: 60px; filter:alpha(opacity=90); opacity: 0.9;}
+.bmain .item:hover .tags {left: 15px; top: 15px;}
+.bmain .item i {position: relative; height: 22px; display: inline-block; padding: 0 8px; font-size: 12px; color: #fff; line-height: 22px; background-color: #ccc; font-style: normal;}
+.bmain .item i s {position: absolute; width: 6px; height: 22px; overflow: hidden; right: -6px; top: 0;}
+.bmain .item i.jj {background-color: #000;}
+.bmain .item i.jj s {background-position: 0 -115px;}
+.bmain .item i.hj {background-color: #ee0607;}
+.bmain .item i.hj s {background-position: 0 -54px;}
+.bmain .item i.zd {background-color: #ffde01; color: #743820;}
+.bmain .item i.zd s {background-position: -6px -54px;}
+.bmain .item i.rc {background-color: #63b8f0;}
+.bmain .item i.rc s {background-position: 0 -93px;}
+.bmain .item i.dt {background-color: #41d340;}
+.bmain .item i.dt s {background-position: -12px -54px;}
+.bmain h3 {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 18px; padding: 5px 0;}
+.bmain .item:hover h3 {white-space: normal; overflow: visible;}
+.bmain h3 a:hover {text-decoration: underline;}
+.bmain .pf {height: 20px; line-height: 20px; padding: 3px 0 0;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.bmain .pf .price {float: right; font-size: 18px; color: #f00;}
+.bmain .pf .fov {float: right; display: none;}
+.bmain .item:hover .fov {display: block;}
+.bmain .pf .fov {color: #212121;}
+.bmain .pf .fov i {float: left; width: 14px; height: 14px; margin: 4px 5px 0 0; padding: 0; background-color: #fff; background-position: -50px -18px;}
+.bmain .pf .fov.curr {color: #ff7d27;}
+.bmain .pf .fov.curr i {background-position: -65px -18px;}
+.bmain .addr {/*float: left; */color: #999; font-size: 14px; font-weight: 500;}
+.bmain .addr a {color: #999; text-decoration: underline;}
+
+/* 分页 */
+.pagination {padding-top: 25px; display: none;}
+.pagination-gotopage {float: right; margin-left: 15px;}
+.pagination-gotopage label {float: left; line-height: 28px; margin-right: 8px;}
+.pagination-gotopage .inp {float: left; line-height: 28px; width: 30px; height: 26px; text-align: center; border: 1px solid #dae2ed; padding: 0 5px; margin-right: 4px; outline: none;}
+.pagination-gotopage .btn {float: left; line-height: 28px; height: 28px; padding: 0 16px; border: 1px solid #dae2ed; background-color: #fff; outline: none; cursor: pointer; border-radius: 3px;}
+
+.pagination-pages {float: right;}
+.pagination-pages a, .pagination-pages span {float: left; min-width: 18px; height: 26px; padding: 0 5px; margin: 0 4px 0 0; background-color: #fff; border: 1px solid #dae2ed; border-radius: 3px; text-align: center; line-height: 26px; font-size: 14px; cursor: pointer; color: #666; text-decoration: none;}
+.pagination-pages .curr, .pagination-pages .interim {background-color: transparent; border-color: transparent; cursor: default;}
+.pagination-pages .curr {color: #ff7519;}
+.pagination-pages a:hover {border-color: #ff7519; color: #ff7519;}
+.pagination-pages .prev {display: inline-block;}
+.pagination-pages i {width: 6px; height: 9px; display: inline-block;}
+.pagination-pages .prev i {background-position: -52px -43px; margin-top: 8px;}
+.pagination-pages .next i {background-position: -58px -43px; margin-left: 3px;}
+.pagination-pages .next {padding: 0 8px;}
+.pagination-pages a:hover.prev i {background-position: -40px -43px;}
+.pagination-pages a:hover.next i {background-position: -70px -43px;}
+.pagination-pages .disabled {background-color: #ecedef; cursor: default;}
+.pagination-pages .prev.disabled i {background-position: -46px -43px;}
+.pagination-pages .next.disabled i {background-position: -64px -43px;}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$info_title#}</title>
+<meta name="keywords" content="{#$info_keywords#}" />
+<meta name="description" content="{#$info_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css" >
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css" >
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body>
+
+<!-- 顶部 s -->
+  <div class="topNav">
+    <div class="wrap fn-clear">
+      <div class="topNav-l fn-left">
+        <ul class="weatherInfo">
+					<li class="weatherCity">{#$siteCityInfo['name']#}</li>
+        </ul>
+      </div>
+      <div class="topNav-r fn-right">
+        <ul>
+					{#if $userinfo#}
+					{#$userDomain = $member_userDomain#}
+					{#if $userinfo.userType == 2#}
+					{#$userDomain = $member_busiDomain#}
+					{#/if#}
+          <li class="navLogin">欢迎您回来，<a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a></a></li>
+          <li class="navLogin"><a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a><i class="arrow"></i></li>
+					{#else#}
+          <li class="navLogin"><a href="{#$cfg_basehost#}/login.html">登录</a><i>|</i><a href="{#$cfg_basehost#}/register.html">注册</a></li>
+          <li class="navLogin"><a href="{#getUrlPath service='siteConfig' template='help'#}">帮助中心</a><i class="arrow"></i></li>
+					{#/if#}
+          <li class="daohang"><a href="javascript:;" class="yellow">网站导航<i class="arrow"></i></a>
+						<div class="submenu">
+							{#siteConfig action="siteModule" return="module"#}
+							<a href="{#$module.url#}" target="_blank">{#$module.name#}</a>
+							{#/siteConfig#}
+						</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!-- 顶部 e -->
+
+<!-- 广告位 s -->
+  <div class="adv-1">
+    <div class="wrap">
+      {#myad title="二手信息_模板二_电脑端_广告一"#}
+    </div>
+  </div>
+<!-- 广告位 e -->
+
+<!-- 头部 s -->
+  <div class="header">
+    <div class="wrap fn-clear">
+      <div class="header-l fn-left">
+        <a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}" /></a>
+      </div>
+      <div class="header-m fn-left">
+        <form method="post">
+          <input type="text" value="" class="inp" placeholder="找工作 找房子 找服务">
+          <input type="button" class="button" value="搜索">
+        </form>
+        <div class="hot-words">
+					{#siteConfig module="info" action="hotkeywords" return="hotkeywords"#}
+					<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+					{#/siteConfig#}
+        </div>
+      </div>
+      <div class="header-r fn-right">
+        <a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="free">免费发布信息</a>
+				<a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank" class="review">修改/删除信息</a>
+      </div>
+    </div>
+  </div>
+<!-- 头部 e -->
+
+<!-- 浮动头部 s -->
+	<div class="header-fixed">
+    <div class="wrap fn-clear">
+      <div class="header-l fn-left">
+        <a href="javascript:;"><img src="{#$templets_skin#}images/logo.png" alt="" /></a>
+      </div>
+      <div class="header-m fn-left">
+        <form method="post">
+          <input type="text" value="" class="inp" placeholder="找工作 找房子 找服务">
+          <input type="button" class="button" value="搜索">
+        </form>
+      </div>
+      <div class="header-r fn-right">
+        <a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="free">免费发布信息</a>
+      </div>
+    </div>
+	</div>
+<!-- 浮动头部 e -->
+
+<!-- 导航 s -->
+  <div class="wrap">
+    <div class="nav">
+      <ul>
+        <li class="on"><a href="javascript:;">首页</a></li>
+        <li class="la"><a href="javascript:;">手机站<i class="arrow"></i></a><span class="cover"></span>
+          <div class="dropdown">
+            <p><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" /></p>
+          </div>
+        </li>
+        <li class="la"><a href="javascript:;">微信号<i class="arrow"></i></a><span class="cover"></span>
+          <div class="dropdown">
+            <p><img src="{#$cfg_weixinQr#}" /></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!-- 导航 e -->
+<div class="wrap">
+
+<!-- 详细导航 s -->
+  <div class="subNav fn-clear">
+    <ul class="subNav-l fn-clear">
+      <li class="icon-1">
+				<a href="{#getUrlPath service='info' template='list' type="255"#}" target="_blank" class="icon-img"><i></i>招聘</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="257"#}" target="_blank">司机</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="290"#}" target="_blank">兼职</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="260"#}" target="_blank">销售</a>
+				</p>
+			</li>
+      <li class="icon-2">
+				<a href="{#getUrlPath service='info' template='list' type="243"#}" target="_blank" class="icon-img"><i></i>房产</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="244"#}" target="_blank">租房</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="246"#}" target="_blank">二手房</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="249"#}" target="_blank">商铺</a>
+				</p>
+			</li>
+      <li class="icon-3">
+				<a href="{#getUrlPath service='info' template='list' type="224"#}" target="_blank" class="icon-img"><i></i>二手车</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="228"#}" target="_blank">摩托车</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="225"#}" target="_blank">轿车</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="226"#}" target="_blank">货车</a></p>
+				</li>
+      <li class="icon-4">
+				<a href="{#getUrlPath service='info' template='list' type="197"#}" target="_blank" class="icon-img"><i></i>二手市场</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="198"#}" target="_blank">手机</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="219"#}" target="_blank">工业设备</a>
+				</p>
+			</li>
+      <li class="icon-5">
+				<a href="{#getUrlPath service='info' template='list' type="320"#}" target="_blank" class="icon-img"><i></i>宠物</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="321"#}" target="_blank">宠物狗</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="322"#}" target="_blank">宠物猫</a>
+				</p>
+			</li>
+      <li class="icon-6">
+				<a href="{#getUrlPath service='info' template='list' type="328"#}" target="_blank" class="icon-img"><i></i>服务</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="353"#}" target="_blank">商务</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="375"#}" target="_blank">汽车</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="391"#}" target="_blank">婚庆</a>
+				</p>
+			</li>
+      <li class="icon-7">
+				<a href="{#getUrlPath service='info' template='list' type="398"#}" target="_blank" class="icon-img"><i></i>培训</a>
+				<p>
+					<a href="{#getUrlPath service='info' template='list' type="401"#}" target="_blank">家教</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="410"#}" target="_blank">体育</a><i>/</i>
+					<a href="{#getUrlPath service='info' template='list' type="409"#}" target="_blank">设计</a>
+				</p>
+			</li>
+    </ul>
+    <div class="subNav-r">
+      <h1>自营项目</h1>
+      <ul>
+        <li class="bg-1"><a href="#">保洁</a></li>
+        <li class="bg-2"><a href="#">月嫂</a></li>
+        <li class="bg-3"><a href="#">保姆</a></li>
+        <li class="bg-4"><a href="#">美甲</a></li>
+        <li class="bg-5"><a href="#">企业后勤</a></li>
+      </ul>
+    </div>
+  </div>
+<!-- 详细导航 e -->
+
+<!-- 主要内容 s -->
+  <div class="main fn-clear">
+    <div class="main-1 fn-left">
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="224"#}" target="_blank">车辆</a></h2>
+				{#info action="type" return='subtype' type="224"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="398"#}" target="_blank">教育培训</a></h2>
+				{#info action="type" return='subtype' type="398"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+    </div>
+    <div class="main-2 fn-left">
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="243"#}" target="_blank">房屋租售</a></h2>
+				{#info action="type" return='subtype' type="243"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="290"#}" target="_blank">兼职</a></h2>
+				{#info action="type" return='subtype' type="290"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+    </div>
+    <div class="main-3 fn-left">
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="197"#}" target="_blank">二手</a></h2>
+				{#info action="type" return='subtype' type="197"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+      <div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="328"#}" target="_blank">服务</a></h2>
+				{#info action="type" return='subtype' type="328"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+			<div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="320"#}" target="_blank">宠物</a></h2>
+				{#info action="type" return='subtype' type="320"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+    </div>
+    <div class="main-4 fn-right">
+			<div class="infoBox fn-clear">
+				<h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="255"#}" target="_blank">招聘</a></h2>
+				{#info action="type" return='subtype' type="255"#}
+				<em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+			</div>
+			<div class="infoBox fn-clear">
+        <h2 class="info-tit"><a href="{#getUrlPath service='info' template='list' type="398"#}" target="_blank">培训</a></h2>
+				{#info action="type" return='subtype' type="398"#}
+        <em><a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a></em>
+				{#/info#}
+      </div>
+    </div>
+  </div>
+<!-- 主要内容 e -->
+</div>
+
+<!-- 底部 s -->
+  <div class="footer">
+    <div class="wrap">
+      <div class="flink">
+				{#siteConfig action="singel"#}
+				<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><s>|</s>
+				{#/siteConfig#}
+				<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+      </div>
+      <div class="finfo">
+        {#$cfg_powerby#}
+      </div>
+      <div class="fpic">
+        <a href="#" class="fpic-2"></a>
+        <a href="#" class="fpic-3"></a>
+        <a href="#" class="fpic-4"></a>
+        <a href="#" class="fpic-5"></a>
+        <a href="#" class="fpic-6"></a>
+      </div>
+    </div>
+  </div>
+<!-- 底部 e -->
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script src="{#$templets_skin#}js/index.js" type="text/javascript"></script>
+</body>
+</html>

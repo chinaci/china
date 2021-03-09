@@ -1,0 +1,75 @@
+.vip_record_infor{
+	width: 1124px;
+	margin: 20px auto;
+	height: 81px;
+	border: 1px solid #e3e3e3;
+	padding: 24px 37px;
+}
+.vip_record_infor img{
+	width: 86px;
+	height: 86px;
+	border-radius: 100%;
+	float: left;
+	margin-right: 17px;
+}
+.vip_record_infor h1{
+	font-size: 18px;
+	color: #585657;
+	margin-top: 15px;
+}
+.vip_record_infor span{
+	font-size: 14px;
+	color: #989898;
+	margin-top: 10px;
+	display: block;
+}
+.vip_record_lead{
+	width: 1200px;
+	margin: 0 auto;
+	border-bottom: 1px solid #dfdfdf;
+}
+.vip_record_lead span{
+	display: block;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	border-bottom: 2px solid #a8d300;
+	width: 100px;
+}
+.vip_record_list{
+	width: 1200px;
+	margin: 0 auto;
+}
+.vip_record_list ul li {
+	height: 60px;
+	border-bottom: 1px solid #f0f0f0;
+}
+.vip_record_list ul li a{
+	padding: 20px 0;
+	display: block;
+	float: left;
+	color: #00a0e6;
+}
+.vip_record_list ul li span{
+	float: left;
+	font-size: 14px;
+	width: 860px;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+}
+.vip_record_list ul li span em{
+	float: left;
+	color: #000;
+	padding: 20px 0;
+	margin-left: 5px;
+}
+.vip_record_list ul li p{
+	float: right;
+	font-size: 14px;
+	margin-top: 20px;
+	width: 145px;
+	color: #888888;
+	text-align: center;
+}
