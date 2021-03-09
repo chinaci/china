@@ -1,0 +1,95 @@
+.crumb {border-bottom: 1px solid #eee; margin-bottom: 20px;}
+
+/* 侧边栏目 */
+.sidebar {float: left; width: 250px; margin-right: 30px;}
+.category {margin-bottom: 20px;}
+.category dt {height: 42px; line-height: 42px; border-bottom: 1px solid #eee; margin-bottom: 5px;}
+.category dt a {display: block; position: relative; height: 42px; font-size: 18px; color: #000; padding-left: 15px;}
+.category dt span {position: absolute; right: 20px; top: 17px; width: 10px; height: 10px;}
+.category.on dt span {top: 12px;}
+.category dt span i, .category dt span em, .category dt span s {position: absolute; width: 0; height: 0; border: 5px solid transparent; left: 0; top: 0;}
+.category dt span i {border-top-color: #b7b7b7;}
+.category dt span em {top: 5px; border-top-color: #b7b7b7;}
+.category dt span s {left: -5px; top: -6px; border-top-color: #fff;}
+.category.on dt span i {border-bottom-color: #b7b7b7; border-top-color: transparent;}
+.category.on dt span em {top: 5px; border-bottom-color: #b7b7b7; border-top-color: transparent;}
+.category.on dt span s {left: -5px; top: -4px; border-bottom-color: #fff; border-top-color: transparent;}
+.category dd {display: none; height: 35px; line-height: 35px;}
+.category.on dd {display: block;}
+.category dd a {display: block; font-size: 14px; padding-left: 15px;}
+.category dd a s, .category dd a i {display: inline-block; vertical-align: middle; width: 0; height: 0; border: 5px solid transparent;}
+.category dd a s {position: relative; display: none; border-left-color: #bf2c2c; margin-left: 15px;}
+.category dd a i {position: absolute; left: -6px; top: -5px; border-left-color: #fff;}
+.category dd.curr a {color: #cd0001;}
+.category dd a:hover s, .category dd.curr a s {display: inline-block;}
+
+.sidebar .ad img {max-width: 250px; margin: 0;}
+
+/* 资讯排行 */
+.rank {margin-bottom: 20px;}
+.rank dt {height: 40px; line-height: 40px; font-size: 18px; color: #000; border-bottom: 1px solid #eee; margin-bottom: 3px;}
+.rank dt span {float: left; padding: 0 10px 0 3px; border-bottom: 1px solid #bc0a0a;}
+.rank dd {height: 43px; line-height: 43px; border-bottom: 1px solid #eee;}
+.rank dd i {float: left; width: 25px; font-size: 26px; font-family: Georgia;}
+.rank dd.t i {color: #cd0001;}
+.rank dd a {float: left; max-width: 225px; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+
+/* 正文 */
+.main {border-left: 1px solid #eee; position: relative; overflow: hidden; padding-left: 30px;}
+.main .stit {height: 42px; line-height: 42px; font-size: 18px; border-bottom: 1px solid #eee; color: #cd0001;}
+.main .empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
+.main dl {padding: 25px 0; border-bottom: 1px solid #dedede;}
+.main dt, .main dt a, .main dt img {float: left; width: 200px; height: 130px;}
+.main dd {position: relative; overflow: hidden; padding-left: 20px;}
+.main dd h3 {font-size: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.main dd h3 a {color: #000;}
+.main dd h3 a:hover {text-decoration: underline; color: #cd0001;}
+.main dd p {font-size: 14px; line-height: 1.8em; padding: 5px 0 10px;}
+.main dd p a {color: #c0140a; margin-left: 10px;}
+.main dd .time {position: relative; padding-left: 20px; color: #999; font-size: 14px;}
+.main dd .time s {position: absolute; left: 0; top: 2px; width: 15px; height: 15px; background: url('../images/loupan_news.png');}
+
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; margin-top: 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #efefef;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 10px;}
+.pagination li a:hover ,.pagination li.page_current span {background: #fe5050; color: #fff; border-color: #fe5050;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
+
+
+/* 详细 */
+.main .title {padding-bottom: 15px; border-bottom: 1px solid #eee;}
+.main .title h1 {font-size: 24px; color: #000;}
+.main .title .sb {color: #999; font-size: 14px; margin-top: 10px;}
+.main .title .sb span {float: left; position: relative; margin-right: 15px;}
+.main .title .sb .time {padding-left: 20px;}
+.main .title .sb .time s {position: absolute; left: 0; top: 3px; width: 15px; height: 15px; background: url('../images/loupan_news.png');}
+
+.container {padding: 10px 0; font-size: 14px; line-height: 2em;}
+.share {margin: 10px 0;}
+.share .bdsharebuttonbox {float: right;}
+.share label {float: right; line-height: 36px; font-size: 16px;}
+
+/* 相关阅读 */
+.nlist {border-top: 1px solid #eee; margin-top: 20px; padding-top: 15px;}
+.nlist h2 {font-size: 18px; color: #000; margin-bottom: 5px;}
+.nlist li {float: left; width: 49%; padding-right: 1%; height: 35px; line-height: 35px; position: relative; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.nlist li s {position: absolute; left: 0; top: 1px; font-family: '宋体'; text-decoration: none; color: #999;}
+.nlist li a {margin-left: 15px; font-size: 14px; padding-right: 15px;}
+
+/* 热门楼盘 */
+.gzlist {overflow: hidden; margin: 30px auto 50px;}
+.gzlist h3 {font-size: 20px; margin-bottom: 18px;}
+.gzlist ul {width: 150%;}
+.gzlist li {float: left; margin: 0 24px 0 0; width: 180px; font-size: 14px;}
+.gzlist .pic, .gzlist .pic img {width: 180px; height: 135px;}
+.gzlist .title {font-size: 16px; margin: 3px 0 0; line-height: 30px; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.gzlist .price {color: #333; line-height: 25px;}
+.gzlist .price strong {color: #e43; font-weight: 500; padding-left: 5px;}
+.gzlist .addr {color: #999; line-height: 25px;}
+.mlist {padding: 15px 0; border-top: 1px solid #eee;}
+.mlist h2 {padding-bottom: 10px; font-size: 18px;}

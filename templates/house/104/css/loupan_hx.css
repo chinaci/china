@@ -1,0 +1,64 @@
+/* sprite */
+.jsq s, .bj s, .tools a s, .checkbox i {position: absolute; left: 0; top: 0; background-image: url('../images/loupanSprite.png'); background-repeat: no-repeat;}
+
+.jsq, .bj {position: relative; padding-left: 25px; margin-left: 10px;}
+.jsq {margin-left: 20px;}
+.jsq s {width: 12px; height: 14px; background-position: -2px 0; top: 3px; left: 5px;}
+a:hover.jsq s {background-position: -18px 0;}
+.bj s {width: 12px; height: 16px; background-position: -2px -30px; top: 2px; left: 6px;}
+a:hover.bj s {background-position: -18px -30px;}
+
+
+/* 户型详细 */
+.hx-detail {margin: 25px 0;}
+.hx-info {float: right; width: 370px; font-size: 14px; overflow: hidden;}
+.hx-item {padding: 15px 0; border-bottom: 1px solid #eee;}
+.hx-item h1 {font-size: 30px; line-height: 40px; font-weight: normal; margin-bottom: 5px;}
+.item-p {height: 40px; line-height: 40px;}
+.hx-item label {color: #999;}
+.hx-item .price {font-size: 32px; vertical-align: -3px; font-family: Georgia; font-weight: 500; color: #e43; padding-right: 3px;}
+.hx-item .num {font-size: 18px; font-family: Georgia; color: #333;}
+.hx-item dl {float: left; width: 40%; line-height: 35px;}
+.hx-item dl.l {width: 60%;}
+.hx-item dt {color: #999;}
+.hx-item dt, .hx-item dd {float: left;}
+.hx-item h2 {font-size: 20px; margin: 10px 0 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.hx-item .bm-num {position: relative; padding-left: 23px;}
+.hx-item .bm-num s {position: absolute; width: 16px; height: 16px; background: url('../images/loupanSprite.png') 0 -56px; top: 2px; left: 0;}
+.hx-item .bm-num strong {font-weight: 500; color: #e43; padding: 0 3px;}
+.hx-item .bm-btn {position: relative; width: 120px; height: 45px; line-height: 45px; color: #fff; font-size: 18px; display: inline-block; background: #ee4433; padding-left: 60px; margin: 10px 0 23px 0;}
+.hx-item .bm-btn s {position: absolute; left: 15px; top: 2px; width: 40px; height: 40px; background: url(../images/communitySprite.png) -41px -41px no-repeat;}
+.hx-item a:hover.bm-btn {background-color: #da402f; text-decoration: none; color: #fff;}
+.hx-item .jsq {margin-left: 0;}
+.hx-item .bj {margin-left: 30px;}
+
+.hx-info .note {padding: 15px 0; border-bottom: 1px solid #eee;}
+.hx-info .note dt {float: left; width: 70px; color: #999; line-height: 35px;}
+.hx-info .note dd {position: relative; overflow: hidden; padding-top: 5px; line-height: 25px;}
+
+.hx-album {position: relative; overflow: hidden; padding-right: 30px;}
+.b-album {position: relative; height: 698px; border: 1px solid #eee; margin-bottom: 9px; background: #fafafa; overflow: hidden;}
+.b-album .pics {position: relative; overflow: hidden; display: block; height: 100%; background: url(/static/images/ajax-loader.gif) no-repeat center; text-align: center;}
+.b-album .pics s {display: inline-block; height: 100%; vertical-align: middle;}
+.b-album .pics img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.b-album .l, .b-album .r {display: none; position: absolute; top: 50%; width: 45px; height: 80px; margin-top: -40px; background-color: #000; opacity: 0.5;}
+.b-album a:hover.l, .b-album a:hover.r {background-color: #e43;}
+.b-album .l {left: 15px;}
+.b-album .r {right: 15px;}
+.b-album .l s, .b-album .r s {position: absolute; left: 50%; top: 50%; width: 13px; height: 23px; margin: -11px 0 0 -6px; background: url(../images/hx-pic-icon.png) no-repeat;}
+.b-album .r s {background-position: -14px 0;}
+.s-album {position: relative; height: 92px; padding: 0 23px 0 25px; overflow: hidden;}
+.s-album ul {position: relative; height: 92px; margin-left: 2px;}
+.s-album li {float: left; width: 118px; height: 90px; border: 1px solid #eee; margin: 0 10px 0 5px; text-align: center; cursor: pointer; overflow: hidden;}
+.w1200 .s-album li {margin: 0 5px 0 0;}
+.s-album li.curr {border-color: #ee4433;}
+.s-album li s {display: inline-block; height: 100%; vertical-align: middle;}
+.s-album li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.s-album .l, .s-album .r {position: absolute; top: 0; width: 20px; height: 92px; display: block; background-color: #f3f3f3;}
+.s-album .l {left: 0;}
+.s-album .r {right: 0;}
+.s-album .l s, .s-album .r s {position: absolute; left: 50%; top: 50%; width: 5px; height: 9px; margin: -5px 0 0 -3px; background: url(../images/hx-pic-icon.png) -28px 0;}
+.s-album .r s {background-position: -34px 0;}
+.s-album a:hover.l, .s-album a:hover.r {background-color: #f0f0f0;}
+.s-album a:hover.l s {background-position: -28px -10px;}
+.s-album a:hover.r s {background-position: -34px -10px;}
