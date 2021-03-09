@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>支付报名费用 - {#$huodong_title#}</title>
+<meta name="keywords" content="{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-order.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', id = {#$detail_id#}, fid = {#$fid#};
+</script>
+</head>
+
+<body class="w1200">
+{#include file="_top.html"#}
+
+<div class="content fn-clear">
+	<form action="/include/ajax.php?service=huodong&action=pay" method="post" id="orderForm">
+		<input type="hidden" name="id" id="id" value="{#$detail_id#}" />
+		<input type="hidden" name="fid" id="fid" value="{#$fid#}" />
+		<input type="hidden" name="data" id="data" value="{#$data#}" />
+		<input type="hidden" name="paytype" id="paytype" value="" />
+		<div class="order">
+			<div class="o-h">
+				<span class="h1">报名详情</span>
+				<span class="h2">费用项目</span>
+				<span class="h3">价格</span>
+			</div>
+			<div class="o-b fn-clear">
+				<div class="h1 fn-clear">
+					<img src="{#$detail_litpic#}" />
+					<div class="o-i">
+						<h2>{#$detail_title#}</h2>
+						<p>{#$detail_began|date_format:"%Y-%m-%d %H:%m"#} 开始</p>
+					</div>
+				</div>
+				<div class="h2">{#$fee_title#}</div>
+				<div class="h3">¥{#$fee_price#}</div>
+			</div>
+			<dl class="o-p">
+				<dt>选择支付方式</dt>
+				<dd>
+					{#siteConfig action="payment"#}
+					<a href="javascript:;" class="bank-icon{#if $_bindex.row == 1#} active{#/if#}" title="{#$row.pay_name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+					{#/siteConfig#}
+				</dd>
+			</dl>
+		</div>
+		<input type="button" id="tj" value="立即支付" />
+	</form>
+</div>
+
+{#include file="_footer.html"#}
+<script src="{#$templets_skin#}js/huodong-order.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

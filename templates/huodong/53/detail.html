@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#$detail_title#} - {#$detail_typename[1]#} - {#$detail_typename[0]#} - {#$huodong_title#}</title>
+<meta name="keywords" content="{#$detail_typename[0]#},{#$detail_typename[1]#},{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-detailed.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', id = {#$detail_id#}, feetype = {#$detail_feetype#}, cookiePre = '{#$cfg_cookiePre#}', staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body class="w1200">
+{#include file="_top.html"#}
+
+<div class="sort">
+	<a href="{#$huodong_channelDomain#}">首页  ></a>
+	<a href="{#getUrlPath service='huodong' template='list' typeid={#$detail_typeid#}#}">{#$detail_typename[0]#} > {#$detail_typename[1]#}</a>
+	<p>&nbsp;> {#$detail_title#}</p>
+</div>
+<div class="conted fn-clear">
+	<div class="conted-left">
+		<img src="{#$detail_litpic#}">
+	</div>
+	<div class="conted-right">
+		<div class="cr-lead fn-clear">
+			<h3>{#$detail_title#}</h3>
+			<span>{#$detail_username#}</span>
+			<b class="b-1">{#$detail_pubdate|date_format:"%Y-%m-%d"#}</b>
+			<b class="b-2">{#$detail_click#}</b>
+		</div>
+		<div class="cr-txt">
+			<ul>
+				<li class="fn-clear">
+					<b>时间：</b>
+					<p>{#$detail_began|date_format:"%Y-%m-%d %H:%M"#} ~ {#$detail_end|date_format:"%Y-%m-%d %H:%M"#}</p>
+					{#if !$detail_baoming#}
+					<b class="b-1">{#$detail_baomingend|date_format:"%Y-%m-%d %H:%M"#} 报名截止</b>
+					{#/if#}
+				</li>
+				<li class="fn-clear">
+					<b>地点：</b>
+					<span>{#$detail_addrname[$detail_addrname|@count-2]#} {#$detail_addrname[$detail_addrname|@count-1]#} {#$detail_address#}</span>
+				</li>
+				<li class="fn-clear">
+					<b>主办方电话：</b>
+					<span>{#$detail_contact#}</span>
+				</li>
+				<li class="fn-clear">
+					<b>报名人数：</b>
+					<p>已有{#$detail_reg#}人报名</p>
+					{#if $detail_feetype == 0#}
+					<b class="b-1">限{#$detail_max#}人报名</b>
+					{#/if#}
+				</li>
+				{#if $detail_feetype == 1#}
+				<li class="crtxt-1 fn-clear">
+					<b class="cl">收费类型：</b>
+					{#foreach from=$detail_feeList item=fee#}
+					<span data-id="{#$fee.id#}">
+						<i>{#echoCurrency type='symbol'#}</i>
+						<b>{#$fee.price#}</b>
+						<div class="pir">
+						<p class="p-1" title="{#$fee.title#}">{#$fee.title#}</p>
+						{#if $fee.max == 0#}
+						<p class="p-2">不限制人数</p>
+						{#else#}
+						<p class="p-2">剩余：{#$fee.max-$fee.reg#}</p>
+						{#/if#}
+						</div>
+					</span>
+					{#/foreach#}
+				</li>
+				{#/if#}
+			</ul>
+		</div>
+		<div class="cr-down">
+			<div class="safe">
+				<p><a href="javascript:;">交易保障</a></p>
+				<div class="share">
+					<span>分享</span>
+					<div class="bdsharebuttonbox">
+						<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+						<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+						<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+						<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+						<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+						<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+						<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+						<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+					</div>
+				</div>
+			</div>
+			{#if $now < $detail_end#}
+				{#if $detail_isbaoming#}
+					<div class="baoming"><a href="javascript:;" class="cancel">取消报名</a></div>
+				{#else#}
+					{#if $detail_surplus > 0#}
+						{#if $detail_feetype#}
+							<div class="baoming"><a href="javascript:;">我要报名<span>（剩余{#($detail_surplus/3600/24)|ceil#}天截止）</span></a></div>
+						{#else#}
+							{#if $detail_max <= $detail_reg#}
+							<div class="baomingend"><a href="javascript:;">名额已用完</a></div>
+							{#else#}
+							<div class="baoming"><a href="javascript:;">我要报名<span>（剩余{#($detail_surplus/3600/24)|ceil#}天截止）</span></a></div>
+							{#/if#}
+						{#/if#}
+					{#else#}
+						<div class="baomingend"><a href="javascript:;">报名已截止</a></div>
+					{#/if#}
+				{#/if#}
+			{#else#}
+				<div class="baomingend"><a href="javascript:;">活动已结束</a></div>
+			{#/if#}
+		</div>
+	</div>
+</div>
+<div class="list-mid fn-clear  con-tit">
+	<div class="list-tab">
+		<div class="list-lead fn-clear">
+			<ul>
+				<li class="current" ><a href="javascript:;">活动详情</a></li>
+				<li><a href="javascript:;">活动成员{#$detail_reg#}</a></li>
+				<li><a href="javascript:;">用户讨论{#$detail_reply#}</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="lm-txt fn-clear">
+		{#$detail_body#}
+
+		<ul>
+			<li class="shoucang">
+				{#if $detail_collect == "has"#}
+				<div class="gt gy"><a href="javascript:;"></a><span>已收藏</span></div>
+				{#else#}
+				<div class="gt"><a href="javascript:;"></a><span>收藏</span></div>
+				{#/if#}
+			</li>
+			<li>
+				<div class="share">
+				<span>分享</span>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+					<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+					<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+				</div>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<div class="infor fn-clear">
+		<div class="touxiang fn-clear"><a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}" target="_blank"><img src="{#$detail_user['photo']#}" onerror="this.src='/static/images/noPhoto_60.jpg'"></a></div>
+		<div class="information">
+			<ul>
+				<li class="infor-1"><a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}" target="_blank"><h1>{#$detail_user['username']#}</h1></a></li>
+				<li class="infor-2">
+					<span class="atc"><i>{#$detail_user['huodongCount']#}</i>举办活动</span>
+					<span class="atc-1"><i>{#$detail_user['regCount']#}</i>参与人数</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="doing">
+			<span class="do-1"><p></p><h1>Ta的活动</h1></span>
+			<ul>
+				{#huodong action='hlist' return='list' uid={#$detail_uid#} pageSize="10"#}
+				<li class="do-2"><a href="{#$list.url#}" target="_blank"><b></b><span>{#$list.title#}</span></a></li>
+				{#/huodong#}
+				<li class="do-3"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="act-p fn-clear con-tit">
+		<div class="actp-lead "><p>活动成员<span>{#$detail_reg#}</span></p></div>
+		<ul>
+			{#huodong action='regList' hid={#$detail_id#}#}
+			<li><a href="{#getUrlPath service='huodong' template='business' id={#$row.uid#}#}" target="_blank"><img src="{#$row.photo#}"></a><p title="{#$row.nickname#}"><a href="{#getUrlPath service='huodong' template='business' id={#$row.uid#}#}" target="_blank">{#$row.nickname#}</a></p><b>{#$row.date|date_format:"%m-%d %H:%M"#}</b></li>
+			{#/huodong#}
+		</ul>
+	</div>
+	<div class="act-tao fn-clear con-tit">
+		<div class="actp-lead"><p>用户讨论<span>{#$detail_reply#}</span></p></div>
+		<div class="writ-l">
+			<p><a {#if $userinfo#}href="{#getUrlPath service='huodong' template='business' id={#$userinfo['userid']#}#}" target="_blank"{#else#} href="javascript:;"{#/if#}><img src="{#if $userinfo#}{#$userinfo['photo']#}{#else#}{#$cfg_staticPath#}/images/noPhoto_40.jpg{#/if#}"></a></p>
+			{#if $userinfo#}<span><a href="{#getUrlPath service='huodong' template='business' id={#$userinfo['userid']#}#}" target="_blank">{#$userinfo['nickname']#}：</a></span>{#/if#}
+		</div>
+		<div class="writ"><p><textarea placeholder="来说两句吧..."></textarea></p></div>
+		<div class="fn-clear">
+			<div class="writ-b"><a href="javascript:;"{#if $userinfo#} id="rtj"{#else#} id="login"{#/if#}>{#if $userinfo#}发表评论{#else#}登录{#/if#}</a></div>
+		</div>
+		<div id="replyList" data-url="{#getUrlPath service='huodong' template='business' id='%id'#}"><div class="loading"><img src="{#$cfg_staticPath#}/images/ui/loading.gif" /></div></div>
+	</div>
+	<div class="featur fn-clear">
+		<div class="featur-lead fn-clear">
+			<p class="more fea-bc">热门活动</p>
+			<p class="fea">相似活动</p>
+		</div>
+		<div class="xuanze">
+			<div class="tt ft-left">
+				{#huodong action='hlist' return='list' orderby='reg' page='1' pageSize='10'#}
+				<div class="featur-txt">
+					<a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}"></a>
+					<ul>
+						<li class="fea-1">
+							<h1><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h1>
+						</li>
+						<li class="fea-2">
+						<a href="{#$list.url#}" target="_blank"><img src="{#$templets_skin#}images/icon_addr.png"><p>{#$list.addrname[0]#} {#$list.addrname[1]#}</p></a>
+						<a href="{#$list.url#}" target="_blank"><img src="{#$templets_skin#}images/icon_time.png"><i>{#$list.began|date_format:"%Y-%m-%d %H:%M"#}</i></a>
+						</li>
+						<li class="fea-3">
+							{#if $list.feetype == 1#}
+							<em>{#echoCurrency type='symbol'#}</em>
+							<b>{#$list.mprice#}</b>
+							起
+							{#else#}
+							<b>免费</b>
+							{#/if#}
+						</li>
+					</ul>
+				</div>
+				{#/huodong#}
+			</div>
+			<div class="tt ft-right">
+				{#huodong action='hlist' return='list' typeid={#$detail_typeid#} page='1' pageSize='10'#}
+				<div class="featur-txt">
+					<a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}"></a>
+					<ul>
+						<li class="fea-1">
+							<h1><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h1>
+						</li>
+						<li class="fea-2">
+						<a href="{#$list.url#}" target="_blank"><img src="{#$templets_skin#}images/icon_addr.png"><p>{#$list.addrname[0]#} {#$list.addrname[1]#}</p></a>
+						<a href="{#$list.url#}" target="_blank"><img src="{#$templets_skin#}images/icon_time.png"><i>{#$list.began|date_format:"%Y-%m-%d %H:%M"#}</i></a>
+						</li>
+						<li class="fea-3">
+							{#if $list.feetype == 1#}
+							<em>{#echoCurrency type='symbol'#}</em>
+							<b>{#$list.mprice#}</b>
+							起
+							{#else#}
+							<b>免费</b>
+							{#/if#}
+						</li>
+					</ul>
+				</div>
+				{#/huodong#}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/html" id="propertyHtml">
+	<div class="popupForm">
+		<dl class="fn-clear" data-id="姓名" data-type="text" data-required="1">
+			<dt>姓名</dt>
+			<dd><input type="text" placeholder="请输入您的姓名"{#if $userinfo#} value="{#$userinfo['nickname']#}"{#/if#} /></dd>
+		</dl>
+		<dl class="fn-clear" data-id="手机" data-type="text" data-required="1">
+			<dt>手机</dt>
+			<dd>
+				<div class="inpbdr">
+					<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+					<input type="text" class="inp_tel" placeholder="请输入您的手机"{#if $userinfo#} value="{#$userinfo['phone']#}"{#/if#} />
+				</div>
+
+				<div class="areaCode_wrap areaCode_wrap2">
+					<ul>
+
+					</ul>
+				</div>
+
+			</dd>
+		</dl>
+		{#foreach from=$detail_property item=p key=k#}
+		<dl class="fn-clear" data-id="{#$p.title#}" data-type="{#$p.type#}" data-required="{#$p.required#}">
+			<dt>{#$p.title#}{#if $p.required == 0#} (选填){#/if#}</dt>
+			<dd>
+				{#if $p.type == 'text'#}
+				<input type="text" placeholder="请输入{#$p.title#}" />
+				{#elseif $p.type == 'text_long'#}
+				<textarea maxlength="200" placeholder="请输入{#$p.title#}"></textarea>
+				{#elseif $p.type == 'single_vote'#}
+				{#foreach from=$p.val item=i#}
+				<label><input type="radio" name="single{#$k#}" value="{#$i#}" /> {#$i#}</label>
+				{#/foreach#}
+				{#elseif $p.type == 'multi_vote'#}
+				{#foreach from=$p.val item=i#}
+				<label><input type="checkbox" name="single{#$k#}" value="{#$i#}" /> {#$i#}</label>
+				{#/foreach#}
+				{#/if#}
+			</dd>
+		</dl>
+		{#/foreach#}
+	</div>
+</script>
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script src="{#$templets_skin#}js/huodong-detailed.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

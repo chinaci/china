@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#if $typename#}{#$typename#}{#else#}找活动{#/if#} - {#$huodong_title#}</title>
+<meta name="keywords" content="{#$typename#},{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="_top.html"#}
+
+<!-- 活动筛选 -->
+<div class="fication">
+	<div class="fication-list">
+		<div class="list-1">
+			<p>分类：</p>
+			<ul>
+				<li{#if $typeid == 0#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' param="times={#$times#}&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>全部活动</span></a></li>
+				{#huodong action='type' return='type'#}
+				<li{#if $type.id == $typeid#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$type.id#} param="times={#$times#}&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>{#$type.typename#}</span></a></li>
+				{#/huodong#}
+			</ul>
+		</div>
+		<div class="list-1">
+			<p>时间：</p>
+			<ul>
+				<li{#if $times == ""#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>不限</span></a></li>
+				<li{#if $times == "today"#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times=today&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>今天</span></a></li>
+				<li{#if $times == "tomorrow"#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times=tomorrow&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>明天</span></a></li>
+				<li{#if $times == "week"#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times=week&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>一周内</span></a></li>
+				<li{#if $times == "month"#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times=month&feetype={#$feetype#}&keywords={#$keywords#}"#}"><span>一月内</span></a></li>
+			</ul>
+		</div>
+		<div class="list-1">
+			<p>费用：</p>
+			<ul>
+				<li{#if $feetype == ""#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times={#$times#}&keywords={#$keywords#}"#}"><span>全部</span></a></li>
+				<li{#if $feetype == 0 && $feetype != ""#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times={#$times#}&feetype=0&keywords={#$keywords#}"#}"><span>收费</span></a></li>
+				<li{#if $feetype == 1#} class="bc"{#/if#}><a href="{#getUrlPath service='huodong' template='list' typeid={#$typeid#} param="times={#$times#}&feetype=1&keywords={#$keywords#}"#}"><span>免费</span></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 活动筛选 -->
+
+<!-- 活动详细 -->
+<div class="mid-list fn-clear">
+	<div class="detail">
+		<div class="content-left">
+		<p class="cc"></p>
+		<ul class="hlist">
+			{#huodong action='hlist' keywords={#$keywords#} typeid={#$typeid#} times={#$times#} feetype={#$feetype#} page={#$page#} pageSize='20'#}
+			<li>
+				<a href="{#$row.url#}" target="_blank"><img src="{#changeFileSize url="{#$row.litpic#}" type="middle"#}"></a>
+				<h1><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></h1>
+				<span><a href="{#getUrlPath service='huodong' template='business' id={#$row.uid#}#}" target="_blank">{#$row.username#}</a></span>
+				<i><img src="{#$templets_skin#}images/icon_time.png">{#$row.began|date_format:"%Y-%m-%d %H:%M"#} 开始</i>
+				<i><img src="{#$templets_skin#}images/icon_addr.png">{#$row.addrname[$row.addrname|@count-2]#} {#$row.addrname[$row.addrname|@count-1]#}</i>
+				<div class="pice">{#if $row.feetype == 1#}<em>{#echoCurrency type='symbol'#}</em><p>{#$row.mprice#}</p><b>起</b>{#else#}<p>免费</p>{#/if#}<span><div class="erwei"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$row.url|escape:"url"#}"><p>微信扫一扫，分享给好友</p></div></span></div>
+			</li>
+			{#/huodong#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">暂无相关信息</li>
+			{#/if#}
+		</ul>
+
+		{#getPageList service='huodong' template='list' typeid={#$typeid#} pageType='dynamic' param="times={#$times#}&feetype={#$feetype#}&page=#page#"#}
+
+	</div>
+	<div class="detail-right">
+		<div class="activities">
+			<span>没有合适我的活动，我要自己发布</span>
+			<p><a href="{#getUrlPath service='huodong' template='fabu'#}">免费发活动</a></p>
+		</div>
+		<div class="hot">
+			<p >热门活动</p>
+			<ul>
+				{#huodong action='hlist' return='list' orderby='reg' page='1' pageSize='10'#}
+				<li>
+					<span>{#if $_bindex.list < 4#}<i>{#$_bindex.list#}</i>{#else#}<s>{#$_bindex.list#}</s>{#/if#}<a href="{#$list.url#}" target="_blank">{#$list.title#}</a></span>
+					<b>{#$list.reg#}<em>报名</em></b>
+				</li>
+				{#/huodong#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">暂无相关信息</li>
+				{#/if#}
+			</ul>
+		</div>
+	</div>
+
+	</div>
+</div>
+<!-- 活动详细 -->
+
+{#include file="_footer.html"#}
+<script src="{#$templets_skin#}js/huodong-list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

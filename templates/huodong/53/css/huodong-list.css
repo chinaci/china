@@ -1,0 +1,255 @@
+.fication{
+	    width: 100%;
+    background-color: #FFF;
+    border-bottom: 1px solid #d4d3d7;
+}
+.fication-list{
+	    width: 1190px;
+    overflow: hidden;
+    padding: 20px 0 8px;
+    margin: 0 auto;
+}
+.list-1{
+	margin-bottom: 12px;
+}
+.list-1 p{
+    width: 52px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    font-size: 17px;
+    font-weight: 500;
+}
+.list-1 ul{
+	    width: 1130px;
+    overflow: hidden;
+}
+.list-1 ul li{
+	    width: 88px;
+    height: 30px;
+    float: left;
+    margin-right: 2px;
+}
+.list-1 ul li span{
+	    display: block;
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    overflow: hidden;
+}
+.bc{
+	background-color: #0099e9;
+}
+.bc span{
+	    color: #FFF!important;
+}
+.mid-list{
+	background-color: #e7e7eb;
+	padding-bottom: 50px;
+}
+.detail{
+	width: 1200px;
+	margin: 0 auto;
+}
+.cc{
+	height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    padding-left: 10px;
+    margin: 3px 0 15px 0;
+}
+.yejiao{
+	    height: 30px;
+    width:840px;
+    float: left;
+    margin: 20px 0 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #999
+}
+.yejiao a{
+	    font-size: 12px;
+    color: #999;
+    display: inline-block;
+    width: 25px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border: 1px solid #e7e7e7;
+    margin: 0 2px;
+    border-radius: 3px;
+    background-color: #FFF;
+}
+.yejiao a:hover{
+	    color: #333;
+    border: 1px solid #999;
+}
+.yejiao-1{
+	border: 1px solid #e7e7eb;
+	color: #333;
+}
+.yejiao-2{
+	background: #FFF url(../images/fy_bj.png) no-repeat scroll 59px 7px;
+	width: 80px!important;
+	text-align: center;
+	padding-right: 7px;
+}
+.detail-right{
+	float: right;
+	width: 330px;
+    overflow: hidden;
+    float: right;
+    margin-top: 39px;
+}
+.activities{
+	    height: 170px;
+    background-color: #FFF;
+}
+.activities span{
+        font-size: 14px;
+    color: #000;
+    text-align: center;
+    padding: 40px 0;
+    display: block;
+}
+.activities p a{
+	display: block;
+    width: 186px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #0099e9;
+    margin: 0 auto;
+}
+.activities p a:hover{
+	background-color: #0082c6;
+}
+.act-img {
+	position: relative;
+}
+.act-img a{
+	    overflow: hidden;
+    margin-top: 20px;
+    float: right;
+}
+.act-img a img{
+	width: 330px;
+}
+.act-img span{
+	width: 314px;
+	padding: 8px;
+    height: 20px;
+    background: url(../images/trans_75.png) repeat;
+    color: #FFF;
+    text-align: left;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: absolute;
+        left: 0;
+    bottom: 0;
+    font-size: 14px;
+    line-height: 20px
+}
+.hot{
+    float: right;
+    width: 330px;
+}
+.hot p{
+	    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    padding-left: 10px;
+    border-left: 4px #0099e9 solid;
+    margin: 20px 0 15px 0;
+    width: 316px;
+}
+.hot ul{
+	overflow: hidden;
+    padding: 10px 0 15px;
+    background-color: #FFF;
+}
+.hot ul li{
+	    width: 310px;
+    overflow: hidden;
+    margin: 0  7px 10px;
+}
+.hot ul li.empty {
+	text-align: center;
+	line-height: 200px;
+}
+.hot ul li span i{
+	float: left;
+	width: 15px;
+	height: 15px;
+	background-color: #9ab5e9;
+	font-style: normal;
+	    line-height: 15px;
+    text-align: center;
+    margin-top: 1px;
+    color: white;
+}
+.hot ul li span s{
+	text-decoration: none;
+	width: 15px;
+	height: 15px;
+	background-color: #b7b7b7;
+	float: left;
+	font-style: normal;
+	    line-height: 15px;
+    text-align: center;
+    margin-top: 1px;
+    color: white;
+}
+.hot ul li span a{
+	display: inline-block;
+    max-width: 280px;
+    float: left;
+    margin-left: 10px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #444;
+    overflow: hidden;
+}
+.hot ul li b{
+	    color: #b71414;
+	        display: block;
+    text-align: right;
+    clear: both;
+    font-size: 12px;
+    height: 25px;
+    line-height: 20px;
+    border-bottom: 1px solid #e7e7e7;
+    font-weight: normal;
+}
+.hot ul li b em{
+	color: #999;
+}
+.oo{
+	border-bottom: none!important;
+}
+.footer-login{
+    margin-top: 0;
+}
+
+
+
+/*分页*/
+.pagination {padding: 15px 0; line-height: 28px; font-size: 14px; color: #333; margin-left: 20px; text-align: center;}
+.pagination li {display: inline-block; margin-right: 3px; border: 1px solid #e6e6e6;*display: inline; zoom: 1; }
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {font-size: 12px; color: #999; display: inline-block;	padding: 0 10px; height: 26px; line-height: 26px; text-align: center; border: 1px solid #e7e7e7; border-radius: 3px; background-color: #FFF;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination li.page_current span {border: 1px solid #f5f5f5; background: #f5f5f5;}
+.pagination .page_info {display: none;}
+.pagination li a:hover{color: #3e89fa !important; border-color: #3e89fa !important;}
