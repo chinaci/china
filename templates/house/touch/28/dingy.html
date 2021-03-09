@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>信息订阅</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/dingy.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = "信息订阅"#}
+		{#include file="_header.html"#}
+		<div class="hx-analyze">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>信息订阅-我们为您保密个人信息
+			</div>
+			{#*#}
+			<div class="hx-analyze-msg">
+				<span class="detail-tit">订阅人数</span>
+				<span class="detail-info">92人已订阅</span>
+			</div>
+			{#*#}
+		</div>
+		<div class="signup-form">
+			<form action="" method="get" accept-charset="utf-8" class="signup-form-box">
+				<div class="form-item" id="item-name">
+					<p class="item-label">姓　　　名：</p>
+					<div class="item-input"><input type="text" placeholder="请输入姓名"></div>
+				</div>
+				<p class="error-tip">请输入姓名</p>
+				<p class="hidden-tip"></p>
+				<div class="form-item" id="item-phone">
+					<p class="item-label">手　机　号：</p>
+					<div class="item-input"><input type="text" placeholder="请输入手机号"></div>
+				</div>
+				<p class="error-tip">请输入正确的手机号</p>
+				<p class="hidden-tip"></p>
+				<div class="form-item" id="item-code">
+					<p class="item-label">验　证　码：</p>
+					<div class="item-input"><input type="text" placeholder="请输入验证码"></div>
+					<span><img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" /></span>
+				</div>
+				<p class="error-tip">请输入验证码</p>
+				<p class="hidden-tip"></p>
+				<div class="form-item" id="item-service">
+					<p class="item-label">订阅服务：</p>
+					<ul class="service-list clearfix">
+            <li data-val="1" class="service-item">变价通知</li>
+            <li data-val="2" class="service-item">开盘通知</li>
+            <li data-val="3" class="service-item">看房团报名</li>
+            <li data-val="4" class="service-item">订阅消息</li>
+          </ul>
+				</div>
+				<p class="error-tip">请选择订阅服务</p>
+				<p class="hidden-tip"></p>
+				<div class="form-item" id="item-submit">
+					<div class="submit-btn"><input type="submit" value="免费订阅" id="submit"></div>
+				</div>
+			</form>
+		</div>
+		<p class="tel-tips">详情咨询：<span class="tel">{#$house_hotline#}</span></p>
+		<div class="nav">
+			<div class="nav-list">
+				<a href="{#getUrlPath service='house' template='loupan'#}" class="nav-item">
+					<div class="nav-img nav-img-1"><img src="{#$templets_skin#}images/t1.jpg"></div>新房
+				</a>
+				<a href="{#getUrlPath service='house' template='sale'#}" class="nav-item">
+					<div class="nav-img nav-img-2"><img src="{#$templets_skin#}images/t2.jpg"></div>二手房
+				</a>
+				<a href="{#getUrlPath service='house' template='zu'#}" class="nav-item">
+					<div class="nav-img nav-img-3"><img src="{#$templets_skin#}images/t3.jpg"></div>租房
+				</a>
+				<a href="{#getUrlPath service='house' template='sp'#}" class="nav-item">
+					<div class="nav-img nav-img-4"><img src="{#$templets_skin#}images/t4.jpg"></div>商铺
+				</a>
+				<a href="{#getUrlPath service='house' template='xzl'#}" class="nav-item">
+					<div class="nav-img nav-img-5"><img src="{#$templets_skin#}images/t5.jpg"></div>写字楼
+				</a>
+				<a href="{#getUrlPath service='house' template='cf'#}" class="nav-item">
+					<div class="nav-img nav-img-6"><img src="{#$templets_skin#}images/t6.jpg"></div>厂房
+				</a>
+				<a href="{#getUrlPath service='house' template='calculator' do='sy'#}" class="nav-item">
+					<div class="nav-img nav-img-7"><img src="{#$templets_skin#}images/t7.jpg"></div>房贷计算器
+				</a>
+				<a href="{#getUrlPath service='house' template='news'#}" class="nav-item">
+					<div class="nav-img nav-img-8"><img src="{#$templets_skin#}images/t8.jpg"></div>资讯
+				</a>
+				<div class="clear"></div>
+		</div>
+		</div>
+		<div class="mask"></div>
+	</div>
+
+{#include file='_footer.html'#}
+<script src="{#$templets_skin#}js/dingy.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$tit#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='dingy'#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

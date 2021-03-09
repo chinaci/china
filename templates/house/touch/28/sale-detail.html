@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/esf-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData = {
+		title: '{#$detail_community#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}'
+	};
+
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'sale',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+<div class="container esf">
+	{#$tit = "{#$detail_community#}"#}
+	{#include file="_header.html"#}
+	<div class="bread">
+		<a href="{#$house_channelDomain#}">首页</a><i></i>
+		<a href="{#getUrlPath service='house' template='sale'#}">二手房</a><i></i>
+		<a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">{#$detail_community#}</a>
+	</div>
+	{#if $detail_imglist#}
+	<div class="wrapper">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+					{#foreach from=$detail_imglist item=img#}
+		      <div class="swiper-slide">
+		        <a href="javascript:;"><img src="{#changeFileSize url={#$img.path#} type='large'#}"></a>
+		      </div>
+					{#/foreach#}
+		    </div>
+			<div class="swiper-pagination swiper-pagination-fraction"><span class="swiper-pagination-current"></span> / <span class="swiper-pagination-total"></span></div>
+		</div>
+	</div>
+	{#/if#}
+	<div class="head-info">
+		<h1>{#$detail_title#}</h1>
+		<div class="feature">
+			{#foreach from=$detail_flags item=flag key=key#}
+			<span>{#$flag#}</span>
+			{#/foreach#}
+			{#if $detail_collect == 1#}<a href="javascript:;" class="collect has" data-temp="sale_detail"><i></i>已收藏</a>{#else#}<a href="javascript:;" class="collect" data-temp="sale_detail"><i></i>收藏</a>{#/if#}
+		</div>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-info-price">
+			<p>
+				<span class="p-red">{#if $detail_price > 0#}{#$detail_price#}万{#echoCurrency type='short'#}/套{#else#}面议{#/if#}</span>
+				<span class="p-gray">{#if $detail_unitprice > 0#}({#$detail_unitprice#}{#echoCurrency type='short'#}/㎡){#/if#}</span>
+			</p>
+		</div>
+		<ul class="esf-info-feature">
+			<li>
+				<span>户型：</span>
+				<p>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</p>
+			</li>
+			<li>
+				<span>建筑面积：</span>
+				<p>{#$detail_area#}㎡</p>
+			</li>
+			<li>
+				<span>楼层：</span>
+				<p>{#$detail_bno#}/{#$detail_floor#}</p>
+			</li>
+			<li>
+				<span>类型：</span>
+				<p>{#$detail_protype#}</p>
+			</li>
+			<li>
+				<span>朝向：</span>
+				<p>{#$detail_direction#}</p>
+			</li>
+			<li>
+				<span>装修：</span>
+				<p>{#$detail_zhuangxiu#}</p>
+			</li>
+			<li>
+				<span>年代：</span>
+				<p>{#$detail_buildage#}</p>
+			</li>
+		</ul>
+		<div class="esf-info-time fn-clear">
+			<span>发布时间：</span><p>{#$detail_pubdate|date_format:"%Y-%m-%d"#}</p>
+		</div>
+	</div>
+	<div class="esf-info-item mb0">
+		<div class="esf-info-tit"><h2>房源描述</h2></div>
+		<div class="esf-info-con close">
+			{#if empty($detail_mbody)#}
+				{#$mbody = $detail_note#}
+			{#else#}
+				{#$mbody = $detail_mbody#}
+			{#/if#}
+			{#$mbody = strip_tags($mbody)#}
+			{#$mbodyLen = strlen($mbody)#}
+			<div class="con-short">
+				<p>{#$mbody#}</p>
+			</div>
+			{#if $mbodyLen > 420#}
+			<a href="javascript:;" class="more_xq"></a>
+			{#/if#}
+		</div>
+	</div>
+	{#if $detail_communityid != 0#}
+	<div class="esf-info-item xq-a">
+		<div class="esf-map-tit">
+			<a href="{#getUrlPath service='house' template='community-detail' id={#$detail_communityid#}#}">小区详情</a>
+		</div>
+	</div>
+	{#/if#}
+	<div class="esf-info-item">
+		<div class="esf-map-tit">
+			<a href="javascript:;" target="_blank"{#if $detail_communityid#} class="appMapBtn"{#/if#}>地址：<span> {#$detail_address#}  </span></a>
+		</div>
+		{#if $detail_communityid#}
+		<div class="esf-map-con">
+			<a href="javascript:;" target="_blank" class="appMapBtn"><img src="" width="100%" class="appMapImg"></a>
+		</div>
+		{#/if#}
+	</div>
+	<!-- 底部 -->
+	{#include file="_footer.html"#}
+
+	<div class="mask"></div>
+	<div class="float-tel">
+		<div class="mobile">
+			{#if !empty($detail_user['photo'])#}
+			<div class="mobile-img">
+				<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_user['userid']#}#}"><img src="{#$detail_user['photo']#}"></a>
+			</div>
+			{#/if#}
+			<div class="mobile-info">
+			{#$phone = ""#}
+			{#if $detail_usertype == 1 && $detail_user['nickname']#}
+				<p>{#$detail_user['nickname']#}</p>
+				<p>{#$detail_user['phone']#}</p>
+				{#$phone = $detail_user['phone']#}
+			{#else#}
+				<p>{#$detail_username#}</p>
+				<p>{#$detail_contact#}</p>
+				{#$phone = $detail_contact#}
+			{#/if#}
+			</div>
+			<div class="mobile-call">
+				<a href="tel:{#$phone#}" class="phone"><i></i>打电话</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/esf-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='sale-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+{#if $tpl == ""#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_nickname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/jjr.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = '经纪人'#}
+		{#include file="_header.html"#}
+		<div class="jjr-store">
+			<dl>
+				<dt><img src="{#$detail_photo#}"></dt>
+				<dd>
+					<h3><em>{#$detail_nickname#}</em><span class="id">身份证</span></h3>
+					<p>服务商圈：<span>{#$detail_address[0]#}</span></p>
+					<p>所属公司：<span>{#$detail_zjcomName#}{#$detail_store#}</span></p>
+				</dd>
+			</dl>
+		</div>
+		<div class="jjr-list">
+			<div class="list-tab">
+				{#if $detail_saleCount > 0#}<div class="tab-s active">二手房</div>{#/if#}
+				{#if $detail_zuCount > 0#}<div class="tab-s">出租房</div>{#/if#}
+				{#if $detail_xzlCount > 0#}<div class="tab-s">写字楼</div>{#/if#}
+				{#if $detail_spCount > 0#}<div class="tab-s">商铺</div>{#/if#}
+				{#if $detail_cfCount > 0#}<div class="tab-s">厂房/仓库</div>{#/if#}
+			</div>
+			<div class="list-box">
+				{#$curr = ""#}
+				{#if $detail_saleCount > 0#}
+				{#$curr = 1#}
+				<div class="list-info">
+					{#house action="saleList" return="sale" zj={#$detail_id#} page={#$page#} pageSize="20"#}
+					<div class="list-td">
+						<a href="{#$sale.url#}">
+							<div class="td-img"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}"></div>
+							<div class="td-txt">
+								<h3>{#$sale.title#}</h3>
+								<p class="gray-p"><em>{#$sale.room#}</em><em>{#$sale.area#}㎡(建面)</em></p>
+								<p class="red-p"><b>{#$sale.price#}万</b></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+					<div class="clear"></div>
+					<div class="more">
+						<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl='sale'#}"><span>查看更多房源{#$detail_saleCount#}套</span>></a>
+					</div>
+				</div>
+				{#/if#}
+				{#if $detail_zuCount > 0#}
+				{#$curr = 1#}
+				<div class="list-info"{#if $curr#} style="display: none;"{#/if#}>
+					{#house action="zuList" return="zu" zj={#$detail_id#} page={#$page#} pageSize="20"#}
+					<div class="list-td">
+						<a href="{#$zu.url#}">
+							<div class="td-img"><img src="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}"></div>
+							<div class="td-txt">
+								<h3>{#$zu.title#}</h3>
+								<p class="gray-p"><em>{#$zu.room#}</em><em>{#$zu.area#}㎡(建面)</em></p>
+								<p class="red-p"><b>{#$zu.price#}{#echoCurrency type='short'#}/月</b></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+					<div class="clear"></div>
+					<div class="more">
+						<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl='zu'#}"><span>查看更多房源{#$detail_zuCount#}套</span>></a>
+					</div>
+				</div>
+				{#/if#}
+				{#if $detail_xzlCount > 0#}
+				{#$curr = 1#}
+				<div class="list-info"{#if $curr#} style="display: none;"{#/if#}>
+					{#house action="xzlList" return="xzl" zj={#$detail_id#} page={#$page#} pageSize="20"#}
+					<div class="list-td">
+						<a href="{#$xzl.url#}">
+							<div class="td-img"><img src="{#changeFileSize url={#$xzl.litpic#} type='small'#}"></div>
+							<div class="td-txt">
+								<h3>{#$xzl.title#}</h3>
+								<p class="gray-p"><em>{#$xzl.zhuangxiu#}</em><em>{#$xzl.area#}平米</em></p>
+								<p class="red-p"><b>{#if $xzl.type == 0#}{#$xzl.price#}{#echoCurrency type='short'#}/m²•月{#else#}{#$xzl.price#}万{#/if#}</b></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+					<div class="clear"></div>
+					<div class="more">
+						<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl='xzl'#}"><span>查看更多房源{#$detail_xzlCount#}套</span>></a>
+					</div>
+				</div>
+				{#/if#}
+				{#if $detail_spCount > 0#}
+				{#$curr = 1#}
+				<div class="list-info"{#if $curr#} style="display: none;"{#/if#}>
+					{#house action="spList" return="sp" zj={#$detail_id#} page={#$page#} pageSize="20"#}
+					<div class="list-td">
+						<a href="{#$sp.url#}">
+							<div class="td-img"><img src="{#changeFileSize url={#$sp.litpic#} type='small'#}"></div>
+							<div class="td-txt">
+								<h3>{#$sp.title#}</h3>
+								<p class="gray-p"><em>{#$sp.zhuangxiu#}</em><em>{#$sp.area#}平米</em></p>
+								<p class="red-p"><b>
+								{#if $sp.type == 0 || $sp.type == 2#}
+								{#($sp.price/10000)|string_format:"%.2f"#}万/月
+								{#/if#}
+								{#if $sp.type == 1#}
+								{#$sp.price|string_format:"%.0f"#}万
+								{#/if#}
+								{#if $sp.type == 2#}&nbsp;&nbsp;转让费：{#$sp.transfer#}万{#/if#}
+								</b></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+					<div class="clear"></div>
+					<div class="more">
+						<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl='sp'#}"><span>查看更多房源{#$detail_spCount#}套</span>></a>
+					</div>
+				</div>
+				{#/if#}
+				{#if $detail_cfCount > 0#}
+				{#$curr = 1#}
+				<div class="list-info"{#if $curr#} style="display: none;"{#/if#}>
+					{#house action="cfList" return="cf" zj={#$detail_id#} page={#$page#} pageSize="20"#}
+					<div class="list-td">
+						<a href="{#$cf.url#}">
+							<div class="td-img"><img src="{#changeFileSize url={#$cf.litpic#} type='small'#}"></div>
+							<div class="td-txt">
+								<h3>{#$cf.title#}</h3>
+								<p class="gray-p"><em>{#$cf.protype#}</em><em>{#$cf.area#}平米</em></p>
+								<p class="red-p"><b>
+									{#if $cf.type != 2#}{#($cf.price/10000)|string_format:"%.2f"#}万/月{#else#}{#$cf.price|string_format:"%.0f"#}万{#/if#}
+									{#if $cf.type == 1#}&nbsp;&nbsp;转让费：{#$cf.transfer#}万{#/if#}
+								</b></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+					<div class="clear"></div>
+					<div class="more">
+						<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl='cf'#}"><span>查看更多房源{#$detail_cfCount#}套</span>></a>
+					</div>
+				</div>
+				{#/if#}
+				<div class="clear"></div>
+			</div>
+
+		</div>
+		<!-- 底部 -->
+		{#include file="_footer.html"#}
+		<div class="mask"></div>
+		<div class="float-tel">
+			<div class="mobile">
+				{#if !empty($detail_photo)#}
+				<div class="mobile-img">
+					<a href="javascript:;"><img src="{#$detail_photo#}"></a>
+				</div>
+				{#/if#}
+				<div class="mobile-info">
+					<p>{#$detail_nickname#}</p>
+					<p>{#$detail_phone#}</p>
+				</div>
+				<div class="mobile-call">
+					<a href="tel:{#$detail_phone#}" class="phone"><i></i>打电话</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="{#$templets_skin#}js/jjr.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$detail_nickname#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#getUrlPath service='house'  template='broker-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
+
+
+{#else#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_nickname#}电话：{#$detail_phone#},{#$detail_nickname#}网上店铺发布二手房房源- {#$house_title#}</title>
+<meta name="keywords" content="{#$detail_nickname#},{#$detail_nickname#}网上店铺,{#$detail_phone#}" />
+<meta name="description" content="{#$detail_nickname#}经纪人店铺提供经纪人发布的二手房房源、租房房源信息，另外提供经纪人详细的信息，如个人介绍、电话号码：{#$detail_phone#}、服务档案、提问过的问答等信息，让您全面了解经纪人情况。" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+{#$tit = ""#}
+{#if $tpl == "sale"#}
+	{#$tit = "二手房"#}
+{#elseif $tpl == "zu"#}
+	{#$tit = "租房"#}
+{#elseif $tpl == "xzl"#}
+	{#$tit = "写字楼"#}
+{#elseif $tpl == "sp"#}
+	{#$tit = "商铺"#}
+{#elseif $tpl == "cf"#}
+	{#$tit = "厂房/仓库"#}
+{#/if#}
+
+{#$tit = $detail_nickname|cat:"的"|cat:$tit|cat:"房源"#}
+<body>
+<div class="container jjr">
+	<div id="scroller">
+		{#include file="_header.html"#}
+		<div class="house-list esf-list" id="house-list">
+
+			{#if $tpl == "sale"#}
+
+			{#house action="saleList" return="sale" zj={#$detail_id#} pageSize="9999"#}
+			<div class="house-box">
+				<a href="{#$sale.url#}">
+					<div class="house-item">
+						<div class="house-img l"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}"></div>
+						<dl class="l">
+							<dt>{#$sale.title#}</dt>
+							<dd class="item-area"><em>{#$sale.addr[0]#} {#$sale.addr[1]#}</em><em>{#$sale.bno#}/{#$sale.floor#}层</em><span class="price r">{#$sale.price#}万{#echoCurrency type='short'#}</span></dd>
+							<dd class="item-type-1"><em>{#$sale.community#}</em><em>建面:{#$sale.area#}㎡</em><em>{#$sale.room#}</em><em>{#$sale.direction#}</em></dd>
+							<dd class="item-type-2">
+								{#foreach from=$sale.flags item=flag key=key#}
+								<span>{#$flag#}</span>
+								{#/foreach#}
+							</dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</div>
+			{#/house#}
+
+			{#elseif $tpl == "zu"#}
+
+			{#house action="zuList" return="zu" zj={#$detail_id#} pageSize="9999"#}
+			<div class="house-box">
+				<a href="{#$zu.url#}">
+					<div class="house-item">
+						<div class="house-img l"><img src="{#changeFileSize url={#$zu.litpic#} type='small'#}"></div>
+						<dl class="l">
+							<dt>{#$zu.title#}</dt>
+							<dd class="item-area"><em>{#$zu.addr[0]#} {#$zu.addr[1]#}</em><em>{#$zu.bno#}/{#$zu.floor#}层</em><span class="price r">{#$zu.price#}{#echoCurrency type='short'#}/月</span></dd>
+							<dd class="item-type-1"><em>{#$zu.community#}</em><em>建面:{#$zu.area#}㎡</em><em>{#$zu.rentype#}</em><em>{#$zu.direction#}</em></dd>
+							<dd class="item-type-2"><span>{#$zu.zhuangxiu#}</span></dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</div>
+			{#/house#}
+
+			{#elseif $tpl == "xzl"#}
+
+			{#house action="xzlList" return="xzl" zj={#$detail_id#} pageSize="9999"#}
+			<div class="house-box">
+				<a href="{#$xzl.url#}">
+					<div class="house-item">
+						<div class="house-img l"><img src="{#changeFileSize url={#$xzl.litpic#} type='small'#}"></div>
+						<dl class="l">
+							<dt>{#$xzl.title#}</dt>
+							<dd class="item-area"><em>{#$xzl.addr[0]#} {#$xzl.addr[1]#}</em>
+								{#if $xzl.type == 0#}
+								<span  class="price r">{#($xzl.price * $xzl.area)|string_format:"%.2f"#}{#echoCurrency type='short'#}/月</span>
+								{#else#}
+								<span  class="price r">{#($xzl.price / $xzl.area * 10000)|string_format:"%.2f"#}{#echoCurrency type='short'#}/m²</span>
+								{#/if#}
+							</dd>
+							<dd class="item-type-1"><em>{#$xzl.loupan#}</em><em>建面:{#$xzl.area#}㎡</em><em>{#$xzl.zhuangxiu#}</em><em>{#$xzl.protype#}</em></dd>
+							<dd class="item-type-2">
+								{#foreach from=$xzl.config item=config key=k#}
+								<span>{#$config#}</span>
+								{#/foreach#}
+							</dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</div>
+			{#/house#}
+
+			{#elseif $tpl == "sp"#}
+
+			{#house action="spList" return="sp" zj={#$detail_id#} pageSize="9999"#}
+			<div class="house-box">
+				<a href="{#$sp.url#}">
+					<div class="house-item">
+						<div class="house-img l"><img src="{#changeFileSize url={#$sp.litpic#} type='small'#}"></div>
+						<dl class="l">
+							<dt>{#$sp.title#}</dt>
+							<dd class="item-area"><em>{#$sp.addr[0]#} {#$sp.addr[1]#}</em>
+								{#if $sp.type == 0 || $sp.type == 2#}
+								<span class="price r">{#($sp.price/10000)|string_format:"%.2f"#}万/月</span>
+								{#/if#}
+								{#if $sp.type == 1#}
+								<span class="price r">{#$sp.price|string_format:"%.0f"#}万</span>
+								{#/if#}
+								{#if $sp.type == 2#}<span>转让费：{#$sp.transfer#}万</span>{#/if#}
+							<dd class="item-type-1"><em>{#$sp.protype#}</em><em>建面:{#$sp.area#}㎡</em><em>第{#$sp.bno#}层 / 共{#$sp.floor#}层</em></dd>
+							<dd class="item-type-2">{#$sp.timeUpdate#}更新</dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</div>
+			{#/house#}
+
+			{#elseif $tpl == "cf"#}
+
+			{#house action="cfList" return="cf" zj={#$detail_id#} pageSize="9999"#}
+			<div class="house-box">
+				<a href="{#$cf.url#}">
+					<div class="house-item">
+						<div class="house-img l"><img src="{#changeFileSize url={#$cf.litpic#} type='small'#}"></div>
+						<dl class="l">
+							<dt>{#$cf.title#}</dt>
+							<dd class="item-area"><em>{#$cf.addr[0]#} {#$cf.addr[1]#}</em><em>5/13层</em>
+								{#if $cf.type != 2#}<span class="price r">{#($cf.price/10000)|string_format:"%.2f"#}万/月</span>{#else#}<span class="price r">{#$cf.price|string_format:"%.0f"#}万</span>{#/if#}
+								{#if $cf.type == 1#}<p>转让费：{#$cf.transfer#}万</p>{#/if#}
+							</dd>
+							<dd class="item-type-1"><em>{#if $cf.nearby != ""#}靠近：{#$cf.nearby#}{#/if#}</em><em>建面:{#$cf.area#}㎡</em><em>{#$cf.protype#}</em></dd>
+							<dd class="item-type-2">{#$cf.timeUpdate#}更新</dd>
+						</dl>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</div>
+			{#/house#}
+
+			{#/if#}
+
+		</div>
+
+
+		<!-- 底部 -->
+		<div class="mask"></div>
+	</div>
+
+	{#include file="_footer.html"#}
+
+	<div class="float-tel">
+		<div class="mobile">
+			{#if !empty($detail_photo)#}
+			<div class="mobile-img">
+				<a href="javascript:;"><img src="{#$detail_photo#}"></a>
+			</div>
+			{#/if#}
+			<div class="mobile-info">
+				<p>{#$detail_nickname#}</p>
+				<p>{#$detail_phone#}</p>
+			</div>
+			<div class="mobile-call">
+				<a href="tel:{#$detail_phone#}" class="phone"><i></i>打电话</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$templets_skin#}js/jjr-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$tit#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#getUrlPath service='house' template='broker-detail' id={#$detail_id#} tpl={#$tpl#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
+{#/if#}

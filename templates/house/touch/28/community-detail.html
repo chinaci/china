@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/esf-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+
+	var pageData = {
+		title: '{#$detail_title#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}'
+	};
+</script>
+</head>
+
+<body>
+<div class="container xq">
+	{#$tit = "{#$detail_title#}"#}
+	{#include file="_header.html"#}
+	<div class="bread">
+		<a href="{#$house_channelDomain#}">{#$siteCityInfo['name']#}房产</a><i></i>
+		<a href="{#$pageUrl#}">{#$detail_title#}</a><i></i>
+		<a href="javascript:;" class="active">小区详情</a>
+	</div>
+	<div class="wrapper">
+		<a href="community-album-{#$detail_id#}.html">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			    {#house action="albumList" act="community" loupanid={#$detail_id#} pageSize="1000"#}
+			    	{#foreach from=$row.imglist item=img key=k#}
+			    	<div class="swiper-slide">
+			        	<img data-src="{#$img.path#}" class="swiper-lazy">
+			        	<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+			    	</div>
+			    	{#/foreach#}
+			    {#/house#}
+			    </div>
+				<div class="swiper-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">2</span> / <span class="swiper-pagination-total">10</span></div>
+			</div>
+		</a>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-info-price">
+			<p>
+				<span class="gray">基本信息</span>
+			</p>
+		</div>
+		<div class="xq-info close">
+			<dl class="fn-clear">
+				<dt>小区名称：</dt>
+				<dd>{#$detail_title#}</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>建筑面积：</dt>
+				<dd>{#$detail_buildarea#}平方米</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>所在区域：</dt>
+				<dd>{#$detail_addr[$detail_addr|count-3]#} {#$detail_addr[$detail_addr|count-2]#} {#$detail_addr[$detail_addr|count-1]#}</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>占地面积：</dt>
+				<dd>{#$detail_planarea#}平方米</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>小区地址：</dt>
+				<dd>{#$detail_address#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>邮政编码：</dt>
+				<dd>{#$detail_post#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>开&nbsp;&nbsp;发&nbsp;&nbsp;商：</dt>
+				<dd>{#$detail_kfs#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>规则户数：</dt>
+				<dd>{#$detail_planhouse#}户</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>物业公司：</dt>
+				<dd>{#$detail_property#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>产权年限：</dt>
+				<dd>{#$detail_buildage#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>物业类型：</dt>
+				<dd>{#$detail_protype#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>竣工时间：</dt>
+				<dd>{#$detail_opendate|date_format:"%Y-%m-%d"#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>物业费用：</dt>
+				<dd>{#$detail_proprice#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>车位数量：</dt>
+				<dd>{#$detail_parknum#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>物业电话：</dt>
+				<dd>{#$detail_protel#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>容&nbsp;&nbsp;积&nbsp;&nbsp;率：</dt>
+				<dd>{#$detail_rongji#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>物业地址：</dt>
+				<dd>{#$detail_proaddr#}</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>绿&nbsp;&nbsp;化&nbsp;&nbsp;率：</dt>
+				<dd>{#$detail_green#}</dd>
+			</dl>
+			<a href="javascript:;" class="more_xq more_info"></a>
+		</div>
+
+	</div>
+	<div class="esf-info-item mb0">
+		<div class="esf-info-tit"><h2>房源描述</h2></div>
+		<div class="esf-info-con close">
+			{#$note = strip_tags($detail_note)#}
+			{#$noteLen = strlen($note)#}
+			<div class="con-short">
+				<p>{#$note#}</p>
+			</div>
+			{#if $noteLen > 420#}
+			<a href="javascript:;" class="more_xq"></a>
+			{#/if#}
+		</div>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-map-tit">
+			<a href="javascript:;" target="_blank" class="appMapBtn">地址：<span> {#$detail_address#}  </span></a>
+		</div>
+		<div class="esf-map-con">
+			<a href="javascript:;" target="_blank" class="appMapBtn"><img src="" width="100%" class="appMapImg"></a>
+		</div>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-info-price">
+			<p>
+				<span class="gray">周边配套</span>
+			</p>
+		</div>
+		<div class="xq-info close">
+			{#$no = 1#}
+			{#foreach from=$detail_config item=config#}
+			<dl class="fn-clear{#if $no > 4#} more{#/if#}">
+				<dt>{#$config[0]#}：</dt>
+				<dd>{#$config[1]#}</dd>
+				{#$no = $no+1#}
+			</dl>
+			{#/foreach#}
+			{#if $no > 4#}
+			<a href="javascript:;"  class="more_xq more_info"></a>
+			{#/if#}
+		</div>
+	</div>
+	{#include file="_footer.html"#}
+	<div class="mask"></div>
+	<div class="float-tel xq">
+		<div class="mobile">
+			{#house action="saleList" return="sale" community={#$detail_id#} pageSize="1"#}
+			{#/house#}
+			<div class="mobile-call">
+				<a href="{#getUrlPath service='house' template='sale' param="community={#$detail_id#}"#}"><i></i>二手房({#$pageInfo.totalCount|string_format:"%d"#})</a>
+			</div>
+			{#house action="zuList" return="zu" community={#$detail_id#} pageSize="1"#}
+			{#/house#}
+			<div class="mobile-call">
+				<a href="{#getUrlPath service='house' template='zu' param="community={#$detail_id#}"#}"><i class="zf"></i>租房({#$pageInfo.totalCount|string_format:"%d"#})</a>
+			</div>
+			<div class="mobile-call">
+				<a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sale'#}"><i class="mf"></i>我要卖房</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/community.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$row.imglist[0]['path']#}',
+		"link": '{#getUrlPath service='house'  template='community-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

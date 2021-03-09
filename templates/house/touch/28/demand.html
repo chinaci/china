@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$siteCityInfo['name']#}{#$addrname#}{#if $type == ''#}求租/求购{#else#}{#if $type == 1#}求购{#else#}求租{#/if#}{#/if#}{#$actname#}房源信息</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/fabu-info.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var action = 'demand';
+</script>
+</head>
+
+<body>
+<div class="container demand">
+	<div id="scroller">
+		{#$tit = $siteCityInfo['name']|cat:"求租/求购"#}
+		{#$pageRight = "<a href='javascript:;' class='fabudemand'>发布</a>"#}
+		{#include file="_header.html"#}
+		<form class="search-box" action="" method="get">
+			<div class="search l">
+				<i></i>
+				<input type="text" id="search_keyword" class="txt_search" value="{#$keywords#}" autocomplete="off" placeholder="请输入要搜索的信息">
+			</div>
+			<div class="search-btn r">
+				<input type="button" data-role="btn" name="search" id="search_button" class="btn-s" value="搜索">
+			</div>
+			<div class="clear"></div>
+		</form>
+		<div class="choose-box-blank">
+			<div class="choose-box">
+				<ul class="choose">
+					<li class="tab-addrid"><a href="javascript:;"><i><span>位置</span></i></a></li>
+					<li class="tab-act"><a href="javascript:;"><i><span>类别</span></i></a></li>
+					<li class="tab-typeid" data-id='{#$type#}'><a href="javascript:;"><i><span>{#if $type == ''#}供求{#else#}{#if $type == 1#}求购{#else#}求租{#/if#}{#/if#}</span></i></a></li>
+				</ul>
+				<div>
+					<div>
+						<div class="choose-local choose-area">
+							<div class="choose-local-second l" id="area-box">
+									<ul>
+										<li class="active" data-id="0"><a href="javascript:;">不限</a></li>
+										{#house action="addr" return='addr'#}
+										<li data-area="{#$addr.id#}"><a href="javascript:;">{#$addr.typename#}</a></li>
+										{#/house#}
+									</ul>
+							</div>
+							<div class="area-third">
+								<div class="choose-local-third l" id="scroll-third">
+									<div class="scroll"></div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-act" id="scroll-act" data-type="act">
+								<ul class="scroll">
+									<li class="active" data-id=''><a href="javascript:;">不限</a></li>
+									<li data-id="1"><a href="javascript:;">新房</a></li>
+									<li data-id="2"><a href="javascript:;">二手房</a></li>
+									<li data-id="3"><a href="javascript:;">出租房</a></li>
+									<li data-id="4"><a href="javascript:;">写字楼</a></li>
+									<li data-id="5"><a href="javascript:;">商铺</a></li>
+									<li data-id="6"><a href="javascript:;">厂房/仓库</a></li>
+								</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-type" id="scroll-type" data-type="typeid">
+								<ul class="scroll">
+									<li class="active" data-id=""><a href="javascript:;">不限</a></li>
+									<li data-id="0"><a href="javascript:;">求租</a></li>
+									<li data-id="1"><a href="javascript:;">求购</a></li>
+								</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- 白色底层 -->
+					<div class="white"></div>
+
+				</div>
+			</div>
+		</div>
+		<div class="house-list" id="demand-list"></div>
+
+		{#include file="_footer.html"#}
+
+		<div class="mask"></div>
+	</div>
+</div>
+
+<div class="gz-address">
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+		<div class="popup-fabu">
+			<div class="tit">快速发布求租求购<s></s></div>
+			<div class="con">
+				<div class="inptitbox">
+	        <p>标题</p>
+	        <div class="inptitle">
+	          <input type="text" placeholder="请输入标题" id="title" autocomplete="off" maxlength="100" id="title" value="">
+	        </div>
+	      </div>
+				<div class="mulinpbox mb4r">
+          <p class="multit">需求描述</p>
+          <div class="mulcon">
+            <textarea placeholder="请输入需求描述" id="note" class="textarea"></textarea>
+          </div>
+        </div>
+				<div class="ml4r checkbox">
+					<p>类别</p>
+					<div class="facility" data-type="act">
+						<ul class="fn-clear">
+							<li data-id="1">新房</li>
+							<li data-id="2">二手房</li>
+							<li data-id="3">出租房</li>
+							<li data-id="4">写字楼</li>
+							<li data-id="5">商铺</li>
+							<li data-id="6">厂房/仓库</li>
+						</ul>
+					</div>
+				</div>
+				<div class="ml4r checkbox">
+					<p>供求</p>
+					<div class="facility" data-type="type">
+						<ul class="fn-clear">
+							<li data-id="0">求租</li>
+							<li data-id="1">求购</li>
+						</ul>
+					</div>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox fn-clear gz-addr-seladdr" data-ids="" data-id="">
+						<dt><span><label for="typeid">位置</label></span></dt>
+						<dd class="selgroup"><p><font style="color: #aaa;">请选择</font></p></dd>
+						<input type="hidden" name="addrid" id="addrid" value="">
+					</dl>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>联系人</span></dt>
+						<dd><input type="text" placeholder="请输入联系人" id="person" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>联系电话</span></dt>
+						<dd><input type="text" placeholder="请输入联系电话" id="contact" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>管理密码</span></dt>
+						<dd><input type="text" placeholder="请输入管理密码" id="password" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r checkbox fn-hide edit radio">
+					<p>管理</p>
+					<div class="facility" data-type="manage">
+						<ul class="fn-clear">
+							<li data-id="1">修改</li>
+							<li data-id="2">删除</li>
+						</ul>
+					</div>
+				</div>
+				<div class="submit">
+			  	<a href="javascript:;" id="submit">立即发布</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+		<div class="gz-sel-addr-header">
+			<h3>{#$langData['siteConfig'][7][2]#}</h3>
+			<button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+		</div>
+		<ul class="gz-sel-addr-nav"></ul>
+		<div class="gz-sel-addr-list"></div>
+	</div>
+
+  <div class="gz-sel-addr-mask"></div>
+
+</div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 10;
+</script>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/iscroll.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/gz-addr.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/demand.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$siteCityInfo['name']#}{#$addrname#}{#if $type == ''#}求租/求购{#else#}{#if $type == 1#}求购{#else#}求租{#/if#}{#/if#}{#$actname#}房源信息',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='demand'#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

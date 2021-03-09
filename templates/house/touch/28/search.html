@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>搜索</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';;
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle='搜索'#}
+
+<!-- 搜索 -->
+<div class="search-form">
+	<form class="sobj">
+		<input type="text" id="keywords" name="keywords" value="" placeholder="找楼盘、找小区、找地址" autocomplete="off" />
+		<button type="submit">搜索</button>
+		<s></s>
+	</form>
+</div>
+
+<div class="hotwords wordsBox">
+	<p class="title">热门搜索</p>
+	<ul class="fn-clear">
+		{#siteConfig module="house" action="hotkeywords" return="hotkeywords"#}
+		<li><a href="{#$hotkeywords.href#}">{#$hotkeywords.keyword#}</a></li>
+		{#/siteConfig#}
+	</ul>
+</div>
+
+<div class="history wordsBox">
+	<p class="title">历史搜索<span class="all_shan"></span></p>
+	<ul class="fn-clear"></ul>
+</div>
+
+<div class="list">
+	<ul class="fn-clear">
+		<li class="loupan" data-href="{#getUrlPath service='house' template='loupan' param='keywords=%%'#}"><label></label> - 新房<span class="loading"></span></li>
+		<li class="sale" data-href="{#getUrlPath service='house' template='sale' param='keywords=%%'#}"><label></label> - 二手房<span class="loading"></span></li>
+		<li class="zu" data-href="{#getUrlPath service='house' template='zu' param='keywords=%%'#}"><label></label> - 租房<span class="loading"></span></li>
+		<li class="xzl" data-href="{#getUrlPath service='house' template='xzl' param='keywords=%%'#}"><label></label> - 写字楼<span class="loading"></span></li>
+		<li class="sp" data-href="{#getUrlPath service='house' template='sp' param='keywords=%%'#}"><label></label> - 商铺<span class="loading"></span></li>
+		<li class="cf" data-href="{#getUrlPath service='house' template='cf' param='keywords=%%'#}"><label></label> - 厂房/仓库<span class="loading"></span></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$house_title#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#$house_channelDomain#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/search.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

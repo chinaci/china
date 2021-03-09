@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';;
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute" pageTitle=$house_channelName#}
+
+	<!-- 头部幻灯片 -->
+	<div class="wrapper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+              	{#myad title="房产_模板一_移动端_广告一" type="slide"#}
+            </div>
+		        <div class="pagination"></div>
+        </div>
+    </div>
+
+		<!-- 搜索 -->
+		<div class="search-form">
+			<div class="sobj">
+				{#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+				<div class="area">
+					<a href="{#$cfg_basehost#}/changecity.html?backModule=house">
+						<i></i>
+						<label>{#$siteCityInfo['name']#}</label>
+						<s></s>
+					</a>
+				</div>
+				{#/if#}
+				<div class="inp">
+					<a href="{#getUrlPath service='house' template='search'#}">
+						<s></s>
+						<label>找楼盘、找小区、找地址</label>
+						<span>搜索</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+  	<!-- 选项部分 -->
+  	<div class="nav">
+  		<div class="nav-list">
+	  		<a href="{#getUrlPath service='house' template='loupan'#}" class="nav-item">
+	  			<div class="nav-img nav-img-1"><img src="{#$templets_skin#}images/t1.png?v=1"></div>新房
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='sale'#}" class="nav-item">
+	  			<div class="nav-img nav-img-2"><img src="{#$templets_skin#}images/t2.png?v=1"></div>二手房
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='zu'#}" class="nav-item">
+	  			<div class="nav-img nav-img-3"><img src="{#$templets_skin#}images/t3.png?v=1"></div>租房
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='sp'#}" class="nav-item">
+	  			<div class="nav-img nav-img-4"><img src="{#$templets_skin#}images/t4.png?v=1"></div>商铺
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='xzl'#}" class="nav-item">
+	  			<div class="nav-img nav-img-5"><img src="{#$templets_skin#}images/t5.png?v=1"></div>写字楼
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='cf'#}" class="nav-item">
+	  			<div class="nav-img nav-img-6"><img src="{#$templets_skin#}images/t6.png?v=1"></div>厂房
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='calculator' action='sy'#}" class="nav-item">
+	  			<div class="nav-img nav-img-7"><img src="{#$templets_skin#}images/t7.png?v=1"></div>房贷计算器
+	  		</a>
+	  		<a href="{#getUrlPath service='house' template='news'#}" class="nav-item">
+	  			<div class="nav-img nav-img-8"><img src="{#$templets_skin#}images/t8.png?v=1"></div>资讯
+	  		</a>
+	  		<div class="clear"></div>
+			</div>
+  	</div>
+
+		<!-- 求租、求购 -->
+		<div class="demand">
+			<ul class="fn-clear">
+				<li class="z"><a href="{#getUrlPath service='house' template='demand' param='type=0'#}"><span><i>求租房</i></span></a></li>
+				<li class="g"><a href="{#getUrlPath service='house' template='demand' param='type=1'#}"><span><i>求购房</i></span></a></li>
+			</ul>
+		</div>
+
+  	<!-- 找房 -->
+  	<div class="guide">
+  		<div class="guide-item">
+  			<h2 class="guide-title">
+  				<i class="line"></i>
+  				<em class="title-text">区域找房</em>
+  				<i class="line"></i>
+  			</h2>
+  			<div class="guide-content">
+  				<div class="guide-list">
+						{#house action="addr" return='addr' page="1" pageSize='3'#}
+  					<a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}">{#$addr.typename#}</a>
+						{#/house#}
+  				</div>
+  				<div class="guide-list">
+						{#house action="addr" return='addr' page="2" pageSize='3'#}
+  					<a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}">{#$addr.typename#}</a>
+						{#/house#}
+  				</div>
+  			</div>
+  		</div>
+
+  	</div>
+  	<!-- 一周热点 -->
+  	<div class="recommend">
+  		<h2 class="public-tit">
+  		<em></em>新房楼盘
+  		<a href="{#getUrlPath service='house' template='loupan'#}" class="public-more">更多</a>
+  		</h2>
+  		<div class="recommend-con">
+  			<div class="recommend-list">
+					{#house action="loupanList" return="loupan" page="1" pageSize="2"#}
+  				<a href="{#$loupan.url#}">
+  					<div class="recommend-img">
+  						<img src="{#$loupan.litpic|replace:"small":"large"#}">
+  						<em class="recommend-price">{#if $loupan.price != 0#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<em>待定</em>{#/if#}</em>
+  					</div>
+  					<div class="recommend-info">
+  						<p class="info-tit">{#$loupan.title#}[{#$loupan.addr[$loupan.addr|count-2]#}]</p>
+  						<p class="info-text">{#$loupan.address#}</p>
+  					</div>
+  				</a>
+					{#/house#}
+  			</div>
+  			<div class="recommend-list">
+					{#house action="loupanList" return="loupan" page="2" pageSize="2"#}
+  				<a href="{#$loupan.url#}">
+  					<div class="recommend-img">
+  						<img src="{#$loupan.litpic|replace:"small":"large"#}">
+  						<em class="recommend-price">{#if $loupan.price != 0#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<em>待定</em>{#/if#}</em>
+  					</div>
+  					<div class="recommend-info">
+  						<p class="info-tit">{#$loupan.title#}[{#$loupan.addr[$loupan.addr|count-2]#}]</p>
+  						<p class="info-text">{#$loupan.address#}</p>
+  					</div>
+  				</a>
+					{#/house#}
+  			</div>
+  		</div>
+  	</div>
+	<!-- 房产资讯 -->
+	<div class="news">
+		<h2 class="public-tit">
+  		<em></em>房产资讯
+  		<a href="{#getUrlPath service='house' template='news'#}" class="public-more">更多</a>
+  		</h2>
+  		<div class="news-con">
+  			<div class="news-list">
+					{#house action="news" typeid="{#$ntype.id#}" return="news2" pageSize="5"#}
+  				<a href="{#$news2.url#}">
+  					<span class="news-info">{#$news2.title#}</span>
+  					<span class="news-date">{#$news2.pubdate|date_format:'%m-%d'#}</span>
+  				</a>
+					{#/house#}
+  			</div>
+  			<div class="news-more">
+  				<a href="{#getUrlPath service='house' template='news'#}">查看更多资讯</a>
+  			</div>
+  		</div>
+	</div>
+	<!-- 二手房源 -->
+	<div class="resale" style="margin-bottom: .24rem;">
+		<h2 class="public-tit">
+  		<em></em>二手房源
+  		<a href="{#getUrlPath service='house' template='sale'#}" class="public-more">更多</a>
+  		</h2>
+  		<div class="resale-con">
+  			<ul class="resale-list">
+					{#house action="saleList" return="hlist" page="1" pageSize="8"#}
+  				<li>
+  					<a href="{#$hlist.url#}">
+  						<div class="resale-img">
+  							<img src="{#$hlist.litpic#}">
+  						</div>
+  						<div class="resale-info">
+  							<p class="info-title">{#$hlist.title#}</p>
+  							<p class="info-price">{#if $hlist.price == 0#}价格待定{#else#}<span>{#$hlist.price#}</span>万{#echoCurrency type='short'#}</p>{#/if#}
+  							<p class="info-box">{#$hlist.addr[$hlist.addr|count-2]#}  {#$hlist.room#}  {#$hlist.area#}㎡</p>
+  						</div>
+  					</a>
+  				</li>
+					{#/house#}
+  			</ul>
+  			<div class="resale-more">
+  				<a href="{#getUrlPath service='house' template='sale'#}">查看更多房源</a>
+  			</div>
+  		</div>
+	</div>
+	<!-- 房产问答 -->
+	<div class="resale">
+		<h2 class="public-tit">
+  		<em></em>房产问答
+  		<a href="{#getUrlPath service='house' template='faq'#}" class="public-more">更多</a>
+  		</h2>
+  		<div class="faq-con">
+  			<div class="faq-list">
+					{#house action="faq" return="faq" page="1" pageSize="5"#}
+  				<div class="item">
+						<a href="{#$faq.url#}" class="fn-clear">
+							<div class="type">问</div>
+							<div class="info">
+								<h3 class="title"><span class="time">{#$faq.pubdate|date_format:"%Y-%m-%d"#}</span>{#$faq.title#}</h3>
+								<p class="about"><span class="tpname">{#$faq.typename#}</span><span class="user"></span><font class="click">{#$faq.click#}</font></p>
+							</div>
+						</a>
+					</div>
+					{#/house#}
+  			</div>
+  			<div class="resale-more">
+  				<a href="{#getUrlPath service='house' template='faq'#}">查看更多问答</a>
+  			</div>
+  		</div>
+	</div>
+
+	<div class="fixFooter">
+	  <ul>
+	    <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+	    <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='house'#}#fabu"><i></i>发布</a></li>
+	    <li class="ficon3"><a href="{#getUrlPath service='member' type='user' template='house'#}"><i></i>管理</a></li>
+	    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+	  </ul>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$house_title#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#$house_channelDomain#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/estate.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

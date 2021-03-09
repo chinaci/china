@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}基本信息</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/lp-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}',staticPath = '{#$cfg_staticPath#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'loupan',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = "{#$detail_title#}"#}
+		{#include file="_header.html"#}
+		<div class="bread">
+			<a href="{#$house_channelDomain#}">房产首页</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan'#}">{#$siteCityInfo['name']#}楼盘</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan-detail' id={#$detail_id#}#}">{#$detail_title#}</a><i></i>
+			<a href="javascript:;" class="active">楼盘详情</a>
+		</div>
+
+		<!-- 基本信息 -->
+		<div class="hx-analyze">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>基本信息
+			</div>
+			<div class="hx-analyze-msg">
+				<ul>
+					<li>
+						<div class="detail-tit">物业类型:</div>
+						<div class="detail-info">{#$detail_protype#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">建筑类型:</div>
+						<div class="detail-info">{#$detail_buildtype#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">物业费:</div>
+						<div class="detail-info">{#$detail_proprice#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">物业公司:</div>
+						<div class="detail-info">{#$detail_property#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">开发商:</div>
+						<div class="detail-info">{#$detail_investor#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">售楼电话:</div>
+						<div class="detail-info">{#$detail_tel#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">售楼地址:</div>
+						<div class="detail-info">{#$detail_saleAddress#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">服务时间:</div>
+						<div class="detail-info">{#$detail_worktime#}&nbsp;</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 开盘入住 -->
+		<div class="hx-analyze m10">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>开盘入住
+			</div>
+			<div class="hx-analyze-msg">
+				<ul>
+					<li>
+						<div class="detail-tit">在售户型:</div>
+						<div class="detail-info">
+							{#house action="apartmentList" act="loupan" get="roomGroup" loupanid={#$detail_id#} pageSize="1"#}{#numberDaxie number=$row.room#}居{#if $_bindex.row <= $row|count#}{#/if#}
+							{#/house#}&nbsp;
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 规划信息 -->
+		<div class="hx-analyze m10">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>规划信息
+			</div>
+			<div class="hx-analyze-msg">
+				<ul>
+					<li>
+						<div class="detail-tit">规划面积:</div>
+						<div class="detail-info">{#$detail_planarea#}平方米</div>
+					</li>
+					<li>
+						<div class="detail-tit">建筑面积:</div>
+						<div class="detail-info">{#$detail_buildarea#}平方米</div>
+					</li>
+					<li>
+						<div class="detail-tit">绿化率:</div>
+						<div class="detail-info">{#$detail_green#}%</div>
+					</li>
+					<li>
+						<div class="detail-tit">容积率:</div>
+						<div class="detail-info">{#$detail_rongji#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">楼座展示:</div>
+						<div class="detail-info">{#$detail_floor#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">车位:</div>
+						<div class="detail-info">{#$detail_parknum#}&nbsp;</div>
+					</li>
+					<li>
+						<div class="detail-tit">楼层状况:</div>
+						<div class="detail-info">{#$detail_floor#}&nbsp;</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 楼盘简介 -->
+		<div class="hx-analyze m10">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>楼盘简介
+			</div>
+			<div class="hx-analyze-msg hx-analyze-p">
+				<p>{#$detail_note#}</p>
+			</div>
+		</div>
+
+		<!-- 底部 -->
+
+		{#include file="_footer.html"#}
+
+		<div class="mask"></div>
+	</div>
+
+<script src="{#$templets_skin#}js/lp-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='loupan-info' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

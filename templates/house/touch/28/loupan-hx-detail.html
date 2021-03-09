@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}{#$hx_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hx-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'loupan',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = $hx_room|cat:"室"|cat:$hx_hall|cat:"厅"|cat:$hx_guard|cat:"卫"#}
+		{#include file="_header.html"#}
+		<div class="bread">
+			<a href="{#$house_channelDomain#}">房产首页</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan'#}">{#$siteCityInfo['name']#}楼盘</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan-detail' id={#$detail_id#}#}">{#$detail_title#}</a><i></i>
+			<a href="javascript:;" class="active">户型详情</a>
+		</div>
+		<div class="wrapper">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					{#foreach from=$hx_imglist item=imglist key=i#}
+					<div class="swiper-slide">
+		        <a href="javascript:;"><img src="{#$imglist.path#}"></a>
+		      </div>
+					{#/foreach#}
+				</div>
+				<div class="swiper-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">1</span></div>
+			</div>
+		</div>
+		<div class="huxing-description">
+			<div class="hx-description-header">
+				<h2 class="hx-description-name">{#$detail_title#}--{#$hx_title#}--{#$hx_room#}室{#$hx_hall#}厅{#$hx_guard#}卫</h2>
+			</div>
+			<div class="hx-description-module">
+				<ul>
+					<li>
+					<strong class="info-key">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</strong>
+					<a href="{#getUrlPath service='house' template='calculator' do='sy'#}" class="info-cal"><span></span>计算月供</a>
+					<span class="info-price">约{#($detail_price * $hx_area / 10000)|string_format:"%.2f"#}万{#echoCurrency type='short'#}/套起</span>
+					</li>
+					<li>
+					<strong class="info-key">单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</strong>
+					<span class="info-price">{#$detail_price#}{#echoCurrency type='short'#}/㎡</span>
+					</li>
+				</ul>
+			</div>
+			<div class="hx-description-module">
+				<ul>
+					<li>
+					<strong class="info-key">面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积：</strong>
+					<span class="">{#$hx_area#}平米</span>
+					</li>
+					<li>
+					<strong class="info-key">朝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向：</strong>
+					<span class="">{#$hx_direction#}</span>
+					</li>
+					<li>
+					<strong class="info-key">层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：</strong>
+					<span class="">{#$hx_high#} m</span>
+					</li>
+					<li>
+					<strong class="info-key">所属楼盘：</strong>
+					<span class="">{#$detail_title#}</span>
+					</li>
+					<li class="info-item item-favorable">
+					<a href="{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}" class="more-loupan">查看楼盘<span class="icons-arrow"><em class="triangle-front"></em><em class="triangle-back"></em></span></a>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+		<div class="hx-analyze">
+			<div class="house-huxing-tit">
+				<span class="huxing-tit-icon"></span>户型解析
+			</div>
+			<div class="hx-analyze-msg">
+				<p>{#$hx_note#}</p>
+			</div>
+		</div>
+		<!-- 底部 -->
+
+		{#include file="_footer.html"#}
+
+		<div class="mask"></div>
+	</div>
+
+<script src="{#$templets_skin#}js/hx-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_title#}',
+		"title": '{#$tit#}',
+		"imgUrl": '{#$hx_imglist[0]['path']#}',
+		"link": '{#getUrlPath service='house'  template='loupan-hx-detail' id={#$detail_id#} aid={#$hx_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

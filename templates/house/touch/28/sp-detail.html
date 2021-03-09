@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+{#$pageType = "出租"#}
+{#if $detail_type == 1#}
+{#$pageType = "出售"#}
+{#elseif $detail_type == 2#}
+{#$pageType = "转让"#}
+{#/if#}
+<title>{#$detail_title#}-{#$siteCityInfo['name']#}商铺{#$pageType#}网</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/esf-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var pageData = {id: {#$detail_id#}, panName: '{#$detail_community#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}'};
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'sp',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+<div class="container zf">
+	{#$tit = "{#$detail_title#}"#}
+	{#include file="_header.html"#}
+	<div class="bread">
+		<a href="{#$house_channelDomain#}">{#$siteCityInfo['name']#}房产</a><i></i>
+		<a href="{#getUrlPath service='house' template='sp'#}">{#$siteCityInfo['name']#}商铺</a><i></i>
+		<a href="javascript:;" class="active">商铺详情</a>
+	</div>
+	<div class="wrapper">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		    {#foreach from=$detail_imglist item=img#}
+				<div class="swiper-slide">
+					<img src="{#changeFileSize url={#$img.path#} type='large'#}" url="{#$img.path#}" bigImg="{#$img.path#}" text="{#$img.info#}">
+				</div>
+			{#/foreach#}
+		    </div>
+			<div class="swiper-pagination"></div>
+		</div>
+	</div>
+	<div class="head-info">
+		<h1>{#$detail_title#}</h1>
+		<div class="esf-info-time zf-detail-time">
+			<span>发布时间：</span><em>{#$detail_timeUpdate#}</em>
+			{#if $detail_collect == 1#}<a href="javascript:;" class="collect has" data-temp="sp_detail"><i></i>已收藏</a>{#else#}<a href="javascript:;" class="collect" data-temp="sp_detail"><i></i>收藏</a>{#/if#}
+		</div>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-info-price">
+			<p>
+			{#if $detail_type == 1#}
+				<span class="p-red">{#if $detail_price > 0#}{#$detail_price#}万{#echoCurrency type='short'#}{#else#}面议{#/if#}</span>
+			{#else#}
+				<span class="p-red">{#if $detail_price > 0#}{#$detail_price#}{#echoCurrency type='short'#}/月{#else#}面议{#/if#}</span>
+			{#/if#}
+			</p>
+		</div>
+		<ul class="esf-info-feature">
+			<li>
+				<span>建筑面积：</span>
+				<p>{#$detail_area#}㎡</p>
+			</li>
+			<li>
+				<span>类型：</span>
+				<p>{#$detail_protype#}</p>
+			</li>
+			<li>
+				<span>物业费：</span>
+				<p>{#if $detail_proprice > 0#}{#$detail_proprice#}{#echoCurrency type='short'#}/m²•月{#else#}待定{#/if#}</p>
+			</li>
+			<li>
+				<span>装修：</span>
+				<p>{#$detail_zhuangxiu#}</p>
+			</li>
+			<li>
+				<span>楼层：</span>
+				<p>{#$detail_bno#} / {#$detail_floor#}</p>
+			</li>
+			<li>
+			{#if $detail_type == 0 || $detail_type == 1#}
+				<span>状态：</span>
+				<p>商铺{#$pageType#}</p>
+			{#elseif $detail_type == 2#}
+				<span>转让费：</span>
+				<p>{#$detail_transfer#}万</p>
+			{#/if#}
+			</li>
+			<li>
+				<span>物业配套：</span>
+				<p>{#$detail_config#}</p>
+			</li>
+			<li>
+				<span>推荐行业：</span>
+				<p>{#$detail_suitable#}</p>
+			</li>
+			{#if $detail_type == 2#}
+			<li>
+				<span>当前经营：</span>
+				<p>{#$detail_industry[0]#} - {#$detail_industry[1]#}</p>
+			</li>
+			{#/if#}
+			<li>
+				<span>地址：</span>
+				<p>{#foreach from=$detail_addr item=addr#}
+					{#$addr#}
+					{#/foreach#}&nbsp;&nbsp;
+				{#if $site_map == "baidu"#}
+				<a href="http://map.baidu.com/?newmap=1&s=con%26wd%3D{#$siteCityInfo['name']#} {#$detail_address#}%26c%3D224&from=alamap" target="_blank">地图</a>
+				{#elseif $site_map == "google"#}
+				<a href="https://www.google.com/maps/place/{#$siteCityInfo['name']#}{#$detail_address#}" target="_blank">地图</a>
+				{#elseif $site_map == "amap"#}
+				<a href="http://ditu.amap.com/search?query={#$siteCityInfo['name']#}{#$detail_address#}" target="_blank">地图</a>
+				{#elseif $site_map == "qq"#}
+				<a href="http://apis.map.qq.com/uri/v1/search?keyword={#$siteCityInfo['name']#}{#$detail_address#}" target="_blank">地图</a>
+				{#/if#}
+				</p>
+			</li>
+		</ul>
+	</div>
+	<div class="esf-info-item">
+		<div class="esf-info-tit"><h2>房源描述</h2></div>
+		<div class="esf-info-con close">
+			{#if empty($detail_mbody)#}
+				{#$mbody = $detail_note#}
+			{#else#}
+				{#$mbody = $detail_mbody#}
+			{#/if#}
+			{#$mbody = strip_tags($mbody)#}
+			{#$mbodyLen = strlen($mbody)#}
+			<div class="con-short">
+				<p>{#$mbody#}</p>
+			</div>
+			{#if $mbodyLen > 420#}
+			<a href="javascript:;" class="more_xq"></a>
+			{#/if#}
+		</div>
+	</div>
+	{#include file="_footer.html"#}
+	<div class="mask"></div>
+	<div class="float-tel">
+		<div class="mobile">
+			{#if !empty($detail_user['photo'])#}
+			<div class="mobile-img">
+				<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_user['userid']#}#}"><img src="{#$detail_user['photo']#}"></a>
+			</div>
+			{#/if#}
+			<div class="mobile-info">
+			{#if $detail_usertype == 1 && $detail_user['nickname']#}
+				<p>{#$detail_user['nickname']#}</p>
+				<p>{#$detail_user['phone']#}</p>
+				{#$phone = $detail_user['phone']#}
+			{#else#}
+				<p>{#$detail_username#}</p>
+				<p>{#$detail_contact#}</p>
+				{#$phone = $detail_contact#}
+			{#/if#}
+			</div>
+			<div class="mobile-call">
+				<a href="tel:{#$phone#}" class="phone"><i></i>打电话</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/esf-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='sp-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

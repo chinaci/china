@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$news_title#}-{#$detail_title#}楼盘动态-{#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zx-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}' , staticPath = '{#$cfg_staticPath#}';;
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = "楼盘动态"#}
+		{#include file="_header.html"#}
+		<div class="bread">
+			<a href="{#$house_channelDomain#}">房产首页</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan'#}">{#$siteCityInfo['name']#}楼盘</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan-detail' id={#$detail_id#}#}">{#$detail_title#}</a><i></i>
+			<a href="{#getUrlPath service="house" template="loupan-news" id={#$detail_id#}#}">楼盘动态</a>
+		</div>
+
+		<div class="main">
+			<div class="main-tit">
+				<h1>{#$news_title#}</h1>
+				<p><span class="time">{#$news_pubdate|date_format:"%m-%d %H:%M:%S"#}</span>浏览：{#$news_click#}次</p>
+			</div>
+			<div class="main-txt">
+				{#$news_body#}
+			</div>
+		</div>
+		<div class="mask"></div>
+	</div>
+<script src="{#$templets_skin#}js/zx-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house'  template='news-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

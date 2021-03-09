@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_nickname#}电话：{#$detail_phone#},{#$detail_nickname#}网上店铺发布二手房房源- {#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/jjr.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+<script src="{#$templets_skin#}js/jquery-1.10.1.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+		var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	</script>
+</head>
+<body>
+	<div class="container">
+		{#$tit = '经纪人'#}
+		{#include file="_header.html"#}
+		<div class="jjr-store">
+			<dl>
+				<dt><img src="{#$detail_photo#}"></dt>
+				<dd>
+					<h3><em>{#$detail_nickname#}</em><span class="id">身份证</span></h3>
+					<p>服务商圈：<span>{#$detail_address[0]#}</span></p>
+					<p>所属公司：<span>{#$detail_zjcomName#}{#$detail_store#}</span></p>
+				</dd>
+			</dl>
+		</div>
+		<div class="jjr-list">
+			<div class="list-tab">
+				{#if $broker.saleCount > 0#}<div class="tab-s active">二手房</div>{#/if#}
+				{#if $broker.zuCount > 0#}<div class="tab-s">出租房</div>{#/if#}
+				{#if $broker.xzlCount > 0#}<div class="tab-s">写字楼</div>{#/if#}
+				{#if $broker.spCount > 0#}<div class="tab-s">商铺</div>{#/if#}
+				{#if $broker.cfCount > 0#}<div class="tab-s">厂房/仓库</div>{#/if#}
+			</div>
+			<div class="list-box">
+				<div class="list-info">
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr1.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>姑苏 尚运苑</h3>
+								<p class="gray-p"><em>4室2厅</em><em>235㎡(建面)</em></p>
+								<p class="red-p"><b>600万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr2.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 中天和景苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>135㎡(建面)</em></p>
+								<p class="red-p"><b>350万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr3.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖家天下</h3>
+								<p class="gray-p"><em>3室1厅</em><em>186㎡(建面)</em></p>
+								<p class="red-p"><b>235万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr4.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖名邸</h3>
+								<p class="gray-p"><em>4室2厅</em><em>256㎡(建面)</em></p>
+								<p class="red-p"><b>780万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr5.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天枫苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>110㎡(建面)</em></p>
+								<p class="red-p"><b>233万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="esf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/jjr6.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天韵苑</h3>
+								<p class="gray-p"><em>3室1厅</em><em>288㎡(建面)</em></p>
+								<p class="red-p"><b>496万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="clear"></div>
+					<div class="more">
+						<a href="jjr-detail.html"><span>查看更多房源22套</span>></a>
+					</div>
+				</div>
+				<div class="list-info" style="display: none;">
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e1.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>姑苏 尚运苑</h3>
+								<p class="gray-p"><em>4室2厅</em><em>235㎡(建面)</em></p>
+								<p class="red-p"><b>600万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e10.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 中天和景苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>135㎡(建面)</em></p>
+								<p class="red-p"><b>350万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e3.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖家天下</h3>
+								<p class="gray-p"><em>3室1厅</em><em>186㎡(建面)</em></p>
+								<p class="red-p"><b>235万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e7.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖名邸</h3>
+								<p class="gray-p"><em>4室2厅</em><em>256㎡(建面)</em></p>
+								<p class="red-p"><b>780万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e8.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天枫苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>110㎡(建面)</em></p>
+								<p class="red-p"><b>233万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="zf-detail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/e6.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天韵苑</h3>
+								<p class="gray-p"><em>3室1厅</em><em>288㎡(建面)</em></p>
+								<p class="red-p"><b>496万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="clear"></div>
+					<div class="more">
+						<a href="jjr-detail.html"><span>查看更多房源28套</span>></a>
+					</div>
+				</div>
+				<div class="list-info" style="display: none;">
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x1.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>姑苏 尚运苑</h3>
+								<p class="gray-p"><em>4室2厅</em><em>235㎡(建面)</em></p>
+								<p class="red-p"><b>600万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x2.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 中天和景苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>135㎡(建面)</em></p>
+								<p class="red-p"><b>350万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x3.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖家天下</h3>
+								<p class="gray-p"><em>3室1厅</em><em>186㎡(建面)</em></p>
+								<p class="red-p"><b>235万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x4.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖名邸</h3>
+								<p class="gray-p"><em>4室2厅</em><em>256㎡(建面)</em></p>
+								<p class="red-p"><b>780万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x5.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天枫苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>110㎡(建面)</em></p>
+								<p class="red-p"><b>233万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="xzldetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/x6.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天韵苑</h3>
+								<p class="gray-p"><em>3室1厅</em><em>288㎡(建面)</em></p>
+								<p class="red-p"><b>496万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="clear"></div>
+					<div class="more">
+						<a href="jjr-detail.html"><span>查看更多房源16套</span>></a>
+					</div>
+				</div>
+				<div class="list-info" style="display: none;">
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp1.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>姑苏 尚运苑</h3>
+								<p class="gray-p"><em>4室2厅</em><em>235㎡(建面)</em></p>
+								<p class="red-p"><b>600万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp2.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 中天和景苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>135㎡(建面)</em></p>
+								<p class="red-p"><b>350万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp3.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖家天下</h3>
+								<p class="gray-p"><em>3室1厅</em><em>186㎡(建面)</em></p>
+								<p class="red-p"><b>235万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp4.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖名邸</h3>
+								<p class="gray-p"><em>4室2厅</em><em>256㎡(建面)</em></p>
+								<p class="red-p"><b>780万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp5.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天枫苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>110㎡(建面)</em></p>
+								<p class="red-p"><b>233万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="spdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/sp6.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天韵苑</h3>
+								<p class="gray-p"><em>3室1厅</em><em>288㎡(建面)</em></p>
+								<p class="red-p"><b>496万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="clear"></div>
+					<div class="more">
+						<a href="jjr-detail.html"><span>查看更多房源25套</span>></a>
+					</div>
+				</div>
+				<div class="list-info" style="display: none;">
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c1.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>姑苏 尚运苑</h3>
+								<p class="gray-p"><em>4室2厅</em><em>235㎡(建面)</em></p>
+								<p class="red-p"><b>600万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c2.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 中天和景苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>135㎡(建面)</em></p>
+								<p class="red-p"><b>350万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c3.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖家天下</h3>
+								<p class="gray-p"><em>3室1厅</em><em>186㎡(建面)</em></p>
+								<p class="red-p"><b>235万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c4.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 越湖名邸</h3>
+								<p class="gray-p"><em>4室2厅</em><em>256㎡(建面)</em></p>
+								<p class="red-p"><b>780万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c5.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天枫苑</h3>
+								<p class="gray-p"><em>3室2厅</em><em>110㎡(建面)</em></p>
+								<p class="red-p"><b>233万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="list-td">
+						<a href="cfdetail.html">
+							<div class="td-img">
+								<img src="{#$templets_skin#}update/c6.jpg">
+							</div>
+							<div class="td-txt">
+								<h3>吴中 蠡墅花园天韵苑</h3>
+								<p class="gray-p"><em>3室1厅</em><em>288㎡(建面)</em></p>
+								<p class="red-p"><b>496万</b></p>
+							</div>
+						</a>
+					</div>
+					<div class="clear"></div>
+					<div class="more">
+						<a href="jjr-detail.html"><span>查看更多房源12套</span>></a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+		<!-- 底部 -->
+		<div class="footer">
+			<div class="login-bar">
+				<!-- 登录前 -->
+				<div class="unlogin">
+					<a href="javascript:;">登录</a>
+					<em>|</em>
+					<a href="javascript:;">注册</a>
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="foot-info">
+					<div class="foot-link">
+						<a href="http://ihuoniao.cn/">首页</a><em>|</em>
+						<a href="javascript:;">进货单</a><em>|</em>
+						<a href="javascript:;">收藏夹</a><em>|</em>
+						<a href="javascript:;">我的火鸟</a>
+					</div>
+					<ul class="foot-item">
+						<li>
+							<a href="javascript:;">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot1.jpg">
+								</div>
+								<span>客户端</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot2.jpg">
+								</div>
+								<span>触屏版</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="item-img">
+									<img src="{#$templets_skin#}images/foot3.jpg">
+								</div>
+								<span>电脑版</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="info-last">火鸟门户版权所有 1999-2016 </p>
+			</div>
+		</div>
+		<div class="nav">
+			<div class="nav-list">
+				<a href="estate-list.html" class="nav-item">
+	  			<div class="nav-img nav-img-1"><img src="{#$templets_skin#}images/t1.jpg"></div>新房
+	  		</a>
+	  		<a href="esf.html" class="nav-item">
+	  			<div class="nav-img nav-img-2"><img src="{#$templets_skin#}images/t2.jpg"></div>二手房
+	  		</a>
+	  		<a href="zf-detail.html" class="nav-item">
+	  			<div class="nav-img nav-img-3"><img src="{#$templets_skin#}images/t3.jpg"></div>租房
+	  		</a>
+	  		<a href="sp.html" class="nav-item">
+	  			<div class="nav-img nav-img-4"><img src="{#$templets_skin#}images/t4.jpg"></div>商铺
+	  		</a>
+	  		<a href="xzl.html" class="nav-item">
+	  			<div class="nav-img nav-img-5"><img src="{#$templets_skin#}images/t5.jpg"></div>写字楼
+	  		</a>
+	  		<a href="cff.html" class="nav-item">
+	  			<div class="nav-img nav-img-6"><img src="{#$templets_skin#}images/t6.jpg"></div>厂房
+	  		</a>
+	  		<a href="calculator_sy.html" class="nav-item">
+	  			<div class="nav-img nav-img-7"><img src="{#$templets_skin#}images/t7.jpg"></div>房贷计算器
+	  		</a>
+	  		<a href="zx.html" class="nav-item">
+	  			<div class="nav-img nav-img-8"><img src="{#$templets_skin#}images/t8.jpg"></div>资讯
+	  		</a>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="mask"></div>
+		<div class="float-tel">
+			<div class="mobile">
+				<div class="mobile-img">
+					<img src="{#$templets_skin#}update/p1.jpg">
+				</div>
+				<div class="mobile-info">
+					<p>张斌斌</p>
+					<p>15262490989</p>
+				</div>
+				<div class="mobile-call">
+					<a href="javascript:;"><i></i>打电话</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="{#$templets_skin#}js/jjr.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$siteCityInfo['name']#}{#$cf_seotitle#}厂房/仓库/土地/车位{#$pageType#}|{#$siteCityInfo['name']#}厂房/仓库/土地/车位{#$pageType#}信息</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
+	var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
+	var action = 'cfList', detailListId = 'house-list', typeList = '{#getUrlPath service="house" template="cf" type="%type%"#}';
+	var type = '{#$type#}';
+</script>
+</head>
+
+<body>
+<div class="container cf">
+	<div id="scroller">
+		{#$tit = $siteCityInfo['name']|cat:'厂房<select name="type" class="titsel" id="sptype"><option value="0">出租</option><option value="2">出售</option><option value="1">转让</option></select>'#}
+		{#include file="_header.html"#}
+		<form class="search-box" action="" method="get">
+			<div class="search l">
+				<i></i>
+				<input type="text" id="search_keyword" placeholder="请输入要搜索的关键字" value="{#$keywords#}">
+			</div>
+			<div class="search-btn r">
+				<input type="button" data-role="btn" name="search" id="search_button" value="搜索">
+			</div>
+			<div class="clear"></div>
+		</form>
+		<div class="choose-box-blank">
+			<div class="choose-box">
+				<ul class="choose">
+					<li class="tab-addrid"><a href="javascript:;"><i><span>区域</span></i></a></li>
+					<li class="tab-price"><a href="javascript:;"><i><span>{#if !$type || $type == 1#}租金{#else#}总价{#/if#}</span></i></a></li>
+					<li class="tab-area"><a href="javascript:;"><i><span>面积</span></i></a></li>
+					<li class="tab-protype"><a href="javascript:;"><i><span>类型</span></i></a></li>
+				</ul>
+				<div>
+					<div>
+						<div class="choose-local choose-area" data-type="addrid">
+							<div class="choose-local-second l" id="area-box">
+								<ul>
+									<li data-area="0" class=" active"><a href="javascript:;">不限</a></li>
+								{#house action="addr" return='addr'#}
+									<li data-area="{#$addr.id#}"><a href="javascript:;">{#$addr.typename#}</a></li>
+								{#/house#}
+								</ul>
+							</div>
+							<div class="area-third">
+								<div class="choose-local-third l" id="scroll-third">
+									<div class="scroll">
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-price" id="scroll-price" data-type="price">
+								<ul class="scroll">
+									<li class="active"><a href="javascript:;">不限</a></li>
+									{#if !$type || $type == 1#}
+									<li data-id=",5"><a href="javascript:;">5000{#echoCurrency type='short'#}/月以下</a></li>
+									<li data-id="5,10"><a href="javascript:;">5000-1万</a></li>
+									<li data-id="10,50"><a href="javascript:;">1-5万</a></li>
+									<li data-id="50,100"><a href="javascript:;">5-10万</a></li>
+									<li data-id="100,200"><a href="javascript:;">10-20万</a></li>
+									<li data-id="200,500"><a href="javascript:;">20-50万</a></li>
+									<li data-id="500,"><a href="javascript:;">50万以上</a></li>
+									{#else#}
+									<li data-id=",100"><a href="javascript:;">100万以下</a></li>
+									<li data-id="100,500"><a href="javascript:;">100-500万</a></li>
+									<li data-id="500,1000"><a href="javascript:;">500-1000万</a></li>
+									<li data-id="1000,1500"><a href="javascript:;">1000-1500万</a></li>
+									<li data-id="1500,2000"><a href="javascript:;">1500-2000万</a></li>
+									<li data-id="2000,3000"><a href="javascript:;">2000-3000万</a></li>
+									<li data-id="3000,"><a href="javascript:;">3000万以上</a></li>
+									{#/if#}
+								</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="choose-local choose-price" id="scroll-area" data-type="area">
+								<ul class="scroll">
+									<li class="active"><a href="javascript:;">不限</a></li>
+									<li data-id=",100"><a href="javascript:;">100平米以下</a></li>
+									<li data-id="100,500"><a href="javascript:;">100-500平米</a></li>
+									<li data-id="500,100"><a href="javascript:;">500-1000平米</a></li>
+									<li data-id="1000,2000"><a href="javascript:;">1000-2000平米</a></li>
+									<li data-id="2000,3000"><a href="javascript:;">2000-3000平米</a></li>
+									<li data-id="3000,5000"><a href="javascript:;">3000-5000平米</a></li>
+									<li data-id="5000,"><a href="javascript:;">5000平米以上</a></li>
+								</ul>
+							<div class="clear"></div>
+						</div>
+						<!-- 商铺类型 -->
+						<div class="choose-local choose-price" id="more-box" data-type="protype">
+							<ul class="scroll">
+									<li class="active"><a href="javascript:;">不限</a></li>
+								{#house action="item" return="item" type="10"#}
+									<li data-id="{#$item.id#}"><a href="javascript:;">{#$item.typename#}</a></li>
+								{#/house#}
+								</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- 白色底层 -->
+					<div class="white"></div>
+
+				</div>
+			</div>
+		</div>
+		<div class="house-list esf-list" id="house-list">
+		</div>
+		{#include file="_footer.html"#}
+		<div class="mask"></div>
+	</div>
+</div>
+<script>
+	var atpage = '{#$page#}',
+		totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+		totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+		pageSize = 20;
+</script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/cf.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$house_description#}',
+		"title": '{#$siteCityInfo['name']|cat:'厂房'#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='cf'#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

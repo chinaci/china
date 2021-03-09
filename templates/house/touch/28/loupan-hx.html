@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}户型图</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hx-list.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}',staticPath = '{#$cfg_staticPath#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'loupan',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#$tit = "户型列表"#}
+		{#include file="_header.html"#}
+		<div class="bread">
+			<a href="{#$house_channelDomain#}">房产首页</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan'#}">{#$siteCityInfo['name']#}楼盘</a><i></i>
+			<a href="{#getUrlPath service='house' template='loupan-detail' id={#$detail_id#}#}">{#$detail_title#}</a><i></i>
+			<a href="javascript:;" class="active">户型列表</a>
+		</div>
+		{#house action="apartmentList" act="loupan" get="roomGroup" return="apartment" loupanid={#$detail_id#} pageSize="1"#}
+		<div class="hx-module">
+			<div class="hx-module-tit">
+				<p>
+					<span class="base-bgcolor public-title-icon"></span>{#numberDaxie number=$apartment.room#}居({#$apartment.num#})
+				</p>
+			</div>
+			<ul>
+				{#house action="apartmentList" act="loupan" return="apartmentList2" loupanid={#$detail_id#} room={#$apartment.room#} pageSize="99999"#}
+				<li>
+					<a href="{#$apartmentList2.url#}">
+						<div class="hx-left">
+							<div class="hx-img-box">
+								<img src="{#$apartmentList2.litpic#}" title="{#$apartmentList2.title#}-{#$apartmentList2.area#}㎡">
+							</div>
+							<dl>
+								<dt>{#$apartmentList2.room#}室{#$apartmentList2.hall#}厅{#$apartmentList2.guard#}卫 -{#$apartmentList2.title#}</dt>
+								<dd class="info-value">约{#($detail_price * $apartmentList2.area / 10000)|string_format:"%.2f"#}万{#echoCurrency type='short'#}/套</dd>
+								<dd class="info-area">{#$apartmentList2.area#}平米</dd>
+							</dl>
+						</div>
+						<div class="hx-right">
+							<span class="loupan-icons">
+								<em class="triangle-front"></em>
+								<em class="triangle-back"></em>
+							</span>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		{#/house#}
+		<!-- 底部 -->
+		{#include file="_footer.html"#}
+
+		<div class="mask"></div>
+	</div>
+
+
+<script src="{#$templets_skin#}js/hx-list.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='loupan-hx' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
