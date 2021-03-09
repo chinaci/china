@@ -1,0 +1,232 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;color: #000; padding-bottom: 1rem;}
+html{background-color: rgb(238, 238, 238);}
+i,em{font-style: normal;}
+a:hover {text-decoration: none;}
+/*宽高减60，字体减20*/
+/*外卖订单*/
+.waiMai{height:1rem;background: #4caf50;line-height: 1rem;text-align: center;position: fixed;top: 0;right: 0;left: 0;z-index: 99;}
+.waiMai p{color: #fff;font-size:0.4rem;}
+
+/*退出*/
+.logout {position: absolute; left: .2rem; top: .3rem; width: .4rem; height: .4rem; background: url('../images/logout.png'); background-size: cover;}
+
+/*成功、失败*/
+.stateNow{height: 0.7rem;line-height: 0.7rem;background: #fff;border-bottom: 1px solid #d8d8d8;position: fixed;top: 1rem;left: 0;right: 0;z-index: 99;}
+.stateNow a{font-size: 0.3rem;color: #666666;float: left;width: 25%;text-align: center;
+	border-sizing:border-box; }
+.stateNow .daiQiang{color: #4caf50;border-bottom: 0.05rem solid #4caf50;}
+.dingDan{padding-top: 2rem;}
+.successFul{position: relative; width: 91%;background: #fff;margin: 0 auto;padding: 0.15rem;border-radius: 0.11rem;margin-bottom: 0.3rem;}
+.dingNum{padding-bottom: 0.05rem;border-bottom: 1px solid #d6d6d6;}
+.dingNum li{float: left;}
+.dingNum01{width: 83%;white-space: nowrap;overflow: hidden;height: 0.5rem;line-height: 0.5rem;}
+.dingNum01 a{color: #333;font-size: 0.27rem;}
+.dingNum02{width: 15%;background: #ff5d07;text-align: center;height: 0.4rem;line-height: 0.4rem;border-radius: 0.07rem;margin-left: 0.13rem;}
+.dingNum02 a{font-size: 0.28rem;color: #fff;}
+.dingNum03{padding: 0.15rem 0 0.1rem 0;border-bottom: 1px solid #d6d6d6;}
+.dingNum03 .dingNum04{float: left;}
+.dingNum05 a img{width: 1.1rem;height: 1.1rem;}
+.dingNum05 a{display: inline-block;margin-right: 0.3rem;}
+.dingNum04 p a{color: #666;font-size: 0.28rem;}
+.dingNum04 span a{color: #666;font-size: 0.26rem;}
+.dingNum04 p{margin-top: 0.1rem;}
+.dingNum04 span{margin-top: 0.07rem;display: inline-block;}
+.dingNum04 p,.dingNum04 span{width:4.5rem;}
+.dingNum03 .dingNum06{float: right;}
+.dingNum06 img{width: 0.6rem;height: 0.64rem;}
+.dingNum06 a{display: inline-block;margin: 0.2rem 0.15rem 0 0;}
+.xiangJun{border-bottom: none!important;padding-bottom: 0!important;}
+.fail{background: #b9b9b9!important;}
+/*待抢*/
+.layOut p{float: left;width: 33.33%;box-sizing: border-box;text-align: center;font-size: 0.28rem;color: #4bc94b;border-right: 1px solid #d6d6d6;padding-bottom: 0.4rem;}
+.lastOne{border-right: none!important;}
+.layOut01{position: absolute; left: .15rem; right: .15rem; top: .7rem; border-bottom: 1px solid #d6d6d6;padding-bottom: 0.15rem;}
+.layOut01 p{border: 0!important;color: #4b4b4b;font-size: 0.28rem;padding-bottom: 0!important;}
+.layOut02{padding:0.1rem; height: 1rem;}
+.qiangDan{text-align: center;margin-top: 0.28rem;padding-bottom: 0.1rem;}
+.qiangDan a{display: inline-block;height: 0.9rem;line-height: 0.9rem;width: 73%;background: #4caf50;color: #fff;font-size: 0.4rem;border-radius: 0.08rem;}
+/*抢单成功友情提醒*/
+.qiangdanSuc{text-align: center;position: fixed;right: 0;left: 0;bottom: 2rem;}
+.qiangdanSuc i{background: black;width: 22%;color: #fff;font-style: normal;display: inline-block;padding: 0.04rem 0;border-radius: 0.1rem;}
+/*配送*/
+.bfColor{background: #1eba80!important;}
+.bfColor01{background: #ffb704!important;}
+.lianxiFangs{margin-top: 0.26rem;}
+.lianxiFangs a{display: inline-block;float: left;}
+.lianxiFangs a.bG01{border:2px solid #fec106;padding: 0.17rem 0.1rem 0.15rem 0.17rem;border-radius: 0.13rem;margin-right: 0.2rem;}
+.lianxiFangs a.bG01 span{font-size: 0.28rem;color: #fec106;}
+.lianxiFangs a.bG01 i{background: url(/static/images/phone_62_yellow.png) no-repeat;width: 0.47rem;height: 0.49rem;display: inline-block;vertical-align: middle;background-size: 0.48rem;}
+.lianxiFangs a.bG02{border:2px solid #4aae4e!important;}
+.lianxiFangs a.bG02 i{background: url(/static/images/phone_62_green.png) no-repeat!important;background-size: 0.48rem!important;}
+.lianxiFangs a.bG02 span{color: #4aae4e!important;}
+.bG03{float:right !important;height: 0.9rem;line-height: 0.9rem;width: 45%;text-align: center;background: #4caf50;color: #fff;font-size: 0.32rem;border-radius: 0.13rem;}
+/*配送友情提醒*/
+.youqingTixing{text-align: center;position: fixed;right: 0;left: 0; top: 50%;z-index: 100;}
+.youqingTixing i{background: black;color: #fff;font-style: normal;display: inline-block;padding: .2rem;border-radius: 0.1rem;}
+/*空壳子*/
+.blanKet{height: 1.1rem;}
+/*跑腿待抢*/
+.AppStyle{padding-top: 2rem;}
+.otherX01{padding-bottom: 0.18rem;border-bottom: 1px solid #d6d6d6;}
+.otherX span{display: inline-block;float: left;box-sizing: border-box;width: 33.33%;text-align: center;border-right: 1px solid #d6d6d6;}
+.pianZi{border-right: none!important;}
+.otherX span i{color: #4bc94b;font-size: 0.28rem;}
+.otherX span p{font-size: 0.28rem;color: #4b4b4b;}
+/*附加要求*/
+.boxInpudown span{display: inline-block;float: left;font-size: 0.28rem;color: #666;}
+.boxInpudown i{display: inline-block;float: right;border: 1px solid #ff0000;text-align: center;font-size: 0.28rem;border-radius: 0.09rem;color: #ff0000;padding: 0.01rem 0.1rem;}
+.boxInpudown01{margin-top: 0.1rem;}
+.boxInpudown01 span{font-size: 0.28rem;color: #666;}
+.boxInpudown02{padding-top: 0.23rem!important;padding-bottom: 0.23rem!important;}
+/*跑腿已抢*/
+.niangZi{background: #12c183!important;}
+.niangZi01{border-bottom: none!important;padding-top: 0.23rem!important;}
+/*外卖、跑腿、我*/
+.bottomFix{height: .9rem; padding-top: .1rem; background: #fff;position: fixed;bottom: 0;left: 0;right: 0;z-index: 99; border-top: 1px solid #4aae4e;}
+.bottomFix01 li{width: 25%;float: left;border-sizing:border-box;text-align: center;}
+.bottomFix01 li a{display: inline-block; color: #333;}
+.bottomFix01 li a i {width: 0.5rem; height: 0.5rem; display: block; background-size: cover;}
+.maiWai i{background-image: url(../images/order.png);}
+.paoTui i{background-image: url(../images/comment.png);}
+.woDe i{background-image: url(../images/statistics.png);}
+/*外卖addclass*/
+.maiWai01 i{background-image: url(../images/order_curr.png);}
+.maiWai01 p{color: #4aae4e;}
+/*跑腿addclass*/
+.paoTui01 i{background-image: url(../images/comment_curr.png);}
+.paoTui01 p{color: #4aae4e;}
+/*我addclass*/
+.woDe01 i{background-image: url(../images/statistics_curr.png);}
+.woDe01 p{color: #4aae4e;}
+/*我的*/
+.weiZ{height: 1rem; background: #4caf50; line-height: 1rem; position: fixed; top: 0; right: 0; left: 0; z-index: 99;}
+.weiZ span {color: #fff; font-size: 0.4rem;text-align:center;display: inline-block;width: 65%}
+.weiZ a.seTP{display: inline-block;float: right;width: 12%;height: 1rem;}
+.weiZ a.seTP img{width: 0.6rem;height: 0.6rem;vertical-align: middle;display: inline-block;
+    margin-top: -0.03rem;}
+.kaiGuan{position: absolute; right: 0.34rem; top: 0;}
+.kaiGuan i{background: url(../images/toggle.png) no-repeat center center;display: inline-block;width: 1.12rem;height: 0.489rem;background-size: 4.5rem;vertical-align: middle;background-position: -2.7rem -0.42rem;border-radius: 0.3rem;}
+/*停工addclass*/
+.successFul09{width: 91%;background: #fff;margin: 0 auto;padding: 0.15rem;margin-bottom: 0.3rem;}
+.kaiGuan01 i{background-position:-0.69rem -0.42rem!important;}
+.dingDan02{padding-top: 1.3rem}
+.shangChuan{display: block;float: left;margin-right: 0.45rem;}
+.shangChuan01{float: left;}
+.shangChuan img{width: 1.7rem;height: 1.7rem;}
+.shangChuan01 p{font-size: 0.3rem;color: #333;margin-top: 0.3rem;}
+.shangChuan01 span{background: #4caf50;color: #fff;font-size: 0.24rem;width: 1.17rem;height: 0.5rem;line-height: 0.5rem;display: inline-block;text-align: center;border-radius: 0.1rem;margin-top: 0.15rem;}
+/*我的统计、我的评价、关于派送员*/
+.successFul10{padding: 0!important;width: 95%;}
+.myTongji{padding-left: 0.4rem;padding-right: 0.2rem;border-bottom: 0.03rem solid #d6d6d6;}
+.myTongji a{display: inline-block;width: 100%;}
+.myTongji i{background: url(../images/statistic.png)no-repeat;display: inline-block;width: 0.68rem;height: 0.72rem;background-size: 0.54rem;vertical-align: middle;margin-top: 0.1rem;}
+.myTongji a{display: inline-block;padding-top: 0.08rem;}
+.myTongji span{font-size: 0.3rem;color: #333;padding-top: 0.02rem;display: inline-block;}
+.myTongji s{background: url(../images/igo.png) no-repeat;display: inline-block;;width: 0.36rem;height: 0.6rem;float: right;background-size: 0.23rem;margin-top: 0.17rem;}
+.myTongji i.reMark{background: url(../images/comments.png)no-repeat;background-size: 0.54rem;}
+.myTongji i.aBout{background: url(../images/pic_about.png)no-repeat;background-size: 0.54rem;margin-top: 0.06rem!important;}
+/*下拉加载*/
+.loading, .load { line-height: 0.3rem; height: 0; text-align: center; transition: height .25s, border-bottom-width .25s; background-color: #eee; font-size: 0.28rem; overflow: hidden;width: 100%;}
+.load {height: 1rem;}
+
+
+
+.mapPath {position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: #fff; z-index: 100; display: none;}
+#mapPath {position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1;}
+.mapBtn {position: absolute; z-index: 2; left: 0; top: 0; right: 0;}
+.mapBtn button {position: absolute; top: .3rem; width: .8rem; height: .8rem; background-color: #fff; background-position: center; background-repeat: no-repeat; box-shadow: 0 0 5px rgba(0, 0, 0, .2); border: 0; border-radius: 3px; outline: 0;}
+#closeMap {right: .3rem; background-image: url('/static/images/close.png'); background-size: .4rem;}
+
+
+/*点击刷新*/
+.reload {width: 3rem; height: 1rem; border: 0; margin: 2rem auto 0; display: block; background: #fff;}
+
+.xuanXiang .empty {height: 2rem; line-height: 2rem; text-align: center; font-size: .3rem; color: #666; margin-top: 5rem;}
+
+
+
+
+/*头部 我的统计*/
+.tongJi{height: 1rem;line-height: 1rem;background: #4caf50;position: fixed;top: 0;left: 0;right: 0;}
+.tongJi span{color: #fff;font-size:0.4rem;}
+.tongJi a{display: inline-block;float: left;margin-left: 0.4rem}
+.tongJi a i{background: url(../images/btn_back.png) no-repeat center center;width: 0.4rem;height: 0.4rem;display: inline-block;background-size: 0.4rem;vertical-align: middle;}
+.tongJi p{float: left;height: 1rem;line-height: 1rem;width: 79%;text-align: center;}
+.tongJi span{display: inline-block;}
+/*今日外卖战绩、今日跑腿战绩*/
+.todayWai{padding-top: 1rem;background: #fff;padding-bottom: 0.5rem;border-bottom: 0.03rem solid #d6d6d6; margin-bottom: .3rem;}
+.todayWai01{padding-top: 0!important;margin-top: 0.3rem;margin-bottom: 0.3rem;}
+.zhanJi{height: 0.85rem;line-height: 0.85rem;padding: 0 0.4rem;}
+.zhanJi span{display: inline-block;float: left;font-size: 0.33rem;color: #666666;}
+.zhanJi p{float: right;font-size: 0.3rem;color: #4bc94b;}
+.yiuLan .yiuLan01{float: left;width: 49.1%;text-align: center;box-sizing:border-box;border-right: 0.03rem solid #4bc94b;}
+.yiuLan .yiuLan01 p{font-size: 0.37rem;color:#4bc94b;}
+.yiuLan .yiuLan01 span{font-size: 0.32rem;color:#4b4b4b;}
+.yiuLan02{border-right: none!important;}
+/*外卖订单统计、外卖营业额统计*/
+.bgTongji{background: #fff;margin-bottom: 0.3rem;}
+.part01{height: 0.9rem;line-height: 0.9rem;padding: 0 0.4rem;border-top:0.03rem solid #d6d6d6;border-bottom:0.03rem solid #d6d6d6;}
+.part02{border-top: none!important;}
+.part01 a{display: block;}
+.part01 a span{color: #666666;font-size: 0.33rem;display: inline-block;float: left;}
+.part01 a i{background: url(../images/igo.png) no-repeat;display: inline-block;width: 0.3rem;height: 0.49rem;vertical-align: middle;background-size: 0.23rem;margin-top: 0.09rem;}
+.part01 s{display: inline-block;float: right;}
+
+
+/*开始时间、结束时间*/
+.part01 label.startT{color: #596368;font-size: 0.33rem;display: inline-block;float: left;}
+.part01 input{width: 100%; padding: 0.04rem; margin: 0.16rem 0; border: 1px solid #aaa; box-sizing: border-box; border-radius: 5px; float: right;width: 3.3rem;text-align: right;margin-right: 0.4rem;font-size: 0.33rem;color: #808080;white-space: nowrap;overflow: hidden;border: none;}
+.part01 input:disabled, .part01 select:disabled {background-color: #fff;}
+.part01 label.endT{display: inline-block;float: right;}
+
+/*点击查询*/
+.checkTj{text-align: center;}
+.checkTj a{display: inline-block;width: 93%;height: 0.9rem;line-height: 0.9rem;color: #fff;background: #4caf50;font-size: 0.33rem;border-radius: 0.12rem;}
+
+
+
+/*我的评分*/
+.lewaimai{padding-top: 1rem;}
+.peisongyuan{margin-top: 0.25rem;background: #fff;}
+.myTongji{padding-left: 0.4rem;padding-right: 0.2rem;border-bottom: 0.03rem solid #d6d6d6;}
+.myTongji a{display: inline-block;width: 100%;}
+.myTongji i{background: url(../images/statistic.png)no-repeat;display: inline-block;width: 0.68rem;height: 0.72rem;background-size: 0.54rem;vertical-align: middle;margin-top: 0.1rem;}
+.myTongji a{display: inline-block;padding-top: 0.08rem;}
+.myTongji span{font-size: 0.3rem;color: #333;padding-top: 0.02rem;display: inline-block;}
+.myTongji i.reMark{background: url(../images/comments.png)no-repeat;background-size: 0.54rem;}
+.myTongji s{display: inline-block;float: right;position: relative;width: 28.9%; height: 0.4rem;top: 0.17rem;overflow: hidden;}
+.myTongji s b{background: url(../images/star_normal.png) repeat; display: inline-block; width: 100%; height: 0.398rem;background-size: 0.4rem;position: absolute;top: 0;left: 0;right: 0;z-index: 2;}
+.myTongji s b.star01{background: url(../images/star_select.png) repeat-x; display: inline-block; width: 100%; height: 0.398rem;background-size: 0.4rem; position: absolute;top: 0;left: 0;right: 0;z-index: 4;}
+.myTongji span.fiveStar{display: inline-block;float: right;height: 0.75rem;line-height: 0.75rem;margin-left: 0.16rem;color: #6ab44e;}
+/*评论详细*/
+.remarkDetail{background: #fff;margin-top: 0.25rem;padding: 0.2rem 0.29rem 0.3rem 0.34rem}
+.waimBlue span{color: #6ab44e;font-size: 0.29rem;float: left;display: inline-block;}
+.waimBlue s{display: inline-block;float: right;position: relative;width: 21.4%; height: 0.4rem;overflow: hidden;}
+.waimBlue s b{background: url(../images/star_normal.png) repeat-x; display: inline-block; width: 100%; height: 0.31rem;background-size: 0.3rem;position: absolute;top: 0;left: 0;right: 0;z-index: 2;margin-top: 0.05rem}
+.waimBlue s i{background: url(../images/star_select.png) repeat-x; display: inline-block; width: 100%; height: 0.31rem;background-size: 0.3rem;position: absolute;top: 0;left: 0;right: 0;z-index: 4;margin-top: 0.05rem}
+.goodRemark{font-size: 0.29rem;color: #484848;margin-top: 0.07rem;display: inline-block;}
+.goodRemark01{margin-top: 0.07rem;}
+.goodRemark01 span{display: inline-block;float: left;color: #6ab44e;font-size: 0.29rem;}
+.goodRemark01 i{font-style: normal;display: inline-block;float: right;font-size: 0.29rem;}
+
+
+.empty {padding:.5rem 0;text-align: center;}
+
+
+.orderType {border:none;outline:0;background: transparent;color:#fff;}
+.orderinfo {padding:.1rem 0;}
+.orderinfo li {line-height: .4rem;}
+.dingNum03 a {color: #333;}
+
+
+.todayWai.paotui {padding-top: 0;}
+.checkTj {margin-bottom: .3rem;}
+
+a.time {position: relative;}
+a.time span {position: absolute;left:0;top:0;width: 1.1rem;height: 1.1rem;line-height: 1.1rem;margin:0;text-align: center;color: #fff;font-size: .32rem;border-radius:3px;background: #4aaf4e;}
+a.time img {opacity: .1;}
+
+
+/*滑动*/
+.swiper-wrapper{height: auto !important;}

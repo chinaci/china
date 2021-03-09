@@ -1,0 +1,60 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;color: #000;}
+body.show {opacity:1;}
+html{background-color: rgb(238, 238, 238);}
+i,em{font-style: normal;}
+s{text-decoration: none;}
+/*头部 外卖订单详细头部*/
+.tongJi{height: 1rem;line-height: 1rem;background: #4caf50;position: fixed;top: 0;left: 0;right: 0;}
+.tongJi span{color: #fff;font-size:0.4rem;}
+.tongJi a{display: inline-block;float: left;margin-left: 0.4rem}
+.tongJi a i{background: url(../images/btn_back.png) no-repeat center center;width: 0.4rem;height: 0.4rem;display: inline-block;background-size: 0.4rem;vertical-align: middle;}
+.tongJi p{float: left;height: 1rem;line-height: 1rem;width: 79%;text-align: center;}
+.tongJi span{display: inline-block;}
+/*商品信息*/
+.shangPin{padding-top: 1rem;}
+.shangPinCao{margin-bottom: 0.3rem;}
+.shangPin01{background: #fff;padding-left: 0.4rem;}
+.shangPin02{border-bottom: 1px solid #d6d6d6;}
+.shangpInfo{padding: 0.17rem 0 0.17rem 0;}
+.shangpInfo i{background: url(../images/order_price.png) no-repeat center center;width: 0.58rem;height: 0.54rem;display: inline-block;background-size: 0.56rem;vertical-align: middle;}
+.shangpInfo span{font-size: 0.29rem;display: inline-block; color: #4b4b4b;margin-top: 0.08rem;}
+.shangpInfo s{font-size: 0.29rem;display: inline-block;float:right; width: 20%;}
+.shangpInfo span.niuRoubao{color: #666; float: left; width: 60%;}
+.shangpInfo s.amount{width: 100%; text-align: right;}
+.shangpInfo s.amount.danger {color: #f60;}
+.shangpInfo s.amount span{color: #ff0000; margin-right: 20px;}
+.weiLa{padding-bottom: 0.2rem!important;}
+/*商家信息*/
+.shangpInfo i.yangZhe{background: url(../images/shop_info.png) no-repeat center center;background-size: 0.56rem;}
+.shangPin01 s.juLi01{float: left!important;margin-left: 0.07rem!important;width: 77%;margin-top: 0.08rem;}
+.shangpInfo i.juLi02{background: url(../images/order_location.png) no-repeat;background-size: 0.56rem;height: 0.55rem!important;margin-bottom: -0.04rem;}
+.shangpInfo a{display: inline-block;float: right;padding-right: 0.4rem;}
+.shangpInfo i.juLi05{background: url(../images/order_phone.png) no-repeat;background-size: 0.56rem;height: 0.55rem!important;}
+/*买家信息*/
+.shangpInfo i.yanjie{background: url(../images/user.png) no-repeat center center;background-size: 0.56rem;}
+/*订单信息*/
+.shangpInfo i.yanjie01{background: url(../images/order_info.png) no-repeat center center;background-size: 0.56rem;height: 0.58rem;}
+.bianHao{background: #FFF;padding-left: 0.4rem;padding-bottom: 0.1rem;}
+.bianHao p{padding: 0.1rem 0;font-size: 0.29rem;}
+.bianHao p.num01{padding-top: 0.18rem;}
+.bianHao p span{color: #ff0000;}
+/*设为失败、确认取货、设为成功*/
+.lingDian{background: #fff;padding: 0.3rem;}
+.lingDian a{display: inline-block;width: 46%;height: 0.9rem;line-height: 0.9rem;text-align: center;border: 1px solid #d8d8d8;font-size: 0.28rem;border-radius: 0.1rem;margin-right: 0.4rem;}
+.lingDian01{background: #4caf50;border:1px solid  #4caf50;color: #fff;margin-right: 0!important;}
+/*友情提示*/
+.cToprate{position:fixed;bottom: 15%;width: 100%;text-align: center;right: 0;left: 0;}
+.cToprate i{padding: 0.1rem;background: black;color: #fff;border-radius: 0.12rem;}
+
+
+/*配送友情提醒*/
+.youqingTixing{text-align: center;position: fixed;right: 0;left: 0; top: 50%;}
+.youqingTixing i{background: black;color: #fff;font-style: normal;display: inline-block;padding: .2rem;border-radius: 0.1rem;}
+
+
+.mapPath {position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: #fff; z-index: 10; display: none;}
+#mapPath {position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 1;}
+.mapBtn {position: absolute; z-index: 2; left: 0; top: 0; right: 0;}
+.mapBtn button {position: absolute; top: .3rem; width: .8rem; height: .8rem; background-color: #fff; background-position: center; background-repeat: no-repeat; box-shadow: 0 0 5px rgba(0, 0, 0, .2); border: 0; border-radius: 3px; outline: 0;}
+#closeMap {right: .3rem; background-image: url('/static/images/close.png'); background-size: .4rem;}

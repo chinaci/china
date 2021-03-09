@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>{#$langData['siteConfig'][26][71]#}</title>  {#* 设置 *#}
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/setting.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobileSelect.css?v={#$cfg_staticVersion#}">
+		<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/vue.min.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/axios.min.js"></script>
+		<script>
+			var geetest 		= {#$cfg_geetest#};
+			var masterDomain 	= '{#$cfg_basehost#}';
+			var phone   		= '{#$courier_phone#}';
+			var areaCode   		= '{#$courier_areaCode#}';
+			var pass    		= '';
+			var cookiePre = '{#$cfg_cookiePre#}';
+			var referer = '{#$HTTP_REFERER#}';
+			var langList = {#$langList['list']|@json_encode#};
+			var langname = "{#$langList['currName']#}";
+		</script>
+	</head>
+	<body>
+		<div class="pagebox" id="page">
+			<div class="page_info" v-show="!page_cphone && !page_testid && !page_cpsd && !consult && !pripolicy">
+				<div class="top_box">
+					<div class="headbox">
+						<a href="javascript:;" class="back_btn goBack" onclick="history.go(-1)"></a>
+						{#* 设置 *#}
+						<div class="htitle">{#$langData['siteConfig'][26][71]#}</div>
+					</div>
+				</div>
+				<div class="userbox">
+					<dl>
+						<dt>{#$langData['waimai'][10][41]#}</dt>{#* 账户信息 *#}
+						<dd>
+							<span class="info_title">{#$langData['siteConfig'][19][20]#}</span>{#* 用户名 *#}
+							<span class="info_val">{#$courier_username#}</span>
+						</dd>
+						<dd>
+							<span class="info_title">{#$langData['siteConfig'][5][0]#}</span>{#* 密码 *#}
+							<span class="info_val"  @click="bindchage" data-type="psd">{#$langData['siteConfig'][6][7]#}<em></em></span> {#* 修改 *#}
+						</dd>
+					</dl>
+					<dl>
+						<dt>{#$langData['siteConfig'][19][829]#}</dt> {#* 个人资料 *#}
+						<dd>
+							<span class="info_title">{#$langData['siteConfig'][19][4]#}</span>{#* 姓名 *#}
+							<span class="info_val">{#$courier_name#}</span>
+						</dd>
+						<dd>
+							<span class="info_title">{#$langData['siteConfig'][19][12]#}</span>{#* 年龄 *#}
+							<span class="info_val">{#$courier_age#}</span>
+						</dd>
+						<dd>
+							<span class="info_title">{#$langData['siteConfig'][37][86]#}</span>{#* 手机号 *#}
+							<span class="info_val" @click="page_cphone = !page_cphone">{#substr_replace($courier_phone,'****',3,4)#}<em></em></span>
+						</dd>
+					</dl>
+					<dl>
+						<dd>
+							<a href="{#getUrlPath service='siteConfig' template='protocol' title='骑手隐私政策'#}?from=wmsj">
+								<span class="info_title">{#$langData['siteConfig'][16][185]#}</span>{#* 隐私政策 *#}
+								<span class="info_val"><em></em></span>
+							</a>
+							
+						</dd>
+						<dd >
+							<a href="{#getUrlPath service='siteConfig' template='protocol' title='骑手注册协议'#}?from=wmsj">
+								<span class="info_title">{#$langData['siteConfig'][23][57]#}</span>{#* 用户协议 *#}
+								<span class="info_val"><em></em></span>
+							</a>
+						</dd>
+						<dd >
+							<a href="{#getUrlPath service='siteConfig' template='feedback'#}?from=wmsj">
+								<span class="info_title">{#$langData['siteConfig'][16][171]#}</span>{#* 意见反馈 *#}
+								<span class="info_val"><em></em></span>
+							</a>
+						</dd>
+						<dd @click="changeLang = !changeLang" class="changl">
+							<span class="info_title">{#$langData['siteConfig'][0][14]#}</span>{#* 系统语言 *#}
+							<span class="info_val"><span>{#$langList['currName']#}</span><em></em></span>
+						</dd>
+						<dd >
+							<span class="info_title">{#$langData['siteConfig'][16][169]#}</span>{#* 网站客服 *#}
+							<span class="info_val"><a href="tel:{#$cfg_hotline#}">{#$cfg_hotline#}</a></span>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="page_cphone" v-show="!page_testid && page_cphone">
+				<div class="top_box">
+					<div class="headbox">
+						<a href="javascript:;" class="back_btn" @click="page_cphone = !page_cphone"></a>
+						<div class="htitle">{#$langData['siteConfig'][23][27]#}</div>  {#* 手机绑定 *#}
+					</div>
+				</div>
+				<div class="page_con">
+					<p>{#$langData['waimai'][10][42]#}</p>{#* 手机号将用做登录名和联系方式，当前绑定： *#}
+					<h1>{#substr_replace($courier_phone,'****',3,4)#}</h1>
+					<button type="button"   class="bind_tel"  @click="bindchage" data-type="tel">更换手机号</button>
+				</div>
+			</div>
+			<div class="page_cid" v-show="page_testid &&  (!page_bind && !page_cpsd)">
+				<div class="top_box">
+					<div class="headbox">
+						<a href="javascript:;" class="back_btn" @click="page_testid=!page_testid"></a>
+						<div class="htitle">{#$langData['waimai'][10][43]#}</div>{#* 验证身份 *#}
+					</div>
+				</div>
+				
+				<div class="page_con">
+					<p>{#$langData['waimai'][10][44]#}</p>{#* 我们已经发送了验证码到当前绑定的手机号： *#}
+					<h1>{#substr_replace($courier_phone,'****',3,4)#}</h1>
+					<input-txt type="text"  placeholder="{#$langData['siteConfig'][20][176]#}" name="captcha"  id="vercode"  ref="inpbox"></input-txt>{#* 请输入验证码 *#}
+					<button type="button"   class="next_step"  @click="nextPage">{#$langData['siteConfig'][6][32]#}</button>{#* 下一步 *#}
+				</div>
+			</div>
+			<div class="page_ctel" v-show="page_bind">
+				<div class="top_box">
+					<div class="headbox">
+						<a href="javascript:;" class="back_btn" @click="page_cphone = !page_cphone,page_bind=!page_bind"></a>
+						<div class="htitle">{#$langData['waimai'][10][45]#}</div>{#* 更换绑定手机 *#}
+					</div>
+				</div>
+				<input-txt type="text" placeholder="{#$langData['siteConfig'][20][239]#}" name="telphone" id="newphone"></input-txt>{#* 请输入手机号 *#}
+				<input-txt type="text" placeholder="{#$langData['siteConfig'][20][176]#}" name="captcha"  id="code"></input-txt>{#* 请输入验证码 *#}
+				<button type="button"   class="bindtel" @click="savepws"  data-type="bindphone" >绑定手机</button>
+			</div>
+			<div class="page_cpsd" v-show="page_cpsd">
+				<div class="top_box">
+					<div class="headbox">
+						<a href="javascript:;" class="back_btn" @click="page_cpsd=!page_cpsd"></a>
+						<div class="htitle">{#$langData['siteConfig'][5][4]#}</div>{#* 修改密码 *#}
+					</div>
+				</div>
+				<input-txt type="text"  placeholder="{#$langData['siteConfig'][20][84]#}" name="psd" 	id="pws" 	ref="inpbox"></input-txt>{#* 请输入新密码 *#}
+				<input-txt type="text"  placeholder="{#$langData['waimai'][10][46]#}" name="repsd" 	id="repws"  ref="inpbox"></input-txt>{#* 请确认新密码 *#}
+				<button type="button"  class="cpsd_btn" @click="savepws" data-type="bindpws">{#$langData['siteConfig'][41][101]#}</button>{#* 保存修改 *#}
+			</div>
+			
+		</div>
+		<script src="{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/mobileSelect.js?v={#$cfg_staticVersion#}"></script>
+		{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+		<script src="{#$templets_skin#}js/setting.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>
