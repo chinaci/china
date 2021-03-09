@@ -1,0 +1,3 @@
+$(function(){
+    $(".fixedwrap .nav").remove();    
+});

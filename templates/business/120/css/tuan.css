@@ -1,0 +1,23 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px;}
+.main-con{padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 30px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*团购列表*/
+.tuanlist{width: 950px;}
+.w1200 .tuanlist{width: 1150px;}
+.tuanlist li{padding: 20px 20px 1px 20px; float: left; width: 189px; height: 320px;}
+.w1200 .tuanlist li{width: 239px;}
+.tuanlist li:hover{background: #f8f8f8; border-radius: 2px;}
+.tuanlist li .tgimg{display: block; width: 100%; height: 182px; border: 1px solid #eaeaea; }
+.tuanlist li .tgimg img{display: block; width: 100%; height: 100%;}
+.tuanlist li .tgtxt{font-size: 16px; line-height: 18px; height: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 10px;}
+.tuanlist li .tginfo{margin-top: 5px;font-size: 12px;line-height: 16px;color: #666;height: 16px;overflow: hidden;}
+.tuanlist li .tgprice{margin-top: 18px;}
+.tuanlist li .tgprice .p{color: #f63;font-size: 14px;line-height: 18px; float: left;}
+.tuanlist li .tgprice .p em{font-size: 22px;}
+.tuanlist li .tgprice .mp{text-decoration: line-through; font-size: 12px; color: #999; float: left;}
+.tuanlist li .tgprice .sale{color: #999; float: right; font-size: 12px;}
+.tuanlist li .yue{height: 34px; line-height: 34px; border-top: 1px solid #eaeaea; margin-top: 10px;}
+.tuanlist li .yue span{background: url(../images/tuan-time.png) left center no-repeat; padding-left: 18px; font-size: 12px;}

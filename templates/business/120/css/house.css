@@ -1,0 +1,34 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px;}
+.main-con{padding: 40px 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5;}
+
+/*团购列表*/
+.htab li{position: relative; float: left; width: 197px; border: 1px solid #eee; font-size: 20px; text-align: center; padding: 20px 0;}
+.htab li.curr{background-color: #f60; border-width: 0; width: 198px; color: #fff;}
+.htab li.curr a {color: #fff;}
+.htab li em{position: absolute; bottom: -8px; left: 90px; width: 0; height: 0; overflow: hidden; line-height: 0; font-size: 0; border-bottom: none; border-top: 8px solid #f60; border-left: 8px solid #fff; border-right: 8px solid #fff; display: none;}
+.htab li.curr em{display: block;}
+
+/*房源列表*/
+.fclist li{width: 200px; margin: 40px 40px 0 0; float: left;}
+.w1200 .fclist li{width: 250px;}
+.fclist .fcimg{display: block; width: 100%; height: 180px; overflow: hidden;}
+.fclist .fcimg:hover img{-webkit-transform: scale(1.2); -moz-transform: scale(1.2); transform: scale(1.2);}
+.fclist .fcimg img{display: block; width: 100%; height: 100%; transition: all .3s;}
+.fclist .fcname{line-height: 22px; height: 22px; font-size: 18px; margin-top: 8px;}
+.fclist .fcname a{display: block; width: 100px; overflow: hidden; font-weight: 700; height: 22px;}
+.w1200 .fclist .fcname a{width: 150px;}
+.fclist .fcname .fprice{text-align: right; width: 98px; color: #e84a01; font-size: 16px; overflow: hidden; height: 20px;}
+.fclist .fcname .fprice em{font-size: 18px; font-weight: 700;}
+.fclist .fcdes{line-height: 14px; height: 14px; margin-top: 8px;}
+.fclist .fcdes .froom{width: 108px; display: block; overflow: hidden; height: 15px;}
+.w1200 .fclist .fcdes .froom{width: 158px;}
+.fcslide{position: relative; display: none;}
+.fcslide ul{width: 1160px;}
+.fclist .slidebtn{position: absolute; display: block; width: 45px; height: 45px; z-index: 999;}
+.fclist .slidebtn.next{ background: url(../images/next.png) center center no-repeat; right: -53px; top: 78px;}
+.fclist .slidebtn.prev{ background: url(../images/prev.png) center center no-repeat; left: -53px; top: 78px;}
+.esfslide{display: block;}
+.fcslide .bd{height: 232px; overflow: hidden; width: 900px;}
+.w1200 .fcslide .bd{width: 1200px;}

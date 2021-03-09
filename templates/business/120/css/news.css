@@ -1,0 +1,21 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px; min-height: 600px;}
+.slidebar{width: 200px;}
+.slidebar li{height: 55px;}
+.slidebar li.curr{background: #f60; position: relative; z-index: 2}
+.slidebar li.curr a{border: none; color: #fff;}
+.slidebar li a{display: block; line-height: 55px; height: 55px; width: 140px; margin-left: 30px; border-top: 1px solid #e8e8e8;}
+.main-con{width: 718px; padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5; min-height: 600px;}
+.w1200 .main-con{width: 918px;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 20px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*动态列表*/
+.newsList li{line-height: 30px; height: 30px; background: url(../images/lidot.jpg) left center no-repeat; padding-left: 17px;}
+.newsList li span{color: #ff7200; margin-right: 5px; float: left;}
+.newsList li a{display: block; float: left; max-width: 505px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.w1200 .newsList li a{max-width: 705px;}
+.newsList li em{color: #999; margin-left: 35px;}
+
+/*动态详细*/
+.news-tit{text-align: center; font-size: 18px; height: 40px; line-height: 40px; margin-bottom: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 20px;}

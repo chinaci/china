@@ -1,0 +1,23 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px;}
+.main-con{padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 30px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*职位列表*/
+.joblist {padding-left: 10px;}
+.joblist li {position: relative;width: 227px;float: left;}
+.w1200 .joblist li {width: 221px;}
+.joblist .inner {position: relative;margin-right: 10px;padding:10px;-webkit-transition:all .2s;transition:all .2s;z-index: 1;}
+.joblist .bg {position: absolute;left:0;top: 0;width: 0;height: 0;background: #eaeaea;-webkit-transition:all .2s;transition:all .2s;z-index: 0;}
+.joblist li:hover .bg {width: 100%;height: 100%;}
+.joblist .name {font-size: 19px;color: #0066cc;}
+.joblist .name:hover {text-decoration: underline;}
+.joblist p {padding-right: 20px;line-height: 24px;font-size: 12px;color: #666;}
+.joblist .pi {position: relative;padding-left: 17px;}
+.joblist .pi i {position: absolute;left:0;top:0; background-image: url(../images/jobicons.png); background-repeat: no-repeat;}
+.joblist .name ,.joblist p {display: block;width: 80%;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.joblist p i ,.icon-place2 {display: inline-block;width: 9px;height: 14px;float: left;margin:3px 4px 0;}
+.icon-wage {background-position: -149px -30px;}
+.icon-place {background-position: -149px -59px;}
+.icon-place2 {width: 12px;height: 18px;margin:8px 4px 0;background-position: -147px -90px;}
