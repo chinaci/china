@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#} - {#$list_typename#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$list_typename#},{#$info_channelName#}" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}" media="all" />
+{#if $detail_video#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css?v={#$cfg_staticVersion#}" media="all" />
+{#/if#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', id = {#$detail_id#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="top-nav fn-clear">
+		{#if $detail_member#}
+		<div class="uinfo">
+			<dl>
+				<dt><a href="{#$cfg_basehost#}/user/{#$detail_member['userid']#}#info" target="_blank"><img src="{#if $detail_member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$detail_member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" /></a></dt>
+				<dd>
+					<h4><a href="{#$cfg_basehost#}/user/{#$detail_member['userid']#}#info" target="_blank">{#$detail_member['nickname']#}</a></h4>
+					<p>
+						{#if $detail_member['userType'] == 1 && $detail_member['certifyState'] == 1#}
+						<i class="per" title="已通过个人实名认证"></i>
+						{#elseif $detail_member['userType'] == 2 && $detail_member['licenseState'] == 1#}
+						<i class="com" title="已通过企业认证"></i>
+						{#/if#}
+						{#if $detail_member['phoneCheck'] == 1#}
+						<i class="mob" title="已通过手机认证"></i>
+						{#/if#}
+						{#if $detail_member['emailCheck'] == 1#}
+						<i class="ema" title="已通过邮箱认证"></i>
+						{#/if#}
+					</p>
+				</dd>
+			</dl>
+		</div>
+		{#/if#}
+		<div class="dinfo">
+			<ul class="fn-clear">
+				<li>信息浏览次数<br /><strong>{#$detail_click#}</strong></li>
+				<li>发布时间<br /><strong>{#$detail_pubdate|date_format:'%Y-%m-%d %H:%M:%S'#}</strong></li>
+				<li>发布者IP<br /><strong>{#$detail_ip#}</strong></li>
+				{#if $detail_ipaddr#}<li>IP归属地<br /><strong>{#$detail_ipaddr#}</strong></li>{#/if#}
+			</ul>
+			<div class="smobile">
+				<a href="javascript:;" title="手机看"><i></i>手机看</a>
+				<div class="qrcode"><i></i><s></s><span id="qrcode"></span></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap detail fn-clear">
+	{#if $detail_imglist#}
+	<div class="slider" id="slider">
+		<ul class="album">
+			{#foreach from=$detail_imglist item=imglist#}
+			<li><a href="{#$imglist['path']#}" target="_blank"><i></i><img alt="{#$imglist['info']#}" src="{#$cfg_staticPath#}images/blank.gif" _src="{#$imglist['path']#}" /></a></li>
+			{#/foreach#}
+		</ul>
+		<div class="thumb">
+			<div class="plist">
+				<ul>
+					{#foreach from=$detail_imglist item=imglist#}
+					<li><a href="javascript:;"><i></i><img src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}" /></a></li>
+					{#/foreach#}
+				</ul>
+			</div>
+			<a href="javascript:;" class="sprev"><i></i></a>
+			<a href="javascript:;" class="snext"><i></i></a>
+		</div>
+		{#if $detail_video#}
+		<s class="video_icon" title="播放视频"></s>
+		<div class="popupVideo">
+			<a href="javascript:;" class="close">×</a>
+			<video id="my-video" class="video-js" controls autoplay preload="auto" data-setup="{}" style="width: 730px; height: 490px;">
+				<source src="{#$detail_video#}">
+			</video>
+		</div>
+		{#/if#}
+	</div>
+	{#/if#}
+	<div class="property">
+		<h1>{#$detail_title#}</h1>
+		<div class="tags">
+			{#if $detail_fire == 1#}
+			<i class="hj">火急<s></s></i>
+			{#/if#}
+			{#if $detail_top == 1#}
+			<i class="zd">置顶<s></s></i>
+			{#/if#}
+			{#if $detail_rec == 1#}
+			<i class="rc">推荐<s></s></i>
+			{#/if#}
+			{#if $detail_imglist#}
+			<i class="dt">{#$detail_imglist|count#}图<s></s></i>
+			{#/if#}
+		</div>
+		<dl class="fn-clear">
+			<dt>价格：</dt>
+			{#if $detail_price == 0#}
+			<dd><a href="javascript:;" target="_blank" class="price">面议</a></dd>
+			{#else#}
+			<dd><a href="javascript:;" target="_blank" class="price">{#echoCurrency type='symbol'#}{#$detail_price#}</a></dd>
+			{#/if#}
+			<dt>分类：</dt>
+			<dd><a href="#" target="_blank">{#$list_crumbs#}</a></dd>
+			<dt>区域：</dt>
+			<dd class="addr">{#$detail_address#}</dd>
+			<dt>联系人：</dt>
+			<dd>{#$detail_person#} [{#if $detail_member['userType'] == 1#}个人{#elseif $detail_member['userType'] == 2#}商家{#else#}游客{#/if#}]</dd>
+			<dt>电话：</dt>
+			<dd class="tel"><img src="/include/json.php?action=phoneimage&size=15&num={#$detail_tel#}" /><a href="{#getUrlPath service='info' template='mobilehistory' param="data={#$detail_tel#}"#}" target="_blank">该号码有<strong>{#$detail_telCount#}</strong>条记录</a></dd>
+			{#if $detail_qq#}
+			<dt>QQ号码：</dt>
+			<dd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_qq#}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{#$detail_qq#}:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></dd>
+			{#/if#}
+			<dt>有效期：</dt>
+			<dd>{#$detail_validCeil#}</dd>
+		</dl>
+		<div class="tool">
+			<a href="javascript:;" class="fov{#if $detail_collect == 1#} curr{#/if#}"><i></i>{#if $detail_collect == 1#}已{#/if#}收藏</a>
+			<a href="javascript:;" class="share bdsharebuttonbox bds_more" data-cmd="more"><i class=""></i>让好友参谋</a>
+			<a href="javascript:;" class="report"><i></i>举报</a>
+		</div>
+	</div>
+	{#if $detail_isvalid#}<div class="expired"><img src="{#$templets_skin#}images/expired.png" /></div>{#/if#}
+</div>
+
+<div class="wrap" id="content">
+	<div class="position:relative;"><div class="nav-tabs">
+		<ul class="fn-clear">
+			<li class="curr"><a href="javascript:;">详细描述</a></li>
+			{#if $detail_imglist#}<li><a href="javascript:;">信息相册</a></li>{#/if#}
+			{#if $detail_member#}<li><a href="javascript:;">其它帖子({#$detail_fabuCount#}条)</a></li>{#/if#}
+			<li><a href="javascript:;">精彩评论({#$detail_common#}条)</a></li>
+		</ul>
+	</div></div>
+	<div class="w-con">
+		<div class="description" style="display: block;">
+			{#if $detail_item#}
+			<div class="attributes fn-clear">
+				{#foreach from=$detail_item item=item#}
+				{#if $item.value != ""#}
+				<dl><dt>{#$item.type#}：</dt><dd>{#$item.value#}&nbsp;</dd></dl>
+				{#/if#}
+				{#/foreach#}
+			</div>
+			{#/if#}
+			<div class="content">
+				{#$detail_body#}
+			</div>
+		</div>
+		{#if $detail_imglist#}
+		<div class="description">
+			<div class="pic-list">
+				{#foreach from=$detail_imglist item=imglist#}
+				<img alt="{#$imglist['info']#}" src="{#$cfg_staticPath#}images/blank.gif"  data-url="{#$imglist['path']#}" />
+				<p>{#$imglist['info']#}</p>
+				{#/foreach#}
+			</div>
+		</div>
+		{#/if#}
+		{#if $detail_member#}
+		<div class="description elist">
+			{#info action="ilist" return="list" userid="{#$detail_member.userid#}" pageSize="10"#}
+			<div class="item">
+				<div class="pic"><a href="{#$list.url#}" target="_blank" title="aa"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}" /></a></div>
+				<div class="right">
+					<div class="tel"><s></s>{#$list.tel#}<br /><span>归属地：{#$list.teladdr#}</span></div>
+					<span class="date">{#$list.pubdate|date_format:'%m-%d'#}</span>
+				</div>
+				<div class="info">
+					<h3><a href="{#$list.url#}" title="{#$list.title#}">{#$list.title#}</a></h3>
+					<p class="desc">{#$list.desc#}</p>
+					<p class="type"><a href="{#$list.typeurl#}">{#$list.typename#}</a></p>
+					<p class="addr">{#$list.address#}</p>
+				</div>
+			</div>
+			{#/info#}
+
+      {#if $detail_fabuCount > 10#}<div class="sall"><a href="{#$cfg_basehost#}/user/{#$detail_member['userid']#}#info" target="_blank">查看{#$detail_member['nickname']#}发布的全部信息>></a></div>{#/if#}
+		</div>
+		{#/if#}
+		<div class="description">
+			<div class="comment">
+				<div class="c-title fn-clear">
+					<h4>精彩评论<small>文明上网理性发言，请遵守<a href="#">信息评论服务协议</a></small></h4>
+					<a href="javascript:;" class="tnum">共{#$detail_common#}条评论</a>
+				</div>
+				<div class="c-area">
+					<div class="textarea" contenteditable="true" data-type="parent"></div>
+					<div class="c-sub fn-clear">
+						{#if $userinfo#}
+						<div class="np-login">
+							<a href="{#$cfg_basehost#}/account" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+							<a href="{#$cfg_basehost#}/logout.html" class="o">安全退出</a>
+						</div>
+						<a href="javascript:;" class="subtn">发表</a>
+						{#else#}
+						<a href="javascript:;" class="subtn login">登录</a>
+						{#/if#}
+					</div>
+				</div>
+				<div class="c-content">
+					<ul class="c-nav fn-clear">
+						<li>全部评论</li>
+						<li class="c-orderby fn-clear"><a href="javascript:;" class="chot" data-id="hot">热度</a><a href="javascript:;" class="ctime active" data-id="time">时间</a></li>
+					</ul>
+					<ul class="c-list" id="commentList" data-page="1">
+						<div class="loading"></div>
+					</ul>
+					<div id="loadMore" class="loading">加载更多</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap recon">
+	<div class="rt">
+		<h4>热门推荐</h4>
+		<!-- <a href="#">我也要出现在这里</a> -->
+	</div>
+	<div class="rc">
+		<ul class="fn-clear">
+			{#info action="ilist" return="list" rec="1" pageSize="5"#}
+			<li>
+				<a href="{#$list.url#}" target="_blank" class="pic"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}" /></a>
+				<h5><a href="{#$list.url#}" target="_blank" title="{#$list.title#}">{#$list.title#}</a></h5>
+				<div class="type"><a href="{#$list.typeurl#}">{#$list.typename#}</a></div>
+				<p>{#$list.address#}</p>
+			</li>
+			{#/info#}
+		</ul>
+	</div>
+</div>
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+						<a href="javascript:;" class="subtn">回复</a>
+					</div>
+	</div>
+</script>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v={#$cfg_staticVersion#}"></script>
+{#if $detail_video#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

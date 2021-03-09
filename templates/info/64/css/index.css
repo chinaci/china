@@ -1,0 +1,111 @@
+
+html{background: #eee;}
+body{overflow-x: hidden;}
+.wrap{width: 1200px; margin: 0 auto;}
+
+/*顶部*/
+.topNav{height: 36px; border-bottom: 1px solid #ddd; line-height: 36px; background: #f0f0f0;}
+.topNav-l ul li{display: block; float: left; margin-right: 10px;}
+.topNav-l .weather1 .pic{margin-right: 8px;}
+.topNav-l .weather1 .weather{margin-right: 8px;}
+.topNav-l .weather1 .pic img{vertical-align: middle; width: 21px;}
+.topNav-l .weather1 .date, .topNav-l .weather1 .wn, .topNav-l .weather1 .wind{display: none;}
+.topNav-r ul li{float: left; padding: 0 10px;}
+.topNav .daohang{position: relative; padding: 0 20px 0 10px; border: 1px solid #fff; height: 34px; border-bottom: none;}
+.topNav .daohang.hover{border-color: #eee; height: 35px;}
+.topNav .daohang.hover .yellow{color: #ff6600;}
+.topNav .daohang.hover .arrow{background-position: -23px -97px;}
+.topNav .daohang .submenu{ display: none; position: absolute; background: #fff; border: 1px solid #eee; border-top: none; width: 77px; left: 0; top: 35px; text-indent: 10px;}
+.topNav .daohang .submenu a{display: block; line-height: 28px;}
+
+/*头部*/
+.header{padding: 18px 0 10px 0; background: #fff;}
+.header-l{width: 200px;}
+.header-l .img-box{display: block; float: left;}
+.header-l img{height: 65px;}
+.header-m{margin: 4px 0 0 120px; overflow: hidden;}
+.header-m .inp{width: 484px; height: 38px; line-height: 38px; padding-left: 12px; border: 1px solid #f46; font-size: 14px; float: left; border-radius: 3px 0 0 3px;}
+.header-m .button{height: 40px; line-height: 40px; width: 60px; cursor: pointer; color: #fff; text-align: center; font-size: 16px; background: #f46 url(../images/search.png) center center no-repeat; -webkit-appearance: none; border: 0; outline: 0; border-radius: 0 3px 3px 0;}
+.header-m .hot-words{margin: 5px 0 0 0; height: 20px; max-width: 558px;}
+.header-m .hot-words a:first-child{padding-left: 0;}
+.header-m .hot-words a:last-child{border-right: none;}
+.header-m .hot-words a{display: inline-block; color: #999; padding: 0 15px; border-right: 1px solid #999;}
+.header-r .free{display: block; width: 180px; height: 40px; line-height: 40px; color: #fff; background: #f46; text-align: center; font-size: 14px; border-radius: 3px;}
+.header-r .review{color: #666; height: 16px; line-height: 16px; text-align: center; display: inline-block; width: 180px; margin-top: 5px;}
+
+/*浮动头部*/
+.header-fixed{position: fixed; top: 0; left: 0; right: 0; background: #f46; z-index: 99; padding: 6px 0; display: none;}
+.header-fixed .header-l{width: 342px;}
+.header-fixed .header-l ul{float: right; margin: 10px 0 0 10px;}
+.header-fixed .header-l ul li{float: left; border-right: 1px solid #fff; margin-right: 10px;}
+.header-fixed .header-l ul li:last-child{border-right: none;}
+.header-fixed .header-l ul li a{color: #fff; font-size: 14px; padding-right: 10px;}
+.header-fixed .header-l img{height: 40px;}
+.header-fixed .header-m .inp{height: 32px; line-height: 33px; border: 1px solid #fff;}
+.header-fixed .header-m .button{height: 34px; line-height: 35px; border: 1px solid #fff;}
+.header-fixed .header-r .free{height: 32px; line-height: 32px; width: 150px; background: #fff; color: #f46; margin-top: 6px;}
+
+/*导航*/
+.nav{background: #555; height: 36px; line-height: 36px; text-align: center; font-size: 16px; overflow: hidden;}
+.nav li{float: left;}
+.nav li.on{background: #f46;}
+.nav li:hover{background: #f46;}
+.nav li a{color: #fff; display: inline-block; width: 108px; }
+
+/*主要内容*/
+.main{width: 1215px;}
+.main-box{width: 390px; margin-right: 15px;}
+.infoBox{margin-top: 15px; background: #fff; border: 1px solid #ddd; border-radius: 2px;}
+.infoBox .mobile{background: #fff5f7;}
+.infoBox .weixin{background: #f9fff8;}
+.infoBox .mobile, .infoBox .weixin{width: 44.8%; padding: 10px; float: left;}
+.infoBox .mobile h3, .infoBox .weixin h3{color: #f46; font-size: 16px; font-weight: bold; float: left;}
+.infoBox .mobile h3 span, .infoBox .weixin h3 span{display: block; font-size: 12px; color: #999; font-weight: normal;}
+.infoBox .mobile img, .infoBox .weixin img{float: right; width: 70px; height: 70px;}
+.infoBox h2{font-size: 18px; padding: 0 0 10px 10px; margin: 14px 0 0 0; font-weight: bold; border-bottom: 1px solid #eee;}
+.infoBox h2 .info-tit{border-left: 4px solid #f46; padding-left: 10px; display: inline-block; line-height: 18px;}
+.infoBox h2 .subtit{font-size: 14px; font-weight: normal; padding-left: 24px;}
+.infoBox .advBox li{width: 46.6%; height: 72px; border-bottom: 1px solid #eee; position: relative; border-right: 1px solid #eee; float: left; padding-left: 12px;}
+.infoBox .advBox li a{display: inline-block; }
+.infoBox .advBox li img{position: absolute; top: 2px; height: 60px; right: 10px;}
+.infoBox .advBox li .info-txt{font-size: 14px; color: #333; margin-top: 15px; display: inline-block;}
+.infoBox .advBox li .subTxt{position: relative; padding-right: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; top: 3px; color: #999;}
+.infoBox .infoItem{padding: 10px; font-size: 14px; position: relative;}
+.infoBox .infoItem a{display: block; height: 30px; line-height: 30px; float: left; width: 25%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.infoBox .advS a{display: block; height: 45px; line-height: 45px; margin: 0px 10px 17px; overflow: hidden;}
+.infoBox strong{display: block; width: 25%; float: left; height: 30px; line-height: 30px;}
+.infoBox .tline{border-top: 1px dashed #dedede; padding: 8px 0; position: relative;}
+.infoBox .infoItem .tline:first-child{border-top: none;}
+.infoBox .infoItem .tline:last-child{padding-bottom: 0;}
+.infoBox a.red{color: #f46;}
+.infoBox a.green{color: #01d1c1; width: 80px;}
+.infoBox .more{width: 25%; float: left; position: relative;}
+.infoBox .more .dropdown{position: absolute; top: 29px; width: 366px; background: #fff; right: -10px; border: 1px solid #eee; padding: 10px; z-index: 98; display: none;}
+.infoBox .more .more-small{position: absolute; right: 47px; top: -1px; width: 60px; text-align: center; border: 1px solid #eee; border-bottom: 0; background: #fff; z-index: 99; display: none;}
+.infoBox .advBox li.bn{border-right: none;}
+
+/*幻灯广告*/
+.advSlide{position: relative;}
+.advSlide .slideshow-item .slideinfo{display: none;}
+.advSlide .slideshow-item a{width: 100%; height: 74px;}
+.advSlide .hd{position: absolute; bottom: 0; width: 100%; text-align: center;}
+.advSlide .hd li{width: 9px; height: 9px; display: inline-block; border: 1px solid #fff; border-radius: 10px; margin-right: 8px;}
+.advSlide .hd li.on{width: 10px; height: 10px; background: #fff; border-radius: 12px;}
+
+/*广告位*/
+.adWrap{width: 1215px; margin-top: 15px;}
+.adWrap a{width: 390px; height: 130px; margin: 0 15px 15px 0; display: block; float: left;}
+.adWrap a img{display: block; width: 100%; height: 100%;}
+
+/*友情链接*/
+.flink{font-size: 14px; line-height: 25px;}
+.flink dt{width: 80px; float: left;}
+.flink dd{width: 1100px; display: block; float: left;}
+.flink dd a{display: inline-block; color: #666; margin-right: 15px;}
+
+/*底部*/
+.footer-login {margin-top: 40px; background: #2b2d2e; color: silver; padding: 30px 0 30px 0;}
+.footer-login p {line-height: 38px;text-align: center;font-size: 14px;}
+.footer-login a {color: silver;}
+.footer-login a:hover {color: #f60;text-decoration: underline;}
+.footer-login .pice {margin:0 14px;}
