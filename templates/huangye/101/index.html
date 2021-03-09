@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$huangye_title#}</title>
+    <meta name="keywords" content="{#$huangye_keywords#}" />
+    <meta name="description" content="{#$huangye_description#}" />
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+        var hideFileUrl = {#$cfg_hideUrl#};
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+    </script>
+</head>
+<body class="hy-body">
+{#include file="../../siteConfig/public_top_v1.html" channel="huangye"#}
+
+<!--广告位-->
+<div class="hy-banner">
+    <div class="form-box fn-clear">
+        <form id="searchform">
+            <input type="text" name="search" class="keywords" placeholder="输入您要查找的服务机构关键字..." value="{#$keywords#}">
+            <button type="submit" >搜索</button>
+        </form>
+    </div>
+</div>
+
+<!--内容区域-->
+<div class="hy-container">
+    <div class="content top">
+        <div class="top-box" style="position:relative">
+            <div class="filter area">
+                <div class="t-fi fn-clear">
+                    <label>区域</label>
+                    <ul class="t-fi-item fn-clear">
+                        <li class="all curr"><a href="javascript:;" data-id="0">全部</a></li>
+                        {#business return="addr" action="addr"#}
+                        <li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+                        {#/business#}
+                    </ul>
+                    <div class="sub-fi all"></div>
+                    {#business return="addr" action="addr"#}
+                    <div class="sub-fi" >
+                        <div class="pos-item">
+                            <a href="javascript:;" class="curr" data-id="{#$addr.id#}">不限</a>
+                            {#business return="subaddr" action="addr" type={#$addr.id#}#}
+                            <a href="javascript:;" data-id="{#$subaddr.id#}">{#$subaddr.typename#}</a>
+                            {#/business#}
+                        </div>
+                    </div>
+                    {#/business#}
+                    
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="top-box" style="position:relative">
+            <div class="filter style">
+                <div class="t-fi fn-clear">
+                    <label>类型</label>
+                    <ul class="t-fi-item fn-clear">
+                        <li class="all{#if !$typeid#} curr{#/if#}"><a href="javascript:;" data-id="0">全部<i></i></a></li>
+                        {#business return="type" action="type"#}
+                        <li{#if $typeid && ($type.id == $typeid || $type.id == $typeIds[0])#} class="curr"{#/if#}><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}<i></i></a></li>
+                        {#/business#}
+                    </ul>
+                    <div class="sub-fi all" ></div>
+                    {#business return="type" action="type"#}
+                    <div class="sub-fi shenghuo"{#if $typeid && ($type.id == $typeid || $type.id == $typeIds[0])#} style="display:block;"{#/if#}>
+                        <div class="pos-item">
+                            <a href="javascript:;"{#if !$typeid || ($typeid && $type.id == $typeid)#} class="curr"{#/if#} data-id="{#$type.id#}">不限</a>
+                            {#business return="subtype" action="type" type=$type.id#}
+                            <a href="javascript:;"{#if $typeid && $subtype.id == $typeid#} class="curr"{#/if#} data-id="{#$subtype.id#}">{#$subtype.typename#}</a>
+                            {#/business#}
+                        </div>
+                    </div>
+                    {#/business#}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content main">
+        <div class="main-box fn-clear">
+            <!--左边列表信息-->
+            <div class="main-left">
+                <div id="container">
+                    {#business return="list" action="blist" typeid=$typeid title=$keywords pageSize="7" page=$page#}
+                    <div class="con-box">
+                        <div class="left-con">
+                            <a href="{#$list.url#}" target="_blank"><img src="{#$list.logo#}" alt="{#$list.title#}" ></a>
+                        </div>
+                        <div class="right-con">
+                            <div class="list-title"><a href="{#$list.url#}" target="_blank">{#$list.title#}  <span class="list-style">{#if $list.typename#}[{#foreach from=$list.typename key=k item=value#}
+                            {#$value#}
+                            {#/foreach#}]{#/if#}</span> </a>{#foreach from=$list.auth item=auth key=k#}<span class="state state_{#$k#}" title="{#$auth.typename#}">{#$auth.jc#}</span>{#/foreach#} <span class="_time">{#$list.pubdate|date_format:'%Y.%m.%d'#}</span></div>
+                            <p><i class="hy-address"></i>{#$list.address#}
+                                {#if $list.weixinqr#}
+                                <span class="hy-code"><i></i>
+                                    <span class="hn-code">
+                                        <img src="{#$list.weixinqr#}">
+                                    </span>
+                                </span>
+                                {#/if#}
+                            </p>
+                            <p><i class="hy-phone"></i>{#$list.tel#}&nbsp;</p>
+                            <p><i class="hy-email"></i>{#$list.email#}&nbsp;</p>
+                        </div>
+                    </div>
+                    {#/business#}
+                    {#if $pageInfo.totalCount == 0#}
+                    <div class="empty">暂无相关信息</div>
+                    {#/if#}
+                    {#$totalCount = $pageInfo.totalCount#}
+                </div>
+                <div class="pagination fn-clear" style="display: none;"><div class="pagination-pages fn-clear"></div></div>
+            </div>
+
+            <!--右边小窗口信息-->
+            <div class="main-right">
+                <!--热门排行-->
+                <div class="con">
+                    <p class="hot-num">热门排行</p>
+                    <div class="hot-main">
+                        <hr>
+                        {#business return="rlist" action="blist" orderby=1 pageSize="5"#}
+                        {#if $_bindex.rlist == 1#}
+                        <a href="{#$rlist.url#}" target="_blank"><img src="{#$rlist.logo#}" alt="{#$rlist.title#}" title="{#$rlist.title#}"></a>
+                        <ul>
+                        {#else#}
+                            <li><a href="{#$rlist.url#}" target="_blank">{#$rlist.title#}</a></li>
+                        {#/if#}
+                        {#/business#}
+                        </ul>
+                    </div>
+                </div>
+                <!--优秀商家-->
+               <div class="con">
+                   <p class="hot-num">优秀商家</p>
+                   <div class="hot-main best-bus">
+                       <hr>
+                       <ul>
+                            {#business return="rlist" action="blist" orderby=2 pageSize="4"#}
+                            <li><a href="{#$rlist.url#}" target="_blank"><img src="{#$rlist.logo#}" > <span>{#$rlist.title#}</span></a></li>
+                            {#/business#}
+                       </ul>
+                   </div>
+               </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+{#include file="_footer.html"#}
+
+<script>
+    var atpage = 1, pageSize = 7, totalCount = {#$totalCount|default:0#};
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

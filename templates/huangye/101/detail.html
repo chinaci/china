@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>详情页</title>
+<meta name="keywords" content="{#$detail_title#},{#$list_typename#},{#$huangye_channelName#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}"/>
+<link rel="stylesheet" href="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+var skin = "{#$templets_skin#}", id = {#$detail_id#};
+var address = '{#$detail_address#}', addressdet = '{#$detail_addressdet#}', lnglat = [{#$detail_longitude#},{#$detail_latitude#}], title = '{#$detail_title#}', site_map = "{#$site_map#}";
+</script>
+</head>
+<body class="hy-body">
+{#include file="../../siteConfig/public_top_v1.html" channel="huangye"#}
+
+<div class="hy-container detail">
+    <div class="nav-top"><a href="{#$huangye_channelDomain#}">首页</a> &raquo; {#$list_crumbs#} &raquo; <a href="{#$detail_url#}">{#$detail_title#}</a></div>
+    <!--信息描述-->
+    <div class="intro-top">
+        <div class="con-box">
+            <div class="left-con">
+                <a href="{#$detail_url#}"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></a>
+            </div>
+            <div class="right-con">
+                <div class="list-title"><a href="{#$detail_url#}">{#$detail_title#}</a> <span class="list-style">[{#$list_crumbs_html#}]</span>  <span class="state">已认证</span> <span class="_time">2018.09.15</span></div>
+                <p><i class="hy-address"></i>西单北大街甲131号<span class="report"><i class="hy-jb"></i>举报</span></p>
+                <p class="contact-way"><span><i class="hy-phone"></i>{#$detail_telNum#} </span><span><i class="hy-email"></i>{#$detail_email#}</span></p>
+                <p><i class="hy-see"></i>浏览{#$detail_click#}次</p>
+                <p class="to-share">
+                    <a href="{#$detail_bUrl#}" class="to-shop">进入店铺</a>
+                    {#if $detail_webUrl#}<a href="{#$detail_webUrl#}" class="to-guanwang">进入官网</a>{#/if#}
+                    <span id="share">
+                        <span>分享到：</span>
+                        <span class="bdsharebuttonbox">
+                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></span>
+                    </span>
+                </p>
+                <div class="gongzhong">
+                    {#if $detail_weixinQr#}
+                    <img src="{#$detail_weixinQr#}"><br>
+                    {#elseif !$detail_weixin#}
+                    <img src="{#$templets_skin#}images/notweixinerweima.png"><br>
+                    {#else#}
+                    <p>{#$detail_weixin#}</p>
+                    {#/if#}
+                    微信公众号
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--信息内容-->
+    <div class="tab-container">
+        <ul class="tab-top fn-clear">
+            {#$hasnav = 0#}
+            {#foreach from=$detail_nav item="item" key="k"#}
+            {#$hasnav=1#}
+            <li{#if $k == 0#} class="active"{#/if#}>{#$item.nav#}</li>
+            {#/foreach#}
+            <li{#if $hasnav == 0#} class="active"{#/if#}>精彩评论</li>
+            <li>店铺展示</li>
+            <li>周边地图</li>
+        </ul>
+        
+        {#foreach from=$detail_nav item="item" key="k"#}
+        <div class="tab-content{#if $k == 0#} show{#/if#}">
+            <div class="text-con">
+                {#$item.body#}
+            </div>
+        </div>
+        {#/foreach#}
+        <div class="tab-content{#if $hasnav==0#} show{#/if#}">
+            <div class="comment fn-clear">
+                <div class="c-title fn-clear">
+                    精彩评论<span>文明上网理性发言，请遵守<a href="#">信息评论服务协议</a></span>
+                    <a href="javascript:;" class="tnum">共{#$detail_common#}条评论</a>
+                </div>
+               <div class="c-area">
+                   <div class="textarea" contenteditable="true" data-type="parent"></div>
+                   {#if $userinfo#}
+                   <a href="javascript:;" class="subtn">发表</a>
+                   {#else#}
+                   <a href="javascript:;" class="subtn login">登录</a>
+                   {#/if#}
+               </div>
+                <div class="c-content">
+                    <div class="c-nav fn-clear">
+                        <span class="c-title">全部评论</span>
+                        <span class="c-orderby fn-clear"><a href="javascript:;" class="ctime active" data-id="time">时间</a><a href="javascript:;" class="chot" data-id="hot">热度</a></span>
+                    </div>
+                    <ul class="c-list" id="commentList" data-page="1">
+                        <div class="loading"></div>
+                    </ul>
+                    <div id="loadMore" class="loading">加载更多</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-content">
+            <div class="ban" id="demo1">
+                <div class="ban2" id="ban_pic1">
+                    <ul>
+                        {#foreach from=$detail_imglist item="imglist" key="k"#}
+                        <li><a href="javascript:;"><img src="{#changeFileSize url="{#getFilePath($imglist)#}" type="large"#}" width="980" height="580" alt=""/></a></li>
+                        {#/foreach#}
+                    </ul>
+                </div>
+                <div class="min_pic">
+                    <div class="prev_btn1" id="prev_btn1"><img src="{#$templets_skin#}images/prev.png" width="9" height="18"  alt=""/></div>
+                    <div class="num clearfix" id="ban_num1">
+                        <ul>
+                            {#foreach from=$detail_imglist item="imglist" key="k"#}
+                            <li><a href="javascript:;"><img src="{#changeFileSize url="{#getFilePath($imglist)#}" type="small"#}" width="180" height="130" alt=""/></a></li>
+                            {#/foreach#}
+                        </ul>
+                    </div>
+                    <div class="next_btn1" id="next_btn1"><img src="{#$templets_skin#}images/next.png" width="9" height="18"  alt=""/></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-content map-content">
+            <div class="map-con">
+                <div class="map" id="allmap"><p class="loading">正在加载地图，请稍后...</p></div>
+                <p><i class="hy-address"></i>{#$detail_addressdet#}</p>
+            </div>
+            <ul class="map-tab">
+                <li class="active" data-val="0">交通</li>
+                <li data-val="1">商业</li>
+                <li data-val="2">教育</li>
+                <li data-val="3">医疗</li>
+            </ul>
+            <div class="map-list">
+                <ul id="r-result">
+                    <li class="loading">请稍后...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--底部-->
+{#include file="_footer.html"#}
+<script type="text/template" id="replaytemp">
+    <div class="c-area">
+        <div class="textarea" contenteditable="true"></div>
+        <a href="javascript:;" class="subtn">回复</a>
+    </div>
+</script>
+<script type="text/template" id="tp">
+    <li data-x="{{point.lng}}" data-y="{{point.lat}}">
+        <div class="_address"><i class="hy-address"></i></div>
+        <div class="add-info">
+            <p><font class="s_title">{{title}}</font>  <span class="distance">{{distance}}</span></p>
+            <span class="s_address">{{address}}</span><br>
+        </div>
+    </li>
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/mustache.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+
+<!--地图 s-->
+{#if $site_map == "baidu"#}
+<script type="text/javascript" src="//api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail_map.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+<!--e-->
+
+<script type="text/javascript" src="{#$templets_skin#}js/pic_tab.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
