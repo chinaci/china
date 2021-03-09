@@ -1,0 +1,6 @@
+body {background:#f4f4f4;}
+.information_main .basic,.information_main .Plan {margin-top:.2rem;background:#fff;padding:0 .24rem;}
+.information_title {font-size:.36rem;font-weight:bold;padding:.3rem 0;border-bottom:1px solid #eeeeee;}
+.information_txt {padding-top:.3rem;}
+.information_txt p {padding-bottom:.3rem;font-size:.29rem;}
+.information_txt p span:first-child {color:#9fa1ab;}
