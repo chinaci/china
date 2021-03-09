@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$info_title#}</title>
+<meta name="keywords" content="{#$info_keywords#}" />
+<meta name="description" content="{#$info_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap fn-clear">
+	<!-- 大图幻灯 s -->
+	<div class="slideshow_640_274">
+		<div id="slideshow640274">
+		  {#myad title="二手信息_模板一_电脑端_广告二" type="slide"#}
+		</div>
+		<a href="javascript:;" class="prev" id="slidebtn640274_prev"><i></i></a>
+		<a href="javascript:;" class="next" id="slidebtn640274_next"><i></i></a>
+	</div>
+	<!-- 大图幻灯 e -->
+
+	<div class="btn-app">
+		<a class="btn-post" href="#"><span class="tit">我要推广</span><span class="subtit">每天有海量用户找到</span></a>
+		<a class="btn-post" href="#"><span class="tit">一键转卖</span><span class="subtit">转卖已买到的宝贝</span></a>
+		<div class="app">
+			<a href="{#$cfg_basehost#}/mobile.html" class="download">免费下载</a>
+			<a href="javascript:;" class="scode">扫码</a>
+		</div>
+		<div class="codepop"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}"><p>扫描下载客户端</p><i></i></div>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="hd">
+		<h2>最新发布</h2>
+		<a href="javascript:;" class="change" data-type="new" data-page="1"><i></i>换一换</a>
+	</div>
+	<div class="hc">
+		<ul class="fn-clear">
+			{#info action="ilist" return="ilist" orderby="1" thumb="1" pageSize="16"#}
+			<li>
+				<a href="{#$ilist.url#}">
+					<img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" />
+					<div class="info">
+						<p>{#$ilist.title#}</p>
+						<p><span class="price fn-hide">{#echoCurrency type='symbol'#} 168.0</span><span class="addr">{#$ilist.address#}</span></p>
+						<span class="bg"></span>
+					</div>
+				</a>
+			</li>
+			{#/info#}
+		</ul>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="hd">
+		<h2>推荐信息</h2>
+		<a href="javascript:;" class="change" data-type="rec" data-page="1"><i></i>换一换</a>
+	</div>
+	<div class="hc">
+		<ul class="fn-clear">
+			{#info action="ilist" return="ilist" orderby="1" rec="1" thumb="1" pageSize="16"#}
+			<li>
+				<a href="{#$ilist.url#}">
+					<img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" />
+					<div class="info">
+						<p>{#$ilist.title#}</p>
+						<p><span class="price fn-hide">{#echoCurrency type='symbol'#} 168.0</span><span class="addr">{#$ilist.address#}</span></p>
+						<span class="bg"></span>
+					</div>
+				</a>
+			</li>
+			{#/info#}
+		</ul>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="hd">
+		<h2>热门信息</h2>
+		<a href="javascript:;" class="change" data-type="hot" data-page="1"><i></i>换一换</a>
+	</div>
+	<div class="hc">
+		<div class="hotnews fn-clear">
+			<dl>
+				{#info action="ilist" return="alist" orderby="2" page="1" pageSize="8"#}
+				<dd>{#if $_bindex.alist > 3#}<i>{#else#}<i class="t">{#/if#}{#$_bindex.alist#}</i><a href="{#$alist.typeurl#}" class="type">[{#$alist.typename#}]</a><a href="{#$alist.url#}" title="{#$alist.title#}">{#$alist.title#}</a></dd>
+				{#/info#}
+			</dl>
+			<dl>
+				{#info action="ilist" return="blist" orderby="2" page="2" pageSize="8"#}
+				<dd>{#if $_bindex.blist > 4#}<i>{#else#}<i class="t">{#/if#}{#$_bindex.blist#}</i><a href="{#$blist.typeurl#}" class="type">[{#$blist.typename#}]</a><a href="{#$blist.url#}" title="{#$blist.title#}">{#$blist.title#}</a></dd>
+				{#/info#}
+			</dl>
+			<dl>
+				{#info action="ilist" return="clist" orderby="2" page="3" pageSize="8"#}
+				<dd>{#if $_bindex.clist > 3#}<i>{#else#}<i class="t">{#/if#}{#$_bindex.clist#}</i><a href="{#$clist.typeurl#}" class="type">[{#$clist.typename#}]</a><a href="{#$clist.url#}" title="{#$clist.title#}">{#$clist.title#}</a></dd>
+				{#/info#}
+			</dl>
+		</div>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="hd">
+		<h2>优质商家推荐</h2>
+		<a href="javascript:;" class="more">更多&raquo;</a>
+	</div>
+	<div class="hc business">
+		<a href="javascript:;" class="prev"><i></i></a>
+		<div class="slide">
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/1.png"><p>璟福源茶叶</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/2.png"><p>歌兔服饰旗舰店</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/3.png"><p>zhangzhen51</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/4.png"><p>specialx</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/5.png"><p>阿土团队</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/6.png"><p>猫猫88</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/7.png"><p>vadfasdf</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/8.png"><p>ampais嗯贝氏</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/9.png"><p>表尚表</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/10.png"><p>189coffee</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/11.png"><p>zjun0106</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/12.png"><p>静十一郎</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/13.png"><p>艾莫创意</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/14.png"><p>车泓车品专营店</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/10.png"><p>189coffee</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/11.png"><p>zjun0106</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/7.png"><p>vadfasdf</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/8.png"><p>ampais嗯贝氏</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/1.png"><p>璟福源茶叶</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/2.png"><p>歌兔服饰旗舰店</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/4.png"><p>specialx</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/5.png"><p>阿土团队</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/3.png"><p>zhangzhen51</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/9.png"><p>表尚表</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/10.png"><p>189coffee</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/8.png"><p>ampais嗯贝氏</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/9.png"><p>表尚表</p></a></li>
+			<li><a href="#"><img src="{#$templets_skin#}images/ad/10.png"><p>189coffee</p></a></li>
+		</div>
+		<a href="javascript:;" class="next"><i></i></a>
+	</div>
+</div>
+
+<div class="wrap type-wrap">
+	<div class="type-tab">
+		<ul class="fn-clear">
+			{#info action="type" return="type1" pageSize="13"#}
+			<li{#if $_bindex.type1 == 1#} class="active"{#/if#}><a href="{#$type1.url#}" target="_blank" title="{#$type1.typename#}">{#$type1.typename#}</a></li>
+			{#/info#}
+		</ul>
+	</div>
+	<div class="type-con hc">
+		{#info action="type" return="type2" pageSize="13"#}
+		<ul class="fn-clear"{#if $_bindex.type2 == 1#} style="display:block;"{#/if#}>
+			{#info action="ilist" return="alist" thumb="1" typeid={#$type2.id#} pageSize="16"#}
+			<li>
+				<a href="{#$alist.url#}">
+					<img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" />
+					<div class="info">
+						<p>{#$alist.title#}</p>
+						<p><span class="price fn-hide">{#echoCurrency type='symbol'#} 168.0</span><span class="addr">{#$alist.address#}</span></p>
+						<span class="bg"></span>
+					</div>
+				</a>
+			</li>
+			{#/info#}
+		</ul>
+		{#/info#}
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

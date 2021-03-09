@@ -1,0 +1,79 @@
+body {font-family: 'microsoft yahei';}
+a:hover {color: #fd5115;}
+
+/* 顶部幻灯 */
+.slideshow_1200_80 {height: 80px; position: relative; z-index: 99; margin: 10px auto;}
+#slideshow120080 {height: 80px; overflow: hidden; position: relative; z-index: 9;}
+.slideshow_1200_80 .slideshow-item {position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 11;}
+.slideshow_1200_80 .slideshow-item a, .slideshow_1200_80 .slideshow-item a img {width: 1000px; height: 80px; display: block;}
+.w1200 .slideshow_1200_80 .slideshow-item a, .w1200 .slideshow_1200_80 .slideshow-item a img {width: 1200px;}
+.slideshow_1200_80 .slideshow-item .slideinfo {display: none;}
+.slideshow_1200_80 .slidebtn {position: absolute; bottom: 10px; right: 10px; text-align: right; z-index: 10;}
+.slideshow_1200_80 .slidebtn a {background: #a9c6d8; width: 10px; height: 10px; border-radius: 100%; display: inline-block; _display: inline; _zoom: 1; margin: 0 0 0 10px; font-size: 0;}
+.slideshow_1200_80 .slidebtn a.activeSlide {background: #6c9f02;}
+.slideshow_1200_80 .close {position: absolute; right: 4px; top: 4px; z-index: 10; width: 12px; height: 12px; background: url('/static/images/icons.png') no-repeat -12px -855px; font-size: 0;}
+
+/* 头部 */
+.header {padding-top: 10px;}
+h1.logo {float: left; width: 247px; height: 81px; margin-left: 5px;}
+h1.logo a, h1.logo img { max-width: 247px;max-height: 81px;}
+
+.header .search {float: left; margin: 12px 0 0 50px;}
+.header .txt_search {border: 1px solid #b0b0b0; border-top-color: #888; border-right: 0; font-size: 14px; background-color: #fff; padding: 10px 3px 10px 5px; width: 260px; height: 16px; overflow: hidden; float: left; _line-height: 20px; color: #1b1b1b; background: none; text-indent: 5px;}
+.w1200 .header .txt_search {width: 460px;}
+.header .txt_search:focus {background-color: #fcfcfc; -webkit-box-shadow: 2px 2px 3px #eee inset; -moz-box-shadow: 2px 2px 3px #eee inset; box-shadow: 2px 2px 3px #eee inset; color:#1b1b1b; border-color:#5d9b3d; outline:none;}
+.header .btn-s {float: left; color: #fff; font-weight: bold; cursor: pointer; background-color: #60af00; width: 86px; height: 38px; border: 1px solid #5d9b4d; font-size: 14px; font-family: simsun; _line-height: 38px; _border: 0;}
+.header .btn-s:hover {background-color: #50931e;}
+.header .hot-s {width: 356px; height: 26px; overflow: hidden; line-height: 26px; clear: both;}
+.w1200 .header .hot-s {width: 575px;}
+.header .hot-s span {float: left; color: #999; margin-right: 5px;}
+.header .hot-s a {float: left; margin-right: 10px; color: #06c;}
+.header .hot-s a:hover {color: #fd5115; text-decoration: underline;}
+
+.header .edit {float: right; margin: 10px 5px 0 0;}
+.header .edit a {float: left; width: 135px; height: 40px; margin-left: 10px; line-height: 40px; text-align: center; font-family: 'microsoft yahei'; font-size: 16px; color: #fff; border-radius: 3px;}
+.header .edit a.btn-post {background: #4daeff;}
+.header .edit a:hover.btn-post {background: #0f8df6;}
+.header .edit a.btn-edit {background: #ffa14f;}
+.header .edit a:hover.btn-edit {background: #f97d11;}
+
+/* 导航 */
+.nav {height: 40px; margin-top: 18px; font-family: 'microsoft yahei';}
+
+/* 左侧浮动导航 */
+.lnav {float: left; width: 240px; position: relative; z-index: 1001;}
+.lnav .t-category {height: 40px; text-indent: 20px; background: #a8d300; font-size: 20px; color: #fff; line-height: 40px;}
+.lnav .category-popup {position: absolute; left: 0; right: 0; top: 40px; background: #f7f7f7; border-left: 1px solid #eaeaea; border-right: 1px solid #eaeaea;}
+.lnav .category-popup li {height: 54px; line-height: 54px; padding: 0 8px 0 13px; border-bottom: 1px solid #eaeaea; margin-top: -1px; _zoom: 1;}
+.lnav .category-popup li a {color: #333;}
+.lnav .category-popup li a:hover {color: #fd5115;}
+.lnav .category-popup li .name {float: left; font-size: 18px;}
+.lnav .category-popup li .item {float: right; color: #8c8c8c; margin-right: 7px; max-width: 62px; overflow: hidden; white-space: nowrap; display: block; text-overflow: ellipsis;}
+.lnav .category-popup li .arrow {width: 5px; height: 10px; float: right; margin-top: 23px; background: url('../images/sprite.png') -33px -13px;}
+
+/* 鼠标经过 */
+.lnav .category-popup li.active {margin: -2px -1px 0 -2px; border-top: 1px solid #e3e3e3; border-color: #e3e3e3; border-left: 2px solid #a8d300; background-color: #fff; -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.05); box-shadow: 3px 3px 3px rgba(0,0,0,0.05); padding-right: 12px;}
+.lnav .category-popup li.active .arrow {position: relative; background: #fff; width: 10px; height: 54px; top: 0; right: -16px; margin-left: -8px; margin-top: 0; z-index: 200;}
+
+.lnav .sub-category {display: none; position: absolute; left: 238px; top: -2px; bottom: 0; min-width: 120px; border: 1px solid #e3e3e3; background-color: #fff; -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.05); box-shadow: 3px 3px 3px rgba(0,0,0,0.05); padding: 0 25px; z-index: 40; text-align: left;}
+.lnav .category-popup li.active .sub-category {display: block;}
+.lnav .sub-category dl {height: 100%; -webkit-animation:leftFadeIn .3s ease-out; -moz-animation:leftFadeIn .3s ease-out; animation:leftFadeIn .3s ease-out;}
+.lnav .sub-category dt {border-bottom: 1px solid #e3e3e3; height: 36px; line-height: 36px; padding-top: 9px;}
+.lnav .sub-category dt a {color: #8c8c8c; font-size: 16px;}
+.lnav .sub-category dt a:hover {color: #dc0001;}
+.lnav .sub-category dd {padding-top: 5px;}
+.lnav .sub-category dd .subitem {float: left; width: 120px;}
+.lnav .sub-category dd a {float: left; height: 32px; line-height: 32px; font-size: 14px; width: 120px; color: #282828;}
+
+.lnav .category-popup .more {height: 8px; border-bottom: 1px solid #eaeaea; padding-top: 2px;}
+.lnav .category-popup .more i {width: 10px; height: 5px; overflow: hidden; display: block; margin: 0 auto; background: url('../images/sprite.png') -40px -16px;}
+
+/* 右侧固定导航 */
+.tnav {float: left; width: 740px; height: 38px; padding-left: 20px; border-bottom: 2px solid #000;}
+.w1200 .tnav {width: 940px;}
+.tnav li {float: left;}
+.tnav li a {position: relative; display: block; padding: 0 18px; color: #333; font-size: 18px; height: 38px; line-height: 38px;}
+.tnav li a:hover {background: #a8d300; color: #fff;}
+.tnav li a i {position: absolute; top: -1px; right: 5px; width: 23px; height: 15px; background: url('../images/sprite.png') no-repeat;}
+.tnav li a i.hot {background-position: -1px -24px;}
+.tnav li a i.new {background-position: -26px -24px;}

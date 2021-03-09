@@ -1,0 +1,119 @@
+.phone_record_infor{
+	width: 1200px;
+	margin: 18px auto;
+	height: 107px;
+	border: 1px solid #e1e1e1;
+	background: url(../images/p_1.jpg) no-repeat right;
+}
+.phone_record_infor i{
+	font-size: 20px;
+	font-weight: bold;
+	color: #ff0101;
+	margin-top: 20px;
+	display: block;
+	margin-left: 28px;
+}
+.phone_record_infor .information{
+	font-size: 16px;
+	color: #000;
+	margin-left: 28px;
+	margin-top: 10px;
+}
+.phone_record_infor .information p{
+	float: left;
+}
+.phone_record_infor .information strong{
+	margin:0 5px;
+	float: left;
+}
+.phone_record_infor .information em{
+	float: left;
+	color: #ef4140;
+	margin: 0 5px;
+}
+.phone_record_lead{
+	width: 1200px;
+	margin: 0 auto;
+	border-bottom: 2px solid #a7d500;
+}
+.phone_record_lead span{
+	width: 139px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	background: #a7d500;
+	float: left;
+	font-size: 16px;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.phone_record_list{
+	width: 1198px;
+	margin: 0 auto;
+	border: 1px solid #d4d0d1;
+	border-top: none;
+}
+.phone_record_list .pr_lead {
+	height: 40px;
+	line-height: 40px;
+	color: #a6a6a6;
+}
+.phone_record_list .pr_lead p{
+	float: left;
+}
+.phone_record_list .pr_lead p.title{
+	margin-left: 12px;
+	margin-right: 540px;
+}
+.phone_record_list .pr_lead p.kind{
+	margin-right: 92px;
+}
+.phone_record_list .pr_lead p.people{
+	margin-right: 126px;
+}
+.phone_record_list .pr_lead p.price{
+	margin-right: 135px;
+}
+.phone_record_list .pr_list ul li{
+	height: 59px;
+	font-size: 14px;
+	border-top: 1px solid #d4d0d1;
+}
+.phone_record_list .pr_list ul li p{
+	float: left;
+	padding: 19px 0;
+}
+.phone_record_list .pr_list p.title{
+	margin-left: 12px;
+	margin-right: 60px;
+	width: 516px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #2656dc;
+}
+.phone_record_list .pr_list p.kind{
+	margin-right: 50px;
+	width: 77px;
+	text-align: center;
+}
+.phone_record_list .pr_list p.people{
+	margin-right: 50px;
+	width: 100px;
+	overflow: hidden;
+	text-align: center;
+	color: #2656dc;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.phone_record_list .pr_list p.people.price{
+	color: #ff5837;
+}
+.phone_record_list .pr_list p.people a {
+	color: #2656dc;
+}
+.phone_record_list .pr_list p.time{
+	font-weight: bold;
+}

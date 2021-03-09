@@ -1,0 +1,75 @@
+{#include file="../../siteConfig/top1.html"#}
+
+<!-- 顶部幻灯 s -->
+<div class="wrap slideshow_1200_80">
+	<div id="slideshow120080">
+	  {#myad title="二手信息_模板一_电脑端_广告一" type="slide"#}
+	</div>
+	<div id="slidebtn120080" class="slidebtn"></div>
+	<a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+<!-- 顶部幻灯 e -->
+
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$info_channelDomain#}" title="{#$info_channelName#}"><img src="{#$info_logoUrl#}" alt="{#$info_channelName#}" /></a></h1>
+	<div class="search">
+		<form name="search" method="post" action="{#getUrlPath service='info' template='list'#}">
+			<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="想找什么？输入类别或关键字试试" data-role="input" />
+			<input data-role="btn" name="search" id="search_button" type="submit" value="搜 索" class="btn-s" />
+		</form>
+		<p class="hot-s">
+			<span>热门搜索：</span>
+			{#siteConfig module="info" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	<div class="edit fn-clear">
+		<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="btn-post">发布信息</a>
+		<a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank" class="btn-edit">修改信息</a>
+	</div>
+</div>
+
+<div class="wrap nav fn-clear">
+	<div class="lnav{#if $template != 'index'#} shnav{#/if#}">
+		<div class="t-category">热门信息分类</div>
+		<div class="category-popup{#if $template != 'index'#} fn-hide{#/if#}">
+			<ul>
+				{#info action="type" return='type'#}
+				{#if $_bindex.type > 5 && $template == 'index'#}
+				<li class="fn-hide">
+				{#else#}
+				<li>
+				{#/if#}
+					<a href="{#$type.url#}" class="name">{#$type.typename#}</a>
+					<i class="arrow"></i>
+					{#info action="type" return='subtype' type="{#$type.id#}" page="1" pageSize="2"#}
+					<a href="{#$subtype.url#}" class="item">{#$subtype.typename#}</a>
+					{#/info#}
+					<div class="sub-category">
+						<dl>
+							<dt><h2 class="title"><a href="{#$type.url#}">{#$type.typename#}</a></h2></dt>
+							<dd class="fn-clear">
+								{#info action="type" return='subtype1' type="{#$type.id#}"#}
+								<a href="{#$subtype1.url#}">{#$subtype1.typename#}</a>
+								{#/info#}
+							</dd>
+						</dl>
+					</div>
+				</li>
+				{#/info#}
+			</ul>
+			{#if $template == 'index'#}<div class="more"><i></i></div>{#/if#}
+		</div>
+	</div>
+	<div class="tnav">
+		<ul class="fn-clear">
+			<li><a href="{#$info_channelDomain#}" target="_blank">首页</a></li>
+			{#siteConfig action="siteModule" return="module"#}
+			{#if $_bindex.module < 7#}
+			<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+			{#/if#}
+			{#/siteConfig#}
+		</ul>
+	</div>
+</div>
