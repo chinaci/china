@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-楼盘详情-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}楼盘详情" />
+<meta name="description" content="{#$cfg_shortname#}提供{#$detail_title#}售楼电话({#$detail_tel#})、最新房价、地址、交通和周边配套、开盘动态、户型图、实景图等楼盘信息。{#$cfg_shortname#}提供{#$detail_title#}最新、最及时的价格走势，最活跃、集聚最多人气的{#$detail_title#}业主论坛，最全最及时的{#$detail_title#}楼盘信息尽在{#$cfg_shortname#}!" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_public.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData_ = {
+		id: '{#$detail_id#}',
+		panName: '{#$detail_title#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
+	};
+
+	var site_map = "{#$site_map#}";
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+{#$loupanNav = 4#}
+{#$crumbTitle = "新房顾问"#}
+{#include file="loupan_top.html"#}
+
+
+
+<!-- 新房顾问 s-->
+<div class="wrap xfAdviser">
+	<ul class="fn-clear">
+        {#house action=gwUserList loupanid=$detail_id pageSize=100 return=gw#}
+		<li class="fn-clear">
+    		<div class="itemImg fn-left">
+    			<img src="{#$gw.photo#}" alt="">
+    		</div>
+    		<div class="itemInfo fn-left">
+    			<p class="pitem fn-clear"><span class="itname">{#$gw.nickname#}</span>{#if $gw.post#} <span class="ittag">{#$gw.post#}</span>{#/if#}</p>
+    			<p class="scount"><span>本楼盘带看 {#$gw.see#} 次</span>成交 {#$gw.suc#} 单</p>
+               <p class="contel"> <b>{#$gw.phone#}</b></p>
+    		</div>
+		</li>
+        {#/house#}
+        <!-- <div class="empty">抱歉，该楼盘暂无顾问！</div>  		 -->
+	</ul>
+	
+</div>
+<!-- 新房顾问 e-->
+
+
+
+
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragImg.js"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_public.js"></script>
+
+</body>
+</html>

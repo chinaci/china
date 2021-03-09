@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-楼盘详情-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}楼盘详情" />
+<meta name="description" content="{#$cfg_shortname#}提供{#$detail_title#}售楼电话({#$detail_tel#})、最新房价、地址、交通和周边配套、开盘动态、户型图、实景图等楼盘信息。{#$cfg_shortname#}提供{#$detail_title#}最新、最及时的价格走势，最活跃、集聚最多人气的{#$detail_title#}业主论坛，最全最及时的{#$detail_title#}楼盘信息尽在{#$cfg_shortname#}!" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    var cenicon = "{#$templets_skin#}images/mark_ditu.png";
+    var iconimg = "{#$templets_skin#}images/map_icon.png";
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_title#}';
+	var pageData_ = {
+		id: '{#$detail_id#}',
+		panName: '{#$detail_title#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
+	};
+
+	var site_map = "{#$site_map#}";
+
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+{#$loupanNav = 1#}
+{#$crumbTitle = "楼盘首页"#}
+{#include file="loupan_top.html"#}
+
+
+
+<!-- 最新活动 s-->
+<div class="wrap newAct fn-clear">
+	<div class="nAtop"><i class="inew"></i> 最新活动</div>
+	<div class="nAmain fn-clear">
+		{#if $detail_tuan == 1 && $detail_tuanState == 2#}
+		<div class="imgbox fn-left"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>
+		<div class="infbox fn-left">
+			<h2>看房团 :  {#$detail_tuantitle#}</h2>
+			<p class="ptime">时间： <b>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</b> </p>
+			<div class="time" data-ntime="{#$smarty.now#}" data-etime="{#$detail_tuanend#}"><span>报名倒计时：<em>00</em>天<em>00</em>小时<em>00</em>分<em>48</em>秒</span></div>
+			<div class="tcount"><i class="itnum"></i> <span><b>{#$detail_tuanCount#}</b>人已参与</span></div>
+			<a href="javascript:;" class="bm">立即报名</a>
+		</div>
+		{#else#}
+		<div class="empty">暂无活动</div>
+		{#/if#}
+	</div>
+
+</div>
+<!-- 最新活动 e-->
+
+
+<!-- 楼盘动态 s-->
+<div class="wrap lptrend fn-clear">
+	<div class="dy">
+		<div class="lp_title">信息订阅</div>
+		<div class="dc">
+			<div class="fn-clear">
+				<dl><dd><s class="checkbox cbj checked" data-val="1"><i></i></s>变价通知<span>及时优惠折扣，不容错过</span></dd></dl>
+				<dl><dd><s class="checkbox ckp checked" data-val="2"><i></i></s>开盘通知<span>开盘必特价，特价必升值</span></dd></dl>
+				<dl><dd><s class="checkbox cbm checked" data-val="3"><i></i></s>看房团报名<span>多线路多楼盘，免费大巴</span></dd></dl>
+				<dl><dd><s class="checkbox checked" data-val="4"><i></i></s>订阅消息<span>新鲜楼盘动态，第一时间掌握</span></dd></dl>
+			</div>
+			<ul>
+				<li><input type="text" id="name1" placeholder="您的姓名" title="请输入您的姓名"></li>
+				<li>
+					<div class="inpbdr">
+						<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+						<input type="text" id="phone1" placeholder="您的手机号码" maxlength="11" title="请输入您的手机号码">
+						<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+					</div>
+					<!--国际区号弹窗-->
+					<div class="areaCode_wrap areaCode_wrap2">
+						<ul>
+
+						</ul>
+					</div>
+				</li>
+				<li><input type="text" id="vercode1" placeholder="验证码" maxlength="4" title="请输入验证码"><img src="{#$cfg_basehost#}/include/vdimgck.php" title="看不清？点击换一张" id="verifycode"></li>
+				<li class="tj"><button id="btnTj">立即订阅</button><s class="checkbox checked xy"><i></i></s>同意[<a href="#" target="_blank">免责协议</a>]</li>
+			</ul>
+		</div>
+	</div>
+	<div class="lpleft">
+		<div class="lpTop">楼盘动态 <a href="{#getUrlPath service="house" template="loupan-news" id="{#$detail_id#}"#}#nav" class="lpmore">查看更多 ></a></div>
+		{#house action="loupanNewsList" return="news" loupanid={#$detail_id#} pageSize="4"#}
+		<dl {#if $_bindex.news == 1#}class="curr"{#/if#}>
+			<dt>楼盘资讯</dt>
+			<dd>
+				<div class="dtop"><a href="{#$news.url#}" target="_blank">{#$news.title#}</a> <em>{#$news.pubdate|date_format:'%Y-%m-%d'#}</em></div>
+				<div class="dmain">
+					<span>{#$news.note#}...</span> <a href="{#$news.url#}" target="_blank" class="read_all">阅读全文</a>
+				</div>
+			</dd>
+		</dl>
+		{#/house#}
+	</div>
+</div>
+<!-- 楼盘动态 e-->
+
+<!-- 楼盘户型 s-->
+<div class="wrap lphx fn-clear">
+	<div class="lpTop fn-clear">
+		<span>楼盘户型 </span>
+		<ul class="tab_nav">
+			{#$i = 0#}
+			{#house action="apartmentList" act="loupan" get="roomGroup" return="apartment" loupanid={#$detail_id#} pageSize="1"#}
+			{#if $i < 5#}
+			<li {#if $i == 0#}class="curr"{#/if#}><a href="javascript:;">{#numberDaxie number=$apartment.room#}居({#$apartment.num#})</a></li>
+			{#$i = $i + 1#}
+			{#/if#}
+			{#/house#}
+		</ul>
+		<a href="{#getUrlPath service='house' template='loupan-hx' id={#$detail_id#}#}#nav" class="lpmore">查看所有户型 ></a>
+	</div>
+	{#$i = 0#}
+	{#house action="apartmentList" act="loupan" get="roomGroup" return="apartment" loupanid={#$detail_id#} pageSize="1"#}
+	{#if $i < 5#}
+	<div class="tab_content{#if $i == 0#} show{#/if#}">
+		<ul class="fn-clear">
+			{#house action="apartmentList" act="loupan" return="apartmentList" loupanid={#$detail_id#} room={#$apartment.room#} pageSize="4"#}
+			<li>
+				<a href="{#$apartmentList.url#}" target="_blank">
+					<div class="imgbox">
+						{#if $i == 0#}
+						<img src="{#$apartmentList.litpic#}" alt="{#$apartmentList.title#}-{#$apartmentList.area#}{#echoCurrency type='areasymbol'#}">
+						{#else#}
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$apartmentList.litpic#}" alt="{#$apartmentList.title#}-{#$apartmentList.area#}{#echoCurrency type='areasymbol'#}">
+						{#/if#}
+					</div>
+					<div class="incbox">
+						<h4>{#$apartmentList.title#}</h4>
+						<p class="price">{#if $apartmentList.price > 0#}<b>{#$apartmentList.price#}</b>万{#else#}<b>&nbsp;</b>{#/if#}</p>
+						<p class="space"><span>{#$apartmentList.room#}室{#$apartmentList.hall#}厅{#$apartmentList.guard#}卫</span>{#if $apartmentList.area > 0#}<em>|</em><span>{#$apartmentList.area#}{#echoCurrency type='areasymbol'#}</span>{#/if#}</p>
+					</div>
+				</a>
+			</li>
+			{#/house#}
+		</ul>
+	</div>
+	{#$i = $i + 1#}
+	{#/if#}
+	{#/house#}
+
+</div>
+<!-- 楼盘户型 e-->
+
+<!-- 新房顾问 s-->
+<div class="xfAdviser">
+	<div class="wrap lpTop fn-clear">
+		新房顾问
+		<span>为您提供以下服务：楼盘解读 户型分析 专业解答 快速回复</span>
+		<a href="{#getUrlPath service="house" template="loupan-adviser" id="{#$detail_id#}"#}#nav" class="lpmore">查看所有顾问 ></a>
+	</div>
+
+	<div class="wrap adviserbox">
+		<div class="slideBox adviBox">
+	    <div class="slidewrap">
+        <div class="slide">
+					<div class="bd">
+				    <div class="slideshow-item" >
+							{#foreach from=$detail_gw item=gw#}
+				    	<div class="slitem fn-clear">
+				    			<div class="itemImg fn-left">
+				    				<img src="{#$gw.photo#}" alt="">
+				    			</div>
+				    			<div class="itemInfo fn-left">
+				    				<p class="pitem fn-clear"><span class="itname">{#$gw.nickname#}</span>{#if $gw.post#} <span class="ittag">{#$gw.post#}</span>{#/if#}</p>
+				    				<p class="scount"><span>本楼盘带看 {#$gw.see|string_format:"%d"#} 次</span>成交 {#$gw.suc|string_format:"%d"#} 单</p>
+				    				<p class="contel"> <b>{#$gw.phone#}</b></p>
+				    			</div>
+				    	</div>
+				    	{#/foreach#}
+				    </div>
+					</div>
+					<div class="hd"><ul></ul></div>
+        </div>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+	    </div>
+		</div>
+	</div>
+</div>
+<!-- 新房顾问 e-->
+
+<!-- 周边配套 s -->
+<div class="wrap peripheryAround">
+	<div data-component="mapCard" class="around" id="around">
+		<h2 class="aroundTitle" id="around_map">周边配套</h2>
+		<div class="aroundContainer">
+			<div class="aroundMap" id="map"></div>
+	    	<div class="tabBox">
+		    	<ul class="aroundType">
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="公交站,地铁站" data-index="bus,subway" data-length="10,10">交通</li>
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+				            data-index="kindergarten,primary-school,middle-school,University"
+				            data-length="10,10,10,10"
+				       >教育</li>
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+				    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+		    	</ul>
+	      		<div class="itemTagBox"></div>
+	      		<div class="aroundList" id="mapListContainer"></div>
+	      		<div class="loading">
+	        		<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+	        		<span class="loadingText">努力加载中...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 周边配套 e -->
+
+<!-- 楼盘相册 s-->
+<div class="wrap lpAlbum">
+	<div class="lpTop fn-clear">
+		<span>楼盘相册 </span>
+		<ul class="tab_nav">
+			{#$i = 0#}
+			{#house action="albumList" return="list" act="loupan" loupanid={#$detail_id#} pageSize="5"#}
+			<li><a href="javascript:;">{#$list.title#}({#$list.imglist|count#})</a> <s></s></li>
+			{#$i = $i + 1#}
+			{#/house#}
+		</ul>
+		<a href="{#getUrlPath service="house" template="loupan-album" id="{#$detail_id#}"#}#nav" class="lpmore">查看全部 ></a>
+	</div>
+	{#$i = 0#}
+	{#house action="albumList" return="list" act="loupan" loupanid={#$detail_id#} pageSize="5"#}
+	<div class="tab_content{#if $i == 0#} show{#/if#}" data-id="{#$list.id#}">
+		<div class="lp_slide" id="lp_slide">
+			<ul class="album">
+				{#house action="albumList" return="photo" act="loupan" loupanid={#$detail_id#} id={#$list.id#}  pageSize="5"#}
+				{#foreach from=$photo.imglist item=img key=k#}
+				<li>
+					<a href="{#$img.path#}" target="_blank">
+						{#if $i == 0#}
+						<img src="{#$img.path#}" title="{#$list.title#}" />
+						{#else#}
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$img.path#}" title="{#$img.info#}" />
+						{#/if#}
+					</a>
+				</li>
+				{#/foreach#}
+				{#/house#}
+			</ul>
+			<div class="pageState"></div>
+
+			<div class="thumb">
+				<div class="plist">
+					<ul >
+						{#house action="albumList" return="photo" act="loupan" loupanid={#$detail_id#} id={#$list.id#}  pageSize="5"#}
+						{#foreach from=$photo.imglist item=img key=k#}
+						<li>
+							<a href="javascript:;">
+								<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$img.path|replace:"large":"small"#}" title="{#$img.info#}" />
+							</a>
+						</li>
+						{#/foreach#}
+						{#/house#}
+					</ul>
+				</div>
+				<a href="javascript:;" class="sprev">
+					<i></i>
+				</a>
+				<a href="javascript:;" class="snext">
+					<i></i>
+				</a>
+			</div>
+			<div class="thumb_bg"></div>
+		</div>
+	</div>
+	{#$i = $i + 1#}
+	{#/house#}
+</div>
+<!-- 楼盘相册 e-->
+
+
+<!-- 沙盘看房 s -->
+<div class="wrap shapan"  id="shapan">
+	<div class="lpTop fn-clear">沙盘看房</div>
+	<div class="shapanBox fn-clear">
+		{#if $detail_shapan#}
+		<!-- 左侧图片区域 s -->
+		<div class="sandleft fn-left">
+			<div class="sandimg nikan-area" id="dzshapan" >
+				<div id="shapan-box">
+					<div id="shapan-obj">
+						<img src="{#$detail_shapan['litpic']#}" alt="" />
+						{#foreach from=$detail_shapan['data'] item=conf name=d#}
+						<span class="map-mark" style="left: {#$conf.coorx#}px; top: {#$conf.coory#}px;"><em>{#$conf.name#}</em>{#if $conf.state == 0#}<em class="forsale">待售</em>{#elseif $conf.state == 1#}<em class="onsale">在售</em>{#else#}<em class="outsale">售罄</em>{#/if#}<i></i></span>
+						{#/foreach#}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左侧图片区域 e -->
+		<!-- 右边tab区域 s -->
+		<div class="dist-detail fn-right">
+			<div class="dist-tab" id="j-switch-distinfo">
+				<div class="dist-clip">
+					<ul >
+						{#foreach from=$detail_shapan['data'] item=conf name=d#}
+            <li class="on"><a href="javascript:;">{#$conf.name#}</a></li>
+			  		{#/foreach#}
+					</ul>
+				</div>
+				<a href="javascript:;" class="prev prev-dis"><i></i></a>
+				<a href="javascript:;" class="next"><i></i></a>
+			</div>
+			<div id="j-dist-content">
+				{#foreach from=$detail_shapan['data'] item=conf name=d#}
+				<div class="dist-items fn-hide">
+					<ul>
+						<li>
+							<p><span>均价：</span>{#$conf.price#}</p>
+							<p><span>层数：</span>{#$conf.floor#}</p>
+						</li>
+						<li>
+							<p><span>户数：</span>{#$conf.hushu#}</p>
+							<p><span>梯数：</span>{#$conf.tishu#}</p>
+						</li>
+						{#*
+						<li>
+							<p><span>装修：</span>精装</p>
+							<p><span>产权：</span>70年</p>
+						</li>
+						*#}
+						<li>
+							<p><span>开盘：</span>{#if $conf.began#}{#$conf.began#}{#else#}待定{#/if#}</p>
+							<p><span>交房：</span>{#if $conf.end#}{#$conf.end#}{#else#}待定{#/if#}</p>
+						</li>
+					</ul>
+
+					{#*
+					<div class="item_con">
+						<p>1#户型</p>
+						<ul>
+							<li><span class="fir">165{#echoCurrency type='areaname'#}复式</span><span class="sec">2室2厅3卫1厨</span><span class="thir">165.00{#echoCurrency type='areasymbol'#}</span><span class="fou">待售</span></li>
+							<li><span class="fir">95{#echoCurrency type='areaname'#}户型</span><span class="sec">2室2厅3卫1厨</span><span class="thir">122.00{#echoCurrency type='areasymbol'#}</span><span class="fou">待售</span></li>
+							<li><span class="fir">125{#echoCurrency type='areaname'#}户型</span><span class="sec">4室2厅2卫1厨</span><span class="thir">125.00{#echoCurrency type='areasymbol'#}</span><span class="fou">待售</span></li>
+						</ul>
+					</div>
+					*#}
+				</div>
+				{#/foreach#}
+			</div>
+		</div>
+		<!-- 右边tab区域 d --></div>
+		{#else#}
+		<div class="empty">暂无沙盘</div>
+		{#/if#}
+</div>
+<!-- 沙盘看房 e -->
+
+
+
+<!-- 全景看房 s -->
+<div class="wrap quanjing" id="quanjing">
+	<div class="lpTop fn-clear">
+		<span>全景看房 </span>
+		<a href="{#getUrlPath service="house" template="loupan-qj" id="{#$detail_id#}"#}" class="lpmore">查看更多 >></a>
+	</div>
+	<ul class="ullist">
+		{#house action="loupanQjList" return="loupanQj" loupanid={#$detail_id#} pageSize="4"#}
+		<li>
+			<a href="{#$loupanQj.url#}" target="_blank" class="pic">
+				<div class="imgbox">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$loupanQj.litpic#}" title="{#$loupanQj.title#}" class="picImg">
+					<div class="cover"></div>
+					<div class="vrIcon"><img src="{#$templets_skin#}images/vr.gif" alt=""></div>
+				</div>
+				<div class="infobox">{#$loupanQj.title#}</div>
+			</a>
+		</li>
+		{#/house#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">抱歉，该楼盘暂无全景！</div>
+		{#/if#}
+	</ul>
+</div>
+<!-- 全景看房 e -->
+
+
+
+<!-- 视频看房 s -->
+<div class="wrap quanjing" id="video">
+	<div class="lpTop fn-clear">
+		<span>视频看房 </span>
+		<a href="{#getUrlPath service="house" template="loupan-video" id="{#$detail_id#}"#}#nav" class="lpmore">查看更多 >></a>
+	</div>
+	<ul class="ullist">
+		{#house action="loupanVideoList" return="loupanVideo" loupanid={#$detail_id#} pageSize="99999"#}
+		<li>
+			<a href="{#$loupanVideo.url#}" target="_blank" class="pic">
+				<div class="imgbox">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$loupanVideo.litpic#}" title="{#$loupanVideo.title#}" class="picImg">
+					<div class="cover"></div>
+					<div class="viIcon"><img src="{#$templets_skin#}images/video.png" alt=""></div>
+				</div>
+				<div class="infobox">{#$loupanVideo.title#}</div>
+			</a>
+		</li>
+		{#/house#}
+		{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉，该楼盘暂无视频！</div>
+		{#/if#}
+	</ul>
+</div>
+<!-- 全景看房 e -->
+
+
+
+<!-- 热门楼盘 s -->
+<div class="wrap lpAround">
+	<div class="lpTop fn-clear">热门楼盘</div>
+	<div class="midbox">
+		<ul class="fn-clear">
+			{#house action=loupanList addrid=$detail_addrid return=loupan pageSize=4#}
+			<li>
+				<a href="{#$loupan.url#}" title="{#$loupan.title#}">
+					<div class="imgbox">
+						<img src="/static/images/blank.gif" data-url="{#$loupan.litpic#}" alt="{#$loupan.title#}">
+					</div>
+					<div class="txtbox">
+						<h4>{#$loupan.title#}</h4>
+						<p class="pprice fn-clear"><span>均价{#if $loupan.price == 0#}<b>待定</b>{#else#}<b>{#$loupan.price#}</b> {#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#/if#}</span></p>
+						<p class="parea"><span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</div>
+				</a>
+			</li>
+			{#/house#}
+		</ul>
+	</div>
+</div>
+<!-- 热门楼盘 e -->
+
+
+
+
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragImg.js"></script>
+
+
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/map-detail-{#$site_map#}.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_public.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_detail.js"></script>
+</body>
+</html>

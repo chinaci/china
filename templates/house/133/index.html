@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>{#$house_title#}</title>
+    <meta name="keywords" content="{#$house_keywords#}">
+    <meta name="description" content="{#$house_description#}">
+    <link rel="stylesheet" type="text/css" media="all" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" href="{#$templets_skin#}css/publicnew.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/indexnew.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}';
+        var geetest = {#$cfg_geetest#};
+    </script>
+</head>
+<body class="w1200">
+<!-- 顶部信息 -->
+{#include file="../../siteConfig/top1.html"#}
+<!-- 头部 导航s-->
+{#$pageCurr = 'index'#}
+{#include file="_top.html"#}
+<!-- 头部 导航e-->
+
+<div class="contain">
+
+    <!--广告轮播 s-->
+    <div class="adbox">
+        <div class="wrap">
+            <div class=" slideBox slideBox1" id="slideBox">
+
+                <div class="hd">
+                    <ul></ul>
+                    <a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a>
+                </div>
+
+                <div class="bd">
+                    <ul>
+                        {#myad title="房产_模板七_电脑端_广告一" type="slide"#}
+                    </ul>
+                </div>
+            </div>
+
+
+        <!--搜索 s-->
+        <div class="ulcover">
+            <div class="searchbox">
+                <div class="search">
+                    <ul class="fn-clear search-top">
+                        <li{#if $pageCurr == 'loupan' || $pageCurr == 'index'#} class="active"{#/if#} data-type="loupan"><a href="javascript:;" data-href="{#getUrlPath service='house' template='loupan'#}">新房</a></li>
+                        <li{#if $pageCurr == 'sale'#} class="active"{#/if#} data-type="community"><a href="javascript:;" data-href="{#getUrlPath service='house' template='sale'#}" >二手房</a></li>
+                        <li{#if $pageCurr == 'news'#} class="active"{#/if#} data-type="#"><a href="javascript:;" data-href="{#getUrlPath service='house' template='news-list'#}" >资讯</a></li>
+                    </ul>
+                    <a href="{#getUrlPath service='house' template='map' action='loupan'#}" target="_blank" class="loc-room">
+                        <img src="{#$templets_skin#}images/loc0.png" alt="">
+                        <span>地图找房</span>
+                    </a>
+                    <div class="search-con">
+                        <input type="text" name="search_keyword" id="search_keyword" class="text" value="{#if $keywords#}{#$keywords#}{#else#}请输入要搜索的关键字...{#/if#}" onfocus="if(this.value=='请输入要搜索的关键字...')this.value='';" onblur="if(this.value=='')this.value='请输入要搜索的关键字...';">
+                        <button type="submit" class="submit" id="search_button"><i></i></button>
+                    </div>
+                    <div class="hotw">
+                        {#$j=1#}
+                        {#siteConfig module="house" action="hotkeywords" return="hotkeywords"#}
+                        <a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#} {#if $j==1#}class="on"{#/if#}>{#$hotkeywords.keyword#}</a>
+                        {#$j=$j+1#}
+                        {#/siteConfig#}
+                    </div>
+                </div>
+                <div class="bg"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--广告轮播 e-->
+
+
+
+
+<div class="wrap">
+    <div class="part1">
+        <ul class="p1nav fn-clear">
+            <li>新房策划</li>
+            <li class="active">新盘入市</li>
+            <li>热销楼盘</li>
+        </ul>
+        <div class="filter">
+            <ul class="container fn-clear">
+                {#house action=loupanList filter="tuan" pageSize=4 return=list#}
+                <li><a href="{#$list.url#}" target="_blank">
+                    <div class="pic">
+                        <img src="{#$list.litpic#}" alt="">
+                        <div class="name_box">
+                            <div class="ingfo fn-clear">
+                                <span class="fn-left na">{#$list.title#} </span>
+                                <span class="fn-right ad">{#$list.addr[$list.addr|@count - 1]#}</span>
+                            </div>
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                    <div class="msg">
+                        <div class="dec fn-clear">
+                            <span class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</span>
+                            <span class="zhu">{#$list.click#}人关注</span>
+                        </div>
+                        <div class="label"><span>{#$list.buildtype[$list.buildtype|@count - 1]#}</span><span>{#$list.zhuangxiu#}</span></div>
+                    </div>
+                </a></li>
+                {#/house#}
+            </ul>
+            <ul class="container show fn-clear">
+                {#house action=loupanList filter="rec" pageSize=4 return=list#}
+                <li><a href="{#$list.url#}" target="_blank">
+                    <div class="pic">
+                        <img src="{#$list.litpic#}" alt="">
+                        <div class="name_box">
+                            <div class="ingfo fn-clear">
+                                <span class="fn-left na">{#$list.title#} </span>
+                                <span class="fn-right ad">{#$list.addr[$list.addr|@count - 1]#}</span>
+                            </div>
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                    <div class="msg">
+                        <div class="dec fn-clear">
+                            <span class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</span>
+                            <span class="zhu">{#$list.click#}人关注</span>
+                        </div>
+                        <div class="label"><span>{#$list.buildtype[$list.buildtype|@count - 1]#}</span><span>{#$list.zhuangxiu#}</span></div>
+                    </div>
+                </a></li>
+                {#/house#}
+            </ul>
+            <ul class="container fn-clear">
+                {#house action=loupanList filter="hot" pageSize=4 return=list#}
+                <li><a href="{#$list.url#}" target="_blank">
+                    <div class="pic">
+                        <img src="{#$list.litpic#}" alt="">
+                        <div class="name_box">
+                            <div class="ingfo fn-clear">
+                                <span class="fn-left na">{#$list.title#} </span>
+                                <span class="fn-right ad">{#$list.addr[$list.addr|@count - 1]#}</span>
+                            </div>
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                    <div class="msg">
+                        <div class="dec fn-clear">
+                            <span class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</span>
+                            <span class="zhu">{#$list.click#}人关注</span>
+                        </div>
+                        <div class="label"><span>{#$list.buildtype[$list.buildtype|@count - 1]#}</span><span>{#$list.zhuangxiu#}</span></div>
+                    </div>
+                </a></li>
+                {#/house#}
+            </ul>
+        </div>
+    </div>
+
+    <div class="bigad bigad1">
+        {#myad title="房产_模板七_电脑端_广告二" type="slide"#}
+    </div>
+
+    <div class="maininfo wrap fn-clear">
+        <div class="leftinfo fn-left">
+
+            <div class="wantlp">
+                <h3 class="title">你想看什么楼盘</h3>
+                <form action="" class="form-input" id="loginForm" onsubmit="return false">
+                    <div class="see">
+                        <div class="type text">
+                            <div class="see-down">
+                                <div class="mbox">
+						<span class="selectType" >
+							<a title="" href="javascript:;" class="ipt"  id="selectTypeText">请选择</a>
+							<span id="selectTypeMenu">
+								{#house action="loupanList" return="loupan" filter="tuan" pageSize="9999"#}
+								<a rel="0" title="" href="javascript:;" data-id="{#$loupan.id#}">{#$loupan.title#}</a>
+								{#/house#}
+							</span>
+							<input type="hidden" name="" class="ipt" value="" id="selectTypeRel">
+							<em class="searchArrow hh abs">下拉选择</em>
+						</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="name name-form fn-clear text">
+                            <input type="text" class="name-text nickname" placeholder="怎么称呼您">
+                        </div>
+                        <div class="name number fn-clear  " id="phone_box">
+                            <div class="text">
+                            <input type="text" class="tel-text" placeholder="请输入手机号">
+                            </div>
+                            <span class="num-tip fn-hide"></span>
+                        </div>
+                        <div class="name code fn-clear text">
+                            <input type="text" class="number yzm_text" id="number" placeholder="请输入验证码">
+                            <button class="gain sendvdimgck">获取</button>
+                        </div>
+                        <div class="book"><button type="submit"class="booking"><img src="{#$templets_skin#}images/yy_icon.png" alt="">预约免费看房</button>
+                        <div class="btn_bg"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+                </form>
+
+            </div>
+
+            <div class="newlp">
+                <h3 class="title">新开楼盘</h3>
+                <div class="content">
+                    <span class="label">热盘推荐</span>
+                    {#house action=loupanList filter="rec" pageSize=3 return=list#}
+                    <div class="nelp_item">
+                        <p class="nam fn-clear">
+                            <a href="{#$list.url#}" target="_blank">{#$list.title#}</a>
+                            <span>{#$list.addr[$list.addr|@count - 1]#}</span>
+                        </p>
+                        <p class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</p>
+                    </div>
+                    {#/house#}
+                </div>
+            </div>
+                <div class="scroll-box">
+                    {#house action="loupanList" return='list' pageSize="12" page=1 orderby=4#}
+                    <div class="scroll">
+                            {#if $temptime!=$list.deliverdate#}
+                            <p class="scroll-time" data-time="{#$j#}">
+                                <img src="{#$templets_skin#}images/intro-01.png" alt="">
+                                <span>{#$list.deliverdate|date_format:'%Y-%m-%d'#}</span>
+                                <em></em>
+                            </p>
+                            {#$temptime=$list.deliverdate#}
+                            {#else#}
+
+                            {#/if#}
+                            <p class="loc">
+                                <a href="{#$list.url#}"><span class="location">{#$list.title#}</span></a>
+                                <a href="{#$list.url#}"><span class="area">{#echoCurrency type='symbol'#}{#if $list.price != 0#}{#$list.price#}{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}待定{#/if#}</span></a>
+                            </p>
+                    </div>
+                    {#/house#}
+
+                </div>
+
+        </div>
+
+        <div class="ct-info fn-right fn-clear">
+            {#$noid=''#}
+            {#house action="news" return="news" orderby="click" page=1 pageSize="1"#}
+            <a class="toumsg" href="{#$news.url#}" target="_blank">
+                <img src="{#$templets_skin#}images/ls_icon.png" alt="{#$news.title#}">
+                {#$news.title#}
+            </a>
+            {#$noid = $noid|cat:{#$news.id#}|cat:","#}
+            {#/house#}
+
+            <div class="fn-clear">
+                <div class="centinfo fn-left">
+                    <div class="mid-ad">
+                        <div class=" slideBox slideBox2" id="slideBox2">
+
+                            <div class="hd">
+                                <ul class="fn-clear"></ul>
+                                <a class="prev" href="javascript:void(0)"></a>
+                                <a class="next" href="javascript:void(0)"></a>
+                            </div>
+
+                            <div class="bd">
+                                <ul>
+                                    {#$n=1#}
+                                    {#house action="news" return="news" noid=$noid orderby="click" page=1 pageSize="4"#}
+                                    <li><a href="{#$news.url#}" target="_blank">
+                                        <img src="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="">
+                                        <div class="ad_tit"><em class="xu">{#$n#}</em><span>{#$news.title#}</span>
+                                        <div class="bg"></div>
+                                        </div>
+                                    </a></li>
+                                    {#$n=$n+1#}
+                                    {#$noid1 = $noid1|cat:{#$news.id#}|cat:","#}
+                                    {#/house#}
+                                    {#if !empty($noid1) || !empty($noid) #}{#$noid1 = $noid1|cat:{#$noid#}#}{#/if#}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mid-list">
+                        <div class="pic">{#myad title="房产_模板七_电脑端_广告三"#}</div>
+                        {#$m=1#}
+                        {#house action="news" return="news" noid=$noid1 page=1 pageSize="4"#}
+                        <a {#if $m==1#}class="on"{#/if#} href="{#$news.url#}" target="_blank">{#$news.title#}</a>
+                        {#$m=$m+1#}
+                        {#$noid2 = $noid2|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid2) || !empty($noid1) #}{#$noid2 = $noid2|cat:{#$noid1#}#}{#/if#}
+                    </div>
+                    <div class="mid-list">
+                        <div class="pic">{#myad title="房产_模板七_电脑端_广告四"#}</div>
+                        {#$m=1#}
+                        {#house action="news" return="news" noid=$noid2 page=1 pageSize="4"#}
+                        <a {#if $m==1#}class="on"{#/if#} href="{#$news.url#}" target="_blank">{#$news.title#}</a>
+                        {#$m=$m+1#}
+                        {#$noid3 = $noid3|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid3) || !empty($noid2) #}{#$noid3 = $noid3|cat:{#$noid2#}#}{#/if#}
+                    </div>
+                </div>
+
+
+
+                <div class="rightinfo fn-right">
+                    <h3 class="title">房产快讯  <span class="getnew"><img src="{#$templets_skin#}images/getnew.png" alt="">换一换</span></h3>
+                    {#house action="news" return="news" noid=$noid3 page=1 pageSize="1"#}
+                    <a class="firkx" href="{#$news.url#}" target="_blank">{#$news.title#}</a>
+                    {#$noid4 = $noid4|cat:{#$news.id#}|cat:","#}
+                    {#/house#}
+                    {#if !empty($noid4) || !empty($noid3) #}{#$noid4 = $noid4|cat:{#$noid3#}#}{#/if#}
+                    <ul class="kuaixun">
+                        {#house action="news" return="news" noid=$noid4 page=1 pageSize="6"#}
+                        <li><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></li>
+                        {#$noid5 = $noid5|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid5) || !empty($noid4) #}{#$noid5 = $noid5|cat:{#$noid4#}#}{#/if#}
+                    </ul>
+                    <ul class="kuaixun_pic">
+                        {#$n=1#}
+                        {#house action="news" return="news" noid=$noid5 page=1 pageSize="3"#}
+                        <li class="fn-clear"><a {#if $n==1#}class="red"{#/if#} href="{#$news.url#}" target="_blank">
+                            <div class="pic"><img src="{#changeFileSize url={#$news.litpic#} type='small'#}" alt=""></div>
+                            <div class="bt">{#$news.title#}</div>
+                        </a></li>
+                        {#$n=$n+1#}
+                        {#$noid6 = $noid6|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid6) || !empty($noid5) #}{#$noid6 = $noid6|cat:{#$noid5#}#}{#/if#}
+                    </ul>
+                    <ul class="kuaixun">
+                        {#house action="news" return="news" noid=$noid6 page=1 pageSize="3"#}
+                        <li><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></li>
+                        {#$noid7 = $noid7|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid7) || !empty($noid6) #}{#$noid7 = $noid7|cat:{#$noid6#}#}{#/if#}
+                    </ul>
+                    <ul class="kuaixun_pic">
+                        {#$n=1#}
+                        {#house action="news" return="news" noid=$noid7 page=1 pageSize="3"#}
+                        <li class="fn-clear"><a {#if $n==1#}class="red"{#/if#} href="{#$news.url#}" target="_blank">
+                            <div class="pic"><img src="{#changeFileSize url={#$news.litpic#} type='small'#}" alt=""></div>
+                            <div class="bt">{#$news.title#}</div>
+                        </a></li>
+                        {#$n=$n+1#}
+                        {#$noid8 = $noid8|cat:{#$news.id#}|cat:","#}
+                        {#/house#}
+                        {#if !empty($noid8) || !empty($noid7) #}{#$noid8 = $noid8|cat:{#$noid7#}#}{#/if#}
+                        <input type="hidden" id="noid" value="{#$noid8#}">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bigad bigad2">
+            {#myad title="房产_模板七_电脑端_广告五"#}
+    </div>
+
+    <!--热门新房 s-->
+    <div class="tit fn-clear">
+        <img src="{#$templets_skin#}images/hot_icon.png" alt="">
+        <ul class="fn-clear">
+            {#house action="addr" return='addr' pageSize="5"#}
+            <li><a target="_blank" href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}">{#$addr.typename#}</a></li>
+            {#/house#}
+        </ul>
+    </div>
+
+    <div class="content">
+        <ul class="list fn-clear">
+            {#house action=loupanList filter="hot" pageSize=8 return=list#}
+            <li><a href="{#$list.url#}" target="_blank">
+                <div class="pic">
+                    <img src="{#$list.litpic#}" alt="">
+                    <div class="name_box">
+                        <div class="ingfo fn-clear">
+                            <span class="fn-left na">{#$list.title#} </span>
+                        </div>
+                        <div class="bg"></div>
+                    </div>
+                </div>
+                <div class="msg">
+                    <div class="dec fn-clear">
+                        <span class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</span>
+                        <span class="yy"><img src="{#$templets_skin#}images/tim.png" alt="">预约看房</span>
+                    </div>
+                    <p class="adr">{#$list.addr[$list.addr|@count - 1]#}</p>
+                    <div class="label">主力户型
+                        {#house action="apartmentList" act="loupan" return="apartmentList" loupanid={#$list.id#} pageSize="3"#}
+                        <span>{#$apartmentList.area#}m<sup>2</sup></span>
+                        {#/house#}
+                    </div>
+                </div>
+            </a></li>
+            {#/house#}
+        </ul>
+    </div>
+    <!--热门新房 e-->
+
+    <!--新盘推荐 s-->
+
+    <div class="tit fn-clear">
+        <img src="{#$templets_skin#}images/re_icon.png" alt="">
+        <ul class="fn-clear">
+            {#house action="addr" return='addr' pageSize="5"#}
+            <li><a target="_blank" href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}">{#$addr.typename#}</a></li>
+            {#/house#}
+        </ul>
+    </div>
+
+    <div class="content">
+        <ul class="list fn-clear">
+            {#house action=loupanList filter="rec" pageSize=8 return=list#}
+            <li><a href="{#$list.url#}" target="_blank">
+                <div class="pic">
+                    <img src="{#$list.litpic#}" alt="">
+                    <div class="name_box">
+                        <div class="ingfo fn-clear">
+                            <span class="fn-left na">{#$list.title#} </span>
+                        </div>
+                        <div class="bg"></div>
+                    </div>
+                </div>
+                <div class="msg">
+                    <div class="dec fn-clear">
+                        <span class="price">{#if $list.price != 0#}{#$list.price#} <em>{#if $list.ptype == 1#}{#echoCurrency type='short'#}/{#echoCurrency type='areasymbol'#}{#else#}万{#echoCurrency type='short'#}/套{#/if#}</em>{#else#}待定{#/if#}</span>
+                        <span class="yy"><img src="{#$templets_skin#}images/tim.png" alt="">预约看房</span>
+                    </div>
+                    <p class="adr">{#$list.addr[$list.addr|@count - 1]#}</p>
+                    <div class="label">主力户型
+                        {#house action="apartmentList" act="loupan" return="apartmentList" loupanid={#$list.id#} pageSize="3"#}
+                        <span>{#$apartmentList.area#}m<sup>2</sup></span>
+                        {#/house#}
+                    </div>
+                </div>
+            </a></li>
+            {#/house#}
+        </ul>
+    </div>
+    <!--新盘推荐 e-->
+
+
+    </div>
+</div>
+
+{#include file="_footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script charset="UTF-8" src="{#$templets_skin#}js/publicnew.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/indexfabu.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/indexnew.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
