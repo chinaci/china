@@ -1,0 +1,25 @@
+.noicelist{background-color: #fff;}
+.index-page{margin-top: 15px;}
+.notice_com{padding: 20px 0px;border-bottom: 1px solid #ededed;}
+.notice_com .nc_lead{margin-bottom: 7px;}
+.notice_com .nc_lead .nc_title {font-size: 16px;float: left;width: 90%;height: 25px;line-height: 25px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.notice_com .nc_lead .nc_title:hover a{color: #F46213;}
+.notice_com .nc_lead .nc_title i { font-weight: bold;font-style: normal;display: inline-block;margin-right: 5px;height: 25px;line-height: 25px;}
+.notice_com .nc_lead .nc_time {height: 25px;line-height: 25px;font-size: 14px;color: #b5b5b5;float: left;width: 10%;text-align: right;}
+.notice_com .nc_text {height: 25px;line-height: 25px;font-size: 14px;color: #b5b5b5;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/*分页*/
+.page{text-align: center;margin:40px 0;}
+.page a{display: inline;border:1px solid #eee;padding:5px 10px;margin:0 3px;}
+/* .page a.active{border:1px solid #fff;} */
+
+.page ul li{display: inline;}
+.page ul li span{border:1px solid #eee;padding:5px 10px;margin:0 3px;}
+.page ul li.page_current span{border:1px solid #fff;}
+.page ul li.page_disabled span{cursor: not-allowed; }
+.page_info{display: none;}
+
+/*公告详情页*/
+.nd_detail{margin-top: 48px;margin-bottom: 50px;}
+.nd_detail .nd_time {text-align: right;color: #b1b1b1;margin-top: 20px;font-size: 14px;}
+.nd_detail .nd_title {text-align: center;font-weight: bold;font-size: 24px;}
+.nd_detail .nd_com {margin-top: 65px;font-size: 15px;line-height: 28px;}

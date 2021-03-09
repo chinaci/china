@@ -1,0 +1,79 @@
+<!-- 发送到手机弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="phone-popup fn-hide">
+        <div class="phone-title fn-clear"><a href="javascript:;"><img src="{#$templets_skin#}images/popup-close.png" alt=""></a></div>
+        <div class="store">
+            <p class="name">{#$detail_title#}</p>
+            <p class="location">地址：{#$detail_address#}</p>
+            <p class="location"> 营业时间：{#$detail_opentime#}</p>
+            <p class="location">联系电话：{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$detail_tel#}/{#$detail_phone#}</p>
+        </div>
+        <div class="tel-num">
+            <div class="inpbdr">
+                <span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+                <input type="text" placeholder="请输入您的手机号码">
+                <div class="areaCode_wrap areaCode_wrap2">
+                  <ul>
+                    
+                  </ul>
+                </div>
+            </div>
+            
+            <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+        </div>
+        <div class="send-phone">
+            <a class="sending" href="javascript:;">发送到手机</a>
+            <a class="success fn-hide" href="javascript:;"><img src="{#$templets_skin#}images/send-success.png" alt="">发送成功</a>
+        </div>
+    </div>
+    <!-- 右侧固定 -->
+    <div class="fix-con">
+        <div class="fix">
+            {#if $detail_tel#}
+            <div class="kefu common">
+                <img src="{#$templets_skin#}images/kefu1.png" alt=""><p>客服电话</p>
+                <div class="text fn-hide">
+                    <img class="fn-left" src="{#$templets_skin#}images/kefu4.png" alt=""><span>{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$detail_tel#}</span>
+                    <div class="three"></div>
+                </div>
+            </div>
+            {#/if#}
+            {#if $detail_qqArr#}
+            <div class="QQ common">
+                <img src="{#$templets_skin#}images/kefu2.png" alt=""><p>QQ客服</p>
+                {#if count($detail_qqArr)>1#}
+                <div class="text fn-hide">
+                    <div class="three"></div>
+                    {#foreach from=$detail_qqArr item='qq'#}
+                    <div class="qq"><img src="{#$templets_skin#}images/kefu5.png" alt=""><p>{#$qq#}</p></div>
+                    {#/foreach#}
+                </div>
+                {#else#}
+                <div class="text fn-hide" style="min-width: 112px;">
+                    <div class="three"></div>
+                    <div class="qq"><img src="{#$templets_skin#}images/kefu5.png" alt=""><p>{#$detail_qq#}</p></div>
+                </div>
+                {#/if#}
+            </div>
+            {#/if#}
+            {#if $detail_wechatqr#}
+            <div class="wechat common">
+                <img src="{#$templets_skin#}images/kefu3.png" alt=""><p>微信客服</p>
+                <div class="text fn-hide">
+                    <div class="three"></div>
+                    <div class="code">
+                        <img src="{#$detail_wechatqr#}" alt="">
+                        <p>扫二维码图案，加我微信</p>
+                    </div>
+                </div>
+            </div>
+            {#/if#}
+        </div>
+    </div>
+    <!-- 地图弹窗 -->
+    <div class="map-popup fn-hide">
+        <div class="close"><img src="{#$templets_skin#}images/popup-close.png" alt=""></div>
+        <p class="name">{#$detail_title#}</p>
+        <p class="location">{#$detail_address#}</p>
+        <div id="allmap"></div>
+    </div>

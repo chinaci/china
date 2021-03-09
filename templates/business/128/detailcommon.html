@@ -1,0 +1,108 @@
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+
+<div class="shop-wrap">
+	<div class="bg"><img src="{#$templets_skin#}images/details-two1.png" alt=""></div>
+	<div class="wrap">
+		<div class="shop fn-clear">
+			<div class="shop-left fn-left">
+				<div class="shop-logo fn-left">
+					<div class="imgbox"><img src="{#$detail_logo#}" alt=""></div>
+					{#if !empty({#$detail_websiteUrl#})#}
+					<a target="_blank" href="{#$detail_websiteUrl#}">企业官网</a>
+					{#/if#}
+				</div>
+				<div class="shop-brief fn-left">
+					<p class="name fn-clear">
+						<a target="_blank" href="{#getUrlPath service='business' template='detail' id={#$detail_id#}#}">{#$detail_title#}</a>
+						{#if $detail_member['phoneCheck']#}<img src="{#$templets_skin#}images/details-two2.png" alt="">{#/if#}
+                        {#if $detail_member['promotion']>0#}<img title="保障金：{#echoCurrency type='symbol'#}{#$detail_member['promotion']#}{#echoCurrency type='short'#}" src="{#$templets_skin#}images/details-two3.png">{#/if#}
+						{#if $detail_member['licenseState']#}<img src="{#$templets_skin#}images/details-two4.png" alt="">{#/if#}
+					</p>
+					<p class="sort">
+						<span class="sort1">{#$detail_typenameArr[0]#}</span>{#if $detail_typenameArr[1]#}<span class="sort2">{#$detail_typenameArr[1]#}</span>{#/if#}
+						{#*$n=1#}
+						{#foreach from=$detail_auth item=auth#}
+						{#if $n<=3#}
+						<span class="sort{#$n#}">{#$auth.typename#}</span>
+						{#/if#}
+						{#$n=$n+1#}
+						{#/foreach*#}
+					</p>
+					<p class="location fn-clear">
+						<span>地址：{#$detail_address#}</span>
+						<a href="javascript:;"><img src="{#$templets_skin#}images/details-two5.png" alt=""></a>
+					</p>
+					<p class="time">营业时间：{#$detail_opentime#}</p>
+					<p class="tel">联系电话：{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$detail_tel#}&nbsp;&nbsp;&nbsp;{#$detail_phone#}</p>
+					<div class="way">
+						<span class="phone tel"><a href="javascript:;"><img src="{#$templets_skin#}images/details-two6.png" alt="">发送到手机</a></span>
+						<span class="phone phone-code">
+							<a href="javascript:;"><img src="{#$templets_skin#}images/details-two7.png" alt="">手机扫码</a>
+							<div class="code-con fn-hide">
+								<div class="three"></div>
+								<ul class="fn-clear">
+									<li class="fn-left"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$detail_id#}#}" alt=""><p>WAP访问</p></li>
+									<li class="fn-right"><img src="{#$cfg_attachment#}{#$detail_businessQr#}" alt=""><p>商家小程序</p></li>
+								</ul>
+							</div>
+						</span>
+						<span class="phone">
+							<a href="javascript:;" class="btnShare share newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_logo#}"><img src="{#$templets_skin#}images/details-two8.png" alt=""> 分享</a>
+						</span>
+						{#if $detail_collect#}
+						<span class="phone collect click"><a href="javascript:;"><img src="{#$templets_skin#}images/details-two20.png" alt="">已收藏店铺</a></span>
+						{#else#}
+						<span class="phone collect"><a href="javascript:;"><img src="{#$templets_skin#}images/details-two9.png" alt="">收藏店铺</a></span>
+						{#/if#}
+					</div>
+				</div>
+				<div class="devide">
+					<ul class="fn-clear">
+						{#foreach from=$detail_tagArr item=tag#}
+						<li><a href="javascript:;"><img class="storename" src="{#$templets_skin#}images/{#$tag.py#}.png" alt=""><p>{#$tag.val#}</p></a></li>
+						{#/foreach#}
+						{#foreach from=$detail_store item='store'#}
+						{#if $store.is_module==0#}
+						<li><a href="javascript:;"><img class="storename" src="{#$cfg_staticPath#}images/business/module/{#$store.name#}.png" alt=""><p>{#$store.title#}</p></a></li>
+						{#/if#}
+						{#/foreach#}
+					</ul>
+				</div>
+			</div>
+			<div class="shop-right fn-right">
+				<div class="big">
+					<ul class="bigImg">
+						{#if $detail_video#}
+						<li>
+							<a href="javascript:;">
+								<video width="100%" height="100%" controls="">
+									<source src="{#$detail_video#}" type="video/mp4">
+								</video>
+							</a>
+						</li>
+						{#/if#}
+						{#foreach from=$detail_banner item='banner'#}
+						<li><a href="javascript:;"><img src="{#$banner.pic#}" alt=""></a></li>
+						{#/foreach#}
+					</ul>
+				</div>
+				<div class="smallScroll fn-clear">
+					<div class="smallImg">
+						<ul>
+							{#if $detail_video_pic#}
+							<li><a href="javascript:;"><img src="{#$detail_video_pic#}" alt=""></a><img class="small-play" src="images/small-play.png" alt=""></li>
+							{#/if#}
+							{#foreach from=$detail_banner item='banner'#}
+							<li><a href="javascript:;"><img src="{#$banner.pic#}" alt=""></a></li>
+							{#/foreach#}
+						</ul>
+					</div>
+					<a class="sPrev" href="javascript:void(0)"><img src="{#$templets_skin#}images/s-prev.png" alt=""></a>
+					<a class="sNext" href="javascript:void(0)"><img src="{#$templets_skin#}images/s-next.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

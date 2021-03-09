@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$detail_title#}">
+<meta name="description" content="{#$detail_title#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/details.css">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+
+</script>
+</head>
+<body class="w1200">
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+<!-- 导航 -->
+<div class="fixedwrap FestivalAD_header">
+	<div class="fixedpane">
+		    {#$headHotLine = $cfg_hotline#}
+            {#$headBaseHost = $cfg_basehost#}
+            {#$headWebName = $cfg_webname#}
+            {#$headWebLogo = $cfg_weblogo#}
+            {#$headShortName = $cfg_shortname#}
+
+            {#if $channel == 'business'#}
+            {#$headBaseHost = $business_channelDomain#}
+            {#$headWebName = $business_channelName#}
+            {#$headWebLogo = $business_logoUrl#}
+            {#$headShortName = $business_channelName#}
+            {#/if#}
+		<!-- head s -->
+		<div class="wrap header fn-clear">                                                                        
+			<div class="logo">
+				<a href="{#$headBaseHost#}" title="{#$headWebName#}"><img src="{#$headWebLogo#}" alt=""></a>
+			</div>
+			<div class="kefu"><s><img src="{#$templets_skin#}images/tel1.png"></s><p>客服热线</p>{#$headHotLine#}</div>
+		</div>
+		<!-- head e -->
+
+		<!-- 导航 s -->
+		<div class="nav">
+			<div class="wrap">
+				<ul class="mainnav fn-clear">
+                    <li><a href="{#$business_channelDomain#}" class="nav-m">首页</a></li>
+                    <li><a href="{#getUrlPath service='business' template='list'#}" class="nav-m">商家店铺</a></li>
+                    {#if in_array("tuan", $installModuleArr)#}
+                    <li><a href="{#$tuan_channelDomain#}" class="nav-m">{#$tuan_channelName#}</a></li>
+                    {#/if#}
+                    <li><a href="{#$huangye_channelDomain#}" class="nav-m">便民黄页</a></li>
+                    {#if in_array("info", $installModuleArr)#}
+                    <li><a href="{#$info_channelDomain#}" class="nav-m">{#$info_channelName#}</a></li>
+                    {#/if#}
+                    {#if in_array("shop", $installModuleArr)#}
+                    <li><a href="{#$shop_channelDomain#}" class="nav-m">{#$shop_channelName#}</a></li>
+                    {#/if#}
+                    {#if in_array("website", $installModuleArr)#}
+                    <li><a href="{#$website_channelDomain#}" class="nav-m">{#$website_channelName#}</a></li>
+                    {#/if#}
+                    {#if in_array("job", $installModuleArr)#}
+                    <li><a href="{#$job_channelDomain#}" class="nav-m">{#$job_channelName#}</a></li>
+                    {#/if#}
+                    {#if in_array("integral", $installModuleArr)#}
+                    <li><a href="{#$integral_channelDomain#}" class="nav-m">{#$integral_channelName#}</a></li>
+                    {#/if#}
+                    <li><a target="_blank" href="{#getUrlPath service='business' template='map'#}" class="nav-m">地图找商家</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="details-wrap">
+	<div class="top-bg"><img src="{#$templets_skin#}images/top-bg.png" alt=""></div>
+	<div class="detail wrap">
+		<div class="shop fn-clear">
+			<div class="shop-left fn-left">
+				<div class="code-wrap">
+					<div class="code"><img src="{#$templets_skin#}images/code3.png" alt=""><p>手机访问</p></div>
+					<div class="code-style"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$detail_id#}#}" alt=""></div>
+				</div>
+				<div class="name fn-clear"><p>{#$detail_title#}</p>
+					{#if $detail_collect#}
+					<a class="click" href="javascript:;"><img src="{#$templets_skin#}images/collect-store.png" alt="">已收藏店铺</a>
+					{#else#}
+					<a href="javascript:;"><img src="{#$templets_skin#}images/collect-store.png" alt="">收藏店铺</a>
+					{#/if#}
+				</div>
+				<p class="sort">
+						<span class="sort">{#$detail_typenameArr[0]#}</span>{#if $detail_typenameArr[1]#}<span class="sort">{#$detail_typenameArr[1]#}</span>{#/if#}
+						{#*$n=1#}
+						{#foreach from=$detail_auth item=auth#}
+						{#if $n<=3#}
+						<span class="sort{#$n#}">{#$auth.typename#}</span>
+						{#/if#}
+						{#$n=$n+1#}
+						{#/foreach*#}</p>
+				<p class="location">地址：{#$detail_address#}</p>
+				<p class="time">营业时间：{#$detail_opentime#}</p>
+				<p class="tel">
+					{#if $detail_tel#}<span class="phone"><img src="{#$templets_skin#}images/tel3.png" alt="">{#$detail_tel#}</span>{#/if#}
+					{#if $detail_qq#}<span class="QQ"><img src="{#$templets_skin#}images/QQ2.png" alt="">{#$detail_qq#}</span>{#/if#}
+					{#if $detail_wechatcode#}<span class="wechat"><img src="{#$templets_skin#}images/wechat2.png" alt="">{#$detail_wechatcode#}</span>{#/if#}
+				</p>
+				<ul class="intro fn-clear">
+					{#foreach from=$detail_tagArr item=tag#}
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/{#$tag.py#}intro.png" alt=""><p>{#$tag.val#}</p></a></li>
+					{#/foreach#}
+					{#foreach from=$detail_store item='store'#}
+					{#if $store.is_module==0#}
+					<li><a href="javascript:;"><img class="storename" src="{#$cfg_staticPath#}images/business/module/{#$store.name#}intro.png" alt=""><p>{#$store.title#}</p></a></li>
+					{#/if#}
+					{#/foreach#}
+				</ul>
+			</div>
+			<div class="shop-right fn-right">
+				<div class="slideBox1">
+					<div class="bd">
+						<ul>
+							{#if $detail_video#}
+							<li>
+								<video width="100%" height="100%" controls>
+									<source src="{#$detail_video#}"  type="video/mp4">
+								</video>
+							</li>
+							<li><a href="javascript:;"><img class="slide" src="{#$detail_video_pic#}" alt=""></a></li>
+							{#/if#}
+							{#foreach from=$detail_banner item='banner'#}
+							<li><a href="javascript:;"><img class="slide" src="{#$banner.pic#}" alt=""></a></li>
+							{#/foreach#}
+						</ul>
+					</div>
+					<div class="hd"><ul></ul></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="shop-album wrap fn-clear">
+		<div class="album-left fn-left">
+			<!-- 商家相册 -->
+			<div class="album-box">
+				<div class="album-title fn-clear"><i></i><h3>商家相册</h3></div>
+				<div class="album-con fn-clear">
+					{#business action='albums_list' uid=$detail_id pageSize=6 return='list'#}
+					<div class="album-list">
+						<div class="img-wrap"><img class="img-small" src="{#$list.litpic|replace:"large":"small"#}" alt=""></div>
+						<p>{#$list.typename#}</p>
+						<div class="album-pop fn-hide">
+							<div class="album-pop-img">
+								<img class="album-express" src="{#$list.litpic#}" alt="">
+								<a href="javascript:;"><img class="album-list-close" src="{#$templets_skin#}images/album-close.png" alt=""></a>
+							</div>
+						</div>
+					</div>
+					{#/business#}
+				</div>
+				<div class="toggle-btn toggle-btn1"><a target="_blank" href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}"><span>查看全部{#$pageInfo.totalCount#}张</span><img src="{#$templets_skin#}images/more-down.png" alt=""></a></div>
+			</div>
+			<!-- 商家团购 -->
+			{#if in_array("tuan", $detail_bind_module)#}
+			<div class="group-box">
+				<div class="album-title fn-clear"><i></i><h3>商家团购</h3></div>
+				<div class="group-con">
+					{#tuan action="tlist" store={#$detail_store.tuan.sid|default:-1#} return="list" pageSize="8"#}
+					<div class="group-list fn-clear">
+						<a target="_blank" href="{#$list.url#}"><img class="pic" src="{#$list.litpic|replace:"large":"small"#}" alt=""></a>
+						<div class="list-right">
+							<p class="name"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></p>
+							<p class="sale">已售 {#$list.sale#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截止日期：{#$list.enddate|date_format:'%Y.%m.%d'#}</p>
+							<div class="money fn-clear"><p class="red"><span>{#echoCurrency type='symbol'#}</span>{#$list.price#}</p><p class="grey"><span>{#echoCurrency type='symbol'#}</span>{#$list.market#}</p></div>
+						</div>
+						<div class="now"><a target="_blank" href="{#$list.url#}">立即抢购</a></div>
+					</div>
+					{#/tuan#}
+				</div>
+				<div class="toggle-btn toggle-btn2"><span>全部{#$pageInfo.totalCount#}个</span><img src="{#$templets_skin#}images/more-down.png" alt=""></div>
+			</div>
+			{#/if#}
+			<!-- 网友评论 -->
+			<div class="comment-con">
+                <div class="comment fn-clear">
+                    <div class="c-title fn-clear">
+                        网友评论
+                    </div>
+                    <div class="c-area">
+						<div class="textarea" contenteditable="true" data-type="parent"></div>
+						<div class="c-sub fn-clear">
+							{#if $userinfo#}
+							<div class="np-login">
+								<a href="{#$member_userDomain#}" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+								<a href="{#$cfg_basehost#}/logout.html" class="o logout">安全退出</a>
+							</div>
+							<a href="javascript:;" class="subtn">发表</a>
+							{#else#}
+							<a href="javascript:;" class="subtn login">登录</a>
+							{#/if#}
+						</div>
+                     </div>
+                    <div class="c-content">
+                        <div class="c-nav fn-clear">
+                            <span class="c-title">全部评论</span>
+                            <span class="c-orderby fn-clear"><a href="javascript:;" class="ctime active" data-id="time">时间</a><a href="javascript:;" class="chot" data-id="hot">热度</a></span>
+                        </div>
+                        <ul class="c-list" id="commentList" data-page="1">
+
+                            <div class="loading"></div>
+                        </ul>
+                        <div id="loadMore" class="loading">加载更多</div>
+                    </div>
+                </div>
+            </div>
+			<!-- 商家推荐 -->
+			{#if in_array("shop", $detail_bind_module)#}
+            <div class="shop-reco">
+            	<div class="rec-title fn-clear"><i></i><h3>商家推荐</h3></div>
+            	<div class="rec-con fn-clear">
+					{#shop action="slist" store={#$detail_store.shop.sid|default:-1#} pageSize="8" return="list"#}
+	            	<div class="rec-list">
+	            		<a target="_blank" href="{#$list.url#}"><img src="{#$list.litpic|replace:"large":"middle"#}" alt=""></a>
+	            		<div class="text">
+		            		<p class="name"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></p>
+		            		<p class="sale">已售{#$list.sales#}</p>
+		            		<div class="money fn-clear">
+		            			<p class="red"><span>{#echoCurrency type='symbol'#}</span>{#$list.price#}</p>
+		            			<p class="grey"><span>{#echoCurrency type='symbol'#}</span>{#$list.mprice#}</p>
+		            		</div>
+		            	</div>
+					</div>
+					{#/shop#}
+	            </div>
+			</div>
+			{#/if#}
+		</div>
+		<div class="album-right fn-right">
+			<!-- 商家介绍 -->
+			<div class="shopper">
+				<div class="shopper-title"><i></i>商家介绍</div>
+				<div class="shopper-text">{#$detail_body#}</div>
+			</div>
+			<!-- 猜你喜欢 -->
+			<div class="serve-right fn-right">
+				<div class="like-title">猜你喜欢</div>
+				<div class="like-con">
+					{#business action="blist" return='list' store="2" orderby="2" pageSize="4"#}
+					<a href="{#$list.url#}">
+						<div class="like-list">
+							<img src="{#$list['logo']#}" alt="">
+							<p class="name">{#$list.title#}</p>
+							<p class="location">{#$list.addr#}</p>
+						</div>
+					</a>
+					{#/business#}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="desk fn-hide"></div>
+<!-- 底部 -->
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			{#if $userinfo#}
+			<a href="javascript:;" class="subtn">回复</a>
+			{#else#}
+			<a href="javascript:;" class="subtn login">登录</a>
+			{#/if#}
+		</div>
+	</div>
+</script>
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/details.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$intro_title#}-{#$detail_title#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$intro_title#}-{#$detail_title#}">
+<meta name="description" content="{#$intro_title#}-{#$detail_title#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-two.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-th.css">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+var longitude = '{#$detail_lng#}', latitude = '{#$detail_lat#}', resblockName = '{#$detail_title#}';
+var pageData = {
+	id: '{#$detail_id#}',
+	panName: '{#$detail_title#}',
+	address: '{#$detail_address#}',
+	lat: '{#$detail_lat#}',
+	lng: '{#$detail_lng#}',
+	url: '{#getUrlPath service='business' template='intro' id={#$detail_id#}#}',
+	mapType: '{#$site_map#}',
+	mapKey: '{#$site_map_key#}'
+};
+var site_map = "{#$site_map#}";
+</script>
+</head>
+<body class="w1200">
+{#include file="detailcommon.html"#}
+
+<div class="content-wrap fn-clear">
+	<div class="content fn-clear wrap">
+
+		<div class="content-left fn-left">
+
+			<!-- 公司简介 -->
+			<div class="intro fn-clear">
+				<div class="shop-view fn-left">
+					<div class="view-title">
+						{#$n=1#}
+						{#business action="introList" uid={#$detail_id#}#}
+						<span {#if $n==1#}class="active"{#/if#}> {#$row.title#}</span>
+						{#$n=$n+1#}
+						{#/business#}
+					</div>
+
+					{#foreach from=$ret key=k item=row#}
+    				<div class="content fn-clear {#if $k==0#}show{#/if#}">
+						{#$row.body#}
+					</div>
+					{#/foreach#}
+
+				</div>
+			</div>
+
+		</div>
+		{#include file="sidebarRight.html"#}
+	</div>
+</div>
+<!-- 发送到手机弹窗 -->
+{#include file="common.html"#}
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));	  
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	// 百度地图API功能
+	var sContent =pageData.address;
+	var point = new BMap.Point(pageData.lng, pageData.lat);
+	map.centerAndZoom(point, 15);
+	var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+	map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+	var marker = new BMap.Marker(point);  // 创建标注
+	map.addOverlay(marker);  
+</script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/details-two.js"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/detail-th.js"></script>
+</body>
+</html>

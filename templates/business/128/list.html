@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商家列表{#/if#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$business_keywords#}">
+<meta name="description" content="{#$business_description#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/list.css">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = '{#$cfg_cookiePre#}';
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',typem = '{#$typem#}';
+</script>
+</head>
+<body class="w1200">
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v3.html"#}
+{#$pageUrl = {#getUrlPath service='business' template='list'#}#}
+<div class="list-container">
+	<div class="wrap"><p class="index-page"><a href="{#$business_channelDomain#}">首页</a> &gt; <a href="{#getUrlPath service='business' template='list'#}">店铺</a></p></div>
+	<div class="list-wrap wrap fn-clear">
+		<div class="list-left fn-left">
+			<!-- 分类 -->
+			<div class="list-sort fn-clear">
+				<div class="filter filter-second fn-clear">
+					{#if $typem!="house" && $typem!="jianzhan"#}
+					<div class="filter-left">
+						<div class="sort-head">分类</div>
+						<div class="sort-all {#if $typeid == ''#}on{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=''#}">全部</a></div>
+					</div>
+					<div class="filter-right filter-right-sort">
+						<ul class="one-filter">
+							{#if $typem=='' || $typem=="huangye"#}
+							{#business action="type" return="type"#}
+							<li {#if $typeid == $type.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}">{#$type.typename#}</a></li>
+							{#/business#}
+							{#elseif $typem=="shop"#}
+							{#shop action="type" return="type"#}
+							<li {#if $typeid == $type.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}">{#$type.typename#}</a></li>
+							{#/shop#} 
+							{#elseif $typem=="job"#}
+							{#job action="industry" son=1 return="type"#}
+							<li {#if $typeid == $type.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}">{#$type.typename#}</a>
+							<i></i>
+							<ul class="two-filter">
+								<div class="arrow"><em></em><i></i></div>
+								{#job action="industry" return="type1" type={#$type.id#}#}
+								<li {#if $typeid == $type1.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type1.id#}#}">{#$type1.typename#}</a></li>
+								{#/job#}
+							</ul>
+							</li>
+							{#/job#} 
+							{#/if#}
+						</ul>
+					</div>
+					{#/if#}
+				</div>
+				<div class="filter filter-second fn-clear">
+					<div class="filter-left">
+						<div class="sort-head">区域</div>
+						<div class="sort-all {#if $addrid == ''#}on{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid=''#}">全部</a></div>
+					</div>
+					<div class="filter-right">
+						<ul class="one-filter">
+							{#business action="addr" return="addr"#}
+							<li {#if $addrid == $addr.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#}#}"><span>{#$addr.typename#}</span></a><i></i>
+								<ul class="two-filter">
+									<div class="arrow"><em></em><i></i></div>
+									{#business action="addr" return="addr1" type={#$addr.id#}#}
+									<li {#if $addrid == $addr1.id#} class="on"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr1.id#}#}">{#$addr1.typename#}</a></li>
+									{#/business#}
+								</ul>
+							</li>
+							{#/business#}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 商家店铺 -->
+			<div class="list-tab">
+				<ul class="tab-title fn-clear">
+					<li {#if $typem==''#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid='' typem=''#}">商家店铺</a></li>
+					<li {#if $typem=='huangye'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid='' typem='huangye'#}">黄页店铺</a></li>
+					<li {#if $typem=='jianzhan'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid=''  typem='jianzhan'#}">企业建站</a></li>
+					<li {#if $typem=='shop'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid=''  typem='shop'#}">商城店铺</a></li>
+					<!-- <li {#if $typem=='waimai'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid=''  typem='waimai'#}">外卖店铺</a></li> -->
+					<li {#if $typem=='job'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid=''  typem='job'#}">招聘企业</a></li>
+					<li {#if $typem=='house'#}class="active"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' typeid=''  typem='house'#}">房产中介</a></li>
+				</ul>
+				<div class="container-wrap">
+					{#if $typem==''#}
+					<div class="container {#if $typem==''#}show{#/if#}">
+						<div class="tab-content">
+							{#business action="blist" return="list" store="2" addrid={#$addrid#} typeid={#$typeid#} title={#$keywords#} page={#$page#} pageSize="8"#}
+							<div class="tab-item fn-clear">
+								<div class="fn-clear">
+									<div class="tab-img"><a target="_blank" href="{#$list.url#}"><img  src="{#$list.logo#}" alt=""></a></div>
+									{#if $list.isbid==1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+									<div class="item-right">
+										<p class="name fn-clear"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a>{#if $list['member']['phoneCheck']#}<span class="a-id"></span>{#/if#}{#if $list['member']['promotion'] > 0#}<span class="a-money" title="保障金：{#echoCurrency type='symbol'#}{#$list['member']['promotion']#}{#echoCurrency type='short'#}"></span>{#/if#}{#if $list['member']['licenseState']#}<span class="a-company"></span>{#/if#}</p>
+										<p class="tag"><span>{#$list.typename[0]#}</span> <span>{#$list.typename[1]#}</span> </p>
+										<p class="chat">
+											{#if $list.qq#}<span class="QQ"><i>QQ :</i>{#$list.qq#}</span>{#/if#}
+											{#if $list.wechatcode#}<span class="wechat"><i>微信 :</i>{#$list.wechatcode#}</span>{#/if#}
+										</p>
+										<p class="location">地址：{#$list.address#}</p>
+									</div>
+									{#if $list.tel#}<div class="shop-store"><a target="_blank" href="{#$list.url#}">{#$list.tel#}</a></div>{#/if#}
+									<div class="code">
+										<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+										<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$list.id#}#}" alt=""></div>
+									</div>
+								</div>
+							</div>
+							{#/business#}
+
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关商家</div>
+						{#/if#}
+						<div class="page">
+							{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+					{#if $typem=='huangye'#}
+					<div class="container bg {#if $typem=='huangye'#}show{#/if#}">
+						<div class="tab-content">
+							{#business action="blist" return="list" addrid={#$addrid#} typeid={#$typeid#} title={#$keywords#} page={#$page#} pageSize="8"#}
+							<div class="tab-item fn-clear">
+							<div class="fn-clear">
+								<div class="tab-img"><a target="_blank" href="{#$list.url#}"><img src="{#$list.logo#}" alt=""></a></div>
+								{#if $list.isbid==1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+								<div class="item-right">
+									<p class="name fn-clear"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a>{#if $list['member']['phoneCheck']#}<span class="a-id"></span>{#/if#}{#if $list['member']['promotion'] > 0#}<span class="a-money" title="保障金：{#echoCurrency type='symbol'#}{#$list['member']['promotion']#}{#echoCurrency type='short'#}"></span>{#/if#}{#if $list['member']['licenseState']#}<span class="a-company"></span>{#/if#}</p>
+									<p class="tag"><span>{#$list.typename[0]#}</span> <span>{#$list.typename[1]#}</span></p>
+									<p class="chat">
+										{#if $list.qq#}<span class="QQ"><i>QQ :</i>{#$list.qq#}</span>{#/if#}
+										{#if $list.wechatcode#}<span class="wechat"><i>微信 :</i>{#$list.wechatcode#}</span>{#/if#}
+									</p>
+									<p class="location">地址：{#$list.address#}</p>
+								</div>
+								{#if $list.tel#}<div class="shop-store"><a target="_blank" href="{#$list.url#}">{#$list.tel#}</a></div>{#/if#}
+								<div class="code">
+									<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+									<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$list.id#}#}" alt=""></div>
+								</div>
+							</div>
+							</div>
+							{#/business#}
+
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关黄页</div>
+						{#/if#}
+						<div class="page">
+								{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+					{#if $typem=='jianzhan'#}
+					<div class="container company {#if $typem=='jianzhan'#}show{#/if#}">
+						<div class="tab-content">
+							{#website action='wlist' return='list' addrid={#$addrid#} title={#$keywords#} page={#$page#}  pageSize='8'#}
+							<div class="tab-item fn-clear">
+								<div class="fn-clear">
+								<div class="tab-img"><a target="_blank" href="{#$list.url#}"><img src="{#$list.logo#}" alt=""></a></div>
+								{#if $list.isbid==1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+								<div class="item-right">
+									<p class="name fn-clear"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></p>
+									<p class="tag">
+										{#$n=1#}
+										{#foreach from=$list.catname item=cat#}
+										{#if $n<=4#}
+										<a target="_blank" href="{#$cat.url#}">{#$cat.name#}{#if $n<4#}<i>|</i>{#/if#}</a>
+										{#/if#}
+										{#$n=$n+1#}
+										{#/foreach#}
+									</p>
+									<!-- <p class="location">地址：吴中区星海街加城花园乐嘉生活广场2楼（星海街苏茜路）</p> -->
+								</div>
+								{#if $list.tel#}<div class="shop-store"><a target="_blank" href="{#$list.url#}">{#$list.tel#}</a></div>{#/if#}
+								<div class="code">
+									<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+									<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$list.url#}" alt=""></div>
+								</div>
+								</div>
+							</div>
+							{#/website#}
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关企业建站</div>
+						{#/if#}
+						<div class="page">
+							{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+					{#if $typem=='shop'#}
+					<div class="container mall {#if $typem=='shop'#}show{#/if#}">
+						<div class="tab-content">
+							{#shop action="store" industry={#$typeid#} addrid={#$addrid#} page={#$page#} pageSize="8"#}
+							<div class="tab-item fn-clear">
+								<div class="fn-clear">
+									<div class="up fn-clear">
+										<div class="tab-img"><a target="_blank" href="{#$row.url#}"><img  src="{#$row.logo#}#}" alt=""></a></div>
+										{#if $row.rec == 1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+										<div class="item-right">
+											<p class="name fn-clear"><a target="_blank" href="{#$row.url#}">{#$row.title#}</a>{#if $row['userinfo']['phoneCheck']#}<span class="a-id"></span>{#/if#}{#if $row['userinfo']['certifyState']#}<span class="a-money"></span>{#/if#}{#if $row['userinfo']['licenseState']#}<span class="a-company"></span>{#/if#}</p>
+											<p class="tel"><i></i>{#$row.tel#}</p>
+											<p class="chat">
+												{#if $row.qq#}<span class="QQ"><i>QQ :</i>{#$row.qq#}</span>{#/if#}
+												{#if $row.wechatcode#}<span class="wechat"><i>微信 :</i>{#$row.wechatcode#}</span>{#/if#}
+											</p>
+											<p class="location">地址：{#$row.address#}</p>
+										</div>
+										<div class="enter"><a target="_blank" href="{#$row.url#}">进入店铺 <i></i></a></div>
+										<div class="code">
+											<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+											<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$row.url#}" alt=""></div>
+										</div>
+									</div>
+									<div class="down fn-clear shoplist" data-id="{#$row.id#}">
+									</div>
+
+								</div>
+							</div>
+							{#/shop#}
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关商铺{#$pageInfo.totalCount#}</div>
+						{#/if#}
+						<div class="page">
+							{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+					<div class="container food">
+						<div class="tab-content">
+
+							<!--<div class="tab-item fn-clear">-->
+								<!--<div class="fn-clear">-->
+									<!--<a href="javascript:;"><img class="tab-img" src="images/eg_bg.png" alt=""></a>-->
+									<!--<img src="images/top.png" alt="" class="stick">-->
+									<!--<div class="item-right">-->
+										<!--<p class="name fn-clear"><a href="javascript:;">苏州卓凡清洗保洁服务有限公司</a><span class="a-id"></span><span class="a-money"></span><span class="a-company"></span></p>-->
+										<!--<p class="tag"><span>保洁服务</span></p>-->
+										<!--<p class="chat">-->
+											<!--<span class="QQ"><i>QQ :</i>51254125</span>-->
+											<!--<span class="wechat"><i>微信 :</i>51254125</span>-->
+										<!--</p>-->
+										<!--<p class="location">地址：吴中区星海街加城花园乐嘉生活广场2楼（星海街苏茜路）</p>-->
+									<!--</div>-->
+									<!--<div class="shop-store"><a href="javascript:;">0512-62866149</a></div>-->
+									<!--<div class="code">-->
+										<!--<img class="code-icon" src="images/code4.png" alt="">-->
+										<!--<div class="code-scan"><img src="upfile/qrcode.png" alt=""></div>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+
+
+
+						</div>
+						<div class="page">
+							<!-- <a href="javascript:;">上一页</a>
+							<a href="javascript:;">1</a>
+							<a class="active" href="javascript:;">2</a>
+							<a href="javascript:;">3</a>
+							<a href="javascript:;">4</a>
+							<a href="javascript:;">...</a>
+							<a href="javascript:;">8</a>
+							<a href="javascript:;">下一页</a> -->
+						</div>
+					</div>
+					{#if $typem=='job'#}
+					<div class="container recruit {#if $typem=='job'#}show{#/if#}">
+						<div class="tab-content">
+							{#job action="company" return="company" addrid={#$addrid#} industry={#$typeid#} page={#$page#} pageSize=8#}
+							<div class="tab-item fn-clear">
+								<div class="fn-clear">
+									<div  class="tab-img"><a target="_blank" href="{#$company.url#}"><img src="{#$company.logo#}" alt=""></a></div>
+									{#if $company.isbid==1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+									<div class="item-right">
+										<p class="name fn-clear"><a target="_blank" href="{#$company.url#}">{#$company.title#}</a>{#if $company['phoneCheck']#}<span class="a-id"></span>{#/if#}{#if $company['certifyState']#}<span class="a-money"></span>{#/if#}{#if $company['licenseState']#}<span class="a-company"></span>{#/if#}</p>
+										<p class="tag"><a href="#">{#$company.industry#}</a></p>
+
+										<p class="location">地址：{#$company.address#}</p>
+									</div>
+									<div class="pos"><span><i>{#$company.pcount#}</i>在招职位</span><span><i>{#count($company.picsArr)#}</i>企业相册</span></div>
+									<div class="code">
+										<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+										<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$company.url#}" alt=""></div>
+									</div>
+								</div>
+							</div>
+							{#/job#}
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关职位</div>
+						{#/if#}
+						<div class="page">
+							{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+					{#if $typem=='house'#}
+					<div class="container house {#if $typem=='house'#}show{#/if#}">
+						<div class="tab-content">
+							{#house action="zjComList" return="zjcom" addrid={#$addrid#} page={#$page#} keywords={#$keywords#} pageSize="8"#}
+							<div class="tab-item fn-clear">
+								<div class="fn-clear">
+									<div class="tab-img"><a target="_blank" href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}"><img src="{#changeFileSize url={#$zjcom.litpic#} type='large'#}" alt=""></a></div>
+									{#if $zjcom.isbid==1#}<img src="{#$templets_skin#}images/top.png" alt="" class="stick">{#/if#}
+									<div class="item-right">
+										<p class="name fn-clear"><a target="_blank" href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}">{#$zjcom.title#}</a>{#if $zjcom['member']['phoneCheck']#}<span class="a-id"></span>{#/if#}{#if $zjcom['member']['certifyState']#}<span class="a-money"></span>{#/if#}{#if $zjcom['member']['licenseState']#}<span class="a-company"></span>{#/if#}</p>
+										<p class="des"><span>出租<i>{#$zjcom.countZu#}</i></span><span>出售<i>{#$zjcom.countSale#}</i></span><span>团队<i>{#$zjcom.countTeam#}</i></span></p>
+										<p class="location">地址：{#$zjcom.address#}</p>
+									</div>
+									{#if $zjcom.tel#}<div class="shop-store"><a href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}">{#$zjcom.tel#}</a></div>{#/if#}
+									<div class="code">
+										<img class="code-icon" src="{#$templets_skin#}images/code4.png" alt="">
+										<div class="code-scan"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}" alt=""></div>
+									</div>
+								</div>
+							</div>
+							{#/house#}
+						</div>
+						{#if $pageInfo.totalCount == 0#}
+							<div class="empty">抱歉！ 未找到相关中介</div>
+						{#/if#}
+						<div class="page">
+							{#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+						</div>
+					</div>
+					{#/if#}
+				</div>
+			</div>
+		</div>
+
+		<div class="list-right fn-right">
+			<div class="join"><a href="{#getUrlPath service='member' type='user' template='enter'#}"><img src="{#$templets_skin#}images/shopper-join.png" alt=""></a></div>
+			<!-- 最新入驻 -->
+			<div class="notice">
+				<div class="notice-title">最新公告</div>
+				<div class="notice-con">
+					<div class="txtMarquee-top">
+						<div class="bd">
+							<ul class="infoList">
+								{#*business action="blist" return='list' store="2" orderby="4" pageSize="8"*#}
+								{#business action="notice" return='nlist' pageSize="8"#}
+								<li><a target="_blank" href="{#$nlist.url#}">[公告]{#$nlist.title#}</a></li>
+								{#/business#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 猜你喜欢 -->
+			<div class="serve-right fn-right">
+				<div class="like-title">猜你喜欢</div>
+				<div class="like-con">
+					{#business action="blist" return='list' store="2" orderby="2" pageSize="4"#}
+					<a target="_blank" href="{#$list.url#}">
+						<div class="like-list">
+							<img src="{#$list['logo']#}" alt="">
+							<p class="name">{#$list.title#}</p>
+							<p class="location">{#$list.address#}</p>
+						</div>
+					</a>
+					{#/business#}
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>

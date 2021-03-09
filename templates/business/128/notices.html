@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商家公告列表{#/if#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$business_keywords#}">
+<meta name="description" content="{#$business_description#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/notices.css?v={#$cfg_staticVersion#}">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var templets_skin = '{#$templets_skin#}';
+</script>
+</head>
+<body class="w1200">
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v3.html"#}
+{#$pageUrl = {#getUrlPath service='business' template='list'#}#}
+<div class="list-container wrap">
+	<p class="index-page"><a href="{#$business_channelDomain#}">首页</a> &gt; <a href="{#getUrlPath service='business' template='notices'#}">公告</a></p>
+	<div class="noicelist">
+			{#business action="notice" return='nlist' page={#$page#} pageSize="9"#}
+			<div class="notice_com">
+				<div class="nc_lead fn-clear">
+					<div class="nc_title"><i>•</i><a target="_blank" href="{#$nlist.url#}">{#$nlist.title#}</a></div>
+					<div class="nc_time">{#$nlist.pubdate|date_format:"%Y.%m.%d"#}</div>
+				</div>
+				<div class="nc_text"> {#$nlist.body#}</div>
+			</div>
+			{#/business#}
+
+			{#if $pageInfo.totalCount == 0#}
+				<div class="notice_com">
+					<div class="nc_lead fn-clear">
+						<div class="nc_title" style="text-align: center;">暂无公告</div>
+					</div>
+				</div>
+			{#/if#}
+	</div>
+
+	<div class="page">
+		{#getPageList service='business' template='notices' pageType='dynamic' param="page=#page#"#}
+	</div>
+</div>
+
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+</body>
+</html>

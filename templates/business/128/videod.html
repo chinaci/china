@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$videod_title#}-商家视频-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-two.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/view.css?v={#$cfg_staticVersion#}">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+var pageData = {
+	id: '{#$detail_id#}',
+	panName: '{#$detail_title#}',
+	address: '{#$detail_address#}',
+	lat: '{#$detail_lat#}',
+	lng: '{#$detail_lng#}',
+	url: '{#getUrlPath service='business' template='detail' id={#$detail_id#}#}',
+	mapType: '{#$site_map#}',
+	mapKey: '{#$site_map_key#}'
+};
+</script>
+<style media="screen">
+.video-detail {margin-top: 15px;}
+.video-detail embed{width: 900px; height: 680px; display: block; margin: 0 auto;}
+.w1200 .video-detail iframe {width: 100%; height: 600px}
+</style>
+</head>
+<script type="text/javascript">var cookiePre = 'HN_', cfg_clihost = '{#$cfg_clihost#}';</script>
+<body class="w1200">
+{#include file="detailcommon.html"#}
+
+<div class="content-wrap">
+	<div class="content  wrap">
+			<div class="view-title"><i></i>{#$videod_title#}</div>
+			<div class="video-detail">
+              <iframe src="{#$videod_video#}" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0"></iframe>
+            </div>
+	</div>
+</div>
+
+<!-- 发送到手机弹窗 -->
+{#include file="common.html"#}
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/details-two.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

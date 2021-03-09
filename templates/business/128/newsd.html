@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$newsd_title#}-{#$newsd_typename#}-{#$detail_title#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$newsd_title#}-{#$newsd_typename#}">
+<meta name="description" content="{#$newsd_title#}-{#$newsd_typename#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-two.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+var pageData = {
+	id: '{#$detail_id#}',
+	panName: '{#$detail_title#}',
+	address: '{#$detail_address#}',
+	lat: '{#$detail_lat#}',
+	lng: '{#$detail_lng#}',
+	url: '{#getUrlPath service='business' template='detail' id={#$detail_id#}#}',
+	mapType: '{#$site_map#}',
+	mapKey: '{#$site_map_key#}'
+};
+</script>
+</head>
+<body class="w1200">
+{#include file="detailcommon.html"#}
+
+<div class="content-wrap">
+	<div class="content  wrap">
+		<div class="view-title"><i></i>商家动态</div>
+
+		<div class="view-content fn-clear">
+			<div class="nav">
+				{#business action="news_type" return="type" uid={#$detail_id#}#}
+				<span{#if $newsd_typeid == $type.id#} class="active"{#/if#}><a href="{#$type.url#}">{#$type.typename#}</a></span>
+				{#/business#}
+			</div>
+
+			<div class="con">
+				<div class="con-item show">
+					<h2>{#$newsd_title#}</h2>
+					<div class="con-text">{#$newsd_body#}</div>
+				</div>
+				
+				
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- 发送到手机弹窗 -->
+{#include file="common.html"#}
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/details-two.js"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/detail-th.js"></script>
+</body>
+</html>

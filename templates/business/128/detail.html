@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$detail_title#}">
+<meta name="description" content="{#$detail_title#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-two.css">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+var longitude = '{#$detail_lng#}', latitude = '{#$detail_lat#}', resblockName = '{#$detail_title#}';
+
+var pageData = {
+	id: '{#$detail_id#}',
+	panName: '{#$detail_title#}',
+	address: '{#$detail_address#}',
+	lat: '{#$detail_lat#}',
+	lng: '{#$detail_lng#}',
+	url: '{#getUrlPath service='business' template='detail' id={#$detail_id#}#}',
+	mapType: '{#$site_map#}',
+	mapKey: '{#$site_map_key#}'
+};
+var cenicon = "{#$templets_skin#}images/mark_ditu.png";
+var site_map = "{#$site_map#}";
+var vrUrl    = '{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}',  videoUrl = '{#getUrlPath service='business' template='video' bid={#$detail_id#}#}',  albumsUrl = '{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}';
+</script>
+</head>
+<body class="w1200">
+{#include file="detailcommon.html"#}
+
+<div class="content-wrap fn-clear">
+	<div class="content wrap">
+		<div class="content-left fn-left">
+			
+			<!-- 商家介绍 -->
+			<div class="store-intro">
+				<div class="view-title"><i></i>商家介绍</div>
+				<div class="intro-text">{#$detail_body#}</div>
+				<div class="see-more"><a target="_blank" href="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}">查看更多</a></div>
+			</div>
+
+			<!-- 商家全景 -->
+			<div class="overall fn-clear">
+				<div class="shop-view fn-left">
+					<div class="view-title"><span class="active"> 商家全景</span><span>商家视频</span><span>商家相册</span></div>
+					<!--全景视频-->
+    				<div class="content fn-clear show">
+						{#business action="panor_list" return="list" uid={#$detail_id#} pageSize="6"#}
+                    	<div class="shop-item"><a target="_blank" href="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">
+                    		<div class="img"><img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}"><i class="img-icon"><img src="{#$templets_skin#}images/vr-icon.png"></i></div>
+                    		<p class="name">{#$list.title#}</p>
+						</a></div>
+						{#/business#}
+                    </div>
+
+                    <div class="content fn-clear">
+						{#business action="video_list" return="list" uid={#$detail_id#} pageSize="6"#}
+                    	<div class="shop-item"><a target="_blank" href="{#getUrlPath service='business' template='video' bid={#$detail_id#}#}">
+                    		<div class="img"><img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}" alt="{#$list.title#}"><i class="img-icon"><img src="{#$templets_skin#}images/view_icon.png"></i></div>
+                    		<p class="name">{#$list.title#}</p>
+						</a></div>
+						{#/business#}
+					</div>
+					<div class="content fn-clear">
+						{#business action="albums_list" return="list" uid={#$detail_id#} typeid={#$id#} page={#$page#} pageSize="6"#}
+						<div class="shop-item"><a target="_blank" href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}">
+							<div class="img"><img src="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}"></div>
+							<p class="name">{#$list.title#}</p>
+						</a></div>
+						{#/business#}
+					</div>
+                    <div class="see-more vrorvideo"><a target="_blank" href="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">查看更多</a></div>
+				</div>
+			</div>
+			<!-- 商家列表 -->
+			{#if in_array("shop", $detail_bind_module)#}
+			<div class="goods-list">
+				<div class="view-title"><i></i>商品列表</div>
+				<div class="goods-con fn-clear">
+					{#shop action="slist" store={#$detail_store.shop.sid|default:-1#} pageSize="8" return="list"#}
+					<div class="goods-item">
+						<a target="_blank" href="{#$list.url#}">
+							<div class="img-wrap"><img src="{#$list.litpic|replace:"large":"middle"#}" alt=""></div>
+							<div class="text">
+								<p class="name">{#$list.title#}</p>
+								<p class="money"><span>{#echoCurrency type='symbol'#}</span>{#$list.price#}</p>
+							</div>
+						</a>
+					</div>
+					{#/shop#}
+				</div>
+				<div class="see-more"><a target="_blank" href="{#$detail_store['shop']['url']#}">查看更多</a></div>
+			</div>
+			{#/if#}
+			<!-- 招聘职位 -->
+			{#if in_array("job", $detail_bind_module)#}
+			<div class="position">
+				<div class="view-title"><i></i>招聘职位</div>
+				<div class="position-con fn-clear">
+					{#job action="post" company={#$detail_store.job.sid|default:-1#} pageSize="6" return="jlist"#}
+					<div class="position-list">
+						<a target="_blank" href="{#$jlist.url#}">
+							<p class="title"><span class="name">{#$jlist.title#}</span><span class="money">{#$jlist.salary#}</span></p>
+							<p class="sort">
+									{#$jlist.addr[1]#}&nbsp;&nbsp;&nbsp;{#$jlist.experience#}&nbsp;&nbsp;&nbsp;{#$jlist.educational#}&nbsp;&nbsp;&nbsp;
+									{#if $jlist.nature==0#}全职{#elseif $jlist.nature==1#}兼职{#elseif $jlist.nature==2#}临时{#elseif $jlist.nature==3#}实习{#else#}未知{#/if#}
+								<span>{#$jlist.timeUpdate#}</span>
+							</p>
+							<p class="business"><span>{#$jlist.company.scale#}</span><span>{#$jlist.company.nature#}</span></p>
+						</a>
+					</div>
+					{#/job#}
+				</div>
+				<div class="see-more"><a target="_blank" href="{#$detail_store['job']['url']#}">查看更多</a></div>
+			</div>
+			{#/if#}
+			<!-- 发布房源 -->
+			{#if in_array("house", $detail_bind_module)#}
+			<div class="house-source">
+				<div class="view-title fn-clear"><i></i>发布房源
+					<ul class="house-tab"><li class="active">二手房</li><li>租房</li></ul>
+					<div class="house-box-wrap">
+						<div class="house-box show">
+							<div class="house-con fn-clear salehouse">
+								{#house action="saleList" comid={#$detail_store.house.sid|default:-1#} pageSize="8" return="hlist"#}
+								<div class="house-list">
+									<a target="_blank" href="{#$hlist.url#}">
+										{#if $hlist.qj#}<div class="quanjing">全景</div>{#/if#}
+										{#if $hlist.video#}<div class="shipin">视频</div>{#/if#}
+										<div class="imgbox"><img src="{#$hlist.litpic|replace:"large":"middle"#}" alt=""></div>
+										<p class="name">{#$hlist.title#}</p>
+										<p class="money">{#if $hlist.price>0#}{#echoCurrency type='symbol'#}<span>{#$hlist.price#}</span>万{#else#}面议{#/if#}</p>
+										<p class="meter">{#$hlist.room#}&nbsp;&nbsp;{#$hlist.area#}平方米</p>
+									</a>
+								</div>
+								{#/house#}
+							</div>
+							<div class="see-more"><a target="_blank" href="{#$detail_store['house']['url']#}">查看更多</a></div>
+						</div>
+						<div class="house-box">
+							<div class="house-con fn-clear renthouse">
+								{#house action="zuList" comid={#$detail_store.house.sid|default:-1#} pageSize="8" return="hlist"#}
+								<div class="house-list">
+									<a target="_blank" href="{#$hlist.url#}">
+										{#if $hlist.qj#}<div class="quanjing">全景</div>{#/if#}
+										{#if $hlist.video#}<div class="shipin">视频</div>{#/if#}
+										<div class="imgbox"><img src="{#$hlist.litpic|replace:"large":"middle"#}" alt=""></div>
+										<p class="name">{#$hlist.title#}</p>
+										<p class="money">{#if $hlist.price>0#}{#echoCurrency type='symbol'#}<span>{#$hlist.price#}</span>元/月{#else#}面议{#/if#}</p>
+										<p class="meter">{#$hlist.room#}&nbsp;&nbsp;{#$hlist.area#}平方米</p>
+									</a>
+								</div>
+								{#/house#}
+							</div>
+							<div class="see-more"><a target="_blank" href="{#$detail_store['house']['url']#}">查看更多</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{#/if#}
+			<!-- 商家团购 -->
+			{#if in_array("tuan", $detail_bind_module)#}
+			<div class="group-buy">
+				<div class="view-title"><i></i>商家团购</div>
+				<div class="group-box fn-clear">
+					<div class="group-con">
+						{#tuan action="tlist" store={#$detail_store.tuan.sid|default:-1#} return="list" pageSize="3"#}
+						<div class="group-list fn-clear">
+							<div class="imgbox"><a href="{#$list.url#}"><img src="{#$list.litpic|replace:"large":"small"#}" alt=""></a></div>
+							<div class="list-right">
+								<p class="name"><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></p>
+								<p class="sale">已售 {#$list.sale#} &nbsp;&nbsp;&nbsp;截止日期：{#$list.enddate|date_format:'%Y.%m.%d'#}</p>
+								<div class="money fn-clear">
+									<p class="red fn-left"><span>{#echoCurrency type='symbol'#}</span>{#$list.price#}</p>
+									<p class="grey fn-left"><span>{#echoCurrency type='symbol'#}</span>{#$list.market#}</p>
+								</div>
+							</div>
+							<a class="purchase fn-right" target="_blank" href="{#$list.url#}">立即抢购</a>
+						</div>
+						{#/tuan#}
+					</div>
+				</div>
+				<div class="see-more"><a target="_blank" href="{#$detail_store['tuan']['url']#}">查看更多</a></div>
+			</div>
+			{#/if#}
+			<!-- 网友评论 -->
+			<div class="comment-con">
+                <div class="comment fn-clear">
+                    <div class="c-title fn-clear">
+                        网友评论
+                    </div>
+                    <div class="c-area">
+						<div class="textarea" contenteditable="true" data-type="parent"></div>
+						<div class="c-sub fn-clear">
+						{#if $userinfo#}
+						<div class="np-login">
+							<a href="{#$member_userDomain#}" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+							<a href="{#$cfg_basehost#}/logout.html" class="o logout">安全退出</a>
+						</div>
+						<a href="javascript:;" class="subtn">发表</a>
+						{#else#}
+						<a href="javascript:;" class="subtn login">登录</a>
+						{#/if#}
+					</div>
+                     </div>
+                    <div class="c-content">
+                        <div class="c-nav fn-clear">
+                            <span class="c-title">全部评论</span>
+                            <span class="c-orderby fn-clear"><a href="javascript:;" class="ctime active" data-id="time">时间</a><a href="javascript:;" class="chot" data-id="hot">热度</a></span>
+                        </div>
+                        <ul class="c-list" id="commentList" data-page="1">
+
+                            <div class="loading"></div>
+                        </ul>
+                        <div id="loadMore" class="loading">加载更多</div>
+                    </div>
+                </div>
+            </div>
+		</div>
+		{#include file="sidebarRight.html"#}
+	</div>
+</div>
+<!-- 促销活动弹窗 -->
+<div class="activity-popup fn-hide">
+	<div class="act-title">
+		商家动态
+		<a class="close" href="javascript:;"><img src="{#$templets_skin#}images/popup-close.png" alt=""></a>
+	</div>
+	<div class="act-con">
+		<ul class="fn-clear">
+		</ul>
+		<div class="page">
+		</div>
+	</div>
+</div>
+<!-- 发送到手机弹窗 -->
+{#include file="common.html"#}
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			{#if $userinfo#}
+			<a href="javascript:;" class="subtn">回复</a>
+			{#else#}
+			<a href="javascript:;" class="subtn login">登录</a>
+			{#/if#}
+		</div>
+	</div>
+</script>
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/map-detail-{#$site_map#}.js?v={#$cfg_staticVersion#}"></script>
+
+
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/details-two.js"></script>
+</body>
+</html>

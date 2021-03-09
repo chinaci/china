@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$business_keywords#}">
+<meta name="description" content="{#$business_description#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/notices.css?v={#$cfg_staticVersion#}">
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var templets_skin = '{#$templets_skin#}';
+</script>
+</head>
+<body class="w1200">
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v3.html"#}
+{#$pageUrl = {#getUrlPath service='business' template='list'#}#}
+<div class="list-container wrap">
+	<p class="index-page"><a href="{#$business_channelDomain#}">首页</a> &gt; <a href="{#getUrlPath service='business' template='notices'#}">公告</a></p>
+	<div class="nd_detail">
+		<h2 class="nd_title">{#$detail_title#}</h2>
+		<div class="nd_time">{#$detail_pubdate|date_format:'%Y-%m-%d %H:%M:%S'#}</div>
+		<div class="nd_com">{#$detail_body#}</div>
+	</div>
+</div>
+
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+</body>
+</html>

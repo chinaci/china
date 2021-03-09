@@ -1,0 +1,139 @@
+/*修改头部*/
+.details-wrap{background: #f8f8f8;}
+.fixedwrap .header .logo img{margin-left: 0;}
+.fixedwrap .nav{background-image: -moz-linear-gradient( 0deg, rgb(240,29,84) 0%, rgb(246,144,11) 100%);background-image: -webkit-linear-gradient( 0deg, rgb(240,29,84) 0%, rgb(246,144,11) 100%);background-image: -ms-linear-gradient( 0deg, rgb(240,29,84) 0%, rgb(246,144,11) 100%);filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #f01d54, endColorstr = #f6900b);-moz-box-shadow: 0px 3px 6px 0px rgba(244, 179, 63, 0.65);-webkit-box-shadow: 0px 3px 6px 0px rgba(244, 179, 63, 0.65);box-shadow: 0px 3px 6px 0px rgba(244, 179, 63, 0.65);height:54px!important;line-height: 54px!important;}
+
+.details-wrap{position: relative;}
+.details-wrap .detail{position: relative;}
+.details-wrap .top-bg{margin:0 auto;width:1920px;}
+.details-wrap .shop{background: #fff;padding:20px;position: absolute;z-index: 2;top:-190px;left:0;}
+.shop .shop-left{width:650px;float: left;position: relative;margin-right: 20px;padding-left: 10px;}
+.shop .shop-left .code-wrap{position: absolute;z-index: 3;top: 50px;right: 11px;}
+.shop .shop-left .code-wrap .code img{cursor: pointer;}
+.shop .shop-left .code-wrap .code-style{width:175px;height:175px;position: absolute;z-index: 4;top: 71px;right: 75px;padding:5px;border: 1px solid #eee;-webkit-box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);-moz-box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);display: none;-webkit-animation: flipInY 0.5s ease-out;-moz-animation: flipInY 0.5s ease-out;animation: flipInY 0.5s ease-out;background: #fff;}
+.shop .shop-left .code-wrap .code-style.show{display: block;}
+.shop .shop-left .code-wrap .code-style img{width:175px;height: 175px;display: block;}
+.shop .shop-left .code p{text-align: center;font-size: 14px;line-height: 22px;}
+.shop .shop-left .name p{font-size: 24px;font-weight: bold;width:500px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;line-height: 38px;float: left;}
+.shop .shop-left .name a{float: right;background: #f29d38;font-size: 14px;color:#fff;padding:6px 12px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;}
+.shop .shop-left .name a.click{background: #e0e0e0;}
+.shop .shop-left .name a img{vertical-align: middle;margin-right: 5px;}
+.shop .shop-left .sort{margin:10px 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.shop .shop-left .sort span{font-size: 16px;color:#f47f0c;padding:2px 8px;border:1px solid #f47f0c;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;display: inline-block;margin-right: 10px;}
+.shop .shop-left .location{font-size:16px;width:500px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;line-height: 30px;}
+.shop .shop-left .time{font-size: 16px;line-height: 30px;}
+.shop .shop-left .tel{margin-top: 30px;padding-bottom: 22px;border-bottom: 1px solid #eee;}
+.shop .shop-left .tel img{vertical-align: middle;margin-right: 6px;}
+.shop .shop-left .tel span{margin-right: 25px;font-size: 18px;}
+.shop .shop-left .tel .phone{font-size: 20px;color:#f4690c;display: inline-block;border:1px solid #f4690c;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;padding:4px 10px;}
+.shop .shop-left .tel .phone img{margin-bottom: 5px;}
+.shop .shop-left .tel .QQ img{margin-bottom: 5px;}
+.shop .shop-left .tel .wechat img{margin-bottom: 3px;}
+.shop .shop-left .intro{padding-top: 15px;}
+.shop .shop-left .intro li a{display: block;}
+.shop .shop-left .intro li{float: left;width:65px;text-align: center;}
+
+.shop-right .slideBox1{width:480px;height:335px;overflow:hidden;position: relative;}
+.shop-right .slideBox1 .slide{width:480px;height:335px;position: relative;}
+.shop-right .slideBox1 ul li{position: relative;height:335px;overflow: hidden;}
+.shop-right .slideBox1 ul li img{max-width: 100%;max-height: 100%;position: absolute;top:0;left:0;right:0;bottom: 0;margin: auto;display: block;}
+.shop-right .slideBox1 .play{position: absolute;z-index: 2;top:50%;left:50%;margin-left: -35px;margin-top: -35px;}
+.slideBox1 .hd{ overflow:hidden; position:absolute;left:15px; right:15px; bottom:15px; z-index:1;}
+.slideBox1 .hd ul{ overflow:hidden; zoom:1;text-align: center;  }
+.slideBox1 .hd ul li{cursor:pointer;display:inline-block;width:10px;height: 10px;background:#fff;margin:0 7px;border-radius: 100%;text-align: center;opacity: 0.5;filter: alpha(opacity=50);}
+.slideBox1 .hd ul li.on{ background: #fff; -moz-border-radius: 100%; -webkit-border-radius: 100%;border-radius: 100%;opacity: 1;filter: alpha(opacity=100);}
+.slideBox1 .hd{ overflow:hidden; position:absolute;left:15px; right:15px; bottom:15px; z-index:1;}
+/*商家相册*/
+.shop-album{margin-top: 205px;}
+.shop-album .album-left{width:880px;}
+.shop-album .album-left .album-box{background: #fff;padding:30px 25px 0 25px;border:1px solid #eee;}
+.shop-album .album-left .album-title{position: relative;margin-bottom: 20px;}
+.shop-album .album-left .album-title h3{font-size: 22px;font-weight: bold;margin-left: 15px;float: left;}
+.shop-album .album-left .album-title i{width:4px;height:22px;position: absolute;z-index: 2;background: #ef520d;left:0;top:6px;}
+.shop-album .album-con .album-list{float: left;width:262px;margin-bottom: 25px;margin-right: 21px;}
+.shop-album .album-con .album-list:nth-child(3n){margin-right: 0;}
+.shop-album .album-con .album-list .img-wrap{width:262px;height:192px;position:relative;overflow: hidden;background-color:#f5f5f5;-webkit-transition: all .4s ease-in-out;-moz-transition: all .4s ease-in-out;-ms-transition: all .4s ease-in-out;-o-transition: all .4s ease-in-out;transition: all .4s ease-in-out;-webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);-o-transform: scale(1);transform: scale(1);}
+.shop-album .album-con .album-list .img-small{max-width:100%;max-height:100%;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;display:block;-webkit-transition: all .4s ease-in-out;-moz-transition: all .4s ease-in-out;-ms-transition: all .4s ease-in-out;-o-transition: all .4s ease-in-out;transition: all .4s ease-in-out;-webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);-o-transform: scale(1);transform: scale(1);}
+.shop-album .album-con .album-list .img-small:hover{-webkit-transform: scale(1.2); -moz-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2);cursor: pointer;}
+.shop-album .album-con .album-list p{font-size: 16px;line-height: 32px;text-align: center;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+/*.shop-album .album-con{position: relative;}*/
+.shop-album .album-con .album-list .album-pop{position: fixed;z-index: 1211;width:1156px;height: 576px;background: #000;margin-top: -219px;top:50%;left:50%;margin-left: -578px;margin-top: -270px;}
+.album-list .album-pop .album-pop-img img.album-express{display: block; height: 576px; margin: 0 auto;}
+.album-list .album-pop .album-pop-img .album-list-close{position: absolute;top:0px;right:0px;}
+
+.shop-album .toggle-btn{clear: both;text-align: center;height: 35px;line-height: 35px;border-top: 1px solid #eee;margin-top: 20px;cursor: pointer;display: none;}
+.shop-album .toggle-btn img{width:18px;vertical-align: middle;margin-left: 2px;margin-bottom: 1px;}
+.shop-album .toggle-btn span{font-size: 12px;}
+/*.shop-album .album-con .toggle-btn a:hover{color:#f27113;}*/
+.album-box .album-con{max-height: 480px;overflow: hidden;}
+.album-box .album-con.show{max-height: 3000px!important;}
+
+/*商家团购*/
+.group-box{padding:25px 25px 5px 25px;margin-top: 15px;background: #fff;border:1px solid #eee;}
+.group-box .group-con{max-height: 675px;overflow: hidden;}
+.group-box .group-con.show{max-height: 3000px;}
+.group-box .album-title{margin-bottom: 0!important;}
+.group-box .group-list{padding:22px 0;border-bottom: 1px dashed #eee;}
+.group-box .group-list:last-child{border-bottom: none;}
+.group-box .group-list a{display: block;}
+.group-box .group-list .pic{width:175px;height:125px;float: left;}
+.group-box .group-list .pic:hover{opacity: 0.7;filter: alpha(opacity=70);}
+.group-box .group-list .list-right{float: left;margin-left: 20px;}
+.group-box .group-list .list-right .name{font-size: 18px;font-weight: bold;width:490px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.group-box .group-list .list-right .sale{font-size: 14px;color:#a0a0a0;margin-top: 10px;}
+.group-box .group-list .list-right .money{margin-top: 32px;}
+.group-box .group-list .list-right .money .red{font-size: 22px;font-weight: bold;color:#f27113;float: left;margin-right: 15px;}
+.group-box .group-list .list-right .money .red span{font-size: 14px;color:#f27113;}
+.group-box .group-list .list-right .money .grey{font-size: 18px;color:#a0a0a0;float: left;line-height: 33px;text-decoration: line-through;}
+.group-box .group-list .list-right .money .grey span{font-size: 14px;}
+.group-box .group-list .now{float: right;width:109px;height:37px;line-height: 37px;background: #f27113;text-align: center;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;margin-top: 40px;}
+.group-box .group-list .now a{font-size: 16px;color:#fff;}
+/*网友评论*/
+.comment-con{padding:25px 20px;background: #fff;border:1px solid #eee;}
+.comment .c-title{font-size: 22px;font-weight: bold;}
+.comment-con{padding:25px 20px;background: #fff;border:1px solid #eee;}
+.comment .c-title{font-size: 22px;font-weight: bold;}
+.comment .c-area .c-sub {height: 40px;}
+.comment .c-area .c-sub .np-login {float: left;line-height: 30px;padding: 5px 0 0 10px;}
+.comment .c-area .c-sub .np-login .u img {float: left;width: 30px;height: 30px;vertical-align: middle;border-radius: 20px;}
+.comment .c-area .c-sub .np-login .o {color: #999;}
+#loadMore{text-align: center;line-height: 5;}
+/*商家推荐*/
+.shop-reco{margin-top: 30px;}
+.shop-reco .rec-title i{width:4px;height:25px;background: #ef520d;margin-right: 10px;display: block;float: left;margin-top: 4px;}
+.shop-reco .rec-title h3{font-size: 22px;font-weight: bold;float: left;}
+.shop-reco .rec-list{width:282px;float: left;background: #fff;border:1px solid #eee;margin-top: 20px;margin-right: 14px;}
+.shop-reco .rec-list:hover{-webkit-box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);-moz-box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);box-shadow: 0px 0px 12px 0px rgba(156, 156, 156, 0.45);}
+.shop-reco .rec-list:nth-child(3n){margin-right: 0}
+.shop-reco .rec-list a{display: block;}
+.shop-reco .rec-list .text{padding:5px 15px 15px 15px;}
+.shop-reco .rec-list a img{width:282px;height:192px;}
+.shop-reco .rec-list .name a{font-size:18px;width:262px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; }
+.shop-reco .rec-list .sale{font-size: 14px;color:#a0a0a0;}
+.shop-reco .rec-list .money .red{color:#f27113;font-size: 22px;font-weight: bold;float: left;}
+.shop-reco .rec-list .money .red span{font-weight: normal;font-size: 14px;}
+.shop-reco .rec-list .money .grey{color:#a0a0a0;font-size: 18px;text-decoration: line-through;float: left;line-height: 30px;font-weight: normal;margin-left: 15px;}
+
+.album-right{width:300px;}
+/*商家介绍*/
+.album-right .shopper{padding:15px;background: #fff;}
+.shopper .shopper-title{font-size: 18px;font-weight: bold;position: relative;padding-left: 15px;}
+.shopper .shopper-title i{width:4px;height:18px;background: #ef520d;position: absolute;z-index: 2;left:0;top:6px;}
+.shopper .shopper-text{font-size: 16px;line-height: 28px;margin-top: 10px;text-align: justify;}
+/*猜你喜欢*/
+.album-right .serve-right{width:246px;padding:0 25px;border-top: 2px solid #f0c247;border-left: 1px solid #eee;border-bottom: 1px solid #eee;border-right: 1px solid #eee;background: #fff;margin-top: 20px;}
+.album-right .serve-right .like-title{height:50px;line-height: 50px;font-size: 18px;font-weight: bold;}
+.album-right .serve-right .like-con a{display: block;}
+.album-right .serve-right .like-list img{width:250px;height:173px;}
+.album-right .serve-right .like-list .name{font-size: 16px;font-weight: bold;line-height: 26px;margin-top: 5px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.album-right .serve-right .like-list{margin-bottom: 30px;}
+.album-right .serve-right .like-list .location{font-size: 14px;color:#a0a0a0;line-height: 26px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+.desk {position: fixed;background: #000;opacity: 0.7;filter: alpha(opacity=70);z-index: 1200;top: 0;left: 0;bottom: 0;right: 0;}
+
+.storename{max-height: 40px;margin-top: 10px;}
+
+
+
+
+

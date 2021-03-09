@@ -1,0 +1,45 @@
+<div class="content-right fn-right">
+        <div class="shop-claim">
+            <div class="store-verify"><a href="{#getUrlPath service='member' type='user' template='enter'#}"><img src="{#$templets_skin#}images/store1.png" alt=""></a></div>
+        </div>
+        <div class="activity">
+            <div class="activity-title"><i></i>商家动态<a target="_blank" href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">查看更多</a></div>
+            <div class="activity-scroll">
+                <div class="txtMarquee-top">
+                    <div class="bd">
+                        <ul class="infoList">
+                            {#business action='news_list' return='news' uid={#$detail_id#} pageSize='5'#}
+                            <li class="fn-clear"><a target="_blank" href="{#$news.url#}"><em>[{#$news.typename#}]</em><p>{#$news.title#}</p><span>{#$news.pubdate|date_format:'%m.%d'#}</span></a></li>
+                            {#/business#}
+                        </ul>
+                        <input type="hidden" value="{#$pageInfo.totalCount#}" id="newstotal">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 地图 -->
+        <div class="map">
+            <a href="javascript:;"><img class="appMapImg" src="" alt=""></a>
+        </div>
+        <!-- 商家活动 -->
+        {#if in_array("shop", $detail_bind_module)#}
+        <div class="seller">
+            <div class="seller-title"><i></i>商家活动</div>
+            <div class="seller-con">
+                {#shop action="slist" store={#$detail_store.shop.sid|default:-1#} limited="5" pageSize="3" return="list"#}
+                <div class="seller-list fn-clear">
+                    <a target="_blank" href="{#$list.url#}">
+                        <div class="imgbox"><img src="{#$list.litpic|replace:"large":"middle"#}" alt=""></div>
+                        <p class="name"> {#$list.title#}</p>
+                        <p class="location fn-clear">
+                            <span class="place fn-left">{#$list.addr#}</span>
+                            <span class="time fn-right">{#$list.kstime|date_format:'%Y.%m.%d %H:%M'#}开始</span>
+                        </p>
+                    </a>
+                </div>
+                {#/shop#}
+            </div>
+        </div>
+        {#/if#}
+    </div>
+</div>

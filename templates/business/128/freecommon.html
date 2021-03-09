@@ -1,0 +1,133 @@
+{#$channel = 'business'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+<!-- 导航 -->
+<div class="fixedwrap FestivalAD_header">
+	<div class="fixedpane">
+		    {#$headHotLine = $cfg_hotline#}
+            {#$headBaseHost = $cfg_basehost#}
+            {#$headWebName = $cfg_webname#}
+            {#$headWebLogo = $cfg_weblogo#}
+            {#$headShortName = $cfg_shortname#}
+
+            {#if $channel == 'business'#}
+            {#$headBaseHost = $business_channelDomain#}
+            {#$headWebName = $business_channelName#}
+            {#$headWebLogo = $business_logoUrl#}
+            {#$headShortName = $business_channelName#}
+            {#/if#}
+		<!-- head s -->
+		<div class="wrap header fn-clear">                                                                        
+			<div class="logo">
+				<a href="{#$headBaseHost#}" title="{#$headWebName#}"><img src="{#$headWebLogo#}" alt=""><h2>{#$headWebName#}</h2></a>
+			</div>
+			<div class="kefu"><s><img src="{#$templets_skin#}images/tel1.png"></s><p>客服热线</p>{#$headHotLine#}</div>
+		</div>
+		<!-- head e -->
+
+		<!-- 导航 s -->
+		<div class="nav">
+			<div class="wrap">
+				<ul class="mainnav fn-clear">
+					<li><a href="{#$business_channelDomain#}" class="nav-m">首页</a></li>
+					{#if in_array("waimai", $installModuleArr)#}
+					<li><a href="{#$waimai_channelDomain#}" class="nav-m">外卖</a></li>
+					{#/if#}
+					{#if in_array("shop", $installModuleArr)#}
+					<li><a href="{#$shop_channelDomain#}" class="nav-m">商城</a></li>
+					{#/if#}
+					<li><a href="{#$cfg_basehost#}" class="nav-m">官网</a></li>
+					{#if in_array("info", $installModuleArr)#}
+					<li><a href="{#$info_channelDomain#}" class="nav-m">二手</a></li>
+					{#/if#}
+					{#if in_array("video", $installModuleArr)#}
+					<li><a href="{#$video_channelDomain#}" class="nav-m">视频</a></li>
+					{#/if#}
+					{#if in_array("tuan", $installModuleArr)#}
+					<li><a href="{#$tuan_channelDomain#}" class="nav-m">团购</a></li>
+					{#/if#}
+					{#if in_array("job", $installModuleArr)#}
+					<li><a href="{#$job_channelDomain#}" class="nav-m">招聘</a></li>
+					{#/if#}
+					{#if in_array("dating", $installModuleArr)#}
+					<li><a href="{#$dating_channelDomain#}" class="nav-m">婚介</a></li>
+					{#/if#}
+					{#if in_array("house", $installModuleArr)#}
+					<li><a href="{#$house_channelDomain#}" class="nav-m">房产</a></li>
+					{#/if#}
+					{#if in_array("huodong", $installModuleArr)#}
+					<li><a href="{#$huodong_channelDomain#}" class="nav-m">活动</a></li>
+					{#/if#}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="details-wrap">
+	<div class="top-bg"><img src="{#$templets_skin#}images/top-bg.png" alt=""></div>
+	<div class="detail wrap">
+		<div class="shop fn-clear">
+			<div class="shop-left fn-left">
+				<div class="code-wrap">
+					<div class="code"><img src="{#$templets_skin#}images/code3.png" alt=""><p>手机访问</p></div>
+					<div class="code-style"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$detail_id#}#}" alt=""></div>
+				</div>
+				<div class="name fn-clear"><p>{#$detail_title#}</p>
+					{#if $detail_collect#}
+					<a class="click" href="javascript:;"><img src="{#$templets_skin#}images/collect-store.png" alt="">已收藏店铺</a>
+					{#else#}
+					<a href="javascript:;"><img src="{#$templets_skin#}images/collect-store.png" alt="">收藏店铺</a>
+					{#/if#}
+				</div>
+				<p class="sort">
+						<span class="sort">{#$detail_typenameArr[0]#}</span>{#if $detail_typenameArr[1]#}<span class="sort">{#$detail_typenameArr[1]#}</span>{#/if#}
+						{#*$n=1#}
+						{#foreach from=$detail_auth item=auth#}
+						{#if $n<=3#}
+						<span class="sort{#$n#}">{#$auth.typename#}</span>
+						{#/if#}
+						{#$n=$n+1#}
+						{#/foreach*#}</p>
+				<p class="location">地址：{#$detail_address#}</p>
+				<p class="time">营业时间：{#$detail_opentime#}</p>
+				<p class="tel">
+					{#if $detail_tel#}<span class="phone"><img src="{#$templets_skin#}images/tel3.png" alt="">{#$detail_tel#}</span>{#/if#}
+					{#if $detail_qq#}<span class="QQ"><img src="{#$templets_skin#}images/QQ2.png" alt="">{#$detail_qq#}</span>{#/if#}
+					{#if $detail_wechatcode#}<span class="wechat"><img src="{#$templets_skin#}images/wechat2.png" alt="">{#$detail_wechatcode#}</span>{#/if#}
+				</p>
+				<ul class="intro fn-clear">
+					{#foreach from=$detail_tagArr item=tag#}
+					<li><a href="javascript:;"><img src="{#$templets_skin#}images/{#$tag.py#}intro.png" alt=""><p>{#$tag.val#}</p></a></li>
+					{#/foreach#}
+					{#foreach from=$detail_store item='store'#}
+					{#if $store.is_module==0#}
+					<li><a href="javascript:;"><img class="storename" src="{#$cfg_staticPath#}images/business/module/{#$store.name#}intro.png" alt=""><p>{#$store.title#}</p></a></li>
+					{#/if#}
+					{#/foreach#}
+				</ul>
+			</div>
+			<div class="shop-right fn-right">
+				<div class="slideBox1">
+					<div class="bd">
+						<ul>
+							{#if $detail_video#}
+							<li>
+								<video width="100%" height="100%" controls>
+									<source src="{#$detail_video#}"  type="video/mp4">
+								</video>
+							</li>
+							<li><a href="javascript:;"><img class="slide" src="{#$detail_video_pic#}" alt=""></a></li>
+							{#/if#}
+							{#foreach from=$detail_banner item='banner'#}
+							<li><a href="javascript:;"><img class="slide" src="{#$banner.pic#}" alt=""></a></li>
+							{#/foreach#}
+						</ul>
+					</div>
+					<div class="hd"><ul></ul></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	

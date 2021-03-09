@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$albums_typename#}-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/details-two.css?v={#$cfg_staticVersion#}">
+{#if $detail_type==1#}
+<link rel="stylesheet" href="{#$templets_skin#}css/details.css">
+{#/if#}
+<link rel="stylesheet" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/abigimage.jquery.css?v={#$cfg_staticVersion#}">
+
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$business_channelDomain#}';
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var templets_skin = '{#$templets_skin#}',id = '{#$detail_id#}';
+var pageData = {
+	id: '{#$detail_id#}',
+	panName: '{#$detail_title#}',
+	address: '{#$detail_address#}',
+	lat: '{#$detail_lat#}',
+	lng: '{#$detail_lng#}',
+	url: '{#getUrlPath service='business' template='detail' id={#$detail_id#}#}',
+	mapType: '{#$site_map#}',
+	mapKey: '{#$site_map_key#}'
+};
+</script>
+{#if $detail_type==1#}
+<style>.content-wrap{padding-top: 230px;}</style>
+{#/if#}
+</head>
+<body class="w1200">
+{#if $detail_type==1#}
+{#include file="freecommon.html"#}
+{#else#}
+{#include file="detailcommon.html"#}
+{#/if#}
+
+<div class="content-wrap">
+	<div class="content  wrap">
+		<div class="view-title"><i></i>商家相册</div>
+
+		<div class="view-content fn-clear">
+			<div class="nav albumsnav">
+				{#business action="albums_type" return="type" uid={#$detail_id#}#}
+				<span {#if $id == $type.id#}class="active"{#/if#}><a href="{#$type.url#}">{#$type.typename#}</a></span>
+				{#/business#}
+			</div>
+
+			<div class="con">
+				<div class="con-item show">
+					<ul class="albumslist fn-clear">
+						{#business action="albums_list" return="list" uid={#$detail_id#} typeid={#$id#} page={#$page#} pageSize="12"#}
+						<li><a href="{#$list.litpic#}"><img src="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt=""></a></li>
+						{#/business#}
+					</ul>
+
+				</div>
+				<div class="page">
+						{#getPageList service='business' template='albums' bid={#$detail_id#} typeid={#$id#} pageType='dynamic' param="page=#page#"#}
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- 发送到手机弹窗 -->
+{#if $detail_type!=1#}
+{#include file="common.html"#}
+{#/if#}
+<!-- 底部 -->
+{#include file="../../siteConfig/public_foot_v3.html" module='business' theme='gray'#}
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    //添加地图类型控件
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    // 百度地图API功能
+    var sContent =pageData.address;
+    var point = new BMap.Point(pageData.lng, pageData.lat);
+    map.centerAndZoom(point, 15);
+    var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);
+</script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/common.js"></script>
+<script charset="UTF-8" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+{#if $detail_type==1#}
+<script charset="UTF-8" src="{#$templets_skin#}js/details.js"></script>
+{#else#}
+<script charset="UTF-8" src="{#$templets_skin#}js/details-two.js"></script>
+{#/if#}
+<script charset="UTF-8" src="{#$templets_skin#}js/detail-th.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/abigimage.jquery.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/albums.js"></script>
+</body>
+</html>
