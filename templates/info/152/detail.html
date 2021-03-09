@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#} - {#$list_typename#} - {#$info_title#}</title>
+<meta name="keywords" content="{#$info_keywords#}" />
+<meta name="description" content="{#$info_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list_detail.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/designpicd.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/viewer.min.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+{#if $detail_video#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css?v={#$cfg_staticVersion#}" media="all" />
+{#/if#}
+<script type="text/javascript">
+    var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', cfg_staticPath =staticPath= '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+
+    var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+    var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', id = {#$detail_id#};
+    var user_id = '{#$detail_member['userid']#}';
+    var imconfig = {
+    	'mod':'info',
+		'chatid':"{#$detail_member.userid#}",
+		'title': '{#$detail_title#}',
+		"price": '<em>￥</em>{#$detail_price#}',
+		"imgUrl": '{#changeFileSize url={#$detail_imglist[0]["path"]#} type='small'#}',
+		"link": '{#getUrlPath service="info" template="detail" id=$detail_id#}',
+    }
+</script>
+</head>
+
+<body class="w1200">
+{#$pageCurr = "list"#}
+{#include file="../../siteConfig/top1.html"#}
+<!-- 导航 s-->
+{#include file="header_search.html"#}
+
+<!-- 导航 e-->
+<div class="main_wrap">
+    <div class="wrap crumbs fn-clear">
+        <div class="cont">
+            <span>您的位置：</span>
+            <a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+            <s></s>
+            信息详情
+        </div>
+
+    </div>
+    <!--详情头部 s-->
+    <div class="wrap detail_wrap1 fn-clear">
+        <div class="detail_left">
+            <div class="slide">
+                <div id="slide_big">
+                </div>
+                <a href="javascript:;" class="prev" id="slidebtn_prev"><s></s></a>
+                <a href="javascript:;" class="next" id="slidebtn_next"><s></s></a>
+
+                <div id="slide_small">
+                    <div class="spbox">
+                        <div class="picsmall fn-clear">
+                            {#foreach from=$detail_imglist item=imglist#}
+                            <a href="javascript:;" data-bigpic="{#$imglist['path']#}" data-title="">
+                                <img src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}" alt="">
+                            </a>
+                            {#/foreach#}
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="prev disabled" id="slidebtn2_prev"><s></s></a>
+                    <a href="javascript:;" class="next" id="slidebtn2_next"><s></s></a>
+                </div>
+
+                {#if $detail_video#}
+        		<s class="video_icon" title="播放视频"></s>
+        		<div class="popupVideo">
+        			<a href="javascript:;" class="close">×</a>
+        			<video id="my-video" class="video-js" controls autoplay preload="auto" data-setup="{}" style="width: 340px; height: 340px;">
+        				<source src="{#$detail_video#}" type="video/mp4">
+        			</video>
+        		</div>
+        		{#/if#}
+            </div>
+        </div>
+        <div class="detail_right content">
+            <div class="detail_top">
+                <p class="list_title">{#$detail_title#}</p>
+                {#if $detail_item#}
+    			<ul class="attributes">
+    				{#foreach from=$detail_item item=item#}
+    				{#if $item.value != ""#}
+                    {#if $item.valueArr#}
+                    {#foreach from=$item.valueArr item=i#}
+    				<li>{#$i#}</li>
+                    {#/foreach#}
+                    {#else#}
+    				<li>{#$item.value#}</li>
+                    {#/if#}
+    				{#/if#}
+    				{#/foreach#}
+    			</ul>
+    			{#/if#}
+                <div class="show_info">
+                    <span class="time">{#date("Y-m-d H:i:s", $detail_pubdate)#}</span><span class="see_num">{#$detail_click#}</span><span class="like_num">{#$detail_collectnum#}</span><span class="comm_num">{#$detail_common#}</span>
+                </div>
+                <div class="btn_group ">
+                    <a href="javascript:;" class="store-btn{#if $detail_collect#} curr{#/if#}"><button><em></em><span>{#if $detail_collect#}已收藏{#else#}收藏{#/if#}</button></a>
+                    <div class="share-btn " >
+                        <a href="javascript:;" class="btnShare newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_imglist[0].path#}" id="sharre"></a><em></em><span>分享</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list_info ">
+                <div class="info_left" id="info_left">
+                    {#if $detail_price_switch==0#}
+                    <dl class="new_price">
+                        <dt>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                        {#$priceArr = "."|explode:$detail_price#}
+                        <dd >{#if $detail_price neq 0#}<em>{#echoCurrency type='symbol'#}</em><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</dd>
+                    </dl>
+                    {#/if#}
+                    <dl>
+                        <dt>区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：</dt>
+                        <dd>{#$detail_address|replace:">":"-"#}</dd>
+                    </dl>
+                    <dl>
+                        <dt>有 效  期：</dt>
+                        <dd>{#$detail_validCeil#}</dd>
+                    </dl>
+                    <dl>
+                        <dt>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类：</dt>
+                        <dd>{#$detail_p_typename#} - {#$detail_typename#}</dd>
+                    </dl>
+                </div>
+                <div class="info_right">
+
+                    <div class="infor_top fn-clear">
+                        {#if $detail_info_shop_id#}
+                        <div class="left_l"><a href="{#getUrlPath service='info' action=business id=$detail_info_shop_id#}" target="_blank"><img src="{#if $detail_member['photo']#}{#$detail_member['photo']#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="{#$detail_member.nickname#}"></a></div>
+                        <div class="right_r">
+                            <h3 class="r_tit"><a href="{#getUrlPath service='info' action=business id=$detail_info_shop_id#}" target="_blank">{#$detail_member.nickname#}</a><i class="bus_icon"></i></h3>
+                        {#elseif $detail_member.userid#}
+                        <div class="left_l"><a href="{#getUrlPath service='info' action=homepage id=$detail_userid#}" target="_blank"><img src="{#if $detail_member['photo']#}{#$detail_member['photo']#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="{#$detail_person#}"></a></div>
+                        <div class="right_r">
+                            <h3 class="r_tit"><a href="{#getUrlPath service='info' action=homepage id=$detail_userid#}" target="_blank">{#$detail_person#}</a><i class="personal"></i></h3>
+                        {#else#}
+                        <div class="right_r">
+                            <h3 class="r_tit"><a href="javascipt:;">联系人：{#$detail_person#}</a><i class="personal"></i></h3>
+                        {#/if#}
+                            {#if $detail_member.userid#}<p class="r_info">TA发布信息<span>{#$detail_fabuCount#}</span>条 <i class="chat_to-Link" data-type="detail"></i></p>{#/if#}
+                        </div>
+                    </div>
+                    {#if $detail_member.userid#}
+                    <div class="infor_bot">
+                        <i></i><span>{#$detail_address|replace:" > ":" "#}</span>
+                    </div>
+                    {#/if#}
+
+                </div>
+            </div>
+            <div class="report_info">
+                <div class="rep_l"><img src="{#$templets_skin#}images/report.png" alt=""></div>
+                <div class="rep_r">
+                    <p class="rep_tit">如遇无效、虚假、诈骗信息，请 <a href="javascript:;"class="report" >立即举报></a></p>
+                    <p class="rep_tip">办理服务前请勿付订金、押金等费用，谨防上当受骗！</p>
+                </div>
+            </div>
+
+            <ul class="info_ul">
+                {#if $detail_price neq 0 && $detail_info['price_switch']==0#}
+				{#if $detail_is_valid#}
+                <li class="sold">已经售出</li>
+				{#else#}
+                <li class="buy"><a href="{#getUrlPath service=info action=confirm id=$detail_id#}">立即购买</a></li>
+                {#/if#}
+                {#/if#}
+                <li class="call">
+                    {#if $userinfo#}
+                    <div class="c_tel">
+                        <i></i>
+                        <div class="phone_info">
+                            <p class="phone_num" style="line-height: 48px;">{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$detail_telNum#}</p>
+                        </div>
+                     </div>
+                     {#else#}
+                    <a href="{#$cfg_basehost#}/login.html" class="c_tel">
+                       <i></i>
+                         <div class="phone_info">
+                             <p class="phone_num">{#$detail_telNum_#}</p>
+                             <p class="see_num">登录查看完整电话</p>
+                         </div>
+                    </a>
+                   {#/if#}
+                </li>
+            </ul>
+
+        </div>
+        <!--信息已过期 s-->
+        {#if $detail_isvalid!=0#}
+        <i class="over_icon"></i>
+        {#/if#}
+        <!--信息已过期 e-->
+    </div>
+    <!--详情头部 e-->
+    <div class="wrap fn-clear">
+        <div class="list-mid fn-clear  con-tit ">
+            <div class="list-tab">
+                <div class="list-lead fn-clear">
+                    <ul>
+                        <li class="current" ><a href="javascript:;">信息详情</a></li>
+                        <li><a href="javascript:;">评论({#$detail_common#}条)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lm-txt fn-clear">
+                <div class="lm_con">
+                    {#$detail_body#}
+                </div>
+            </div>
+
+            <div class="act-tao fn-clear con-tit">
+
+                <div class="writ-l fn-clear">
+                    <p><a {#if $userinfo#}href="{#getUrlPath service='info' template='business' id=$userinfo['userid']#}" target="_blank"{#else#} href="javascript:;"{#/if#}><img src="{#if $userinfo#}{#$userinfo['photo']#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}"></a></p>
+                    {#if $userinfo#}<h3><a href="{#getUrlPath service='info' template='business' id=$userinfo['userid']#}" target="_blank">{#$userinfo['nickname']#}：</a></h3>{#/if#}
+                </div>
+                <div class="writ"><p><textarea placeholder="来说两句吧..." id="textarea"></textarea></p></div>
+                <div class="fn-clear">
+                    <div class="writ-b"><a href="javascript:;"{#if $userinfo#} id="rtj"{#else#} id="login"{#/if#}>{#if $userinfo#}发表评论{#else#}登录{#/if#}</a></div>
+                </div>
+                <div id="replyList" data-url="{#getUrlPath service='info' template='business' id='%id'#}"><div class="loading"><img src="{#$cfg_staticPath#}/images/ui/loading.gif" /></div></div>
+            </div>
+
+        </div>
+        <div class="news_r">
+            <div class="adv">{#myad title="二手信息_模板十_电脑端_广告五"#}</div>
+            <div class="newr_content"  id="det_newsr">
+                <h2 class="newr_tit">相关推荐</h2>
+                <ul>
+                {#foreach from=$detail_tj_infos item=tj#}
+                    <li>
+                        <div class=" fn-clear">
+                            <div class="r_left"><a href="{#$tj['url']#}" target="_blank"><img src="{#changeFileSize url="{#$tj['litpic']#}" type="small"#}" alt=""></a></div>
+                            <div class="r_right">
+                                <h3><a href="{#$tj['url']#}" target="_blank">{#$tj['title']#}</a></h3>
+                                {#$priceArr = "."|explode:$tj['price']#}
+                                {#if $tj['price_switch']==0#}
+                                <p class="r_price">{#if $tj['price'] neq 0#}<em> {#echoCurrency type='symbol'#} </em><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</p>{#/if#}
+                            </div>
+                        </div>
+
+                    </li>
+                {#/foreach#}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list_detail.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/designpicd.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/viewer-jquery.min.js?v={#$cfg_staticVersion#}"></script>
+{#if $detail_video#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

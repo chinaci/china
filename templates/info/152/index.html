@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$info_title#}</title>
+	<meta name="keywords" content="{#$info_keywords#}" />
+	<meta name="description" content="{#$info_description#}" />
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+	<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var money = '{#echoCurrency type='symbol'#}';
+	</script>
+</head>
+
+<body  class='w1200'>
+	{#$pageCurr = "index"#}
+	{#include file="../../siteConfig/top1.html"#}
+	<!-- 导航 s-->
+	{#include file="header_search.html"#}
+	<!-- 导航 e-->
+<div class="main_wrap">
+		<!-- 菜单 s-->
+	<div class="b-main">
+		<div class="wrap body ">
+			<div class="FirstFloor fn-clear">
+				<div class="NavList">
+					  <ul>
+						{#info action="type" return='type'#}
+							{#if $_bindex.type < 11#}
+								<li>
+									<a href="{#$type.url#}" class="name">{#$type.typename#}</a>
+									<i class="arrow"></i>
+									{#$i = 0#}
+									{#info action="type" return='subtype' type="{#$type.id#}"#}
+										{#if $i lt 2#}
+											<a href="{#$subtype.url#}" class="item">{#$subtype.typename#}</a>
+										{#/if#}
+									{#/info#}
+									<div class="sub-category">
+										<dl>
+											<dt><h2 class="title"><a href="{#$type.url#}">{#$type.typename#}</a></h2></dt>
+											<dd class="fn-clear">
+												<div class="subitem">
+													{#info action="type" return='subtype1' type="{#$type.id#}"#}
+													<a href="{#$subtype1.url#}">{#$subtype1.typename#}</a>
+													{#/info#}
+												</div>
+											</dd>
+										</dl>
+									</div>
+								</li>
+							{#/if#}
+						{#/info#}
+
+					    <li>
+					      <a href="{#getUrlPath service='info' template='list'#}" class="name">更多分类</a>
+					    </li>
+
+					  </ul>
+				</div>
+
+				<div class="mainbox">
+					<div class="slideBox slideBox1">
+				      <div class="slidewrap">
+				        <div class="slide">
+				          <div class="bd">
+							  <div class="slideobj">
+								{#myad title="二手信息_模板十_电脑端_广告一" type="slide"#}
+							  </div>
+							</div>
+				          <div class="hd"><ul></ul></div>
+				        </div>
+				      </div>
+				    </div>
+				</div>
+
+				<div class="rightbox">
+					<div class="fb_rz">
+						<a href="{#getUrlPath service='member' type='user' template='fabu' module='info'#}" target="_blank" class="conbox first">
+							<span>发布信息</span>
+						</a>
+						<a href="{#$member_busiDomain#}" class="conbox second">
+							<span>商家入驻</span>
+						</a>
+					</div>
+					<div class="bnews">
+						<div class="ntitle">最新入驻商家</div>
+						<ul>
+                            {#info action="shopList" return="slist" orderby="1" pagesize="6"#}
+                            <li><a href="{#$slist.url#}">{#$slist.user.nickname#}</a><span class="ruzhu_time">{#$slist.jointime|date_format:"%m-%d"#}</span></li>
+                            {#/info#}
+						</ul>
+					</div>
+				</div>
+				<div class="adbox">
+					<ul>
+						{#myad title="二手信息_模板十_电脑端_广告二"#}
+					</ul>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- 菜单 e-->
+	<!-- 最新发布 s-->
+	<div class="wrap recomtop">
+		<div class="public_top fn-clear">
+			<div class="fn-left l">
+				<span>推荐置顶</span>
+			</div>
+			<div class="fn-right r">
+				<a href="{#getUrlPath service='info' template='list'#}">更多信息 ></a>
+			</div>
+		</div>
+		<div class="recom_main fn-clear">
+			<input type="hidden" class="zd_page" value="1">
+			<div class="zd_list">
+			{#info action="ilist_v2" return="ilist" top=1 pageSize="5"#}
+			<div class="recom_box">
+				<s></s>
+				<a href="{#$ilist.url#}" target="_blank">
+					<div class="recom_img">
+						<img src="{#if {#$ilist.litpic#}#}{#changeFileSize url="{#$ilist.litpic#}" type="small"#}{#else#}{#$templets_skin#}/nImage1.png{#/if#}" alt="">
+						{#if $ilist.video#}
+						<div class="cover_play">
+							<img src="{#$templets_skin#}images/Icon_play.png" alt="">
+						</div>
+						{#/if#}
+					</div>
+					<div class="recom_info">
+
+						<p class="m_info">{#$ilist.title#}</p>
+						<div class="info_address fn-clear">
+							{#$priceArr = "."|explode:$ilist.price#}
+							{#if $ilist.price_switch==0#}<p class="fn-left info_price">{#if $ilist.price neq 0#}<b> {#echoCurrency type='symbol'#} </b><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</p>{#/if#}
+							<span class="fn-right location">{#$ilist.address[$ilist.address|count-2]#}/{#$ilist.address[$ilist.address|count-1]#}</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			{#/info#}
+			</div>
+		</div>
+	</div>
+	<!-- 最新发布 e-->
+	<div class="InfoContent">
+		<div class="wrap Info_Box">
+			<ul>
+		        <li class="fn-clear">
+					{#info action="ilist_v2" return="ilist" rec="1" page=1 pageSize="10"#}
+					<div class="libox">
+		        		<a href="{#$ilist.url#}" class="fn-clear">
+		        			<div class="fn-left l">
+				         		<p class="fn-clear"><span class="intit"><b>[{#$ilist.typename#}]</b>{#$ilist.title#}</span></p>
+				         		{#if $ilist.rec#}
+									<i class="top_i"></i>
+								{#else#}
+									{#if $ilist.fire#}
+									<i class="fire"></i>
+									{#/if#}
+								{#/if#}
+				         	</div>
+				         	<span class="time">{#if $ilist.pubdate_istoday#}今天{#else#}{#date("Y-m-d", $ilist.pubdate)#} {#/if#} </span>
+		        		</a>
+		        	</div>
+					{#/info#}
+		        </li>
+		    </ul>
+
+		</div>
+	</div>
+	<!-- 广告位 s-->
+	<div class="wrap adv_wrap">{#myad title="二手信息_模板十_电脑端_广告三"#}</div>
+	<!-- 广告位 e-->
+
+	<!-- 推荐商家 s-->
+	<div class="wrap newshop">
+		<div class="public_top fn-clear">
+			<div class="fn-left l">
+				<span>推荐商家</span> <i class="ishop"></i>
+			</div>
+			<div class="fn-right r">
+				<a href="{#getUrlPath service='info' template='store_list'#}">全部商家></a>
+			</div>
+		</div>
+		<input type="hidden" value="1" class="sz_page">
+
+		<div class="recom_main fn-clear">
+			<div class="sj_list fn-clear">
+			{#info action="shopList" return="slist" top="1" pagesize="4" page="1"#}
+				<div class="recom_box">
+					<a href="{#getUrlPath service='info' action=business id=$slist.id#}" target="_blank">
+						<div class="recom_img">
+							<img src="{#if $slist.pcount > 0#}{#$slist.pics.0#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="">
+						</div>
+						<div class="recom_info">
+							<div class="fix_img"><img src="{#if $slist.user.photo#}{#$slist.user.photo#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="{#$slist.user.company#}"></div>
+							<h3 title="{#$slist.user.company#}">{#$slist.user.company#}</h3>
+							<div class="business_info">
+								<span class="blue">#{#$slist.typename#}#</span>
+								<span>{#$slist.notes#}</span>
+							</div>
+							<div class="pos_box fn-clear">
+								<span class="days fn-left">已入驻 <em>{#(($smarty.now-$slist.jointime)/86400)|string_format:"%d"#}</em> 天</span>
+								<span class="pos fn-right" title="{#$slist.address#}"><i></i>{#$slist.address#}</span>
+
+							</div>
+						</div>
+					</a>
+				</div>
+
+			{#/info#}
+			</div>
+		</div>
+	</div>
+	<!-- 推荐商家 e-->
+
+	<!-- 广告 s-->
+	<div class="wrap adv_wrap">{#myad title="二手信息_模板十_电脑端_广告四"#}</div>
+	<!-- 广告 e-->
+	<!-- 热门信息 s-->
+	<div class="wrap news_wrap fn-clear">
+
+		<div class="new_content">
+			<div class="public_top fn-clear">
+				<div class="fn-left l">
+					<span>最新发布</span>
+				</div>
+				<div class="fn-right r">
+					<a href="{#getUrlPath service='info' template='list'#}">查看更多> </a>
+				</div>
+			</div>
+			<ul>
+			{#info action="ilist_v2" return="ilist" orderby="1" notbid="1" pageSize="20"#}
+				{#if $ilist.isbid#}
+					<li class="fn-clear top_li {#if $ilist.isvalid==1#} over_li{#/if#}">
+				{#else#}
+					<li class="fn-clear {#if $ilist.isvalid==1#} over_li{#/if#}">
+				{#/if#}
+					<div class="left_b">
+						<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}">
+							<img src="{#if $ilist.litpic#}{#$ilist.litpic#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="">
+							{#if $ilist.video#}
+							<div class="cover_play">
+								<img src="{#$templets_skin#}images/Icon_play.png" alt="">
+							</div>
+							{#/if#}
+						</a>
+					</div>
+					
+					{#if $ilist.isvalid==0#}
+                    <div class="mid_b">
+                        <h2 class="new_title">
+                        	{#if $ilist.is_shop#}
+    							<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a><i class="noself"></i>
+    						{#else#}
+    							<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a><i class="self"></i>
+    						{#/if#}
+                        </h2>
+                        <p class="tip">{#$ilist.desc#}</p>
+                        <div class="new_info fn-clear">
+							<span class="new_icon"><a href="{#$ilist.typeurl#}" target="_blank">{#$ilist.typename#}</a></span>
+							<span class="new_address"><a href="{#$ilist.busiurl#}" target="_blank">{#$ilist.member.nickname#}</a></span>
+							{#if $ilist.member#}<i data-id="{#$ilist.member.id#}" data-type="detail"></i>{#/if#}
+						</div>
+                        <div class="new_phone">
+                            {#if $userinfo#}
+                            <i></i><span class="phoneNum">{#if $ilist.areaCode !='' && $ilist.areaCode !='86'#}+{#$ilist.areaCode#} {#/if#}{#$ilist.tel#}</span>
+                            {#else#}
+                            <i></i><span class="see_phone"><a href="{#$cfg_basehost#}/login.html">登录后显示</a></span>
+                            {#/if#}
+                        </div>
+                    </div>
+                    {#else#}
+                    <div class="mid_b">
+                        <h2 class="new_title"><a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a></h2>
+                        <p class="over_tip">信息已过期</p>
+                        <i class="over_icon"></i>
+                    </div>
+                    {#/if#}
+					<div class="right_b">
+						{#$priceArr = "."|explode:$ilist.price#}
+						{#if $ilist.price_switch==0#}
+						<p class="new_price">{#if $ilist.price neq 0#}<em> {#echoCurrency type='symbol'#} </em><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</p>
+						{#else#}
+						<p class="new_price"><strong>价格面议</strong></p>
+						{#/if#}
+						<p class="news_time">发布于 <span>{#date("Y-m-d", $ilist.pubdate)#}</span> </p>
+					</div>
+				</li>
+			{#/info#}
+
+			</ul>
+			<p class="news_more"><a href="{#getUrlPath service='info' template='list'#}">查看更多<i></i></a></p>
+		</div>
+		<div class="news_r">
+			<div class="adv">{#myad title="二手信息_模板十_电脑端_广告五"#}</div>
+			<div class="newr_content">
+				<h2 class="newr_tit">优质商家</h2>
+				<ul>
+				{#info action="shopList" return="slist" orderby="2" pagesize="10" page="1"#}
+					<li>
+						<div class="r_top fn-clear">
+							<div class="r_left"><a href="{#getUrlPath service='info' action=business id=$slist.id#}" target="_blank"><img src="{#if $slist.user.photo#}{#$slist.user.photo#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="{#$slist.user.company#}"></a></div>
+							<div class="r_right"><h3><a href="{#getUrlPath service='info' action=business id=$slist.id#}" title="{#$slist.user.company#}" target="_blank">{#$slist.user.company#}</a></h3><p>{#$slist.address_[$slist.address_|count-2]#}/{#$slist.address_[$slist.address_|count-1]#}</p></div>
+						</div>
+						<div class="newr_info"><span class="red">#{#$slist.typename#}#</span>{#$slist.notes#}</div>
+					</li>
+				{#/info#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 热门信息 e-->
+</div>
+
+{#include file='bottom.html'#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

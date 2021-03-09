@@ -1,0 +1,109 @@
+<div class="fixedwrap FestivalAD_header">
+    <div class="fixedpane">
+        <!-- head s -->
+        <div class="wrap header fn-clear">
+            <div class="logo">
+                <a href="{#$info_channelDomain#}" title="{#$info_channelName#}"><img src="{#$info_logoUrl#}" alt="{#$info_channelName#}" /></a>
+            </div>
+            <div class="searchwrap y-linear">
+                <div class="search">
+                    <div class="type">
+                        <dl>
+                            <dt><a href="javascript:;" class="keytype">{#if $pageCurr == "store_list"#}商家{#else#}信息{#/if#}</a><em></em></dt>
+                            <dd>
+                                <a href="javascript:;" data-id="0" data-type="list" class="active">信息</a>
+                                <a href="javascript:;" data-id="1" data-type="store_list">商家</a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="FormBox">
+                        <form action="{#getUrlPath service='info' template='list'#}" method="post" class="form{#if $pageCurr == "store_list"#} fn-hide{#/if#}">
+							<input name="token" id="token" value="{#$token#}" type="hidden" />
+                            <div class="inputbox">
+                                <div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="输入您想搜索的关键词" value="{#$keywords#}" /></div>
+                            </div>
+                            <div class="subbox search-btn">
+                                <input type="submit" class="submit" value="搜索">
+                            </div>
+                        </form>
+                        <form action="{#getUrlPath service='info' template='store_list'#}" class="form{#if $pageCurr != "store_list"#} fn-hide{#/if#}">
+                            <div class="inputbox">
+                                <div class="inpbox"><input type="text" name="keywords" class="searchkey" placeholder="输入您想搜索的关键词" value="{#$keywords#}" /></div>
+                            </div>
+                            <div class="subbox search-btn">
+                                <input type="submit" class="submit" value="搜索">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="searchkey searchkeys">
+                    <span>热门搜索：</span>
+                    {#siteConfig module="info" action="hotkeywords" return="hotkeywords"#}
+                    <a href="{#$hotkeywords.href#}"{#if $hotkeywords.target==0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+                    {#/siteConfig#}
+                </div>
+            </div>
+
+            <div class="infobox">
+                <a href="{#getUrlPath service='member' type='user' template='fabu' module='info'#}" class="fbbox"><i class="ifabu"></i><span>发布信息</span></a>
+            </div>
+            <div class="kefu"><s><img src="{#$templets_skin#}images/call.png"></s><p>客服热线</p>{#$info_hotline#}</div>
+        </div>
+        <!-- head e -->
+
+        <div class="nav-con n-linear ">
+            <div class="wrap fn-clear">
+                <div {#if $pageCurr == "index"#} class="all_cate all_cate2"{#else#} class="all_cate all_cate3" {#/if#}><span>所有分类</span>
+                    <div class="b-main" id="navlist_wrap">
+                      <div class="NavList">
+                        <ul>
+                            {#info action="type" return='type'#}
+    							{#if $_bindex.type < 11#}
+    								<li>
+    									<a href="{#$type.url#}" class="name">{#$type.typename#}</a>
+    									<i class="arrow"></i>
+    									{#$i = 0#}
+    									{#info action="type" return='subtype' type="{#$type.id#}"#}
+    										{#if $i lt 2#}
+    											<a href="{#$subtype.url#}" class="item">{#$subtype.typename#}</a>
+    										{#/if#}
+    									{#/info#}
+    									<div class="sub-category">
+    										<dl>
+    											<dt><h2 class="title"><a href="{#$type.url#}">{#$type.typename#}</a></h2></dt>
+    											<dd class="fn-clear">
+    												<div class="subitem">
+    													{#info action="type" return='subtype1' type="{#$type.id#}"#}
+    													<a href="{#$subtype1.url#}">{#$subtype1.typename#}</a>
+    													{#/info#}
+    												</div>
+    											</dd>
+    										</dl>
+    									</div>
+    								</li>
+    							{#/if#}
+    						{#/info#}
+
+                            <li><a href="{#getUrlPath service='info' template='list'#}" class="name">更多分类</a></li>
+
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+                <ul class="fn-clear nav_ul">
+                    <li class="active"><a href="{#$info_channelDomain#}" {#if $pageCurr == "index"#} class="curr"{#/if#}>首页</a></li>
+                    <li><a href="{#getUrlPath service=info action=list#}"{#if $pageCurr == "list"#} class="curr"{#/if#}>最新信息</a></li>
+                    <li><a href="{#getUrlPath service=info  template=store_list#}" {#if $pageCurr == "store_list"#} class="curr"{#/if#}>商家店铺</a></li>
+                    <li><a href="{#$business_channelDomain#}" target="_blank">同城交易</a></li>
+                    {#if in_array("job", $installModuleArr)#}<li><a href="{#$job_channelDomain#}" target="_blank">招聘求职</a></li>{#/if#}
+                    {#if in_array("house", $installModuleArr)#}<li><a href="{#getUrlPath service=house action=zu#}" target="_blank">租房</a></li>{#/if#}
+                </ul>
+                <div class="boxRight">
+                    {#if in_array("integral", $installModuleArr)#}<a href="{#$integral_channelDomain#}" target="_blank"><i class="igifs"></i>礼品兑换</a>{#/if#}
+                    {#if $cfg_qiandao_state#}<a href="{#getUrlPath service=member type=user temp=qiandao#}" target="_blank"><i class="iqd"></i>今日签到</a>{#/if#}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

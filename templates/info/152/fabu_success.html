@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>发布成功</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu_success.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templatePath = '{#$templets_skin#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}',id = 11;
+	var addrid = 0, atpage = 1, totalCount = 0, pageSize = 20;
+	//var user_id = {#$userInfo_['userid']#}, user_phone = '{#$userInfo_['phone']#}';
+	var user_id='3',user_phone='15995842437';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+<!-- 导航 s-->
+{#include file="header_search.html"#}
+<!-- 导航 e-->
+
+<div class="main_wrap">
+	<div class="fabu_head">
+		<div class="wrap head_wrap">
+			<h1 class="fabu_tit">发布成功！</h1>
+			<p class="tip">编辑、刷新、置顶等更多操作请前往管理信息</p>
+			<ul>
+				<li class="fan"><a href="{#getUrlPath service='info' template='index'#}">返回首页</a></li>
+				<li class="guan"><a href="">管理信息</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="fabu_content">
+		<div class="fabu_top">
+			<i></i><span class="notice">推广您的信息，数倍流量提升！</span><span class="tip">信息审核通过后自动生效并开始计算天数</span>
+		</div>
+		<div class="fabu_choose choose1">
+			<h2 class="adv_tip">置顶我的信息<span>强效提高曝光率！</span></h2>
+			<ul>
+				<li>
+					<div class="con">
+						<span class="span_day">1天</span><span class="top_day">立即置顶1天</span><p class="top_price">¥38.40</p>
+					</div>
+				</li>
+				<li class="active">
+					<div class="con">
+						<span class="span_day">3天</span><span class="top_day">立即置顶3天<span class="discount">9.2折</span></span><p class="top_price">¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">7天</span><span class="top_day">立即置顶7天<span class="discount">7.0折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">15天</span><span class="top_day">立即置顶15天<span class="discount">6.1折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">30天</span><span class="top_day">立即置顶30天<span class="discount">5.0折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="fabu_choose choose2">
+			<h2 class="adv_tip">智能刷新信息<span>稳定曝光率！</span></h2>
+			<ul>
+
+				<li class="active">
+					<div class="con">
+						<span class="span_day">3天</span><span class="top_day">智能刷新12次<span class="discount">9.2折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">5天</span><span class="top_day">智能刷新20次<span class="discount">7.0折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">7天</span><span class="top_day">智能刷新28次<span class="discount">6.1折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+				<li>
+					<div class="con">
+						<span class="span_day">10天</span><span class="top_day">智能刷新40次<span class="discount">5.0折</span></span><p class="top_price"><del>¥24.00</del>¥38.40</p>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="choose3">
+			<h2 class="adv_tip">突显我的标题<span>一眼看到我！</span></h2>
+			<ul>
+				<li class="choosed"><span>标题加粗</span><span class="tit_price">¥<em>10.00</em></span></li>
+				<li><span>标题加红</span><span class="tit_price">¥<em>10.00</em></span></li>
+			</ul>
+		</div>
+		<div class="pay_wrap">
+			<span class="fu">实付</span><span class="countPrice">¥1036.80</span><p class="buy"><a href="">确认购买</a></p>
+		</div>
+	</div>
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript" src="{#$templets_skin#}js/fabu_success.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

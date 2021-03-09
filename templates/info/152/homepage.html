@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$userInfo_['nickname']#}的二手店铺 - {#$info_channelName#}</title>
+<meta name="keywords" content="{#$userInfo_['nickname']#},{#$userInfo_['nickname']#}二手店铺" />
+<meta name="description" content="联系电话：{#$userInfo_['phone']#}，所在区域：{#$userInfo_['address']#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/homepage.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templatePath = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}',id = 11;
+	var user_id = '{#$userInfo_['userid']#}';
+	var imconfig = {
+		'chatid' :'{#$userInfo_['userid']#}'
+		
+    }
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+<!-- 导航 s-->
+{#include file="header_search.html"#}
+<!-- 导航 e-->
+
+<div class="main_wrap">
+	<div class="wrap crumbs fn-clear">
+        <div class="cont">
+            <span>您的位置：</span>
+            <a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+            <s></s>
+            个人店铺
+        </div>
+
+    </div>
+	<div class="wrap home_wrap fn-clear">
+		<div class="sale-detail fn-clear fn-left">
+			<div class="new_content  con-tit" id="new_content3">
+            	<h2 class="fabu_tit"><span>TA 发布的信息</span></h2>
+	 			<ul class="list_ul">
+
+		            {#info action="ilist_v2" return="ilist" uid={#$userInfo_['userid']#} page={#$page#} pageSize="20"#}
+
+		            {#if $ilist.isbid#}
+					<li class="fn-clear top_li">
+					{#else#}
+					<li class="fn-clear">
+					{#/if#}
+						<div class="left_b">
+							<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}">
+								<img src="{#if $ilist.litpic#}{#$ilist.litpic#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="">
+								{#if $ilist.video#}
+								<div class="cover_play">
+									<img src="{#$templets_skin#}images/Icon_play.png" alt="">
+								</div>
+								{#/if#}
+							</a>
+						</div>
+		                <div class="mid_b">
+		                    <h2 class="new_title"><a href="{#getUrlPath service='info' action=detail id=$ilist.id#}">{#$ilist.title#}</a></h2>
+		                    <p class="tip">{#$ilist.desc#}</p>
+		                    <div class="new_info fn-clear">
+		                        <p class="news_time">发布于 <span>{#date("Y-m-d", $ilist.pubdate)#}</span> / <span>{#$ilist.address.2#} - {#$ilist.address.3#}</span> </p>
+		                    </div>
+							<p class="new_icon">{#$ilist.typename#}</p>
+		                </div>
+		                <div class="right_b">
+		                    {#$priceArr = "."|explode:$ilist.price#}
+							{#if $ilist.price_switch==0#}<p class="new_price">{#if $ilist.price neq 0#}<em> {#echoCurrency type='symbol'#} </em><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</p>{#/if#}
+
+		                </div>
+
+		            </li>
+		           {#/info#}
+
+		            {#if $pageInfo.totalCount == 0#}
+		            <li class="empty failed"><img src="{#$templets_skin#}images/icon_faild.png"><span>暂无数据</span></li>
+		            {#/if#}
+
+		        </ul>
+		        {#getPageList service='info' template='homepage' id={#$userInfo_['userid']#} pageType='dynamic' param="page=#page#"#}
+		    </div>
+		</div>
+		<div class="topbox fn-right">
+			<div class="storeInfo fn-clear">
+
+				<div class="headImg">
+					<img src="{#if $userInfo_['photo']#}{#$userInfo_['photo']#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="">
+				</div>
+				<h3 class="info_title">{#$userInfo_['nickname']#}</h3>
+				<div class="colbox storebox">
+					{#if $is_follow#}
+					<a href="javascript:;" class="btn_ygz btn_gz">已关注</a>
+					{#else#}
+					<a href="javascript:;" class="btn_gz"><i></i>关注</a>
+					{#/if#}
+				</div>
+				<div class="st_tab fn-clear">
+					<div class="rbox rbinfo">
+						<a href="javascript:;">
+							<p><b>{#if $list_count#}{#$list_count#}{#else#}0{#/if#}</b></p>
+							<p>信息</p>
+						</a>
+					</div>
+					<div class="line"></div>
+					<div class="rbox rbcare">
+						<a href="javascript:;">
+
+							<p><b>{#if $guanzhu#}{#$guanzhu#}{#else#}0{#/if#}</b></p>
+							<p>关注</p>
+						</a>
+					</div>
+					<div class="line"></div>
+					<div class="rbox rbfans">
+						<a href="javascript:;">
+							<p><b>{#if $fensi#}{#$fensi#}{#else#}0{#/if#}</b></p>
+							<p>粉丝</p>
+						</a>
+					</div>
+				</div>
+				<ul class="info_ul">
+					<li class="call">
+						{#if $userinfo#}
+	                    <div class="c_tel">
+	                       <i></i>
+	                        <div class="phone_info">
+	                            <p class="phone_num" style="line-height: 38px;">{#$userInfo_['phone']#}</p>
+	                        </div>
+	                    </div>
+						{#else#}
+	                    <a href="{#$cfg_basehost#}/login.html" class="c_tel">
+	                       <i></i>
+	                        <div class="phone_info">
+	                            <p class="phone_num">{#$userInfo_['phone']#}</p>
+	                            <p class="see_num">登录查看完整电话</p>
+	                        </div>
+	                    </a>
+						{#/if#}
+	                </li>
+	                <li class="contact"><a href="javascript:;" class="chat_to-Link" data-type="user"><i></i>和我联系</a></li>
+
+	            </ul>
+			</div>
+			<div class="contactInfo">
+				<h2 class="con_title"><span>联系方式</span></h2>
+				<ul class="con_ul">
+					{#if $userInfo_['qq']#}
+					<li><span>Q　　 Q：</span><span><a href="tencent://Message/?Uin={#$userInfo_['qq']#}&Menu=yes">{#$userInfo_['qq']#}</a></span></li>
+					{#/if#}
+					<li><span>所在区域：</span><span class="add_span">{#$userInfo_['address']#}</span></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+
+</div>
+
+{#include file="bottom.html"#}
+<script>
+	var txt = $('.add_span').text();//获取地址值
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/user.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

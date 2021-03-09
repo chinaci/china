@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>{#if $addrid#}{#$addrname#}-{#/if#}{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#if $list_typename#}{#$list_typename#}{#else#}信息列表{#/if#}{#/if#}-{#$info_title#}</title>
+    <meta name="keywords" content="{#$info_keywords#}" />
+    <meta name="description" content="{#$info_description#}" />
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}" media="all" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var typeid = '{#$typeid#}';
+
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var addrid = 0, atpage = 1, totalCount = 0, pageSize = 20;
+        var keywords = '{#$keywords#}';
+        var list_lower = '{#$list_lower#}';
+        var money ='{#echoCurrency type='symbol'#}';
+        var listUrl = '{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item=%item%&keywords={#$keywords#}"#}';
+        var imconfig;
+    </script>
+</head>
+
+<body class="w1200">
+{#$pageCurr = "list"#}
+{#include file="../../siteConfig/top1.html"#}
+<!-- 导航 s-->
+{#include file="header_search.html"#}
+
+<!-- 导航 e-->
+<div class="main_wrap">
+    <div class="wrap crumbs fn-clear">
+        <div class="cont">
+            <span>您的位置：</span>
+            <a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+            <s></s>
+            {#if $typeid#}{#$list_crumbs#}{#else#}信息列表{#/if#}
+        </div>
+
+    </div>
+
+
+    <div class="filter_box wrap">
+
+        <div class="filter">
+            <dl class="fn-clear" id="fnav">
+                <dt>分类</dt>
+                <dd>
+                    <div class="item_box chooseClass">
+                        <a href="{#getUrlPath service=info action=list param="typeid=0&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if !$typeid#} class="curr"{#/if#}>不限</a>
+                        {#info action="type" return="type"#}
+                        <a href="{#getUrlPath service=info action=list param="typeid={#$type.id#}&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if $typeIds[0] == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+                        {#/info#}
+                    </div>
+                </dd>
+            </dl>
+            {#if $typeIds#}
+            <dl class="fn-clear" id="subnav">
+                <dt></dt>
+                <dd>
+                    <div class="item_box chooseClass fn-clear">
+                        <a href="{#getUrlPath service=info action=list param="typeid={#$typeIds[0]#}&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if !$typeIds[1]#} class="curr"{#/if#}>不限</a>
+                        {#info action="type" return="type" type=$typeIds[0] son="1"#}
+                        <a href="{#getUrlPath service=info action=list param="typeid={#$type.id#}&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if $typeIds[1] == $type.id#} class="curr"{#/if#}>{#$type.typename#}{#if $type.lower#}<s></s>{#/if#}</a>
+                        {#/info#}
+
+                        {#if ($typeIds[1] && $list_lower) || (!$list_lower && $typeIds[2])#}
+                        <div class="subnav fn-clear" id="classify_subnav">
+                            <div class="chooseClass" data-chose="category2_sub">
+                                <a href="{#getUrlPath service=info action=list param="typeid={#$typeIds[1]#}&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if !$typeIds[2]#} class="curr"{#/if#}>不限</a>
+                                {#info action="type" return="type2" type=$typeIds[1]#}
+                                <a href="{#getUrlPath service=info action=list param="typeid={#$type2.id#}&addrid={#$addrid#}&price_section={#$price_section#}&keywords={#$keywords#}"#}"{#if $typeIds[2] == $type2.id#} class="curr"{#/if#}>{#$type2.typename#}</a>
+                                {#/info#}
+                            </div>
+                        </div>
+                        {#/if#}
+
+                    </div>
+                </dd>
+            </dl>
+            {#/if#}
+            <dl class="fn-clear" id="addr">
+                <dt>区域</dt>
+                <dd class="chooseClass">
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"{#if !$addrid#} class="curr"{#/if#}>不限</a>
+                    {#info action="addr" return="addr" son="once"#}
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addr.id#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"{#if $addrIds[0] == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}{#if $addr.lower#}<s></s>{#/if#}</a>
+                    {#/info#}
+
+                    {#if $addrIds[0]#}
+                    <div class="subnav fn-clear">
+                        <div id="addr{#$addr1.id#}" class="chooseClass">
+                            <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrIds[0]#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"{#if !$addrIds[1]#} class="curr"{#/if#}>不限</a>
+                            {#info action="addr" return="addr2" type=$addrIds[0]#}
+                            <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addr2.id#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"{#if $addrIds[1] == $addr2.id#} class="curr"{#/if#}>{#$addr2.typename#}</a>
+                            {#/info#}
+                        </div>
+                    </div>
+                    {#/if#}
+                </dd>
+            </dl>
+            <dl class="fn-clear">
+                <dt>价格</dt>
+                <dd class="chooseClass" data-chose="price" id="priceChoose">
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&item={#$item#}&keywords={#$keywords#}"#}"{#if !$min_price && !$max_price#} class="curr"{#/if#}>不限</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=,100&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '0,100'#} class="curr"{#/if#}>100{#echoCurrency type='short'#}以下</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=100,300&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '100,300'#} class="curr"{#/if#}>100-300{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=300,500&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '300,500'#} class="curr"{#/if#}>300-500{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=500,1000&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '500,1000'#} class="curr"{#/if#}>500-1000{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=1000,1500&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '1000,1500'#} class="curr"{#/if#}>1000-1500{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=1500,2000&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '1500,2000'#} class="curr"{#/if#}>1500-2000{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=2000,3000&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '2000,3000'#} class="curr"{#/if#}>2000-3000{#echoCurrency type='short'#}</a>
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=3000,&item={#$item#}&keywords={#$keywords#}"#}"{#if $price_section == '3000,0'#} class="curr"{#/if#}>3000{#echoCurrency type='short'#}以上</a>
+
+                    <div class="inpbox inp_price">
+                       <input type="input" class="p1" id="priceLow" maxlength="6" value="{#if $min_price#}{#$min_price#}{#/if#}" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                       <input type="input" class="p2" id="priceTop" maxlength="6" value="{#if $max_price#}{#$max_price#}{#/if#}" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"> <em>元</em>
+                        <button class="btn btn_price" id="price_sure" data-url="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section=min,max&item={#$item#}&keywords={#$keywords#}"#}">确定</button>
+                    </div>
+
+                </dd>
+            </dl>
+
+            {#if $list_item#}
+            <div id="itemOptions">
+                {#foreach from=$list_item key=key item=item#}
+                {#if $item.formtype != "text"#}
+                <dl class="fn-clear" data-name="{#$item.field#}" data-id="{#$item.id#}">
+                    <dt>{#$item.title#}</dt>
+                    <dd class="chooseClass">
+                        <a href="javascript:;" data-id="0"{#if !$itemArr[{#$item.id#}]#} class="curr"{#/if#}>不限</a>
+                        {#foreach from=$item.options key=k item=options#}
+                        <a href="javascript:;" data-id="{#$options#}"{#if $itemArr[{#$item.id#}] == $options#} class="curr"{#/if#}>{#$options#}</a>
+                        {#/foreach#}
+                    </dd>
+                </dl>
+                {#/if#}
+                {#/foreach#}
+            </div>
+            {#/if#}
+
+        </div>
+
+        <div class="deletebox">
+            <dl class="fi-state fn-clear"{#if $list_id || $addrid || $min_price || $max_price || $itemArr || $keywords#} style="display: block;"{#/if#}>
+                <dt>已选</dt>
+                <dd class="fn-clear">
+                    {#if $typeid#}
+                    <a href="{#getUrlPath service=info action=list param="addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"><span>{#$typename#}</span><i class="idel"></i></a>
+                    {#/if#}
+                    {#if $addrid#}
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&price_section={#$price_section#}&item={#$item#}&keywords={#$keywords#}"#}"><span>{#$addrname#}</span><i class="idel"></i></a>
+                    {#/if#}
+                    {#if $min_price || $max_price#}
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&item={#$item#}&keywords={#$keywords#}"#}"><span>{#if !$min_price#}{#$max_price#}{#echoCurrency type='short'#}以下{#elseif !$max_price#}{#$min_price#}{#echoCurrency type='short'#}以上{#else#}{#$price_section|replace:',':'-'#}{#echoCurrency type='short'#}{#/if#}</span><i class="idel"></i></a>
+                    {#/if#}
+                    {#if $itemArr#}
+                    {#foreach from=$itemArr key=k item=i#}
+                    <a href="javascript:;" class="itemDel" data-id="{#$k#}"><span>{#$i#}</span><i class="idel"></i></a>
+                    {#/foreach#}
+                    {#/if#}
+                    {#if $keywords#}
+                    <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}"#}"><span>{#$keywords#}</span><i class="idel"></i></a>
+                    {#/if#}
+                </dd>
+                <a class="btn_clear" href="{#getUrlPath service=info action=list#}">重置条件</a>
+            </dl>
+        </div>
+
+    </div>
+
+    <!-- 列表 -->
+    <div class="wrap news_wrap fn-clear">
+
+        <div class="new_content">
+            <div class="sort_wrap ">
+                <div class="sortbar fn-clear">
+                    <div class="tabs">
+                        <ul class="fn-clear">
+                            <li{#if !$fire && !$rec#} class="curr"{#/if#}><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&nature={#$nature#}&keywords={#$keywords#}"#}">全部信息</a></li>
+                            <li{#if $fire#} class="curr"{#/if#}><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire=1&nature={#$nature#}&keywords={#$keywords#}"#}">火急</a></li>
+                            <li{#if $rec#} class="curr"{#/if#}><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&rec=1&nature={#$nature#}&keywords={#$keywords#}"#}">推荐</a></li>
+                        </ul>
+                    </div>
+                    <div class="person">
+                        <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature=1&keywords={#$keywords#}"#}" class="personal{#if $nature == 1#} active{#/if#}">个人</a>
+                        <a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature=2&keywords={#$keywords#}"#}" class="business{#if $nature == 2#} active{#/if#}">商家</a>
+                    </div>
+                </div>
+                <div class="sort">
+                    <ul class="fn-clear">
+                        <li class="st{#if $orderby == ''#} curr{#/if#}"><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature={#$nature#}&keywords={#$keywords#}"#}">默认排序</a></li>
+                        <li class="st{#if $orderby == 'price'#} curr{#/if#}"><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature={#$nature#}&keywords={#$keywords#}&orderby=price"#}">价格最低</a></li>
+                        <li class="st{#if $orderby == 1#} curr{#/if#}"><a href="{#getUrlPath service=info action=list param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature={#$nature#}&keywords={#$keywords#}&orderby=1"#}">最新发布</a></li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="list_ul">
+
+                {#info action="ilist_v2" return="ilist" typeid={#$typeid#} addrid={#$addrid#} price_section={#$price_section#} item={#$item#} fire={#$fire#} rec={#$rec#} nature={#$nature#} orderby={#$orderby#} title={#$keywords#} page={#$page#} pageSize="20"#}
+
+                {#if $ilist.isbid#}
+				<li class="fn-clear top_li {#if $ilist.isvalid==1#} over_li{#/if#}">
+    			{#else#}
+				<li class="fn-clear {#if $ilist.isvalid==1#} over_li{#/if#}">               
+    			{#/if#}
+                    <div class="left_b">
+                        <a href="{#getUrlPath service='info' action=detail id=$ilist.id#}">
+                            <img src="{#if $ilist.litpic#}{#$ilist.litpic#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="">
+                            {#if $ilist.video#}
+                            <div class="cover_play">
+                                <img src="{#$templets_skin#}images/Icon_play.png" alt="">
+                            </div>
+                            {#/if#}
+                        </a>
+                    </div>
+                    {#if $ilist.isvalid==0#}
+                    <div class="mid_b">
+                        <h2 class="new_title">
+                        	{#if $ilist.is_shop#}
+    							<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a><i class="noself"></i>
+    						{#else#}
+    							<a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a><i class="self"></i>
+    						{#/if#}
+                        </h2>
+                        <p class="tip">{#$ilist.desc#}</p>
+                        <div class="new_info fn-clear">
+                            <span class="new_icon"><a href="{#$ilist.typeurl#}" target="_blank">{#$ilist.typename#}</a></span>
+                            <span class="new_address">{#$ilist.address[$ilist.address|count-2]#}/{#$ilist.address[$ilist.address|count-1]#} {#if $ilist.member#}<a href="{#$ilist.busiurl#}" target="_blank">{#$ilist.member.nickname#}</a>{#/if#}</span>
+                            {#if $ilist.member#}<i data-id="{#$ilist.member.id#}" data-type="detail"></i>{#/if#}
+                        </div>
+                        <div class="new_phone">
+                            {#if $userinfo#}
+                            <i></i><span class="phoneNum">{#if $ilist.areaCode !='' && $ilist.areaCode !='86'#}+{#$ilist.areaCode#} {#/if#}{#$ilist.tel#}</span>
+                            {#else#}
+                            <i></i><span class="phoneNum">{#$ilist.tel_#}</span><span class="see_phone"><a href="{#$cfg_basehost#}/login.html">查看完整电话</a></span>
+                            {#/if#}
+                        </div>
+                    </div>
+                    {#else#}
+                    <div class="mid_b">
+                        <h2 class="new_title"><a href="{#getUrlPath service='info' action=detail id=$ilist.id#}" target="_blank">{#$ilist.title#}</a></h2>
+                        <p class="over_tip">信息已过期</p>
+                        <i class="over_icon"></i>
+                    </div>
+                    {#/if#}
+                    <div class="right_b">
+                        {#$priceArr = "."|explode:$ilist.price#}
+    						{#if $ilist.price_switch==0#}<p class="new_price">{#if $ilist.price neq 0#}<em> {#echoCurrency type='symbol'#} </em><strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>{#else#}<strong>价格面议</strong>{#/if#}</p>{#/if#}
+                        <p class="news_time">发布于 <span>{#date("Y-m-d", $ilist.pubdate)#}</span> </p>
+                    </div>
+
+                </li>
+                <!--过期时的li-->
+                {#/info#}
+
+                {#if $pageInfo.totalCount == 0#}
+                <li class="empty failed"><img src="{#$templets_skin#}images/icon_faild.png"><span>没有找到符合条件的结果</span></li>
+                {#/if#}
+
+            </ul>
+
+            {#getPageList service='info' template='list' pageType='dynamic' param="typeid={#$typeid#}&addrid={#$addrid#}&price_section={#$price_section#}&item={#$item#}&fire={#$fire#}&rec={#$rec#}&nature={#$nature#}&orderby={#$orderby#}&keywords={#$keywords#}&page=#page#"#}
+
+        </div>
+
+        <div class="news_r">
+			<div class="adv">{#myad title="二手信息_模板十_电脑端_广告五"#}</div>
+			<div class="newr_content">
+				<h2 class="newr_tit">优质商家</h2>
+				<ul>
+				{#info action="shopList" return="slist" orderby="2" pagesize="6" page="1"#}
+					<li>
+						<div class="r_top fn-clear">
+							<div class="r_left"><a href="{#getUrlPath service='info' action=business id=$slist.id#}" target="_blank"><img src="{#if $slist.user.photo#}{#$slist.user.photo#}{#else#}{#$cfg_staticPath#}/images/noPhoto_100.jpg{#/if#}" alt="{#$slist.user.company#}"></a></div>
+							<div class="r_right"><h3><a href="{#getUrlPath service='info' action=business id=$slist.id#}" title="{#$slist.user.company#}" target="_blank">{#$slist.user.company#}</a></h3><p>{#$slist.address_[$slist.address_|count-2]#}/{#$slist.address_[$slist.address_|count-1]#}</p></div>
+						</div>
+						<div class="newr_info">
+							<span class="red">#{#$slist.typename#}#</span>{#$slist.notes#}</div>
+					</li>
+				{#/info#}
+				</ul>
+			</div>
+		</div>
+
+    </div>
+
+</div>
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
