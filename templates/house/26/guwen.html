@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>买房顾问-{#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/guwen.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'guwen'#}
+{#include file="top.html"#}
+
+<!-- 主体内容 s -->
+<div class="content">
+  <div class="wrap fn-clear">
+    <div class="content-left fn-left">
+      <img src="{#$templets_skin#}upfile/f1.png" alt="" class="bg-img" />
+      <div class="cl-tit">
+        <h3>{#$cfg_shortname#}买房顾问</h3><h1>房小蜜</h1>
+      </div>
+      <p class="message">免费提供一对一私人服务、房源推荐、陪看选 房、议价签约 、专车接送</p>
+      <div class="cl-contact fn-clear">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1001570&site=qq&menu=yes" class="icon-1" target="_blank"><i></i>房小蜜3号</a>
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1820096345&site=qq&menu=yes" class="icon-2" target="_blank"><i></i>房小蜜1号</a>
+      </div>
+      <p class="apply">近期申请看房</p>
+      <div class="news-slide">
+        <div class="news-tit"><span>网友</span><span>电话</span><span>楼盘</span><span>申请时间</span></div>
+        <div class="bd">
+          <ul>
+			{#house action='bookingList' return='list' type='2' pageSize='20'#}
+            <li><span>{#$list.name#}</span><span>{#$list.mobile#}</span><span>{#$list.loupan#}</span><span>{#$list.date#}</span></li>
+			{#/house#}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content-right fn-right">
+      <h3>填写表单，立即预约免费看房</h3>
+      <form method="post">
+        <dl class="inp-big">
+          <dt>意向楼盘：</dt>
+          <dd><p class="error"><em></em><i></i></p><input type="text" placeholder="购房区域或楼盘名称，可填写多个" class="loupan"></dd>
+        </dl>
+        <dl class="inp-big">
+          <dt>预算价格：</dt>
+          <dd><p class="error"><em></em><i></i></p><input type="text" placeholder="填写您的预算" class="price" onkeyup="value=value.replace(/[^\d.]/g,'')"><span class="wan">万</span></dd>
+        </dl>
+        <dl class="inp-check">
+          <dt>意向户型：</dt>
+          <dd>
+            <label><input type="checkbox" value="一居">一居</label>
+            <label><input type="checkbox" value="二居">二居</label>
+            <label><input type="checkbox" value="三居">三居</label>
+            <label><input type="checkbox" value="四居">四居</label>
+            <label><input type="checkbox" value="五居及以上">五居及以上</label>
+          </dd>
+        </dl>
+        <div class="fn-clear">
+          <div class="inp-small inp-name">
+							<p class="error"><em></em><i></i></p>
+            <i></i><input type="text" placeholder="请输入您的姓名" class="name">
+          </div>
+          <div class="inp-small inp-mobile">
+							<p class="error"><em></em><i></i></p>
+            <i></i><input type="text" placeholder="请输入您的手机号" class="phone">
+          </div>
+        </div>
+        <div class="words">
+          <i></i><textarea placeholder="备注"></textarea>
+        </div>
+        <input type="submit" value="立即领取一枚房小蜜" class="submit">
+        <p class="tip"><i>*</i>提交预约表单后，房小蜜会尽快与您联系！</p>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- 主体内容 e -->
+
+<!-- 优势 s -->
+<div class="wrap">
+  <div class="advantage">
+    <div class="wrap-tit">房小蜜六大优势</div>
+    <ul class="fn-clear">
+      <li class="li-1"><em>专业</em><p>凭借多年从业经验</p><p>专业解答您所有购房困惑</p></li>
+      <li class="li-2"><em>便捷</em><p>7*12免费专车接送</p><p>房小蜜全程讲解 带你看遍苏州</p></li>
+      <li class="li-3"><em>优惠</em><p>与苏州26余项目亲密合作</p><p>给你实实在在的实惠</p></li>
+      <li class="li-4"><em>公信</em><p>深耕苏州在线 打造正规平台</p><p>只推对的 不推贵的</p></li>
+      <li class="li-5"><em>贴心</em><p>购房过程中您会忽略的小细节</p><p>我们都会附上贴心提示</p></li>
+      <li class="li-6"><em>有爱</em><p>拒绝无合作不服务</p><p>拒绝已成交不服务 抛开利仍有爱</p></li>
+    </ul>
+  </div>
+</div>
+<!-- 优势 e -->
+
+<!-- 精英队 s -->
+<div class="team">
+  <div class="wrap">
+    <div class="wrap-tit">房小蜜精英队</div>
+    <div class="fn-clear">
+      <ul class="team-left fn-left">
+        <li>
+          <img src="{#$templets_skin#}upfile/p1.jpg" alt="" />
+          <div class="team-info">
+            <p class="name"><span>房小蜜1号</span><a href="http://wpa.qq.com/msgrd?v=3&uin=1001570&site=qq&menu=yes" target="_blank"></a></p>
+            <p class="time">从事苏州房产行业<em>3</em>年</p>
+            <p class="star"><s><i style="width: 100%"></i></s></p>
+            <p class="info">苏州购房知识小达人！</p>
+          </div>
+        </li>
+        <li>
+          <img src="{#$templets_skin#}upfile/p2.jpg" alt="" />
+          <div class="team-info">
+            <p class="name"><span>房小蜜3号</span><a href="http://wpa.qq.com/msgrd?v=3&uin=1820096345&site=qq&menu=yes" target="_blank"></a></p>
+            <p class="time">从事苏州房产行业<em>6</em>年</p>
+            <p class="star"><s><i style="width: 100%"></i></s></p>
+            <p class="info">专业推荐，帮你砍价！</p>
+          </div>
+        </li>
+		<li>
+          <img src="{#$templets_skin#}upfile/p1.jpg" alt="" />
+          <div class="team-info">
+            <p class="name"><span>房小蜜1号</span><a href="http://wpa.qq.com/msgrd?v=3&uin=1001570&site=qq&menu=yes" target="_blank"></a></p>
+            <p class="time">从事苏州房产行业<em>3</em>年</p>
+            <p class="star"><s><i style="width: 100%"></i></s></p>
+            <p class="info">苏州购房知识小达人！</p>
+          </div>
+        </li>
+        <li>
+          <img src="{#$templets_skin#}upfile/p2.jpg" alt="" />
+          <div class="team-info">
+            <p class="name"><span>房小蜜3号</span><a href="http://wpa.qq.com/msgrd?v=3&uin=1820096345&site=qq&menu=yes" target="_blank"></a></p>
+            <p class="time">从事苏州房产行业<em>6</em>年</p>
+            <p class="star"><s><i style="width: 100%"></i></s></p>
+            <p class="info">专业推荐，帮你砍价！</p>
+          </div>
+        </li>
+
+      </ul>
+      <div class="team-right fn-right">
+        <h1>房小蜜</h1><h3>一对一服务</h3>
+        <ul class="fn-clear">
+          <li>房源推荐</li>
+          <li>全程陪看</li>
+          <li>议价签约</li>
+          <li>专车接送</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 精英队 e -->
+
+<!-- 多图广告 s -->
+<div class="adv-list">
+  <div class="wrap">
+    <div class="wrap-tit">房小蜜看房进行时</div>
+    <div class="adv-slide adv-slide-1">
+      <div class="bd">
+        <ul class="fn-clear">
+          {#myad title="房产_模板一_电脑端_广告十二"#}
+        </ul>
+      </div>
+      <a href="javascript:;" class="prev"></a>
+      <a href="javascript:;" class="next"></a>
+    </div>
+  </div>
+</div>
+<div class="adv-list">
+  <div class="wrap">
+    <div class="wrap-tit">房小蜜买房喜报</div>
+    <div class="adv-slide adv-slide-2">
+      <div class="bd">
+        <ul class="fn-clear">
+          {#myad title="房产_模板一_电脑端_广告十三"#}
+        </ul>
+      </div>
+      <a href="javascript:;" class="prev"></a>
+      <a href="javascript:;" class="next"></a>
+    </div>
+  </div>
+</div>
+<div class="adv-list">
+  <div class="wrap">
+    <div class="wrap-tit">房小蜜买房日记</div>
+    <div class="adv-slide adv-slide-3">
+      <div class="bd">
+        <ul class="fn-clear">
+          {#myad title="房产_模板一_电脑端_广告十四"#}
+        </ul>
+      </div>
+      <a href="javascript:;" class="prev"></a>
+      <a href="javascript:;" class="next"></a>
+    </div>
+  </div>
+</div>
+<!-- 多图广告 e -->
+
+{#include file="footer.html"#}
+
+<!-- 浮动导航 -->
+<div class="scroll">
+	<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" class="s-hot">团购楼盘</a>
+	<a href="{#getUrlPath service='house' template='news'#}" class="s-zx">热门资讯</a>
+	<a href="{#getUrlPath service='house' template='loupan'#}" class="s-xf">最新新房</a>
+	<a href="{#getUrlPath service='house' template='sale'#}" class="s-esf">二手房</a>
+	<div class="wx-down">
+		<a href="javascript:;" class="s-wx">微信</a>
+		<div class="wx-down-box dn">
+			<img src="{#$cfg_weixinQr#}" alt="">
+			<h3>微信公众号</h3>
+			<p>微信二维码</p>
+			<p>关注身边发生的最新资讯</p>
+		</div>
+	</div>
+	<a href="javascript:scroll(0,0)" class="s-top">回到顶部</a>
+</div>
+<!-- 浮动导航 end-->
+
+<!-- 遮罩层 s -->
+<div class="mask"></div>
+<!-- 遮罩层 d -->
+
+<!-- 成功弹出层 s -->
+<div class="layer layer-success">
+	<div class="layer-tit fn-clear"><a href="javascript:;" class="fn-right"></a></div>
+	<h1>提交成功</h1>
+	<div class="layer-icon"></div>
+	<h3>提交成功，我们会尽快与您取得联系</h3>
+	<a href="javascript:;" class="btn">知道了</a>
+</div>
+<!-- 成功弹出层 e -->
+
+<!-- 失败弹出层 s -->
+<div class="layer layer-failed">
+	<div class="layer-tit fn-clear"><a href="javascript:;" class="fn-right"></a></div>
+	<h1>提交失败</h1>
+	<div class="layer-icon"></div>
+	<h3>您今天已提交过，换个地方看看吧</h3>
+	<a href="javascript:;" class="btn">知道了</a>
+</div>
+<!-- 失败弹出层 e -->
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/guwen.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

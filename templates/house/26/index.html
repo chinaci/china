@@ -1,0 +1,660 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$house_title#}</title>
+<meta name="keywords" content="{#$house_keywords#}" />
+<meta name="description" content="{#$house_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v=1">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v=4">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+	<script type="text/javascript">var cookiePre = 'HN_';</script>
+
+	<!-- 头部 -->
+	<div class="head">
+		<div class="navl wrap">
+			<a href="{#$cfg_basehost#}" target="_blank">网站首页</a>
+			{#$i = 0#}
+			{#siteConfig action="siteModule" return="module"#}
+			{#if $i < 7#}
+			<a href="{#$module.url#}" target="_blank">{#$module.name#}</a>
+			{#/if#}
+			{#$i = $i + 1#}
+			{#/siteConfig#}
+			<span class="fn-left help" id="more">更多
+				<ul id="siteNavPart2" class="expandedPanel">
+					{#$i = 0#}
+					{#siteConfig action="siteModule" return="module"#}
+					{#if $i >= 7#}
+					<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+					{#/if#}
+					{#$i = $i + 1#}
+					{#/siteConfig#}
+          </ul>
+      </span>
+			{#if $userinfo#}
+			{#$userDomain = $member_userDomain#}
+			{#if $userinfo.userType == 2#}
+			{#$userDomain = $member_busiDomain#}
+			{#/if#}
+			<div class="navLogin fn-right">
+				<a class="l1" href="{#$userDomain#}">您好，欢迎<em>{#$userinfo.nickname#}</em>回来</a>
+				<a class="l1 l3" href="{#$userDomain#}">会员中心</a>
+				<a class="l1" href="{#$cfg_basehost#}/logout.html">退出登录</a>
+			</div>
+			{#else#}
+			<div class="navLogin fn-right">
+        <a class="l1" href="javascript:;">您好，欢迎您回来</a>
+        <a class="l1" href="{#$cfg_basehost#}/login.html">请登录</a>
+        <a class="l1" href="{#$cfg_basehost#}/register.html">免费注册</a>
+        <a class="l2 m0 loginconnect" href="{#$cfg_basehost#}/api/login.php?type=qq" target="_blank"><font class="fn-left QQ">QQ登录<i></i></font></a>
+        <a class="l2 m0 loginconnect" href="{#$cfg_basehost#}/api/login.php?type=wechat" target="_blank"><font class="fn-left weixin">微信登录<i></i></font></a>
+      </div>
+			{#/if#}
+		</div>
+	</div>
+
+	<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+	<div class="l_s wrap">
+		<div class="fn-left logo"><a href="#"><img src="{#$house_logoUrl#}"></a></div>
+		<div class="fn-left search">
+			<div class="sel fn-left">
+                <form action="" method="get">
+                	<span class="fn-left" id="local_news"><i>生活信息</i>
+		                <ul class="expandedPanel" style=" display: none;">
+		                	<li class="active"><a href="javascript:;" data-id="0" data-type="loupan">新房</a></li>
+							<li><a href="javascript:;" data-id="1" data-type="community">小区</a></li>
+		                    <li><a href="javascript:;" data-id="2" data-type="sale">二手房</a></li>
+		                    <li><a href="javascript:;" data-id="3" data-type="zu">租房</a></li>
+		                    <li><a href="javascript:;" data-id="4" data-type="xzl">写字楼</a></li>
+		                    <li><a href="javascript:;" data-id="5" data-type="sp">商铺</a></li>
+		                    <li><a href="javascript:;" data-id="6" data-type="cf">厂房/仓库</a></li>
+							{#$i = 0#}
+							{#siteConfig action="siteModule" return="module"#}
+							{#if $i < 4#}
+							<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+							{#/if#}
+							{#$i = $i + 1#}
+							{#/siteConfig#}
+		                </ul>
+                	</span>
+                	<input class="fn-left" id="txtSearch" type="text" placeholder="输入关键词或者分类名称！" value="{#$keywords#}" name="search_keyword" onfocus="if(value=='输入关键词或者分类名称！'){value=''}" onblur="if(value==''){value='输入关键词或者分类名称！'}"></div>
+					<button type="button" class="r btnSearch">搜索</button>
+                </form>
+			
+		</div>
+		
+		<div class="fn-right app">
+			<div class="fn-left zhen">
+				<p></p>
+				<span>手机版扫描</span>
+			</div>
+			<div class="fn-right code"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""></div>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="wrap fn-clear">
+			<a class="on" href="{#$cfg_basehost#}">首页</a>
+			<a href="{#getUrlPath service='house' template='loupan'#}">新房</a>
+			<a href="{#getUrlPath service='house' template='community'#}">小区</a>
+			<a href="{#getUrlPath service='house' template='sale'#}">二手房</a>
+			<a href="{#getUrlPath service='house' template='zu'#}">租房</a>
+			<a href="{#getUrlPath service='house' template='xzl'#}">写字楼</a>
+			<a href="{#getUrlPath service='house' template='sp'#}">商铺</a>
+			<a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库</a>
+			<a href="{#getUrlPath service='house' template='broker'#}">经纪人</a>
+			<a href="{#getUrlPath service='house' template='news'#}">资讯</a>
+			<a href="{#getUrlPath service='house' template='map' action='loupan'#}">地图找房</a>
+			<a href="{#getUrlPath service='house' template='faq'#}">房产问答</a>
+		</div>
+	</div>
+	<div class="banner">
+		<div class="search">
+		  	<div class="con">
+		  		<div class="up">
+		  			<a class="on" data-type="loupan" href="{#getUrlPath service='house' template='loupan'#}" target="_blank">新房</a>
+		  			<a data-type="community" href="{#getUrlPath service='house' template='sale'#}" target="_blank">二手房源</a>
+		  			<a data-type="community" href="{#getUrlPath service='house' template='zu'#}" target="_blank">出租房源</a>
+		  			<a data-type="community" href="{#getUrlPath service='house' template='community'#}" target="_blank">小区</a>
+		  			<a data-type="xzl" href="{#getUrlPath service='house' template='sp'#}" target="_blank">商铺</a>
+		  		</div>
+		  		<div class="sForm">
+		  			<form action=""  method="get">
+						<div class="searchNav">
+							<span class="keytype">新房</span>
+							<ul>
+								<li data-id="0" data-type="loupan" class="active">新房</li>
+								<li data-id="1" data-type="community">小区</li>
+	                            <li data-id="2" data-type="sale">二手房</li>
+	                            <li data-id="3" data-type="zu">租房</li>
+	                            <li data-id="4" data-type="xzl">写字楼</li>
+	                            <li data-id="5" data-type="sp">商铺</li>
+	                            <li data-id="6" data-type="cf">厂房/仓库</li>
+	                            <li data-id="7" data-type="news">资讯</li>
+							</ul>
+						</div>
+						<input type="text" name="search_keyword" placeholder="请输入搜索关键字" id="search_keyword" class="search-txt" value="{#$keywords#}" >
+						<input type="button" name="" value="" class="search_button">
+					</form>
+		  		</div>
+		  		
+		  		<!-- <div class="input">
+		  			<input type="text" id="search_keyword">
+		  			<a class="but" href="javascript:;" id="search_button"></a>
+		  		</div> -->
+		  		<div class="hot">
+		  			<span>热门搜索：</span>
+						{#$j = 0#}
+						{#siteConfig module="house" action="hotkeywords" return="hotkeywords"#}
+						{#if $j < 5#}
+		  			<a href="{#$hotkeywords.href#}" target="_blank">{#$hotkeywords.keyword#}</a>
+						{#/if#}
+						{#$j = $j + 1#}
+						{#/siteConfig#}
+		  		</div>
+		  	</div>
+		</div>
+	  <div class="wrap">
+	    <div class="slide" id="slide">
+	      	{#myad title="房产_模板一_电脑端_广告二" type="slide"#}
+	    </div>
+	    <div class="slidebtn" id="slidebtn"></div>
+	    <div>
+		    <a id="prev" href="javascript:;"></a>
+		    <a id="next" href="javascript:;"></a>
+	    </div>
+	  </div>
+	</div>
+	<div class="wrap">
+		<div class="blockNav">
+			<span class="fn-left title"><i></i>推荐楼盘</span>
+			<div class="ss"><em>区域：</em>
+				{#house action="addr" return='addr' pageSize="12"#}
+				<a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>
+				{#/house#}
+			</div>
+			<a href="{#getUrlPath service='house' template='loupan'#}" target="_blank" class="fn-right more">更多楼盘>></a>
+		</div>
+		<div class="blockCon fn-clear">
+			<div class="fn-left">
+				<div class="list">
+					<ul class="fn-clear">
+						{#house action="loupanList" return="hlist" page="1" pageSize="8"#}
+						<li><a href="{#$hlist.url#}">
+							<div class="img">
+								<img src="{#$hlist.litpic#}" alt="">
+								<p>{#$hlist.title#}</p>
+							</div>
+							<div class="mon">
+								<span class="fn-left">
+									{#if $hlist.price == 0#}
+										价格待定
+									{#else#}
+									{#echoCurrency type='symbol'#}{#$hlist.price#}<i>{#echoCurrency type='short'#}/㎡起</i>
+									{#/if#}
+								</span>
+								<em class="fn-right">{#$hlist.addr[0]#}</em>
+							</div>
+						</a></li>
+						{#/house#}
+					</ul>
+					<ul class="fn-clear" style="display: none;">
+						{#house action="loupanList" return="hlist" page="2" pageSize="8"#}
+						<li><a href="{#$hlist.url#}">
+							<div class="img">
+								<img src="{#$hlist.litpic#}" alt="">
+								<p>{#$hlist.title#}</p>
+							</div>
+							<div class="mon">
+								<span class="fn-left">
+									{#if $hlist.price == 0#}
+										价格待定
+									{#else#}
+									{#echoCurrency type='symbol'#}{#$hlist.price#}<i>{#echoCurrency type='short'#}/㎡起</i>
+									{#/if#}
+								</span>
+								<em class="fn-right">{#$hlist.addr[0]#}</em>
+							</div>
+						</a></li>
+						{#/house#}
+					</ul>
+					<ul class="fn-clear" style="display: none;">
+						{#house action="loupanList" return="hlist" page="3" pageSize="8"#}
+						<li><a href="{#$hlist.url#}">
+							<div class="img">
+								<img src="{#$hlist.litpic#}" alt="">
+								<p>{#$hlist.title#}</p>
+							</div>
+							<div class="mon">
+								<span class="fn-left">
+									{#if $hlist.price == 0#}
+										价格待定
+									{#else#}
+									{#echoCurrency type='symbol'#}{#$hlist.price#}<i>{#echoCurrency type='short'#}/㎡起</i>
+									{#/if#}
+								</span>
+								<em class="fn-right">{#$hlist.addr[0]#}</em>
+							</div>
+						</a></li>
+						{#/house#}
+					</ul>
+				</div>
+				<div class="slidebtn1" id="slidebtn1"></div>
+			</div>
+			<div class="fn-right list1">
+				<h3><span class="fn-left">房产资讯</span><a class="fn-right" href="{#getUrlPath service='house' template='news'#}" target="_blank">更多资讯>></a></h3>
+				{#house action="news" typeid="{#$ntype.id#}" return="newsa" page="3" pageSize="1"#}
+				<h2><a href="{#$newsa.url#}" target="_blank">{#$newsa.title#}</a></h2>
+				{#/house#}
+				<ul>
+					{#house action="news" typeid="{#$ntype.id#}" return="news1" page="1" pageSize="5"#}
+					<li><i></i><a href="{#$news1.url#}" target="_blank">{#$news1.title#}</a></li>
+					{#/house#}
+				</ul>
+				{#house action="news" typeid="{#$ntype.id#}" return="newsb" page="4" pageSize="1"#}
+				<h2 class="l1"><a href="{#$newsb.url#}" target="_blank">{#$newsb.title#}</a></h2>
+				{#/house#}
+				<ul>
+					{#house action="news" typeid="{#$ntype.id#}" return="news2" page="2" pageSize="5"#}
+					<li><i></i><a href="{#$news2.url#}" target="_blank">{#$news2.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="banner1 fn-clear">
+			{#myad title="房产_模板一_电脑端_广告三"#}
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="blockNav">
+			<span class="fn-left title"><i></i>二手房源</span>
+			<div class="ss"><em>区域：</em>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='sale' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>
+				{#/house#}
+			</div>
+			<a href="{#getUrlPath service='house' template='sale'#}" target="_blank" class="fn-right more">更多二手房>></a>
+		</div>
+		<div class="esfy fn-clear">
+			<div class="fn-left fliter">
+				<div class="con">
+					<h3>区域板块</h3>
+					<div class="sen">
+						{#house action="addr" return='addr'#}
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>
+						{#/house#}
+					</div>
+				</div>
+				<div class="con">
+					<h3>价格分类</h3>
+					<div class="sen">
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price=',100'#}" target="_blank">100万以下</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='100,150'#}" target="_blank">100-150万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='150,200'#}" target="_blank">150-200万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='200,250'#}" target="_blank">200-250万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='250,300'#}" target="_blank">250-300万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='300,500'#}" target="_blank">300-500万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='500,1000'#}" target="_blank">500-1000万</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='1000,'#}" target="_blank">1000万以上</a>
+					</div>
+				</div>
+			</div>
+			<div class="list fn-right">
+				<div class="con fn-clear">
+					<ul>
+						{#house action="saleList" return="hlist" page="1" pageSize="8"#}
+						<li>
+							<a href="{#$hlist.url#}">
+								<div class="img"><img src="{#$hlist.litpic#}" alt=""><p>{#$hlist.title#}</p></div>
+								<div class="down">
+									<div class="mon"><span class="fn-left"><em>
+										{#if $hlist.price == 0#}
+											价格待定
+										{#else#}
+										{#echoCurrency type='symbol'#}<i>{#$hlist.price#}</i></em>万/套
+										{#/if#}
+									</span><span class="fn-right">{#$hlist.addr[0]#}</span></div>
+									<div class="area"><span>{#$hlist.room#}</span><em>{#$hlist.area#}㎡</em></div>
+								</div>
+							</a>
+						</li>
+						{#/house#}
+					</ul>
+					<ul style="display: none;">
+						{#house action="saleList" return="hlist" page="2" pageSize="8"#}
+						<li>
+							<a href="{#$hlist.url#}">
+								<div class="img"><img src="{#$hlist.litpic#}" alt=""><p>{#$hlist.title#}</p></div>
+								<div class="down">
+									<div class="mon"><span class="fn-left"><em>
+										{#if $hlist.price == 0#}
+											价格待定
+										{#else#}
+										{#echoCurrency type='symbol'#}<i>{#$hlist.price#}</i></em>万/套
+										{#/if#}
+									</span><span class="fn-right">{#$hlist.addr[0]#}</span></div>
+									<div class="area"><span>{#$hlist.room#}</span><em>{#$hlist.area#}㎡</em></div>
+								</div>
+							</a>
+						</li>
+						{#/house#}
+					</ul>
+				</div>
+				<div>
+				    <a id="prev3" href="javascript:;"></a>
+				    <a id="next3" href="javascript:;"></a>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		{#myad title="房产_模板一_电脑端_广告四"#}
+	</div>
+	<div class="wrap">
+		<div class="blockNav">
+			<span class="fn-left title"><i></i>推荐经济人</span>
+			<div class="ss"><em>区域：</em>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='broker' addrid={#$addr.id#} business=0#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+				{#/house#}
+			</div>
+			<a href="{#getUrlPath service='house' template='broker'#}" class="fn-right more">更多经纪人>></a>
+		</div>
+		<div class="tjjjr">
+			<div class="con">
+				<div class="list fn-clear">
+					{#house action="zjUserList" return="broker" page="1" pageSize="2"#}
+					<div class="fn-left sen">
+						<dl>
+							<dt><a href="{#$broker.url#}" target="_blank"><img src="{#$broker.photo#}" alt="{#$broker.nickname#}"></a></dt>
+							<dd class="name"><a href="{#$broker.url#}" target="_blank">{#$broker.nickname#}</a><span><i></i>{#$broker.phone#}</span></dd>
+							<dd>服务商圈：<a href="{#getUrlPath service='house' template='broker' addrid={#$broker.areaid#} business={#$broker.addrid#}#}">{#$broker.address[0]#} {#$broker.address[1]#}</a></dd>
+							<dd>熟悉小区：
+								{#foreach from=$broker.communityArr item=community key=k#}
+								{#if $k < 5#}
+								<a href="{#getUrlPath service='house' template='community-detail' id={#$community#}#}" target="_blank">{#$broker.communityName[$k]#}</a>&nbsp;&nbsp;&nbsp;
+								{#/if#}
+								{#/foreach#}
+							</dd>
+							<dd><label><font>售</font>{#$broker.saleCount#}</label><em><font>租</font>{#$broker.zuCount#}</em></dd>
+						</dl>
+						<div class="title fn-clear">
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='sale'#}" class="fn-left btn on">出售房源</a>
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='zu'#}" class="fn-left btn">出租房源</a>
+							<a href="{#$broker.url#}" class="fn-right more">全部房源>></a>
+						</div>
+						<div class="sel">
+							<ul>
+								{#house action="saleList" return="sale" zj={#$broker.id#} page={#$page#} pageSize="3"#}
+								<li class="fn-clear">
+									<div class="img fn-left">
+										<a href="{#$sale.url#}" target="_blank"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></a>
+									</div>
+									<div class="name fn-left">
+										<p>{#$sale.title#}</p>
+										<p><span>{#$sale.room#}</span><span>{#$sale.area#}平米</span></p>
+									</div>
+									<div class="fn-right mon">{#$sale.price#}万</div>
+								</li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+					{#/house#}
+				</div>
+				<div class="list fn-clear">
+					{#house action="zjUserList" return="broker" page="2" pageSize="2"#}
+					<div class="fn-left sen">
+						<dl>
+							<dt><a href="{#$broker.url#}" target="_blank"><img src="{#$broker.photo#}" alt="{#$broker.nickname#}"></a></dt>
+							<dd class="name"><a href="{#$broker.url#}" target="_blank">{#$broker.nickname#}</a><span><i></i>{#$broker.phone#}</span></dd>
+							<dd>服务商圈：<a href="{#getUrlPath service='house' template='broker' addrid={#$broker.areaid#} business={#$broker.addrid#}#}">{#$broker.address[0]#} {#$broker.address[1]#}</a></dd>
+							<dd>熟悉小区：
+								{#foreach from=$broker.communityArr item=community key=k#}
+								{#if $k < 5#}
+								<a href="{#getUrlPath service='house' template='community-detail' id={#$community#}#}" target="_blank">{#$broker.communityName[$k]#}</a>&nbsp;&nbsp;&nbsp;
+								{#/if#}
+								{#/foreach#}
+							</dd>
+							<dd><label><font>售</font>{#$broker.saleCount#}</label><em><font>租</font>{#$broker.zuCount#}</em></dd>
+						</dl>
+						<div class="title fn-clear">
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='sale'#}" class="fn-left btn on">出售房源</a>
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='zu'#}" class="fn-left btn">出租房源</a>
+							<a href="{#$broker.url#}" class="fn-right more">全部房源>></a>
+						</div>
+						<div class="sel">
+							<ul>
+								{#house action="saleList" return="sale" zj={#$broker.id#} page={#$page#} pageSize="3"#}
+								<li class="fn-clear">
+									<div class="img fn-left">
+										<a href="{#$sale.url#}" target="_blank"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></a>
+									</div>
+									<div class="name fn-left">
+										<p>{#$sale.title#}</p>
+										<p><span>{#$sale.room#}</span><span>{#$sale.area#}平米</span></p>
+									</div>
+									<div class="fn-right mon">{#$sale.price#}万</div>
+								</li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+					{#/house#}
+				</div>
+				<div class="list fn-clear">
+					{#house action="zjUserList" return="broker" page="3" pageSize="2"#}
+					<div class="fn-left sen">
+						<dl>
+							<dt><a href="{#$broker.url#}" target="_blank"><img src="{#$broker.photo#}" alt="{#$broker.nickname#}"></a></dt>
+							<dd class="name"><a href="{#$broker.url#}" target="_blank">{#$broker.nickname#}</a><span><i></i>{#$broker.phone#}</span></dd>
+							<dd>服务商圈：<a href="{#getUrlPath service='house' template='broker' addrid={#$broker.areaid#} business={#$broker.addrid#}#}">{#$broker.address[0]#} {#$broker.address[1]#}</a></dd>
+							<dd>熟悉小区：
+								{#foreach from=$broker.communityArr item=community key=k#}
+								{#if $k < 5#}
+								<a href="{#getUrlPath service='house' template='community-detail' id={#$community#}#}" target="_blank">{#$broker.communityName[$k]#}</a>&nbsp;&nbsp;&nbsp;
+								{#/if#}
+								{#/foreach#}
+							</dd>
+							<dd><label><font>售</font>{#$broker.saleCount#}</label><em><font>租</font>{#$broker.zuCount#}</em></dd>
+						</dl>
+						<div class="title fn-clear">
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='sale'#}" class="fn-left btn on">出售房源</a>
+							<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='zu'#}" class="fn-left btn">出租房源</a>
+							<a href="{#$broker.url#}" class="fn-right more">全部房源>></a>
+						</div>
+						<div class="sel">
+							<ul>
+								{#house action="saleList" return="sale" zj={#$broker.id#} page={#$page#} pageSize="3"#}
+								<li class="fn-clear">
+									<div class="img fn-left">
+										<a href="{#$sale.url#}" target="_blank"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></a>
+									</div>
+									<div class="name fn-left">
+										<p>{#$sale.title#}</p>
+										<p><span>{#$sale.room#}</span><span>{#$sale.area#}平米</span></p>
+									</div>
+									<div class="fn-right mon">{#$sale.price#}万</div>
+								</li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+					{#/house#}
+				</div>
+			</div>
+			<div class="slidebtn2" id="slidebtn2"></div>
+			<div>
+				<a href="" id="prev5"></a>
+				<a href="" id="next5"></a>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="blockNav">
+			<span class="fn-left title"><i></i>出租房源</span>
+			<div class="ss"><em>区域：</em>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='zu' addrid={#$addr.id#} business=0#}" target="_blank">{#$addr.typename#}</a>
+				{#/house#}
+			</div>
+			<a href="{#getUrlPath service='house' template='zu'#}" class="fn-right more" target="_blank">更多出租房>></a>
+		</div>
+		<div class="esfy czfy fn-clear">
+			<div class="fn-left fliter">
+				<div class="con">
+					<h3>区域板块</h3>
+					<div class="sen">
+						{#house action="addr" return='addr'#}
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addr.id#} business=0#}" target="_blank">{#$addr.typename#}</a>
+						{#/house#}
+					</div>
+				</div>
+				<div class="con">
+					<h3>价格分类</h3>
+					<div class="sen">
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ''#} class="curr"{#/if#}>不限</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price=',5' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ',5'#} class="curr"{#/if#}>500{#echoCurrency type='short'#}以下</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='5,8' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '5,8'#} class="curr"{#/if#}>500-800{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='8,10' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '8,10'#} class="curr"{#/if#}>800-1000{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='10,15' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '10,15'#} class="curr"{#/if#}>1000-1500{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='15,20' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '15,20'#} class="curr"{#/if#}>1500-2000{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='20,30' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '20,30'#} class="curr"{#/if#}>2000-3000{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='30,50' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '30,50'#} class="curr"{#/if#}>3000-5000{#echoCurrency type='short'#}</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='50,' room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '50,'#} class="curr"{#/if#}>5000{#echoCurrency type='short'#}以上</a>
+					</div>
+				</div>
+				<div class="con">
+					<h3>公交/地铁</h3>
+					<div class="sen">
+						{#siteConfig action="subway" return='sub' city={#$siteCityInfo['cityid']#}#}
+						<a href="{#getUrlPath service='house' template='zu' addrid=0 business=0 subway={#$sub.id#} station=0 price={#$price#} room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $subway == $sub.id#} class="curr"{#/if#}>{#$sub.title#}</a>
+						{#/siteConfig#}
+					</div>
+				</div>
+				<div class="con">
+					<h3>户型找房</h3>
+					<div class="sen">
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == ''#} class="curr"{#/if#}>不限</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='1' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '1'#} class="curr"{#/if#}>一居</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='2' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '2'#} class="curr"{#/if#}>二居</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='3' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '3'#} class="curr"{#/if#}>三居</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='4' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '4'#} class="curr"{#/if#}>四居</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='5' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '5'#} class="curr"{#/if#}>五居</a>
+						<a href="{#getUrlPath service='house' template='zu' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} room='0' zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '0'#} class="curr"{#/if#}>五居以上</a>
+					</div>
+				</div>
+			</div>
+			<div class="list fn-right">
+				<div class="con fn-clear">
+					<ul>
+						{#house action="zuList" return="hlist" page="1" pageSize="8"#}
+						<li>
+							<a href="{#$hlist.url#}" target="_blank">
+								<div class="img"><img src="{#$hlist.litpic#}" alt=""><p>{#$hlist.title#}</p></div>
+								<div class="down">
+									<div class="mon"><span class="fn-left"><em>
+										{#if $hlist.price == 0#}
+											价格待定
+										{#else#}
+										{#echoCurrency type='symbol'#}<i>{#$hlist.price#}</i></em>万/套
+										{#/if#}
+									</span><span class="fn-right">{#$hlist.addr[0]#}</span></div>
+									<div class="area"><span><i></i>{#$hlist.room#}</span><em>{#$hlist.area#}㎡</em></div>
+								</div>
+							</a>
+						</li>
+						{#/house#}
+					</ul>
+					<ul>
+						{#house action="zuList" return="hlist" page="2" pageSize="8"#}
+						<li>
+							<a href="{#$hlist.url#}" target="_blank">
+								<div class="img"><img src="{#$hlist.litpic#}" alt=""><p>{#$hlist.title#}</p></div>
+								<div class="down">
+									<div class="mon"><span class="fn-left"><em>
+										{#if $hlist.price == 0#}
+											价格待定
+										{#else#}
+										{#echoCurrency type='symbol'#}<i>{#$hlist.price#}</i></em>万/套
+										{#/if#}
+									</span><span class="fn-right">{#$hlist.addr[0]#}</span></div>
+									<div class="area"><span><i></i>{#$hlist.room#}</span><em>{#$hlist.area#}㎡</em></div>
+								</div>
+							</a>
+						</li>
+						{#/house#}
+					</ul>
+				</div>
+				<div>
+				    <a id="prev4" href="javascript:;"></a>
+				    <a id="next4" href="javascript:;"></a>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		{#myad title="房产_模板一_电脑端_广告五"#}
+	</div>
+	<div class="wrap">
+		<div class="update fn-clear">
+			<div class="list fn-left">
+				<h3><span class="fn-left">数据排行榜</span><a class="fn-right" href="{#getUrlPath service='house' template='news' typeid="2"#}" target="_blank">更多>></a></h3>
+				<ul>
+					{#house action="news" return="row" typeid="2" page="1" pageSize="10"#}
+					<li><i {#if $_bindex.row == 1#} class="l1"{#else if $_bindex.row == 2#} class="l2" {#else if $_bindex.row == 3#} class="l3"{#/if#}>{#$_bindex.row#}</i><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+			<div class="list fn-left">
+				<h3><span class="fn-left">购房知识</span><a class="fn-right" href="{#getUrlPath service='house' template='news' typeid="3"#}" target="_blank">更多>></a></h3>
+				<ul>
+					{#house action="news" return="rowb" typeid="3" page="1" pageSize="10"#}
+					<li><i {#if $_bindex.rowb == 1#} class="l1"{#else if $_bindex.rowb == 2#} class="l2" {#else if $_bindex.rowb == 3#} class="l3"{#/if#}>{#$_bindex.rowb#}</i><a href="{#$rowb.url#}" target="_blank">{#$rowb.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+			<div class="list list1 fn-left">
+				<h3><span class="fn-left">明星楼市</span><a class="fn-right" href="{#getUrlPath service='house' template='news' typeid="4"#}" target="_blank">更多>></a></h3>
+				<ul>
+					{#house action="news" return="rowc" typeid="4" page="1" pageSize="10"#}
+					<li><i {#if $_bindex.rowc == 1#} class="l1"{#else if $_bindex.rowc == 2#} class="l2" {#else if $_bindex.rowc == 3#} class="l3"{#/if#}>{#$_bindex.rowc#}</i><a href="{#$rowc.url#}" target="_blank">{#$rowc.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="foot">
+			{#siteConfig action="singel"#}
+			<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><span></span>
+			{#/siteConfig#}
+			<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+		</div>
+		<div class="con">
+			{#$cfg_powerby#}
+		</div>
+	</div>
+
+	{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}/js/ui/jquery-ui-autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

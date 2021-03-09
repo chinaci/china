@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产中介信息网，{#$siteCityInfo['name']#}{#$broker_seotitle#}经纪人排行榜精英置业顾问-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产中介，{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人频道提供{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜，根据经纪人服务档案，经纪人行业经验，发布房源数量质量，为您优先展示精英置业顾问。找房产经纪人就上{#$cfg_shortname#}。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/broker.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = "broker"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='broker'#}">经纪人</a>
+		</div>
+		<!-- <div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='broker'#}" method="get">
+				<input type="search" placeholder="请输入经纪人名称" name="title" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div> -->
+	</div>
+	<div class="filter">
+		<dl class="fn-clear">
+			<dt>区域：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='broker' addrid=0 business=0#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='broker' addrid={#$addr.id#} business=0#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		{#if $addrid != 0#}
+		<dl class="sub fn-clear">
+			<dt>&nbsp;</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='broker' addrid={#$addrid#} business=0#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+				{#house action="addr" return='addr' type={#$addrid#}#}
+				<a href="{#getUrlPath service='house' template='broker' addrid={#$addrid#} business={#$addr.id#}#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		{#/if#}
+	</div>
+</div>
+
+<div class="wrap fn-clear">
+
+	<div class="sidebar">
+
+		<div class="rec">
+			<h3 class="rt"><span>明星中介</span></h3>
+			{#house action="zjUserList" return="broker" orderby="level" page="1" pageSize="10"#}
+			<dl class="fn-clear">
+				<dt><a href="{#$broker.url#}" target="_blank" title="{#$broker.nickname#}"><img src="{#$broker.litpic#}" alt="{#$broker.nickname#}" /></a></dt>
+				<dd>
+					<h4><a href="{#$broker.url#}" target="_blank" title="{#$broker.nickname#}">{#$broker.nickname#}</a></h4>
+					<p><a href="{#getUrlPath service='house' template='store-detail' id={#$broker.zjcom#}#}" target="_blank" title="{#$broker.zjcomName#}">{#$broker.zjcomName#}</a></p>
+					<p>电话：{#$broker.phone#}</p>
+					<p>房源：<a href="#" target="_blank">{#$broker.total#}套</a></p>
+				</dd>
+			</dl>
+			{#/house#}
+		</div>
+
+	</div>
+
+	<div class="main fn-clear">
+		<div class="orderby fn-clear">
+			<label>共找到<strong id="totalCount">0</strong>位经纪人</label>
+		</div>
+
+		<div class="list">
+
+			{#$addr = $addrid#}
+			{#if $business != 0#}
+			{#$addr = $business#}
+			{#/if#}
+			{#house action="zjUserList" return="broker" addrid={#$addr#} page={#$page#} pageSize="10"#}
+			<div class="item">
+				<div class="link">
+					<a href="{#$broker.url#}" target="_blank">进入Ta的店铺>></a>
+					<div class="tel"><s></s><span>{#$broker.phone#}</span></div>
+				</div>
+				<dl class="fn-clear">
+					<dt><a href="{#$broker.url#}" target="_blank"><img src="{#$broker.litpic#}" alt="{#$broker.nickname#}" /></a></dt>
+					<dd>
+						<h3><a href="{#$broker.url#}" target="_blank">{#$broker.nickname#}</a>{#if $broker.certify == 1#}<span title="已通过身份认证"></span>{#/if#}{#if $broker.flag == 1#}<span class="mc" title="已通过名片认证"></span>{#/if#}</h3>
+						<p>所属公司：<a href="{#getUrlPath service='house' template='store-detail' id={#$broker.zjcom#}#}" target="_blank">{#$broker.zjcomName#}</a></p>
+						<p>服务商圈：<a href="{#getUrlPath service='house' template='broker' addrid={#$broker.areaid#} business={#$broker.addrid#}#}">{#$broker.address[$broker.address|count-3]#} {#$broker.address[$broker.address|count-2]#} {#$broker.address[$broker.address|count-1]#}</a></p>
+						{#if $broker.community#}
+						<p>主营小区：
+							{#foreach from=$broker.communityArr item=community key=k#}
+							{#if $k < 5#}
+							<a href="{#getUrlPath service='house' template='community-detail' id={#$community#}#}" target="_blank">{#$broker.communityName[$k]#}</a>&nbsp;&nbsp;&nbsp;
+							{#/if#}
+							{#/foreach#}
+						</p>
+						{#/if#}
+						{#if $broker.total > 0#}
+						<div class="count">
+							{#if $broker.saleCount > 0#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='sale'#}" target="_blank">二手房({#$broker.saleCount#}套)</a><span>|</span>{#/if#}
+							{#if $broker.zuCount > 0#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='zu'#}" target="_blank">出租房({#$broker.zuCount#}套)</a><span>|</span>{#/if#}
+							{#if $broker.xzlCount > 0#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='xzl'#}" target="_blank">写字楼({#$broker.xzlCount#}套)</a><span>|</span>{#/if#}
+							{#if $broker.spCount > 0#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='sp'#}" target="_blank">商铺({#$broker.spCount#}套)</a><span>|</span>{#/if#}
+							{#if $broker.cfCount > 0#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$broker.id#} tpl='cf'#}" target="_blank">厂房/仓库({#$broker.cfCount#}套)</a><span>|</span>{#/if#}
+						</div>
+						{#/if#}
+					</dd>
+				</dl>
+			</div>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关经纪人！</div>
+			{#/if#}
+
+
+		</div>
+
+		{#getPageList service='house' template='broker' addrid={#$addrid#} business={#$business#}#}
+
+	</div>
+
+</div>
+{#include file="footer.html"#}
+<script>$(function(){$("#totalCount").html({#$pageInfo.totalCount#})});</script>
+</body>
+</html>
