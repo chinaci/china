@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$video_title#}-{#$detail_title#}视频-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#}详情信息频道为您提供{#$detail_title#}售楼处电话、地址、物业费、物业电话、开盘时间、入住时间、地图、周边楼盘等最新{#$detail_title#}新楼盘信息，找新房上{#$siteCityInfo['name']#}{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_qj.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData = {
+		id: {#$detail_id#},
+		panName: '{#$detail_title#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+{#$loupanNav = 7#}
+{#$crumbTitle = "视频看房"#}
+{#include file="loupan_top.html"#}
+
+<div class="wrap">
+
+	<h1 class="title">{#$video_title#}</h1>
+	<div class="st fn-clear">
+		<span class="time"><s></s>{#$video_pubdate|date_format:'%Y-%m-%d'#}</span>
+		<span>浏览：{#$video_click#}次</span>
+	</div>
+
+	<div class="qj"{#if $video_videourl#} style="height:680px;"{#/if#}>
+
+		{#* 本地 *#}
+		{#if $video_videotype == 0#}
+			<iframe src="/include/videoPreview.php?f={#$video_videourl#}" frameborder="0"></iframe>
+		{#* 第三方 *#}
+		{#elseif $video_videotype == 1#}
+			<iframe src="{#$video_videourl#}" frameborder="0" allowfullscreen="true"></iframe>
+		{#/if#}
+
+	</div>
+
+</div>
+
+{#* 关注 s *#}
+<div class="wrap gzlist">
+	<h3>关注{#$detail_title#}的也关注</h3>
+	<ul class="fn-clear">
+		{#house action="loupanList" nid={#$detail_id#} orderby="4" pageSize=6#}
+		<li>
+			<a href="{#$row.url#}" target="_blank" title="{#$row.title#}" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.litpic#}" alt="{#$row.title#}" /></a>
+			<p class="title"><a href="{#$row.url#}" title="{#$row.title#}">{#$row.title#}</a></p>
+			<p class="price">均价<strong>{#if $llist.price == 0#}待定{#else#}{#$llist.price#}{#echoCurrency type='short'#}/㎡{#/if#}</strong></p>
+			<p class="addr">{#$row.addr[0]#} {#$row.addr[1]#}</p>
+		</li>
+		{#/house#}
+	</ul>
+</div>
+{#* 关注 e *#}
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_public.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $news_seotitle != ""#}{#$news_seotitle#}-{#/if#}{#$siteCityInfo['name']#}房地产资讯_{#$siteCityInfo['name']#}房地产新闻-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}房产新闻,{#$siteCityInfo['name']#}房产资讯,{#$siteCityInfo['name']#}{#$cfg_shortname#}房地产新闻,{#$siteCityInfo['name']#}{#$cfg_shortname#}房产资讯,{#$siteCityInfo['name']#}楼市新闻" />
+<meta name="description" content="{#$siteCityInfo['name']#}房产新闻,{#$siteCityInfo['name']#}{#$cfg_shortname#}提供最及时{#$siteCityInfo['name']#}房地产新闻、{#$siteCityInfo['name']#}房产资讯，为您解读{#$siteCityInfo['name']#}房产最新政策，预测{#$siteCityInfo['name']#}房价走势，分析{#$siteCityInfo['name']#}楼市成交数据。{#$cfg_shortname#}权威房地产媒体！" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = "news"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='news'#}">房产资讯</a>{#if $typeid != ""#} > <a href="{#getUrlPath service='house' template='news' typeid={#$typeid#}#}">{#$news_seotitle#}</a>{#/if#}
+	</div>
+</div>
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+		<dl class="category on">
+			<dt><a href="javascript:;">房产资讯<span><i><s></s></i><em><s></s></em></span></a></dt>
+			{#house action="newsType" return="type"#}
+			<dd{#if $typeid == $type.id#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='news' typeid={#$type.id#}#}">{#$type.typename#}<s><i></i></s></a></dd>
+			{#/house#}
+		</dl>
+
+		<dl class="rank">
+			<dt><span>资讯排行</span></dt>
+			{#house action="news" orderby="click" page=1 pageSize=8#}
+			<dd{#if $_bindex.row < 4#} class="t"{#/if#}><i>{#$_bindex.row#}</i><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></dd>
+			{#/house#}
+		</dl>
+
+	</div>
+	<div class="main">
+		<h2 class="stit">{#$news_seotitle#}</h2>
+		<div class="list">
+
+			{#house action="news" return="news" typeid={#$typeid#} page={#$page#} pageSize="20"#}
+			<dl class="fn-clear">
+				{#if $news.litpic != ""#}
+				<dt><a href="{#$news.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}" title="{#$news.title#}" /></a></dt>
+				{#/if#}
+				<dd>
+					<h3><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h3>
+					<p>{#$news.description#}<a href="{#$news.url#}" target="_blank">阅读全文...</a></p>
+					<span class="time"><s></s>{#$news.pubdate|date_format:"%Y-%m-%d"#}</span>
+				</dd>
+			</dl>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉！ 没有相关资讯</div>
+			{#/if#}
+
+		</div>
+
+		{#getPageList service='house' template='news' typeid={#$typeid#}#}
+
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/news.js"></script>
+</body>
+</html>

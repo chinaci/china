@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>【{#$detail_title#}房型图，{#$siteCityInfo['name']#}{#$detail_title#}室内户型图】-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}户型图,{#$detail_title#}二手房,{#$detail_title#}租房,{#$detail_address#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、房型图、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+{#$communityNav = 2#}
+{#$crumbTitle = "小区户型图"#}
+{#include file="community_top.html"#}
+
+{#$hxGroup = ""#}
+{#$hxCount = 0#}
+{#house action="apartmentList" act="community" get="roomGroup" loupanid={#$detail_id#} pageSize="1"#}
+{#$hxGroup = $hxGroup|cat:"<li{#if $room == $row.room#} class='curr'{#/if#}><a href='{#getUrlPath service='house' template='community-hx' id={#$detail_id#} hx={#$row.room#}#}'>{#numberDaxie number=$row.room#}居<span>({#$row.num#})</span></a></li>"#}
+{#$hxCount = $hxCount + $row.num#}
+{#/house#}
+
+<div class="wrap">
+	<ul class="nav-tab">
+		<li{#if $room == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-hx' id={#$detail_id#}#}">全部户型<span>({#$hxCount#})</span><s></s></a></li>
+		{#$hxGroup#}
+	</ul>
+	<div class="hxcon">
+		<ul class="fn-clear">
+			{#house action="apartmentList" act="community" return="apartmentList" loupanid={#$detail_id#} room={#$room#} pageSize="99999"#}
+			<li>
+				<a href="{#$apartmentList.url#}" target="_blank" class="pic">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$apartmentList.litpic#}" title="{#$apartmentList.title#}-{#$apartmentList.area#}㎡" />
+					<p title="{#$apartmentList.title#}-{#$apartmentList.area#}㎡">{#$apartmentList.title#}-{#$apartmentList.area#}㎡</p>
+					<em class="p-label">朝{#$apartmentList.direction#}</em>
+				</a>
+				<div class="txt">
+					<p>
+						<em class="red">{#echoCurrency type='symbol'#}</em>
+						<strong class="red">{#($detail_price * $apartmentList.area / 10000)|string_format:"%.2f"#}</strong>万/套
+					</p>
+					<p class="p-last">
+						<span class="p-label">{#$apartmentList.room#}室{#$apartmentList.hall#}厅{#$apartmentList.guard#}卫</span>
+					</p>
+				</div>
+			</li>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">该小区暂无户型！</div>
+			{#/if#}
+		</ul>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script>
+$(function(){
+	$("img").scrollLoading();
+});
+</script>
+</body>
+</html>

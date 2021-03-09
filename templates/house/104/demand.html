@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$addrname#}{#if $type == ''#}求租/求购{#else#}{#if $type == 1#}求购{#else#}求租{#/if#}{#/if#}{#$actname#}房源信息-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}{#$addrname#}{#if $type == ''#}求租/求购{#else#}{#if $type == 1#}求购房{#else#}求租房{#/if#}{#/if#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}专业房源信息网站,每天更新全新的{#$siteCityInfo['name']#}房源信息、{#$siteCityInfo['name']#}个人房源,合租房源发布，为您提供精确，真实的{#$siteCityInfo['name']#}房源信息，{#$siteCityInfo['name']#}房源价格、价格走势，{#$cfg_shortname#}让房源变得简单!" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/demand.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'demand'#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='demand' addrid=0 business=0 type={#$type#}#}">{#if $type == ''#}求租/求购{#else#}{#if $type == 1#}求购房{#else#}求租房{#/if#}{#/if#}</a>
+		</div>
+		<div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='demand'#}" method="get">
+				<input type="search" placeholder="请输入小区名称、地址" name="keywords" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div>
+	</div>
+	<div class="filter">
+		<div class="t-fi fn-clear">
+			<label>位置：</label>
+			<ul class="t-fi-item fn-clear">
+				<li class="area curr"><a href="javascript:;"><s></s>区域找房<i></i></a></li>
+			</ul>
+			{#if $keywords != ""#}
+			<div class="keywords fn-clear">
+				<label>关键字：</label>
+				<a title="删除关键字" href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act={#$act#} keywords=""#}">{#$keywords#} <s>&times;</s></a>
+			</div>
+			{#/if#}
+			<div class="sub-fi area"{#if $from == "" && $subway == 0#} style="display: block;"{#/if#}>
+				<s><i></i></s>
+				<div class="pos-item">
+					<a href="{#getUrlPath service='house' template='demand' addrid=0 business=0 type={#$type#} act={#$act#} keywords={#$keywords#}#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr'#}
+					<a href="{#getUrlPath service='house' template='demand' addrid={#$addr.id#} business=0 type={#$type#} act={#$act#} keywords={#$keywords#}#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+					{#/house#}
+				</div>
+				{#if $addrid != 0#}
+				<div class="pos-sub-item">
+					<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business=0 type={#$type#} act={#$act#} keywords={#$keywords#}#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr' type={#$addrid#}#}
+					<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$addr.id#} act={#$act#} type={#$type#} keywords={#$keywords#}#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+					{#/house#}
+				</div>
+				{#/if#}
+			</div>
+		</div>
+		<dl class="fn-clear">
+			<dt>类别：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act='' keywords={#$keywords#}#}"{#if $act == ''#} class="curr"{#/if#}>不限</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=1 keywords={#$keywords#}#}"{#if $act == 1#} class="curr"{#/if#}>新房</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=2 keywords={#$keywords#}#}"{#if $act == 2#} class="curr"{#/if#}>二手房</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=3 keywords={#$keywords#}#}"{#if $act == 3#} class="curr"{#/if#}>出租房</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=4 keywords={#$keywords#}#}"{#if $act == 4#} class="curr"{#/if#}>写字楼</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=5 keywords={#$keywords#}#}"{#if $act == 5#} class="curr"{#/if#}>商铺</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act=6 keywords={#$keywords#}#}"{#if $act == 6#} class="curr"{#/if#}>厂房/仓库</a>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>供求：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type='' act={#$act#} keywords={#$keywords#}#}"{#if $type == ''#} class="curr"{#/if#}>不限</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type=0 act={#$act#} keywords={#$keywords#}#}"{#if $type == '0'#} class="curr"{#/if#}>求租</a>
+				<a href="{#getUrlPath service='house' template='demand' addrid={#$addrid#} business={#$business#} type=1 act={#$act#} keywords={#$keywords#}#}"{#if $type == 1#} class="curr"{#/if#}>求购</a>
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap fn-clear">
+
+	<div class="slide">
+		<div class="s-item">
+			<div class="s-tit">
+				<h5>二手房源</h5>
+				<a href="{#getUrlPath service='house' template='sale'#}" target="_blank">查看更多>></a>
+			</div>
+			<div class="s-con sale">
+				{#house action="saleList" return="sale" pageSize="5"#}
+				<dl class="fn-clear">
+					<dt><a href="{#$sale.url#}" target="_blank"><img src="{#$sale.litpic#}" /></a></dt>
+					<dd>
+						<a href="{#$sale.url#}" target="_blank">{#$sale.title#}</a>
+						<span class="price"><small>{#echoCurrency type='symbol'#}</small>{#$sale.price#}万</span>
+						<p>{#$sale.room#} {#$sale.area#}平米</p>
+					</dd>
+				</dl>
+				{#/house#}
+			</div>
+		</div>
+
+		<div class="s-item">
+			<div class="s-tit">
+				<h5>热门楼盘</h5>
+				<a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">查看更多>></a>
+			</div>
+			<div class="s-con loupan">
+				{#house action="loupanList" return="loupan" pageSize="5"#}
+				<dl class="fn-clear">
+					<dt><a href="{#$loupan.url#}" target="_blank"><img src="{#$loupan.litpic#}" /></a></dt>
+					<dd>
+						<a href="{#$loupan.url#}" target="_blank">{#$loupan.title#}</a>
+						<p>
+							{#$loupan.addr[$loupan.addr|@count-2]#} - {#$loupan.addr[$loupan.addr|@count-1]#}
+							{#if $loupan.price != 0#}
+							<span><strong>{#$loupan.price#}</strong>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}起</span>
+							{#else#}
+							<span>面议</span>
+							{#/if#}
+						</p>
+					</dd>
+				</dl>
+				{#/house#}
+			</div>
+		</div>
+	</div>
+
+	<div class="list" id="list">
+
+		<div class="head">
+			<h5>全部房源</h5>
+			<a href="javascript:;" id="put">发布求租/求购</a>
+			<span class="statistics">共有<strong>0</strong>条符合条件的信息</span>
+		</div>
+
+		{#$addr = $addrid#}
+		{#if $business != 0#}
+		{#$addr = $business#}
+		{#/if#}
+		{#house action="demand" return="demand" addrid={#$addr#} typeid={#$type#} act={#$act#} title={#$keywords#} page={#$page#} pageSize="20"#}
+		<div class="l-item fn-clear">
+			<div class="tel"><s></s>{#$demand.contact#}</div>
+			<div class="con">
+				<div class="tit">
+					<label>{#$demand.title#}</label>
+					<span class="tag t{#$demand.type#}"><s></s>{#if $demand.type == '1'#}求购{#else#}求租{#/if#}</span>
+				</div>
+				<div class="m">
+					<p>{#$demand.note#}</p>
+					<p class="f">类别：{#$demand.action#}&nbsp;&nbsp;&nbsp;&nbsp;位置：{#$demand.addr[$demand.addr|@count-2]#} - {#$demand.addr[$demand.addr|@count-1]#}&nbsp;&nbsp;&nbsp;&nbsp;发布人：{#$demand.person#}&nbsp;&nbsp;&nbsp;&nbsp;{#$demand.pubdate#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="manage" data-id="{#$demand.id#}">管理</a></p>
+				</div>
+			</div>
+		</div>
+		{#/house#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">抱歉！ 未找到相关房源</div>
+		{#/if#}
+
+		{#getPageList service='house' template='demand' addrid={#$addrid#} business={#$business#} type={#$type#} act={#$act#} keywords={#$keywords#}#}
+	</div>
+
+</div>
+
+
+<div class="popup-fabu">
+	<div class="fabu-form">
+		<div class="tit">快速发布求租求购<s></s></div>
+		<div class="con">
+			<dl class="fn-clear">
+				<dt>标题</dt>
+				<dd><input type="text" id="title" maxlength="100" /></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>需求描述</dt>
+				<dd><textarea id="note" rows="4" maxlength="500" placeholder="请输入具体要求~"></textarea></dd>
+			</dl>
+			<dl class="fn-clear radio">
+				<dt>类别</dt>
+				<dd class="fn-clear">
+					<label><input type="radio" name="act" value='1' /> 新房</label>
+					<label><input type="radio" name="act" value='2' /> 二手房</label>
+					<label><input type="radio" name="act" value='3' checked /> 出租房</label>
+					<label><input type="radio" name="act" value='4' /> 写字楼</label>
+					<label><input type="radio" name="act" value='5' /> 商铺</label>
+					<label><input type="radio" name="act" value='6' /> 厂房/仓库</label>
+				</dd>
+			</dl>
+			<dl class="fn-clear radio ftype">
+				<dt>供求</dt>
+				<dd class="fn-clear">
+					<label><input type="radio" name="type" value='0' checked /> 求租</label>
+					<label><input type="radio" name="type" value='1' /> 求购</label>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>位置</dt>
+				<dd class="fn-clear">
+					<div class="doubel">
+						<div class="cityName addrBtn" data-field="addrid" data-ids="" data-id="0">请选择</div>
+			      <input type="hidden" name="addrid" id="addrid" value="" />
+			      <input type="hidden" name="cityid" id="cityid" value="" >
+					</div>
+					<label class="lr">
+						<span>联系人</span><input type="text" id="person" maxlength="20" />
+					</label>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>联系电话</dt>
+				<dd class="fn-clear">
+					<div class="doubel">
+						<input type="text" id="contact" maxlength="20" />
+					</div>
+					<label class="lr">
+						<span>管理密码</span><input type="text" id="password" maxlength="50" />
+					</label>
+				</dd>
+			</dl>
+			<dl class="fn-clear fn-hide edit radio">
+				<dt>管理</dt>
+				<dd class="fn-clear">
+					<label><input type="radio" name="manage" value='1' checked /> 修改</label>
+					<label><input type="radio" name="manage" value='2' /> 删除</label>
+				</dd>
+			</dl>
+			<button id="tj">立即发布</button>
+		</div>
+	</div>
+	<div class="mask"></div>
+</div>
+
+
+{#include file="footer.html"#}
+<script>var type = '{#$type#}', totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="house" template="demand" addrid={#$addrid#} business={#$business#} type={#$type#} act={#$act#} keywords={#$keywords#} page="%page%"#}';</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/demand.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

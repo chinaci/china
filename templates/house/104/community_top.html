@@ -1,0 +1,17 @@
+<div class="wrap crumb fn-clear">
+	<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='community'#}">小区列表</a> > <a href="{#getUrlPath service='house' template='community' addrid={#$detail_areaid#}#}">{#$detail_addr[$detail_addr|count-2]#}小区</a> > <a href="{#getUrlPath service='house' template='community' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">{#$detail_addr[$detail_addr|count-1]#}小区</a> > <a href="{#$pageUrl#}">{#$detail_title#}</a> > <span>{#$crumbTitle#}</span>
+</div>
+
+<div class="wrap community-nav">
+	<h1 class="name">{#$detail_title#}</h1>
+	<ul>
+		<li{#if $communityNav == 1#} class="curr"{#/if#}><a href="{#$pageUrl#}">基本信息</a></li>
+		<li><a href="{#$pageUrl#}#peitao">周边配套</a></li>
+		<li><a href="{#$pageUrl#}#about">小区简介</a></li>
+		<li><a href="{#$pageUrl#}#map">地理位置</a></li>
+		<li{#if $communityNav == 2#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-hx' id={#$detail_id#}#}">户型</a></li>
+		<li{#if $communityNav == 3#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#}#}">小区相册</a></li>
+		<li{#if $communityNav == 4#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}">二手房</a></li>
+		<li{#if $communityNav == 5#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-zu' id={#$detail_id#}#}">租房</a></li>
+	</ul>
+</div>
