@@ -1,0 +1,58 @@
+/* CSS Document */
+/*搜索结果*/
+.newsContent{
+	margin-bottom:40px;
+	display:inline-block;
+}
+.newsContent .lf_content .news_list ul{
+	width:880px;
+	background:#fff;
+	box-shadow:1px 1px 20px 0 rgba(0,0,0,0.1);
+	padding:7px 0;
+}
+.newsContent .lf_content .news_list ul li{
+	width:830px;
+	padding:17px 0;
+	margin:0 auto;
+	border-bottom:1px dashed #e6e6e6;
+}
+.newsContent .lf_content .news_list ul li:last-child{
+	border:0;
+}
+.newsContent .lf_content .news_list ul li .news_pic{
+	width:164px;
+	height:115px;
+}
+.newsContent .lf_content .news_list ul li .news_pic img{
+	width:100%;
+	height:100%;
+}
+.newsContent .lf_content .news_list ul li .news_text{
+	width:640px;
+}
+.newsContent .lf_content .news_list ul li .news_text h5{
+	width:90%;
+}
+.newsContent .lf_content .news_list ul li .news_text h5 a{
+/*	color:#1f1f1f;*/
+	font-size:20px;
+}
+/*右侧信息栏*/
+.news_right .news_express{
+	margin-top:18px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
