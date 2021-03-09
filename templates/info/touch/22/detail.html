@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#} - {#$list_typename#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe.css'>
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe-default-skin.css'>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+{#if $detail_video#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css?v={#$cfg_staticVersion#}" media="all" />
+{#/if#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';
+	var JubaoConfig = {
+		"module" : 'info',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "宝贝详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="head">
+    <div class="title">{#$detail_title#}</div>
+    <div class="head_mbox fn-clear">
+        <div class="price">{#if $detail_price != 0#}<em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}{#else#}面议{#/if#}</div>
+        <div class="see">浏览{#$detail_click#}</div>
+    </div>
+    <div class="head_fbox fn-clear">
+        <div class="fb_left"><div class="area">{#$detail_address#}</div><div class="time">{#$detail_pubdate|date_format:'%y-%m-%d %H:%M'#}</div></div>
+        <div class="fb_right" {#if $detail_isvalid#} style="color:#f00;"{#/if#}>{#$detail_validCeil#}</div>
+    </div>
+</div>
+
+<div class="detail">
+    <div class="de_lead">商品详情</div>
+		{#if $detail_video#}
+		<div class="video">
+			<video id="my-video" class="video-js" controls preload="auto" data-setup="{}" style="width: 100%; height: 300px;">
+				<source src="{#$detail_video#}">
+			</video>
+		</div>
+		{#/if#}
+    {#if $detail_item#}
+    <div class="kind fn-clear">
+        <ul>
+            {#foreach from=$detail_item item=item#}
+            {#if $item.value != ""#}
+            <li class="fn-clear"><span class="info-list-tit">{#$item.type#}：</span><span class="info-list-con">{#if $item.type == "价格"#}<em class="price">{#$item.value#}</em>{#echoCurrency type='short'#}{#else#}{#$item.value#}{#/if#}&nbsp;</span></li>
+            {#/if#}
+            {#/foreach#}
+        </ul>
+    </div>
+    {#/if#}
+    <div id="body">{#$detail_mbody#}</div>
+    <div class="picture fn-clear" >
+        <div class="wrapper">
+          <div class="my-gallery comment-pic-slide" itemscope itemtype="">
+            <div class="swiper-wrapper" id="picobj">
+              {#foreach from=$detail_imglist item=imglist key=key#}
+              <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+                <a href="{#changeFileSize url="{#$imglist['path']#}" type="large"#}" itemprop="contentUrl" data-size="100%x100%" class="picarr" id="pic{#$key#}">
+                  <img onerror="this.src='{#$imglist['path']#}'" src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}" itemprop="thumbnail" alt="Image description" />
+                </a>
+              </figure>
+              {#/foreach#}
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+{#if $detail_member#}
+    <div class="member">
+        <a href="{#$cfg_basehost#}/user/{#$detail_userid#}#info" class="fn-clear user-msg">
+            <div class="member_pic"><img src="{#if $detail_member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$detail_member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" /></div>
+            <div class="member_name">{#$detail_member['nickname']#}</div>
+            <div class="member_intro">在售宝贝：<em>{#$detail_storeCount#}</em> 个，注册时间：{#$detail_member['regtime']|date_format:"%Y-%m-%d"#}</div>
+        </a>
+    </div>
+{#/if#}
+<div class="report fn-clear">
+    <div class="report_left"><span>如遇无效、虚假、诈骗信息，请立即举报</span><p>为了您的资金安全，请见面交易，切勿提前支付任何费用。</p></div>
+    <div class="report_right HN_Jubao"><i></i>举报</div>
+</div>
+<!-- 热门评论 s -->
+<div class="extend-module">
+    <h2 class="md_title">互动</h2>
+    <div class="comment_module">
+        <ul class="comment_list">
+            {#member action='getComment' return='common' type='info-detail' son='1' aid={#$detail_id#} orderby='hot' pageSize='5'#}
+            <li class="clearfix">
+                <p class="author fn-clear">
+                    <span>{#if is_array($common.user)#}<a href="{#$cfg_basehost#}/user/{#$common.user['userid']#}">{#$common.user['nickname']#}</a>{#else#}<a href="javascript:;">匿名</a>{#/if#}</span>
+                    <time>{#$common.dtime|date_format:'%m-%d %H:%M'#}</time>
+                </p>
+                <p class="des">{#$common.content#}</p>
+            </li>
+            {#/member#}
+        </ul>
+    </div>
+</div>
+{#if $cfg_app_ios_download || $cfg_app_android_download#}
+<div class="comment-count">
+    <a href="{#getUrlPath service='info' template='comment' id={#$detail_id#}#}" alt="全部评论" class="coment_app">全部评论</a>
+</div>
+{#/if#}
+<!-- 热门评论 e -->
+<div class="same">
+    <div class="same_lead">同类商品</div>
+    <div class="same_list fn-clear">
+        {#info action="ilist" return="ilist" id="{#$detail_typeid#}" pageSize="4"#}
+        <div class="InfoBox">
+            <a href="{#$ilist.url#}">
+                <div class="Info_pic"><img src="{#$ilist.litpic#}" alt=""></div>
+                <div class="Info_title">{#$ilist.title#}</div>
+                {#if $ilist.price == 0#}
+                <div class="Info_price">面议</div>
+                {#else#}
+                <div class="Info_price"><em>{#echoCurrency type='symbol'#}</em>{#$ilist.price#}</div>
+                {#/if#}
+                <div class="Info_foot fn-clear">
+                    <div class="Info_location">{#$ilist.address#}</div>
+                    <div class="Info_time">{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</div>
+                </div>
+            </a>
+        </div>
+        {#/info#}
+    </div>
+</div>
+<div class="same_more"><a href="{#getUrlPath service='info' template='list' id="{#$detail_typeid#}"#}">查看更多</a></div>
+
+<div class="footer">
+  <div class="footer-info">
+    <p>{#$detail_person#}({#if $detail_member['userType'] == 1#}个人{#elseif $detail_member['userType'] == 2#}商家{#else#}游客{#/if#})</p>
+    <p>{#$detail_telNum#}-{#$detail_teladdr#}</p>
+  </div>
+  <div class="footer-tel">
+    <a href="tel:{#$detail_telNum#}"><i></i>电话</a>
+  </div>
+  <div class="footer-msg">
+    <a href="sms:{#$detail_telNum#}"><i></i>短信</a>
+  </div>
+  {#if $detail_qq#}
+  <div class="footer-qq">
+    <a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_qq#}&site=qq&menu=yes" target="_blank"><i></i>QQ</a>
+  </div>
+  {#/if#}
+</div>
+
+<div class="pswp"tabindex="-1"role="dialog"aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close"title="Close (Esc)"></button><button class="pswp__button pswp__button--zoom"title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left"title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right"title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js"></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe.min.js'></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js'></script>
+<script src="{#$cfg_staticPath#}js/ui/pic-swiper.js"></script>
+{#if $detail_video#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '联系人：{#$detail_person#}，电话：{#$detail_telNum#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_imglist[0]['path']#}',
+		"link": '{#getUrlPath service='info' template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

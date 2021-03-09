@@ -1,0 +1,19 @@
+* {-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent;}
+body,html {background:#f8f8f8;}
+.head {background:url(../images/userbc.png) no-repeat top;height:3.4rem;background-size:100%;position:relative;}
+.head .Member_card {position:absolute;width:6rem;top:1.1rem;left:50%;margin-left:-3.4rem;background:#fff;box-shadow:1px 1px 10px #dedede;padding:0.35rem .4rem;}
+.Member_card .member_pic {float:left;width:1.5rem;height:1.5rem;border-radius:1.5rem;overflow:hidden;margin-right:.2rem;}
+.Member_card .member_pic img {width:100%;min-height:1.5rem;}
+.Member_card .name {font-size:.34rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:.2rem;}
+.Member_card .login {font-size:.28rem;color:#969696;margin-top:.1rem;}
+.all {background:#fff;text-align:center;font-size:.3rem;height:.9rem;line-height:.9rem;margin:.3rem 0;}
+.card_list {background:#fff;}
+.card_list .card {padding:0.25rem .31rem;}
+.card_list .card .card_pic {float:left;width:2.5rem;height:1.8rem;overflow:hidden;margin-right:.25rem;}
+.card_list .card .card_pic img {width:100%;min-height:2rem;}
+.card_list .card .card_title {font-size:.32rem;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.card_list .card .card_mid {height:.5rem;line-height:.5rem;}
+.card_list .card .card_mid .addr {float:left;font-size:.24rem;color:#b3b3b3;}
+.card_list .card .card_mid .card_price {float:right;color:#ff552e;font-size:.32rem;}
+.card_list .card .card_mid .card_price em {font-size:.28rem;}
+.card_list .card .time {color:#b3b3b3;font-size:.24rem;}

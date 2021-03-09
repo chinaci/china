@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>{#$member['nickname']#}</title>
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script>
+      var staticPath = '{#$cfg_staticPath#}';
+    </script>
+</head>
+<body>
+    <div class="head">
+        {#$pageTitle = ""#}
+        {#include file="../../../siteConfig/touch_top.html"#}
+        <style>.header{background: none!important;border-bottom: none;}.header-l a{background: url({#$templets_skin#}/images/header_back.png) center center no-repeat;background-size: auto .48rem;}.header-search a{background: url({#$templets_skin#}/images/header_la.png) center center no-repeat;background-size: auto .5rem;}</style>
+
+        <div class="Member_card fn-clear">
+            <div class="member_pic"><img src="{#if $member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" /></div>
+            <div class="name">{#$member['nickname']#}</div>
+            <div class="login">{#$member['regtime']|date_format:"%Y-%m-%d"#}注册</div>
+        </div>
+
+    </div>
+    <div class="all">累计发布宝贝{#$storeCount#}个</div>
+
+    <div class="card_list">
+        {#info action="ilist" return="ilist" userid={#$id#} pageSize=10000#}
+        <div class="card fn-clear"><a href="{#$ilist.url#}">
+            <div class="card_pic"><img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" alt=""></div>
+            <div class="card_title">{#$ilist.title#}</div>
+            <div class="card_mid">
+                <div class="addr">{#$ilist.address#}</div>
+                {#if $ilist.price == 0#}
+                <div class="card_price">面议</div>
+                {#else#}
+                <div class="card_price"><em>{#echoCurrency type='symbol'#}</em>{#$ilist.price#}</div>
+                {#/if#}
+            </div>
+            <div class="time">{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</div>
+        </a></div>
+        {#/info#}
+    </div>
+
+
+
+
+<script>
+    // 判断设备类型，ios全屏
+    var device = navigator.userAgent;
+    if (device.indexOf('huoniao_iOS') > -1) {
+       $('body').addClass('padTop20');
+    }
+</script>
+    {#* 微信分享 *#}
+    {#$Share_description = {#$info_description#}#}
+    {#$Share_title = {#$member['nickname']#}#}
+    {#$Share_img = {#$cfg_weblogo#}#}
+    {#$Share_url = {#getUrlPath service='info' template='store' id={#$id#}#}#}
+    {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</body>
+</html>

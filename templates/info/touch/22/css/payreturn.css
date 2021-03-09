@@ -1,0 +1,30 @@
+body{opacity: 1;}
+
+/* 头部 */
+.header{height: .9rem;background: #fff !important;display: -webkit-box;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: relative;z-index: 100000; border-bottom: 1px solid #f2f2f2;}
+.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle; background: url(../images/header_back.png) center center no-repeat; background-size: auto .48rem;}
+.header-l img{display: block;width: auto;height: .8rem;margin: 0 auto;}
+.header-address{-webkit-box-flex: 1;text-align: center; font-size: .36rem; line-height: .9rem; margin: 0; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.header-address a.changeCity{position: relative;}
+.header-address .downArea{position: absolute; right: -0.3rem; top: 0.15rem; border-top: .1rem solid #333; border-left: .1rem solid transparent; border-right: .1rem solid transparent;}
+.header-search a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;float: right; text-align: center; visibility: hidden;}
+
+/*支付成功*/
+.rewordS-success{padding: 1rem 0;}
+.rewordS-success .rewordS-success-txt{background: url(../images/success.png) no-repeat; background-size: .9rem auto; padding-left: 1.1rem; height: .9rem; width: 3.8rem; margin: 0 auto 1rem;}
+.rewordS-success .rewordS-success-txt h1{font-size: .4rem;}
+.rewordS-success .rewordS-success-txt p{color: #999; font-size: .24rem;}
+.rewordS-list{width: 7rem; margin: 0 auto;}
+.rewordS-list ul{border-bottom: 1px solid #e4e4ee;}
+.rewordS-list li{height: 1rem; line-height: 1rem; font-size: .28rem; border: 1px solid #e4e4ee; border-bottom: none; overflow: hidden;}
+.rewordS-list li .rewordS-list-tit{width: 2rem; text-align: center; background: #f2f2f5; display: inline-block; float: left;}
+.rewordS-list li .rewordS-list-info{width: 4.9rem; display: inline-block; overflow: hidden; text-indent: .2rem;}
+.rewordS-list li .blue, .rewordS-list li .blue a{color: #00aaee;}
+.rewordS-list li .blue a:hover {text-decoration: underline;}
+.rewordS-list li .orange{color: #ff6600; font-size: .3rem;}
+
+/*支付失败*/
+.rewordS-error{padding: 1rem 0;}
+.rewordS-error .rewordS-error-txt{background: url(../images/error.png) left .08rem no-repeat; background-size: .4rem auto; padding-left: .6rem; height: .9rem; width: 3.8rem; margin: 0 auto 1rem;}
+.rewordS-error .rewordS-error-txt h1{font-size: .4rem;}
+.rewordS-error .rewordS-error-txt p{color: #999; font-size: .24rem;}

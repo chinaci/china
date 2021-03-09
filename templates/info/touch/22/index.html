@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$info_title#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl ={#$cfg_hideUrl#};
+	var page = 1;
+	var pageSize = 20;
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute" pageTitle=$info_channelName#}
+
+<!-- 头部幻灯片 -->
+<div class="wrapper">
+	<div class="swiper-container" id="slider">
+	    <div class="swiper-wrapper">
+			{#myad title="二手信息_模板一_移动端_广告一" type="slide"#}
+	    </div>
+  	<div class="pagination"></div>
+	</div>
+</div>
+<!-- 头部幻灯片 end -->
+<!-- 滑动导航 -->
+<div class="nav">
+  <div class="nav-container">
+    <div class="swiper-wrapper">
+			<div class="swiper-slide">
+        <ul>
+			{#info action="type" return='type'#}
+          <li>
+            <a href="{#$type.url#}">
+              <span class="icon-img"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"></span>
+              <span class="icon-txt">{#$type.typename#}</span>
+            </a>
+          </li>
+			{#if !(($_bindex.type) % 8)#}
+				</ul>
+			</div>
+			<div class="swiper-slide">
+        <ul>
+			{#/if#}
+			{#/info#}
+				</ul>
+			</div>
+    </div>
+    <div class="pagination"></div>
+  </div>
+</div>
+<!-- 滑动导航 end-->
+<div class="navbar fn-clear">
+	<ul>
+	  <li data-page="1" data-totalpage="1" data-id="1" class="active">最新发布</li>
+	  <li data-page="1" data-totalpage="1" data-id="3">推荐信息</li>
+	  <li data-page="1" data-totalpage="1" data-id="2">热门信息</li>
+	</ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+  <div id="tabs-container" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="content-slide new">
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide recommend"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide hot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+<!-- 底部 s -->
+<div class="fixFooter">
+  <ul>
+    <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+    <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='info'#}#Stype"><i></i>发布</a></li>
+    <li class="ficon3"><a href="{#getUrlPath service='member' type='user' template='manage-info'#}"><i></i>管理</a></li>
+    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+  </ul>
+</div>
+<!-- 底部 e -->
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$info_description#}',
+        "title": '{#$info_title#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#$info_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
