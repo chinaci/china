@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#if $list_typename#}{#$list_typename#}{#else#}信息列表{#/if#}{#/if#}</title><meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+  var hideFileUrl ={#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+	var page = 1, pageSize = 10, detailListId = 'maincontent', keyword = "{#$keywords#}";
+</script>
+
+</head>
+<body>
+
+{#$pageTitle = $info_channelName#}
+{#include file="../../../siteConfig/touch_top.html" pageTitle=""#}
+
+
+
+<div class="list">
+  <div class="mask"></div>
+  <div class="choose">
+    <div class="choose-tab">
+      <ul>
+        <li data-type="addrid" data-id="" class="addrid choice_name"><span>区域</span></li>
+        <li data-type="typeid" data-id="{#$list_id#}" class="typeid choice_name"><span>{#if !$list_typename#}不限{#else#}{#$list_typename#}{#/if#}</span></li>
+        <li data-type="orderby" data-id="" class="orderby choice_name"><span>排序</span></li>
+      </ul>
+    </div>
+    <div class="screen fn-clear fn-hide">
+    </div>
+    <div class="choose-box">
+      <div class="choose-local dn" id="area-box">
+        <div class="choose-stage-l">
+          <div id="choose-area">
+            <ul>
+				<li data-id="">不限</li>
+				{#info action="addr" return="addr"#}
+    	            <li data-id="{#$addr.id#}">{#$addr.typename#}</li>
+				{#/info#}
+            </ul>
+          </div>
+        </div>
+        <div class="choose-stage-r"><div id="choose-area-second"><ul></ul></div></div>
+      </div>
+      <div class="choose-local dn" id="info-box">
+        <div class="choose-stage-l">
+          <div id="choose-info">
+            <ul>
+				<li data-id="">全部分类</li>
+				{#info action="type" return="type"#}
+                  <li data-id="{#$type.id#}"{#if $list_id == $type.id#} class="active"{#/if#}>{#$type.typename#}</li>
+				{#/info#}
+            </ul>
+          </div>
+        </div>
+        <div class="choose-stage-r"><div id="choose-info-second"><ul></ul></div></div>
+      </div>
+      <div class="choose-local dn">
+        <div id="choose-sort">
+          <ul>
+			  <li data-id="0">默认排序</li>
+            <li data-id="1">最新发布</li>
+            <li data-id="2">按浏览量</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+	<!-- 搜索 -->
+	<div class="search-form">
+		<div class="sobj">
+			<div class="inp">
+				<form >
+					<s></s>
+					<input type="text" placeholder="输入你正在找的宝贝" class="txtSearch">
+					<span class="txtSearchs">搜索</span>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 搜索 e -->
+  <div class="recomShop">
+	  <ul id="maincontent">
+	  	 <div class="empty"></div>
+
+
+			<div class="loading">数据加载中...</div>
+	  </ul>
+  </div>
+</div>
+
+
+
+
+
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>联系我们</h3>
+        <p class="fn-clear"><b>18335670802</b></p>
+        <div class="call"><a href="tel:18335670802" >立即拨打</a></div>
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#if $list_typename#}{#$list_typename#}{#else#}信息列表{#/if#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#getUrlPath service="info" template="list" typeid=$list_id#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

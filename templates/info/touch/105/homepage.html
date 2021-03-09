@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$userInfo_['nickname']#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/homepage.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl ={#$cfg_hideUrl#};
+	var page = 1, pageSize = 10, detailListId = 'maincontent', keyword = "{#$keywords#}";
+    var user_id = {#$userInfo_['userid']#};
+</script>
+
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="全部信息"#}
+
+
+<div class="userbox">
+	<div class="usertop fn-clear">
+		<div class="ushead">
+			<div class="circle_out">
+				<div class="circle_in">
+					<img src="{#$userInfo_['photo']#}" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="usInfo">
+			<h4 class="fn-clear"><span>{#$userInfo_['nickname']#}</span><i class="pers"></i> <i class="safeI"></i></h4>
+			<p class="u-comment">
+				<!--<span class="starbg"><i class="star" style="width: 60%;"></i></span>-->
+				{#$commons#}评论</p>
+			<p class="mark"><span>个人</span><span>会员{#$mons#}个月</span></p>
+			<a href="javascript:;" class="btnCare {#if $is_follow#}cared{#/if#}">{#if $is_follow#}已关注{#else#}关注{#/if#}</a>
+		</div>
+	</div>
+	<div class="userbot">
+		<p><span>发布信息<b>{#$list_count#}</b></span><em>|</em><span>浏览量<b>{#$clicks#}</b></span></p>
+	</div>
+</div>
+
+<!-- 搜索 -->
+<div class="search-form">
+	<div class="sobj">
+		<div class="inp">
+			<form action="{#$action#}" method="get" id="form">
+				<s></s>
+				<input type="text" placeholder="搜信息..." class="txtSearch" name="keywords">
+				<span onclick="sendForm()">搜索</span>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- 搜索 e -->
+
+
+  <div class="homelist">
+	  <ul>
+		  {#if $list#}
+		  {#foreach from=$list item=lists#}
+			<li class="fn-clear" style="background:  #fff {#if $lists['rec_fire_top'] == 'top'#} url({#$templets_skin#}images/top.png) {#/if#} no-repeat right top;background-size: .94rem;">
+				<a href="{#$lists['url']#}">
+					<div class="rpic">
+						<img src="{#changeFileSize url="{#$lists['litpic']#}" type="small"#}" alt="">
+						<div class="pnum">{#$lists['pcount']#}图</div>
+					</div>
+					<div class="rinfo">
+						<div class="rtitle">{#$lists['title']#}</div>
+						{#if $lists['price_switch']==0#}<p class="mark"><span class="mprice">{#if $lists['price'] neq 0#}<em>{#echoCurrency type='symbol'#}</em>{#$lists['price']#}{#else#}价格面议{#/if#}</span></p>{#/if#}
+						<p class="addr">{#$lists['address'][1]#} <span>{#$lists['pubdate1']#}发布</span></p>
+					</div>
+				</a>
+			</li>
+			{#/foreach#}
+		  {#else#}
+			<div class="loading">暂无数据</div>
+		  {#/if#}
+		</ul>
+  </div>
+
+
+
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+<script>
+    function sendForm() {
+        $("#form").submit();
+    }
+
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$userInfo_['username']#}',
+        "title": '{#$userInfo_['username']#}',
+        "imgUrl": '{#$userInfo_['photo']#}',
+        "link": '{#getUrlPath service='info' template='homepage' id={#$userInfo_['userid']#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/homepage.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_user['company']#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/business.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+	var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+	var address = '{#$detail_address_app#}', addressdet = '{#$detail_addressdet#}', lnglat = [{#$detail_longitude#},{#$detail_latitude#}], title = '{#$detail_title#}';
+    var pageData = {
+        title: '{#$detail_user['company']#}',
+        address: '{#$detail_address_app#}',
+        lnglat: '{#join(",",$detail_lnglat)#}',
+        lat: '{#$detail_lnglat[1]#}',
+        lng: '{#$detail_lnglat[0]#}',
+        mapType: '{#$site_map#}',
+        cityName: '{#$siteCityInfo['name']#}',
+        mapKey: '{#$site_map_key#}'
+	};
+	var cookiePre = '{#$cfg_cookiePre#}';
+
+ 	var detail_id = {#$detail_id#},  user_id = {#$detail_uid#};
+    var collect = {#$collect#};
+
+</script>
+
+</head>
+
+<body>
+<!-- 头部 -->
+{#include file="../../../siteConfig/touch_top.html" pageTitle=" "#}
+<!-- 头部 end -->
+
+<!-- 视频&&全景&&图片轮播 s-->
+
+<div class="topMain">
+
+	<div class="swiper-container">
+		<i class="vClose"></i>
+		<div class="swiper-wrapper">
+			{#if $detail_video#}
+			<div class="swiper-slide video-box">
+				<video width="100%" height="100%" preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  src="{#$detail_video#}" id="video" poster="{#$detail_video_pic#}"></video>
+				<div class="video-btn">
+					<div class="play-box video-icon-box" id="vbplay">
+						<i class="play-icon video-icon"></i>
+					</div>
+					<div class="load-box video-icon-box" style="display: none;">
+						<i class="load-icon video-icon"></i>
+					</div>
+					<div class="reload-box video-icon-box" style="display: none;">
+						<i class="reload-icon"></i>
+						<p>重新播放</p>
+					</div>
+					<div class="error-box video-icon-box" style="display: none;">
+						<p class="err-info">视频出错了，请检查网络状况</p>
+						<div class="reload-box">
+							<i class="reload-icon"></i>
+							<p>重新加载</p>
+						</div>
+					</div>
+				</div>
+				<div id="video-control" style="display: none;">
+					<div class="btn-control">
+						<div id="play" class="play"> </div>
+					</div>
+					<div id="time" class="time"> 00:00 </div>
+					<div id="progress"> <span id="bar"></span>
+						<div id="control"> </div>
+					</div>
+					<div class="btn-control">
+						<div id="sound" class="soundon"> </div>
+					</div>
+					<div id="full" class="full"> </div>
+				</div>
+			</div>
+			{#else#}
+
+			{#foreach from=$detail_pics item=pics#}
+				<div class="swiper-slide">
+					<img src="{#$pics#}" alt="">
+				</div>
+			{#/foreach#}
+			{#/if#}
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+
+</div>
+
+
+
+
+<!-- 视频&&全景&&图片轮播 e-->
+
+
+<!-- 店铺信息 s-->
+<div class="shopInfo" style="padding:0 .25rem;background:  #fff {#if $detail_top#}url({#$templets_skin#}images/top.png){#/if#} no-repeat right top;background-size: .94rem;margin-bottom: .18rem;">
+	<div class="stopBox fn-clear">
+		<div class="spic">
+			<img src="{#$detail_user['photo']#}" alt="">
+		</div>
+		<div class="sinfo">
+			<div class="stitle">{#$detail_user['company']#}</div>
+			<p class="p-comment">
+				<!--<span class="starbg"><i class="star" style="width: 60%;"></i></span>-->
+				{#$commons_num#}评论</p>
+			<p class="mark"><span class="mcolor1">商家</span><span class="mcolor2">{#$detail_typename#}</span><span class="mcolor3">会员{#$detail_user['mons']#}个月</span>{#if $detail_user['certifyState']#}<span class="mcolor4">身份认证</span>{#/if#}</p>
+			<a href="javascript:;" class="btn_care {#if $detail_is_follow#}cared{#/if#}">{#if $detail_is_follow#}已关注{#else#}关注{#/if#}</a>
+
+		</div>
+	</div>
+	<div class="sbottom fn-clear">
+		<div class="ssafe"><i></i>担保交易</div>
+		<div class="sbtn">
+			<!--<a href="javascript:;" class="btnCollect"><img src="{#$templets_skin#}images/collect.png" alt=""></a>-->
+			<a href="javascript:;" class="btnShare HN_PublicShare"><img src="{#$templets_skin#}images/shareIcon.png" alt=""></a>
+		</div>
+		<div class="stime">
+			<span class="sp-time">{#date('Y.m.d', $detail_jointime)#}发布</span>
+			<span class="sp-visited">{#$detail_click#}人浏览</span>
+		</div>
+	</div>
+
+</div>
+<!-- 店铺信息 e-->
+
+<!-- 店铺地址 s-->
+<div class="pubBox sAddBox fn-clear">
+	<div class="box fn-clear">
+		<div class="left">
+			<p class="paddr fn-clear"><i></i>
+				<span>
+					{#if $site_map == "baidu"#}
+				    <a class="appMapBtn" href="http://api.map.baidu.com/geocoder?address={#$detail_address#}&output=html"  target="_blank">
+				    	{#$detail_address#}
+				    </a>
+				    {#elseif $site_map == "google"#}
+				    <a class="appMapBtn" href="https://www.google.com/maps/place/{#$detail_addrname[0]#}{#$detail_address#}"  target="_blank">
+				    	{#$detail_address#}
+				    </a>
+				    {#elseif $site_map == "amap"#}
+				    <a class="appMapBtn" href="http://ditu.amap.com/search?query={#$detail_address#}"  target="_blank">
+				    	{#$detail_address#}
+				    </a>
+				    {#elseif $site_map == "qq"#}
+				    <a class="appMapBtn" href="http://apis.map.qq.com/uri/v1/search?keyword={#$detail_address#}"  target="_blank">
+				    	{#$detail_address#}
+				    </a>
+				    {#/if#}
+				</span>
+
+			</p>
+			<p class="ptel fn-clear"><i></i><span>{#if $userinfo#}<a href="tel:{#$detail_tel#}">{#$detail_tel#}</a>{#else#}<a href="{#$cfg_basehost#}/login.html">登录后显示</a>{#/if#}</span></p>
+		</div>
+		<div class="right utelphone">
+			<img src="{#$templets_skin#}images/utel.png" alt="">
+		</div>
+	</div>
+</div>
+<!-- 店铺地址 e-->
+
+
+<!-- 发布信息 s-->
+<div class="pubBox fabuInfo">
+	<ul class="tab-info fn-clear">
+		<li class="scurr"><a href="javascript:;">发布信息 <em>({#$pinfos_sum_count#})</em></a></li>
+		<li><a href="javascript:;">店铺介绍</a></li>
+		<!--<li><a href="javascript:;" class="userCom">评价 <em>({#$commons_num#})</em></a></li>-->
+	</ul>
+	<div class="userCon show">
+		<div class="conInfo">
+			<ul>
+				{#foreach from=$pinfos item=pinfo#}
+				<li class="fn-clear">
+					<a href="{#$pinfo['url']#}">
+						<div class="rpic">
+							<img src="{#changeFileSize url="{#$pinfo['litpic']#}" type="small"#}" alt="">
+							<div class="pnum">{#$pinfo['pcount']#}图</div>
+						</div>
+						<div class="rinfo">
+							<div class="rtitle">{#$pinfo['title']#}</div>
+							{#if $pinfo['price_switch']==0#}<p class="mark"><span class="mprice">{#if $pinfo['price'] neq 0#}<em>{#echoCurrency type='symbol'#}</em>{#$pinfo['price']#}{#else#}价格面议{#/if#}</span></p>{#/if#}
+							<p class="addr">{#$pinfo['address'][1]#} <span>{#$pinfo['pubdate1']#}发布</span></p>
+						</div>
+					</a>
+				</li>
+				{#/foreach#}
+			</ul>
+			<div class="more more1"><a href="javascript:;">查看该商家发布全部信息<i class="rmMore"></i></a></div>
+		</div>
+	</div>
+	<div class="userCon">
+		<!--<div class="picBox">-->
+			<!--<img src="{#$templets_skin#}upfile/shopPic01.png" alt="">-->
+		<!--</div>-->
+		<div class="textCon">
+				<p class="info">{#$detail_body#}</p>
+		</div>
+	</div>
+
+</div>
+<!-- 发布信息 e-->
+<!-- 评论 s-->
+<div id="c-info"></div>
+<!--<div class="pubBox commentBox fn-clear">-->
+	<!--<div class="head-title">-->
+		<!--<p class="fn-clear"><b>用户评论</b> ({#$commons_num#})<a href="javascript:;" class="btn-comm"><i></i>我要评论</a></p>-->
+	<!--</div>-->
+	<!--<ul class="commentlist" data-page="2">-->
+
+		<!--{#foreach from=$commons item=common#}-->
+		<!--<li class="fn-clear">-->
+			<!--<div class="left">-->
+				<!--<a href="javascript:;"><img src="{#$common['userinfo']['photo']#}" alt=""></a>-->
+			<!--</div>-->
+			<!--<div class="right">-->
+				<!--<p class="name fn-clear"><span class="sname">{#$common['userinfo']['username']#}</span> <span class="time">{#date('Y.m.d', $common['dtime'])#}</span></p>-->
+				<!--<p class="content">{#$common['content']#}</p>-->
+			<!--</div>-->
+		<!--</li>-->
+		<!--{#/foreach#}-->
+		<!---->
+	<!--</ul>-->
+	<!--<div class="load"></div>-->
+<!--</div>-->
+<!-- 评论 e-->
+
+
+
+
+<div class="footBottom">
+	<ul>
+		<li class="foot-1">
+			<a href="{#$addr_url_map#}" class="appMapBtn" target="_blank"> <s></s> 导航 </a>
+		</li>
+		<li class="foot-2">
+			<a href="tel:{#$detail_telNum#}"> <s></s> 电话 </a>
+		</li>
+		<li class="foot-3">
+			<a href="javascript:;"> <s></s> 加微信 </a>
+		</li>
+	</ul>
+
+</div>
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>联系我们</h3>
+        <p class="fn-clear"><b>{#$detail_tel#}</b></p>
+        <div class="call"><a href="tel:{#$detail_tel#}" >立即拨打</a></div>
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+<!-- 微信弹出层 s-->
+<div class="modal-public m-wx" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+    	<div class="topline">
+			<div class="lline"></div>
+			<div class="rline"></div>
+		</div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <div class="weixin">
+            <h5>微信中长按识别二维码</h5>
+			{#if $detail_wechat_pic#}<img src="{#$detail_wechat_pic#}" alt="">{#else#}<p>该商户暂未上传客服微信</p>{#/if#}
+            <h5>扫一扫  加客服</h5>
+        </div>
+    </div>
+</div>
+<!-- 微信弹出层 e-->
+
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '地址：{#$detail_address#}，电话：{#$detail_tel#}',
+        "title": '{#$detail_user['company']#}',
+        "imgUrl": '{#$detail_user['photo']#}',
+        "link": '{#getUrlPath service='info' template='business' id={#$detail_id#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/business.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

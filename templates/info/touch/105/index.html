@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$info_channelName#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}',
+		templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+	var templets = '{#$templets_skin#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var page=1;
+	var pageSize=10;
+
+    var pageData = {
+        title: '',
+        address: '',
+        lat: '',
+        lng: '',
+        mapType: '',
+        cityName: '',
+        mapKey: ''
+    };
+</script>
+
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle=$info_channelName#}
+
+
+<!-- 轮播图 s -->
+<div class="banner">
+	<div class="wrapper">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+				{#myad title="二手信息_模板二_移动端_广告一" type="slide"#}
+	        </div>
+	        <div class="pagination"></div>
+	    </div>
+ 	</div>
+</div>
+<!-- 轮播图 e -->
+
+
+
+<!-- 搜索 -->
+<div class="search-form">
+	<div class="sobj">
+		<div class="area">
+			<a href="{#$cfg_basehost#}/changecity.html">
+				<i></i>
+				<label>{#$siteCityInfo['name']#}</label>
+				<s></s>
+			</a>
+		</div>
+		<div class="inp">
+			<a href="{#$cfg_basehost#}/search.html" >
+				<s></s>
+				<label>搜商家、搜地址</label>
+				<span>搜索</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- 搜索 e -->
+
+
+<!-- 滑动导航 s -->
+<div class="pubBox tcInfo">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            	<ul>
+
+					{#info action="type" return='type' key=key#}
+            		<li>
+            			<a href="{#$type.url#}">
+            				 <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+    						 <span class="icon-txt">{#$type.typename#}</span>
+            			</a>
+            		</li>
+					{#if !(($_bindex.type) % 10)#}
+
+
+				</ul>
+            </div>
+            <div class="swiper-slide">
+				<ul>
+					{#/if#}
+					{#/info#}
+            	</ul>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<!-- 滑动导航 e -->
+
+<!-- 滚动信息 s -->
+<div class="pubBox tcNews">
+	<div class="lBox">
+		<img src="{#$templets_skin#}images/scrollInfo.png?v={#$cfg_staticVersion#}" alt="">
+	</div>
+
+	<div class="mBox">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+
+		    </div>
+	    	<div class="pagination"></div>
+		</div>
+	</div>
+
+</div>
+<!-- 滚动信息 e -->
+<!-- 发布信息、商家入驻 s -->
+<ul class="publish fn-clear">
+	<li class="publish-news">
+		<a href="{#getUrlPath service='member' type='user' template='info'#}">
+			<div class="news-img">
+				<img src="{#$templets_skin#}images/fabuIcon.png">
+				<span>发布信息</span>
+			</div>
+		</a>
+	</li>
+	<li class="merchant">
+		<a href="{#getUrlPath service='member' type='user' template='fabuJoin_touch_popup_3.4'#}">
+			<div class="shop-img">
+				<img src="{#$templets_skin#}images/ruzhuIcon.png">
+				<span>商家入驻</span>
+			</div>
+		</a>
+	</li>
+</ul>
+<!-- 发布信息、商家入驻 e -->
+
+<!--促销活动 s-->
+<div class="prom">
+    <div class="prom_l">{#myad title="二手信息_模板三_移动端_广告二"#}</div>
+    <div class="prom_r">
+        <p class="t">{#myad title="二手信息_模板三_移动端_广告三"#}</p>
+        <p class="b">{#myad title="二手信息_模板三_移动端_广告四"#}</p>
+    </div>
+</div>
+<!--促销活动 e-->
+
+<div class="tt-shop">
+	<h4>最新入驻店铺</h4>
+</div>
+
+<!-- 推荐店铺 s -->
+<div class="recomShop ruzhuShop">
+	<ul class="fn-clear">
+		<div class="empty">数据加载中...</div>
+	</ul>
+
+</div>
+<!-- 推荐店铺 e -->
+
+<!-- 推荐信息、推荐店铺 -->
+<div class="recomTab">
+	<ul>
+		<li class="active" data-id="1" data-page="1" data-totalpage="1">
+			<a href="javascript:;">推荐信息</a>
+		</li>
+		<li data-id="2" data-page="1" data-totalpage="1">
+			<a href="javascript:;">推荐店铺</a>
+		</li>
+	</ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+	<div class="swiper-container" id="tabs-container">
+	    <div class="swiper-wrapper">
+	       <div class="swiper-slide recomShop tuijianInfo">
+       			<ul class="fn-clear  reInfo">
+					<div class="empty">数据加载中...</div>
+				</ul>
+	       </div>
+	      	 <div class="swiper-slide recomShop tuijianshop">
+       			<ul class="fn-clear  reShop">
+					<div class="empty">数据加载中...</div>
+				</ul>
+	       </div>
+	    </div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="mask"></div>
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<div class="footMenu">
+	<div class="mIcon close wx"><i></i><span>微信</span></div>
+	<div class="mIcon close fb"><a href="{#$member_userDomain#}/info.html"><i></i><span>发布</span></a></div>
+	<div class="mIcon close my"><a href="{#$member_userDomain#}"><i></i><span>我的</span></a></div>
+	<div class="menu" data-rot="180"><i></i></div>
+</div>
+
+
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>联系我们</h3>
+        <p class="fn-clear"><b></b></p>
+        <div class="call"><a href="tel:" >立即拨打</a></div>
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+
+<div class="wechat-popup">
+	<div class="con">
+		<a href="javascript:;" class="close">×</a>
+		{#if $cfg_weixinQr#}<dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>{#else#}未上传相关二维码{#/if#}
+		{#if $cfg_miniProgramQr#}<dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>{#/if#}
+	</div>
+</div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#$info_title#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#$info_channelDomain#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+{#include file="../../../siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
