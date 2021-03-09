@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#if $list_typename#}{#$list_typename#}{#else#}{#$langData['info'][1][28]#}{#/if#}{#/if#}</title>
+    <meta name="keywords" content="{#$info_keywords#}">
+    <meta name="description" content="{#$info_description#}">
+    <meta name="wap-font-scale" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/category.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}',
+            templatePath = '{#$templets_skin#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+        var templets = '{#$templets_skin#}';
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var page = 1;
+        var pageSize = 20;
+        var detail_video='{#$detail_video#}';
+        var listUrl = '{#getUrlPath service="info" template="list"#}', typeidold = '{#$typeid#}';
+        var nowtime = {#$smarty.now#};
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$info_channelName#}"#}
+
+<div class="filter-box choose-box">
+    <ul class="choose-tab ">
+        <li class="city"><span>{#$langData['info'][0][9]#}</span></li>{#*区域 *#}
+        <li class="types"><span>{#if $list_id#}{#$list_typename#}{#else#}{#$langData['info'][0][10]#}{#/if#}</span></li>{#*全部分类 *#}
+        <li class="screen"><span>{#$langData['info'][0][11]#}</span></li>{#*筛选 *#}
+        <div class="shearbtn "><a href="{#getUrlPath service="info" template="search"#}"><i></i></a></div>
+    </ul>
+
+    <div class="choose-list">
+        <div class="choose-con">
+            <!--区域 s-->
+            <div class="choose-li city-lical choose-local" style="display: none;">
+                <div class="choose-city secon_choose fn-clear">
+                    <div class="category-wrapper">
+                        <p class="city-top title" data-id="">{#$langData['info'][1][30]#}</p>
+                        <ul class="brand-list">
+                            {#info action="addr" return="addr"#}
+                            <li data-id="{#$addr.id#}">{#$addr.typename#}</li>
+                            {#/info#}
+                        </ul>
+                    </div>
+                    <div class="brand-wrapper">
+                        <ul class="show">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--全部分类 s-->
+            <div class="choose-li choose-local" style="display: none;">
+                <div class="choose-type secon_choose">
+                    <div class="category-wrapper">
+                        <p class="type-all title" data-id="{#$typeid#}">{#$langData['info'][1][31]#}</p>
+                        <ul class="brand-list">
+                            {#info action="type" return='type' type=$typeid key=key#}
+                            <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                            {#/info#}
+                        </ul>
+                    </div>
+                    <div class="brand-wrapper">
+                        <ul class="show">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--筛选 s-->
+            <div class="choose-li choose-local" style="display: none;">
+                    <div class="choose-price">
+                        <h3 class="fn-clear">{#$langData['info'][2][37]#} <span class="reset">{#$langData['info'][2][38]#}</span></h3>
+                        <div class="type-box"><span class="" data-id="2">{#$langData['info'][2][39]#}</span> <span data-id="1">{#$langData['info'][2][40]#}</span></div>
+                        <input type="hidden" name="type" id="type" value="">
+                        <h3>{#$langData['info'][2][41]#}</h3>
+                        <div class="price-box"><span><input type="text" id="min_price" placeholder="{#$langData['info'][2][44]#}" oninput="value=value.replace(/[^\d]/g,'')"></span> <em class="line">-</em><span><input type="text" id="high_price" placeholder="{#$langData['info'][2][45]#}" oninput="value=value.replace(/[^\d]/g,'')"></span></div>
+                        <div class="btns"><span class="btn_cancel">{#$langData['info'][2][42]#}</span><span class="btn_sure">{#$langData['info'][2][43]#}</span></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mainBox">
+
+<!-- 滑动导航 s -->
+<div class="pubBox tcInfo">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <ul>
+                    {#info action="type" return='type' type=$typeid key=key#}
+                    <li>
+                        <a href="{#$type.url#}">
+                            <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+                            <span class="icon-txt">{#$type.typename#}</span>
+                        </a>
+                    </li>
+                    {#if !(($_bindex.type) % 10)#}
+                </ul>
+            </div>
+            <div class="swiper-slide">
+                <ul>
+                    {#/if#}
+                    {#/info#}
+                </ul>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<!-- 滑动导航 e -->
+
+<!--促销活动 s-->
+<div class="prom">
+    <div class="prom_l">{#myad title="二手信息_模板三_移动端_广告六"#}</div>
+    <div class="prom_r">
+        <div class="t">{#myad title="二手信息_模板三_移动端_广告七"#}</div>
+        <div class="b">{#myad title="二手信息_模板三_移动端_广告八"#}</div>
+    </div>
+</div>
+<!--促销活动 e-->
+
+<!--最新发布，热门信息，推荐商家 s-->
+    <div class="recomBox">
+        <div class="recomTab">
+            <ul class="fn-clear">
+                <li data-page="1" data-totalpage="1" data-id="1" class="active">
+                    <a href="javascript:;">{#$langData['info'][0][6]#}</a>{#* 最新发布 *#}
+                </li>
+                <li  data-page="1" data-totalpage="1" data-id="2" >
+                    <a href="javascript:;">{#$langData['info'][0][7]#}</a>{#* 热门信息 *#}
+                </li>
+                <li data-page="1" data-totalpage="1" data-id="3">
+                    <a href="javascript:;">{#$langData['info'][0][8]#}</a>{#* 推荐商家 *#}
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- 内容部分 -->
+<div class="container contents">
+    <div class="swiper-container" id="tabs-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide new-list  goods-list">
+                <ul class="fn-clear  new">
+
+                </ul>
+            </div>
+            <div class="swiper-slide hot-list  goods-list">
+                <ul class="fn-clear  hot">
+
+                </ul>
+            </div>
+            <div class="swiper-slide recommend-list  goods-list">
+                <ul class="fn-clear  recommend">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--最新发布，热门信息，推荐商家 e-->
+
+</div>
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#if $list_typename#}{#$list_typename#}{#else#}{#$langData['info'][2][46]#}{#/if#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#getUrlPath service="info" template="category" typeid=$list_id#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+	
+</script>
+<div class="mask mask-hide"></div>
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="secondicon" bottom_module="info"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/iscroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/category.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

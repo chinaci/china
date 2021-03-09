@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$info_title#}</title>
+    <meta name="apptitle" content="{#$info_channelName#}">
+    <meta name="keywords" content="{#$info_keywords#}">
+    <meta name="description" content="{#$info_description#}">
+    <meta name="wap-font-scale" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}',
+            templatePath = '{#$templets_skin#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+        var templets = '{#$templets_skin#}';
+        var detail_video='{#$detail_video#}';
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var page = 1;
+        var pageSize = 20;
+        var nowtime = {#$smarty.now#};
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle=$info_channelName#}
+
+<!-- 轮播图 s -->
+<div class="banner">
+	{#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+	<a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=info" class="areaChose"><span>{#$siteCityInfo['name']#}</span></a>
+	{#/if#}
+    <div class="wrapper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {#myad title="二手信息_模板三_移动端_广告一" type="slide"#}
+            </div>
+            <div class="pagination"></div>
+        </div>
+    </div>
+</div>
+<!-- 轮播图 e -->
+
+<!--搜索 s-->
+<div class="seabox">
+    <div class="inp">
+        <!--<form id="myForm" action="{#getUrlPath service='info' template='search'#}" method="get">-->
+            <a href="{#getUrlPath service='info' template='search'#}">
+                <label class="search_l"><s class="search_icon"></s><input type="text" id="keywords" name="keywords"  placeholder="{#$langData['info'][0][1]#}" disabled="disabled"></label>{#* 输入搜索关键词 *#}
+                <span id="search">{#$langData['info'][0][0]#}</span>{#* 搜索 *#}
+            </a>
+        <!--</form>-->
+    </div>
+</div>
+<!--搜索 e-->
+
+<!-- 滑动导航 s -->
+<div class="pubBox tcInfo">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <ul>
+                    {#info action="type" return='type' key=key#}
+                    <li>
+                        <a href="{#getUrlPath service='info' template='category' typeid=$type.id#}">
+                            <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+                            <span class="icon-txt">{#$type.typename#}</span>
+                        </a>
+                    </li>
+                    {#if !(($_bindex.type) % 10)#}
+                </ul>
+            </div>
+            <div class="swiper-slide">
+                <ul>
+                    {#/if#}
+                    {#/info#}
+                </ul>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<!-- 滑动导航 e -->
+
+<!-- 滚动信息 最新入驻s -->
+<div class="pubBox tcNews ">
+    <div class="lBox">
+        <img src="{#$templets_skin#}images/scrollInfo.png" alt="">
+    </div>
+    <div class="mBox swiper-container-vertical swiper-container-ios">
+        <ul class="swiper-wrapper setList">
+        </ul>
+    </div>
+</div>
+<!-- 滚动信息 e -->
+
+<!-- 发布信息、商家入驻 s -->
+<ul class="publish fn-clear">
+    <li class="publish-news">
+        <a href="{#getUrlPath service='member' type='user' template='info'#}">
+            <div class="news-img">
+                <span>{#$langData['info'][0][2]#}</span>{#* 发布信息 *#}
+            </div>
+        </a>
+    </li>
+    <li class="merchant">
+        <a href="{#getUrlPath service='member' type='user' template='enter_contrast'#}">
+            <div class="shop-img">
+                <span>{#$langData['info'][0][3]#}</span>{#* 商家入驻 *#}
+            </div>
+        </a>
+    </li>
+</ul>
+<!-- 发布信息、商家入驻 e -->
+
+<!--促销活动 s-->
+<div class="prom">
+    <div class="prom_l">{#myad title="二手信息_模板三_移动端_广告二"#}</div>
+    <div class="prom_r">
+        <div class="t">{#myad title="二手信息_模板三_移动端_广告三"#}</div>
+        <div class="b">{#myad title="二手信息_模板三_移动端_广告四"#}</div>
+    </div>
+</div>
+<!--促销活动 e-->
+
+<!--优质商家 s-->
+<div class="store">
+    <h3 class="tit fn-clear">{#$langData['info'][0][4]#} <a class="fn-right" href="{#getUrlPath service=info action=list#}">{#$langData['info'][0][5]#} ></a></h3>{#* 优质商家 *#}{#* 全部商家 *#}
+    <ul class="storelist">
+    </ul>
+</div>
+<!--优质商家 e-->
+
+<!--最新发布，热门信息，推荐商家 s-->
+<div class="recomBox">
+<div class="recomTab">
+    <ul class="fn-clear">
+        <li data-page="1" data-totalpage="1" data-id="1" class="active">
+            <a href="javascript:;">{#$langData['info'][0][6]#}</a>{#* 最新发布 *#}
+        </li>
+        <li  data-page="1" data-totalpage="1" data-id="2" >
+            <a href="javascript:;">{#$langData['info'][0][7]#}</a>{#* 热门信息 *#}
+        </li>
+        <li data-page="1" data-totalpage="1" data-id="3">
+            <a href="javascript:;">{#$langData['info'][0][8]#}</a>{#* 推荐商家 *#}
+        </li>
+    </ul>
+</div>
+</div>
+<!-- 内容部分 -->
+<div class="container">
+    <div class="swiper-container" id="tabs-container">
+        <div class="swiper-wrapper">
+            <!--最新发布-->
+            <div class="swiper-slide new-list  goods-list">
+                <ul class="fn-clear new contents">
+
+                    <!--<li class="fn-clear"><a href="">-->
+                        <!--<div class="userimg "><img src="{#$templets_skin#}upfile/user02.png" alt=""></div>-->
+                        <!--<div class="info_r ">-->
+                            <!--<h4 class="fn-clear">沈先生 <i class="panel_tab">个人</i> <span class="price fn-right"><i>{#echoCurrency type='symbol'#}</i>1500</span></h4>-->
+                            <!--<p class="con"><span class="type" >#<em>二手物品</em>#</span>二手物品#  戴尔-惠普-联想 台式机游戏公司倒闭处理100台9.9成新i5 i7吃鸡高</p>-->
+                            <!--<div class="item-box img-box">-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg04.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg05.png" alt=""></div>-->
+                            <!--</div>-->
+                            <!--<p class="area"><i class="icon_area"></i>江苏省南京市秦淮区太平南路86-1号</p>-->
+                            <!--<div class="msg fn-clear">-->
+                                <!--<div class="_left fn-left"><span>4-27 13:23</span><span class="point">·</span>浏览2343</div>-->
+                                <!--<div class="_right fn-right"><span data-uid="10618" data-id="611" class="numZan">4</span><a href="javascript:;" class="numComment">1</a></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a></li>-->
+                    <!--<li class="fn-clear"><a href="">-->
+                        <!--<div class="userimg "><img src="{#$templets_skin#}upfile/user03.png" alt=""></div>-->
+                        <!--<div class="info_r ">-->
+                            <!--<h4 class="fn-clear">沈先生 <i class="com_tab"></i> <span class="price fn-right"><i>{#echoCurrency type='symbol'#}</i>1500</span></h4>-->
+                            <!--<p class="con"><span class="type" >#<em>二手物品</em>#</span>二手物品#  戴尔-惠普-联想 台式机游戏公司倒闭处理100台9.9成新i5 i7吃鸡高</p>-->
+                            <!--<div class="item-box video-box">-->
+                                <!--<img src="{#$templets_skin#}upfile/eg13.png" alt="">-->
+                                <!--<i class="play"></i>-->
+                            <!--</div>-->
+                            <!--<p class="area"><i class="icon_area"></i>江苏省南京市秦淮区太平南路86-1号</p>-->
+                            <!--<div class="msg fn-clear">-->
+                                <!--<div class="_left fn-left"><span>4-27 13:23</span><span class="point">·</span>浏览2343</div>-->
+                                <!--<div class="_right fn-right"><span data-uid="10618" data-id="611" class="numZan">4</span><a href="javascript:;" class="numComment">1</a></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a></li>-->
+                    <!--<li class="fn-clear"><a href="">-->
+                        <!--<div class="userimg "><img src="{#$templets_skin#}upfile/user04.png" alt=""></div>-->
+                        <!--<div class="info_r ">-->
+                            <!--<h4 class="fn-clear">沈先生 <i class="com_tab"></i> <span class="price fn-right"><i>{#echoCurrency type='symbol'#}</i>1500</span></h4>-->
+                            <!--<p class="con"><span class="type" >#<em>二手物品</em>#</span>二手物品#  戴尔-惠普-联想 台式机游戏公司倒闭处理100台9.9成新i5 i7吃鸡高</p>-->
+                            <!--<div class="item-box img-box">-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg07.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg08.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg09.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg10.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg11.png" alt=""></div>-->
+                                <!--<div class="img_item"><img src="{#$templets_skin#}upfile/eg12.png" alt=""> <i>+5</i></div>-->
+                            <!--</div>-->
+                            <!--<p class="area"><i class="icon_area"></i>江苏省南京市秦淮区太平南路86-1号</p>-->
+                            <!--<div class="msg fn-clear">-->
+                                <!--<div class="_left fn-left"><span>4-27 13:23</span><span class="point">·</span>浏览2343</div>-->
+                                <!--<div class="_right fn-right"><span data-uid="10618" data-id="611" class="numZan">4</span><a href="javascript:;" class="numComment">1</a></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a></li>-->
+
+
+                    <!--<div class="empty">数据加载中...1</div>-->
+                </ul>
+            </div>
+            <!--热门信息-->
+            <div class="swiper-slide hot-list  goods-list">
+                <ul class="fn-clear  hot contents">
+
+                </ul>
+            </div>
+            <!--推荐商家-->
+            <div class="swiper-slide recommend-list  goods-list">
+                <ul class="fn-clear  recommend contents">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--最新发布，热门信息，推荐商家 e-->
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+
+<div class="popupRightBottom">
+    <div class="fastTop"><i></i></div>
+</div>
+
+<div class="wechat-popup">
+    <div class="con">
+        <a href="javascript:;" class="close">×</a>
+        {#if $cfg_weixinQr#}<dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>{#$langData['info'][1][14]#}</dd></dl>{#else#}{#$langData['info'][1][15]#}{#/if#}
+        {#if $cfg_miniProgramQr#}<dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>{#$langData['info'][1][14]#}</dd></dl>{#/if#}
+    </div>
+</div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#$info_title#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#$info_channelDomain#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="info"#}
+{#include file="../../../siteConfig/public_location.html"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

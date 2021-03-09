@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$detail_title#}</title>
+    <meta name="apptitle" content="{#$langData['info'][2][29]#}">
+    <meta name="keywords" content="{#$info_keywords#}">
+    <meta name="description" content="{#$info_description#}">
+    <meta name="wap-font-scale" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+   <script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+   <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+   <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}', site_map = "{#$site_map#}";
+        var imgurl = "{#$templets_skin#}";
+        var cookiePre = '{#$cfg_cookiePre#}', id = '{#$detail_id#}';
+        var JubaoConfig = {
+            "module" : 'info',
+            "action" : 'detail',
+            "id" : '{#$detail_id#}'
+        };
+        var detail_id = {#$detail_info.id#};
+        var pageData = {
+            title: '{#$detail_title#}',
+            address: '{#$detail_address#}',
+            lat: '{#$detail_lnglat[1]#}',
+            lng: '{#$detail_lnglat[0]#}',
+            mapType: '{#$site_map#}',
+            cityName: '{#$siteCityInfo['name']#}',
+            mapKey: '{#$site_map_key#}'
+        };
+        var lat='{#$detail_lnglat[1]#}',lng= '{#$detail_lnglat[0]#}';
+        var collect = {#$detail_info.collect#};
+        var detail_video='{#$detail_video#}';
+        var comdetailUrl = '{#getUrlPath service='info' template='comdetail' id="%id%"#}';
+        var is_video_ = '{#$is_video#}';
+        var imconfig = {
+			'mod':'info',
+			'chatid':"{#$detail_member.userid#}",
+			'title': '{#$detail_title#}',
+			"price": '<em>￥</em>{#$detail_price#}',
+			"imgUrl": '{#changeFileSize url={#$detail_imglist[0]["path"]#} type='small'#}',
+			"link": '{#getUrlPath service="info" template="detail" id=$detail_id#}',
+
+		};
+
+		var touch_poster = 1;  //是否有海报按钮
+    </script>
+
+    <style>
+        .artMainCon{margin: 0 .3rem; max-height: 1.9rem ;overflow: hidden; line-height: .6rem; font-size: .3rem;}
+    </style>
+
+</head>
+<body>
+<!-- 头部 -->
+{#include file="../../../siteConfig/touch_top.html" pageTitle={#$langData['info'][2][29]#}#}
+<!-- 头部 end -->
+<!-- 海报s -->
+{#include file="../../../siteConfig/public_touch_poster.html" posterModule='infoDetail'#}
+{#include file="../../../siteConfig/touch_poster_3.7.html" posterType="infoModule"#}
+<!-- 海报 -->
+<!-- 视频-->
+{#if $is_video#}
+<div class="top-video">
+	<i class="vClose"></i>
+	<div class="video-box">
+	    <video width="100%" height="100%" preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  src="{#$detail_info['video']#}" id="video" poster="{#$detail_info_video_pic#}"></video>
+	    <div class="video-btn">
+	        <div class="play-box video-icon-box" id="vbplay">
+	            <i class="play-icon video-icon"></i>
+	        </div>
+	        <div class="load-box video-icon-box" style="display: none;">
+	            <i class="load-icon video-icon"></i>
+	        </div>
+	        <div class="reload-box video-icon-box" style="display: none;">
+	            <i class="reload-icon"></i>
+	            <p>重新播放</p>
+	        </div>
+	        <div class="error-box video-icon-box" style="display: none;">
+	            <p class="err-info">视频出错了，请检查网络状况</p>
+	            <div class="reload-box">
+	                <i class="reload-icon"></i>
+	                <p>重新加载</p>
+	            </div>
+	        </div>
+	    </div>
+	    <div id="video-control" style="display: none;">
+		  <div class="btn-control">
+		    <div id="play" class="play"> </div>
+		  </div>
+		  <div id="time" class="time"> 00:00 </div>
+		  <div id="progress"> <span id="bar"></span>
+		    <div id="control"> </div>
+		  </div>
+		  <div class="btn-control">
+		    <div id="sound" class="soundon"> </div>
+		  </div>
+		  <div id="full" class="full"> </div>
+		</div>
+	</div>
+</div>
+{#/if#}
+<!-- 视频 e-->
+
+<div class="top">
+    <div class="title"><h3>{#$detail_info['titlenew']#}</h3> <a class="share HN_PublicShare" href="javascript:;"></a></div>
+    {#if $detail_item#}
+    <ul class="attributes fn-clear">
+        {#foreach from=$detail_item item=item#}
+        {#if $item.value != ""#}
+        {#if $item.valueArr#}
+        {#foreach from=$item.valueArr item=i#}
+        <li>{#$i#}</li>
+        {#/foreach#}
+        {#else#}
+        <li>{#$item.value#}</li>
+        {#/if#}
+        {#/if#}
+        {#/foreach#}
+    </ul>
+    {#/if#}
+    {#if $detail_price_switch==0#}
+    <div class="mprice">{#if $detail_info['price'] neq 0#}<em>{#echoCurrency type='symbol'#}</em>{#$detail_info['price']#}
+    {#else#}
+    {#$langData['info'][2][30]#}
+    {#/if#}
+    </div>
+    {#/if#}
+    <div class="msg fn-clear">
+        <span class="time fn-left">{#date('m-d H:i', $detail_info['pubdate'])#}<i>·</i>{#$detail_info['validCeil']#}</span>
+        <div class="fn-right _right">
+            <span class="look">{#$detail_info['click']#}</span>
+            <span class="numZan">{#$detail_info['collectnum']#}</span>
+            <a href="javascript:;" class="numComment">{#$detail_info['common']#}</a>
+        </div>
+    </div>
+</div>
+
+<!--个人信息 s-->
+<div class="panel-info">
+    <!--信息过期标识 s-->
+    {#if $detail_isvalid!=0#}
+        <i class="over_icon"></i>
+    {#/if#}
+    <!--信息过期标识 e-->
+    {#if $is_shop#}
+    <div class="info">
+        <a class="fn-clear" href="{#$shop_url#}">
+            <div class="user-img fn-left"><img src="{#$detail_info['member']['photo']#}" alt=""></div>
+            <div class="user-info">
+                <p class="name"><em>{#$detail_info['member']['nickname']#}</em> {#if $is_shop#}<i class="com_tab"></i> {#else#}<i class="panel_tab">{#$langData['info'][1][18]#}</i>{#/if#}</p>
+                <p class="msg-num">{#$langData['info'][1][19]#} <em>{#$detail_info['fabuCount']#}</em>{#$langData['info'][1][20]#}</p>
+            </div>
+            <!--<i class="next_icon"></i>-->
+        </a>
+        <span class="im_iphone phone_btn ftel">电话咨询</span>
+    </div>
+    {#else#}
+    {#if $detail_info['member']['userid']#}
+    <div class="info">
+        <a class="fn-clear" href="{#getUrlPath service="info" template="homepage" id={#$detail_info['member']['userid']#}#}">
+            <div class="user-img fn-left"><img src="{#$detail_info['member']['photo']#}" alt=""></div>
+            <div class="user-info">
+                <p class="name"><em>{#$detail_info['member']['nickname']#}</em>  {#if $is_shop#}<i class="com_tab"></i> {#else#}<i class="panel_tab">{#$langData['info'][1][18]#}</i>{#/if#}</p>
+                <p class="msg-num">{#$langData['info'][1][19]#} <em>{#$detail_info['fabuCount']#}</em>{#$langData['info'][1][20]#}</p>
+            </div>
+            <!--<i class="next_icon"></i>-->
+        </a>
+        <span class="im_iphone phone_btn ftel">电话咨询</span>
+    </div>
+    {#else#}
+    <div class="info fn-clear">
+        <div><span style="margin-left: 24px;font-size: .28rem;">{#$langData['info'][1][21]#}</span></div>
+        <!--<i class="next_icon"></i>-->
+        <span class="im_iphone phone_btn ftel ">电话咨询</span>
+    </div>
+    {#/if#}
+    {#/if#}
+    <!-- 企业地址 -->
+    <div class="address address_map">
+        <div class="map" id="map"></div>
+        <div class="area map_address">
+            <a href="javascript:;" class="address-info appMapBtn fn-clear">
+                <i class="area-img"></i>
+                <span class="area-txt">{#$detail_address#}</span>
+                <div class="area-distance map_distance"><span></span><p>0km</p></div>
+            </a>
+        </div>
+    </div>
+</div>
+<!--个人信息 e-->
+
+<!--介绍内容 s-->
+<div class="intronCon">
+    <div class="introBox">
+        {#foreach from=$detail_info['imglist'] key=key item=imgs#}
+        <div class="picBox">
+            <img src="{#$imgs['path']#}" alt="">
+        </div>
+        {#/foreach#}
+        <div class="textCon">
+            {#$detail_mbody#}
+        </div>
+    </div>
+    <!-- 举报 s-->
+    <div class="HN_Jubao reportBox fn-clear">
+        <div class="releft">
+            <p>{#$langData['info'][0][20]#}<span>{#$langData['info'][0][21]#}></span></p>{#* 如遇无效、虚假、诈骗信息，请 *#}{#* 立即举报 *#}
+            <p>{#$langData['info'][0][22]#}</p>{#* 办理服务前请勿付订金、押金等费用，谨防上当受骗！ *#}
+        </div>
+        <div class="reright ">
+            <img src="{#$templets_skin#}images/reportIcon.png" alt="">
+        </div>
+    </div>
+    <!-- 举报 e-->
+</div>
+<!--介绍内容 e-->
+
+<!--评论 s-->
+<div class="commentBox">
+    <div class="headtop">
+        <div class="head-title">
+            <p class="fn-clear"><span>{#$langData['info'][0][13]#}评论</span> <em class="fn-right">{#$langData['info'][1][39]#}{#$detail_common#}{#$langData['info'][1][37]#}</em></p>
+        </div>
+    </div>
+    <div class="commentList newList">
+        <ul>
+            {#member action='getComment' return='common' type='info-detail' son='1' aid={#$detail_id#} orderby='hot' pageSize='3'#}
+            {#if is_array($common.user)#}
+            {#$nickname = $common.user.nickname#}
+            {#$photo = $common.user.photo|default: '/static/images/noPhoto_40.jpg'#}
+            {#else#}
+            {#$nickname = {#$langData['info'][2][33]#}#}
+            {#$photo = '/static/images/noPhoto_40.jpg'#}
+            {#/if#}
+            <li>
+                <div class="imgbox">
+                    <img src="{#$photo#}"  alt="">
+                </div>
+                <div class="rightInfo">
+                    <h4>{#$nickname#}</h4>
+                    <p class="txtInfo">{#$common.content#}</p>
+                    {#if $common.lower.list!=null#}
+                        {#if count($common.lower.list)>1#}
+                        <div class="replyCon">
+                            {#foreach from=$common.lower.list key=ck item=clist#}
+                            {#if $ck<=2#}
+
+                            {#if is_array($clist.user)#}
+                            {#$nickname = $clist.user.nickname#}
+                            {#else#}
+                            {#$nickname = {#$langData['info'][2][33]#}#}
+                            {#/if#}
+
+                            <dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+                            {#/if#}
+                            {#/foreach#}
+                            {#if $ck>=2#}
+                            <a href="{#getUrlPath service='info' template='comdetail' id={#$common.id#}#}" class="pmore">{#$langData['info'][2][34]#}{#count($common.lower.list)#}{#$langData['info'][2][35]#} ></a>
+                            {#/if#}
+                        </div>
+                        {#else#}
+                        <div class="replyCon">
+                                {#$n=1#}
+                                {#foreach from=$common.lower.list key=ck item=clist#}
+                                {#if is_array($clist.user)#}
+                                {#$nickname = $clist.user.nickname#}
+                                {#else#}
+                                {#$nickname = {#$langData['info'][2][33]#}#}
+                                {#/if#}
+                                {#$n=$n+1#}
+                                {#if $ck<1#}
+                                <dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+                                    {#if $clist.lower.list!=null#}
+                                        {#foreach from=$clist.lower.list key=cks item=clists#}
+                                        {#if is_array($clists.user)#}
+                                        {#$nickname2 = $clists.user.nickname#}
+                                        {#else#}
+                                        {#$nickname2 = {#$langData['info'][2][33]#}#}
+                                        {#/if#}
+                                        <dl><dt><span class="spColor">{#$nickname2#}</span>{#$langData['marry'][5][55]#} <span class="spColor">{#$nickname#}：</span></dt><dd>{#$clists.content#}</dd></dl>
+                                        {#/foreach#}
+                                        {#if $n>1#}
+                                        <a href="{#getUrlPath service='info' template='comdetail' id={#$clist.id#}#}" class="pmore">{#$langData['marry'][5][60]#}{#$clist.lower.count#}{#$langData['marry'][5][61]#} ></a>
+                                        {#/if#}
+                                    {#/if#}
+                                {#/if#}
+                                {#/foreach#}
+                            </div>
+                        {#/if#}
+                    {#/if#}
+                    <div class="rbottom">
+                        <div class="rtime">{#$common.dtime|date_format:'%m-%d %H:%M'#}</div>
+                        <div class="rbInfo">
+                            <a href="{#getUrlPath service='info' template='comdetail' id={#$common.id#}#}" class="btnReply"> <s></s> {#$langData['marry'][5][55]#} </a>
+                            <a href="javascript:;" class="btnUp numZan {#if $common.zan_has==1#}al_zan{#/if#}" data-id="{#$common.id#}"><em>{#$common.zan#}</em> </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {#/member#}
+            <div class="allmore"><a href="{#getUrlPath service='info' template='comment' id={#$detail_id#}#}">{#if $detail_common > 0#}{#$langData['info'][1][36]#}{#$detail_common#}{#$langData['info'][1][37]#}{#else#}{#$langData['info'][1][38]#}{#/if#} <s></s></a></div>
+        </ul>
+    </div>
+</div>
+<!--评论 e-->
+
+<div class="ad-box">{#myad title="二手信息_模板三_移动端_广告五"#}</div>
+
+<!--相关推荐 s-->
+<div class="recomBox pubBox">
+    <div class="recom-title"><span>{#$langData['info'][0][19]#}</span></div>{#* 相关推荐 *#}
+    <div class="recomList">
+        <ul class="fn-clear  reInfo">
+            {#foreach from=$detail_info['tj_infos'] item=infos#}
+            <li class="fn-clear"><a href="{#$infos['url']#}">
+                <div class="userimg "><img onerror="this.src='{#$templets_skin#}images/noavatar_middle.gif'" src="{#changeFileSize url="{#$infos.member.photo#}" type="small"#}" alt=""></div>
+                <div class="info_r ">
+                    <h4 class="fn-clear">{#if !empty($infos['member']['nickname'])#}{#$infos['member']['nickname']#}{#else#}{#$langData['info'][1][4]#}{#/if#} {#if $infos['is_shop']==1#}<i class="com_tab"></i> {#else#}<i class="panel_tab">{#$langData['info'][1][5]#}</i>{#/if#}
+                        {#if $infos['price_switch']==0#}
+                        <span class="price fn-right">{#if $infos['price'] neq 0#}<i>{#echoCurrency type='symbol'#}</i>{#$infos['price']#}{#else#}{#$langData['info'][1][22]#}{#/if#}</span>
+                        {#/if#}
+                    </h4>
+                    <p class="con"><span class="type" >#<em>{#$infos['typename']#}</em>#</span>{#$infos['title']#}</p>
+                    <div class="item-box img-box">
+                        {#if $infos['video']#}
+                        <div class="item-box video-box commonimg">
+                            <img data-video="{#$infos['video']#}" onerror="this.src='{#$infos['litpic']#}'" src="{#changeFileSize url="{#$infos['litpic']#}" type="small"#}" alt="">
+                            <i class="play"></i>
+                        </div>
+                        {#else#}
+                        {#foreach from=$infos['picArr'] key=k item=v#}
+                        <div class="img_item commonimg"><img onerror="this.src='{#$v['litpic']#}'" src="{#changeFileSize url="{#$v['litpic']#}" type="small"#}" alt=""></div>
+                        {#/foreach#}
+                        {#/if#}
+                    </div>
+                    <p class="area"><i class="icon_area"></i>{#$infos['address'][1]#}</p>
+                    <div class="msg fn-clear">
+                        <div class="_left fn-left"><span>{#$infos.pubdate|date_format:'%m-%d %H:%M'#}</span><span class="point">·</span>{#$langData['info'][1][6]#}{#$infos['click']#}</div>
+                        <div class="_right fn-right"><span data-uid="10618" data-id="{#$infos['id']#}" class="numZan">{#$infos['collectnum']#}</span><a href="javascript:;" class="numComment">{#$infos['common']#}</a></div>
+                    </div>
+                </div>
+            </a></li>
+            {#/foreach#}
+        </ul>
+    </div>
+</div>
+<!--相关推荐 e-->
+
+<div class="footer_comment fn-clear bottom_reply_fixed">
+   <span><input type="text" placeholder="{#$langData['info'][0][13]#}{#$detail_title#}:" id="wcmt_text"></span><a class="wcmt_send" id="wcmt_send_btm">{#$langData['info'][0][13]#}</a>{#* 评论 *#}
+</div>
+
+{#if $detail_info['price'] neq 0#}
+    <div class="foot_bottom">
+        <div class="f_left">
+            <div class="scBox l-item"><s></s>{#$langData['info'][0][12]#}</div>{#* 收藏 *#}
+            <div class="plBox l-item"><a href="javascript:;"><s></s><p>{#$langData['info'][0][13]#}</p></a></div>{#* 评论 *#}
+        </div>
+        <div class="f_right">
+            {#if $detail_member.userid#}<div class="ftel r-item chat_to-Link" data-type="detail"><a href="javascript:;"><i></i><span>在线咨询</span></a></div>{#/if#} {#* 在线咨询 *#}
+			{#if $detail_is_valid#}
+            <div class="sold r-item">{#$langData['info'][0][41]#}</div>{#* 已经售出 *#}
+			{#else#}
+            <div class="fbuy r-item"><a href="{#getUrlPath service='info' template='confirm' id={#$detail_info['id']#}#}">{#$langData['info'][0][15]#}</a></div>{#* 立即购买 *#}
+			{#/if#}
+        </div>
+    </div>
+{#else#}
+    <div class="foot_bottom  foot2">
+        <div class="f_left">
+            <div class="scBox l-item"><s></s>{#$langData['info'][0][12]#}</div>{#* 收藏 *#}
+            <div class="plBox l-item"><a href="javascript:;"><s></s><p>{#$langData['info'][0][13]#}</p></a></div>{#* 评论 *#}
+        </div>
+        <div class="f_right">
+            {#if $detail_member.userid#}<div class="ftel r-item chat_to-Link"><a href="javascript:;"><i></i><span>在线咨询</span></a></div>{#/if#} {#* 联系咨询 *#}
+        </div>
+    </div>
+{#/if#}
+
+<div class="mark"></div>
+
+
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>{#$langData['info'][0][16]#}</h3>{#* 联系我们 *#}
+        <p class="fn-clear"><b>{#$detail_telNum#}</b></p>
+        <div class="call"><a href="tel:{#$detail_telNum#}" >{#$langData['info'][0][17]#}</a></div>{#* 立即拨打 *#}
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$langData['info'][2][31]#}：{#$detail_info['member']['nickname']#}，{#$langData['info'][2][32]#}：{#$detail_info['telNum']#}',
+        "title": '{#$detail_info['title']#}',
+        "imgUrl": '{#$detail_imglist[0]['path']|default:$info_logoUrl#}',
+        "link": '{#getUrlPath service='info' template='detail' id={#$detail_id#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+    if(is_video_){
+        var box = document.getElementById("video-control"); //box对象
+        var video = document.getElementById("video"); //视频对象
+        var play = document.getElementById("play"); //播放按钮
+        var vbplay = document.getElementById("vbplay");//视频中间播放按钮
+        var time = document.getElementById('time');
+        var progress = document.getElementById("progress"); //进度条
+        var bar = document.getElementById("bar"); //蓝色进度条
+        var control = document.getElementById("control"); //声音按钮
+        var sound = document.getElementById("sound"); //喇叭
+        var full = document.getElementById("full") //全屏
+
+        video.addEventListener('play', function() {
+            play.className = "pause";
+            $('.play-box').find('i').removeClass('play-icon').addClass('pause-icon');
+        });
+        video.addEventListener('pause', function() {
+            play.className = "play";
+            $('.play-box').find('i').removeClass('pause-icon').addClass('play-icon');
+        });
+        video.addEventListener('timeupdate', function() {
+            var timeStr = parseInt(video.currentTime);
+            var minute = parseInt(timeStr/60);
+            if(minute == 0){
+                if(timeStr < 10){
+                    timeStr = "0"+timeStr  ;
+                }
+                minute = "00:"+timeStr;
+            }else{
+                var timeStr = timeStr%60;
+                if(timeStr < 10){
+                    timeStr = "0"+timeStr  ;
+                }
+                minute = minute +":"+timeStr;
+            }
+            time.innerHTML = minute;
+        });
+        video.addEventListener('volumechange', function() {
+            if(video.muted) {
+                sound.className = "soundoff"
+            } else {
+                sound.className = "soundon"
+            }
+        });
+        full.addEventListener("click", function() {
+            $('.video-box').parent().toggleClass('fullscreen-box');
+            var type = $(this).hasClass('small') ? "del" : "add";
+            if(type=="del"){
+                $(this).removeClass('small')
+            }else if(type=="add"){
+                $(this).addClass('small')
+            }
+
+        }, false)
+        play.onclick = function() {
+            if(video.paused) {
+                play.className = "pause";
+                video.play();
+            } else {
+                play.className = "play";
+                video.pause();
+            }
+        }
+        vbplay.onclick = function() {
+            if (video.paused){
+                video.play();
+                video.value = "pause";
+            }else{
+                video.pause();
+                video.value = "play";
+            }
+        }
+        //进度条
+        video.addEventListener("timeupdate", function() {
+            var scales = video.currentTime / video.duration;
+            bar.style.width = progress.offsetWidth * scales + "px";
+            control.style.left = progress.offsetWidth * scales + "px";
+        }, false);
+        var move = 'ontouchmove' in document ? 'touchmove' : 'mousemove';
+        control.addEventListener("touchstart", function(e) {
+            var leftv = e.touches[0].clientX - progress.offsetLeft - box.offsetLeft;
+            if(leftv <= 0) {
+                leftv = 0;
+            }
+            if(leftv >= progress.offsetWidth) {
+                leftv = progress.offsetWidth;
+            }
+            control.style.left = leftv + "px"
+        }, false);
+        control.addEventListener('touchmove', function(e) {
+            var leftv = e.touches[0].clientX - progress.offsetLeft - box.offsetLeft;
+            if(leftv <= 0) {
+                leftv = 0;
+            }
+            if(leftv >= progress.offsetWidth) {
+                leftv = progress.offsetWidth;
+            }
+            control.style.left = leftv + "px"
+        }, false);
+        control.addEventListener("touchend", function(e) {
+            var scales = control.offsetLeft / progress.offsetWidth;
+            video.currentTime = video.duration * scales;
+            video.play();
+            document.onmousemove = null;
+            document.onmousedown = null;
+            //video.pause();
+        }, false);
+        sound.onclick = function() {
+            if(video.muted) {
+                video.muted = false;
+                sound.className = "soundon"
+            } else {
+                video.muted = true;
+                sound.className = "soundoff"
+            }
+        }
+    }
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

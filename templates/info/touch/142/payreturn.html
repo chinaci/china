@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$langData['info'][2][58]#}-{#$info_channelName#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/payreturn.css?v={#$cfg_staticVersion#}" media="all" />
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+	<div class="header-l"><a href="{#getUrlPath service='member' type='user' action='manage' template='info'#}"></a></div>
+	<div class="header-address"><span>{#$langData['info'][2][58]#}</span></div>
+	<div class="header-search"><a href="javascript:;" class="dropnav"></a></div>
+</div>
+
+{#if $state == 1#}
+<!-- 成功信息 s -->
+<div class="rewordS-success">
+	<div class="wrap">
+		<div class="rewordS-success-txt">
+			<h1>{#$langData['info'][2][59]#}</h1><!--恭喜您，付款成功！-->
+			<p>{#$langData['info'][2][60]#}：{#$date|date_format:"%Y-%m-%d %H:%M:%S"#}</p><!--交易时间-->
+		</div>
+	
+		{#if $ordertype == ""#}
+		<div class="rewordS-list">
+			<ul>
+				<li><span class="rewordS-list-tit">{#$langData['info'][2][61]#}：</span><span class="rewordS-list-info blue">{#if $userinfo#}<a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank" title="{#$langData['info'][2][62]#}">{#$ordernum#}</a>{#else#}{#$ordernum#}{#/if#}</span></li><!--交易订单 交易明细列表-->
+				<li><span class="rewordS-list-tit">{#$langData['info'][2][63]#}：</span><span class="rewordS-list-info blue"><a href="{#$url#}" target="_blank" title="{#$title#}">{#$title#}</a></span></li><!--竞价信息-->
+				<li><span class="rewordS-list-tit">{#$langData['info'][2][64]#}：</span><span class="rewordS-list-info orange">{#echoCurrency type='symbol'#}{#$price#}</span></li><!--每日预算-->
+				<li><span class="rewordS-list-tit">{#$langData['info'][2][65]#}：</span><span class="rewordS-list-info orange">{#$end|date_format:"%Y-%m-%d %H:%M:%S"#}</span></li><!--结束时间-->
+			</ul>
+		</div>
+		{#/if#}
+	</div>
+</div>
+<!-- 成功信息 e -->
+{#else#}
+<!-- 错误信息 s -->
+<div class="rewordS-error">
+	<div class="wrap">
+		<div class="rewordS-error-txt">
+			<h1>{#$langData['info'][2][66]#}</h1><!--抱歉，支付失败！-->
+			<p>{#$langData['info'][2][67]#}：{#$info_hotline#}</p><!--如有问题，请联系客服-->
+		</div>
+	</div>
+</div>
+<!-- 错误信息 e -->
+{#/if#}
+
+</body>
+</html>

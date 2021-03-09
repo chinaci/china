@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#if $list_typename#}{#$list_typename#}{#else#}信息列表{#/if#}{#/if#}</title><meta name="keywords" content="{#$cfg_keywords#}">
+    <meta name="description" content="{#$cfg_description#}">
+    <meta name="wap-font-scale" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var hideFileUrl ={#$cfg_hideUrl#};
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var page = 1, pageSize = 10, detailListId = 'maincontent', keyword = "{#$keywords#}";
+        var imgurl = '{#$templets_skin#}';
+        var detail_video='{#$detail_video#}';
+    </script>
+</head>
+<body>
+
+{#$pageTitle = $info_channelName#}
+{#include file="../../../siteConfig/touch_top.html" pageTitle=$info_channelName#}
+<div class="list">
+    <div class="mask"></div>
+    <!-- 搜索 -->
+    <div class="search-box">
+        <div class="search-form">
+            <div class="sobj">
+                <div class="inp">
+                    <form >
+                        <label class="search_l"><s></s><input type="text" value="{#$keywords#}" placeholder="{#$langData['info'][0][39]#}" class="txtSearch"></label>{#*输入你正在找的宝贝 *#}
+                        <span class="txtSearchs">{#$langData['info'][0][0]#}</span>{#*搜索 *#}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 搜索 e -->
+    <div class="choose">
+        <div class="choose-tab">
+            <ul>
+                <li data-type="addrid" data-id="{#$addrid#}" class="addrid choice_name"><span>{#if $addrname#}{#$addrname#}{#else#}{#$langData['info'][0][9]#}{#/if#}</span></li>{#*区域 *#}
+                <li data-type="typeid" data-id="{#$list_id#}" class="typeid choice_name"><span>{#if !$list_typename#}{#$langData['info'][0][40]#}{#else#}{#$list_typename#}{#/if#}</span></li>{#*不限 *#}
+                <li data-type="orderby" data-id="" class="orderby choice_name"><span>{#$langData['info'][0][11]#}</span></li>{#*筛选 *#}
+            </ul>
+        </div>
+        <div class="screen fn-clear fn-hide">
+        </div>
+        <div class="choose-box">
+            <div class="choose-local dn" id="area-box">
+                <div class="choose-stage-l">
+                    <div id="choose-area">
+                        <ul>
+                            <li data-id="">{#$langData['info'][1][31]#}</li>
+                            {#info action="addr" return="addr"#}
+                            <li data-id="{#$addr.id#}"{#if $addrid == $addr.id#} class="active"{#/if#}>{#$addr.typename#}</li>
+                            {#/info#}
+                        </ul>
+                    </div>
+                </div>
+                <div class="choose-stage-r"><div id="choose-area-second"><ul></ul></div></div>
+            </div>
+            <div class="choose-local dn" id="info-box">
+                <div class="choose-stage-l">
+                    <div id="choose-info">
+                        <ul>
+                            <li data-id="">{#$langData['info'][0][10]#}</li>
+                            {#info action="type" return="type"#}
+                            <li data-id="{#$type.id#}"{#if $list_id == $type.id#} class="active"{#/if#}>{#$type.typename#}</li>
+                            {#/info#}
+                        </ul>
+                    </div>
+                </div>
+                <div class="choose-stage-r"><div id="choose-info-second"><ul></ul></div></div>
+            </div>
+            <div class="choose-local dn">
+                <div class="choose-price">
+                    <h3 class="fn-clear">{#$langData['info'][2][37]#} <span class="reset">{#$langData['info'][2][38]#}</span></h3>
+                    <div class="type-box"><span class="{#if $nature==2#}active{#/if#}" data-id="2">{#$langData['info'][2][39]#}</span> <span class="{#if $nature==1#}active{#/if#}" data-id="1">{#$langData['info'][2][40]#}</span></div>
+                    <input type="hidden" name="type" id="type" value="{#if $nature#}{#$nature#}{#/if#}">
+                    <h3>{#$langData['info'][2][41]#}</h3>
+                    <div class="price-box"><span><input type="text" id="min_price" value="{#if $min_price#}{#$min_price#}{#/if#}" placeholder="{#$langData['info'][2][44]#}" oninput="value=value.replace(/[^\d]/g,'')"></span> <em class="line">-</em><span><input type="text" value="{#if $max_price#}{#$max_price#}{#/if#}" id="high_price" placeholder="{#$langData['info'][2][45]#}" oninput="value=value.replace(/[^\d]/g,'')"></span></div>
+                    <div class="btns"><span class="btn_cancel">{#$langData['info'][2][42]#}</span><span class="btn_sure">{#$langData['info'][2][43]#}</span></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="recomShop container">
+        <ul id="maincontent">
+        </ul>
+        <!--<div class="loading">数据加载中...</div>-->
+    </div>
+</div>
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#if $list_typename#}{#$list_typename#}{#else#}{#$langData['info'][2][46]#}{#/if#}',
+        "imgUrl": '{#$info_logoUrl#}',
+        "link": '{#getUrlPath service="info" template="list" typeid=$list_id#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/iscroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

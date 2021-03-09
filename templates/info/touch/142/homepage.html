@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$userInfo_['nickname']#}</title>
+    <meta name="keywords" content="{#$info_keywords#}">
+    <meta name="description" content="{#$info_description#}">
+    <meta name="wap-font-scale" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/homepage.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var hideFileUrl ={#$cfg_hideUrl#};
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var page = 1, pageSize = 10, detailListId = 'maincontent', keyword = "{#$keywords#}";
+        var user_id = '{#$userInfo_['userid']#}';
+        var detail_video='{#$detail_video#}';
+        var imconfig = {
+        	chatid : '{#$userInfo_['userid']#}',
+        }
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$userInfo_['nickname']#}"#}
+
+<div class="banner"><img src="{#$userInfo_['photo']#}" alt=""></div>
+
+<!--基本信息 s-->
+<div class="infoBox">
+    <div class="img-box"><img src="{#$userInfo_['photo']#}" alt=""></div>
+    <h3>{#$userInfo_['nickname']#}</h3>
+    <div class="msg-box">
+        <ul class="msg">
+            <li><span>{#$list_count#}</span><p>{#$langData['info'][0][23]#}</p></li>{#* 信息 *#}
+            <li><span>{#$guanzhu#}</span><p>{#$langData['info'][0][24]#}</p></li>{#* 关注 *#}
+            <li><span>{#$fensi#}</span><p>{#$langData['info'][0][26]#}</p></li>{#* 粉丝 *#}
+        </ul>
+        <div class="gz-box"><a href="javascript:;" class="btnCare {#if $is_follow#}cared{#/if#}">{#if $is_follow#}{#$langData['info'][0][25]#}{#else#}{#$langData['info'][0][24]#}{#/if#}</a></div>{#* 已关注 *#}{#* 已关注 *#}
+    </div>
+</div>
+<!--基本信息 e-->
+
+<!-- 发布信息、联系方式 -->
+<div class="recomTab">
+    <ul>
+        <li class="active" data-id="1" data-page="1" data-totalpage="1">
+            <a href="javascript:;">{#$langData['info'][0][29]#}</a>{#* 发布信息 *#}
+        </li>
+        <li data-id="2" data-page="1" data-totalpage="1">
+            <a href="javascript:;">{#$langData['info'][0][16]#}</a>{#* 联系我们 *#}
+        </li>
+    </ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+    <div class="swiper-container" id="tabs-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide fabuBox tuijianInfo">
+                <ul class="fn-clear  fabuList">
+
+                </ul>
+                <div class="loading"><span>{#$langData['info'][0][31]#}...</span></div>{#* 加载中 *#}
+            </div>
+            <div class="swiper-slide contactBox tuijianshop">
+                <div class="contactinfo">
+                    <!-- <p><span>{#$langData['info'][0][32]#}：</span><a id="wx-btn" href="javascript:;">{#$langData['info'][0][36]#}</a></p>{#* 微信 *#}{#* 扫码添加 *#} -->
+                    <p><span>Q Q：</span>{#$userInfo_['qq']#}</p>
+                    <p><span>{#$langData['info'][0][33]#}：</span>{#$userInfo_['phone']#}</p>{#* 联系电话 *#}
+                    <!-- <p><span>{#$langData['info'][0][34]#}：</span>12:00-24:00</p>{#* 营业时间 *#} -->
+                    <!-- <p><span>{#$langData['info'][0][35]#}：</span>江苏省南京市秦淮区太平南路86-1号</p>{#* 详细地址 *#} -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="foot_bottom">
+    <div class="f_left">
+        <div class="share HN_PublicShare l-item"><s></s><p>{#$langData['info'][0][30]#}</p></div>{#* 分享 *#}
+        <!--<div class="plBox l-item"><a href=""><s></s><p>评论</p></a></div>-->
+    </div>
+    <div class="f_right">
+        <div class="f_chat r-item chat_to-Link" data-type="user"><a href="javascript:;"><i></i><span>在线咨询</span></a></div>{#* 在线咨询 *#}
+        <div class="ftel tel-box r-item"><a href="javascript:;"><i></i><span>电话联系</span></a></div>{#* 电话联系 *#}
+    </div>
+</div>
+
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>{#$langData['info'][0][16]#}</h3>{#* 联系我们 *#}
+        <p class="fn-clear"><b>{#$userInfo_['phone']#}</b></p>
+        <div class="call"><a href="tel:{#$userInfo_['phone']#}" >{#$langData['info'][0][17]#}</a></div>{#* 立即拨打 *#}
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+
+<!-- 微信弹出层 s-->
+<div class="modal-public m-wx" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="topline">
+            <div class="lline"></div>
+            <div class="rline"></div>
+        </div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <div class="weixin">
+            <h5>{#$langData['info'][1][25]#}</h5>
+            {#if $detail_wechat_pic#}<img src="{#$detail_wechat_pic#}" alt="">{#else#}<p>{#$langData['info'][1][26]#}</p>{#/if#}
+            <h5>{#$langData['info'][1][27]#}</h5>
+        </div>
+    </div>
+</div>
+<!-- 微信弹出层 e-->
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$info_description#}',
+        "title": '{#$userInfo_['nickname']#}的店铺',
+        "imgUrl": '{#$userInfo_['photo']#}',
+        "link": '{#getUrlPath service='info' template='homepage' id={#$userInfo_['userid']#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/dialog.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/homepage.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
