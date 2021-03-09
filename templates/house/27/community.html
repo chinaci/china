@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $community_seotitle != ""#}{#$siteCityInfo['name']#}{#$community_seotitle#}小区{#else#}【{#$siteCityInfo['name']#}小区_{#$siteCityInfo['name']#}二手房小区_{#$siteCityInfo['name']#}小区大全】{#/if#}-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}小区频道,{#$siteCityInfo['name']#}小区信息,{#$siteCityInfo['name']#}新开楼盘,在售楼盘,热门小区信息,高档小区信息,小区详细地址及价格等信息" />
+<meta name="description" content="{#$siteCityInfo['name']#}小区频道，提供{#$siteCityInfo['name']#}信息，包括{#$siteCityInfo['name']#}新开楼盘，在售楼盘，热门小区信息，高档小区信息，小区详细地址及价格等信息。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='community'#}">小区</a>
+		</div>
+		<div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='community'#}" method="get">
+				<input type="search" placeholder="请输入小区名称、地址" name="keywords" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div>
+	</div>
+	<div class="filter">
+		<div class="t-fi fn-clear">
+			<!-- <a href="#" class="smap">地图找房 >></a> -->
+			<label>位置：</label>
+			<ul class="t-fi-item fn-clear">
+				<li class="area{#if $from == "" && $subway == 0#} curr{#/if#}"><a href="javascript:;"><s></s>区域找房<i></i></a></li>
+				{#if $cfg_subway_state#}<li class="subway{#if $from == "subway" || $subway != 0#} curr{#/if#}"><a href="javascript:;"><s></s>{#$cfg_subway_title#}<i></i></a></li>{#/if#}
+			</ul>
+			{#if $keywords != ""#}
+			<div class="keywords fn-clear">
+				<label>关键字：</label>
+				<a title="删除关键字" href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords="" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$keywords#} <s>&times;</s></a>
+			</div>
+			{#/if#}
+			<div class="sub-fi area"{#if $from == "" && $subway == 0#} style="display: block;"{#/if#}>
+				<s><i></i></s>
+				<div class="pos-item">
+					<a href="{#getUrlPath service='house' template='community' addrid=0 business=0 subway=0 station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr'#}
+					<a href="{#getUrlPath service='house' template='community' addrid={#$addr.id#} business=0 subway=0 station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+					{#/house#}
+				</div>
+				{#if $addrid != 0#}
+				<div class="pos-sub-item">
+					<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business=0 subway=0 station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr' type={#$addrid#}#}
+					<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$addr.id#} subway=0 station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#}  keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+					{#/house#}
+				</div>
+				{#/if#}
+			</div>
+			<div class="sub-fi subway"{#if $from == "subway" || $subway != 0#} style="display: block;"{#/if#}>
+				<s><i></i></s>
+				<div class="pos-item">
+					<a href="{#getUrlPath service='house' template='community' addrid=0 business=0 subway=0 station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#}  keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}&from=subway{#else#}from=subway{#/if#}"#}"{#if $subway == 0#} class="curr"{#/if#}>不限</a>
+					{#siteConfig action="subway" return='sub' city={#$siteCityInfo['cityid']#}#}
+					<a href="{#getUrlPath service='house' template='community' addrid=0 business=0 subway={#$sub.id#} station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $subway == $sub.id#} class="curr"{#/if#}>{#$sub.title#}</a>
+					{#/siteConfig#}
+				</div>
+				{#if $subway != 0#}
+				<div class="pos-sub-item">
+					<a href="{#getUrlPath service='house' template='community' addrid=0 business=0 subway={#$subway#} station=0 price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $station == 0#} class="curr"{#/if#}>不限</a>
+					{#siteConfig action="subwayStation" return='subwayStation' type=$subway#}
+					<a href="{#getUrlPath service='house' template='community' addrid=0 business=0 subway={#$subway#} station={#$subwayStation.id#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $station == $subwayStation.id#} class="curr"{#/if#}>{#$subwayStation.title#}</a>
+					{#/siteConfig#}
+				</div>
+				{#/if#}
+			</div>
+		</div>
+		<dl class="fn-clear">
+			<dt>均价：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ""#} class="curr"{#/if#}>不限</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price=",6" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ",6"#} class="curr"{#/if#}>6000以下</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="6,8" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "6,8"#} class="curr"{#/if#}>6000-8000</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="8,10" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != "8,10"#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "8,10"#} class="curr"{#/if#}>8000-10000</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="10,12" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "10,12"#} class="curr"{#/if#}>10000-12000</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="12,15" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "12,15"#} class="curr"{#/if#}>12000-15000</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="15,20" typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "15,20"#} class="curr"{#/if#}>15000-20000</a>
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price="20," typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == "20,"#} class="curr"{#/if#}>20000以上</a>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>类型：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid=0 tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $typeid == 0#} class="curr"{#/if#}>不限</a>
+				{#house action="item" return="item" type="1"#}
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$item.id#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $typeid == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>特色：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags=0 keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $tags == 0#} class="curr"{#/if#}>不限</a>
+				{#house action="item" return="item" type="76"#}
+				<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$item.id#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $tags == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap orderby fn-clear">
+	<label>共找到<strong id="totalCount">0</strong>个小区</label>
+	<div class="o-r">
+		<span class="o-c">
+			<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#}#}"{#if $orderby == "" || $orderby == 0#} class="curr"{#/if#}>默认排序</a>
+			<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="orderby={#if $orderby == 1#}2{#else#}1{#/if#}"#}" class="ob{#if $orderby == 1 || $orderby == 2#} curr{#/if#}{#if $orderby == 1#} up{#/if#}">均价<s></s></a>
+			<a href="{#getUrlPath service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="orderby={#if $orderby == 3#}4{#else#}3{#/if#}"#}" class="ob{#if $orderby == 3 || $orderby == 4#} curr{#/if#}{#if $orderby == 4#} up{#/if#}">竣工时间<s></s></a>
+		</span>
+		<span class="o-p">
+			<a href="javascript:;" class="prev" title="上一页"></a>
+			<a href="javascript:;" class="next" title="下一页"></a>
+		</span>
+	</div>
+</div>
+
+<div class="wrap list" id="list">
+
+	{#$addr = $addrid#}
+	{#if $business != 0#}
+	{#$addr = $business#}
+	{#/if#}
+	{#house action="communityList" addrid={#$addr#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+	<div class="item fn-clear">
+		<div class="r fn-clear">
+			<ul>
+				<li><a href="{#$row.url#}#map" target="_blank" class="map" title="查看地图"><s></s>查看地图</a></li>
+				<li><a href="{#$row.url#}#peitao" target="_blank" class="round" title="生活配套"><s></s>生活配套</a></li>
+				<li><a href="{#getUrlPath service='house' template='community-album' id={#$row.id#}#}" target="_blank" class="album" title="小区相册"><s></s>小区相册</a></li>
+			</ul>
+			<span class="price"><i>{#echoCurrency type='symbol'#}</i><strong>{#$row.price#}</strong>{#echoCurrency type='short'#}/㎡</span>
+		</div>
+		<div class="l fn-clear">
+			<a href="{#$row.url#}" target="_blank" title="{#$row.title#}" class="pic"><img alt="{#$row.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$row.litpic#} type='small'#}" /></a>
+			<div class="info">
+				<h3><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></h3>
+				<p><a href="{#getUrlPath service='house' template='community' addrid=0 business={#$row.addrid#}#}">
+					{#foreach from=$row.addr item=addr#}
+					{#$addr#}
+					{#/foreach#}</a> {#$row.address#}</p>
+				<p><label>二手房源：</label><a href="{#getUrlPath service='house' template='community-sale' id={#$row.id#}#}" target="_blank" title="二手房源{#$row.saleCount#}套">{#$row.saleCount#}套</a><label class="ml30">租房房源：</label><a href="{#getUrlPath service='house' template='community-zu' id={#$row.id#}#}" target="_blank" title="租房房源{#$row.zuCount#}套">{#$row.zuCount#}套</a></p>
+				<p><label>竣工时间：</label>{#$row.opendate|date_format:"%Y"#}年</p>
+			</div>
+		</div>
+	</div>
+	{#/house#}
+
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty">抱歉！ 未找到相关小区</div>
+	{#/if#}
+
+</div>
+
+{#getPageList service='house' template='community' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+{#include file="footer.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="house" template="community" addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$typeid#} tags={#$tags#} keywords={#$keywords#} page="%page%" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}';</script>
+<script type="text/javascript" src="{#$templets_skin#}js/community.js"></script>
+</body>
+</html>

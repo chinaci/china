@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$house_title#}</title>
+<meta name="keywords" content="{#$house_keywords#}" />
+<meta name="description" content="{#$house_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- 顶部 -->
+	<div class="top">
+		<div class="top-box fn-clear">
+			<div class="top-l fn-left">
+				<a href="{#$cfg_basehost#}" target="_blank" class="icon icon-1">首页</a>
+				<a href="{#$cfg_bbsUrl#}" target="_blank" class="icon icon-2">社区</a>
+				<a href="{#getUrlPath service='siteConfig' template='mobile'#}" target="_blank" class="icon icon-3">手机版</a>
+			</div>
+			<div class="top-r fn-right">
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+				您好，<a href="{#$userDomain#}" id="uname" target="_blank">{#$userinfo.nickname#}</a> | <a href="{#$cfg_basehost#}/logout.html" class="logout">安全退出</a>
+				{#else#}
+				<a href="{#$cfg_basehost#}/login.html" class="icon icon-4">登录</a><a href="{#$cfg_basehost#}/register.html">注册</a>
+				{#/if#}
+			</div>
+		</div>
+	</div>
+<!-- 顶部 end -->
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+<!-- 头部 -->
+	<div class="header fn-clear">
+		<div class="header-l fn-left">
+			<div class="logo fn-left"><a href="{#$house_channelDomain#}" title="{#$house_channelName#}"><img src="{#$house_logoUrl#}" alt="{#$house_channelName#}" /></a></div>
+			<div class="logo-txt fn-left">
+				<p>{#$house_hotline#}</p>
+				<span>房产消费一站式服务平台</span>
+			</div>
+		</div>
+		<div class="header-c fn-left">
+			<div class="search-box">
+				<div class="search-info">
+					<form action=""  method="get">
+						<div class="search-nav">
+							<span class="keytype">新房</span>
+							<ul>
+								<li data-id="0" data-type="loupan" class="active">新房</li>
+								<li data-id="1" data-type="community">小区</li>
+	                            <li data-id="2" data-type="sale">二手房</li>
+	                            <li data-id="3" data-type="zu">租房</li>
+	                            <li data-id="4" data-type="xzl">写字楼</li>
+	                            <li data-id="5" data-type="sp">商铺</li>
+	                            <li data-id="6" data-type="cf">厂房/仓库</li>
+	                            <li data-id="7" data-type="news">资讯</li>
+							</ul>
+						</div>
+						<input type="text" name="search_keyword" placeholder="请输入搜索关键字" id="search-txt" class="search-txt" value="{#$keywords#}" >
+						<input type="button" name="" value="" class="search-btn">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="header-r fn-right">
+			<a href="{#getUrlPath service='house' template='guwen'#}"><img src="{#$templets_skin#}images/fang.jpg" alt=""></a>
+		</div>
+	</div>
+	<!-- 头部 end-->
+
+	<!-- 导航 -->
+	<div class="nav">
+		<div class="nav-list">
+			<ul>
+				<li class="active"><a href="{#$cfg_basehost#}">首页</a></li>
+				<li><a href="{#getUrlPath service='house' template='loupan'#}">新房</a></li>
+				<li><a href="{#getUrlPath service='house' template='community'#}">小区</a></li>
+				<li><a href="{#getUrlPath service='house' template='sale'#}">二手房</a></li>
+				<li><a href="{#getUrlPath service='house' template='zu'#}">租房</a></li>
+				<li><a href="{#getUrlPath service='house' template='xzl'#}">写字楼</a></li>
+				<li><a href="{#getUrlPath service='house' template='sp'#}">商铺</a></li>
+				<li><a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库</a></li>
+				<li><a href="{#getUrlPath service='house' template='broker'#}">经纪人</a></li>
+				<li><a href="{#getUrlPath service='house' template='news'#}">资讯</a></li>
+				<li><a href="{#getUrlPath service='house' template='kan'#}">看房团</a></li>
+				<li><a href="{#getUrlPath service='house' template='faq'#}">房产问答</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 导航 end-->
+
+	<!-- 浮动导航 -->
+	<div class="scroll">
+		<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" class="s-hot">团购楼盘</a>
+		<a href="{#getUrlPath service='house' template='news'#}" class="s-zx">热门资讯</a>
+		<a href="{#getUrlPath service='house' template='loupan'#}" class="s-xf">最新新房</a>
+		<a href="{#getUrlPath service='house' template='sale'#}" class="s-esf">二手房</a>
+		<div class="wx-down">
+			<a href="javascript:;" class="s-wx">微信</a>
+			<div class="wx-down-box dn">
+				<img src="{#$cfg_weixinQr#}" alt="">
+				<h3>微信公众号</h3>
+				<p>微信二维码</p>
+				<p>关注身边发生的最新资讯</p>
+			</div>
+		</div>
+		<a href="javascript:scroll(0,0)" class="s-top">回到顶部</a>
+	</div>
+	<!-- 浮动导航 end-->
+
+	<!-- 幻灯片 -->
+	<div class="slideBox">
+		<div class="banner">
+			<div class="bd">
+				<ul>
+					{#myad title="房产_模板一_电脑端_广告二"#}
+				</ul>
+			</div>
+			<ul class="hd"></ul>
+		</div>
+	</div>
+<!-- 幻灯片 end-->
+
+<!-- 筛选 -->
+	<div class="wrapper fn-clear">
+		<div class="wrapper-item red">
+			<h3>区域找房</h3>
+			<div class="wrapper-item-a">
+				{#house action="addr" return='addr' pageSize='10'#}
+				<a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#}#}">{#$addr.typename#}</a>
+				{#/house#}
+			</div>
+		</div>
+		<div class="wrapper-item green">
+			<h3>价格找房</h3>
+			<div class="wrapper-item-a">
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='0,8'#}">8千以下</a>
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='8,10'#}">8千-1万</a>
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='10,15'#}">1-1.5万</a>
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='15,20'#}">1.5-2万</a>
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='25,30'#}">2.5-3万</a>
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='30,0'#}">3万以上</a>
+			</div>
+		</div>
+		<div class="wrapper-item purple">
+			<h3>建筑类型</h3>
+			<div class="wrapper-item-a">
+				{#house action="item" return="item" type="3"#}
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='' typeid='' salestate='' times='' zhuangxiu='' buildtype={#$item.typename#}#}">{#$item.typename#}</a>
+				{#/house#}
+			</div>
+		</div>
+		<div class="wrapper-item blue">
+			<h3>需求找房</h3>
+			<div class="wrapper-item-a">
+				{#house action="item" return="item" type="1"#}
+				<a href="{#getUrlPath service='house' template='loupan' addrid='' business='' subway='' station='' price='' typeid={#$item.id#}#}">{#$item.typename#}</a>
+				{#/house#}
+			</div>
+		</div>
+	</div>
+<!-- 筛选 end-->
+
+	<div class="adv">
+		{#myad title="房产_模板一_电脑端_广告三"#}
+	</div>
+
+<!-- 横幅 -->
+	<div class="wrapper">
+		<div class="infor fn-clear">
+			<ul class="infor-l">
+				<li><a href="#">晒成交:2016买房成交价大公开</a></li>
+				<li><a href="#">多层带电梯 金色港湾大平层</a></li>
+				<li><a href="#">浪漫七夕48-135㎡婚房大搜罗</a></li>
+				<li><a href="#">2016平湖小学、初中学区划分</a></li>
+			</ul>
+			<div class="infor-adv">
+				<img src="{#$templets_skin#}upfile/adv.jpg" alt="">
+			</div>
+			<ul class="infor-r">
+				<li><a href="#">平湖140㎡以上大宅户型汇总</a></li>
+				<li><a href="#">3980起！第三轮现房拍卖启动</a></li>
+				<li><a href="#">2016平湖楼盘在售三房全汇总</a></li>
+				<li><a href="#">府西小学定位实验小学南市校区</a></li>
+			</ul>
+		</div>
+	</div>
+<!-- 横幅 end -->
+
+<!-- 热门资讯 -->
+	<div class="wrapper">
+		<div class="hot">
+			<div class="hot-tit">
+				<h3>热门资讯</h3>
+				<div class="hot-tit-r fn-right">
+					{#house action="newsType" return='ajtype' page="1" pageSize="10"#}
+					<a href="{#getUrlPath service='house' template='news' typeid={#$ajtype.id#}#}" target="_blank">{#$ajtype.typename#}</a><em>|</em>
+					{#/house#}
+				</div>
+			</div>
+			<div class="hot-con fn-clear">
+				<ul class="hot-con-l fn-left">
+					<li><a href="#"><img src="{#$templets_skin#}upfile/i1.jpg" alt="">2016平湖楼市“年中考”</a></li>
+					<li><a href="#"><img src="{#$templets_skin#}upfile/i2.jpg" alt="">府西小学定位实验小学分校</a></li>
+				</ul>
+				<div class="hot-con-c fn-left">
+					<div class="hot-con-tit fn-clear">
+						<div class="hot-con-titL"></div>
+						<div class="hot-con-titR">
+							{#house action="news" return="news" orderby="click" pageSize="1"#}
+							<h1><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h1>
+							{#/house#}
+							<p>
+								{#house action="news" return="news" orderby="click" pageSize="3" page="2"#}
+								<a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a><em>|</em>
+								{#/house#}
+							</p>
+						</div>
+					</div>
+					<div class="hot-con-ul">
+						<ul class="fn-clear">
+							{#house action="news" return="news" pageSize="14"#}
+							<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></li>
+							{#/house#}
+						</ul>
+					</div>
+				</div>
+				<div class="hot-con-r fn-right">
+					<h3>楼盘评测</h3>
+					<div class="img-box">
+						<a href="#"><img src="{#$templets_skin#}upfile/lou1.jpg" alt=""></a>
+					</div>
+					<ul>
+						{#house action="news" typeid="1" return="news" pageSize="5"#}
+						<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></li>
+						{#/house#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 热门资讯 end-->
+
+<!-- 新房 -->
+	<div class="wrapper">
+		<div class="newHouse">
+			<div class="newHouse-tit">
+				<h3>新房</h3>
+				<ul class="fn-clear" id="house-tab">
+					<li class="active">热销楼盘</li>
+					<li>推荐楼盘</li>
+					<li>团购楼盘</li>
+				</ul>
+				<div class="newHouse-tit-a"><a href="#">平湖在线新房频道，汇集最新平湖楼盘信息</a></div>
+			</div>
+			<div class="newHouse-list fn-clear">
+				<div class="newHouse-list-l fn-left" id="house-list">
+					<ul class="fn-clear">
+						{#house action="loupanList" return="loupan" filter="hot" pageSize="6"#}
+						<li>
+							<a href="{#$loupan.url#}" target="_blank" class="img-box"><img src="{#$loupan.litpic#}" alt=""><p>{#$loupan.title#}[{#$loupan.addr[1]#}]</p></a>
+							<p class="price">{#if $loupan.price != 0#}<em>{#$loupan.price#}</em>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<em>待定</em>{#/if#}</p>
+							<p class="addr">{#$loupan.address#}</p>
+							<p class="tag">
+								{#foreach from=$loupan.buildtype item=btype#}
+								<span>{#$btype#}</span>
+								{#/foreach#}
+							</p>
+						</li>
+						{#/house#}
+					</ul>
+					<ul class="fn-clear dn">
+						{#house action="loupanList" return="loupan" filter="rec" pageSize="6"#}
+						<li>
+							<a href="{#$loupan.url#}" target="_blank" class="img-box"><img src="{#$loupan.litpic#}" alt=""><p>{#$loupan.title#}[{#$loupan.addr[1]#}]</p></a>
+							<p class="price">{#if $loupan.price != 0#}<em>{#$loupan.price#}</em>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<em>待定</em>{#/if#}</p>
+							<p class="addr">{#$loupan.address#}</p>
+							<p class="tag">
+								{#foreach from=$loupan.buildtype item=btype#}
+								<span>{#$btype#}</span>
+								{#/foreach#}
+							</p>
+						</li>
+						{#/house#}
+					</ul>
+					<ul class="fn-clear dn">
+						{#house action="loupanList" return="loupan" filter="tuan" pageSize="6"#}
+						<li>
+							<a href="{#$loupan.url#}" target="_blank" class="img-box"><img src="{#$loupan.litpic#}" alt=""><p>{#$loupan.title#}[{#$loupan.addr[1]#}]</p></a>
+							<p class="price">{#if $loupan.price != 0#}<em>{#$loupan.price#}</em>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<em>待定</em>{#/if#}</p>
+							<p class="addr">{#$loupan.address#}</p>
+							<p class="tag">
+								{#foreach from=$loupan.buildtype item=btype#}
+								<span>{#$btype#}</span>
+								{#/foreach#}
+							</p>
+						</li>
+						{#/house#}
+					</ul>
+				</div>
+				<div class="newHouse-list-r fn-right">
+					<h3>最新开盘</h3>
+					<ul>
+						{#house action="loupanList" return="loupan" orderby="3" pageSize="12"#}
+						<li><a href="{#$loupan.url#}" target="_blank"><span class="fn-right">{#if $loupan.price != 0#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}待定{#/if#}</span>{#$loupan.title#}</a></li>
+						{#/house#}
+					</ul>
+					<div class="img-box">
+						{#myad title="房产_模板一_电脑端_广告四"#}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 新房 end-->
+
+<!-- 二手房 -->
+	<div class="wrapper">
+		<div class="esf">
+			<div class="newHouse-tit">
+				<h3>二手房 | 租房</h3>
+				<div class="newHouse-tit-a"><a href="#">平湖在线二手房频道，汇集最新平湖楼盘信息</a></div>
+			</div>
+		</div>
+		<div class="esf-con fn-clear">
+			<div class="esf-list fn-left">
+				<div class="esf-item fn-left">
+					<div class="esf-item-tit">
+						<h3 class="red">二手房</h3>
+						<a href="{#getUrlPath service='house' template='sale'#}" target="_blank" class="fn-right">更多>></a>
+					</div>
+					<div class="esf-item-list">
+						<ul>
+							{#house action="saleList" return="sale" pageSize="10"#}
+							<li>
+								<a href="{#$sale.url#}" title="{#$sale.title#}">{#$sale.title#}</a>
+								<span class="hx">{#$sale.room#}</span>
+								<span class="price">{#$sale.price#}万{#echoCurrency type='short'#}</span>
+								<span class="area">{#$sale.area#}㎡</span>
+							</li>
+							{#/house#}
+						</ul>
+					</div>
+				</div>
+				<div class="esf-item fn-left">
+					<div class="esf-item-tit">
+						<h3>租房</h3>
+						<a href="{#getUrlPath service='house' template='zu'#}" target="_blank" class="fn-right">更多>></a>
+					</div>
+					<div class="esf-item-list">
+						<ul>
+							{#house action="zuList" return="zu" pageSize="10"#}
+							<li>
+								<a href="{#$zu.url#}" title="{#$zu.title#}">{#$zu.title#}</a>
+								<span class="hx">{#$zu.room#}</span>
+								<span class="price">{#$zu.price#}{#echoCurrency type='short'#}/月</span>
+								<span class="area">{#$zu.area#}㎡</span>
+							</li>
+							{#/house#}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="newHouse-list-r fn-right">
+				<h3>急售二手房</h3>
+				<ul>
+					{#house action="saleList" return="sale" flags="0" pageSize="7"#}
+					<li><a href="{#$sale.url#}" title="{#$sale.title#}" target="_blank"><span class="fn-right">{#$sale.price#}万/{#$sale.area#}㎡</span>{#$sale.title#}</a></li>
+					{#/house#}
+				</ul>
+				<div class="img-box">{#myad title="房产_模板一_电脑端_广告五"#}</div>
+			</div>
+		</div>
+	</div>
+<!-- 二手房 end-->
+
+<!-- 成交数据 -->
+	<div class="wrapper">
+		<div class="ziliao fn-clear">
+			<div class="data fn-left">
+				<h3>成交数据</h3>
+				<ul>
+					{#house action="news" typeid="2" return="news" pageSize="8"#}
+					<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+			<div class="zixun fn-left">
+				<h3>图文资讯</h3>
+				<div class="zixun-list">
+					<ul>
+						{#house action="news" return="news" litpic="1" pageSize="3"#}
+						<li>
+							<div class="img-box">
+								<a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><img src="{#$news.litpic#}" alt="{#$news.title#}"></a>
+							</div>
+							<div class="txt-box">
+								<a href="{#$news.url#}" target="_blank" class="brief">{#$news.title#}</a>
+								<p>{#$news.description#}<a href="{#$news.url#}" target="_blank">[详情]</a></p>
+							</div>
+						</li>
+						{#/house#}
+					</ul>
+				</div>
+			</div>
+			<div class="interview fn-right">
+				<h3>房产人物访谈</h3>
+				<div class="view-img">
+					<img src="{#$templets_skin#}upfile/person.png" alt="">
+					<p>朱经理，恒隆·嘉荟城项目销售经理，12年间分别在嘉兴、海盐等地接手过多个人气商业地产项目。2016年凭借对市场敏锐的洞察力，他毅然选择到平湖并全身心投入到恒隆·嘉荟城项目，一起看看这是怎样一个项目。<a href="#">[详情]</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 成交数据 end-->
+
+<!-- 合作商家 -->
+	<div class="wrapper">
+		<div class="cooperate">
+			<div class="newHouse-tit">
+				<h3>合作商家</h3>
+				<a href="#" class="newHouse-tit-a">合作商家广告投放热线：{#$house_hotline#}</a>
+			</div>
+			<ul class="fn-clear">
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv1.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv2.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv3.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv4.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv5.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv6.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv7.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv8.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv9.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv10.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv11.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv12.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv13.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv14.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv15.jpg" alt=""></a></li>
+				<li><a href="#"><img src="{#$templets_skin#}upfile/adv16.jpg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+<!-- 合作商家 end-->
+
+<!-- 友情链接 -->
+	<div class="wrapper">
+		<div class="link">
+			<div class="newHouse-tit">
+				<h3>友情链接</h3>
+			</div>
+			<div class="link-list">
+				{#siteConfig action='friendLink' return='friendLink' module='house'#}
+				<a href="{#$friendLink.sitelink#}" target="_blank">{#$friendLink.sitename#}</a>
+				{#/siteConfig#}
+			</div>
+		</div>
+	</div>
+<!-- 友情链接 end-->
+
+<!-- 底部 -->
+	<div class="footer">
+		<div class="footer-p">
+			<p>
+				{#siteConfig action="singel"#}
+				<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>|
+				{#/siteConfig#}
+				<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+			</p>
+			{#$cfg_powerby#}
+		</div>
+	</div>
+<!-- 底部 end-->
+</div>
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

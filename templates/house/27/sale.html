@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $sale_seotitle != ""#}{#$siteCityInfo['name']#}{#$sale_seotitle#}二手房{#else#}{#$siteCityInfo['name']#}二手房房产网，{#$siteCityInfo['name']#}二手房交易信息，{#$siteCityInfo['name']#}二手房出售{#/if#}-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}二手房,{#$siteCityInfo['name']#}房产网,{#$siteCityInfo['name']#}二手房交易信息,{#$siteCityInfo['name']#}二手房出售,{#$house_title#}" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}二手房房产网，涵盖{#$siteCityInfo['name']#}各区域房源信息。{#$cfg_shortname#}帮您定位，选择，收藏，搜索各类出售房源，带来最佳二手房买卖体验。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sale.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'sale'#}
+{#include file="top.html"#}
+
+<div class="main">
+
+	<div class="wrap">
+		<div class="crumb">
+			<div class="location">
+				<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='sale'#}">二手房</a> > <span>房源列表</span>
+			</div>
+			<div class="SearchBox">
+				<form action="{#getUrlPath service='house' template='sale'#}" method="get">
+					<input type="search" placeholder="请输入小区名称、地址" name="keywords" class="inp"/>
+					<input type="submit" value="搜索" class="submit">
+				</form>
+			</div>
+		</div>
+		<div class="filter">
+			<div class="t-fi fn-clear">
+				<span class="inf"><a href="{#getUrlPath service='house' template='map-sale'#}" target="_blank">地图找房>></a></span>
+				<ul class="t-fi-item fn-clear">
+					<li{#if $from == "" && $subway == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale'#}">全部二手房</a></li>
+					{#if $cfg_subway_state#}<li{#if $from == "subway" || $subway != 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' param='from=subway'#}">{#$cfg_subway_title#}房</a></li>{#/if#}
+				</ul>
+				{#if $keywords != ""#}
+				<div class="keywords fn-clear">
+					<label>关键字：</label>
+					<a title="删除关键字" href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords="" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$keywords#} <s>&times;</s></a>
+				</div>
+				{#/if#}
+			</div>
+			{#if $from == "" && $subway == 0#}
+			<dl class="fn-clear">
+				<dt>区域：</dt>
+				<dd>
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr'#}
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addr.id#} business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+					{#/house#}
+					<div class="fn-clear"></div>
+					{#if $addrid != 0#}
+					<div class="sub-item fn-clear">
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+						{#house action="addr" return='addr' type={#$addrid#}#}
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$addr.id#} subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+						{#/house#}
+					</div>
+					{#/if#}
+				</dd>
+			</dl>
+			{#/if#}
+			{#if $from == "subway" || $subway != 0#}
+			<dl class="fn-clear">
+				<dt>公交/地铁：</dt>
+				<dd>
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}&from=subway{#else#}from=subway{#/if#}"#}"{#if $subway == 0#} class="curr"{#/if#}>不限</a>
+					{#siteConfig action="subway" return='sub' city={#$siteCityInfo['cityid']#}#}
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway={#$sub.id#} station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $subway == $sub.id#} class="curr"{#/if#}>{#$sub.title#}</a>
+					{#/siteConfig#}
+					<div class="fn-clear"></div>
+					{#if $subway != 0#}
+					<div class="sub-item fn-clear">
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway={#$subway#} station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $station == 0#} class="curr"{#/if#}>不限</a>
+						{#siteConfig action="subwayStation" return='subwayStation' type=$subway#}
+						<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway={#$subway#} station={#$subwayStation.id#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $station == $subwayStation.id#} class="curr"{#/if#}>{#$subwayStation.title#}</a>
+						{#/siteConfig#}
+					</div>
+					{#/if#}
+				</dd>
+			</dl>
+			{#/if#}
+			<dl class="fn-clear">
+				<dt>售价：</dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ''#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price=',100' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ',100'#} class="curr"{#/if#}>100万以下</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='100,150' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '100,150'#} class="curr"{#/if#}>100-150万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='150,200' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '150,200'#} class="curr"{#/if#}>150-200万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='200,250' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '200,250'#} class="curr"{#/if#}>200-250万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='250,300' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '250,300'#} class="curr"{#/if#}>250-300万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='300,500' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '300,500'#} class="curr"{#/if#}>300-500万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='500,1000' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '500,1000'#} class="curr"{#/if#}>500-1000万</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price='1000,' area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '1000,'#} class="curr"{#/if#}>1000万以上</a>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>面积：</dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == ''#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area=',50' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == ',50'#} class="curr"{#/if#}>50㎡以下</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='50,70' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '50,70'#} class="curr"{#/if#}>50-70㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='70,90' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '70,90'#} class="curr"{#/if#}>70-90㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='90,110' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '90,110'#} class="curr"{#/if#}>90-110㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='110,150' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '110,150'#} class="curr"{#/if#}>110-150㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='150,200' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '150,200'#} class="curr"{#/if#}>150-200㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='200,300' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '200,300'#} class="curr"{#/if#}>200-300㎡</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area='300,' room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '300,'#} class="curr"{#/if#}>300㎡以上</a>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>户型：</dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == ''#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='1' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '1'#} class="curr"{#/if#}>一居</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='2' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '2'#} class="curr"{#/if#}>二居</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='3' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '3'#} class="curr"{#/if#}>三居</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='4' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '4'#} class="curr"{#/if#}>四居</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='5' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '5'#} class="curr"{#/if#}>五居</a>
+					<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room='0' direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $room == '0'#} class="curr"{#/if#}>五居以上</a>
+				</dd>
+			</dl>
+			<dl class="more fn-clear">
+				<dt>筛选：</dt>
+				<dd class="fn-clear">
+					<div class="item{#if $directionName != ""#} on{#/if#}">
+						<label title="朝向">{#if $directionName == ""#}朝向{#else#}{#$directionName#}{#/if#}<s></s></label>
+						<ul>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction='' buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a></li>
+							{#house action="item" return="item" type="4"#}
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$item.id#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$item.typename#}</a></li>
+							{#/house#}
+						</ul>
+					</div>
+					<div class="item{#if $buildageName != ""#} on{#/if#}">
+						<label title="楼龄">{#if $buildageName == ""#}楼龄{#else#}{#$buildageName#}{#/if#}<s></s></label>
+						<ul>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage='' floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage=',5' floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">5年以内</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage='5,10' floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">10年以内</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage='10,20' floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">10-20年</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage='20,' floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">20年以上</a></li>
+						</ul>
+					</div>
+					<div class="item{#if $floorName != ""#} on{#/if#}">
+						<label title="楼层">{#if $floorName == ""#}楼层{#else#}{#$floorName#}{#/if#}<s></s></label>
+						<ul>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor='' zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor=',6' zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">6层以下</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor='6,12' zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">6-12层</a></li>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor='12,' zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">12层以上</a></li>
+						</ul>
+					</div>
+					<div class="item{#if $zhuangxiuName != ""#} on{#/if#}">
+						<label title="装修">{#if $zhuangxiuName == ""#}装修{#else#}{#$zhuangxiuName#}{#/if#}<s></s></label>
+						<ul>
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu='' flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">不限</a></li>
+							{#house action="item" return="item" type="2"#}
+							<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$item.id#} flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$item.typename#}</a></li>
+							{#/house#}
+						</ul>
+					</div>
+
+					{#$flag0 = "0"#}
+					{#$flag1 = "1"#}
+					{#$flag2 = "2"#}
+					{#$flag3 = "3"#}
+					{#$flag4 = "4"#}
+					{#$flag5 = "5"#}
+
+					{#if in_array("0", $flagArr)#}
+					{#$flag0 = ""#}
+					{#/if#}
+
+					{#if in_array("1", $flagArr)#}
+					{#$flag1 = ""#}
+					{#/if#}
+
+					{#if in_array("2", $flagArr)#}
+					{#$flag2 = ""#}
+					{#/if#}
+
+					{#if in_array("3", $flagArr)#}
+					{#$flag3 = ""#}
+					{#/if#}
+
+					{#if in_array("4", $flagArr)#}
+					{#$flag4 = ""#}
+					{#/if#}
+
+					{#if in_array("5", $flagArr)#}
+					{#$flag5 = ""#}
+					{#/if#}
+
+					{#if $flags != ""#}
+					{#foreach from=$flagArr item=flag#}
+						{#if $flag != "0"#}
+							{#if $flag0 == ""#}
+								{#$flag0 = $flag0|cat:$flag#}
+							{#else#}
+								{#$flag0 = $flag0|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+						{#if $flag != "1"#}
+							{#if $flag1 == ""#}
+								{#$flag1 = $flag1|cat:$flag#}
+							{#else#}
+								{#$flag1 = $flag1|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+						{#if $flag != "2"#}
+							{#if $flag2 == ""#}
+								{#$flag2 = $flag2|cat:$flag#}
+							{#else#}
+								{#$flag2 = $flag2|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+						{#if $flag != "3"#}
+							{#if $flag3 == ""#}
+								{#$flag3 = $flag3|cat:$flag#}
+							{#else#}
+								{#$flag3 = $flag3|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+						{#if $flag != "4"#}
+							{#if $flag4 == ""#}
+								{#$flag4 = $flag4|cat:$flag#}
+							{#else#}
+								{#$flag4 = $flag4|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+						{#if $flag != "5"#}
+							{#if $flag5 == ""#}
+								{#$flag5 = $flag5|cat:$flag#}
+							{#else#}
+								{#$flag5 = $flag5|cat:","|cat:$flag#}
+							{#/if#}
+						{#/if#}
+					{#/foreach#}
+					{#/if#}
+
+					<div class="item-check fn-clear">
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag0#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('0', $flagArr)#} on{#/if#}"><s></s>急售</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag1#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('1', $flagArr)#} on{#/if#}"><s></s>免税</a>
+						{#if $cfg_subway_state#}
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag2#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('2', $flagArr)#} on{#/if#}"><s></s>公交/地铁</a>
+						{#/if#}
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag3#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('3', $flagArr)#} on{#/if#}"><s></s>校区房</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag4#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('4', $flagArr)#} on{#/if#}"><s></s>满五年</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag5#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('5', $flagArr)#} on{#/if#}"><s></s>推荐</a>
+					</div>
+				</dd>
+			</dl>
+			<div class="sortby fn-clear">
+				<label>排序：</label>
+				<div class="sort{#if $orderby == ""#} on{#/if#}"><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#}#}">默认</a></div>
+				<div class="sort{#if $orderby == "1"#} on{#/if#}"><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=1"#}">最新</a></div>
+				<div class="sort{#if $orderby == "4" || $orderby == "5"#} on{#/if#}">
+					<a href="#">{#if $orderby == "4"#}总价从低到高{#elseif $orderby == "5"#}总价从高到低{#else#}总价{#/if#}<s></s></a>
+					<ul>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=4"#}">总价从低到高</a></li>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=5"#}">总价从高到低</a></li>
+					</ul>
+				</div>
+				<div class="sort{#if $orderby == "6" || $orderby == "7"#} on{#/if#}">
+					<a href="#">{#if $orderby == "6"#}单价从低到高{#elseif $orderby == "7"#}单价从高到低{#else#}单价{#/if#}<s></s></a>
+					<ul>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=6"#}">单价从低到高</a></li>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=7"#}">单价从高到低</a></li>
+					</ul>
+				</div>
+				<div class="sort{#if $orderby == "2" || $orderby == "3"#} on{#/if#}">
+					<a href="#">{#if $orderby == "2"#}面积从低到高{#elseif $orderby == "3"#}面积从高到低{#else#}面积{#/if#}<s></s></a>
+					<ul>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=2"#}">面积从低到高</a></li>
+						<li><a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} param="orderby=3"#}">面积从高到低</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap orderby fn-clear">
+		<ul class="l-tab">
+			<li{#if $type == '0' || $type == ''#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type='0' param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">全部</a></li>
+			<li{#if $type == '2'#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type='2' param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">中介房源</a></li>
+			<li{#if $type == '1'#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type='1' param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">个人房源</a></li>
+		</ul>
+	</div>
+	<div class="wrap list">
+
+		<div class="lhead">
+			<ul class="fn-clear">
+				<li class="lshow"><a href="javascript:;"><s></s>共有<strong id="totalCount">0</strong>套二手房源</a></li>
+			</ul>
+			<h2>100%真实房源，假一赔百，不封顶！</h2>
+		</div>
+
+		<ul id="list">
+
+			{#$addr = $addrid#}
+			{#if $business != 0#}
+			{#$addr = $business#}
+			{#/if#}
+			{#house action="saleList" return="sale" addrid={#$addr#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type={#$type#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+			<li class="fn-clear">
+				{#if $sale.isbid == 1#}<em class="jj">置顶</em>{#/if#}
+				<a href="{#$sale.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}" />{#if $sale.usertype == 0#}<em>个人</em>{#elseif $sale.usertype == 1#}<i>中介</i>{#/if#}</a>
+				<div class="info">
+					<h2><a href="{#$sale.url#}" target="_blank" title="{#$sale.title#}">{#$sale.title#}</a></h2>
+					<div class="fn-clear">
+						<div class="col1">
+							<p class="w">
+								<a href="{#getUrlPath service='house' template='sale' addrid=0 business={#$sale.addrid#}#}" title="{#$sale.addr[$sale.addr|count-2]#} {#$sale.addr[$sale.addr|count-1]#}" target="_blank">
+									{#foreach from=$sale.addr item=addr#}
+									{#$addr#}
+									{#/foreach#}</a>
+								<span>{#$sale.room#}</span><span>{#$sale.direction#}</span><span>{#$sale.zhuangxiu#}</span>
+							</p>
+							<p class="o">
+								<a href="{#$sale.communityUrl#}" target="_blank" title="{#$sale.community#}">{#$sale.community#}</a>
+								<span>/</span>第{#$sale.bno#}层,共{#$sale.floor#}层<span>/</span>{#$sale.buildage#}年
+							</p>
+							<div class="tags fn-clear">
+								{#foreach from=$sale.flags item=flag key=key#}
+								<span class="t{#$key#}">{#$flag#}</span>
+								{#/foreach#}
+							</div>
+						</div>
+						<div class="col2">
+							<div class="num"><strong>{#$sale.area#}</strong>㎡</div>
+							<p>建筑面积</p>
+						</div>
+						<div class="col3">
+							<div class="price"><strong>{#$sale.price#}</strong>万</div>
+							<p>{#$sale.unitprice#} {#echoCurrency type='short'#}/m²</p>
+						</div>
+					</div>
+				</div>
+			</li>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">抱歉！ 未找到相关房源！</li>
+			{#/if#}
+		</ul>
+
+		{#getPageList service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction=$direction buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type={#$type#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};</script>
+<script type="text/javascript" src="{#$templets_skin#}js/sale.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

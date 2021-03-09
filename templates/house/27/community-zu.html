@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}出租房-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}二手房,{#$detail_title#}租房,{#$detail_address#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、房型图、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+{#$communityNav = 5#}
+{#$crumbTitle = "出租房"#}
+{#include file="community_top.html"#}
+
+<div class="wrap fn-clear">
+
+	<div class="zu">
+
+		{#house action="zuList" return="zu" community={#$detail_id#} page={#$page#} pageSize="20"#}
+		<div class="l-item fn-clear">
+			<div class="more">
+				<div class="price"><em>{#echoCurrency type='symbol'#}</em><strong>{#$zu.price#}</strong>{#echoCurrency type='short'#}/月</div>
+				<p>{#$zu.room#}</p>
+			</div>
+			<dl class="fn-clear">
+				<dt><a href="{#$zu.url#}" target="_blank"><img src="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}" title="{#$zu.title#}" />{#if $zu.usertype == 0#}<em>个人</em>{#elseif $zu.usertype == 1#}<i>中介</i>{#/if#}</a></dt>
+				<dd>
+					<h3><a href="{#$zu.url#}" target="_blank" title="{#$zu.title#}">{#$zu.title#}</a></h3>
+					<p><a href="{#getUrlPath service='house' template='zu' addrid=0 business={#$zu.addrid#}#}" target="_blank">{#$zu.addr[0]#}-{#$zu.addr[1]#}</a><span class="addr-icon"></span>{#$zu.address#}</p>
+					<p>{#$zu.rentype#}<i>|</i>{#$zu.area#}㎡(建筑面积)<i>|</i>{#$zu.zhuangxiu#}<i>|</i>{#$zu.bno#}/{#$zu.floor#}层<i>|</i>朝{#$zu.direction#}</p>
+					<p class="u">{#if $zu.usertype == 1#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$zu.userid#} tpl='zu'#}" target="_blank">{#$zu.nickname#}</a>{#else#}<a>{#$zu.username#}</a>{#/if#}<span class="upd"></span>{#$zu.timeUpdate#}更新</p>
+				</dd>
+			</dl>
+		</div>
+		{#/house#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<li class="empty">抱歉！ 未找到相关房源</li>
+		{#/if#}
+
+	</div>
+
+	{#getPageList service='house' template='community-zu' community={#$detail_id#}#}
+
+</div>
+
+{#include file="footer.html"#}
+</body>
+</html>
