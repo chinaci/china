@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$article_title#}</title>
+	<meta name="keywords" content="{#$article_keywords#}" />
+	<meta name="description" content="{#$article_description#}" />
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/pace.js"></script> <!-- 页面加载进度 -->
+	<script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+        var hideFileUrl = {#$cfg_hideUrl#};
+	</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<!-- LOGO s -->
+<div class="wrap fn-clear">
+	<h1 class="logo"><a href="{#$article_channelDomain#}" title="{#$article_channelName#}"><img src="{#$article_logoUrl#}" alt="{#$article_channelName#}" /></a></h1>
+	<div class="tsearch fn-clear">
+		<form action="{#getUrlPath service='article' template='search'#}" method="post">
+			<input type="text" name="keywords" class="skeyword" placeholder="请输入关键字" value="请输入关键字" onFocus="if(value=='请输入关键字') {value='';this.style.color='#333'}" onBlur="if (value=='') {value='请输入关键字';this.style.color='#888'}" />
+			<input type="submit" id="sBtn" value="搜&nbsp;索" />
+		</form>
+	</div>
+</div>
+<!-- LOGO e -->
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li class="on current"><a href="{#$article_channelDomain#}">首页</a></li>
+		{#getChannel service="article"#}
+	</ul>
+</div>
+<!-- 导航 e -->
+
+<!-- 天气、投稿 s -->
+<div class="wrap fn-clear">
+	<div class="weater">
+		<span class="echotime">{#getMyTime format="%Y"#}年{#getMyTime format="%m"#}月{#getMyTime format="%d"#}日</span>
+		<span class="echoweek">{#getMyWeek prefix="星期"#}</span>
+		<ul class="weatherInfo fn-clear">
+			<li class="weatherCity">{#$cfg_weatherCity#}</li>
+		</ul>
+	</div>
+	<div class="tougao">
+		<a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank" class="online">在线投稿</a>
+		<span>投稿信箱：{#$article_submission#}</span>
+	</div>
+</div>
+<!-- 天气、投稿 e -->
+
+<!-- 幻灯图片 s -->
+<div class="wrap slideshow_1000_330">
+	<div id="slideshow1000330">
+		<script src='/include/json.php?action=adjs&title=新闻资讯_模板一_电脑端_广告一&type=slide' language='javascript'></script>
+	</div>
+	<div id="slidebtn1000330" class="slidebtn"></div>
+</div>
+<!-- 幻灯图片 e -->
+
+<!-- 今日头条 s -->
+<div class="wrap headlines fn-clear">
+	<div class="title">今日头条</div>
+	<div class="headinfo">
+		{#$aid = 0#}
+		{#article action="alist" return="alist" flag="h,b" pageSize="1" isAjax=1#}
+		{#$aid = $alist.id#}
+		<h2 class="ht"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title#}</a></h2>
+		{#/article#}
+		<ul class="fn-clear">
+			{#article action="alist" return="alist" flag="h" pageSize="5" isAjax=1#}
+			{#if $alist.id != $aid#}
+			<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></li>
+			{#/if#}
+			{#/article#}
+		</ul>
+	</div>
+</div>
+<!-- 今日头条 e -->
+
+<div class="wrap fn-clear">
+	<div class="wmain">
+		<!-- 头部新闻 s -->
+		<div class="headnews">
+
+			<div class="hdnews">
+				{#article action="alist" return="alist" flag="r,b" thumb="0" pageSize="1" isAjax=1#}
+				<h3><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title#}</a></h3>
+				{#/article#}
+				<ul class="fn-clear">
+					{#article action="alist" return="alist" flag="r" thumb="0" pageSize="6" isAjax=1#}
+					<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+				<div class="btns fn-clear">
+					{#article action="alist" return="alist" flag="r,b" thumb="0" pageSize="1" isAjax=1#}
+					<a href="{#$alist.url#}#comment" class="reviewbtn" title="评论数">{#$alist.common#}</a>
+					<a href="javascript:;" class="sharebtn" data-title="{#$alist.title|strip_tags#}" data-url="{#$alist.url#}" data-pic="{#$alist.litpic#}"></a>
+					{#/article#}
+				</div>
+			</div>
+
+			<!-- 有图 -->
+			{#article action="alist" return="alist" flag="r" thumb="1" pageSize="4" isAjax=1#}
+			<div class="hdnews haspic fn-clear">
+				<a href="{#$alist.url#}" class="pic"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}"></a>
+				<h3><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></h3>
+				<ul class="fn-clear">
+					{#article action="alist" return="blist" title="{#$alist.keywords#}" notid="{#$alist.id#}" pageSize="2"#}
+					<li><a href="{#$blist.url#}" title="{#$blist.title|strip_tags#}">{#$blist.title|strip_tags#}</a></li>
+					{#/article#}
+				</ul>
+				<div class="btns fn-clear">
+					<a href="{#$alist.url#}#comment" class="reviewbtn" title="评论数">{#$alist.common#}</a>
+					<a href="javascript:;" class="sharebtn" data-title="{#$alist.title|strip_tags#}" data-url="{#$alist.url#}" data-pic="{#$alist.litpic#}"></a>
+				</div>
+			</div>
+			{#/article#}
+
+			<!-- 文字广告链接 -->
+			<div class="txtad">
+				<script src='/include/json.php?action=adjs&title=新闻资讯_模板一_电脑端_广告二' language='javascript'></script>
+			</div>
+
+		</div>
+		<!-- 头部新闻 e -->
+
+		<!-- 今日关注 s -->
+		<div id="jrgz">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid='2'#}">{#getTypeName service='article' typeid='2'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="2"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<dl class="fn-clear">
+					<dt>
+						{#article action="alist" return="alist" typeid="2" thumb="1" pageSize="1" isAjax=1#}
+						<a class="img" href="{#$alist.url#}">
+							<img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+							<span class="txt">{#$alist.title#}</span>
+							<span class="bg"></span>
+						</a>
+						{#/article#}
+					</dt>
+					<dd>
+						{#article action="alist" return="alist" typeid="2" flag="r" pageSize="1" isAjax=1#}
+						<h5><a href="{#$alist.url#}">{#$alist.title#}</a></h5>
+						{#/article#}
+						<ul>
+							{#article action="alist" return="alist" typeid="2" pageSize="5" isAjax=1#}
+							<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+							{#/article#}
+						</ul>
+					</dd>
+				</dl>
+				<dl class="fn-clear nob">
+					<dt>
+						{#article action="alist" return="alist" typeid="3" thumb="1" pageSize="1" isAjax=1#}
+						<a class="img" href="{#$alist.url#}">
+							<img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+							<span class="txt">{#$alist.title#}</span>
+							<span class="bg"></span>
+						</a>
+						{#/article#}
+					</dt>
+					<dd>
+						{#article action="alist" return="alist" typeid="3" flag="r" pageSize="1" isAjax=1#}
+						<h5><a href="{#$alist.url#}">{#$alist.title#}</a></h5>
+						{#/article#}
+						<ul>
+							{#article action="alist" return="alist" typeid="3" pageSize="5" isAjax=1#}
+							<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+							{#/article#}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 今日关注 e -->
+
+		<!-- 异步新闻 s -->
+		<div id="ajaxnews">
+			<div class="nht">
+				<ul class="fn-clear">
+					{#article action="type" return='ajtype' page="1" pageSize="9"#}
+					{#if $_bindex.ajtype == 1#}
+					<li class="current"><a href="{#$ajtype.url#}" data-id="{#$ajtype.id#}">{#$ajtype.typename#}</a></li>
+					{#elseif $_bindex.ajtype == 9#}
+					<li class="last">
+						<a href="javascript:;" data-id="">更多<i></i></a>
+						<div class="more">
+							<a href="{#$ajtype.url#}" data-id="{#$ajtype.id#}">{#$ajtype.typename#}</a>
+							{#article action="type" return='ajtype1' page="2" pageSize="9"#}
+							<a href="{#$ajtype1.url#}" data-id="{#$ajtype1.id#}">{#$ajtype1.typename#}</a>
+							{#/article#}
+						</div>
+					</li>
+					{#else#}
+					<li><a href="{#$ajtype.url#}" data-id="{#$ajtype.id#}">{#$ajtype.typename#}</a></li>
+					{#/if#}
+					{#/article#}
+				</ul>
+			</div>
+			<div class="nhc" id="newsList"></div>
+		</div>
+		<!-- 异步新闻 e -->
+
+		<div class="ad"><script src='/include/json.php?action=adjs&title=新闻资讯_模板一_电脑端_广告三' language='javascript'></script></div>
+
+		<!-- 视频新闻 s -->
+		<div id="spxw">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="4"#}">{#getTypeName service='article' typeid='4'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="4"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<dl class="fn-clear">
+					<dt>
+						{#article action="alist" return="alist" typeid="4" flag="h" thumb="1" pageSize="1" isAjax=1#}
+						<a href="{#$alist.url#}" class="big">
+							<img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+							<span class="txt"><i></i>{#$alist.title#}</span>
+							<span class="bg"></span>
+						</a>
+						{#/article#}
+						<ul>
+							{#article action="alist" return="alist" typeid="4" flag="r" pageSize="4" isAjax=1#}
+							<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+							{#/article#}
+						</ul>
+					</dt>
+					<dd>
+						<ul class="fn-clear">
+							{#article action="alist" return="alist" typeid="4" thumb="1" orderby="2" pageSize="6" isAjax=1#}
+							<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><span class="txt">{#$alist.title#}</span><span class="bg"></span></a></li>
+							{#/article#}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 视频新闻 e -->
+
+		<!-- 新闻分类 s -->
+		<div id="xwfl" class="xwfl">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="5"#}">{#getTypeName service='article' typeid='5'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="5"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<dl class="fn-clear">
+					<dt>
+						{#article action="alist" return="alist" typeid="5" flag="h" thumb="1" page="1" pageSize="1" isAjax=1#}
+						<div class="big"><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title|strip_tags|truncate:18#}</a></div>
+						{#/article#}
+						<ul class="fn-clear">
+							{#article action="alist" return="alist" typeid="5" flag="r" pageSize="4" isAjax=1#}
+							<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><em>{#$alist.title#}</em></a></li>
+							{#/article#}
+						</ul>
+					</dt>
+					<dd>
+						<ul>
+							{#article action="alist" return="alist" typeid="5" orderby="2" page="1" pageSize="7" isAjax=1#}
+							<li><a href="{#$alist.url#}">{#$alist.title#}</a><p>{#$alist.description|truncate:30#}</p></li>
+							{#/article#}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 新闻分类 e -->
+
+		<!-- 新闻分类 s -->
+		<div id="xwfl" class="xwfl">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="8"#}">{#getTypeName service='article' typeid='8'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="8"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<dl class="fn-clear">
+					<dt>
+						{#article action="alist" return="alist" typeid="8" flag="h" thumb="1" pageSize="1" isAjax=1#}
+						<div class="big"><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title|strip_tags|truncate:18#}</a></div>
+						{#/article#}
+						<ul class="fn-clear">
+							{#article action="alist" return="alist" typeid="8" flag="r" pageSize="4" isAjax=1#}
+							<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><em>{#$alist.title#}</em></a></li>
+							{#/article#}
+						</ul>
+					</dt>
+					<dd>
+						<ul>
+							{#article action="alist" return="alist" typeid="8" orderby="2" pageSize="7" isAjax=1#}
+							<li><a href="{#$alist.url#}">{#$alist.title#}</a><p>{#$alist.description|truncate:30#}</p></li>
+							{#/article#}
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 新闻分类 e -->
+
+	</div>
+	<div class="wsidebar">
+		<!-- 今日话题 s -->
+		<div id="jrht">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="11"#}">{#getTypeName service='article' typeid='11'#}</a></h4>
+			</div>
+			<div class="hdc">
+				{#article action="alist" return="alist" typeid="11" flag="h" thumb="1" pageSize="1" isAjax=1#}
+				<h5><a href="{#$alist.url#}">{#$alist.title#}</a></h5>
+				<dl class="fn-clear">
+					<dt><a href="{#$alist.url#}"><img src="{#$alist.litpic#}"></a></dt>
+					<dd><p>{#$alist.description|truncate:32#}<a href="{#$alist.url#}">[详细]</a></p></dd>
+				</dl>
+				{#/article#}
+				<ul>
+					{#article action="alist" return="alist" typeid="11" flag="r" pageSize="4" isAjax=1#}
+					<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 今日话题 e -->
+
+		<!-- 影像力 s -->
+		<div id="yxl">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="14"#}">{#getTypeName service='article' typeid='14'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="14"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<div class="slideshow">
+					<div id="slideshow_yxl">
+						{#article action="alist" return="alist" typeid="14" flag="r" pageSize="5" isAjax=1#}
+						<a class="slideshow-item" href="{#$alist.url#}">
+							<img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+							<span class="txt">{#$alist.title#}</span>
+						</a>
+						{#/article#}
+					</div>
+					<div class="slidebtn" id="slidebtn_yxl">
+						<a href="javascript:;" class="prev" id="yxl_slidebtn_prev">上一条</a>
+						<span class="atpage" id="yxl_atpage">1</span><span class="tpage" id="yxl_tpage">/5</span>
+						<a href="javascript:;" class="next" id="yxl_slidebtn_next">下一条</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 影像力 e -->
+
+		<!-- 新闻百科 s -->
+		<div id="xwbk">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="17"#}">{#getTypeName service='article' typeid='17'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="17"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				{#article action="alist" return="alist" typeid="17" flag="h" thumb="1" pageSize="1" isAjax=1#}
+				<h5><a href="{#$alist.url#}">{#$alist.title#}</a></h5>
+				<dl class="fn-clear">
+					<dt><a href="{#$alist.url#}"><img src="{#$alist.litpic#}"></a></dt>
+					<dd><p>{#$alist.description|truncate:32#}<a href="{#$alist.url#}">[详细]</a></p></dd>
+				</dl>
+				{#/article#}
+				<ul>
+					{#article action="alist" return="alist" typeid="17" flag="r" pageSize="4" isAjax=1#}
+					<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 新闻百科 e -->
+
+		<div class="ad"><script src='/include/json.php?action=adjs&title=新闻资讯_模板一_电脑端_广告四' language='javascript'></script></div>
+
+		<!-- 新闻视频 s -->
+		<div id="xwsp">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="20"#}">{#getTypeName service='article' typeid='20'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="2"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<ul class="vlist fn-clear">
+					{#article action="alist" return="alist" typeid="20" flag="h" thumb="1" pageSize="2" isAjax=1#}
+					<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" /><i></i><p>{#$alist.title#}</p></a></li>
+					{#/article#}
+				</ul>
+				<ul class="tlist">
+					{#article action="alist" return="alist" typeid="20" flag="r" pageSize="4" isAjax=1#}
+					<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 新闻视频 e -->
+
+		<!-- 热门专题 s -->
+		<div id="rmzt">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="23"#}">{#getTypeName service='article' typeid='23'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="23"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<div class="slideshow">
+					<div id="slideshow_rmzt">
+						{#article action="alist" return="alist" typeid="23" flag="h" thumb="1" pageSize="4" isAjax=1#}
+						<a class="slideshow-item" href="{#$alist.url#}">
+							<img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+							<span class="txt">{#$alist.title#}</span>
+							<span class="bg"></span>
+						</a>
+						{#/article#}
+					</div>
+					<div class="slidebtn">
+						<a href="javascript:;" class="prev" id="rmzt_slidebtn_prev">上一条</a>
+						<div id="slidebtn_rmzt"></div>
+						<a href="javascript:;" class="next" id="rmzt_slidebtn_next">下一条</a>
+					</div>
+				</div>
+				<ul>
+					{#article action="alist" return="alist" typeid="23" flag="r" pageSize="5" isAjax=1#}
+					<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 热门专题 e -->
+
+		<!-- 新闻热评 s -->
+		<div id="xwrp">
+			<div class="hdt fn-clear">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="26"#}">{#getTypeName service='article' typeid='26'#}</a></h4>
+				<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="26"#}">更多</a></span>
+			</div>
+			<div class="hdc">
+				<ul class="vlist fn-clear">
+					{#article action="alist" return="alist" typeid="26" flag="h" thumb="1" pageSize="2" isAjax=1#}
+					<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" /><p>{#$alist.title#}</p></a></li>
+					{#/article#}
+				</ul>
+				<ul class="tlist">
+					{#article action="alist" return="alist" typeid="26" flag="r" pageSize="5" isAjax=1#}
+					<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 新闻热评 e -->
+
+		<!-- 热度、评论排行 s -->
+		<div id="dragMark">
+			<div class="hdt fn-clear">
+				<p></p>
+				<ul class="fn-clear">
+					<li class="current"><a href="javascript:;"><i></i>热度排行</a></li>
+					<li><a href="javascript:;"><i></i>评论排行</a></li>
+				</ul>
+			</div>
+			<div class="hdc fn-clear">
+				<ol>
+					{#article action="alist" return="hlist" orderby="2" pageSize="10" isAjax=1#}
+					<li><i{#if $_bindex.hlist < 4#} class="top"{#/if#}>{#$_bindex.hlist#}</i><a href="{#$hlist.url#}">{#$hlist.title#}</a></li>
+					{#/article#}
+				</ol>
+				<ol class="fn-hide">
+					{#article action="alist" return="clist" orderby="4" pageSize="10" isAjax=1#}
+					<li><i{#if $_bindex.clist < 4#} class="top"{#/if#}>{#$_bindex.clist#}</i><a href="{#$clist.url#}">{#$clist.title#}</a></li>
+					{#/article#}
+				</ol>
+			</div>
+		</div>
+		<!-- 热度、评论排行 e -->
+
+		<div class="ad"><script src='/include/json.php?action=adjs&title=新闻资讯_模板一_电脑端_广告五' language='javascript'></script></div>
+
+		<!-- 新闻排行 s -->
+		<div id="xwph">
+			<div class="hdt fn-clear">
+				<h4><a href="javascript:;">资讯排行</a></h4>
+				<ul class="fn-clear">
+					<li class="current">今天</li>
+					<li>昨日</li>
+					<li>一周</li>
+				</ul>
+			</div>
+			<div class="hdc">
+				<div id="xwph0">
+					<ul class="vlist fn-clear">
+						{#article action="alist" return="alist" orderby="2.1" flag="r" thumb="1" pageSize="2" isAjax=1#}
+						<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" /><p>{#$alist.title#}</p></a></li>
+						{#/article#}
+					</ul>
+					<ul class="tlist">
+						{#article action="alist" return="alist" orderby="2.1" pageSize="5" isAjax=1#}
+						<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+				<div id="xwph1" class="fn-hide">
+					<ul class="vlist fn-clear">
+						{#article action="alist" return="alist" orderby="2.2" flag="r" thumb="1" pageSize="2" isAjax=1#}
+						<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" /><p>{#$alist.title#}</p></a></li>
+						{#/article#}
+					</ul>
+					<ul class="tlist">
+						{#article action="alist" return="alist" orderby="2.2" pageSize="5" isAjax=1#}
+						<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+				<div id="xwph2" class="fn-hide">
+					<ul class="vlist fn-clear">
+						{#article action="alist" return="alist" orderby="2.3" flag="r" thumb="1" pageSize="2" isAjax=1#}
+						<li><a href="{#$alist.url#}"><img src="{#$alist.litpic#}" /><p>{#$alist.title#}</p></a></li>
+						{#/article#}
+					</ul>
+					<ul class="tlist">
+						{#article action="alist" return="alist" orderby="2.3" pageSize="5" isAjax=1#}
+						<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 新闻排行 e -->
+	</div>
+</div>
+
+<!-- 图说天下 s -->
+<div class="wrap" id="tstx">
+	<div class="hdt fn-clear">
+		<h4><a href="{#getUrlPath service='article' template='list' typeid="10"#}">图说天下</a></h4>
+		<span class="more"><a href="{#getUrlPath service='article' template='list' typeid="10"#}">更多</a></span>
+		<div id="slidebtn_tstx" class="slidebtn"></div>
+	</div>
+	<div class="hdc" id="slideshow_tstx">
+		<ul class="fn-clear">
+			{#article action="alist" return="list1" typeid="10" thumb="1" orderby="2" pageSize="13" isAjax=1#}
+			<li class="a{#$_bindex.list1#}"><a href="{#$list1.url#}"><img src="{#$list1.litpic#}"><div class="txt">{#$list1.title|strip_tags#}</div></a></li>
+			{#/article#}
+		</ul>
+		<ul class="fn-clear">
+			{#article action="alist" return="list2" typeid="15" thumb="1" orderby="2" pageSize="13" isAjax=1#}
+			<li class="a{#$_bindex.list2#}"><a href="{#$list2.url#}"><img src="{#$list2.litpic#}"><div class="txt">{#$list2.title|strip_tags#}</div></a></li>
+			{#/article#}
+		</ul>
+	</div>
+</div>
+<!-- 图说天下 e -->
+
+<!-- 对联广告 -->
+<script src='/include/json.php?action=adjs&id=43' language='javascript'></script>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

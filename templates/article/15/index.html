@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$article_title#}</title>
+<meta name="keywords" content="{#$article_keywords#}" />
+<meta name="description" content="{#$article_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top.html"#}
+
+<div class="wrap ad">{#myad title="新闻资讯_模板二_电脑端_广告一"#}</div>
+
+<div class="ntop">
+	<div class="wrap">
+		<h1 class="logo"><a href="{#$article_channelDomain#}" title="{#$article_channelName#}"><img src="{#$article_logoUrl#}" alt="{#$article_channelName#}" /></a></h1>
+		<ul class="nsNav fn-clear">
+			<li class="n1 current"><a href="#"><s style="background-image:url('{#$templets_skin#}images/xw.gif');"></s>要闻</a></li>
+			<li class="n2"><a href="#"><s style="background-image:url('{#$templets_skin#}images/jian.gif');"></s>荐新闻</a></li>
+			<li class="n3"><a href="#"><s style="background-image:url('{#$templets_skin#}images/loc.gif');"></s>图片闻</a></li>
+		</ul>
+		<div class="weather">
+			<div class="date"><span class="nyr">{#getMyTime format="%m"#}月{#getMyTime format="%d"#}日</span><span class="xq">{#getMyWeek prefix=""#}</span><span class="nl">{#getMyTime format="%Y-%m-%d" type="nongli"#}</span></div>
+			<ul class="weatherInfo fn-clear">
+				<li class="weatherCity"><strong>{#$siteCityInfo['name']#}</strong><br /><a href="http://www.weather.com.cn/weather/101190401.shtml" target="_blank">七日天气</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap">
+	<ul class="nav fn-clear">
+		<li class="on"><a href="{#$article_channelDomain#}">首页</a></li>
+		{#getChannel service="article"#}
+	</ul>
+</div>
+
+<div class="wrap fn-clear">
+	<div class="wmain">
+		<div class="hdnews">
+			{#article action="alist" return="alist" flag="h,r" pageSize="3"#}
+			<h3><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title#}</a></h3>
+			<ul class="fn-clear">
+				{#article action="alist" return="blist" title="{#$alist.keywords#}" pageSize="2"#}
+			  <li class="fn-clear"><a href="{#$blist.url#}" title="{#$blist.title|strip_tags#}">{#$blist.title|strip_tags#}</a></li>
+				{#/article#}
+			</ul>
+			{#/article#}
+		</div>
+
+		<div class="wnews mb30">
+			{#article action="alist" return="clist" flag="r" pageSize="7"#}
+			{#if $_bindex.clist == 1#}
+			<h4><a href="{#$clist.url#}" title="{#$clist.title|strip_tags#}">{#$clist.title#}</a></h4>
+			<ul>
+			{#/if#}
+			{#if $_bindex.clist > 1#}<li><a href="{#$clist.url#}" title="{#$clist.title|strip_tags#}"><i></i>{#$clist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+		</div>
+
+		<div class="ad mb30">{#myad title="新闻资讯_模板二_电脑端_广告二"#}</div>
+
+		<div class="wnews mb30">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="32"#}">国内</a></h2>
+			{#article action="alist" return="dlist" typeid="32" orderby="2" pageSize="7"#}
+			{#if $_bindex.dlist == 1#}
+			<h4><a href="{#$dlist.url#}" title="{#$dlist.title|strip_tags#}">{#$dlist.title#}</a></h4>
+			{#if $dlist.group_img != ""#}
+			<dl>
+				{#foreach from=$dlist.group_img key=k item=value#}
+				{#if $k < 4#}<dd><a href="{#$dlist.url#}"><img src="{#changeFileSize url="{#$value['path']#}" type="small"#}" /></a></dd>{#/if#}
+				{#/foreach#}
+			</dl>
+			{#/if#}
+			<ul>
+			{#/if#}
+			{#if $_bindex.dlist > 1#}<li><a href="{#$dlist.url#}" title="{#$dlist.title|strip_tags#}"><i></i>{#$dlist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			<div class="more"><span>更多：</span><a href="{#getUrlPath service='article' template='list' typeid="32"#}">国内新闻</a></div>
+		</div>
+
+		<div class="wnews mb30">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="33"#}">国际</a></h2>
+			{#article action="alist" return="elist" typeid="33" orderby="2" pageSize="7"#}
+			{#if $_bindex.elist == 1#}
+			<h4><a href="{#$elist.url#}" title="{#$elist.title|strip_tags#}">{#$elist.title#}</a></h4>
+			{#if $elist.group_img != ""#}
+			<dl>
+				{#foreach from=$elist.group_img key=k item=value#}
+				{#if $k < 4#}<dd><a href="{#$elist.url#}"><img src="{#changeFileSize url="{#$value['path']#}" type="small"#}" /></a></dd>{#/if#}
+				{#/foreach#}
+			</dl>
+			{#/if#}
+			<ul>
+			{#/if#}
+			{#if $_bindex.elist > 1#}<li><a href="{#$elist.url#}" title="{#$elist.title|strip_tags#}"><i></i>{#$elist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			<div class="more"><span>更多：</span><a href="{#getUrlPath service='article' template='list' typeid="33"#}">国际新闻</a></div>
+		</div>
+
+		<div class="wnews mb30">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="11"#}">国内图片</a></h2>
+			{#article action="alist" return="flist" typeid="11" orderby="1" pageSize="6"#}
+			{#if $_bindex.flist == 1#}
+			<h4><a href="{#$flist.url#}" title="{#$flist.title|strip_tags#}">{#$flist.title#}</a></h4>
+			{#if $flist.group_img != ""#}
+			<dl>
+				{#foreach from=$flist.group_img key=k item=value#}
+				{#if $k < 4#}<dd><a href="{#$flist.url#}"><img src="{#changeFileSize url="{#$value['path']#}" type="small"#}" /></a></dd>{#/if#}
+				{#/foreach#}
+			</dl>
+			{#/if#}
+			<ul>
+			{#/if#}
+			{#if $_bindex.flist > 1#}<li><a href="{#$flist.url#}" title="{#$flist.title|strip_tags#}"><i></i>{#$flist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			<div class="more"><span>更多：</span><a href="{#getUrlPath service='article' template='list' typeid="9"#}">图片</a> / <a href="{#getUrlPath service='article' template='list' typeid="11"#}">国内图片</a></div>
+		</div>
+
+		<div class="wnews mb30">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="12"#}">国际图片</a></h2>
+			{#article action="alist" return="glist" typeid="12" orderby="4" pageSize="6"#}
+			{#if $_bindex.glist == 1#}
+			<h4><a href="{#$glist.url#}" title="{#$glist.title|strip_tags#}">{#$glist.title#}</a></h4>
+			{#if $glist.group_img != ""#}
+			<dl>
+				{#foreach from=$glist.group_img key=k item=value#}
+				{#if $k < 4#}<dd><a href="{#$glist.url#}"><img src="{#changeFileSize url="{#$value['path']#}" type="small"#}" /></a></dd>{#/if#}
+				{#/foreach#}
+			</dl>
+			{#/if#}
+			<ul>
+			{#/if#}
+			{#if $_bindex.glist > 1#}<li><a href="{#$glist.url#}" title="{#$glist.title|strip_tags#}"><i></i>{#$glist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			<div class="more"><span>更多：</span><a href="{#getUrlPath service='article' template='list' typeid="9"#}">图片</a> / <a href="{#getUrlPath service='article' template='list' typeid="12"#}">国际图片</a></div>
+		</div>
+
+		<div class="wnews">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="13"#}">军事</a></h2>
+			{#article action="alist" return="hlist" typeid="13" orderby="2" pageSize="6"#}
+			{#if $_bindex.hlist == 1#}
+			<h4><a href="{#$hlist.url#}" title="{#$hlist.title|strip_tags#}">{#$hlist.title#}</a></h4>
+			{#if $hlist.group_img != ""#}
+			<dl>
+				{#foreach from=$hlist.group_img key=k item=value#}
+				{#if $k < 4#}<dd><a href="{#$hlist.url#}"><img src="{#changeFileSize url="{#$value['path']#}" type="small"#}" /></a></dd>{#/if#}
+				{#/foreach#}
+			</dl>
+			{#/if#}
+			<ul>
+			{#/if#}
+			{#if $_bindex.hlist > 1#}<li><a href="{#$hlist.url#}" title="{#$hlist.title|strip_tags#}"><i></i>{#$hlist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			<div class="more"><span>更多：</span><a href="{#getUrlPath service='article' template='list' typeid="9"#}">图片</a> / <a href="{#getUrlPath service='article' template='list' typeid="13"#}">军事图片</a></div>
+		</div>
+
+
+	</div>
+	<div class="wsidebar">
+
+		<!-- 幻灯广告 s -->
+		<div class="slideshow_600_320">
+			<div id="slideshow600320">
+				{#myad title="新闻资讯_模板二_电脑端_广告三" type="slide"#}
+			</div>
+			<div id="slidebtn600320" class="slidebtn"></div>
+			<a href="javascript:;" class="prev" id="slidebtn600320_prev"></a>
+			<a href="javascript:;" class="next" id="slidebtn600320_next"></a>
+		</div>
+		<!-- 幻灯广告 e -->
+
+		<div class="smass fn-clear">
+			<div class="item bg01">
+				<a href="{#getUrlPath service='article' template='list' typeid="35"#}" class="tit">经济资讯</a>
+				{#article action="alist" return="ilist" typeid="35" orderby="2" pageSize="3"#}
+				{#if $_bindex.ilist == 1#}
+				<h4><a href="{#$ilist.url#}" title="{#$ilist.title|strip_tags#}">{#$ilist.title#}</a></h4>
+				<ul>
+				{#/if#}
+				{#if $_bindex.ilist > 1#}<li><a href="{#$ilist.url#}" title="{#$ilist.title|strip_tags#}"><i></i>{#$ilist.title|strip_tags#}</a></li>{#/if#}
+				{#/article#}
+				</ul>
+			</div>
+			<div class="item bg02">
+				<a href="{#getUrlPath service='article' template='list' typeid="36"#}" class="tit">股票行情</a>
+				{#article action="alist" return="jlist" typeid="36" orderby="2" pageSize="3"#}
+				{#if $_bindex.jlist == 1#}
+				<h4><a href="{#$jlist.url#}" title="{#$jlist.title|strip_tags#}">{#$jlist.title#}</a></h4>
+				<ul>
+				{#/if#}
+				{#if $_bindex.jlist > 1#}<li><a href="{#$jlist.url#}" title="{#$jlist.title|strip_tags#}"><i></i>{#$jlist.title|strip_tags#}</a></li>{#/if#}
+				{#/article#}
+				</ul>
+			</div>
+			{#article action="alist" return="alist" flag="r,p" pageSize="2"#}
+			<div class="item">
+				<a href="{#$alist.url#}" class="img" title="{#$jlist.title|strip_tags#}">
+					<img src="{#changeFileSize url="{#$alist.litpic#}" type="middle"#}" alt="{#$jlist.title|strip_tags#}">
+					<span class="bg"></span>
+					<span class="txt">{#$alist.title|strip_tags#}</span>
+				</a>
+			</div>
+			{#/article#}
+		</div>
+
+		<div class="cmass fn-clear">
+			<div class="cl">
+				<div class="ad">{#myad title="新闻资讯_模板二_电脑端_广告四"#}</div>
+				<div class="news">
+					<h4><a href="{#getUrlPath service='article' template='list' typeid="37"#}">315资讯</a></h4>
+					<ul>
+						{#article action="alist" return="alist" typeid="37" pageSize="2"#}
+						<li><i></i><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+			</div>
+			<div class="cr">
+				<ul class="fn-clear cutTab">
+					<li class="f current"><span>公司/观点</span></li>
+					<li><span><a href="{#getUrlPath service='article' template='list' typeid="40"#}">经济人物</a></span></li>
+				</ul>
+				<div class="cutCon">
+					<div class="news mb20">
+						<h4><a href="{#getUrlPath service='article' template='list' typeid="38"#}">公司资讯</a></h4>
+						<ul>
+							{#article action="alist" return="alist" typeid="38" pageSize="4"#}
+							<li><i></i><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></li>
+							{#/article#}
+						</ul>
+					</div>
+					<div class="news">
+						<h4><a href="{#getUrlPath service='article' template='list' typeid="39"#}">人物观察</a></h4>
+						<ul>
+							{#article action="alist" return="alist" typeid="39" pageSize="4"#}
+							<li><i></i><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></li>
+							{#/article#}
+						</ul>
+					</div>
+				</div>
+				<div class="cutCon fn-hide">
+					<div class="ad">{#myad title="新闻资讯_模板二_电脑端_广告五"#}</div>
+					<div class="news">
+						<ul>
+							{#article action="alist" return="alist" typeid="40" pageSize="8"#}
+							<li><i></i><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}">{#$alist.title|strip_tags#}</a></li>
+							{#/article#}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="sixp fn-clear">
+			{#article action="alist" return="klist" typeid="24" thumb="1" pageSize="6"#}
+			<a href="{#$klist.url#}" class="p{#$_bindex.klist#}">
+			  {#if $_bindex.klist == 1#}
+				<img src="{#$klist.litpic#}" alt="{#$klist.title|strip_tags#}">
+				{#elseif $_bindex.klist == 4#}
+				<img src="{#$klist.litpic#}" alt="{#$klist.title|strip_tags#}">
+				{#else#}
+				<img src="{#changeFileSize url="{#$klist.litpic#}" type="middle"#}" alt="{#$klist.title|strip_tags#}">
+				{#/if#}
+				<span class="bg"></span>
+				<span class="txt">{#$klist.title|strip_tags#}</span>
+			</a>
+			{#/article#}
+		</div>
+
+		<div class="nrank">
+			<ul class="fn-clear cutTab">
+				<li class="f current"><span class="rec"><i></i></span></li>
+				<li><span>点击排行榜</span></li>
+				<li><span>评论排行榜</span></li>
+			</ul>
+			<div class="cutCon">
+				<ul>
+					{#article action="alist" return="mlist" orderby="0" pageSize="10"#}
+					<li><i{#if $_bindex.mlist < 4#} class="red"{#/if#}>{#$_bindex.mlist#}</i><a href="{#$mlist.url#}">{#$mlist.title|strip_tags#}</a><em class="z">{#$mlist.click#}</em></li>
+					{#/article#}
+				</ul>
+			</div>
+			<div class="cutCon fn-hide">
+				<ul>
+					{#article action="alist" return="nlist" orderby="2" pageSize="10"#}
+					<li><i{#if $_bindex.nlist < 4#} class="red"{#/if#}>{#$_bindex.nlist#}</i><a href="{#$nlist.url#}">{#$nlist.title|strip_tags#}</a><em>{#$nlist.click#}</em></li>
+					{#/article#}
+				</ul>
+			</div>
+			<div class="cutCon fn-hide">
+				<ul>
+					{#article action="alist" return="olist" orderby="4" pageSize="10"#}
+					<li><i{#if $_bindex.olist < 4#} class="red"{#/if#}>{#$_bindex.olist#}</i><a href="{#$olist.url#}">{#$olist.title|strip_tags#}</a><em>{#$olist.common#}</em></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+
+		<div class="cmass el fn-clear">
+			<div class="ad cl">{#myad title="新闻资讯_模板二_电脑端_广告六"#}</div>
+			<div class="news cr">
+				<h4><a href="{#getUrlPath service='article' template='list' typeid="41"#}">科技资讯</a></h4>
+				<ul>
+					{#article action="alist" return="plist" typeid="41" pageSize="6"#}
+					<li><i></i><a href="{#$plist.url#}" title="{#$plist.title|strip_tags#}">{#$plist.title|strip_tags#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="wrap pics">
+	<h2><a href="{#getUrlPath service='article' template='list' typeid="15"#}">体育图片</a></h2>
+	<ul>
+	  {#article action="alist" return="qlist" typeid="15" thumb="1" pageSize="11"#}
+	  {#if $_bindex.qlist == 1#}
+		<li class="p{#$_bindex.qlist#}"><a href="{#$qlist.url#}" title="{#$qlist.title|strip_tags#}"><img src="{#changeFileSize url="{#$qlist.litpic#}" type="o_large"#}"><div class="txt">{#$qlist.title|strip_tags#}</div></a></li>
+		{#elseif $_bindex.qlist == 4 || $_bindex.qlist == 5 || $_bindex.qlist == 6 || $_bindex.qlist == 9 || $_bindex.qlist == 10 || $_bindex.qlist == 11#}
+		<li class="p{#$_bindex.qlist#}"><a href="{#$qlist.url#}" title="{#$qlist.title|strip_tags#}"><img src="{#changeFileSize url="{#$qlist.litpic#}" type="small"#}"><div class="txt">{#$qlist.title|strip_tags#}</div></a></li>
+		{#else#}
+		<li class="p{#$_bindex.qlist#}"><a href="{#$qlist.url#}" title="{#$qlist.title|strip_tags#}"><img src="{#changeFileSize url="{#$qlist.litpic#}" type="middle"#}"><div class="txt">{#$qlist.title|strip_tags#}</div></a></li>
+		{#/if#}
+		{#/article#}
+	</ul>
+</div>
+
+<div class="wrap fn-clear">
+	<div class="wmain">
+		<div class="wnews">
+			<h2><i></i><a href="{#getUrlPath service='article' template='list' typeid="42"#}">理财</a> / <a href="{#getUrlPath service='article' template='list' typeid="31"#}">评论</a></h2>
+			{#article action="alist" return="rlist" typeid="42" orderby="2" pageSize="8"#}
+			{#if $_bindex.rlist == 1#}
+			<h4><a href="{#$rlist.url#}" title="{#$rlist.title|strip_tags#}">{#$rlist.title|strip_tags#}</a></h4>
+			<ul class="mb20">
+			{#/if#}
+			{#if $_bindex.rlist > 1#}<li><a href="{#$rlist.url#}" title="{#$rlist.title|strip_tags#}"><i></i>{#$rlist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+			{#article action="alist" return="slist" typeid="31" orderby="2" pageSize="8"#}
+			{#if $_bindex.slist == 1#}
+			<h4><a href="{#$slist.url#}" title="{#$slist.title|strip_tags#}">{#$slist.title|strip_tags#}</a></h4>
+			<ul>
+			{#/if#}
+			{#if $_bindex.slist > 1#}<li><a href="{#$slist.url#}" title="{#$slist.title|strip_tags#}"><i></i>{#$slist.title|strip_tags#}</a></li>{#/if#}
+			{#/article#}
+			</ul>
+		</div>
+	</div>
+	<div class="wsidebar">
+
+		<div class="sixp dw fn-clear">
+			{#article action="alist" return="tlist" typeid="1" orderby="2" pageSize="6"#}
+			<a href="{#$tlist.url#}" title="{#$tlist.title|strip_tags#}" class="p{#$_bindex.tlist#}">
+				<img src="{#$tlist.litpic#}" alt="{#$tlist.title|strip_tags#}">
+				<span class="bg"></span>
+				<span class="txt">{#$tlist.title|strip_tags#}</span>
+				<em></em>
+			</a>
+			{#/article#}
+		</div>
+
+	</div>
+</div>
+
+<div class="wrap flink">
+	<h2>媒体合作</h2>
+	<ul class="fn-clear">
+		<li>
+			{#siteConfig action="friendLink" return="flink" type="273" module="article"#}
+			<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+			{#/siteConfig#}
+		</li>
+		<li>
+			{#siteConfig action="friendLink" return="flink" type="274" module="article"#}
+			<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+			{#/siteConfig#}
+		</li>
+		<li>
+			{#siteConfig action="friendLink" return="flink" type="275" module="article"#}
+			<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+			{#/siteConfig#}
+		</li>
+		<li>
+			{#siteConfig action="friendLink" return="flink" type="276" module="article"#}
+			<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+			{#/siteConfig#}
+		</li>
+	</ul>
+</div>
+
+<div class="copyright">
+	<div class="wrap">
+		<p>
+			{#siteConfig action="singel"#}
+			<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}">{#$row.title#}</a><em>|</em>
+			{#/siteConfig#}
+			<a href="{#getUrlPath service='siteConfig' template='help'#}">帮助中心</a>
+		</p>
+		{#$cfg_powerby#}<br />{#$cfg_statisticscode#}
+	</div>
+</div>
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
