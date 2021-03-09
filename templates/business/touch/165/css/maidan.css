@@ -1,0 +1,48 @@
+/* 头部 */
+.header{height: .9rem;background: #fff !important;display: -webkit-box;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: relative;z-index: 100000; border-bottom: 1px solid #f2f2f2;}
+.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle; background: url(../images/header_back.png) center center no-repeat; background-size: auto .48rem;}
+.header-l img{display: block;width: auto;height: .8rem;margin: 0 auto;}
+.header-address{-webkit-box-flex: 1;text-align: center; font-size: .36rem; line-height: .9rem; margin: 0; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.header-address a.changeCity{position: relative;}
+.header-address .downArea{position: absolute; right: -0.3rem; top: 0.15rem; border-top: .1rem solid #333; border-left: .1rem solid transparent; border-right: .1rem solid transparent;}
+.header-search a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;float: right;text-align: center;}
+
+
+::selection             { background:none; }
+::-moz-selection    { background:none; }
+::-webkit-selection { background:none;}
+body,html{
+	-webkit-tap-highlight-color: rgba(240,240,240,0);
+	background: #fff;
+}
+.header{
+    border-bottom: none;
+}
+
+
+.shop_info{display: flex; align-items: center; margin: .32rem; font-size: .3rem; color: #313233; }
+.shop_info h3{font-weight: bold;}
+.shop_info .shop_img{width: .6rem; height: .6rem; border-radius: .3rem; background-color: #fff; margin-right: .1rem;}
+.shop_info .shop_img img{width: 100%; height: 100%; object-fit: cover; display: block; border-radius: .3rem;}
+
+.formbox .inpbox{margin: 0 .3rem; background-color: #F6F6F6; border-radius: .3rem; height: 1.2rem; display: flex; align-items: center; justify-content: space-between; padding: 0 .3rem;margin-bottom: .32rem; border: solid .03rem #F6F6F6; box-sizing: border-box;}
+.formbox .inpbox label{color: #7C7C80; font-size: .3rem; font-weight: bold;}
+.formbox .inpbox label span {position: relative; height: .3rem; display: inline-block; vertical-align: middle; margin: -.1rem 0 0 .1rem; padding: 0 .15rem 0 .1rem; border-radius: .3rem; color: #fff; font-size: .2rem; font-weight: bold; line-height: .32rem; background: linear-gradient(120deg, #FF6B1A 0%, #FF0036 100%); font-family: Core Gothic D; overflow: hidden;}
+.formbox .inpbox label span::before {content: ''; position: absolute; left: 0; top: 0; width: .26rem; height: .3rem; background: url('/static/images/business/maidan_sale.png') no-repeat center; background-size: cover; z-index: 1; border-radius: .3rem;}
+.formbox .inpbox label span i {position: relative; z-index: 2; font-style: italic;}
+.formbox .inpbox input{font-size: .36rem; color: #313233; text-align: right; border: none; background: none; width: 2.5rem;}
+.formbox .inpbox input::placeholder{color: #ADAEB3; font-size: .28rem;}
+.formbox .inpbox.focus{border: solid .03rem #EFDABF;}
+.count{margin: 0 .55rem; font-size: .3rem; color: #313233; font-weight: bold; margin-top: .6rem;}
+.count span{color: #FF7A20; font-size: .32rem; font-weight: bold; }
+.count span em{font-weight: bold; font-size: .4rem;}
+.btn_pay{display: block; margin: 0 .3rem; height: 1rem; border-radius: .5rem; background: linear-gradient(120deg, #FF9721 0%, #FF8533 100%); color: #fff; text-align: center; font-size: .36rem; font-weight: bold; line-height: 1rem; margin-top: .3rem;}
+
+.tip_hui{background-color: #FFF7ED; border-radius: .3rem; padding: .5rem .3rem; margin: .32rem; position: fixed; bottom: 1.16rem; left: 0; right: 0;}
+.tip_hui dt{color: #C58827; font-size: .36rem; font-weight: bold; display: flex; align-items: center; margin-bottom: .27rem;}
+.tip_hui dt::before{content: ''; display: block; width: .38rem; height: .38rem; background: url(../images/tip.png) no-repeat center; background-size: .38rem; margin-right: .07rem;}
+.tip_hui dd{font-size: .26rem; color: #C58827; line-height: .36rem;}
+/* 错误提示1 */
+.popErr {position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index: 100001; visibility: hidden;}
+.popErr p {position: fixed; background-color: rgba(0,0,0,.7); border-radius: 5px; color: #fff; font-size: .3rem; line-height: 1.4; text-align: center; padding: .24rem .2rem; z-index: 9999; left: 0; top: 50%; margin-top: -.2rem;}
+.disabled{pointer-events: none !important;}
