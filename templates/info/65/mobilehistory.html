@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>电话号码发帖记录 - {#$info_title#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/phone_record.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="phone_record_infor">
+	<i><img src="/include/json.php?action=phoneimage&size=15&num={#$data#}" /></i>
+	<div class="information fn-clear"><p>此号码归属：</p><strong>{#$telAddr#}</strong><p>共发布了</p><em>{#$telCount#}</em><p>条信息</p></div>
+</div>
+<div class="phone_record_lead fn-clear">
+	<span>此号码发帖记录</span>
+</div>
+<div class="phone_record_list">
+	<div class="pr_lead fn-clear">
+		<p class="title">信息标题</p>
+		<p class="kind">信息类别</p>
+		<p class="people">发布人</p>
+		<p class="price">价格</p>
+		<p class="time">发布时间</p>
+	</div>
+	<div class="pr_list">
+		<ul>
+			{#info action="ilist" return="ilist" tel={#$tel#} pageSize=1000#}
+			<li>
+				<p class="title"><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></p>
+				<p class="kind"><a href="{#getUrlPath service='info' template='list' id={#$ilist.typeid#}#}" target="_blank">{#$ilist.typename#}</a></p>
+				<p class="people" title="{#$ilist.member['nickname']#}"><a href="{#getUrlPath service='info' template='store' id={#$ilist.member['id']#}#}" target="_blank">{#$ilist.member['nickname']#}</a></p>
+				{#if $ilist.price == 0#}
+				<p class="people price">面议</p>
+				{#else#}
+				<p class="people price">{#echoCurrency type='symbol'#}{#$ilist.price#}</p>
+				{#/if#}
+				<p class="time">{#$ilist.pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+			</li>
+			{#/info#}
+		</ul>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+</body>
+</html>

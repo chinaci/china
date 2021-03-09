@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$info_title#}</title>
+<meta name="keywords" content="{#$info_keywords#}" />
+<meta name="description" content="{#$info_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css" >
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v=10" >
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body>
+
+<!-- 顶部 s -->
+  <div class="topNav">
+    <div class="wrap fn-clear">
+      <div class="topNav-l fn-left">
+        {#*<div class="city"><a href="javascript:;" class="present">本地</a></div>*#}
+        <ul class="topNav-ul">
+					{#info action="type" return='type'#}
+          <li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+					{#/info#}
+          <li class="more">
+            <a href="javascript:;">更多<em class="more-arrow"></em></a>
+            <ul class="dropdown">
+							{#info action="type" return='type'#}
+              <li>
+								<em><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></em>
+								{#info action="type" return='subtype' type="{#$type.id#}" page="1" pageSize="4"#}
+								<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+								{#/info#}
+							</li>
+							{#/info#}
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="topNav-r fn-right">
+        <a href="javascript:;" class="mobile la">手机版
+					<div class="pop">
+  					<s></s>
+  					<p>扫码访问<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150"></p>
+					</div>
+        </a>
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+        <ul class="navLogin">
+          <li><a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a></li>
+					<li>|</li>
+          <li><a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a></li>
+        </ul>
+				{#else#}
+        <ul class="navLogin">
+          <li><a href="{#$cfg_basehost#}/register.html">免费注册</a></li>
+					<li>|</li>
+          <li><a href="{#$cfg_basehost#}/login.html">会员登录</a></li>
+        </ul>
+				{#/if#}
+      </div>
+    </div>
+  </div>
+<!-- 顶部 e -->
+
+<!-- 头部 s -->
+	<div class="header">
+		<div class="wrap fn-clear">
+			<div class="header-l fn-left">
+				<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}" /></a>
+			</div>
+			<div class="header-m fn-left">
+				<form class="" action="index.html" method="post">
+					<input type="text" value="" placeholder="想找什么？输入类别或关键字试试" class="inpt">
+					<input type="button" value="搜索" class="inpb">
+				</form>
+				<div class="hot-words">
+					<span>推荐：</span>
+					{#siteConfig module="info" action="hotkeywords" return="hotkeywords"#}
+					<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+					{#/siteConfig#}
+				</div>
+			</div>
+			<div class="header-r fn-right">
+				<div class="hr-top fn-clear">
+					<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="hr-free fn-right">免费发布信息</a>
+					<a href="javascript:;" class="hr-wx la fn-right">关注微信有礼
+						<div class="pop">
+							<s></s>
+							<p>微信扫码关注<img src="{#$cfg_weixinQr#}" width="150" height="150"></p>
+						</div>
+					</a>
+				</div>
+				<div class="hr-bottom fn-right">
+					<a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank">修改/删除信息</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 头部 e -->
+
+<!-- 导航 s -->
+	<div class="wrap">
+		<div class="nav fn-clear">
+			<div class="nav-left fn-left">
+				<ul class="fn-clear">
+					<li class="on"><a href="javascript:;">首页</a></li>
+					{#info action="type" return='type'#}
+          <li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+					{#/info#}
+				</ul>
+			</div>
+			<div class="nav-right fn-right">
+				<ul>
+					<li><a href="#">我要推广</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- 导航 e -->
+
+<!-- 广告位 s -->
+	<div class="adv-1">
+		<div class="wrap">
+			{#myad title="二手信息_模板五_电脑端_广告一"#}
+		</div>
+	</div>
+<!-- 广告位 e -->
+
+<!-- 主要内容 s -->
+	<div class="wrap">
+		<div class="main fn-clear">
+			<div class="main-1 fn-left">
+				<h2 class="info-tit info-tit2"><a href="{#getUrlPath service='info' template='list' type="224"#}" target="_blank">车辆买卖</a>»</h2>
+				{#info action="type" return='subtype' type="224"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+				<h2 class="info-tit info-tit3"><a href="{#getUrlPath service='info' template='list' type="320"#}" target="_blank">宠物/宠物用品</a>»</h2>
+				{#info action="type" return='subtype' type="320"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+			</div>
+			<div class="main-2 fn-left">
+				<h2 class="info-tit info-tit1"><a href="{#getUrlPath service='info' template='list' type="243"#}" target="_blank">本地房产</a>»</h2>
+				{#info action="type" return='subtype' type="243"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+				<h2 class="info-tit info-tit9"><a href="{#getUrlPath service='info' template='list' type="290"#}" target="_blank">本地兼职</a>»</h2>
+				{#info action="type" return='subtype' type="290"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+			</div>
+			<div class="main-3 fn-left">
+				<h2 class="info-tit info-tit5"><a href="{#getUrlPath service='info' template='list' type="197"#}" target="_blank">跳蚤市场</a></h2>
+				{#info action="type" return='subtype' type="197"#}
+				<a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+				<h2 class="info-tit info-tit14"><a href="{#getUrlPath service='info' template='list' type="398"#}" target="_blank">教育培训</a>»</h2>
+				{#info action="type" return='subtype' type="398"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+				<h2 class="info-tit info-tit11"><a href="{#getUrlPath service='info' template='list' type="328"#}" target="_blank">热门服务</a></h2>
+				{#info action="type" return='subtype' type="328"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+			</div>
+			<div class="main-4 fn-right">
+				<h2 class="info-tit info-tit8"><a href="{#getUrlPath service='info' template='list' type="255"#}" target="_blank">本地招聘</a>»</h2>
+				{#info action="type" return='subtype' type="255"#}
+        <a href="{#$subtype.url#}" target="_blank">{#$subtype.typename#}</a>
+				{#/info#}
+			</div>
+		</div>
+	</div>
+<!-- 主要内容 e -->
+
+<!-- 友情链接 s -->
+	<div class="wrap">
+		<div class="friendLink">
+			<span>友情链接:</span>
+			{#siteConfig action="friendLink" return="flink" module="info"#}<a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>{#/siteConfig#}
+		</div>
+	</div>
+<!-- 友情链接 e -->
+
+<!-- 底部 s -->
+<div class="footer-login">
+  <p>
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><span class="pice">|</span>
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+  </p>
+	{#$cfg_powerby#}
+</div>
+<!-- 底部 e -->
+
+<!-- 返回顶部 s -->
+	<div class="floatNav">
+		<a href="javascript:;" class="top"></a>
+	</div>
+<!-- 返回顶部 e -->
+
+
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script src="{#$templets_skin#}js/index.js" type="text/javascript"></script>
+</body>
+</html>
