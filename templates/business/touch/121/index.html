@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$business_title#}</title>
+<meta name="keywords" content="{#$business_keywords#}">
+<meta name="description" content="{#$business_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+	var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+	var typeUrl = '{#getUrlPath service='business' template='list' param="typeid=%id"#}';
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$business_description#}#}
+{#$Share_title = {#$business_title#}#}
+{#$Share_img = {#$business_logoUrl#}#}
+{#$Share_url = {#$business_channelDomain#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$business_channelName#}"#}
+
+<!-- 轮播图 s -->
+<div class="banner">
+	<div class="wrapper">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            {#myad title="商家_模板二_移动端_banner" type='slide'#}
+	        </div>
+	        <div class="pagination"></div>
+	    </div>
+ 	</div>
+</div>
+
+<!-- 轮播图 e -->
+
+<!-- 搜索 -->
+<div class="search-form">
+	<div class="sobj">
+		<div class="area">
+			<a href="{#$cfg_basehost#}/changecity.html">
+				<i></i>
+				<label>{#$siteCityInfo.name#}</label>
+				<s></s>
+			</a>
+		</div>
+		<div class="inp">
+			<form action="{#getUrlPath service='business' template='list'#}">
+				<s></s>
+				<input type="text" name="keywords" placeholder="输入商家名称关键字" />
+				<button type="submit">搜索</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- 搜索 e -->
+
+<!-- 最新入驻 s -->
+<div class="pubBox tcNews fn-clear">
+	<div class="lBox"><img src="{#$templets_skin#}images/bruzhu.png?v={#$cfg_staticVersion#}" alt=""></div>
+	<div class="mBox">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+                <div class="pl_h"></div>
+            </div>
+	    	<div class="pagination"></div>
+		</div>
+	</div>
+	<div class="rBox">
+		{#if !$userinfo || $userinfo.userType == 1#}
+		<a href="{#getUrlPath service='member' type='user' template='enter'#}">
+			<img src="{#$templets_skin#}images/b-ruzhu.png" alt="">
+			<p>我要入驻</p>
+		</a>
+		{#elseif $userinfo.busiType == 1#}
+		<a href="{#getUrlPath service='member' template='join_upgrade'#}">
+			<img src="{#$templets_skin#}images/b-ruzhu.png" alt="">
+			<p>我要升级</p>
+		</a>
+		{#else#}
+		<a href="{#getUrlPath service='member' template='servicemeal'#}">
+			<img src="{#$templets_skin#}images/b-ruzhu.png" alt="">
+			<p>我要续费</p>
+		</a>
+		{#/if#}
+	</div>
+
+</div>
+<!-- 最新入驻 e -->
+
+<!-- 滑动导航 s -->
+<div class="pubBox tcInfo">
+	<div class="tabMain">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            	<ul>
+                    <li class="pl_h"></li>
+                    <li class="pl_h"></li>
+                    <li class="pl_h"></li>
+                    <li class="pl_h"></li>
+                    <li class="pl_h"></li>
+            	</ul>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+	</div>
+</div>
+<!-- 滑动导航 e -->
+
+<!-- 广告位 s -->
+<div class="pubBox adpos fn-clear">
+	<div class="adBox">
+		{#myad title="商家_模板二_移动端_广告一"#}
+	</div>
+	<div class="adBox">
+		{#myad title="商家_模板二_移动端_广告二"#}
+	</div>
+	<div class="adBox">
+		{#myad title="商家_模板二_移动端_广告三"#}
+	</div>
+	<div class="adBox">
+		{#myad title="商家_模板二_移动端_广告四"#}
+	</div>
+
+</div>
+
+<!-- 广告位 e -->
+<div class="pubBox AdBox">
+	{#myad title="商家_模板二_移动端_广告五"#}
+</div>
+
+<!-- 推荐商家 s -->
+<div class="pubBox recomBus">
+	<h3>推荐商家</h3>
+	<ul class="fn-clear">
+        <li class="pl_h fn-clear">
+            <div class="pl_h_l"></div>
+            <div class="pl_h_r">
+                <div class="pl_h_r_r"></div>
+                <div class="pl_h_r_l"></div>
+            </div>
+        </li>
+        <li class="pl_h fn-clear">
+            <div class="pl_h_l"></div>
+            <div class="pl_h_r">
+                <div class="pl_h_r_r"></div>
+                <div class="pl_h_r_l"></div>
+            </div>
+        </li>
+        <li class="pl_h fn-clear">
+            <div class="pl_h_l"></div>
+            <div class="pl_h_r">
+                <div class="pl_h_r_r"></div>
+                <div class="pl_h_r_l"></div>
+            </div>
+        </li>
+        <li class="pl_h fn-clear">
+            <div class="pl_h_l"></div>
+            <div class="pl_h_r">
+                <div class="pl_h_r_r"></div>
+                <div class="pl_h_r_l"></div>
+            </div>
+        </li>
+        <li class="pl_h fn-clear">
+            <div class="pl_h_l"></div>
+            <div class="pl_h_r">
+                <div class="pl_h_r_r"></div>
+                <div class="pl_h_r_l"></div>
+            </div>
+        </li>
+    </ul>
+	<div class="moreBox">
+		<a href="javascript:;" class="btnMore">查看更多</a>
+	</div>
+
+</div>
+<!-- 推荐商家 e -->
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+{#include file="../../../siteConfig/touch_bottom_4.3.html" active="business"#}
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

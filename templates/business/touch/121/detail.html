@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="wap-font-scale" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe.css?v={#$cfg_staticVersion#}'>
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe-default-skin.css?v={#$cfg_staticVersion#}'>
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+	var pageData = {
+	    title: '{#$detail_title#}',
+	    address: '{#$detail_addressdet#}',
+	    lnglat: '{#$detail_lnglat#}',
+	    lat: '{#$detail_lat#}',
+	    lng: '{#$detail_lng#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}'
+    };
+  var	JubaoConfig = {
+    "module" : 'business',
+    "action" : 'detail',
+    "id" : '{#$detail_id#}'
+  };
+  var id = {#$detail_id#};
+  var uid = {#$userinfo.userid|default:0#};
+
+  var imconfig = {
+			'mod':'business',
+			'chatid':"{#$detail_uid#}",
+		};
+
+	var touch_poster = 1;
+
+</script>
+
+</head>
+<style>
+	.html2Wrap .html2Con{background: #F9F9F8;}
+	.html2Wrap .html2Con .pubBox{margin-bottom: .2rem;}
+</style>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="商家首页"#}
+<!-- 海报s -->
+	<div class="html2Wrap">
+		<div class="html2_node" id="html2_node">
+			<div class="html2Con">
+				<!-- 店铺信息 s-->
+				<div class="pubBox sInfoBox">
+					<h3>{#$detail_title#}</h3>
+					<div class="comment fn-clear"><span class="starbg"><i class="star" style="width: {#$detail_sco1 / 5 * 100#}%;"></i></span><em><em class="comment_total">{#$detail_comment#}</em>评论</em></div>
+					<div class="smarkBox fn-clear">
+						<span class="smark">{#$detail_typenameArr[0]#}</span>
+						{#foreach from=$detail_tag_shopArr item='tag'#}
+						<span class="smark">{#$tag#}</span>
+						{#/foreach#}
+					</div>
+					<p class="fn-clear">
+				        {#$detail_weekDay#} {#$detail_opentime#}
+				        <a href="javascript:;" class="btnCollect{#if $detail_collect#} collect1{#/if#}">{#if $detail_collect#}已{#/if#}收藏</a>
+				    </p>
+				</div>
+
+				<!-- 店铺信息 e-->
+
+				<!-- 模块链接 -->
+				<div class="pubBox module">
+					<ul class="fn-clear">
+						{#$dingzuo = 0#}
+						{#$paidui = 0#}
+						{#$waimai = 0#}
+						{#foreach from=$detail_store item='store'#}
+						{#if $store.name == "dingzuo"#}
+						{#$dingzuo = 1#}
+						{#elseif $store.name == "waimai"#}
+						{#$waimai = 1#}
+						{#elseif $store.name == "paidui"#}
+						{#$paidui = 1#}
+						{#/if#}
+						<li class="mlbg1" data-name="{#$store.name#}">
+							<a href="{#$store.homepage#}">
+								{#if $store.is_module#}
+								<img src="{#$cfg_staticPath#}images/admin/nav/{#$store.name#}.png" alt="">
+								{#else#}
+								<img src="{#$cfg_staticPath#}images/business/{#$store.name#}.png" />
+								{#/if#}
+								<p>{#$store.title#}</p>
+							</a>
+						</li>
+						{#/foreach#}
+						{#foreach from=$detail_custom_nav item='nav'#}
+						<li class="mlbg1" data-name="{#$nav.name#}">
+							<a href="{#$nav.url#}">
+								{#if $nav.is_module#}
+								<img src="{#$cfg_staticPath#}images/admin/nav/{#$nav.name#}.png" alt="">
+								{#else#}
+								<img src="{#$nav.icon#}" />
+								{#/if#}
+								<p>{#$nav.title#}</p>
+							</a>
+						</li>
+						{#/foreach#}
+					</ul>
+				</div>
+				<!-- 模块链接 -->
+				<div class="himgGroup">
+					{#if $detail_banner|@count ==0#}
+						<div class="himg_box_single"><img src="{#$detail_litpic#}"></div>
+					{#else#}
+						{#$r = $detail_banner|@count #}
+						{#foreach from=$detail_banner item=img key="key"#}
+						{#if $r==1#}
+						<div class="himg_box_single"><img src="{#$img.pic#}"></div>
+						{#else if $key<3#}
+						<div class="himg_box1"><img src="{#$img.pic#}"></div>
+						{#/if#}
+						{#/foreach#}
+					{#/if#}
+				</div>
+			</div>
+			<div class="html2_pub">
+				<h2 class="h_title">{#$cfg_shareTitle#}</h2>
+				<p>{#$cfg_shareDesc#}</p>
+				<div class="html2_qrcode"><img src="/include/qrcode.php?data={#$detail_url#}"></div>
+				<h3><span>长按识别二维码看详情</span></h3>
+			</div>
+
+		</div>
+	</div>
+	{#include file="../../../siteConfig/touch_poster.html"#}
+	<!-- 海报 -->
+<!-- 视频or全景 s-->
+<div class="topMain">
+	<div class="swiper-container">
+		<i class="vClose"></i>
+		<div class="swiper-wrapper">
+			{#if $detail_video#}
+			<div class="swiper-slide video-box">
+			    <video width="100%" height="100%" preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  src="{#$detail_video#}" id="video" poster="{#$detail_video_pic#}"></video>
+			    <div class="video-btn">
+			        <div class="play-box video-icon-box" id="vbplay">
+			            <i class="play-icon video-icon"></i>
+			        </div>
+			        <div class="load-box video-icon-box" style="display: none;">
+			            <i class="load-icon video-icon"></i>
+			        </div>
+			        <div class="reload-box video-icon-box" style="display: none;">
+			            <i class="reload-icon"></i>
+			            <p>重新播放</p>
+			        </div>
+			        <div class="error-box video-icon-box" style="display: none;">
+			            <p class="err-info">视频出错了，请检查网络状况</p>
+			            <div class="reload-box">
+			                <i class="reload-icon"></i>
+			                <p>重新加载</p>
+			            </div>
+			        </div>
+			    </div>
+			    <div id="video-control" style="display: none;">
+				  <div class="btn-control">
+				    <div id="play" class="play"> </div>
+				  </div>
+				  <div id="time" class="time"> 00:00 </div>
+				  <div id="progress"> <span id="bar"></span>
+				    <div id="control"> </div>
+				  </div>
+				  <div class="btn-control">
+				    <div id="sound" class="soundon"> </div>
+				  </div>
+				  <div id="full" class="full"> </div>
+				</div>
+			</div>
+			{#/if#}
+			{#foreach from=$detail_banner item='banner'#}
+			<div class="swiper-slide">
+				<img src="{#$banner.pic#}" alt="">
+			</div>
+			{#/foreach#}
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<div class="markBox">
+		{#if $detail_video#}<a href="javascript:;" class="vmark mark1"><i></i>视频</a>{#/if#}
+		{#if $detail_qj_file#}<a href="{#getUrlPath service='business' template='qj' id=$detail_id#}" class="vmark mark2"><i></i>全景</a>{#/if#}
+	</div>
+</div>
+<!-- 视频or全景 e-->
+
+<!-- 视频弹出层 s-->
+<div class="videoModal" tabindex="-1" role="dialog">
+	<i class="vClose"></i>
+	<video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" src="{#$detail_video#}"  poster="{#$detail_video_pic#}"></video>
+</div>
+<!-- 视频弹出层 e-->
+
+<!-- 店铺信息 s-->
+<div class="pubBox sInfoBox">
+	<h3>{#$detail_title#}</h3>
+	<div class="comment fn-clear"><span class="starbg"><i class="star" style="width: {#$detail_sco1 / 5 * 100#}%;"></i></span><em><em class="comment_total">{#$detail_comment#}</em>评论</em></div>
+	<div class="smarkBox fn-clear">
+		<span class="smark">{#$detail_typenameArr[0]#}</span>
+		{#foreach from=$detail_tag_shopArr item='tag'#}
+		<span class="smark">{#$tag#}</span>
+		{#/foreach#}
+	</div>
+	<p class="fn-clear">
+        {#$detail_weekDay#} {#$detail_opentime#}
+        <a href="javascript:;" class="btnCollect{#if $detail_collect#} collect1{#/if#}">{#if $detail_collect#}已{#/if#}收藏</a>
+    </p>
+	{#if $detail_tagArr#}
+	<div class="icon-list">
+		<ul>
+			{#foreach from=$detail_tagArr item='tag'#}
+			<li><img src="{#$cfg_staticPath#}images/business/{#$tag.py#}.png" alt=""><span>{#$tag.val#}</span></li>
+			{#/foreach#}
+		</ul>
+		<span class="more"><i></i></span>
+	</div>
+	{#/if#}
+
+</div>
+<!-- 店铺信息 e-->
+
+<!-- 模块链接 -->
+<div class="pubBox module">
+	<ul class="fn-clear">
+		{#$dingzuo = 0#}
+		{#$paidui = 0#}
+		{#$waimai = 0#}
+		{#foreach from=$detail_store item='store'#}
+		{#if $store.name == "dingzuo"#}
+		{#$dingzuo = 1#}
+		{#elseif $store.name == "waimai"#}
+		{#$waimai = 1#}
+		{#elseif $store.name == "paidui"#}
+		{#$paidui = 1#}
+		{#/if#}
+		<li class="mlbg1" data-name="{#$store.name#}">
+			<a href="{#$store.homepage#}">
+				{#if $store.icon#}
+				<img src="{#$cfg_staticPath#}images/admin/nav/{#$store.name#}.png" alt="">
+				{#else#}
+				<img src="{#$cfg_staticPath#}images/business/{#$store.name#}.png" />
+				{#/if#}
+				<p>{#$store.title#}</p>
+			</a>
+		</li>
+		{#/foreach#}
+		{#foreach from=$detail_custom_nav item='nav'#}
+		<li class="mlbg1" data-name="{#$nav.name#}">
+			<a href="{#$nav.url#}">
+				{#if $nav.is_module#}
+				<img src="{#$cfg_staticPath#}images/admin/nav/{#$nav.name#}.png" alt="">
+				{#else#}
+				<img src="{#$nav.icon#}" />
+				{#/if#}
+				<p>{#$nav.title#}</p>
+			</a>
+		</li>
+		{#/foreach#}
+	</ul>
+</div>
+<!-- 模块链接 -->
+
+<!-- 店铺地址 s-->
+<div class="pubBox sAddBox fn-clear">
+	<div class="box fn-clear">
+		<div class="left">
+			<p class="paddr fn-clear"><i></i><span><a href="javascript:;"  class="appMapBtn" target="_blank">{#$detail_address#}&nbsp;</a></span></p>
+			<p class="ptel fn-clear">
+				<i></i>&nbsp;
+				{#foreach from=$detail_telArr item='tel'#}
+				<span><a href="tel:{#$tel#}">{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$tel#}</a></span>
+				{#/foreach#}
+			</p>
+		</div>
+		<div class="right utelphone">
+			<img src="{#$templets_skin#}images/utel.png" alt="">
+		</div>
+	</div>
+	{#*
+	<ul class="fn-clear">
+		<li class="libox1 fn-clear{#if !$dingzuo#} dis{#/if#}"> <i></i><span class="font">订座</span> <span class="smark">人气</span></li>
+		<li class="libox2 fn-clear{#if !$waimai#} dis{#/if#}"> <i></i><span class="font">外卖</span> <span class="smark">满减</span></li>
+		<li class="libox3 fn-clear{#if !$paidui#} dis{#/if#}"> <i></i><span class="font">排队</span> </li>
+	</ul>
+	*#}
+</div>
+<!-- 店铺地址 e-->
+
+
+
+<!-- 介绍 s-->
+<div class="pubBox userInfo">
+	<ul class="fn-clear">
+		<li class="curr"><a href="javascript:;">介绍</a></li>
+		<li><a href="javascript:;">相册</a></li>
+		<li><a href="{#getUrlPath service='business' template='video' id=$detail_id#}">视频</a></li>
+		<li><a href="javascript:;">动态</a></li>
+		{#business action='getStoreCustomMenu' id=$detail_id return='menu'#}
+		<li><a href="{#if $menu.jump#}{#$menu.url#}{#else#}javascript:;{#/if#}">{#$menu.title|mb_substr:0:4:'utf8'#}</a></li>
+		{#/business#}
+	</ul>
+	<div class="userCon show introCon">
+		<div class="textCon">
+			<div>{#$detail_body#}</div>
+			<div class="gradient"></div>
+		</div>
+		<div class="readMore"></div>
+	</div>
+	<div class="userCon photoMain fn-clear">
+		 <div class="wrapper">
+	          <div class="my-gallery comment-pic-slide" itemscope="" itemtype="" data-pswp-uid="1">
+		          <div class="swiper-wrapper" id="picobj">
+			           {#business action='albums_list' uid=$detail_id pageSize=100 return='list'#}
+			           <figure itemprop="associatedMedia" itemscope="" itemtype="" class="swiper-slide">
+			                <a href="{#$list.litpic#}" itemprop="contentUrl" data-size="800x800" class="picarr" id="pic0">
+			                  <div class="img-box"><img src="{#$list.litpic#}" itemprop="thumbnail" alt="Image description"></div>
+			                  <p>{#$list.typename#}</p>
+			                </a>
+			           </figure>
+			           {#/business#}
+		          </div>
+	          </div>
+        </div>
+	</div>
+	<div class="userCon introCon">
+		<div class="videobox"></div>
+	</div>
+	<div class="userCon trends">
+		<ul class="infoList">
+			{#business action='news_list' return='news' uid={#$detail_id#} pageSize='5'#}
+			<li class="fn-clear"><a href="{#$news.url#}"><em>[{#$news.typename#}]</em><p>{#$news.title#}</p><span>{#$news.pubdate|date_format:'%m.%d'#}</span></a></li>
+			{#/business#}
+		</ul>
+		{#if $pageInfo.totalCount >5#}
+		<p class="more"><a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">查看更多</a></p>
+		{#/if#}
+
+	</div>
+	{#business action='getStoreCustomMenu' id=$detail_id return='menu'#}
+	<div class="userCon customCon">{#if !$menu.jump#}{#$menu.body#}{#/if#}</div>
+	{#/business#}
+</div>
+<!-- 介绍 e-->
+
+<!-- 优惠信息 s-->
+{#$active = 0#}
+{#$tuanCount= 0#}
+<div class="pubBox shopInfo">
+	<ul class="tab-info fn-clear">
+		{#if in_array("tuan", $detail_bind_module) || in_array("shop", $detail_bind_module)#}
+		{#$active = 1#}
+		<li class="scurr"><a href="javascript:;">优惠信息</a></li>
+		<li><a href="javascript:;">店铺商品</a></li>
+		{#/if#}
+		<li {#if $active == 0#}class="scurr"{#/if#}><a href="javascript:;" class="userCom">用户评价</a></li>
+	</ul>
+	<div class="userCon{#if $active == 1#} show{#/if#}">
+		{#*
+		{#if in_array("maidan", $detail_bind_module)#}
+		<div class="topInfo">
+			<h4>买单</h4>
+			<p><span>{#if $maidan_youhui_open#}优惠{#$maidan_youhui_value#}{#else#}自助买单{#/if#}</span></p>
+			<a href="{#getUrlPath service='business' template='maidan' id=$detail_id#}">买单</a>
+		</div>
+		{#/if#}
+		*#}
+		{#if in_array("tuan", $detail_bind_module)#}
+		<div class="conInfo">
+			<div class="mainInfo">
+				<div class="top">
+					<span class="spmark mk1">团</span>
+					<h4>优惠套餐</h4>
+				</div>
+				<ul class="m-ul1">
+					{#tuan action="tlist" store={#$detail_store.tuan.sid|default:-1#} return="list" pageSize="5"#}
+					{#$tuanCount = $tuanCount + 1#}
+					<li class="fn-clear">
+						<a href="{#$list.url#}">
+							<div class="lleft">
+							<img src="{#$list.litpic|replace:"large":"small"#}" alt="">
+						</div>
+						<div class="lright">
+							<h4>{#$list.title#}</h4>
+							<p><em><s>{#echoCurrency type='symbol'#}</s> {#$list.price#}</em> <span>{#echoCurrency type='symbol'#}{#$list.market#}</span></p>
+						</div>
+						</a>
+					</li>
+					{#/tuan#}
+				</ul>
+				<div class="gradient"></div>
+			</div>
+			<div class="more more1"></div>
+		</div>
+		{#/if#}
+		{#if in_array("shop", $detail_bind_module)#}
+		<div class="conInfo">
+			<div class="mainInfo">
+				<div class="top">
+					<span class="spmark mk2">荐</span>
+					<h4>商品推荐</h4>
+				</div>
+		    <ul class="m-ul2 {#$detail_store.shop.sid#}">
+		    	{#shop action="slist" store={#$detail_store.shop.sid|default:-1#} flag="0" pageSize="5" return="list"#}
+					<li class="fn-clear">
+						<a href="{#$list.url#}">
+							<div class="lleft">
+								<img src="{#$list.litpic|replace:"large":"middle"#}" alt="">
+							</div>
+							<div class="lright">
+								<h4>{#$list.title#}</h4>
+								<p><em><s>{#echoCurrency type='symbol'#}</s> {#$list.price#}</em> <span>{#echoCurrency type='symbol'#}{#$list.mprice#}</span></p>
+							</div>
+						</a>
+					</li>
+					{#/shop#}
+				</ul>
+				<div class="gradient"></div>
+			</div>
+			<div class="more more2"></div>
+		</div>
+		{#/if#}
+	</div>
+	<div class="userCon{#if $active == 2#} show{#/if#}">
+		<div class="conInfo">
+			<div class="mainInfo">
+		    <ul class="ul-list">
+		    	{#if in_array("shop", $detail_bind_module)#}
+		    	{#shop action="slist" store={#$detail_store.shop.sid|default:-1#} pageSize="5" return="list"#}
+					<li class="fn-clear">
+						<a href="{#$list.url#}">
+							<div class="lleft">
+								<img src="{#$list.litpic|replace:"large":"small"#}" alt="">
+							</div>
+							<div class="lright">
+								<h4>{#$list.title#}</h4>
+								<p><em><s>{#echoCurrency type='symbol'#}</s> {#$list.price#}</em> <span>{#echoCurrency type='symbol'#}{#$list.mprice#}</span></p>
+							</div>
+						</a>
+					</li>
+					{#/shop#}
+					{#elseif in_array("tuan", $detail_bind_module)#}
+					{#tuan action="tlist" store={#$detail_store.tuan.sid|default:-1#} pageSize="5" return="list"#}
+					<li class="fn-clear">
+						<a href="{#$list.url#}">
+							<div class="lleft">
+								<img src="{#$list.litpic|replace:"large":"middle"#}" alt="">
+							</div>
+							<div class="lright">
+								<h4>{#$list.title#}</h4>
+								<p><em><s>{#echoCurrency type='symbol'#}</s> {#$list.price#}</em> <span>{#echoCurrency type='symbol'#}{#$list.mprice#}</span></p>
+							</div>
+						</a>
+					</li>
+					{#/tuan#}
+					{#/if#}
+				</ul>
+				<div class="gradient"></div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- 优惠信息 e-->
+<div id="c-info"></div>
+<!--评论 s-->
+<div class="pubBox commentBox">
+	<div class="head-title">
+		<p class="fn-clear">全部评论 (<span class="comment_total">{#$detail_comment#}</span>)<a href="{#getUrlPath service='business' template='comment' id=$detail_id#}" class="reply"><i></i>发表评论</a></p>
+	</div>
+	<div class="listBox fn-clear">
+		<div class="goodCom fn-clear">
+			<div class="gleft">
+				<p>好评率</p>
+				<p id="comment_good_ratio">&nbsp;</p>
+				<p>根据用户评分计算</p>
+			</div>
+			<div class="gright">
+				<div class="proBox fn-clear">
+					<span>超赞</span>
+					<div class="progress pro1">
+						<s></s>
+					</div>
+					<span class="num">0</span>
+				</div>
+				<div class="proBox fn-clear">
+					<span>满意</span>
+					<div class="progress pro2">
+						<s></s>
+					</div>
+					<span class="num">0</span>
+				</div>
+				<div class="proBox fn-clear">
+					<span>还行</span>
+					<div class="progress pro3">
+						<s></s>
+					</div>
+					<span class="num">0</span>
+				</div>
+				<div class="proBox fn-clear">
+					<span>一般</span>
+					<div class="progress pro3">
+						<s></s>
+					</div>
+					<span class="num">0</span>
+				</div>
+				<div class="proBox fn-clear">
+					<span>失望</span>
+					<div class="progress pro4">
+						<s></s>
+					</div>
+					<span class="num">0</span>
+				</div>
+			</div>
+		</div>
+		<div class="goodMark">
+			<ul class="fn-clear">
+				<li class="active" data-id="">全部(<span class="comment_total">{#$detail_comment#}</span>)</li>
+				<li data-id="sco1=4,5">好评(<span id="comment_good">0</span>)</li>
+				<li data-id="sco1=2,3">中评(<span id="comment_middle">0</span>)</li>
+				<li data-id="sco1=1">差评(<span id="comment_bad">0</span>)</li>
+				<li data-id="pics=1">带图评论(<span id="comment_pic">0</span>)</li>
+				{#*
+				<li>带视频评论(10)</li>
+				<li>带语音评论(10)</li>
+				*#}
+			</ul>
+		</div>
+
+	</div>
+	<div class="comBox"><a href="comment.html" class="btnfab"><i></i>发表第一条评论</a></div>
+</div>
+<!-- 评论 e-->
+
+<!--评论详情 s-->
+<div class="pubBox detailBox">
+	<ul class="showlist"></ul>
+	<div class="readAll"><a href="{#getUrlPath service='business' template='allComment' id=$detail_id#}">查看全部评论<i class="rmRight"></i></a></div>
+</div>
+<!-- 评论详情 e-->
+
+
+{#include file="_foot.html"#}
+
+<!-- 电话 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+
+    <div class="bgCover"></div>
+    <div class="modal-main">
+    	<div class="topline">
+			<div class="lline"></div>
+			<div class="rline"></div>
+		</div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>联系商家</h3>
+        {#foreach from=$detail_telArr item='tel'#}
+        <p class="fn-clear"><a href="tel:{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}{#$detail_areaCode#}{#/if#}{#$tel#}">{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}+{#$detail_areaCode#} {#/if#}{#$tel#}</a></p>
+				{#/foreach#}
+    </div>
+</div>
+<!-- 电话 e-->
+<!-- 微信弹出层 s-->
+<div class="modal-public m-wx" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+    	<div class="topline">
+			<div class="lline"></div>
+			<div class="rline"></div>
+		</div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <div class="weixin">
+            <h4>微信中长按识别二维码</h4>
+            <img src="{#$detail_wechatqr#}" alt="">
+            <h5>扫一扫</h5>
+        </div>
+    </div>
+</div>
+<!-- 微信弹出层 e-->
+
+
+<div class="wechat-popup">
+	<div class="con">
+		<a href="javascript:;" class="close">×</a>
+		{#if $detail_wechatqr#}<dl><dt><img src="{#$detail_wechatqr#}"></dt><dd>微信中长按识别</dd></dl>{#/if#}
+	</div>
+</div>
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+{#if $detail_wechatqr#}<div class="wechat-fix"><img src="{#$templets_skin#}images/wechat-fix.png" alt=""></div>{#/if#}
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="pswp__bg"></div>
+	<div class="pswp__scroll-wrap">
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+		<div class="pswp__ui pswp__ui--hidden">
+			<div class="pswp__top-bar">
+				<div class="pswp__counter"></div>
+				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div>
+			</div>
+			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+			<div class="pswp__caption">
+				<div class="pswp__caption__center"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#include file="_foot.html"#}
+
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '地址：{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='business' template='detail' id=$detail_id#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe.min.js?v={#$cfg_staticVersion#}'></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$cfg_staticPath#}js/ui/pic-swiper.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

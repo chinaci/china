@@ -1,0 +1,27 @@
+<div class="peo_footer">
+	<!--<ul>
+		<li class="foot-1">
+			<a href="javascript:;" class="appMapBtn" target="_blank"> <s></s> 导航 </a>
+		</li>
+		<li class="foot-2">
+			<a href="tel:{#$detail_tel#}"> <s></s> 电话 </a>
+		</li>
+		{#if $detail_wechatqr#}
+		<li class="foot-3">
+			<a href="javascript:;"> <s></s> 加微信 </a>
+		</li>
+		{#/if#}
+	</ul>-->
+	<ul>
+		<li class="follow-wrapper"><p class="follow-icon{#if $detail_collect#} active{#/if#} a-icon"></p><p class="text-follow">{#if $detail_collect#}{#$langData['homemaking'][8][84]#}{#else#}{#$langData['education'][0][2]#}{#/if#}</p></li>	{#* 收藏 *#} 
+		<li class="a-wrapper">
+			<a href="tel:{#if $detail_areaCode !='' && $detail_areaCode!= '86'#}{#$detail_areaCode#}{#/if#}{#$detail_tel#}">
+				<p class="tel-icon a-icon"></p><p class="text-follow">{#$langData['homemaking'][11][0]#}</p>
+			</a>
+		</li>	{#* 电话 *#} 
+		<li class="foot_li foot-1"><a href="javascript:;" class="zixun appMapBtn" target="_blank">地址导航</a>
+			<span class="class_choose chat_to-Link" data-type="user">在线联系</span>
+		</li>
+	</ul>
+
+</div>

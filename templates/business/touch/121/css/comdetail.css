@@ -1,0 +1,53 @@
+body{padding-bottom: 1rem;}
+/*头部back--内页*/
+.top-header{height: .9rem;background: #fff;border-top:solid 1px #eee;padding:0 .2rem;z-index: 9;border-bottom:solid .02rem #eee;}
+.top-header .btnBack{display: block;width:.5rem;height: .45rem;position: absolute;left:.2rem;top:.22rem;}
+.top-header .btnBack i{ position: absolute;left: .1rem;top: .05rem;width: .25rem;height: .25rem;border-top: .03rem solid #a0a0a0;border-right: .03rem solid #a0a0a0;transform: rotate(225deg);}
+.topCenter{line-height: .9rem;font-size: .3rem; text-align: center;}
+
+/*点赞区域*/
+.likeBox{padding:.25rem;border-bottom: solid .02rem #eee;}
+.likeBox .like i{background: url(../images/c-up.png) no-repeat center;background-size:.35rem;}
+.likeBox span{float:left;display: block;height: .6rem;}
+.likeBox ul{float: left;width: 93%;}
+.likeBox ul li{margin: .05rem .1rem;float: left;}
+.likeBox ul li img{width: .6rem;height: .6rem;border-radius: 100%;}
+
+/*评论*/
+.comPic {margin: .2rem 0;overflow: hidden;}
+.wrapper{height: auto;}
+.comPic .swiper-slide{margin :0.05rem .06rem .05rem 0;float: left;height:100%;width: auto;}
+.comPic .swiper-slide:nth-child(3n){margin: 0.05rem 0 .05rem 0;}
+.swiper-wrapper{width: auto;height: auto;display: inline-block;}
+
+/*评论区域*/
+.commentBox{padding:.25rem;}
+.commentBox .comm{display:block;float:left;margin-top: .1rem;}
+.commentBox .comm i{background: url(../images/c-com.png) no-repeat center;background-size:.35rem;}
+.commentBox ul{width: 93%;float: left;}
+.commentBox ul li{padding: .2rem;border-bottom:solid .02rem #eee;}
+.commentBox ul li:last-child{border-bottom: none;}
+.commentBox ul li .left,.commentBox ul li .right{float: left;}
+.commentBox ul li img{width: .5rem;height: .5rem;border-radius: 100%;}
+.commentBox ul li .right{margin-left: .2rem;width:88%;padding-bottom: .2rem;}
+.commentBox ul li .right .name{font-size: .3rem; margin-bottom: .1rem;}
+.commentBox ul li .right .name span.sname{max-width: 4rem;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;}
+.commentBox ul li .right .name span.time{float: right;height: auto;color:#a0a0a0;}
+
+.commentBox ul li .right .content{font-size: .32rem;color:#333;}
+.commentBox ul li .right .content span{color:#f79810;}
+.commentBox ul li .children{padding-left:.5rem;}
+.commentBox ul li .children li .right{width: 86.7%!important;padding-bottom: 0!important;}
+.commentBox ul li .children li .right .content{color:#a0a0a0;}
+/*底部*/
+.c-bottom{height: 1rem;line-height: 1rem;position: fixed;left:0;right: 0;bottom:0;padding:0 .25rem;background:#fff;box-shadow: 0 .06rem .18rem rgba(124,124,124,.31);z-index: 10001;}
+.c-bottom input{height: .7rem;border:solid .02rem #eee;border-radius: .04rem;width:80%;padding-left:.2rem; -webkit-appearance: none;font-size: .3rem;}
+.c-bottom .btnSend{display:block;float:right;width: 1.1rem;height: .7rem;line-height:.7rem;color:#fff;font-size:.3rem;border-radius: .04rem;background: #f79810;text-align: center;margin-top: .1rem;}
+
+/* iPhoneX适配 */
+.c-bottom{padding-bottom: constant(safe-area-inset-bottom);padding-bottom: env(safe-area-inset-bottom);}
+
+
+/*错误提示*/
+.error{position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0,0,0,.6); z-index: 1000; display: none;}
+.error p{position: fixed; width: 150px; background-color: rgba(0,0,0,.7); border-radius: 5px; color: #fff; font-size: 16px; line-height: 1.4; text-align: center; padding: 12px 10px; z-index: 9999; left: 50%; margin-left: -75px; top: 50%; margin-top: -24px;}

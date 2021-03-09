@@ -1,0 +1,48 @@
+{#$channelName = $business_channelName#}
+{#$channelDomain = $business_channelDomain#}
+{#$backUrl = "javascript:history.go(-1);"#}
+{#$title = $langData['siteConfig'][22][89]#}
+{#$service = "business"#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$title#}-{#$channelName#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchbase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/public-payreturn.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+</head>
+{#if $uid == -1#}
+{#$url = $channelDomain#}
+{#else#}
+{#$url = {#getUrlPath service='member' type='user' template='order' module={#$service#} param='type=maidan'#}#}
+{#/if#}
+<body>
+<div class="container">
+	<div class="header">
+		<div class="header-l"><a href="javascript:;" onclick="history.go(-1)" class="goBack"></a></div>
+		<div class="header-address">{#$title#}</div>
+		<div class="header-search"><a href="{#$url#}" style="background:none;">{#$langData['siteConfig'][6][3]#}</a></div>
+	</div>
+	{#if $state != 1#}
+	<div class="pay-icon failed"><img src="{#$cfg_basehost#}/templates/member/touch/images/pay-failed.png" /><p>{#$langData['siteConfig'][16][127]#}</p></div>
+	<div class="btn">
+		<a href="{#$url#}" class="endpay">{#$langData['siteConfig'][16][128]#}</a>
+	</div>
+	{#else#}
+	<div class="pay-icon"><img src="{#$cfg_basehost#}/templates/member/touch/images/pay-success.png" /><p>{#$langData['siteConfig'][16][55]#}</p></div>
+	<div class="btn">
+		<a href="{#$channelDomain#}" class="repay">{#$langData['siteConfig'][16][129]#}</a>
+		{#if $uid != -1#}<a href="{#$url#}" class="endpay">{#$langData['siteConfig'][6][146]#}</a>{#/if#}
+	</div>
+	<div class="tip">
+		<p>{#$langData['siteConfig'][20][379]|replace:'1':$cfg_shortname#}</p>
+	</div>
+	{#/if#}
+</div>
+</body>
+</html>
