@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="w1200">
+<head>
+<meta charset="utf-8">
+<title>{#$detail_title#} - {#$list_typename#} - {#$huangye_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$list_typename#},{#$huangye_channelName#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/highslide.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+var skin = "{#$templets_skin#}", id = {#$detail_id#};
+var address = '{#$detail_address#}', addressdet = '{#$detail_addressdet#}', lnglat = [{#$detail_longitude#},{#$detail_latitude#}], title = '{#$detail_title#}', site_map = "{#$site_map#}";
+</script>
+</head>
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel = "huangye"#}
+
+<!-- 广告位 -->
+<div class="wrap adv fn-hide"><script src="/include/json.php?action=adjs&id=155" language="javascript"></script></div>
+
+<div class="head">
+	<p>当前位置：</p>
+	<a href="{#$huangye_channelDomain#}">首页</a> &raquo; {#$list_crumbs#} &raquo; <span>{#$detail_title#}</span>
+</div>
+<div class="tit-t peise_{#$detail_peise#}">
+	<div class="t-company">
+		<p>{#$detail_title#}</p>
+		{#if $detail_rz1#}<span class="sf-1" title="手机认证"></span>{#/if#}
+		{#if $detail_rz2#}<span class="sf-2" title="邮箱认证"></span>{#/if#}
+		{#if $detail_rz3#}<span class="sf-3" title="身份验证"></span>{#/if#}
+		{#if $detail_rz4#}<span class="sf-4" title="执照验证"></span>{#/if#}
+	</div>
+	<div class="t-dengji">
+		<ul>
+			<li>登记：{#date("Y/m/d",$detail_pubdate)#}</li>
+			<li class="dj-1">|</li>
+			<li class="dj-2">浏览：{#$detail_click#}</li>
+		</ul>
+	</div>
+</div>
+
+<div class="detailed">
+	<div class="dt-1">
+		<div class="bdsharebuttonbox">
+			<p>分享到：</p>
+			<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+			<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+		</div>
+		<div class="report">
+			<a href="javascript:;" id="report"><p>举报</p></a>
+			<a href="#service" class="gocommon"><span>评论</span></a>
+		</div>
+	</div>
+	<div class="dt-2">
+		<div class="dtl">
+			<ul>
+				<li><p>机构名称：</p><span>{#$detail_title#}</span></li>
+				<li><p>行业分类：</p><span>{#$list_crumbs#}</span></li>
+				<li><p>联系电话：</p><img src="/include/json.php?action=phoneimage&size=15&num={#$detail_tel#}" class="imgtel" /></li>
+				<li><p>电子邮件：</p><span>{#$detail_email#}</span></li>
+				<li class="dtt"><p>查找更多关于“<a href="http://www.baidu.com/s?ie=UTF-8&wd={#$detail_titlecode#}" target="_blank">{#$detail_title#}</a>”的信息</p></li>
+			</ul>
+		</div>
+		{#if $detail_weixin || $detail_weixinQr#}
+		<div class="dtl-r">
+			{#if $detail_weixinQr#}
+			微信公众号<img src="{#$detail_weixinQr#}">
+			{#else#}
+			微信公众号：<span>{#$detail_weixin#}</span>
+			{#/if#}
+		</div>
+		{#/if#}
+	</div>
+</div>
+<div class="service" id="service">
+	<div class="service-lead">
+		<ul class="fn-clear">
+			{#foreach from=$detail_nav item="item" key="k"#}
+			<li{#if $k == 0#} class="selected"{#/if#}>{#$item.nav#}</li>
+			{#/foreach#}
+			<li class="ii">网友评论</li>
+		</ul>
+	</div>
+	<div class="service-txt fn-clear">
+		<ul class="tabul">
+			{#foreach from=$detail_nav item="item" key="k"#}
+			<li{#if $k > 0#} style="display:none;"{#/if#}>
+				{#$item.body#}
+			</li>
+			{#/foreach#}
+			<li style="display:none;">
+				<div class="description">
+					<div class="comment">
+						<div class="c-title fn-clear">
+							<h4>精彩评论<small>文明上网理性发言，请遵守<a href="#">信息评论服务协议</a></small></h4>
+							<a href="javascript:;" class="tnum">共{#$detail_common#}条评论</a>
+						</div>
+						<div class="c-area">
+							<div class="textarea" contenteditable="true" data-type="parent"></div>
+							<div class="c-sub fn-clear">
+								{#if $userinfo#}
+								<div class="np-login">
+									<a href="{#$cfg_basehost#}/account" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+									<a href="{#$cfg_basehost#}/logout.html" class="o">安全退出</a>
+								</div>
+								<a href="javascript:;" class="subtn">发表</a>
+								{#else#}
+								<a href="javascript:;" class="subtn login">登录</a>
+								{#/if#}
+							</div>
+						</div>
+						<div class="c-content">
+							<ul class="c-nav fn-clear">
+								<li>全部评论</li>
+								<li class="c-orderby fn-clear"><a href="javascript:;" class="chot" data-id="hot">热度</a><a href="javascript:;" class="ctime active" data-id="time">时间</a></li>
+							</ul>
+							<ul class="c-list" id="commentList" data-page="1">
+								<div class="loading"></div>
+							</ul>
+							<div id="loadMore" class="loading">加载更多</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+{#if $detail_imglist#}
+<div class="highslide-gallery">
+	<a href="javascript:;" class="next"></a>
+	<a href="javascript:;" class="prev"></a>
+	<div class="bd">
+		<ul>
+			{#foreach from=$detail_imglist item="imglist" key="k"#}
+			<li>
+				<a href="{#changeFileSize url="{#getFilePath($imglist)#}" type="large"#}" class="highslide" onclick="return hs.expand(this)">
+					<img src="{#changeFileSize url="{#getFilePath($imglist)#}" type="small"#}" alt="{#$detail_title#}" title="{#$detail_title#}" />
+				</a>
+				<div class="highslide-caption">
+				</div>
+			</li>
+			{#/foreach#}
+		</ul>
+	</div>
+</div>
+{#/if#}
+<div class="map-con {#$site_map#} fn-clear">
+	<div class="map-h">
+		<p>周边地图</p>
+	</div>
+	<div class="map" id="allmap"><p class="loading">正在加载地图，请稍后...</p></div>
+	<div class="map-r">
+		<div class="mapr-l">
+			<ul>
+				<li class="yop" data-val="0"><i></i>交通</li>
+				<li data-val="1"><b></b>商业</li>
+				<li data-val="2"><span></span>教育</li>
+				<li data-val="3"><p></p>医疗</li>
+			</ul>
+		</div>
+		<div class="mapr-m fn-clear">
+			<ul id="r-result">
+				<li class="loading">请稍后...</li>
+			</ul>
+		</div>
+		{#*<a href="#" class="zb">进入地图查看周边其他机构</a>*#}
+	</div>
+	<div class="map-d">
+		地址：{#$detail_addressdet#}
+	</div>
+</div>
+
+
+{#include file="_footer.html"#}
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			<a href="javascript:;" class="subtn">回复</a>
+		</div>
+	</div>
+</script>
+
+<script type="text/template" id="tp">
+	<li data-x="{{point.lng}}" data-y="{{point.lat}}">
+       	<dl>
+            <dt class="s_title">{{title}}</dt>
+            <dd classs="s_distance">{{distance}}</dd>
+        </dl>
+        <p class="s_address">{{address}}</p>
+	</li>
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/highslide-with-gallery.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/mustache.js?v={#$cfg_staticVersion#}"></script>
+
+
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+
+{#if $site_map == "baidu"#}
+<script type="text/javascript" src="//api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail_map.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

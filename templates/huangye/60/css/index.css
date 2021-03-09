@@ -1,0 +1,485 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0 ;margin:0;}
+a{text-decoration: none;}
+.fn-clear:after {visibility:hidden; display:block; font-size:0;content:" "; clear:both; height:0;}
+.fn-clear {zoom:1; /* for IE6 IE7 */}
+img{
+	border: none;
+}
+.fixedwrap {margin-bottom: 0;}
+.picture{
+    background: #1da2ec url(../images/hy_banner.jpg) no-repeat 50% 0;
+    height: 324px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.picture .formbox{
+    position: absolute;
+    top: 195px;
+    left: 50%;
+    margin-left: -300px;
+}
+.picture .search{
+	/*position: absolute;
+    left: 540px;
+    top: 195px;*/
+    background-color: #80cbf4;
+    padding: 6px;
+    border-radius: 2px;
+    float: left;
+}
+.picture form input{
+    padding: 0 8px;
+    font-size: 16px;
+    color: #555;
+    height: 48px;
+    width: 540px;
+    border: 0 none;
+    outline: 0;
+    float: left;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.picture form button{
+	    background: url(../images/company_sp_2017.png) no-repeat;
+	border: 0 none;
+    outline: 0;
+    float: left;
+    height: 48px;
+    padding: 0 20px 0 50px;
+    background-color: #f78115;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: -354px 10px;
+}
+.picture .but-2{
+	/*position: absolute;
+    left: 1220px;
+    top: 195px;*/
+    float: left;
+    margin-left: 10px;
+    background-color: #80cbf4;
+    padding: 6px;
+    border-radius: 2px;
+}
+.picture .but-2 a{
+	border-radius: 2px;
+    display: block;
+    color: #fff;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 20px;
+    background-color: #82cc12;
+    font-size: 16px;
+}
+.text{
+	width: 1200px;
+	margin: 0 auto;
+}
+.t-l{
+	width: 210px;
+	float: left;
+    border: 1px solid #eee;
+    border-top: 2px solid #f78115;
+}
+.t-head a{
+    display: block;
+	background-color: #fff;
+	border-bottom: 1px solid #eee;
+    color: #404040;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: normal;
+}
+.t-head a:hover{
+    color: #ff6600;
+    text-decoration: none;
+}
+.t-list ul{
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.t-list ul.live span, .t-list ul.active span{
+	border-left-color: #f78115;
+}
+.t-list ul.live span a, .t-list ul.active span a{
+	color: #f78115;
+}
+.caption .sub{
+    padding: 5px 0 5px 12px;
+    max-height: 56px;
+    line-height: 28px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.live .caption .sub, .t-list ul.active .sub{
+    max-height: none;
+}
+.live li span s, .t-list ul.active li span s{
+    background-position: -384px -121px;
+}
+.caption .sub a{
+	float: left;
+    width: 50%;
+    height: 28px;
+    overflow: hidden;
+    word-break: break-all;
+    font-weight: normal;
+    color: #999;
+    font-size: 14px;
+}
+.caption .sub a:hover, .caption .sub a.curr{
+	color: #d00;
+}
+.caption span{
+	display: block;
+    background-color: #fafafa;
+    border-left: 2px solid transparent;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: normal;
+    position: relative;
+}
+.caption span s{
+    background: url(../images/company_sp_2017.png) no-repeat;
+    display: block;
+    position: absolute;
+    right: 12px;
+    top: 17px;
+    width: 16px;
+    height: 12px;
+    background-position: -384px -82px;
+    cursor: pointer;
+    float: right;
+}
+.bb{
+    background: #37a6e7;
+    border-radius: 3px;
+}
+.bb a{
+    color: #fff;
+}
+.caption span a{
+	color: #404040;
+	    font-size: 16px;
+    font-weight: normal;
+}
+.caption span a i{
+	font-style: normal;
+    color: #aaa;
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: 3px;
+}
+}
+.t-r{
+	margin-left: 20px;
+	float: left;
+}
+.quyu {padding:13px 0;border: 1px solid #eee;}
+.quyu ul {
+    font-size: 14px;
+    line-height: 31px;
+    padding: 5px 0;
+    width: 966px;
+}
+.quyu ul li a{
+    float: left;
+    padding: 0 14px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 31px;
+    height: 31px;
+
+}
+.quyu ul li p{
+    display: block;
+    float: left;
+    color: #999;
+    width: 42px;
+    padding: 0 8px 0 32px;
+    height: 31px;
+    line-height: 31px;
+}
+.quyu ul li p.t {
+    background: url(../images/pc_icons_11.png) no-repeat;
+    background-position: -118px -185px;
+}
+.quyu ul li{
+	float: left;
+}
+.title{
+    margin-top: 15px;
+    background-color: #f7f7f7;
+}
+.title-1{
+	float: left;
+	width: 708px;
+    padding-left: 15px;
+    margin-right: 12px;
+	height: 40px;
+    line-height: 40px;
+    color: #666;
+    font-size: 12px;
+}
+.title-2{
+	float: left;
+    width: 76px;
+    text-align: center;
+    margin-right: 61px;
+	height: 40px;
+    line-height: 40px;
+    color: #666;
+    font-size: 12px;
+}
+.title-3{
+    float: left;
+    width: 86px;
+    text-align: center;
+  	height: 40px;
+    line-height: 40px;
+    color: #666;
+    font-size: 12px;
+}
+.information{
+    height: 65px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    font-size: 14px;
+}
+.information .xinxi{
+    width: 708px;
+    margin-right: 12px;
+    float: left;
+}
+.information .xinxi a img{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    vertical-align: top;
+    float: left;
+    margin-right: 15px;
+    position: relative;
+}
+.information .xinxi ul{
+	height: 60px;
+}
+.information .xinxi ul li{
+	height: 36px;
+}
+.information .xinxi ul li p{
+    float: left;
+}
+.information .xinxi ul li p a{
+    display: block;
+    color: #3366cc;
+    font-size: 16px;
+    font-weight: normal;
+    max-width: 310px;
+    margin-right: 5px;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+.information .xinxi ul li span{
+    color: #777;
+    float: left;
+    margin-right: 10px;
+}
+.information .xinxi ul li span a{
+	text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.information .xinxi ul li span a:hover{
+	color: #d00;
+}
+.information .xinxi ul li b{
+	font-style: normal;
+	    float: left;
+    margin-right: 6px;
+    color: #fff;
+    padding: 1px 4px;
+    border: 1px solid #2bc17a;
+    background-color: #2bc17a;
+    border-radius: 2px;
+    font-size: 12px;
+}
+.information .xinxi ul li i{
+	font-style: normal;
+	    background-color: #fff;
+    border: 1px solid #f96969;
+    color: #f96969;
+    padding: 1px 4px;
+    font-size: 12px;
+    border-radius: 2px;
+    float: left;
+    margin-right: 6px;
+}
+.information .xinxi ul .xin-1{
+	color: #999;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    background: url(../images/company_sp_2017.png) no-repeat;
+        background-position: -382px -44px;
+    display: block;
+    float: left;
+    font-size: 14px;
+}
+.fabu{
+	float: left;
+    width: 76px;
+    text-align: center;
+    margin: 22px 61px 0 15px;
+}
+.fabu p{
+    font-size: 14px;
+    color: #666;
+}
+.pingfen{
+	float: left;
+    width: 84px;
+    text-align: center;
+    margin: 22px 61px 0 10px;
+}
+.pingfen span{
+    background: url(../images/pc_icons_11.png) no-repeat;
+    width: 84px;
+    height: 18px;
+    background-position: -93px -585px;
+    float: left;
+}
+.phone{
+	width: 87px;
+	height: 24px;
+	float: left;
+	margin-top: 22px;
+    position: relative;
+}
+.phone .droptit{
+    float: left;
+    display: inline;
+    margin-left: 5px;
+    position: relative;
+    border: 1px solid #eee;
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+}
+.phone  p{
+    background: url(../images/company_sp_2017.png) no-repeat;
+    display: block;
+    background-position: 2px -45px;
+    text-indent: -999em;
+    overflow: hidden;
+    width: 22px;
+    height: 22px;
+}
+.phone  i{
+    background: url(../images/company_sp_2017.png) no-repeat;
+    background-position: -33px -45px;
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+.phone b{
+    background: url(../images/company_sp_2017.png) no-repeat;
+    background-position: 2px 4px;
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+.phone span{
+    background: url(../images/company_sp_2017.png) no-repeat;
+    display: block;
+    position: absolute;
+    top: 22px;
+    right: 7px;
+    width: 7px;
+    height: 4px;
+    overflow: hidden;
+    background-position: -50px -12px;
+}
+.yejiao{
+	float: right;
+	width: 968px;
+    font-family: arial;
+    font-size: 14px;
+    padding: 40px 0!important;
+    text-align: center;
+}
+.up{
+    color: #ddd;
+    border: 1px solid #eee;
+    padding: 8px 13px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.down{
+    color: #ddd;
+    border: 1px solid #eee;
+    padding: 8px 13px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.nub{
+    background-color: #fff;
+    padding: 8px 13px;
+    border: 1px solid #ededed;
+    color: #999;
+    font-size: 14px;
+    line-height: 20px;
+}
+.nub-1{
+    color: #fff;
+    border-color: #88929a!important;
+    background: #88929a!important;
+    margin: 0 0 0 5px;
+    padding: 8px 13px;
+}
+.p-1,.p-2,.p-3{
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 26px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 6px;
+    border-radius: 2px;
+    color: #f78115;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: 24px;
+    z-index: 111;
+}
+.p-3 img{
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+}
+.yejiao p{
+    float: right;
+    font-size: 14px;
+    color: #999;
+}
+.right{
+    float: right;
+    width: 968px;
+}
+
+.text .empty {padding:100px 0;text-align: center;}
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; text-align: center; line-height: 36px; font-size: 14px; color: #333; margin-top: 30px;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #eee;}
+.pagination li.page_current {border-color: #88929a;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 13px;font-family: "arial";color: #999;}
+.pagination li a:hover ,.pagination li.page_current span {background: #88929a; color: #fff; border-color: #88929a;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="w1200">
+<head>
+<meta charset="utf-8">
+<title>{#$huangye_title#}</title>
+<meta name="keywords" content="{#$huangye_keywords#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="huangye"#}
+
+<div class="picture">
+	<div class="formbox fn-clear">
+		<div class="search">
+			<form action="{#getUrlPath service="huangye" template="list"#}">
+				<input type="text" name="keywords" placeholder="输入您要查找的服务机构关键字">
+				<button type="submit">搜索</button>
+			</form>
+		</div>
+		{#*
+		<div class="but-2">
+			<a href="javascript:;">申请加入</a>
+		</div>
+		*#}
+	</div>
+</div>
+<div class="text fn-clear">
+	<div class="t-l">
+		<div class="t-head">
+			<a href="{#getUrlPath service="huangye" template="list"#}">全部服务机构</a>
+		</div>
+		<div class="t-list">
+			{#business return="type" action="type"#}
+			<ul>
+				<li class="caption">
+					<span><a href="{#getUrlPath service="huangye" template="list" typeid=$type.id addrid=$addrid business=$business#}"{#if $typeid == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a><s></s></span>
+					<div class="sub fn-clear">
+					{#business return="type2" action="type" type=$type.id#}
+					<a href="{#getUrlPath service="huangye" template="list" typeid=$type2.id addrid=$addrid business=$business#}"{#if $typeid == $type2.id#} class="curr"{#/if#}>{#$type2.typename#}</a>
+					{#/business#}
+					</div>
+				</li>
+			</ul>
+			{#/business#}
+		</div>
+	</div>
+	<div class="right">
+		<div class="t-r">
+			<div class="quyu">
+				<ul class="fn-clear">
+					<li><p class="t">区域：</p></li>
+					<li class="jk{#if $addrid == 0#} bb{#/if#}">
+						<a href="{#getUrlPath service='huangye' template='list' typeid={#$typeid#} addrid=0 business=0#}#content">全部</a>
+					</li>
+					{#business return="addr" action="addr"#}
+					<li class="jk{#if $addrid == $addr.id#} bb{#/if#}">
+						<a href="{#getUrlPath service='huangye' template='list' typeid={#$typeid#} addrid={#$addr.id#} business=0#}#content">{#$addr.typename#}</a>
+					</li>
+					{#/business#}
+				</ul>
+				{#if $addrid != 0#}
+				<ul class="fn-clear">
+					<li><p></p></li>
+					<li class="jk{#if $business == 0#} bb{#/if#}">
+						<a href="{#getUrlPath service='huangye' template='list' typeid={#$typeid#} addrid=$addrid business=0#}">不限</a>
+					</li>
+					{#business return="addr" action="addr" type=$addrid#}
+					<li class="jk{#if $business == $addr.id#} bb{#/if#}">
+						<a href="{#getUrlPath service='huangye' template='list' typeid={#$typeid#} addrid={#$addrid#} business={#$addr.id#}#}">{#$addr.typename#}</a>
+					</li>
+					{#/business#}
+				</ul>
+				{#/if#}
+			</div>
+		</div>
+		<div class="title">
+			<ul class="fn-clear">
+				<li class="title-1">信息主题</li>
+				<li class="title-2">发布时间</li>
+			</ul>
+		</div>
+		{#business return="list" action="blist" typeid=$typeid addrid=$addrid pageSize="15" page=$page#}
+		<div class="information">
+			<div class="xinxi">
+				<a href="{#$list.url#}" target="_blank"><img src="{#$list.logo#}" alt="{#$list.title#}"></a>
+				<ul>
+					<li>
+						<p><a href="{#$list.url#}" title="{#$list.title#}" target="_blank">{#$list.title#}</a></p>
+						{#if $list.typename#}
+						<span>【
+						{#foreach from=$list.typename key=k item=value#}
+						<em>{#$list.typename[$k]#}</em>
+						{#/foreach#}
+						】</span>
+						{#/if#}
+						{#foreach from=$list.auth item=auth#}
+						<b title="{#$auth.typename#}">{#$auth.jc#}</b>
+						{#/foreach#}
+					</li>
+					<li >
+						<p class="xin-1">{#$list.addressdet#}</p>
+					</li>
+				</ul>
+			</div>
+			<div class="fabu">
+				<p>{#date("m-d",$list.pubdate)#}</p>
+			</div>
+			<div class="phone">
+				{#if $list.tel#}
+				<div class="droptit">
+					<p></p>
+					<div class="p-1">{#$list.tel#}</div>
+					<span></span>
+				</div>
+				{#/if#}
+				{#if $list.email#}
+				<div class="droptit">
+					<i></i>
+					<div class="p-2">{#$list.email#}</div>
+					<span></span>
+				</div>
+				{#/if#}
+				{#if $list.wechatqr#}
+				<div class="droptit">
+					<b></b>
+					<div class="p-3"><img src="{#$list.wechatqr#}"></div>
+					<span></span>
+				</div>
+				{#/if#}
+			</div>
+		</div>
+		{#/business#}
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">暂无相关信息！</div>
+		{#/if#}
+		{#getPageList service='huangye' template='list' typeid={#$typeid#} addrid={#$addrid#} business={#$business#}#}
+	</div>
+</div>
+
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
