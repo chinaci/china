@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_nickname#}-门店主页-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/store_detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var geetest = {#$cfg_geetest#};
+	var phoneCheck = {#$u_phoneCheck#};
+
+	var id = {#$detail_id#};
+	var lng = '{#$detail_lng#}', lat = '{#$detail_lat#}';
+	var title = '{#$detail_title#}';
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+{#include file="top.html" pageCurr="store"#}
+
+<div class="stores-banner" style="background:url('{#if $detail_coverturl#}{#$detail_coverturl#}{#else#}{#$templets_skin#}images/stores-index.png{#/if#}') center no-repeat;background-size:cover;">
+	<img class="banner-img" src="{#$detail_phototurl#}" alt="" class="logo">
+</div>
+<div class="stores-brief wrap fn-clear">
+	<div class="brief">
+		<div class="brief-name">{#$detail_nickname#}</div>
+		<p class="time">服务热线：{#$detail_tel#}{#* &nbsp;&nbsp;&nbsp;营业时间：周一至周五（8:00-18:00)*#}</p>
+		<a href="javascript:;" class="apply" id="apply-popup">申请门店为我牵线</a>
+	</div>
+</div>
+{#*
+<div class="lunbo wrap">
+	<div class="slideBox slideBox1">
+		<div class="bd">
+			<ul class="fn-clear">
+				<li><img src="{#$templets_skin#}upfile/slideBox1.png" alt=""></li>
+				<li><img src="{#$templets_skin#}upfile/slideBox1.png" alt=""></li>
+				<li><img src="{#$templets_skin#}upfile/slideBox1.png" alt=""></li>
+			</ul>
+		</div>
+		<div class="hd"><ul></ul></div>
+		<a class="prev" href="javascript:;"></a>
+		<a class="next" href="javascript:;"></a>
+	</div>
+</div>
+*#}
+<!-- 门店简介 -->
+<div class="shop-brief wrap fn-clear">
+	<div class="shop-title"><h3>门店简介</h3></div>
+	<div class="shop-text">
+		{#$detail_profile#}
+	</div>
+	<div class="location fn-clear">
+		<div class="stores-map fn-left" id="mapdiv">
+		</div>
+		<div class="mes-detail">
+			<dl class="fn-clear">
+				<dt>地址：</dt>
+				<dd>{#$detail_address#} </dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>联系电话：</dt>
+				<dd>{#$detail_tel#} </dd>
+			</dl>
+			{#*
+			<dl class="fn-clear">
+				<dt>营业时间：</dt>
+				<dd>周一至周五（8:00-18:00）</dd>
+			</dl>
+			*#}
+			<dl class="fn-clear">
+				<dt>公交：</dt>
+				<dd>{#$detail_bus#}</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<!-- 红娘风采、优质会员 -->
+<div class="maker-deed wrap fn-clear">
+	<div class="deed-title">
+		<ul class="fn-clear">
+			<li class="fn-left active"><a href="javascript:;">红娘风采<span>(0)</span></a></li>
+			<li class="fn-right"><a href="javascript:;">优质会员<span>(0)</span></a></li>
+		</ul>
+	</div>
+	<div class="deed-con fn-clear show" id="store_hn"></div>
+	<div class="deed-con fn-clear" id="store_user"></div>
+	<div class="paging pagination wrap fn-clear"></div>
+</div>
+<div class="desk fn-hide"></div>
+<!-- 申请门店为我牵线弹窗 -->
+<div class="apply-store-popup fn-hide fn-clear">
+	<form action="" class="apply-store-form">
+		<div class="store-wrap fn-clear">
+			<dl class="fn-clear position">
+				<a href="javascript:;"><img class="apply-popup-close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+				<dt>真实姓名</dt>
+				<dd><input class="apply-name" type="text" size="35" placeholder="请输入您的姓名" value="{#$u_realname#}"></dd>
+				<div class="error"></div>
+			</dl>
+			<dl class="fn-clear">
+				<dt>性别</dt>
+				<dd>
+					<div class="sex fn-left">
+						{#if $u_sex#}
+						<i class="active"></i>男&nbsp;&nbsp;
+						<i class="disabled"></i>女
+						{#else#}
+						<i class="disabled"></i>男&nbsp;&nbsp;
+						<i class="active"></i>女
+						{#/if#}
+					</div>
+				</dd>
+			</dl>
+			<dl class="fn-clear position">
+				<dt>电话号码</dt>
+				<dd>
+					<div class="inpbdr">
+						<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+						<input class="" id="telphone" type="text" size="35" placeholder="请输入您的电话号码" value="{#$u_phone#}"{#if $u_phoneCheck#} readonly{#/if#}>
+					</div>	
+					<!--国际区号弹窗-->
+					<div class="areaCode_wrap areaCode_wrap2">
+						<ul>
+							
+						</ul>
+					</div>
+					<a href="javascript:;" class="sendCode getCodes"{#if $u_phoneCheck#} style="display:none;"{#/if#}>发送验证码</a>
+				</dd>
+
+				<div class="error senderror"></div>
+				<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+			</dl>
+			<dl class="fn-clear position"{#if $u_phoneCheck#} style="display:none;"{#/if#}>
+				<dt>验证码</dt>
+				<dd><input class="" id="code" type="text" size="35" placeholder="请输入验证码"></dd>
+				<div class="error"></div>
+			</dl>
+			<dl class="fn-clear position">
+				<dt>月薪范围</dt>
+				<dd>
+					<div class="select">
+						<span class="selectType">
+							<a href="javascript:;" class="int" id="selectTypeText">请选择</a>
+							<span id="selectTypeMenu" class="selectmenu">
+								{#dating action="item" type=6#}
+								<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+								{#/dating#}
+							</span>
+							<em></em>
+						</span>
+					</div>
+				</dd>
+				<div class="error"></div>
+			</dl>
+			<dl class="fn-clear w-form position">
+				<dt>工作城市</dt>
+				<dd id="selAddr">
+					<div class="sel-group" data-title="请选择所在区域">
+						<div class="city-title addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='site_area' id=$u_addrid split=' '#}" data-id="{#$u_addrid#}">{#if $u_addrName#}{#getPublicParentInfo tab='site_area' id=$u_addrid type='typename' split='/'#}{#else#}请选择{#/if#}</div>
+					</div>
+					<input type="hidden" name="addr" id="addr" value="" />
+            <input type="hidden" name="cityid" id="cityid" value="" />
+				</dd>
+				<div class="error"></div>
+			</dl>
+		</div>
+		<div class="bottom">
+			<input type="submit" class="submit" value="申请服务">
+		</div>
+	</form>
+</div>
+
+{#include file="foot.html"#}
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/store_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

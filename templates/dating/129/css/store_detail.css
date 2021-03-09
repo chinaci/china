@@ -1,0 +1,105 @@
+.topInfo{margin-bottom: 0;}
+.topInfo .loginbox a{height:34px;}
+.stores-banner{height: 260px;position: relative;text-align: center;margin-top: 20px;}
+.stores-banner .pic {height: 260px;overflow: hidden;}
+.stores-banner .banner {width:100%;min-height: 260px;}
+.stores-banner img{height:100%;}
+.stores-banner .banner-img{width:160px;height:160px;position: absolute;top:180px;left:50%;margin-left:-80px;-moz-border-radius: 50%; -webkit-border-radius: 50%;border-radius: 50%;box-shadow: 0px 0px 18px 0px rgba(195, 195, 195, 0.63);-moz-box-shadow: 0px 0px 18px 0px rgba(195, 195, 195, 0.63);-webkit-box-shadow: 0px 0px 18px 0px rgba(195, 195, 195, 0.63);}
+.stores-brief{margin-top: 105px;text-align: center;}
+.stores-brief .brief{position: relative;}
+.stores-brief .brief-name{font-size: 26px;font-weight: bold;}
+.stores-brief .time{font-size: 16px;color:#a0a0a0;line-height: 22px;line-height: 50px;}
+.stores-brief .apply{position: absolute;right:0;z-index: 3;padding:8px 13px;font-size: 16px;color:#fff;background: -webkit-linear-gradient(left, #f60e44 , #ff6600);background: -o-linear-gradient(right, #f60e44, #ff6600);background: -moz-linear-gradient(right, #f60e44, #ff6600);background: linear-gradient(to right, #f60e44 , #ff6600);-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;top: 25px;-moz-box-shadow: 0px 3px 8px 0px rgba(252, 76, 20, 0.5);-webkit-box-shadow: 0px 3px 8px 0px rgba(252, 76, 20, 0.5);box-shadow: 0px 3px 8px 0px rgba(252, 76, 20, 0.5);}
+.lunbo{margin-top: 40px;}
+.slideBox1{height:490px;overflow: hidden;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;position: relative;}
+.slideBox1 .bd ul li{position: relative;}
+.slideBox1:hover .prev{display: block;}
+.slideBox1:hover .next{display: block;}
+.slideBox1 .hd{ overflow:hidden; position:absolute;left:0; right:0; bottom:15px; z-index:1;}
+.slideBox1 .hd ul{ overflow:hidden; zoom:1;text-align: center;  }
+.slideBox1 .hd ul li{cursor:pointer;display:inline-block;width:12px;height: 12px;margin:0 10px;border-radius: 100%;text-align: center;background: #7b7b7b;opacity: 0.6;filter: alpha(opacity=60);}
+.slideBox1 .hd ul li.on{ background: #fff;opacity: 1;filter: alpha(opacity=100);}
+
+
+.slideBox1 .prev{width: 52px;height: 92px;background: rgba(0, 0, 0, 0.6);position: absolute;left: 0; top: 180px;display: none;-webkit-animation: leftFadeIn .5s ease-out;-moz-animation: leftFadeIn .5s ease-out;animation: leftFadeIn .5s ease-out;}
+.slideBox1 .prev:after{content: "";display: block;width: 100%;height: 100%;background: url(../images/stores-index-prev.png) no-repeat center;}
+.slideBox1 .next{width: 52px;height: 92px;background: rgba(0, 0, 0, 0.6);position: absolute;right: 0;top: 180px;display: none;-webkit-animation: rightFadeIn .5s ease-out;-moz-animation: rightFadeIn .5s ease-out;animation: rightFadeIn .5s ease-out;}
+.slideBox1 .next:after{content: "";display: block;width: 100%; height: 100%;background: url(../images/stores-index-next.png) no-repeat center;}
+/*门店简介*/
+.shop-brief{margin-top: 40px;}
+.shop-brief .shop-title{height:44px;border-bottom:2px solid #f8f8f8;}
+.shop-brief .shop-title h3{font-size: 18px;color:#ff2645;font-weight: bold;border-bottom: 2px solid #ff2645;display: inline-block;line-height: 40px;height: 44px;}
+.shop-brief .shop-text{font-size: 16px;line-height: 30px;margin-top: 29px;}
+.shop-brief .location{margin-top: 40px;}
+.shop-brief .location .stores-map {width:484px;height:270px;}
+.shop-brief .location .mes-detail{margin-left: 30px;float: left;width:670px;}
+.shop-brief .location .mes-detail dl{margin-bottom: 11px;margin-top: 10px;}
+.shop-brief .location .mes-detail dl dt{float: left;font-size: 16px;font-weight: bold;}
+.shop-brief .location .mes-detail dl dd{font-size: 16px;}
+/*红娘风采、优质会员*/
+.maker-deed{margin-top: 54px;}
+.maker-deed .deed-title{height:62px;background: #f8f8f8;line-height: 62px;}
+.maker-deed .deed-title ul{width:520px;margin:0 auto;}
+.maker-deed .deed-title ul li{height:60px;padding:0 20px;}
+.maker-deed .deed-title ul li.active{border-bottom: 2px solid #ff2645;}
+.maker-deed .deed-title ul li a{font-size: 20px;font-weight: bold;}
+.maker-deed .deed-title ul li a span{color:#a0a0a0;}
+.maker-deed .deed-con{margin-top: 15px;display: none;-webkit-animation: rightFadeIn .6s ease-out;-moz-animation: rightFadeIn .6s ease-out;animation: rightFadeIn .6s ease-out;}
+.maker-deed .deed-con.show{display: block;}
+.maker-deed .deed-con .match-list{margin-top: 30px;margin-right: 40px;}
+.maker-deed .deed-con .match-list:nth-child(3n){margin-right: 0;}
+.deed-con .match-left img{width:181px;height:230px;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;}
+.deed-con .match-right{width:177px;padding-left:15px;height:230px;position: relative;}
+.deed-con .match-right .name{margin-bottom: 10px;}
+.deed-con .match-right .name a{font-size: 18px;font-weight: bold;display: inline-block;	max-width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.deed-con .match-right .name span{font-size: 14px;color:#a0a0a0;margin-left: 10px;max-width: 85px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: top;line-height: 28px;display: inline-block;}
+.deed-con .match-right .text{font-size: 14px;line-height: 20px;text-align: justify;display: inline-block;width:160px; display: -webkit-box; -webkit-box-orient: vertical;-webkit-line-clamp: 4; overflow: hidden;text-overflow: ellipsis;max-height: 82px;}
+.deed-con .match-right .match-bottom{position: absolute;z-index: 2;bottom:0;}
+.deed-con .match-right .match-bottom .tel{color:#ff2645;font-size: 20px;line-height: 26px;font-weight: bold;}
+.deed-con .match-right .match-bottom .page{width:105px;background: #ff2645;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;margin-top: 15px;}
+.deed-con .match-right .match-bottom .page a{color:#fff;font-size:14px;line-height: 35px;height:35px;text-align: center;display: block;}
+/*申请门店为我牵线弹窗*/
+.apply-store-popup{position: fixed;z-index: 1005;top:10%;left:50%;background: #fff;width:490px;margin-left: -245px;border-top: 2px solid #f90e34;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;}
+.apply-store-popup .store-wrap{padding:60px 50px 0 50px;}
+.apply-store-popup dl dt{float: left;width:70px;font-size: 16px;text-align: right;margin-right: 12px;line-height: 40px;position: relative;}
+.apply-store-popup dl{margin-bottom: 25px;}
+.apply-store-popup dl dd{position: relative;float: left;font-size: 14px;line-height: 22px;}
+.apply-store-popup dl dd input{padding:10px;border:1px solid #e5e5e5;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;outline: none;font-size: 14px;color:#a0a0a0;}
+.apply-store-popup dl .sex{line-height: 40px;margin-right: 15px;}
+.apply-store-popup dl .sex i{width:22px;height: 22px;border:1px solid #eee;display: inline-block;-moz-border-radius: 50%; -webkit-border-radius: 50%;border-radius: 50%;vertical-align: middle;margin-right: 10px;cursor: pointer;}
+.apply-store-popup dl .sex i.active{background: url(../images/apply-store.png) no-repeat;}
+.apply-store-popup dl .sex i.disabled {cursor: no-drop;}
+.apply-store-popup .position{position: relative;}
+.apply-store-popup .position .apply-popup-close{position: absolute;z-index: 1005;top:-50px;right:-39px;}
+.apply-store-popup .position .error{position: absolute;z-index: 11;bottom: -20px;left:90px;color:#f90e34;}
+/*月薪范围*/
+.select .selectType{width:278px;height:40px;border:1px solid #eee;position: relative;display: inline-block;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;line-height: 28px;}
+.select .selectType .int{margin-left: 10px;color:#333;display: inline-block;width:278px;height: 40px;line-height: 40px;font-size: 14px;}
+.select .selectType em{display: inline-block;width: 0;height: 0;border:7px solid transparent;border-top-color: #dcdcdc;vertical-align: middle;margin-left: 8px;transition: all .3s;position: absolute;right:12px;top:16px;}
+.select .selectType .selectmenu{position: absolute;top:40px;left:0;width:278px;line-height: 38px;background: #fff;-moz-box-shadow: 0px 0px 8px 0px rgba(204, 204, 204, 0.49);-webkit-box-shadow: 0px 0px 8px 0px rgba(204, 204, 204, 0.49);box-shadow: 0px 0px 8px 0px rgba(204, 204, 204, 0.49);-moz-border-radius: 2px; -webkit-border-radius: 2px;border-radius: 2px;display: none;z-index: 1003;}
+.select .select-type .selectmenu a{color:#a0a0a0;}
+.select .select-type .selectmenu a:hover{background: #f8f8f8;}
+.selectType .selectmenu a{display: block;text-align: left;padding:0 15px;color:#a0a0a0;}
+.selectType .selectmenu a:hover{background: #f8f8f8;}
+/*工作城市*/
+
+.error{position: absolute;left:60px;bottom:82px;}
+.error p{width: 343px;padding:2px 5px;background:#ff6600;color: #fff;display: none;}
+.apply-store-popup .bottom{height: 73px;background: url(../images/apply-stores-01.png) no-repeat;text-align: center;margin-top: 40px;}
+.apply-store-popup .bottom input{font-size: 18px;display: inline-block;width:151px;height: 44px;line-height: 44px;background: #f90e34;text-align: center;color:#fff;-moz-border-radius: 4px; -webkit-border-radius: 4px;border-radius: 4px;border:none;cursor: pointer;outline: none;}
+
+.city-select-box{z-index: 11111!important;}
+#selAddr{float: left;}
+#selAddr .sel-group{margin-left: 0;}
+.addrBtn{width:268px!important;border-radius: 4px;font-size:14px!important;height:40px!important;line-height: 40px!important;}
+
+.sendCode {position: absolute;right:0;top:0;height: 43px;line-height: 43px;padding:0 10px;background:#f90e34;color: #fff;color: #fff;border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+.sendCode:hover {color: #fff;}
+.sendCode.disabled {background: #ccc;cursor: no-drop;}
+
+/*国际手机号*/
+.apply-store-form .inpbdr{height: 41px;line-height: 41px;width: 278px;position: relative;display: inline-block;border: 1px solid #E5E5E5;float: none;border-radius: 4px}
+.apply-store-form .inpbdr .areaCode{width: 70px;text-indent: 16px; font-size: 14px;text-align: left;z-index: 10;top: 1px;left: 1px;bottom: 1px;border-right: 1px solid #E5E5E5}
+.apply-store-form .inpbdr .areaCode s{right: 12px}
+.apply-store-form .inpbdr input#telphone{border: none;padding: 0;padding-left: 80px;width: 198px;margin-left: 0;height: 41px;line-height: 41px;}
+.apply-store-form .areaCode_wrap{left:0;top: 44px;width: 100%}

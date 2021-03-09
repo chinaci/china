@@ -1,0 +1,903 @@
+{#$myleadPageUrl = {#getUrlPath service='member' type='user' template='dating' action='my_leadline'#}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_nickname#}的资料-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/abigimage.jquery.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/member-personal.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var templets_skin = '{#$templets_skin#}';
+
+	var upgradeUrl = '{#getUrlPath service='dating' template='member_center'#}';
+  var rechargeUrl = '{#getUrlPath service='dating' template='recharge'#}';
+  var buykeyUrl = '{#getUrlPath service='dating' template='buy_key'#}';
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var myleadPageUrl = '{#$myleadPageUrl#}';
+  var picPageUrl = '{#getUrlPath service='dating' template='picture' param="type=album&id={#$id#}&atpage=#atpage"#}';
+  var picPageUrl2 = '{#getUrlPath service='dating' template='picture' param="type=circle&aid=#aid&atpage=#atpage"#}';
+  var videoPageUrl = '{#getUrlPath service='dating' template='video' param="type=circle&aid=#aid"#}';
+  var uid = id = {#$id#};
+  var ismine = {#$ismine#};
+  var leadCount = {#$u_leadCan#};
+  var hasChat = {#$hasChat#};
+  var master = {
+  	id: {#$id#},
+  	nickname: '{#$detail_nickname#}',
+  	photo: '{#$detail_phototurl#}',
+  	level: {#$detail_level#},
+  	company: {#$detail_company#}
+  }
+  var visitor = {
+  	id: {#$u_id#},
+  	nickname: '{#$u_nickname#}',
+  	photo: '{#$u_phototurl#}',
+  	level: {#$u_level#},
+  	money: {#$u_money#},
+  	key: {#$u_key#},
+  	level: {#$u_level#},
+  }
+  var hnUid = {#$hnUid#};
+  var hnid = {#$detail_company#};
+
+	var albumLock = '{#$templets_skin#}/images/lock2.png';
+
+	var totalBalance = {#$userinfo.money|string_format:"%.2f"#};
+	var userinfo = {
+  	phone : '{#$u_phone#}',
+  	phoneCheck: {#$u_phoneCheck#}
+  }
+
+  var geetest = {#$cfg_geetest#};
+
+  var pageData = {
+		id: {#$detail_id#},
+		url: '{#getUrlPath service="dating" template="u" id="{#$detail_id#}"#}'
+	};
+
+
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="samecity"#}
+
+<div class="member-wrap">
+	<div class="bg-wrap"><img class="member-bg" src="{#$templets_skin#}images/member-personal.png" alt=""></div>
+	<div class="personal-wrap wrap fn-clear">
+		<div class="personal fn-clear">
+			<div class="womanPic">
+				<div class="big">
+					<ul class="bigImg">
+						{#dating action=albumList u=$u userid=$id isdating=1 pageSize=10 return=album#}
+						<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" data-src="{#$album.path#}" data-lock="{#$album.limit#}" {#if $album.limit#}class="lock"{#/if#} alt=""></a></li>
+						{#/dating#}
+					</ul>
+					<a class="Prev" href="javascript:;"><img src="{#$templets_skin#}images/prev-01.png" alt=""></a>
+					<a class="Next" href="javascript:;"><img src="{#$templets_skin#}images/next-01.png" alt=""></a>
+				</div>
+				<div class="smallScroll fn-clear">
+					<div class="smallImg">
+						<ul>
+							{#dating action=albumList u=$u userid=$id isdating=1 pageSize=10 return=album#}
+								{#if $album.limit#}
+								{#$pic = $templets_skin|cat:"images/lock2.png"#}
+								{#else#}
+								{#$pic = $album.path#}
+								{#/if#}
+							<li><a href="javascript:;"><img src="{#$pic#}" data-lock="{#$album.limit#}" {#if $album.limit#}class="lock"{#/if#} alt=""></a></li>
+							{#/dating#}
+						</ul>
+						<div class="left-shadow"></div>
+						<div class="right-shadow"></div>
+					</div>
+					<a class="sPrev" href="javascript:void(0)"><img src="{#$templets_skin#}images/s-prev.png" alt=""></a>
+					<a class="sNext" href="javascript:void(0)"><img src="{#$templets_skin#}images/s-next.png" alt=""></a>
+				</div>
+				<!-- <div class="pageState"></div> -->
+			</div>
+			<div class="womanData fn-left">
+				<div class="two-code">
+					<a href="javascript:;"><img class="code-btn" src="{#$templets_skin#}images/qr.png" alt=""></a>
+					<div class="scan-code">
+						<img src="/include/qrcode.php?data={#getUrlPath service='dating' tempplate='u' id={#$id#}#}" alt="">
+						<p>手机端二维码访问</p>
+					</div>
+				</div>
+				<div class="name fn-clear">
+					<span class="nickname">{#$detail_nickname#}</span>
+					{#if $detail_level#}<span class="icon-dia"><img src="{#$detail_levelIcon#}" alt=""></span>{#/if#}
+					{#if $detail_phoneCheck#}<span class="icon-phone"><img src="{#$templets_skin#}images/woman-01.png" alt=""></span>{#/if#}
+					{#if $detail_id != $u_id#}
+					{#if $detail_follow#}
+					<a class="follow active" href="javascript:;">已关注</a>
+					{#else#}
+					<a class="follow" href="javascript:;">关注</a>
+					{#/if#}
+					<a class="report btnJb" href="javascript:;"><img src="{#$templets_skin#}images/jubao.png" alt="">举报</a>
+					{#/if#}
+					{#if $u_level || $u_id == $detail_id#}
+					<span class="hour fn-right">最后活跃时间：{#$detail_activedate#}</span>
+					{#else#}
+					<span class="hour fn-right">最后活跃时间：<span class="see">查看</span></span>
+					{#/if#}
+				</div>
+				<div class="loc">{#if $detail_sex#}男{#else#}女{#/if#}{#if $detail_addrName#}&nbsp;&nbsp;&nbsp;{#$detail_addrName#}{#/if#}{#if $detail_age#}&nbsp;&nbsp;&nbsp;{#$detail_age#}岁{#/if#}{#if $detail_heightName#}&nbsp;&nbsp;&nbsp;{#$detail_heightName#}{#/if#}</div>
+				<div class="brief">
+					<ul class="fn-clear">
+						<li>居住地：<span>{#if $detail_addrName#}{#$detail_addrName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>学历：<span>{#if $detail_educationName#}{#$detail_educationName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>收入：<span>{#$detail_dincome|default:'<em>未填写</em>'#}</span></li>
+						<li>户口：<span>{#if $lookSpecInfo#}<span>{#$detail_householdName#}</span>{#else#}<span class="see">查看</span>{#/if#}</span></li>
+						<li>婚恋：<span>{#if $detail_marriageName#}{#$detail_marriageName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>有无子女：<span>{#if !$lookSpecInfo#}<span class="see">查看</span>{#elseif $detail_childName#}{#$detail_childName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>星座：<span>{#if $detail_constellation#}{#$detail_constellation#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>是否购房：<span>{#if $detail_housetagName#}{#$detail_housetagName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+						<li>是否买车：<span>{#if $detail_cartagName#}{#$detail_cartagName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					</ul>
+				</div>
+				<div class="speak fn-clear">
+					<div class="speak-left">
+						<a href="javascript:;"><img src="{#$detail_phototurl#}" alt=""></a>
+					</div>
+					{#if $detail_my_voice_state == 1#}
+					<div class="speak-right fn-clear">
+						<p class="weixinAudio">
+							<audio src="" id="media" width="1" height="1" preload></audio>
+							<span id="audio_area" class="db audio_area">
+								<span class="audio_wrp db">
+									<em></em>
+									<span class="audio_play_area">
+										<i class="icon_audio_default"></i>
+										<i class="icon_audio_playing"></i>
+									</span>
+									<span id="audio_length" class="audio_length tips_global"></span>
+									<span class="db audio_info_area">
+										<strong class="db audio_title">语音介绍</strong>
+									</span>
+								</span>
+							</span>
+						</p>
+					</div>
+					{#/if#}
+				</div>
+				<div class="personal-info fn-clear">
+					<div class="intro fn-clear">
+						<p>个人介绍：{#$detail_profile#}</p>
+						<a id="more" href="javascript:;">更多</a>
+					</div>
+					<div class="intro-more">
+						{#$detail_profile#}
+						<p><a href="javascript:;" class="pack-up fn-right">收起 <img src="{#$templets_skin#}images/pack-up.png" alt=""></a></p>
+					</div>
+				</div>
+				<div class="contact fn-clear">
+					{#if $detail_phone_enc#}
+					<a class="contact-popup" href="javascript:;" data-type="phone"><span class="phone"><img src="{#$templets_skin#}images/woman-04.png" alt=""><em>{#$detail_phone_enc#}</em></span></a>
+					{#else#}
+					<a class="contact-popup disabled" href="javascript:;" data-type="phone"><span class="phone phone"><img src="{#$templets_skin#}images/woman-04.png" alt=""><em>暂未完善</em></span></a>
+					{#/if#}
+					{#if $detail_wechat_enc#}
+					<a class="contact-popup" href="javascript:;" data-type="wechat"><span class="phone wechat"><img src="{#$templets_skin#}images/woman-05.png" alt=""><em>{#$detail_wechat_enc#}</em></span></a>
+					{#else#}
+					<a class="contact-popup disabled" href="javascript:;" data-type="wechat"><span class="phone wechat"><img src="{#$templets_skin#}images/woman-05.png" alt=""><em>暂未完善</em></span></a>
+					{#/if#}
+					{#if $detail_qq_enc#}
+					<a class="contact-popup" href="javascript:;" data-type="qq"><span class="phone qq"><img src="{#$templets_skin#}images/woman-06.png" alt=""><em>{#$detail_qq_enc#}</em></span></a>
+					{#else#}
+					<a class="contact-popup disabled" href="javascript:;" data-type="qq"><span class="phone qq"><img src="{#$templets_skin#}images/woman-06.png" alt=""><em>暂未完善</em></span></a>
+					{#/if#}
+				</div>
+				<div class="message fn-clear">
+					<div class="fn-left message-left">
+						<a href="javascript:;"><span class="send mes"><img src="{#$templets_skin#}images/woman-07.png" alt="">发消息</span></a>
+						<a href="javascript:;">
+							{#if $detail_meet#}
+							<span class="send hi-ed"><img src="{#$templets_skin#}images/woman-09.png" alt="">已打招呼</span>
+							<span class="send hi fn-hide"><img src="{#$templets_skin#}images/woman-08.png" alt="">打招呼</span>
+							{#else#}
+							<span class="send hi-ed fn-hide"><img src="{#$templets_skin#}images/woman-09.png" alt="">已打招呼</span>
+							<span class="send hi"><img src="{#$templets_skin#}images/woman-08.png" alt="">打招呼</span>
+							{#/if#}
+						</a>
+						<a href="javascript:;"><span id="send-gift" class="send gift"><img src="{#$templets_skin#}images/woman-10.png" alt="">送礼物</span></a>
+						<span class="hi-popup fn-hide">您已向{#$detail_nickname#}打招呼</span>
+					</div>
+					{#if $detail_hn#}
+					<div class="fn-right strings state_{#$leadState#}">
+						<div class="strings-img fn-left">
+							<a href="{#$detail_hn.url#}" target="_blank"><img src="{#if $detail_hn.phototurl#}{#$detail_hn.phototurl#}{#else#}{#$templets_skin#}images/privilege01.png{#/if#}" alt=""></a>
+						</div>
+						{#if $leadState == 0#}
+						<a href="javascript:;"><div class="maker-string"><img src="{#$templets_skin#}images/woman-11.png" alt="">红娘牵线</div></a>
+						{#elseif $leadState == 1#}
+						<a href="{#$myleadPageUrl#}" target="_blank"><div class="maker-string"><img src="{#$templets_skin#}images/woman-11.png" alt="">牵线中</div></a>
+						{#elseif $leadState == 2#}
+						<a href="{#$myleadPageUrl#}" target="_blank"><div class="maker-string"><img src="{#$templets_skin#}images/woman-11.png" alt="">牵线成功</div></a>
+						{#elseif $leadState == 3#}
+						<a href="{#$myleadPageUrl#}" target="_blank"><div class="maker-string"><img src="{#$templets_skin#}images/woman-11.png" alt="">牵线失败</div></a>
+						{#/if#}
+						<img class="triangle" src="{#$templets_skin#}images/woman-12.png" alt="">
+					</div>
+					{#/if#}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 相册弹窗 -->
+<div class="album-popup fn-hide fn-clear">
+	<div class="woman-popup">
+		<div class="album-close"><a href="javascript:;"><img src="{#$templets_skin#}images/album-close.png" alt=""></a></div>
+		<div class="big">
+			<ul class="bigImg fn-clear"></ul>
+			<a class="album-prev" href="javascript:;"></a>
+			<a class="album-next" href="javascript:;"></a>
+		</div>
+		<div class="smallScroll fn-clear">
+			<div class="smallImg">
+				<ul></ul>
+				<div class="left-shadow"></div>
+				<div class="right-shadow"></div>
+			</div>
+			<a class="small-prev" href="javascript:void(0)"><img src="{#$templets_skin#}images/small-prev.png" alt=""></a>
+			<a class="small-next" href="javascript:void(0)"><img src="{#$templets_skin#}images/small-next.png" alt=""></a>
+		</div>
+		<!-- <div class="pageState"></div> -->
+	</div>
+</div>
+<!-- 择偶要求 -->
+<div class="require wrap fn-clear">
+	<div class="mate fn-left"><img src="{#$templets_skin#}images/mate-01.png" alt=""></div>
+	<ul class="fn-left">
+		<li>年龄：<span>{#$detail_dage|default:'<em>未填写</em>'#}</span></li>
+		<li>身高：<span>{#$detail_dheight|default:'<em>未填写</em>'#}</span></li>
+		<li>地区：<span>{#$detail_daddrName|default:'<em>未填写</em>'#}</span></li>
+		<li>学历：<span>{#$detail_deducation|default:'<em>未填写</em>'#}</span></li>
+		<li>月收入：<span>{#$detail_dincome|default:'<em>未填写</em>'#}</span></li>
+		<li>婚姻状况：<span>{#$detail_dmarriageName|default:'<em>未填写</em>'#}</span></li>
+		<li>购房状况：<span>{#$detail_dhousetagName|default:'<em>未填写</em>'#}</span></li>
+		<li>有无子女：<span>{#$detail_dchildName|default:'<em>未填写</em>'#}</span></li>
+	</ul>
+</div>
+<!-- 我的相册 -->
+<div class="wrap">
+	<div class="album fn-clear">
+		<div class="album-title">我的相册 [<span id="total_album">0</span>]</div>
+		<div class="photo-album fn-clear">
+			{#$i = 0#}
+			{#dating action=albumList u=$u userid=$id isdating=1 pageSize=999 return=album#}
+			{#if $album.limit#}
+			{#$pic = $templets_skin|cat:"images/lock2.png"#}
+			{#else#}
+			{#$pic = $album.path#}
+			{#/if#}
+			<div class="album-list{#if $i > 9#} fn-hide{#/if#}">
+				<a href="{#$pic#}"{#if !$album.limit#} class="ok"{#/if#}><img class="list-img{#if $album.limit#} lock{#/if#}" src="{#$cfg_staticPath#}/images/blank.gif" data-url="{#$pic#}" alt=""></a>
+			</div>
+			{#$i = $i + 1#}
+			{#/dating#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">TA还没有上传照片哦~</div>
+			{#/if#}
+		</div>
+		<div class="more fn-hide"><a href="javascript:;" id="show-more">显示更多</a></div>
+	</div>
+</div>
+<!-- 基本资料 -->
+<div class="data wrap fn-clear">
+	<ul class="fn-clear data-title">
+		<li class="active"><a href="javascript:;">基本资料</a></li>
+		<li><a href="javascript:;">最近访客</a></li>
+		<li data-type="circle"><a href="javascript:;">我的动态</a></li>
+		<li data-type="follow"><a href="javascript:;">我的关注</a></li>
+		<li data-type="fans"><a href="javascript:;">我的粉丝</a></li>
+	</ul>
+	<div class="base-data tab-content show fn-clear">
+		<div class="data-list fn-clear">
+			<div class="base-left fn-left">
+				<img src="{#$templets_skin#}images/data-01.png" alt="">
+				<p>基本资料</p>
+			</div>
+			<div class="data-right fn-left">
+				<ul class="fn-clear">
+					<li>ID：<span>{#$detail_numid#}</span></li>
+					<li>身高：<span>{#if $detail_height#}{#$detail_heightName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>月收入：<span>{#if $detail_incomeName#}{#$detail_incomeName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>子女情况：<span>{#if !$lookSpecInfo#}<span class="see">查看</span>{#elseif $detail_childName#}{#$detail_childName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>性别：<span>{#if $detail_sex#}男{#else#}女{#/if#}</span></li>
+					<li>星座：<span>{#if $detail_constellation#}{#$detail_constellation#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>居住地：<span>{#if $detail_addrName#}{#$detail_addrName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>购房情况：<span>{#if $detail_housetagName#}{#$detail_housetagName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>年龄：<span>{#if $detail_age#}{#$detail_age#}岁{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>学历：<span>{#if $detail_educationName#}{#$detail_educationName#}岁{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>婚姻状况：<span>{#if $detail_marriageName#}{#$detail_marriageName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="data-list like-list fn-clear">
+			<div class="base-left fn-left">
+				<img src="{#$templets_skin#}images/data-02.png" alt="">
+				<p>兴趣爱好</p>
+			</div>
+			<div class="like-right fn-left">
+				<ul class="fn-clear">
+					{#if $detail_interestsArr#}
+					{#foreach from=$detail_interestsArr item=item#}
+					<li><a href="javascript:;">{#$item#}</a></li>
+					{#/foreach#}
+					{#/if#}
+				</ul>
+			</div>
+		</div>
+		<div class="data-list fn-clear">
+			<div class="base-left fn-left">
+				<img class="file-img" src="{#$templets_skin#}images/data-03.png" alt="">
+				<p class="file">小档案</p>
+			</div>
+			<div class="data-right fn-left">
+				<ul class="fn-clear">
+					<li>家乡：{#if $lookSpecInfo#}<span>{#$detail_hometownName#}</span>{#else#}<span class="see">查看</span>{#/if#}</li>
+					<li>属相：<span>{#if $detail_zodiac#}{#$detail_zodiac#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>体重：<span>{#if $detail_bodyweight#}{#$detail_bodyweight#}公斤{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>是否喝酒：<span>{#if $detail_drinkName#}{#$detail_drinkName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>户口：{#if $lookSpecInfo#}<span>{#$detail_householdName#}</span>{#else#}<span class="see">查看</span>{#/if#}</li>
+					<li>星座：{#if $lookSpecInfo#}<span>{#$detail_constellation#}</span>{#else#}<span class="see">查看</span>{#/if#}</li>
+					<li>相貌自评：<span>{#if $detail_looks#}{#$detail_looks#}分{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>民族：<span>{#if $detail_nationName#}{#$detail_nationName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>血型：<span>{#if $detail_bloodtype#}{#$detail_bloodtype#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>宗教信仰：<span>{#if $detail_religionName#}{#$detail_religionName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="data-list fn-clear edu">
+			<div class="base-left fn-left">
+				<img src="{#$templets_skin#}images/data-04.png" alt="">
+				<p>教育及工作</p>
+			</div>
+			<div class="data-right fn-left">
+				<ul class="fn-clear">
+					<li>毕业院校：<span>{#if $detail_school#}{#$detail_school#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>所学专业：<span>{#if $detail_majorName#}{#$detail_majorName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>职业职务：<span>{#if $detail_dutiesName#}{#$detail_dutiesName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>公司性质：<span>{#if $detail_natureName#}{#$detail_natureName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>公司行业：<span>{#if $detail_industryName#}{#$detail_industryName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>工作状态：<span>{#if $detail_workstatusName#}{#$detail_workstatusName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>掌握语言：<span>{#if $detail_languageName#}{#$detail_languageName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="data-list fn-clear family">
+			<div class="base-left fn-left">
+				<img src="{#$templets_skin#}images/data-05.png" alt="">
+				<p>家庭状况</p>
+			</div>
+			<div class="data-right fn-left">
+				<ul class="fn-clear">
+					<li>家中排行：<span>{#if $detail_familyrankName#}{#$detail_familyrankName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>父母情况：<span>{#if $detail_parentstatusName#}{#$detail_parentstatusName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>父亲工作：<span>{#if $detail_fatherworkName#}{#$detail_parentstatusName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>母亲工作：<span>{#if $detail_motherworkName#}{#$detail_motherworkName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>父母经济：<span>{#if $detail_parenteconomyName#}{#$detail_parenteconomyName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>父母医保：<span>{#if $detail_parentinsuranceName#}{#$detail_parentinsuranceName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="data-list fn-clear love">
+			<div class="base-left fn-left">
+				<img src="{#$templets_skin#}images/data-06.png" alt="">
+				<p>爱情规划</p>
+			</div>
+			<div class="data-right fn-left">
+				<ul class="fn-clear">
+					<li>何时结婚：<span>{#if $detail_marriagetimeName#}{#$detail_marriagetimeName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>偏爱约会方式：<span>{#if $detail_datetypeName#}{#$detail_datetypeName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>希望对方看重：<span>{#if $detail_othervalueName#}{#$detail_othervalueName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>期待婚礼形式：<span>{#if $detail_weddingtypeName#}{#$detail_weddingtypeName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>愿与对方父母住否：<span>{#if $detail_livetogeparentName#}{#$detail_livetogeparentName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>是否想要孩子：<span>{#if $detail_givebabyName#}{#$detail_givebabyName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>厨艺状况：<span>{#if $detail_cookingName#}{#$detail_cookingName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+					<li>家务分工：<span>{#if $detail_houseworkName#}{#$detail_houseworkName#}{#else#}<em>未填写</em>{#/if#}</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="hello tab-content wrap fn-clear">
+		{#if $u_level || $u_id == $id#}
+		{#dating action='visit' oper='visit' act='in' obj={#$id#} pageSize=18#}
+		<div class="hello-list" data-uid="{#$row.member.id#}">
+			<a href="{#$row.member.url#}" target="_blank"><img class="hello-per fn-left" src="{#if $row.member.photo#}{#$row.member.photo#}{#else#}{#$cfg_staticPath#}images/default_user.jpg{#/if#}" alt=""></a>
+			<div class="hello-right">
+				<p class="name fn-clear"><a href="{#$row.member.url#}" target="_blank">{#$row.member.nickname#}</a><span>{#$row.pubdate|date_format:"%H:i%"#}</span></p>
+				<p class="hello-icon">
+					{#if $row.member.level#}<span class="dia fn-left"><img src="{#$row.member.levelIcon#}" alt=""></span>{#/if#}
+					{#if $row.member.phoneCheck#}<span class="phone fn-left"><img src="{#$templets_skin#}images/woman-01.png" alt=""></span>{#/if#}
+					{#if $row.member.id != $u_id#}
+					{#if $row.meet#}
+					<a href="javascript:;" class="say fn-right" style="display:none;"><img src="{#$templets_skin#}images/hello-02.png" alt="">打招呼</a>
+					<a href="javascript:;" class="say-ed fn-right"><img src="{#$templets_skin#}images/woman-09.png" alt="">已打招呼</a>
+					{#else#}
+					<a href="javascript:;" class="say fn-right"><img src="{#$templets_skin#}images/hello-02.png" alt="">打招呼</a>
+					<a href="javascript:;" class="say-ed fn-right" style="display:none;"><img src="{#$templets_skin#}images/woman-09.png" alt="">已打招呼</a>
+					{#/if#}
+					{#else#}
+					<a href="javascript:;" class="say-ed fn-right disabled"><img src="{#$templets_skin#}images/woman-09.png" alt="">打招呼</a>
+					{#/if#}
+				</p>
+			</div>
+		</div>
+		{#/dating#}
+		{#else#}
+		<div class="empty">抱歉，您还不是会员，无法查看。马上 <a href="{#getUrlPath service='dating' template='member_center'#}" target="_blank">充值	</a></div>
+		{#/if#}
+	</div>
+	<div class="like tab-content wrap fn-clear"></div>
+	<div class="followbox wrap tab-content fn-clear"></div>
+	<div class="fansbox tab-content wrap fn-clear"></div>
+</div>
+
+
+<div class="get-gift wrap fn-clear">
+	<div class="get-title">收到的礼物</div>
+	<div class="slideBox slideBox1">
+		<div class="bd">
+			<ul class="fn-clear">
+					{#dating action='myGift' uid=$detail_id groupby='gid' pageSzie=100 return=item#}
+					<div class="gift-list">
+						<p class="gift-img"><img src="{#$item.litpic|replace:"large":"middle"#}" alt=""></p>
+						<a href="javascript:;"><p class="gift-text">{#$item.title#}</p></a>
+						<p class="gift-num"><span>x{#$item.count#}</span></p>
+					</div>
+					{#/dating#}
+			</ul>
+		</div>
+		<a class="prev" href="javascript:;"></a>
+		<a class="next" href="javascript:;"></a>
+	</div>
+</div>
+
+{#include file="foot.html"#}
+
+<!-- 你不是会员弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="hello-popup fn-hide">
+	<a href="javascript:;"><img class="fn-right hello-popup-delete" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+	<p class="warning"><img src="{#$templets_skin#}images/not-member.png" alt=""></p>
+	<p class="delete-sure">您还不是会员，请充值会员</p>
+	<div class="hello-btn">
+		<a href="javascript:;" class="cancel fn-left">取消</a>
+		<a href="{#getUrlPath service='dating' template='member_center'#}" target="_blank" class="sure fn-right">充值</a>
+	</div>
+</div>
+<!-- 发消息弹窗 -->
+<div class="send-popup fn-hide fn-clear">
+	<div class="send-title">
+		{#$detail_nickname#}
+		<a href="javascript:;"><img class="close" src="{#$templets_skin#}images/join-maker-02.png" alt=""></a>
+	</div>
+	<div class="send-wrap">
+		<div class="send-con">
+			{#*
+			<div class="send-mes fn-clear">
+				<a href="javascript:;"><img class="fn-left" src="{#$detail_phototurl#}" alt=""></a>
+				<span class="fn-left">你好，在吗？<i></i></span>
+			</div>
+			<div class="send-mes-r fn-clear">
+				<span class="fn-left">在的<i></i></span>
+				<a href="javascript:;"><img class="fn-left" src="{#$u_phototurl#}" alt=""></a>
+			</div>
+			*#}
+		</div>
+		<!-- 对话框sss -->
+		<div class="leave_message" id="leave_message">
+			<div class="comment_box">
+				<div class="write">
+					<div class="textarea txt" contenteditable="true"></div>
+				</div>
+				<div class="comment_foot fn-clear">
+					<div class="com_btn first">发送</div>
+					<div class="editor_btn"><input type="button" class="editor"></div>
+					<div class="face_box">
+						<i></i>
+						<ul>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 对话框eee -->
+	</div>
+	<div class="open_in_app" style="position: absolute; top: 44px; left: 0; bottom: 0; right: 0; background: rgba(255,255,255,.6); line-height: 250px; text-align: center; font-size: 14px;">请在APP中使用</div>
+</div>
+<!-- 发送礼物弹窗 -->
+<div class="send-gift-popup fn-hide fn-clear">
+	<div class="send-gift-title">
+		<p>发送礼物</p>
+		<a href="javascript:;"><img class="send-gift-close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+	</div>
+	<div class="send-gift-con fn-clear">
+		<div class="slideBox slideBox2">
+			<div class="bd">
+				<ul class="fn-clear">
+						{#dating action="giftList" return="gift"#}
+						<div class="gift-list{#if $_bindex.gift == 1#} active{#/if#}" data-id="{#$gift.id#}" data-price="{#$gift.price#}">
+							<a href="javascript:;"><p class="gift-img"><img src="{#$gift.small#}" alt=""></p></a>
+							<a href="javascript:;"><p class="gift-text">{#$gift.title#}</p></a>
+							<a href="javascript:;"><p class="gift-num"><span>{#$gift.price#}{#$datingConfig.goldName#}</span></p></a>
+						</div>
+						{#/dating#}
+				</ul>
+			</div>
+			<div class="hd"><ul></ul></div>
+		</div>
+		<div class="balance fn-clear">
+			<p class="money fn-left">余额：<span class="num my_money">{#$u_money#}</span><span class="unit">{#$datingConfig.goldName#}</span><a href="javascript:;" class="blance-charge" target="_blank">充值</a></p>
+			<p class="send fn-right"><a href="javascript:;">发送</a></p>
+		</div>
+	</div>
+</div>
+<!-- 充值礼物弹窗 -->
+<div class="recharge-popup fn-hide fn-clear">
+	<a href="javascript:;"><img class="recharge-close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+	<p class="recharge-img"><img src="" alt=""></p>
+	<div class="sendbefore">
+		<p class="sure">确认送给{#$detail_nickname#}<font class="name"></font> <span class="count">1</span> 个</p>
+		<p class="number"> 共花费 <span class="price">0</span> {#$datingConfig.goldName#}</p>
+	</div>
+	<div class="sendafter">
+		<p class="sure">礼物已送出</p>
+	</div>
+	<p class="charge">
+		<a class="no fn-left" href="javascript:;">取消</a>
+		<a class="yes fn-right yes_deposit" href="javascript:;">充值</a>
+		<a class="yes fn-right yes_send" href="javascript:;">确定</a>
+	</p>
+</div>
+<!-- 充值金钱弹窗 -->
+<div class="up-money-popup fn-hide fn-clear">
+	<div class="up-money-title">充值<a href="javascript:;"><img class="up-money-close" src="{#$templets_skin#}images/up-money-close.png" alt=""></a></div>
+	<div class="up-money-con fn-clear">
+		<div class="fn-clear">
+			<img class="title-img" class="fn-left" src="{#if $u_photo#}{#$u_photo#}{#else#}{#$cfg_staticPath#}images/default
+			_user.jpg{#/if#}" alt="">
+			<span class="name fn-left">{#$u_nickname#}</span>
+			<span class="money fn-left">余额：<font class="my_money">{#$u_money#}</font>{#$datingConfig.goldName#}</span>
+		</div>
+		<div class="amount fn-clear">
+			<p class="select">选择充值{#$datingConfig.goldName#}</p>
+			<p class="select-money">
+				{#foreach from=$goldDeposit item=it key=key#}
+				<a href="javascript:;" data-price="{#($it / $goldRatio)|string_format:"%.2f"#}"{#if $key == 0#} class="active"{#/if#}>{#$it#}</a>
+				{#/foreach#}
+			</p>
+			<p class="gain">总金额 &yen;<span>0</span></p>
+		</div>
+		{#$wxpay = 0#}
+		{#$alipay = 0#}
+		<div class="morepaytype2 fn-clear fn-hide payType" id="payType2">
+			{#$k=0#}
+			{#siteConfig action="payment"#}
+			{#if $row.pay_code == "wxpay"#}
+			{#$wxpay = 1#}
+			{#/if#}
+			{#if $row.pay_code == "alipay"#}
+			{#$alipay = 1#}
+			{#/if#}
+			<a href="javascript:;" class="bank-icon{#if $k == 0#} active{#/if#}" title="{#$row.name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+			{#$k = $k + 1#}
+			{#/siteConfig#}
+		</div>
+
+		<div class="use-money fn-clear">
+			{#if $userinfo.money > 0#}
+			<div class="balance2">
+				<div class="select-btn active fn-left"></div>
+				<div class="can-use">
+					<p class="can fn-left">现金可用余额（&yen;{#$userinfo.money#}）</p>
+					<p class="leave">当前使用<input type="text" value="0" class="use" readonly="">元</p>
+				</div>
+			</div>
+			{#/if#}
+			{#if $wxpay || $alipay#}
+			<div class="two-code fn-clear onlinepay2">
+				<div class="code-left fn-left">
+					<div class="code-bg">
+						<img src="{#$cfg_staticPath#}images/blank.gif" alt="" id="qrimg2">
+					</div>
+					<p>扫描二维码，支付更轻松</p>
+				</div>
+				<div class="code-right fn-left">
+					<p class="pay">实际支付</p>
+					<p class="pay-num actual-money"><span>&yen;</span><font>0.00</font></p>
+					<p class="wechat">使用微信、支付宝扫码支付</p>
+					<p class="way"><img src="{#$templets_skin#}images/zhi.png" alt=""><img src="{#$templets_skin#}images/wechat.png" alt=""></p>
+				</div>
+			</div>
+			{#/if#}
+		</div>
+		<p class="buy-now fn-hide"><a href="javascript:;">购买</a></p>
+	</div>
+</div>
+<!-- 实际支付弹出框 -->
+<div class="real-pay-popup fn-hide fn-clear">
+	<div class="two-code fn-clear">
+		<a href="javascript:;"><img class="real-pay-close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+		<div class="code-left fn-left">
+			<div class="code-bg">
+				<img src="{#$templets_skin#}upfile/two-code-03.png" alt="">
+			</div>
+			<p>扫描二维码，支付更轻松</p>
+		</div>
+		<div class="code-right fn-left">
+			<p class="pay">实际支付</p>
+			<p class="pay-num"><span>¥</span>0.00</p>
+			<p class="wechat">使用微信、支付宝、百度钱包扫码支付</p>
+			<p class="way"><img src="{#$templets_skin#}images/zhi.png" alt=""><img src="{#$templets_skin#}images/wechat.png" alt=""></p>
+		</div>
+	</div>
+</div>
+
+<!-- 牵线弹窗 -->
+<div class="pull-strings-popup fn-clear fn-hide">
+	<div class="strings-title"><a href="javascript:;"><img id="close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a></div>
+	<p class="sure">确认牵线 <span></span>&nbsp;&nbsp;将扣除1次牵线次数</p>
+	<p class="cancle"><a href="javascript:;" class="no">取消</a><a href="javascript:;" class="yes">确定</a></p>
+</div>
+<!-- 购买弹窗 -->
+<div class="buy-strings-popup fn-clear fn-hide">
+	<div class="buy-strings-bg fn-clear"><a href="javascript:;"><img id="buy-strings" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a></div>
+	<div class="buy-strings-title class="fn-clear"">
+		<ul>
+			<li class="fn-left active"><a href="javascript:;">购买红娘牵线</a></li>
+			<li class="fn-right"><a href="javascript:;">请留下联系方式</a></li>
+		</ul>
+	</div>
+	<div class="buy-box fn-clear show">
+		<div class="month fn-clear">
+			<ul>
+				{#if $datingConfig['leadPrice']#}
+    		{#foreach from=$datingConfig['leadPrice'] item=list key=key#}
+				<li class="fn-left{#if $key == 0#} active{#/if#}" data-price="{#$list.price#}">
+					<a href="javascript:;">
+						<div class="fn-clear">
+							<p class="time fn-left">{#$list.month#}个月</p>
+							<p class="fn-right"><span class="money-sign">&yen;</span><span class="much">{#$list.price#}</span></p>
+						</div>
+						<p class="include">包含人工牵线{#$list.count#}次</p>
+						<img class="yes fn-hide" src="{#$templets_skin#}images/buy-strings.png" alt="">
+					</a>
+				</li>
+				{#/foreach#}
+				{#/if#}
+			</ul>
+		</div>
+		{#if $userinfo.money > 0#}
+		<div class="use-money wrap fn-clear balance">
+			<div class="select-btn active fn-left"></div>
+			<div class="can-use">
+				<p class="can fn-left">现金可用余额（&yen;{#$userinfo.money#}）</p>
+				<p class="leave fn-left">当前使用<span class="use">{#$userinfo.money#}</span>元</p>
+			</div>
+		</div>
+		{#/if#}
+		{#$wxpay = 0#}
+		{#$alipay = 0#}
+		<div class="morepaytype fn-clear fn-hide payType" id="payType">
+			{#$k=0#}
+			{#siteConfig action="payment"#}
+			{#if $row.pay_code == "wxpay"#}
+			{#$wxpay = 1#}
+			{#/if#}
+			{#if $row.pay_code == "alipay"#}
+			{#$alipay = 1#}
+			{#/if#}
+			<a href="javascript:;" class="bank-icon{#if $k == 0#} active{#/if#}" title="{#$row.name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+			{#$k = $k+1#}
+			{#/siteConfig#}
+		</div>
+		{#if $wxpay || $alipay#}
+		<div class="two-code fn-clear fn-hide onlinepay">
+			<div class="code fn-left"><img src="{#$cfg_staticPath#}images/blank.gif" alt="" id="qrimg"><p>扫描二维码，支付更轻松</p></div>
+			<div class="fn-left pay">
+				<p class="actual">实际支付</p>
+				<p class="actual-money"><span>&yen;</span><font>0</font></p>
+				<p class="use-pay">使用微信、支付宝扫码支付</p>
+				<p class="wechat">
+					{#if $alipay#}<a href="javascript:;"><img src="{#$templets_skin#}images/zhi.png" alt=""></a>{#/if#}
+					{#if $wxpay#}<a href="javascript:;"><img src="{#$templets_skin#}images/wechat.png" alt=""></a>{#/if#}
+				</p>
+			</div>
+		</div>
+		{#/if#}
+		<div class="privilege fn-clear">
+			<h4>求牵特权</h4>
+			<ul class="fn-clear">
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege01.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">红娘人工指导</a></p>
+						<p class="text"><a href="javascript:;">一对一专属人工红娘为你寻爱之旅保驾护航</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege02.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">全站会员可共享</a></p>
+						<p class="text"><a href="javascript:;">实名认证优质会员，专业匹配推荐</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege03.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">专属人工牵线</a></p>
+						<p class="text"><a href="javascript:;">一对一人工服务，为您与心仪对象进行牵线</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege04.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">门店相亲保安全</a></p>
+						<p class="text"><a href="javascript:;">多彩相亲派对，安全约见场所</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege05.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">红娘牵线</a></p>
+						<p class="text"><a href="javascript:;">根据您的择偶要求，为您筛选喜欢的异性</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege06.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">身份验证百分百</a></p>
+						<p class="text"><a href="javascript:;">资料严格审查，个人信息安全隐私保护</a></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<p class="buy-now fn-hide"><a href="javascript:;">购买</a></p>
+	</div>
+	<div class="buy-box relation fn-clear">
+		<form action="" id="leave-tel" class="w-form">
+			<dl class="fn-clear">
+				<dt>姓名</dt>
+				<dd><input type="text" class="inp nickname" size="40" value="{#$u_realname#}"></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>性别</dt>
+				<dd>
+					{#if $u_sex#}
+					<input type="radio" class="male" name="sex" value="male" checked>男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="male" name="sex" value="male" disabled>女
+					{#else#}
+					<input type="radio" class="male" name="sex" value="male" disabled>男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="male" name="sex" value="male" checked>女
+					{#/if#}
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>电话号码</dt>
+				<dd class="number">
+					<div class="inpbdr">
+						<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+						<input id="phone-num" type="text" class="inp" size="40" value="{#$u_phone#}">
+					</div>	
+					<!--国际区号弹窗-->
+					<div class="areaCode_wrap areaCode_wrap2">
+						<ul>
+							
+						</ul>
+					</div>
+					
+					<button class="gain-code sendvdimgck"{#if $u_phoneCheck#} style="display:none;"{#/if#}>获取验证码</button>
+				</dd>
+			</dl>
+			<dl class="fn-clear yzmObj"{#if $u_phoneCheck#} style="display:none;"{#/if#}>
+				<dt>输入验证码</dt>
+				<dd><input type="text" id="number" class="inp" size="40"></dd>
+			</dl>
+			<div class="error"><p></p></div>
+			<p class="apply"><input id="sub-apply" type="submit" value="提交申请"></p>
+			<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+		</form>
+	</div>
+</div>
+
+<form action="/include/ajax.php" class="fn-hide" id="payform">
+	<input type="hidden" name="service" id="service" value="dating">
+	<input type="hidden" name="action" id="action" value="buyLead">
+	<input type="hidden" name="paytype" id="paytype" value="">
+	<input type="hidden" name="useBalance" id="useBalance" value="0">
+	<input type="hidden" name="balance" id="balance" value="">
+	<input type="hidden" name="amount" id="amount" value="">
+	<input type="hidden" name="ordernum" id="ordernum" value="">
+	<input type="hidden" name="id" id="id" value="0">
+	<input type="hidden" name="furl" id="furl" value="{#getUrlPath service='dating' template='u' id={#$id#}#}">
+</form>
+
+<form action="/include/ajax.php" class="fn-hide" id="payform2">
+	<input type="hidden" name="service" id="service2" value="dating">
+	<input type="hidden" name="action" id="action2" value="buyGold">
+	<input type="hidden" name="paytype" id="paytype2" value="">
+	<input type="hidden" name="useBalance" id="useBalance2" value="0">
+	<input type="hidden" name="balance" id="balance2" value="">
+	<input type="hidden" name="ordernum" id="ordernum2" value="">
+	<input type="hidden" name="count" id="count" value="0">
+	<input type="hidden" name="furl" id="furl2" value="{#getUrlPath service='dating' template='u' id={#$id#}#}">
+</form>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/abigimage.jquery.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/front-public.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script charset="UTF-8" src="{#$templets_skin#}js/member-personal.js"></script>
+</body>
+</html>

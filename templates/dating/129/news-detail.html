@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$detail_title#}-{#$dating_title#}</title>
+	<meta name="keywords" content="{#$detail_keywords#}" />
+	<meta name="description" content="{#$detail_description#}" />
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news_detail.css?v={#$cfg_staticVersion#}" media="all" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="news"#}
+
+<div class="wrap news-detail fn-clear">
+	<div class="main-body">
+		<h1 class="main-title">{#$detail_title#}</h1>
+		<p class="source-info fn-clear">
+			<span id="source-time">{#$detail_pubdate|date_format:"%Y-%m-%d"#}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span id="source-address">来源：{#$detail_source#}</span>
+		</p>
+		<div class="substance">
+			{#$detail_content#}
+		</div>
+	</div>
+	<div class="side-info">
+		<div class="aside-news">
+			<h2 class="fn-clear">
+				<a href="javascript:;" class="aside-title" target="_blank">文章排行</a>
+				<a class="dazhe-more" href="{#getUrlPath service='dating' template='news'#}" target="_blank">更多 <span>>></span></a>
+			</h2>
+			<ul class="aside-list-ranking">
+				{#dating action="news" orderby="click" pageSize=8#}
+				<li{#if $_bindex.row < 3#} class="hot"{#/if#}><em>{#$_bindex.row#}</em><a class="ranking-item-link" href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></li>
+				{#/dating#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+{#include file="foot.html"#}
+</body>
+</html>

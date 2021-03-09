@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>同城交友-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/samecity.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var templets_skin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var lng = lat = '';
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="samecity"#}
+
+<div class="ad wrap"></div>
+<div class="filter filterBox wrap fn-clear">
+	<div class="rank fn-clear">
+		<div class="rank-list fn-clear">
+			<div class="rank-title fn-left">智能排序</div>
+			<div class="rank-con fn-clear">
+				<ul class="fn-clear one-list smart-list">
+					<li data-id="0" class="active"><a href="javascript:;">智能排序</a></li>
+					<li data-id="1"><a href="javascript:;">最新加入</a></li>
+					<li data-id="2"><a href="javascript:;">最近登录</a></li>
+					<li data-id="3"><a href="javascript:;">收入排序</a></li>
+					<li data-id="4"><a href="javascript:;">距离排序</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="rank-list fn-clear">
+			<div class="rank-title fn-left">基本筛选</div>
+			<div class="rank-con fn-clear">
+				<ul class="fn-clear one-list">
+					<li class="father-li w-form" data-type="addrid">
+						<div class="cityName addrBtn" data-ids="" data-id="" data-title="居住地">居住地</div>
+						<img class="rank-loc" src="{#$templets_skin#}images/rank.png" alt="">
+					</li>
+					<li  class="father-li" data-type="age">
+						<a class="rank-one" href="javascript:;">年龄 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							<a href="javascript:;" data-id=",20">20岁以下</a><a href="javascript:;" data-id="20,25">20-25岁</a><a href="javascript:;" data-id="25,30">25-30岁</a><a href="javascript:;" data-id="30,35">30-35岁</a><a href="javascript:;" data-id="35,40">35-40岁</a><a href="javascript:;" data-id="40,45">40-45岁</a><a href="javascript:;" data-id="45">45岁以上</a>
+						</div>
+					</li>
+					<li class="father-li" data-type="height">
+						<a class="rank-one" href="javascript:;">身高 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							<a href="javascript:;" data-id=",145">145cm以下</a><a href="javascript:;" data-id="145,155">145-155cm</a><a href="javascript:;" data-id="155,160">155-160cm</a><a href="javascript:;" data-id="160,165">160-165cm</a><a href="javascript:;" data-id="165,170">165-170cm</a><a href="javascript:;" data-id="170,175">170-175cm</a><a href="javascript:;" data-id="175,180">175-180cm</a><a href="javascript:;" data-id="180,185">180-185cm</a><a href="javascript:;" data-id="185,190">185-190cm</a><a href="javascript:;" data-id="190,210">190-210cm</a><a href="javascript:;" data-id="210,">210cm以上</a>
+						</div>
+					</li>
+					<li class="father-li" data-type="marriage">
+						<a class="rank-one" href="javascript:;">婚姻状况 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=2#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+					<li class="father-li" data-type="education">
+						<a class="rank-one" href="javascript:;">学历 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=7#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+					<li class="father-li" data-type="income">
+						<a class="rank-one" href="javascript:;">月收入 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=6#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="rank-list fn-clear">
+			<div class="rank-title fn-left">高级筛选</div>
+			<div class="rank-con fn-clear" style="border-bottom:none">
+				<ul class="fn-clear one-list">
+					<li class="father-li{#if !$u_level#} lock{#/if#}" data-type="housetag">
+						<a class="rank-one" href="javascript:;">购房情况 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list month fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=4#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+					<li class="father-li{#if !$u_level#} lock{#/if#}" data-type="cartag">
+						<a class="rank-one" href="javascript:;">购车情况 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list month fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=11#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+					<li class="father-li w-form{#if !$u_level#} lock{#/if#}" data-type="household">
+						<div class="cityName {#if $u_level#} addrBtn{#/if#}" data-ids="" data-id="" data-title="户口">户口</div>
+						<img class="rank-loc" src="{#$templets_skin#}images/rank.png" alt="">
+					</li>
+					<li class="father-li{#if !$u_level#} lock{#/if#}" data-type="hometown">
+						<div class="cityName {#if $u_level#} addrBtn{#/if#}" data-ids="" data-id="" data-title="家乡">家乡</div>
+						<img class="rank-loc" src="{#$templets_skin#}images/rank.png" alt="">
+					</li>
+					<li class="father-li{#if !$u_level#} lock{#/if#}" data-type="child">
+						<a class="rank-one" href="javascript:;">有无子女 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list month fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							{#dating action="item" type=165#}
+							<a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a>
+							{#/dating#}
+						</div>
+					</li>
+					<li class="father-li{#if !$u_level#} lock{#/if#}" data-type="constellation">
+						<a class="rank-one" href="javascript:;">星座 <img src="{#$templets_skin#}images/rank.png" alt=""></a>
+						<div class="two-list month fn-hide">
+							<a href="javascript:;" data-id="">不限</a>
+							<a href="javascript:;" data-id="1">白羊座</a>
+							<a href="javascript:;" data-id="2">金牛座</a>
+							<a href="javascript:;" data-id="3">双子座</a>
+							<a href="javascript:;" data-id="4">巨蟹座</a>
+							<a href="javascript:;" data-id="5">狮子座</a>
+							<a href="javascript:;" data-id="6">处女座</a>
+							<a href="javascript:;" data-id="7">天秤座</a>
+							<a href="javascript:;" data-id="8">天蝎座</a>
+							<a href="javascript:;" data-id="9">射手座</a>
+							<a href="javascript:;" data-id="10">魔羯座</a>
+							<a href="javascript:;" data-id="11">水瓶座</a>
+							<a href="javascript:;" data-id="12">双鱼座</a>
+						</div>
+					</li>
+					{#if !$u_level#}
+					<li><img src="{#$templets_skin#}images/lock.png" class="lock" id="lock" alt=""></li>
+					{#/if#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="member-con fn-clear">
+		<div class="loading">正在获取，请稍后</div>
+	</div>
+</div>
+<!-- 弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="hello-popup fn-hide">
+	<a href="javascript:;"><img class="fn-right" id="hello-popup-delete" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+	<p class="warning"><img src="{#$templets_skin#}images/not-member.png" alt=""></p>
+	<p class="delete-sure">您还不是会员，请充值会员</p>
+	<div class="hello-btn">
+		<a href="javascript:;" class="cancel fn-left" id="cancel">取消</a>
+		<a href="{#getUrlPath service='dating' template='member_center'#}" class="sure fn-right" id="sure" target="_blank">充值</a>
+	</div>
+</div>
+<!-- 发消息弹窗 -->
+<div class="send-popup fn-hide fn-clear">
+	<div class="send-title">
+		<span class="name"></span>
+		<a href="javascript:;"><img class="close" src="{#$templets_skin#}images/join-maker-02.png" alt=""></a>
+	</div>
+	<div class="send-wrap">
+		<div class="send-con">
+			<div class="send-mes fn-clear">
+				<a href="javascript:;"><img class="fn-left" src="" alt=""></a>
+				<span class="fn-left">你好，在吗？<i></i></span>
+			</div>
+			<div class="send-mes-r fn-clear">
+				<span class="fn-left">在的<i></i></span>
+				<a href="javascript:;"><img class="fn-left" src="" alt=""></a>
+			</div>
+		</div>
+		<!-- 对话框sss -->
+		<div class="leave_message" id="leave_message">
+			<div class="comment_box">
+				<div class="write">
+					<div class="textarea txt" contenteditable="true"></div>
+				</div>
+				<div class="comment_foot fn-clear">
+					<div class="com_btn first">发送</div>
+					<div class="editor_btn"><input type="button" class="editor"></div>
+					<div class="face_box">
+						<i></i>
+						<ul>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+							<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 对话框eee -->
+	</div>
+	<div class="open_in_app" style="position: absolute; top: 44px; left: 0; bottom: 0; right: 0; background: rgba(255,255,255,.6); line-height: 250px; text-align: center; font-size: 14px;">请在APP中使用</div>
+</div>
+<div class="paging pagination wrap fn-clear"></div>
+
+{#include file="foot.html"#}
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" charset="UTF-8" src="{#$templets_skin#}js/samecity.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+.gre1 {color: #339900;}
+.fc-blue1 {color: #0097d3;}
+.ib {display: inline-block; }
+.hide {display: none; }
+.p10 {padding: 10px 0; }
+.mt10 {margin-top: 10px; }
+.pof {position: fixed;}
+.fr {float: right;}
+.fl {float: left;}
+.blue {color: #0097d3; }
+.c5e {color: #5e5e5e; }
+.btnR1, .btnR2, .btnR3, .btnR4, .btnP1, .btnP2, .btnP3, .btnP4, .btnG1, .btnG2, .btnG3, .btnG4, .btnZ1, .btnZ2, .btnZ3, .btnZ4, .btnN2 {display: inline-block; vertical-align: middle; text-align: center; color: #fff; font-family: "Microsoft Yahei"; text-decoration: none; -webkit-transition: border-color .2s linear,outline-color .4s linear,box-shadow .2s linear,background-color .2s linear,color .2s linear; }
+.btnR2, .btnP2, .btnG2, .btnZ2 {width: 140px; height: 36px; line-height: 36px; font-size: 14px; border-radius: 2px; }
+.btnR1, .btnR2 {background-color: #ff5b5b; }
+.btnP1, .btnP2, .btnP3, .btnP4 {background-color: #b7aeda; }
+.btnP1:hover, .btnP2:hover, .btnP3:hover, .btnP4:hover {background-color: #A093D1; color: #fff; }
+
+/*导航条*/
+.breadcrumb {padding:15px 0;padding-left:10px;border-bottom: 1px solid #e6e6e6;overflow: hidden;}
+.breadcrumb li {float:left;margin-right: 10px;}
+.breadcrumb li ,.breadcrumb li a {font-size: 12px;font-family: "宋体";color:#999;}
+.breadcrumb li.thispg {color: #333;}
+.breadcrumb li a:hover {color: #f00;}
+
+#mainbox {margin-top: 25px;}
+.breadcrumb {padding-top: 0;}
+.mainleft {width: 560px;float: left;border-right: 1px solid #d1d1d1;}
+.w1200 .mainleft {width: 710px;}
+.mainright {width: 430px;float: right;}
+.pinedBox {width: 430px;}
+.w1200 .pinedBox ,.w1200 .mainright {width: 480px;}
+.mainleft .inner {padding:0 30px 0 0;}
+.breadcrumb {border-bottom: none;padding-left: 0;}
+.shear {position: relative;padding-bottom: 15px;border-bottom: 1px solid #e6e6e6;}
+.shear .time {font-size: 14px;color: #ccc;line-height: 24px;}
+#bdsharebuttonbox {position: absolute;right:10px;top:0;width: 50px;height: 30px;background: url(../images/bggroup.png) left center no-repeat;background-position:0 -34px;}
+.bds_more {display: block;width: 100%;height: 100% !important;text-align: right; line-height: 30px !important;font-size: 14px !important;background: none !important;padding:0 !important;margin:0 !important;}
+.context {padding:20px 0;overflow: hidden; font-size: 14px; line-height: 1.8em;}
+.context h1.tit {font-size: 18px; text-align: center; padding: 10px 0; font-weight: 700; margin-bottom: 15px;}
+.context p {font-size: 16px;line-height: 38px;text-indent: 2em;}
+.context img {display: block;margin:40px auto;max-width: 100%;}
+
+.lovers {background: #ff7c8f;}
+.lovers .title {margin:0 15px;padding:15px 0;font-size: 18px;color: #fff;text-align: center;border-bottom:1px solid #fff;}
+.lovers .title span {font-size: 20px;margin:0 4px;}
+.lovers .pic {position: relative;padding:25px 20px;}
+.lovers .pic-u {width: 40%;text-align: center;}
+.lovers .pic-u p {font-size: 24px;color: #fff;}
+.lovers .mid-bg {position: absolute;left:40%;top:0;width: 20%;height: 100%;text-align: center;}
+.lovers .mid-bg .bg {position: absolute;left:0;top:0;width: 100%;height: 100%;}
+.lovers .mid-bg .bg img {display: block;width: 75px;height: 108px;margin:25px auto 5px;z-index: -1;}
+.w1200 .lovers .mid-bg .bg img {width: 98px;height: 124px;-webkit-transition: all .3s;transition: all .3s;}
+.lovers .mid-bg span {padding:0 4px;background: #7cbb00;color: #fff;font-size: 14px;line-height: 20px;}
+.lovers .pbox {}
+.lovers .pbox img {display: block;width: 135px;height: 135px;margin:0 auto 15px;-webkit-border-radius:50%;-moz-border-radius:50%;}
+.lovers .pic-m {}
+
+.contbtm {color: #999;}
+.contbtm .zan {padding-left: 20px;background: url(../images/bggroup.png) left center no-repeat;background-position: 0 1px;-webkit-transition: all .3s;transition: all .3s;cursor: pointer;}
+.contbtm .zan.actived {background-position: 0 -17px;}
+
+/*底部分享*/
+.btmshear {margin-top: 26px;line-height: 32px;color: #666;font-size: 14px;overflow: hidden;}
+#bdsharebuttonbox2 a {display: inline-block;width:32px;height: 32px;margin: 0 4px 0 0;padding: 0;float: left;background:url(../images/shear.jpg) no-repeat ;cursor: pointer;}
+
+#bdsharebuttonbox2 .bds_tqq {background-position: 0 0;}
+#bdsharebuttonbox2 .bds_qzone {background-position: -37px 0;}
+#bdsharebuttonbox2 .bds_email {background-position: -74px 0;}
+#bdsharebuttonbox2 .bds_tsina {background-position: -111px 0;}
+#bdsharebuttonbox2 .bds_face {background-position: -148px 0;}
+#bdsharebuttonbox2 .bds_fx {background-position: -185px 0;}
+
+
+.fixed_s {position: fixed!important; top: 0; z-index: 100; }

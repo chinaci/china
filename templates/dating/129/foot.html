@@ -1,0 +1,30 @@
+<!-- 底部 -->
+<div class="footer">
+  <div class="foot wrap">
+    <div class="foot-top">
+      <p>
+        <span>友情链接：</span>
+        {#siteConfig action="friendLink" return="flink" module="dating"#}
+        <a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a>
+        {#/siteConfig#}
+      </p>
+    </div>
+    <div class="foot-bottom">
+      <div class="wechat fn-clear">
+        {#if $cfg_weixinQr#}
+        <div class="wechat-pub">
+          <img src="{#$cfg_weixinQr#}" alt="">
+          <p>微信公众号</p>
+        </div>
+        {#/if#}
+        {#if $cfg_miniProgramQr#}
+        <div class="wechat-pub">
+          <img src="{#$cfg_miniProgramQr#}" alt="">
+          <p>微信小程序</p>
+        </div>
+        {#/if#}
+      </div>
+      <div class="copy">{#$cfg_powerby#}</div>
+    </div>
+  </div>
+</div>

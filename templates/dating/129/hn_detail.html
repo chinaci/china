@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_nickname#}-红娘主页-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/hn_detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var hnid = id = {#$id#};
+  var ismine = {#$ismine#};
+  var samecityUrl = '{#getUrlPath service='dating' template='samecity'#}';
+
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var leadCount = {#$u_leadCan#};
+  
+  var uid = {#$uid#};
+  var hnUid = {#$hnUid#};
+  var totalBalance = {#$userinfo.money|string_format:"%.2f"#};
+
+  var userinfo = {
+  	phone : '{#$u_phone#}',
+  	phoneCheck: {#$u_phoneCheck#}
+  }
+
+  var geetest = {#$cfg_geetest#};
+
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="maker-mess">
+	<div class="maker-con wrap fn-clear">
+		<img class="fn-left portrait" src="{#if $detail_phototurl#}{#$detail_phototurl#}{#else#}{#$cfg_staticPath#}images/default_user.jpg{#/if#}" alt="{#$detail_nickname#}">
+		<div class="fn-left personal">
+			<p class="name">{#$detail_nickname#}{#*<span>资深婚恋顾问</span>*#}</p>
+			<p class="tel">
+				{#if $detail_tel#}<span><img src="{#$templets_skin#}images/matchmaker-index01.png" alt=""> {#$detail_tel#}</span>{#/if#}
+				{#if $detail_wechat#}<span><img src="{#$templets_skin#}images/matchmaker-index02.png" alt=""> {#$detail_wechat#}</span>{#/if#}
+				{#if $detail_qq#}<span><img src="{#$templets_skin#}images/matchmaker-index03.png" alt=""> {#$detail_qq#}</span>{#/if#}
+			</p>
+			<p class="success fn-left"><a href="javascript:;">成功案例</a><span>{#$detail_case#}</span></p>
+			<p class="member fn-left"><a href="javascript:;">名下会员</a><span>0</span></p>
+			{#*<div class="web"><i></i><a href="javascript:;"></a></div>*#}
+		</div>
+	</div>
+</div>
+<div class="maker-brief wrap fn-clear">
+	<div class="brief-title">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">红娘简介</a></li>
+			<li><a href="javascript:;">资深荣誉</a></li>
+			<li><a href="javascript:;">婚恋建议</a></li>
+			<li><a href="javascript:;">擅长领域</a></li>
+		</ul>
+	</div>
+	<div class="brief-text show">
+		{#$detail_profile#}
+	</div>
+	<div class="brief-text">
+		{#$detail_honor#}
+	</div>
+	<div class="brief-text">
+		{#$detail_advice#}
+	</div>
+	<div class="brief-text">
+		{#if $detail_tagsArr#}
+    {#foreach from=$detail_tagsArr item=tag#}
+    <span class="tg">{#$tag#}</span>
+    {#/foreach#}
+    {#/if#}
+	</div>
+</div>
+<!-- 优质会员 -->
+<div class="high-member wrap fn-clear">
+	<div class="high-title"><h3>优质会员</h3></div>
+	<div class="high-box fn-clear"></div>
+</div>
+<!-- 弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="pull-strings-popup fn-clear fn-hide">
+	<div class="strings-title"><a href="javascript:;"><img id="close" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a></div>
+	<p class="sure">确认牵线 <span></span>&nbsp;&nbsp;将扣除1次牵线次数</p>
+	<p class="cancle"><a href="javascript:;" class="no">取消</a><a href="javascript:;" class="yes">确定</a></p>
+</div>
+<!-- 购买弹窗 -->
+<div class="buy-strings-popup fn-clear fn-hide">
+	<div class="buy-strings-bg fn-clear"><a href="javascript:;"><img id="buy-strings" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a></div>
+	<div class="buy-strings-title class="fn-clear"">
+		<ul>
+			<li class="fn-left active"><a href="javascript:;">购买红娘牵线</a></li>
+			<li class="fn-right"><a href="javascript:;">请留下联系方式</a></li>
+		</ul>
+	</div>
+	<div class="buy-box fn-clear show">
+		<div class="month fn-clear">
+			<ul>
+				{#if $datingConfig['leadPrice']#}
+    		{#foreach from=$datingConfig['leadPrice'] item=list key=key#}
+				<li class="fn-left{#if $key == 0#} active{#/if#}" data-price="{#$list.price#}">
+					<a href="javascript:;">
+						<div class="fn-clear">
+							<p class="time fn-left">{#$list.month#}个月</p>
+							<p class="fn-right"><span class="money-sign">&yen;</span><span class="much">{#$list.price#}</span></p>
+						</div>
+						<p class="include">包含人工牵线{#$list.count#}次</p>
+						<img class="yes fn-hide" src="{#$templets_skin#}images/buy-strings.png" alt="">
+					</a>
+				</li>
+				{#/foreach#}
+				{#/if#}
+			</ul>
+		</div>
+		{#if $userinfo.money > 0#}
+		<div class="use-money wrap fn-clear balance">
+			<div class="select-btn active fn-left"></div>
+			<div class="can-use">
+				<p class="can fn-left">现金可用余额（&yen;{#$userinfo.money#}）</p>
+				<p class="leave fn-left">当前使用<span class="use">{#$userinfo.money#}</span>元</p>
+			</div>
+		</div>
+		{#/if#}
+		{#$wxpay = 0#}
+		{#$alipay = 0#}
+		<div class="morepaytype fn-clear fn-hide" id="payType">
+			{#siteConfig action="payment"#}
+			{#if $row.pay_code == "wxpay"#}
+			{#$wxpay = 1#}
+			{#/if#}
+			{#if $row.pay_code == "alipay"#}
+			{#$alipay = 1#}
+			{#/if#}
+			<a href="javascript:;" class="bank-icon{#if $_bindex.row == 1#} active{#/if#}" title="{#$row.name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+			{#/siteConfig#}
+		</div>
+		{#if $wxpay || $alipay#}
+		<div class="two-code fn-clear fn-hide onlinepay">
+			<div class="code fn-left"><img src="" alt="" id="qrimg"><p>扫描二维码，支付更轻松</p></div>
+			<div class="fn-left pay">
+				<p class="actual">实际支付</p>
+				<p class="actual-money"><span>&yen;</span><font>0</font></p>
+				<p class="use-pay">使用微信、支付宝扫码支付</p>
+				<p class="wechat">
+					{#if $alipay#}<a href="javascript:;"><img src="{#$templets_skin#}images/zhi.png" alt=""></a>{#/if#}
+					{#if $wxpay#}<a href="javascript:;"><img src="{#$templets_skin#}images/wechat.png" alt=""></a>{#/if#}
+				</p>
+			</div>
+		</div>
+		{#/if#}
+		<div class="privilege fn-clear">
+			<h4>求牵特权</h4>
+			<ul class="fn-clear">
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege01.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">红娘人工指导</a></p>
+						<p class="text"><a href="javascript:;">一对一专属人工红娘为你寻爱之旅保驾护航</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege02.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">全站会员可共享</a></p>
+						<p class="text"><a href="javascript:;">实名认证优质会员，专业匹配推荐</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege03.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">专属人工牵线</a></p>
+						<p class="text"><a href="javascript:;">一对一人工服务，为您与心仪对象进行牵线</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege04.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">门店相亲保安全</a></p>
+						<p class="text"><a href="javascript:;">多彩相亲派对，安全约见场所</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege05.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">红娘牵线</a></p>
+						<p class="text"><a href="javascript:;">根据您的择偶要求，为您筛选喜欢的异性</a></p>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/privilege06.png" alt=""></a>
+					<div class="con">
+						<p class="title"><a href="javascript:;">身份验证百分百</a></p>
+						<p class="text"><a href="javascript:;">资料严格审查，个人信息安全隐私保护</a></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<p class="buy-now"><a href="javascript:;">购买</a></p>
+	</div>
+	<div class="buy-box relation fn-clear">
+		<form action="" id="leave-tel" class="w-form">
+			<dl class="fn-clear">
+				<dt>姓名</dt>
+				<dd><input type="text" class="inp nickname" size="40" value="{#$u_realname#}"></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>性别</dt>
+				<dd>
+					{#if $u_sex#}
+					<input type="radio" class="male" name="sex" value="male" checked>男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="male" name="sex" value="male" disabled>女
+					{#else#}
+					<input type="radio" class="male" name="sex" value="male" disabled>男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="male" name="sex" value="male" checked>女
+					{#/if#}
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>电话号码</dt>
+				<dd class="number">
+					<div class="inpbdr">
+						<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+						<input id="phone-num" type="text" class="inp" size="40" value="{#$u_phone#}" data-phone="{#$u_phone#}">
+					</div>	
+					<!--国际区号弹窗-->
+					<div class="areaCode_wrap areaCode_wrap2">
+						<ul>
+							
+						</ul>
+					</div>					
+					<button class="gain-code sendvdimgck"{#if $u_phoneCheck#} style="display:none;"{#/if#}>获取验证码</button>
+				</dd>
+			</dl>
+			<dl class="fn-clear yzmObj"{#if $u_phoneCheck#} style="display:none;"{#/if#}>
+				<dt>输入验证码</dt>
+				<dd><input type="text" id="number" class="inp" size="40"></dd>
+			</dl>
+			<div class="error"><p></p></div>
+			<p class="apply"><input id="sub-apply" type="submit" value="提交申请"></p>
+			<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+		</form>
+	</div>
+</div>
+
+<div class="paging pagination wrap fn-clear"></div>
+
+{#include file="foot.html"#}
+
+<form action="/include/ajax.php" class="fn-hide" id="payform">
+	<input type="hidden" name="service" id="service" value="dating">
+	<input type="hidden" name="action" id="action" value="buyLead">
+	<input type="hidden" name="paytype" id="paytype" value="">
+	<input type="hidden" name="useBalance" id="useBalance" value="0">
+	<input type="hidden" name="balance" id="balance" value="">
+	<input type="hidden" name="amount" id="amount" value="">
+	<input type="hidden" name="ordernum" id="ordernum" value="">
+	<input type="hidden" name="id" id="id" value="0">
+	<input type="hidden" name="furl" id="furl" value="{#getUrlPath service='dating' template='hn_detail' id={#$id#}#}">
+</form>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/hn_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

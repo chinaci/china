@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>情感课堂-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="news"#}
+
+<div class="wrap">
+	{#$noid = ""#}
+	<div class="pubbox newsbox fn-clear">
+		<div class="nl fn-left">
+			<div class="slideBox slideBox1">
+				<div class="slide">
+					<div class="bd">
+						{#dating action="news" return="news" page=1 pageSize="5"#}
+						<div class="slideshow-item" >
+							<div class="siteAdvObj">
+								<a href="{#$news.url#}" target="_blank">
+									<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" width="1200" height="100" alt="{#$news.title#}">
+								</a>
+							</div>
+							<div class="slideinfo">
+								<h3><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h3>
+								<div class="bg"></div>
+							</div>
+						</div>
+						{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+						{#/dating#}
+					</div>
+					<div class="hd"><ul></ul></div>
+				</div>
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+		</div>
+		<div class="nm fn-left">
+			{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="1"#}
+			<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+			{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+			{#/dating#}
+			<ul>
+				{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="4"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+				{#/dating#}
+			</ul>
+			{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="1"#}
+			<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+			{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+			{#/dating#}
+			<ul>
+				{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="4"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+				{#/dating#}
+			</ul>
+		</div>
+		<div class="nr fn-left">
+			<div class="imgbox">
+				{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="1"#}
+				<a href="{#$news.url#}">
+					<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+					<div class="imgInfo">
+						<h3>{#$news.title#}</h3>
+						<div class="bg"></div>
+					</div>
+				</a>
+				{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+				{#/dating#}
+			</div>
+			<ul>
+				{#dating action="news" return="news" noid={#$noid#} page=1 pageSize="8"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#/dating#}
+			</ul>
+		</div>
+	</div>
+
+	{#dating action="newsType" pageSize=2 return="type"#}
+	{#$noid = ""#}
+	<div class="pubbox mainbox">
+		<div class="leadertop fn-clear">
+			<span class="ltit" data-id="{#$type.id#}">{#$type.typename#}</span>
+			<a href="{#getUrlPath service='dating' template='news-list' id='1'#}" class="news_more">更多 <em>>></em></a>
+		</div>
+		<div class="contbox fn-clear">
+			<div class="nl fn-left">
+				<div class="adbox">
+					{#myad title="交友电脑端_模板二_情感课堂__广告{#$_bindex.type#}-1"#}
+				</div>
+				<div class="adbox">
+					{#myad title="交友电脑端_模板二_情感课堂__广告{#$_bindex.type#}-2"#}
+				</div>
+			</div>
+			<div class="nm fn-left">
+				{#dating action="news" return="news" typeid="{#$type.id#}" page=1 pageSize="1"#}
+				<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+				{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+				{#/dating#}
+				<ul>
+					{#dating action="news" return="news" typeid="{#$type.id#}" noid={#$noid#} page=1 pageSize="4"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+					{#/dating#}
+				</ul>
+				{#dating action="news" return="news" typeid="{#$type.id#}" noid={#$noid#} page=1 pageSize="1"#}
+				<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+				{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+				{#/dating#}
+				<ul>
+					{#dating action="news" return="news" typeid="{#$type.id#}" noid={#$noid#} page=1 pageSize="4"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#$noid = $noid|cat:{#$news.id#}|cat:","#}
+					{#/dating#}
+				</ul>
+			</div>
+			<div class="nr fn-left">
+				<div class="imgbox">
+					{#dating action="news" return="news" typeid="{#$type.id#}" noid={#$noid#} page=1 pageSize="1"#}
+					<a href="{#$news.url#}">
+						<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+						<div class="imgInfo">
+							<h3>{#$news.title#}</h3>
+							<div class="bg"></div>
+						</div>
+					</a>
+					{#/dating#}
+				</div>
+				<ul>
+					{#dating action="news" return="news" typeid="{#$type.id#}" noid={#$noid#} page=1 pageSize="8"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#/dating#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="adCon">
+		{#myad title="交友电脑端_模板二_情感课堂__广告{#$_bindex.type#}"#}
+	</div>
+	{#/dating#}
+	
+	<a href="javascript:;" class="btnMore">查看更多</a>
+</div>
+
+
+{#include file="foot.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/news.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

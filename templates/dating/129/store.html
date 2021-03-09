@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>直营门店-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/store.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="store"#}
+
+<div class="stores-banner">
+	{#myad title="交友电脑端_模板一_门店_广告一"#}
+	<div class="join-stores"><i></i><a href="javascript:;" id="join-stores">入驻门店</a></div>
+</div>
+{#*
+<div class="stores-select wrap">
+	<span>请选择区域</span>
+	<a href="javascript:;" data-id="0" class="active">全部</a>
+	{#siteConfig action='addr' return='addr'#}
+	<a href="javascript:;" data-id={#$addr.id#}>{#$addr.typename#}</a>
+	{#/siteConfig#}
+</div>
+*#}
+<!-- 门店 -->
+<div class="stores-box wrap fn-clear">
+	<div class="loading">正在获取，请稍后</div>
+</div>
+<div class="paging pagination wrap fn-clear"></div>
+<!-- 弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="join-maker fn-hide">
+	<div class="join-title">
+		<span>入驻门店</span><a href="javascript:;"><img src="{#$templets_skin#}images/join-maker-02.png" id="close" alt=""></a>
+	</div>
+	<div class="join-con">
+		<div class="jtop fn-clear">
+			<div class="photo">
+				<div class="up-ing"></div>
+				<div class="ubtn"><div class="holder"><s></s>上传头像</div><input type="file" name="Filedata" class="Filedata" id="image"></div>
+				<img src="{#$templets_skin#}images/blank.gif" />
+		  	</div>
+		</div>
+		<form action="" id="subForm">
+			<div class="error">
+				<p></p>
+			</div>
+			<dl class="fn-clear">
+				<dt>姓名</dt>
+				<dd><input type="text" class="inp name" size="45" name="nickname" id="nickname" placeholder="请输入门店名称"></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>电话号码</dt>
+				<dd>
+					<div class="inpbdr">
+						<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+						<input type="text" class="inp tel" name="phone" id="phone" size="45" placeholder="请输入您的手机号">
+						<!--国际区号弹窗-->
+						<div class="areaCode_wrap areaCode_wrap2">
+							<ul>
+								
+							</ul>
+						</div>
+					</div>	
+					
+					<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+					
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>门店地址</dt>
+				<dd><textarea class="inp text location" name="address" id="address" rows="2" cols="45" placeholder="请输入店铺地址"></textarea></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>门店简介</dt>
+				<dd><textarea class="inp text brief" name="profile" id="profile" rows="4" cols="45" placeholder="请简单的介绍下自己的店铺..."></textarea></dd>
+			</dl>
+			<div class="form-submit">
+				<input class="submit" id="submit" type="submit" value="提交">
+			</div>
+			<input type="hidden" name="photo" id="litpic" value="" />
+		</form>
+	</div>
+	
+
+</div>
+
+{#include file="foot.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js" type="text/javascript"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/store.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>会员充值-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/member-recharge.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var templets_skin = '{#$templets_skin#}';
+
+	var user = {
+		level: {#$u_level#},
+		expired: "{#$u_expired|date_format:'%Y-%m-%d %H:%M:%S'#}"
+	}
+
+	var totalBalance = {#$userinfo.money|string_format:"%.2f"#};
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="member-title fn-clear">
+	<div class="title wrap fn-clear">
+		<div class="title-left fn-left">{#$dating_channelName#}会员充值</div>
+		<div class="title-right fn-right">
+			<a class="name" href="{#getUrlPath service='member' type='user'#}"><img src="{#$u_phototurl#}" alt="">{#$u_nickname#}</a>
+			<a class="login-out" href="{#$cfg_basehost#}/logout.html">退出</a>
+			{#*<a class="login" href="javascript:;">登录</a>*#}
+		</div>
+	</div>
+</div>
+
+<div class="charge wrap fn-clear">
+	{#$price = 0#}
+	{#dating action="memberLevel" return="level"#}
+	{#if $_bindex.level == 1#}
+	{#$price = $level.cost#}
+	{#/if#}
+	<div class="charge-list fn-clear{#if $_bindex.level == 1#} active{#/if#}" data-id="{#$level.id#}" data-price="{#$level.cost#}">
+		<img class="charge-img fn-left" src="{#$level.icon#}" alt="">
+		<div class="charge-m fn-left">
+			<p class="dia-mem" title="{#$level.name#}">{#$level.name#}<span class="recon">{#$level.tag#}<em></em></span></p>
+			<p class="month">{#$level.month#}个月</p>
+		</div>
+		<div class="diamond fn-right"><span>&yen;</span>{#$level.cost#}</div>
+		<img class="charge-bottom" src="{#$templets_skin#}images/buy-strings.png" alt="">
+	</div>
+	{#/dating#}
+</div>
+{#if $userinfo.money < $price#}
+{#$price = $userinfo.money#}
+{#/if#}
+<div class="use-money wrap fn-clear balance">
+	<div class="select-btn fn-left{#if $userinfo.money > 0#} active{#else#} disabled{#/if#}"></div>
+	<div class="can-use">
+		<p class="can fn-left">现金可用余额（&yen;<span>{#$userinfo.money#}</span>）</p>
+		<p class="leave fn-left">当前使用<span class="use">{#$price#}</span>元</p>
+	</div>
+</div>
+<!-- 提示信息 -->
+<div class="wrap upgradeinfo"></div>
+<!-- 立即充值 -->
+<div class="right-now wrap fn-clear">
+	<a class="now-recharge" href="javascript:;">立即充值</a>
+</div>
+<div class="desk fn-hide"></div>
+<!-- 立即充值弹窗 -->
+<div class="recharge-now-popup fn-hide">
+	<div class="two-code fn-clear">
+		<div class="recharge-close"><a href="javascript:;"><img src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a></div>
+		{#$wxpay = 0#}
+		{#$alipay = 0#}
+		<div class="morepaytype fn-clear fn-hide payType" id="payType">
+			{#$k=0#}
+			{#siteConfig action="payment"#}
+			{#if $row.pay_code == "wxpay"#}
+			{#$wxpay = 1#}
+			{#/if#}
+			{#if $row.pay_code == "alipay"#}
+			{#$alipay = 1#}
+			{#/if#}
+			<a href="javascript:;" class="bank-icon{#if $k == 0#} active{#/if#}" title="{#$row.name#}" data-type="{#$row.pay_code#}"><span class="{#$row.pay_code#}"></span><b></b></a>
+			{#$k = $k+1#}
+			{#/siteConfig#}
+		</div>
+		{#if $wxpay || $alipay#}
+		<div class="onlinepay fn-clear">
+			<div class="code fn-left"><img src="{#$cfg_staticPath#}images/blank.gif" alt="" id="qrimg"><p>扫描二维码，支付更轻松</p></div>
+			<div class="fn-left pay">
+				<p class="actual">实际支付</p>
+				<p class="actual-money"><span>&yen;</span><font>0.00</font></p>
+				<p class="use-pay">使用微信、支付宝扫码支付</p>
+				<p class="wechat">
+					<a href="javascript:;"><img src="{#$templets_skin#}images/zhi.png" alt=""></a>
+					<a href="javascript:;"><img src="{#$templets_skin#}images/wechat.png" alt=""></a>
+				</p>
+			</div>
+		</div>
+		{#/if#}
+		<p class="buy-now fn-hide"><a href="javascript:;">确认支付</a></p>
+	</div>
+</div>
+<!-- 功能对比 -->
+<div class="comparision wrap fn-clear">
+	<div class="compare-title">
+		<i></i>
+		<span>功能对比</span>
+	</div>
+	<div class="compare-con fn-clear">
+		<div class="function fn-left">
+			<div class="function-t"><span>系统功能</span></div>
+			<div class="function-con">
+				<ul class="fn-clear">
+					<li>聊天互动</li>
+					<li>聊天条数</li>
+					<li>照片数量</li>
+					<li>访客记录</li>
+					<li>聊天钥匙</li>
+					<li>高级搜索</li>
+					<li>会员数量</li>
+					<li>活跃时间</li>
+					<li>昵称红名</li>
+					<li>联系方式</li>
+					<li>语音介绍</li>
+					<li>注册时间</li>
+					<li>定向隐身</li>
+					<li>会员标识</li>
+					<li>视频头像</li>
+				</ul>
+			</div>
+		</div>
+		<div class="common fn-left">
+			<div class="common-title">普通会员</div>
+			<div class="common-con">
+				<ul class="fn-clear">
+					<li>不支持语音、表情、图片</li>
+					<li>每天每人限制5条</li>
+					<li>每个会员最多查看5张照片</li>
+					<li>不能查看</li>
+					<li>每天仅3把</li>
+					<li>不能搜索</li>
+					<li>每天只限查看10个会员</li>
+					<li>不能查看</li>
+					<li>普通系统默认</li>
+					<li></li>
+					<li>不支持语音介绍</li>
+					<li>不能查看</li>
+					<li>不能设置</li>
+					<li>普通系统默认</li>
+					<li>不能查看</li>
+				</ul>
+			</div>
+		</div>
+		<div class="vip fn-left">
+			<div class="vip-title">VIP会员</div>
+			<div class="vip-con">
+				<ul class="fn-clear">
+					<li>不限制</li>
+					<li>独立直播间</li>
+					<li>无限查看</li>
+					<li>查看自己和TA的访客记录</li>
+					<li>每天10~30把</li>
+					<li>可以通过年龄、身高、收入等多个条件来 找到您喜欢的俊男靓女</li>
+					<li>不限制查看会员数量</li>
+					<li>查看最后一次登录时间</li>
+					<li>会员红色昵称，专属尊贵，与众不同</li>
+					<li>查看联系方式（QQ、微信，微博，电话号码）</li>
+					<li>可发布最长60秒的语音介绍</li>
+					<li>查看TA的注册时间</li>
+					<li>悄悄隐藏与TA的距离和登录时间</li>
+					<li>专属身份铭牌，尊贵身份，如影随形</li>
+					<li>无限制看TA人视频，所见即真人，约会更有保障</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 功能特权 -->
+<div class="privilege wrap fn-clear">
+	<div class="privilege-title">
+		<i></i>
+		<span>功能特权</span>
+	</div>
+	<div class="privilege-con fn-clear">
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-01.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">聊天互动</p>
+				<p class="con">不限制聊天形式</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-02.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">照片数量</p>
+				<p class="con">无限查看相册照片</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-03.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">聊天钥匙</p>
+				<p class="con">每天可有10~30把聊天钥匙</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-04.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">活跃时间</p>
+				<p class="con">查看最后一次登录时间</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-05.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">会员数量</p>
+				<p class="con">不限制查看会员数量</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-06.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">语音介绍</p>
+				<p class="con">可发布最长60秒的语音介绍</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-07.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">视频头像</p>
+				<p class="con">无限制看TA人视频，所见即真人，约会更有保障</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-08.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">高级搜索</p>
+				<p class="con">通过年龄、身高、等多个条找到您喜欢的俊男靓女</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-09.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">视频头像</p>
+				<p class="con">无限制看TA人视频，所见即真人，约会更有保障</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-10.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">高级搜索</p>
+				<p class="con">通过年龄、身高、等多个条找到您喜欢的俊男靓女</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-11.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">访客记录</p>
+				<p class="con">查看自己和TA的访客记录</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-12.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">聊天条数</p>
+				<p class="con">不限制聊天数量</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-13.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">会员标识</p>
+				<p class="con">专属身份铭牌，尊贵身份，如影随形</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-14.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">昵称红名</p>
+				<p class="con">会员红色昵称，专属尊贵，与众不同</p>
+			</div>
+		</div>
+		<div class="privilege-list">
+			<img class="fn-left" src="{#$templets_skin#}images/privilege-15.png" alt="">
+			<div class="list-right fn-left">
+				<p class="name">联系方式</p>
+				<p class="con">可查看联系方式（QQ、微信，微博，电话号码）</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#include file="foot.html"#}
+
+<form action="/include/ajax.php" class="fn-hide" id="payform">
+	<input type="hidden" name="service" id="service" value="dating">
+	<input type="hidden" name="action" id="action" value="upgrade">
+	<input type="hidden" name="paytype" id="paytype" value="">
+	<input type="hidden" name="useBalance" id="useBalance" value="0">
+	<input type="hidden" name="balance" id="balance" value="">
+	<input type="hidden" name="amount" id="amount" value="">
+	<input type="hidden" name="ordernum" id="ordernum" value="">
+	<input type="hidden" name="id" id="id" value="0">
+	<input type="hidden" name="furl" id="furl" value="{#getUrlPath service='dating' template='member_center'#}">
+</form>
+
+<script charset="UTF-8" src="{#$templets_skin#}js/member-recharge.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-秀恩爱-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/show-love-detail.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var criticalPoint = 1240, criticalClass = "w1200";
+  $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body class="w1200">
+
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="story"#}
+
+<div class="wrap fn-clear" id="mainbox">
+	<div class="mainleft">
+		<div class="inner">
+			<ul class="breadcrumb">
+		  	<li>当前位置：</li>
+	      <li><a href="{#$dating_channelDomain#}">交友首页</a> &gt; </li>
+	      <li><a href="{#getUrlPath service='dating' template='story'#}">牵手成功</a> &gt; </li>
+	      <li class="thispg">详情页</li>
+	    </ul>
+	    <div class="shear">
+	    	<div class="bdsharebuttonbox" id="bdsharebuttonbox">
+		    	<a href="javascript:void(0)" class="bds_more newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_liptic#}" title="更多">分享</a>
+        </div>
+				<span class="time">{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</span>
+	    </div>
+	    <div class="context">
+				<h1 class="tit">{#$detail_title#}</h1>
+	    	{#$detail_content#}
+				<br />
+				{#foreach from=$detail_pics item=pic#}
+				<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$pic.pic#}" />
+				{#/foreach#}
+	    </div>
+		</div>
+	</div>
+	<div class="mainright pinned">
+		<div class="lovers">
+			<div class="title">
+				确定关系时间：<span>{#$detail_kdate|date_format:"%Y-%m-%d"#}</span>
+			</div>
+			<div class="pic oh">
+				<div class="pic-u pic-m fl">
+					<div class="pbox">
+						<img src="{#$detail_fphoto#}" height="140" width="140" alt="">
+					</div>
+					<p>{#$detail_fnickname#}</p>
+				</div>
+				<div class="mid-bg">
+					<div class="bg"><img src="{#$templets_skin#}images/love.png" height="124" width="98" alt="">
+					<span>{#if $detail_process == 0#}约会中{#elseif $detail_process == 1#}恋爱中{#elseif $detail_process == 2#}结婚啦{#/if#}</span>
+					</div>
+				</div>
+				<div class="pic-u pic-w fr">
+					<div class="pbox">
+						<img src="{#$detail_tphoto#}" height="140" width="140" alt="">
+					</div>
+					<p>{#$detail_tnickname#}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#include file="foot.html"#}
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

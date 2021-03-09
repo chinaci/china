@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>情感课堂-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/abigimage.jquery.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/circle.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var atlasMax = 20;
+	var putAuth = {#$putAuth|default:0#};
+	var user = {
+		id: {#$u_id#}
+	}
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="circle"#}
+
+
+<div class="main">
+	<div class="box wrap fn-clear">
+		<div class="main-left">
+			<ul class="menu fn-clear">
+				<li class="active">全部动态</li>
+				<li data-param="uid={#$u_id#}">我的动态</li>
+			</ul>
+			<div class="list" id="list">
+				<div class="loading">获取中，请稍后...</div>
+			</div>
+			<div class="paging pagination fn-clear"></div>
+		</div>
+		<div class="main-right">
+			<div class="putbox">
+				<a href="javascript:;" class="fabu">发布动态</a>
+				<div class="mypanel">
+					<div class="photo">
+						<a href="{#$u_url#}" target="_blank"><img src="{#$u_photo|default:{#$cfg_staticPath|cat:"images/noPhoto_100.jpg"#}#}" alt="{#$u_nickname#}"></a>
+					</div>
+					<p class="name">{#$u_nickname#}</p>
+					<p class="info"><span>关注 {#$u_o_follow#}</span><em></em><span>粉丝 {#$u_o_followby#}</span></p>
+					<a href="{#$u_url#}" class="link" target="_blank">我的主页</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{#include file="foot.html"#}
+
+<div class="desk"></div>
+<!-- 发布动态 -->
+<div class="dialog dialog_circle">
+  <a href="javascript:;" class="close">×</a>
+  <div class="dialog_title">发布你的最新动态</div>
+  <div class="dialog_body">
+  	{#if $putAuth#}
+    <ul class="file fn-clear" id="fileBox"></ul>
+    <div class="content"><textarea name="" id="content" cols="30" rows="5" placeholder="输入内容"></textarea></div>
+    <div class="btns fn-clear">
+    	<div class="btn pic" id="upPic" data-extensions="jpg,jpeg,bmp,png,gif" data-mimetypes="image/jpg,image/jpeg,image/png,image/gif"></div>
+    	<div class="btn video" id="upVideo" data-extensions="mp4,mov" data-mimeTypes="video/mp4,video/mov"></div>
+    	{#*<div class="btn emoje"></div>*#}
+    	<div class="submit">发布</div>
+  		<div class="info"></div>
+    </div>
+    {#else#}
+    <div class="title"></div>
+    <div class="authority-body">
+      <div class="type type1">
+        <a href="{#getUrlPath service='dating' template='member_center'#}" target="_blank">
+          <div class="txt">
+            <p class="p1">购买服务</p>
+            <p class="p2">需购买高级会员及以上服务</p>
+          </div>
+          <s><i></i></s>
+        </a>
+      </div>
+      <div class="type type2">
+        <a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" target="_blank">
+          <div class="txt">
+            <p class="p1">实名认证</p>
+            <p class="p2">实名认证</p>
+          </div>
+          <s><i></i></s>
+        </a>
+      </div>
+    </div>
+    {#/if#}
+  </div>
+</div>
+
+<!-- 确认 -->
+<div class="dialog dialog_confirm">
+  <a href="javascript:;" class="close">×</a>
+  <div class="dialog_title">确认信息</div>
+  <div class="dialog_body">
+    确定要删除此动态吗？
+  </div>
+  <div class="dialog_btn">
+    <a href="javascript:;" class="cancel">取消</a>
+    <a href="javascript:;" class="ok">确定</a>
+  </div>
+</div>
+
+<!-- 确认弹出层 -->
+<div class="hello-popup fn-hide">
+  <a href="javascript:;"><img class="fn-right hello-popup-delete" src="{#$templets_skin#}images/hello-popup-delete.png" alt=""></a>
+  <p class="warning"><img src="{#$templets_skin#}images/not-member.png" alt=""></p>
+  <p class="delete-sure">确定要删除这条动态吗？</p>
+  <div class="hello-btn">
+    <a href="javascript:;" class="cancel fn-left">取消</a>
+    <a href="javascript:;" class="sure fn-right">确定</a>
+  </div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/abigimage.jquery.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/circle.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

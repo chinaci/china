@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var sysId = {#$userinfo.userid|default:0#};
+  var uid = {#$uid#};
+  var lng = lat = 0;
+  var check = {#$check#};
+  var userid = {#$userinfo.userid|default:0#};
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html"#}
+
+<div class="banner-wrap">
+	<div class="banner">
+		<div class="wrap">
+			<div class="slide" id="slide">
+				{#myad title="交友电脑端_模板一_首页__广告一"#}
+			</div>
+			<div class="slidebtn" id="slidebtn"></div>
+		</div>
+	</div>
+	
+	{#if !$userinfo#}
+	<div class="banner-form wrap fn-clear">
+		<div class="form-con">
+			<div class="login-btn"><a href="{#$cfg_basehost#}/login.html">登录</a></div>
+			<p class="form-title">
+				<span class="num">30</span> 秒&nbsp; 遇见幸福
+			</p>
+			<form action="" id="regForm">
+				<div class="sex">
+					<label class="you-sex">你的性别</label>
+					<input type="radio" class="male" name="sex" checked="checked" value="1">男&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="female" name="sex" value="0">女
+				</div>
+				<div class="birth-time">
+					<span class="time fn-left">出生日期</span>
+					<div id="date">
+						<select name="year" id="year">
+							<option value="">年份</option>
+						</select>
+						<select name="month" id="month">
+							<option value="">月份</option>
+						</select>
+						<select name="day" id="days" class="day">
+							<option value="">日期</option>
+						</select>
+					</div>
+				</div>
+				<div class="birth-time location fn-clear">
+					<span class="time fn-left">工作地区</span>
+					<div class="outer" id="selAddr">
+						<div class="cityName">
+			    			<div class="city-title addrBtn" data-field="addrid" data-ids="" data-id="0">请选择<span class="caret"></span></div>
+			    		</div>
+			    		<input type="hidden" name="cityid" id="cityid" value="0">
+			    		<input type="hidden" name="addrid" id="addrid" value="0">
+					</div>
+				</div>
+				<div class="sex">
+					<label class="you-sex">婚姻状况</label>
+					{#dating action="item" type=2 return="item"#}
+					{#if $_bindex.item < 4#}
+					<input type="radio" class="male" name="marriage" value="{#$item.id#}"{#if $_bindex.item == 1#} checked="checked"{#/if#}>{#$item.typename#}&nbsp;&nbsp;&nbsp;&nbsp;
+					{#/if#}
+					{#/dating#}
+				</div>
+				<input type="submit" value="免费注册" class="submit">
+			</form>
+		</div>
+	</div>
+	{#else#}
+	<div class="banner-form wrap fn-clear loginafter">
+		<div class="form-con">
+			<div class="login-btn"><a href="{#getUrlPath service='dating' template='member_center'#}" target="_blank">{#$u_levelName|default:"普通会员"#}</a></div>
+			<div class="photo">
+				<a href="{#$u_url#}" target="_blank"><img src="{#$u_photo#}" alt="{#$u_nickname#}"></a>
+				<p><span>{#$u_nickname#}</span>{#if $u_certifyState#}<em>已认证</em>{#/if#}</p>
+			</div>
+			<p class="u_id">ID：<span>{#$u_numid#}</span></p>
+			<p class="u_total">我的相册 <span id="u_total_album">-</span><em></em>我的好友 <span id="u_total_friend">-</span><em></em>我的礼物 <span id="u_total_gift">-</span></p>
+			<a href="{#getUrlPath service='member' type='user' template='dating' action='mydata'#}" class="u_center" target="_blank">我的资料</a>
+		</div>
+	</div>
+	{#/if#}
+</div>
+<div class="single wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>千万优质单身等你匹配</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">每一次倾心，最初总是不经意的邂逅，深深浅浅，刹那心动</div>
+	<div class="member fn-clear">
+		<div class="member-title">
+			<h3>推荐会员</h3>
+			<div class="member-title-link">
+				<a href="{#getUrlPath service='dating' template='samecity'#}" class="more">查看更多</a>
+			</div>
+		</div>
+	</div>
+	<div class="slideBox slideBox4">
+		<div class="bd">
+			<ul class="fn-clear">
+				<li>
+					<div class="member-con fn-clear">
+						{#dating action=memberList pageSize=20 return=user#}
+						<div class="member-list">
+							<a href="{#$user.url#}" target="_blank"><div class="img-wrap"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$user.photo#}" alt="{#$user.nickname#}"></div></a>
+							<div class="personal-wrap">
+								<p class="personal fn-clear"><span class="name">{#$user.nickname#}</span><a href="{#$user.url#}" class="page" target="_blank">个人主页</a></p>
+								<div class="message fn-clear">
+									{#$has = 0#}
+									{#if $user.age#}
+									{#$has = 1#}
+									<p class="years">{#$user.age#}<span>岁</span>&nbsp;&nbsp;</p>
+									{#/if#}
+									{#if $user.height == -1#}
+									{#$has = 1#}
+									<p class="cm">145cm以下&nbsp;&nbsp;&nbsp;&nbsp;</p>
+									{#elseif $user.height == -2#}
+									{#$has = 1#}
+									<p class="cm">210cm以上&nbsp;&nbsp;&nbsp;&nbsp;</p>
+									{#elseif $user.height != 0#}
+									{#$has = 1#}
+									<p class="cm">{#$user.height#}<span>cm</span>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+									{#/if#}
+									{#if $user.marriageName#}
+									{#$has = 1#}
+									<p class="apart">{#$user.marriageName#}</p>
+									{#/if#}
+									{#if $has == 0#}
+									<p style="font-size:12px;color:#b3b3b3;line-height:30px;">竟然都没填~</p>
+									{#/if#}
+								</div>
+								{#if $user.addrName#}
+								<p class="location">
+								{#foreach from=$user.addrName item=item#}{#$item#} {#/foreach#}</p>
+								{#else#}
+								<p class="location">Ta来自神秘的地方</p>
+								{#/if#}
+							</div>
+						</div>
+						{#/dating#}
+					</div>
+				</li>
+			</ul>
+		</div>
+		<a class="next" href="javascript:;">换一批</a>
+	</div>
+</div>
+<!-- 情感课堂 -->
+{#$nid1 = array()#}
+{#$nid2 = array()#}
+<div class="single love wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>婚恋情感专家  就在您身边</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">别让过去绊住了你寻爱的脚步</div>
+	<div class="love-title fn-clear"><h3>情感课堂</h3></div>
+	<div class="love-con fn-clear">
+		<div class="love-con-l fn-clear">
+			<div class="slideBox slideBox1">
+				<div class="bd">
+					<ul class="fn-clear">
+						{#dating action="news" pageSize='3' return="news"#}
+						{#$nid1[] = $news.id#}
+						<li><a href="{#$news.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$news.litpic#}" alt="{#$news.title#}" title="{#$news.title#}"></a></li>
+						{#/dating#}
+					</ul>
+				</div>
+				<div class="hd">
+					<ul class="fn-clear"></ul>
+				</div>
+				<a class="prev" href="javascript:;"></a>
+				<a class="next" href="javascript:;"></a>
+			</div>
+			<div class="love-left-img">
+				{#$nid3 = array()#}
+				{#dating action="news" pageSize='1' noid=$nid1 return="news"#}
+				{#$nid3[] = $news.id#}
+				<a href="{#$news.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$news.litpic#}" alt="{#$news.title#}" title="{#$news.title#}"></a>
+				{#/dating#}
+				{#$nid1=array_merge($nid1,$nid3)#}
+			</div>
+			<div class="love-left-text">
+				<div class="love-text">
+					{#$_bindex=""#}
+					{#dating action="news" pageSize='5' return="news"#}
+					{#$nid2[] = $news.id#}
+					<p class="no{#$_bindex.news#}"><span>• </span><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></p>
+					{#/dating#}
+				</div>
+			</div>
+		</div>
+		<div class="love-con-m">
+			<div class="love-m-text">
+				<ul class="fn-clear">
+					{#$_bindex=""#}
+					{#dating action="news" pageSize=9 noid=$nid2 return="news"#}
+					<li><span class="classify">• [{#$news.typename#}] </span><a href="{#$news.url#}" target="_blank"{#if $_bindex.news % 2 == 0#} class="high"{#/if#}>{#$news.title#}</a><span class="time">{#$news.pubdate|date_format:'%m.%d'#}</span></li>
+					{#/dating#}
+				</ul>
+			</div>
+			<div class="love-m-img fn-clear">
+				{#dating action="news" pageSize=3 noid=$nid1 return="news"#}
+				<div class="love-box">
+					<a href="{#$news.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$news.litpic#}" alt="{#$news.title#}" title="{#$news.title#}"></a>
+					<i></i>
+					<p><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></p>
+				</div>
+				{#/dating#}
+			</div>
+		</div>
+		<div class="love-con-r">
+			<div class="circle">
+				<div class="circle-title">
+					<h4>圈子动态</h4>
+					<a href="{#getUrlPath service=dating template=circle#}">更多&gt;&gt;</a>
+				</div>
+				<div class="circle-con txtMarquee-top">
+					<div class="bd">
+						<ul>
+							{#dating action=circleList pageSize=30 return=item#}
+							<li>
+								<div class="circle-list fn-clear">
+									<a href="{#$item.user.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$item.user.photo#}" alt="{#$item.userl.nickname#}"></a>
+									<div class="state">
+										<p class="name fn-clear"><a href="{#$item.user.url#}" target="_blank">{#$item.user.nickname#}</a><span>{#$item.floorTime#}</span></p>
+										<p class="article"><a href="javascript:;">{#if $item.content#}{#$item.content#}{#/if#}{#if $item.type == 1#}[图片]{#/if#}{#if $item.type == 2#}[视频]{#/if#}</a></p>
+									</div>
+								</div>
+							</li>
+							{#/dating#}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{#if in_array("huodong", $installModuleArr)#}
+<!-- 相亲活动 -->
+<div class="single blind wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>为你精心策划每场相亲大会</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">简化恋爱程序，寻找古老游戏里的人间真情</div>
+	<div class="blind-title fn-clear">
+		<h3>{#$huodong_channelName#}</h3>
+		<div class="blind-link">
+			<a href="{#$huodong_channelDomain#}" class="more" target="_blank">查看更多</a>
+		</div>
+	</div>
+	<div class="blind-tab">
+		<ul class="fn-clear">
+			{#huodong action='type' pageSize=6 return='type'#}
+      <li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+      {#/huodong#}
+		</ul>
+	</div>
+	<div class="slideBox slideBox2">
+		<div class="bd">
+			<ul class="fn-clear">
+				{#huodong action='hlist' pageSize='4'#}
+				<li>
+					<div class="box">
+						<a href="{#$row.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$row.litpic#}" type="middle"#}" alt="{#$row.title#}" target="_blank"></a>
+						<a href="{#$row.url#}" target="_blank" class="box2">{#$row.title#}</a>
+					</div>
+				</li>
+				{#/huodong#}
+			</ul>
+			<a href="javascript:;" class="prev"></a>
+			<a href="javascript:;" class="next"></a>
+		</div>
+		<div class="hd">
+			<ul class="fn-clear"></ul>
+		</div>
+		<div class="shade"></div>
+	</div>
+	<div class="blind-right fn-right">
+		{#huodong action='hlist' page='2' pageSize='4'#}
+		<div class="blind-list fn-left">
+			<div class="list-top">
+				<a href="{#$row.url#}" target="_blank"><img src="{#changeFileSize url="{#$row.litpic#}" type="middle"#}" alt="{#$row.title#}"></a>
+			</div>
+			<div class="list-bottom">
+				<p class="list-text"><a href="{#$row.url#}" target="_blank">{#$row.title#}</a></p>
+				<p>
+					<a href="javascript:;" class="fn-left num">已报名：{#$row.reg#}人 </a>
+					{#if $smarty.now < $row.end#}
+					<a href="{#$row.url#}" target="_blank" class="fn-right join">申请参加</a>
+					{#else#}
+					<a href="{#$row.url#}" target="_blank" class="fn-right join disabled">活动已结束</a>
+					{#/if#}
+				</p>
+			</div>
+		</div>
+		{#/huodong#}
+	</div>
+</div>
+{#/if#}
+<!-- 红娘服务 -->
+<div class="single matchmaker wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>一对一  让天下有情人终成眷属</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">专业加一份用心，服务加一份真情</div>
+	<div class="member fn-clear">
+		<div class="member-title">
+			<h3>红娘服务</h3>
+			<div class="member-title-link">
+				<a href="{#getUrlPath service=dating template=hongniang#}" class="more">查看更多</a>
+			</div>
+		</div>
+	</div>
+	<div class="match-box fn-clear">
+		<div class="slideBox slideBox3">
+			<div class="bd">
+				<ul class="fn-clear">
+					<li>
+						{#dating action=hnList pageSize=6#}
+						<div class="match-list fn-left">
+							<div class="match-left fn-left">
+								<a href="{#$row.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.photo#}" alt="{#$row.nickname#}"></a>
+							</div>
+							<div class="match-right fn-left">
+								<p class="name"><a href="{#$row.url#}" target="_blank">{#$row.nickname#}</a>{#*<span>资深婚恋顾问</span>*#}</p>
+								<a href="{#$row.url#}" target="_blank"><p class="text">{#$row.advice#}{#$row.advice#}</p></a>
+								<div class="match-bottom">
+									<p class="tel">{#$row.phone#}</p>
+									<p class="page"><a href="{#$row.url#}" target="_blank">红娘主页</a></p>
+								</div>
+							</div>
+						</div>
+						{#/dating#}
+					</li>
+				</ul>
+			</div>
+			<a class="prev" href="javascript:;"></a>
+			<a class="next" href="javascript:;"></a>
+		</div>
+	</div>
+</div>
+<!-- 牵手成功 -->
+<div class="single hand wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>他们在这里收获了爱情</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">原来你的感情线，早已和我相重叠，永恒是绝美共同画面</div>
+	<div class="member fn-clear">
+		<div class="member-title">
+			<h3>牵手成功</h3>
+			<div class="member-title-link">
+				<a href="{#getUrlPath service='dating' template='story'#}" class="more">查看更多</a>
+			</div>
+		</div>
+	</div>
+	<div class="hand-wrap fn-clear">
+		{#dating action='story' pageSize=8 return=list#}
+		<div class="hand{#$_bindex.list#} hand-pub fn-left">
+			<a href="{#$list.url#}" target="_blank"><img class="fn-left" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$list.litpic#}" alt=""></a>
+			<div class="hand-hover fn-hide">
+				<p class="name"><a href="{#$list.url#}" target="_blank">{#$list.tnickname#}&{#$list.fnickname#}</a></p>
+				{#*<p class="teacher"><a href="{#$list.url#}" target="_blank">男会员服务老师：李老师<br>女会员服务老师：宋老师</a></p>*#}
+				<p class="day"><a href="{#$list.url#}" target="_blank">幸福牵手时刻：{#$list.pubdate|date_format:"%Y.%m.%d"#}</a></p>
+			</div>
+		</div>
+		{#/dating#}
+	</div>
+</div>
+<!-- 直营门店 -->
+<div class="single shop wrap fn-clear">
+	<div class="single-effect fn-clear">
+		<div class="single-title">
+			<h3>中国高端实体婚恋的专业品牌</h3>
+		</div>
+		<i class="single-title-l"></i>
+		<i class="single-title-r"></i>
+		<div class="block sin-effect-block1"></div>
+		<div class="block sin-effect-block2"></div>
+		<div class="block sin-effect-block3"></div>
+		<div class="block sin-effect-block4"></div>
+	</div>
+	<div class="single-text">缘分是一个奇妙的东西，看不见也摸不着，线下直营，给足安全感</div>
+	<div class="member fn-clear">
+		<div class="member-title">
+			<h3>直营门店</h3>
+			<div class="member-title-link">
+				<a href="{#getUrlPath service='dating' template='store'#}" class="more">查看更多</a>
+			</div>
+		</div>
+	</div>
+	<div class="shop-box">
+		{#dating action="storeList" pageSize="8" return="list"#}
+		<div class="shop-list">
+			<div class="list-top">
+				<a href="javascript:;"><img src="{#$list.coverturl#}" alt="{#$list.nickname#}"></a>
+			</div>
+			<div class="list-bottom">
+				<p class="title"><a href="{#$list.url#}" target="_blank">{#$list.nickname#}</a></p>
+				<p class="years">{#*<a href="javascript:;">经营年限：{#$list.year#}年</a>*#}<a href="javascript:;" class="group">红娘团队：{#$list.team#}人</a></p>
+				<p class="tel">免费咨询：<span>{#$list.tel#}</span></p>
+			</div>
+			<div class="title-img"><a href="{#$list.url#}" target="_blank"><img src="{#$list.phototurl#}" alt="{#$list.nickname#}"></a></div>
+		</div>
+		{#/dating#}
+	</div>
+</div>
+
+{#include file="foot.html"#}
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+{#if !$userinfo#}<script type="text/javascript" src="{#$templets_skin#}js/selectDate.js?v={#$cfg_staticVersion#}"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

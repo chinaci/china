@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>红娘-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/hongniang.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var templets_skin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+</script>
+</head>
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="hongniang"#}
+
+<div class="banner">
+	<div class="banner-img">
+		{#myad title="交友电脑端_模板一红娘列表_广告一"#}
+	</div>
+	<!-- 入驻红娘 -->
+	{#if $datingConfig.plat_title#}
+	<div class="matchmaker wrap fn-clear">
+		<div class="btn-con-l fn-left">
+			<img src="{#if $datingConfig.plat_litpic#}{#$datingConfig.plat_litpic#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" alt="">
+		</div>
+		<div class="btn-con-r fn-left">
+			<div class="btn-r-title fn-clear">
+				<h3 class="fn-left">{#$datingConfig.plat_title#}</h3>
+				<div class="join fn-right">
+					<i></i>
+					<a class="fn-right" href="javascript:;">入驻红娘</a>
+				</div>
+			</div>
+			<div class="maker-text">
+				<h4>服务理念：</h4>
+				<p>{#$datingConfig.plat_service#}</p>
+			</div>
+		</div>
+	</div>
+	{#else#}
+	<div class="matchmaker wrap fn-clear state0">
+		<div class="btn-con-r">
+			<div class="join">
+				<i></i>
+				<a href="javascript:;">入驻红娘</a>
+			</div>
+		</div>
+	</div>
+	{#/if#}
+</div>
+<!-- 红娘列表 -->
+<div class="maker-box wrap fn-clear">
+	<div class="member-con fn-clear">
+		<div class="loading">正在获取，请稍后</div>
+	</div>
+</div>
+<div class="paging pagination wrap fn-clear"></div>
+
+{#include file="foot.html"#}
+
+<!-- 弹窗 -->
+<div class="desk fn-hide"></div>
+<div class="join-maker fn-hide">
+	<div class="join-title">
+		<span>入驻红娘</span><a href="javascript:;"><img src="{#$templets_skin#}images/join-maker-02.png" id="close" alt=""></a>
+	</div>
+	<div class="join-con">
+		<div class="jtop fn-clear">
+			<div class="photo">
+				<div class="up-ing"></div>
+				<div class="ubtn"><div class="holder"><s></s>上传头像</div><input type="file" name="Filedata" class="Filedata" id="image"></div>
+				<img src="{#$templets_skin#}images/blank.gif" />
+		  	</div>
+		</div>
+		<form action="" id="subForm">
+			<div class="error">
+				<p></p>
+			</div>
+			<div class="join-tel">
+				姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名<input type="text" id="nickname" placeholder="请输入您的姓名">
+			</div>
+			<div class="join-tel fn-clear">
+				<span>电话号码</span>
+				<div class="inpbdr">
+					<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+					<input type="text" id="tel-number" placeholder="请输入您的手机号">
+					<!--国际区号弹窗-->
+					<div class="areaCode_wrap areaCode_wrap2">
+						<ul>
+							
+						</ul>
+					</div>
+				</div>					
+			</div>
+			<div class="intro">
+				<span>个人简介</span><textarea id="briefInfo" rows="5" cols="20" placeholder="请介绍一下你自己..."></textarea>
+			</div>
+			<div class="form-submit">
+				<input class="submit" type="submit" value="提交">
+				<p class="sub-done fn-hide">已提交审核，请耐心等待审核...</p>
+			</div>
+			<input type="hidden" name="photo" id="litpic" value="" />
+		</form>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js" type="text/javascript"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script charset="UTF-8" src="{#$templets_skin#}js/hongniang.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

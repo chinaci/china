@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>秀恩爱-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/front-public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/show-love.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var criticalPoint = 1240, criticalClass = "w1200";
+  $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="top.html" pageCurr="story"#}
+
+<!-- 大图幻灯 s -->
+<div class="banner">
+
+	<div class="wrap">
+		<div class="slide" id="slide">
+			{#myad title="交友电脑端_模板一_成功故事__广告一" type="slide"#}
+		</div>
+		<div id="slidebtn" class="slidebtn"></div>
+	</div>
+</div>
+<!-- 大图幻灯 e -->
+
+<!-- list s -->
+<div class="wrap part02">
+	<ul class="showlist">
+		{#dating action='story' page={#$page#} pageSize=2#}
+		{#$process = ""#}
+		{#if $row.process == 0#}
+		{#$process = "约会中"#}
+		{#elseif $row.process == 1#}
+		{#$process = "恋爱中"#}
+		{#elseif $row.process == 2#}
+		{#$process = "结婚啦"#}
+		{#/if#}
+		<li>
+			<div class="inner">
+				<div class="pic">
+					<a href="{#$row.url#}" target="_blank">
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.litpic#}" class="main" alt="{#$row.title#}">
+						<div class="des">
+							<p>会员状态：{#$process#}<span class="user">{#$row['fnickname']#}<img src="{#$templets_skin#}images/hyzt.png" alt="">{#$row['tnickname']#}的爱情故事</span></p>
+						</div>
+					</a>
+					<div class="bg"></div>
+				</div>
+				<div class="txt">
+					<div class="inner2">
+						<div class="bt">
+							<span class="fr">{#$row.pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</span>
+							<a href="{#$row.url#}" target="_blank">{#$row.title#}</a>
+						</div>
+						<div class="text">
+							<p class="p1">{#$row.content#}...</p>
+							<p class="p2">确认关系时间：<span class="years">{#$row.kdate|date_format:"%Y-%m-%d"#}</span></p>
+						</div>
+						<div class="tag">
+							<span>标签:</span>
+							{#foreach from=$row.tags item=tags key=k#}
+							{#if $k < 5#}
+							<span class="tag-item tag-item-{#$k#}">{#$tags#}</span>
+							{#/if#}
+							{#/foreach#}
+						</div>
+						<a href="{#$row.url#}" class="go" target="_blank">围观幸福</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		{#/dating#}
+	</ul>
+
+	<!-- 分页 -->
+	{#getPageList service='dating' template='story' pageType='dynamic' param="page=#page#"#}
+</div>
+<!-- list e -->
+
+
+
+{#include file="foot.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/showlove.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<div class="header wrap fn-clear">
+  <div class="logo">
+    <a href="{#$dating_channelDomain#}"><img src="{#$dating_logoUrl#}" alt="{#$dating_channelName#}"></a>
+  </div>
+  <div class="search">
+    <ul class="fn-clear search-top">
+      {#if $pageCurr == "hongniang"#}
+      {#$s = 2#}
+      {#elseif $pageCurr == "store"#}
+      {#$s = 3#}
+      {#else#}
+      {#$s = 1#}
+      {#/if#}
+      <li data-action="{#getUrlPath service='dating' template='samecity'#}"{#if $s == 1#} class="active"{#/if#}><a href="javascript:;">用户</a></li>
+      <li data-action="{#getUrlPath service='dating' template='hongniang'#}"{#if $s == 2#} class="active"{#/if#}><a href="javascript:;">红娘</a></li>
+      <li data-action="{#getUrlPath service='dating' template='store'#}"{#if $s == 3#} class="active"{#/if#}><a href="javascript:;">婚介所</a></li>
+    </ul>
+    <div class="search-con">
+      <form action="{#getUrlPath service='dating' template="{#$pageCurr|default:"samecity"#}"#}" method="get">
+        <input type="text" class="text" value="{#$keywords#}" placeholder="搜索关键字..." name="keywords">
+        <input type="submit" class="submit" value="搜索">
+      </form>
+    </div>
+  </div>
+  <div class="app-con fn-clear">
+      <div class="icon-box app">
+          <a href="javascript:;" target="_blank"><img src="{#$templets_skin#}images/app.png"></a>
+          <p><a href="javascript:;" target="_blank">移动端</a></p>
+          <div class="down app-down fn-clear" style="display: none;">
+              <div class="con-box">
+                <img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}">
+                <p>扫码访问</p>
+              </div>
+              {#if $cfg_app_ios_download || $cfg_app_android_download#}
+              <div class="con-box">
+                <a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank">
+                  <img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='siteConfig' template='mobile'#}">
+                  <p>移动端app下载：<br>{#$cfg_appname#}</p>
+                </a>
+              </div>
+              {#/if#}
+          </div>
+      </div>
+      <div class="icon-box wx">
+          <img src="{#$templets_skin#}images/weixin.png">
+          <p>微信端</p>
+          <div class="down wx-down fn-clear" style="display: none;">
+              <div class="con-box">
+                <img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}">
+                <p>扫码访问</p>
+              </div>
+              {#if $cfg_weixinQr#}
+              <div class="con-box">
+                <img src="{#$cfg_weixinQr#}">
+                <p>微信公众平台：<br>{#$cfg_weixinName#}</p>
+              </div>
+              {#/if#}
+              {#if $cfg_miniProgramQr#}
+              <div class="con-box">
+                <img src="{#$cfg_miniProgramQr#}">
+                <p>微信小程序：<br>{#$cfg_miniProgramName#}</p>
+              </div>
+              {#/if#}
+          </div>
+      </div>
+  </div>
+  <div class="kefu"><s><img src="{#$templets_skin#}images/tel.png"></s><p>客服热线</p>{#$dating_hotline#}</div>
+</div>
+<div class="tab-wrap wrap fn-clear">
+  <ul class="fn-clear">
+    <li{#if !$pageCurr || $pageCurr == "inex"#} class="active"{#/if#}><a href="{#$dating_channelDomain#}">首页</a></li>
+    <li{#if $pageCurr == "samecity"#} class="active"{#/if#}><a href="{#getUrlPath service=dating template=samecity#}">同城交友</a></li>
+    {#if in_array("huodong", $installModuleArr)#}<li><a href="{#$huodong_channelDomain#}" target="_blank">相亲活动</a></li>{#/if#}
+    <li{#if $pageCurr == "hongniang"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template='hongniang'#}">红娘服务</a></li>
+    <li{#if $pageCurr == "store"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template='store'#}">直营门店</a></li>
+    <li{#if $pageCurr == "story"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template='story'#}">牵手成功</a></li>
+    <li{#if $pageCurr == "news"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template='news'#}">情感课堂</a></li>
+    <li{#if $pageCurr == "circle"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template='circle'#}">圈子动态</a></li>
+    {#*<li{#if $pageCurr == "bbb"#} class="active"{#/if#}><a href="{#getUrlPath service='dating' template=''#}">关于我们</a></li>*#}
+  </ul>
+</div>
+<script>var keywords = '{#$keywords#}';</script>
