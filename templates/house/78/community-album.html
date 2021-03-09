@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>【{#$detail_title#}小区相册，{#$siteCityInfo['name']#}{#$detail_title#}相册】-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}相册,{#$detail_address#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、小区相册、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+{#$communityNav = 3#}
+{#$crumbTitle = "小区相册"#}
+{#include file="community_top.html"#}
+
+{#$albumGroup = ""#}
+{#$albumCount = 0#}
+{#house action="albumList" act="community" loupanid={#$detail_id#} pageSize="1000"#}
+{#$albumGroup = $albumGroup|cat:"<li{#if $album == $row.id#} class='curr'{#/if#}><a href='{#getUrlPath service='house' template='community-album' id={#$detail_id#} album={#$row.id#}#}'>{#$row.title#}<span>({#$row.imglist|count#})</span></a></li>"#}
+{#$albumCount = $albumCount + $row.imglist|count#}
+{#/house#}
+
+<div class="wrap">
+	<ul class="nav-tab">
+		<li{#if $album == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#}#}">全部相册<span>({#$albumCount#})</span><s></s></a></li>
+		{#$albumGroup#}
+	</ul>
+	<div class="xccon">
+
+		{#if $album == 0#}
+		{#house action="albumList" act="community" loupanid={#$detail_id#} pageSize="1000"#}
+		<h2 class="c-tit"><s><i></i></s>{#$row.title#}<a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#} album={#$row.id#}#}" class="more">+ 更多</a></h2>
+		<div class="c-info">
+			<div class="album-list">
+				<ul>
+					{#foreach from=$row.imglist item=img key=k#}
+					{#if $k < 5#}
+					<li>
+						<a href="{#getUrlPath service='house' template='community-album-detail' id={#$detail_id#} album={#$row.id#} page={#$k#}#}" title="{#$img.info#}">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$img.path#}" type="small"#}" title="{#$img.info#}" />
+							{#if $img.info != ""#}<p title="{#$img.info#}">{#$img.info#}</p>{#/if#}
+						</a>
+					</li>
+					{#/if#}
+					{#/foreach#}
+				</ul>
+			</div>
+		</div>
+		{#/house#}
+		{#else#}
+		{#house action="albumList" act="community" loupanid={#$detail_id#} id={#$album#} pageSize="99999"#}
+		<div class="c-info">
+			<div class="album-list">
+				<ul>
+					{#foreach from=$row.imglist item=img key=k#}
+					<li>
+						<a href="{#getUrlPath service='house' template='community-album-detail' id={#$detail_id#} album={#$row.id#} page={#$k#}#}" title="{#$img.info#}">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$img.path#}" type="small"#}" title="{#$img.info#}" />
+							{#if $img.info != ""#}<p title="{#$img.info#}">{#$img.info#}</p>{#/if#}
+						</a>
+					</li>
+					{#/foreach#}
+				</ul>
+			</div>
+		</div>
+		{#/house#}
+		{#/if#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">该小区暂无相册！</div>
+		{#/if#}
+
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script>
+$(function(){
+	$("img").scrollLoading();
+});
+</script>
+</body>
+</html>

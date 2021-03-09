@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$house_title#}</title>
+<meta name="keywords" content="{#$house_keywords#}" />
+<meta name="description" content="{#$house_description#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/house.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+
+<body class="w1200">
+	{#$channel = 'house'#}
+	{#$hotline = $house_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+			<!-- 中间房产信息部分 s -->
+		<div class="house">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+		        <div class="bd">
+			    {#myad title="房产_模板一_电脑端_广告二" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					<li class="NewsNav_bc on"><a href="javascript:;" data-id="loupanList">新房</a></li>
+					<li><a href="javascript:;" data-id="saleList">二手房</a></li>
+					<li><a href="javascript:;" data-id="zuList">租房</a></li>
+					<li><a href="javascript:;" data-id="xzlList">写字楼</a></li>
+					<li><a href="javascript:;" data-id="spList">商铺</a></li>
+					<li><a href="javascript:;" data-id="cfList">厂房/仓库</a></li>
+					<li><a href="javascript:;" data-id="zjUserList">经纪人</a></li>
+				</ul>
+			</div>
+			<!-- 导航栏 e-->
+			<!-- 房产信息列表 s-->
+			<div class="House_List" id="NewList">
+
+			</div>
+			<!-- 房产信息列表 e-->
+		</div>
+	<!-- 中间房产信息部分 e -->
+	<!-- 右侧房产信息汇总 s -->
+		<div class="Information">
+			<div class="issue fn-clear"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-sale'#}">发布房源</a><a  target="_blank" href="{#getUrlPath service='house'  template='map-loupan'#}">地图找房</a></div>
+			<form class="form" >
+			<div class="Infor_list">
+				<div class="Infor_lead"><em>看房团报名</em></div>
+				<div class="apply second">
+					<div class="select "><em>您的意向楼盘</em><input type="text" class="loupan1"></div>
+					<div class="select "><em>预算价格</em><input type="text" class="price"></div>
+					<div class="select choice"><em>您的意向楼盘</em>
+						<div class="choice_box">
+							<label for="">
+								<input type="checkbox" value="一居">
+								<span class="">一居</span>
+							</label>
+							<label for="">
+								<input type="checkbox" value="二居">
+								<span>二居</span>
+							</label>
+							<label for="">
+								<input type="checkbox" value="三居">
+								<span>三居</span>
+							</label>
+							<label for="">
+								<input type="checkbox" value="四居">
+								<span>四居</span>
+							</label>
+							<label for="">
+								<input type="checkbox" value="五居及以上">
+								<span>五居及以上</span>
+							</label>
+						</div>
+					</div>
+					<div class="select "><em>姓名</em><input class="name" type="text"></div>
+					<div class="select "><em>手机号</em><input class="phone" type="text"></div>
+					<div class="btn"><input type="submit" name="" value="提交"></div>
+				</div>
+			</div>
+		</form>
+
+			<div class="ad">
+				{#myad title="房产_模板一_电脑端_广告三"#}
+			</div>
+
+			<div class="Infor_list">
+				<div class="Infor_lead"><em>房产快讯</em></div>
+				<div class="fast">
+					<ul>
+						{#house action="news" typeid="{#$ntype.id#}" return="news1" page="1" pageSize="5"#}
+						<li class=""><i></i><a target="_blank" href="{#$news1.url#}" target="_blank">{#$news1.title#}</a></li>
+						{#/house#}
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="Rent">
+				<div class="Rent_lead fn-clear">
+					<ul>
+						<li class="Rent_bc">求租</li>
+						<li>求购</li>
+					</ul>
+				</div>
+				<div class="Rent_list">
+					<div class="Rent_txt">
+						{#house action="demand" typeid="0" return="news1" page="1" pageSize="3"#}
+						<div class="Rent_detail fn-clear">
+							<div class="Rent_pic"><a target="_blank" href="{#$news1.url#}"><img src="{#$news1.photo#}" alt=""></a></div>
+							<div class="remt_title">
+								<a target="_blank" href="#"><h1>{#$news1.note#}</h1></a><span><em>2500元</em>／月</span>
+							</div>
+							<div class="house_infor">85m2<em>|</em>2室1厅1卫</div>
+							<div class="rent_place"><span>{#$news1.addrid#}</span></div>
+							<div class="rent_tel"><i></i>{#$news1.contact#}</div>
+						</div>
+						{#/house#}
+					</div>
+					<div class="Rent_txt fn-hide">
+						{#house action="demand" typeid="1" return="news2" page="1" pageSize="3"#}
+						<div class="Rent_detail fn-clear">
+							<div class="Rent_pic"><a target="_blank" href="{#$news2.url#}"><img src="{#$news2.photo#}" alt=""></a></div>
+							<div class="remt_title">
+								<a href="#"><h1>{#$news2.note#}</h1></a><span><em>2500元</em>／月</span>
+							</div>
+							<div class="house_infor">85m2<em>|</em>2室1厅1卫</div>
+							<div class="rent_place"><span>{#$news2.addrid#}</span></div>
+							<div class="rent_tel"><i></i>{#$news2.contact#}</div>
+						</div>
+						{#/house#}
+
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="Infor_list">
+				<div class="Infor_lead"><em>业主论坛</em></div>
+				<div class="fast">
+					<ul>
+						<li class=""><i></i><a href="#">中行报告:下半年楼市整体将降温</a></li>
+						<li><i></i><a href="#">中行报告:下半年楼市整体将降温</a></li>
+						<li><i></i><a href="#">中行报告:下半年楼市整体将降温</a></li>
+						<li><i></i><a href="#">中行报告:下半年楼市整体将降温</a></li>
+						<li><i></i><a href="#">中行报告:下半年楼市整体将降温</a></li>
+					</ul>
+				</div>
+			</div> -->
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧房产信息汇总 e -->
+
+	</div>
+<!-- 主干部分 e-->
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v3"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/layer.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

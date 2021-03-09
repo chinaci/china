@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-小区详情-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}二手房,{#$detail_title#}租房,{#$detail_address#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、房型图、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+
+	var pageData = {
+		id: {#$detail_id#},
+		panName: '{#$detail_title#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#$pageUrl#}'
+	};
+
+	var site_map = "{#$site_map#}";
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+{#$communityNav = 1#}
+{#$crumbTitle = "小区基本信息"#}
+{#include file="community_top.html"#}
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+		<dl>
+			<dt><h3>周边小区</h3></dt>
+			{#house action="communityList" nid={#$detail_id#} addrid={#$detail_addrid#} pageSize="10"#}
+			<dd>
+				<span class="title"><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></span>
+				<span class="info">{#$row.addr[$row.addr|count-2]#}</span>
+				<span class="price">{#if $row.price != 0#}{#$row.price#}{#echoCurrency type='short'#}/㎡{#else#}待定{#/if#}</span>
+			</dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+		<dl>
+			<dt><h3>{#$siteCityInfo['name']#}热门小区</h3></dt>
+			{#house action="communityList" nid={#$detail_id#} pageSize="10"#}
+			<dd>
+				<span class="title"><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></span>
+				<span class="info">{#$row.addr[$row.addr|count-2]#}</span>
+				<span class="price">{#if $row.price != 0#}{#$row.price#}{#echoCurrency type='short'#}/㎡{#else#}待定{#/if#}</span>
+			</dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+	</div>
+	<div class="container">
+		<h2 class="c-tit" id="basic"><s><i></i></s>基本信息</h2>
+		<div class="c-info">
+			<table class="detail">
+				<tr>
+					<td>小区名称：{#$detail_title#}</td>
+					<td>建筑面积：{#$detail_buildarea#}㎡</td>
+				</tr>
+				<tr>
+					<td>所在区域：{#$detail_addr[$detail_addr|count-3]#} {#$detail_addr[$detail_addr|count-2]#} {#$detail_addr[$detail_addr|count-1]#}</td>
+					<td>占地面积：{#$detail_planarea#}㎡</td>
+				</tr>
+				<tr>
+					<td>小区地址：{#$detail_address#}</td>
+					<td>邮政编码：{#$detail_post#}</td>
+				</tr>
+				<tr>
+					<td>开&nbsp;发&nbsp;&nbsp;商：{#$detail_kfs#}</td>
+					<td>规则户数：{#$detail_planhouse#}户</td>
+				</tr>
+				<tr>
+					<td>物业公司：{#$detail_property#}</td>
+					<td>产权年限：{#$detail_buildage#}</td>
+				</tr>
+				<tr>
+					<td>物业类型：{#$detail_protype#}</td>
+					<td>竣工时间：{#$detail_opendate|date_format:"%Y-%m-%d"#}</td>
+				</tr>
+				<tr>
+					<td>物业费用：{#$detail_proprice#}</td>
+					<td>车位数量：{#$detail_parknum#}</td>
+				</tr>
+				<tr>
+					<td>物业电话：{#$detail_protel#}</td>
+					<td>容&nbsp;积&nbsp;&nbsp;率：{#$detail_rongji#}</td>
+				</tr>
+				<tr>
+					<td>物业地址：{#$detail_proaddr#}</td>
+					<td>绿&nbsp;化&nbsp;&nbsp;率：{#$detail_green#}</td>
+				</tr>
+			</table>
+		</div>
+		<h2 class="c-tit" id="peitao"><s><i></i></s>周边配套</h2>
+		<div class="c-info">
+			{#foreach from=$detail_config item=config#}
+			<dl class="fn-clear">
+				<dt>{#$config[0]#}：</dt>
+				<dd>{#$config[1]#}</dd>
+			</dl>
+			{#/foreach#}
+		</div>
+		<h2 class="c-tit" id="about"><s><i></i></s>小区简介</h2>
+		<div class="c-info">{#$detail_note#}</div>
+	</div>
+</div>
+
+{#* 地图 s *#}
+<div class="wrap map">
+	<h2 class="c-tit" id="basic"><s><i></i></s>小区位置</h2>
+	<div class="map-con {#$site_map#} fn-clear">
+		<div class="map-detail">
+			<ul class="map-tab" id="map-tab">
+				<li id="map-tab-tra" title="交通" class="active">交通</li>
+				<li id="map-tab-biz" title="商业">商业</li>
+				<li id="map-tab-edu" title="教育">教育</li>
+				<li id="map-tab-hos" title="医院">医院</li>
+			</ul>
+			<div class="map-list">
+				<p id="map-type" class="gray"></p>
+				<p id="map-count"></p>
+				<ul class="map-ul" id="map-ul"><li class="load">加载中...</li></ul>
+			</div>
+		</div>
+		<div class="map-box" id="map"></div>
+	</div>
+</div>
+{#* 地图 e *#}
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/map.js"></script>
+</body>
+</html>

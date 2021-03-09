@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+{#$pageType = "出租"#}
+{#if $detail_type == 2#}
+{#$pageType = "出售"#}
+{#elseif $detail_type == 1#}
+{#$pageType = "转让"#}
+{#/if#}
+<title>{#$detail_title#}-{#$siteCityInfo['name']#}厂房/仓库/土地/车位{#$pageType#}网-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}厂房/仓库/土地/车位{#$pageType#}" />
+<meta name="description" content="{#$cfg_shortname#}厂房频道为您提供{#$siteCityInfo['name']#}厂房{#$pageType#},{#$siteCityInfo['name']#}仓库{#$pageType#}，{#$siteCityInfo['name']#}土地{#$pageType#}信息，在这里有大量的{#$siteCityInfo['name']#}厂房/仓库/土地/车位{#$pageType#}、转让信息供您查询。查找{#$siteCityInfo['name']#}厂房、{#$siteCityInfo['name']#}仓库信息，请到{#$cfg_shortname#}厂房频道。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/baguettebox.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/cf_detail.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var pageData = {id:{#$detail_id#}};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'cf'#}
+{#include file="top.html"#}
+
+<div class="wrap crumb fn-clear">
+	<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库{#$pageType#}</a> > <a href="{#getUrlPath service='house' template='cf' type={#$detail_type#} addrid={#$detail_areaid#}#}">{#$detail_addr[$detail_addr|count-2]#}厂房/仓库{#$pageType#}</a> > <a href="{#getUrlPath service='house' template='cf' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">{#$detail_addr[$detail_addr|count-1]#}厂房/仓库{#$pageType#}</a>
+</div>
+
+<div class="wrap zu-info">
+	<h1 class="name">{#$detail_title#}</h1>
+	<span class="time">更新时间：{#$detail_timeUpdate#}</span>
+	<div class="tools">
+		{#if $detail_collect == 1#}<a href="javascript:;" class="collect has"><i></i>已收藏</a>{#else#}<a href="javascript:;" class="collect"><i></i>收藏</a>{#/if#}
+		<a href="javascript:;" class="share bdsharebuttonbox bds_more" data-cmd="more"><i></i>分享</a>
+		<a href="javascript:;" class="report"><i></i>举报</a>
+	</div>
+</div>
+
+<div class="wrap fn-clear">
+	{#if $detail_imglist#}
+	<div class="slide">
+		<ul class="bigimg">
+			{#foreach from=$detail_imglist item=img#}
+			<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$img.path#}" /></li>
+			{#/foreach#}
+		</ul>
+		<div class="imgctrl">
+			<a class="tprev" href="javascript:;"><s></s></a>
+			<ul class="thumb">
+				{#foreach from=$detail_imglist item=img#}
+				<li><i></i><img src="{#changeFileSize url={#$img.path#} type='small'#}" /></li>
+				{#/foreach#}
+			</ul>
+			<a class="tnext" href="javascript:;"><s></s></a>
+		</div>
+		<a href="javascript:;" class="prev"></a>
+		<a href="javascript:;" class="next"></a>
+	</div>
+	{#/if#}
+	<div class="param">
+		{#if $detail_type != 2#}
+		<p><label>月&nbsp;&nbsp;租&nbsp;&nbsp;金：</label><font class="price"><strong>{#$detail_price#}</strong></font>元/月</p>
+		{#else#}
+		<p><label>总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label><font class="price"><strong>{#$detail_price#}</strong></font>万</p>
+		{#/if#}
+		{#if $detail_type == 1#}
+		<p><label>转&nbsp;&nbsp;让&nbsp;&nbsp;费：</label>{#$detail_transfer#}万</p>
+		{#/if#}
+		<p><label>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积：</label>{#$detail_area#} ㎡</p>
+		<p><label>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>{#$detail_protype#}</p>
+		<p><label>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+			{#foreach from=$detail_addr item=addr#}
+			{#$addr#}
+			{#/foreach#} {#$detail_address#}</p>
+		{#if $detail_nearby != ""#}<p><label>靠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近：</label>{#$detail_nearby#}</p>{#/if#}
+		<div class="tel"><s></s>{#if $detail_usertype == 1 && $detail_user['nickname']#}{#$detail_user['phone']#}{#else#}{#$detail_contact#}{#/if#}</div>
+	</div>
+	{#if $detail_usertype == 1 && $detail_user['nickname']#}
+	<div class="manager fn-clear">
+		<i></i>
+		<a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_user['userid']#}#}" target="_blank" title="{#$detail_user['nickname']#}" class="pho"><img src="{#$detail_user['photo']#}" alt="{#$detail_user['nickname']#}" /></a>
+		<div class="info">
+			<h3><a href="{#getUrlPath service='house' template='broker-detail' id={#$detail_user['userid']#}#}" target="_blank">{#$detail_user['nickname']#}</a></h3>
+			{#if $detail_user['zjcomName'] != ""#}<p><a href="{#getUrlPath service='house' template='store-detail' id={#$detail_user['zjcomId']#}#}" target="_blank">{#$detail_user['zjcomName']#}</a></p>{#/if#}
+			<div class="split"></div>
+			<div class="cert">
+				{#if $detail_user['certify'] == 1#}<span class="per"><s></s>身份认证</span>{#/if#}
+				{#if $detail_user['flag'] == 1#}<span class="com"><s></s>名片认证</span>{#/if#}
+			</div>
+		</div>
+	</div>
+	{#/if#}
+</div>
+
+<div class="container">
+
+	<div class="sub-nav">
+		<div class="fixnav">
+			<div class="wrap">
+				<ul>
+					<li class="curr"><a href="javascript:;">房源信息</a></li>
+					{#if $detail_imglist#}<li><a href="javascript:;">房源照片</a></li>{#/if#}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<h2 class="sub-title"><span>房源信息</span></h2>
+		<div class="content">
+			<p class="text-comment-all" style="display: block;">{#$detail_note#}</p>
+		</div>
+	</div>
+
+	{#if $detail_imglist#}
+	<div class="wrap">
+		<h2 class="sub-title"><span>房源照片</span></h2>
+		<div class="content">
+
+			<ul class="gallery fn-clear">
+				{#foreach from=$detail_imglist item=img#}
+				<li><a href="{#$img.path#}" target="_blank" title="{#$img.info#}"><i></i><img src="{#$img.path#}" alt="{#$img.info#}" /><s></s></a></li>
+				{#/foreach#}
+			</ul>
+
+		</div>
+	</div>
+	{#/if#}
+
+</div>
+
+<div class="wrap gzlist mlist">
+	<h2>相似厂房/仓库</h2>
+	<ul class="fn-clear">
+		{#house action="cfList" type={#$detail_type#} addrid={#$detail_addrid#} pageSize="5"#}
+		<li>
+			<a href="{#$row.url#}" target="_blank" title="{#$row.title#}" class="pic">{#if $row.usertype == 0#}<i>个人</i>{#else#}<em>中介</em>{#/if#}<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$row.litpic#} type='small'#}" alt="{#$row.title#}" /></a>
+			<p class="title"><a href="#" title="{#$row.title#}">{#$row.title#}</a></p>
+			<p class="price"><span>{#$row.area#}m²</span><strong>{#if $detail_type == 2#}{#$row.price#}万{#else#}{#($row.price/10000)|string_format:"%.2f"#}万{#echoCurrency type='short'#}/月{#/if#}</strong></p>
+		</li>
+		{#/house#}
+	</ul>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/baguettebox.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/cf_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

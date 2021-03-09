@@ -1,0 +1,83 @@
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$house_channelDomain#}" title="{#$house_channelName#}"><img src="{#$house_logoUrl#}" alt="{#$house_channelName#}" /></a></h1>
+	<ul class="weatherInfo">
+		<li class="weatherCity">{#$siteCityInfo['name']#}</li>
+	</ul>
+	<div class="service">
+		<ul class="fn-clear">
+			<li class="buy"><a href="{#getUrlPath service='house' template='loupan'#}" target="_blank"><i></i>我要买房</a></li>
+			<li class="sale"><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sale'#}" target="_blank"><i></i>我要卖房</a></li>
+			<li class="lease"><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-zu'#}" target="_blank"><i></i>我要出租</a></li>
+			<li class="renter"><a href="{#getUrlPath service='house' template='zu'#}" target="_blank"><i></i>我要租房</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li{#if $pageCurr == 'index'#} class="on"{#/if#}><a href="{#$house_channelDomain#}">首页</a></li>
+			<li{#if $pageCurr == 'loupan'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='loupan'#}">新房</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='tmonth'#}">本月开盘</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="hot"#}">热销楼盘</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="rec"#}">推荐楼盘</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}">楼盘团购</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'community'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='community'#}">小区</a></li>
+			<li{#if $pageCurr == 'sale'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='sale'#}">二手房</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='sale'#}">房源</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='demand' addrid=0 business=0 type=1#}">求购房</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='community'#}">找小区</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='store'#}">中介公司</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='broker'#}">找经纪人</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='map-sale'#}">地图找房</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'zu'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='zu'#}">租房</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='zu'#}">区域找房</a></dd>
+					{#if $cfg_subway_state#}<dd><a href="{#getUrlPath service='house' template='zu' param='from=subway'#}">{#$cfg_subway_title#}</a></dd>{#/if#}
+					<dd><a href="{#getUrlPath service='house' template='demand' addrid=0 business=0 type=0#}">求租房</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='community'#}">找小区</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='map-zu'#}">地图找房</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'xzl'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='xzl'#}">写字楼</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='xzl' type='0'#}">写字楼出租</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='xzl' type='1'#}">写字楼出售</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'sp'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='sp'#}">商铺</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='sp' type='0'#}">商铺出租</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='sp' type='1'#}">商铺出售</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='sp' type='2'#}">商铺转让</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'cf'#} class="on"{#/if#}>
+				<a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库</a>
+				<dl>
+					<dd><a href="{#getUrlPath service='house' template='cf' type='0'#}">厂房出租</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='cf' type='2'#}">厂房出售</a></dd>
+					<dd><a href="{#getUrlPath service='house' template='cf' type='1'#}">厂房转让</a></dd>
+				</dl>
+			</li>
+			<li{#if $pageCurr == 'demand'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='demand'#}">求租/求购</a></li>
+			<li{#if $pageCurr == 'broker'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='broker'#}">经纪人</a></li>
+			<li{#if $pageCurr == 'news'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='news'#}">资讯</a></li>
+			<li{#if $pageCurr == 'guwen'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='guwen'#}">顾问</a></li>
+			<li{#if $pageCurr == 'kan'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='kan'#}">看房团</a></li>
+			<li{#if $pageCurr == 'faq'#} class="on"{#/if#}><a href="{#getUrlPath service='house' template='faq'#}">房产问答</a></li>
+		</ul>
+	</div>
+	<div class="navbg"></div>
+</div>

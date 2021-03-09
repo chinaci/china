@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}中介公司-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产中介，{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人频道提供{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜，根据经纪人服务档案，经纪人行业经验，发布房源数量质量，为您优先展示精英置业顾问。找房产经纪人就上{#$cfg_shortname#}。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = "store"#}
+{#include file="top.html"#}
+
+<div class="middle_content fn-clear">
+    <!-- 搜索区 -->
+    <div class="quick_search fn-clear">
+        <form action="{#getUrlPath service='house' template='store'#}" method="get" class="searchform">
+            <span>快速搜索：</span>
+            <input type="text" name="keywords" value="{#if $keywords != ''#}{#$keywords#}{#else#}{#/if#}" class="keywords" placeholder="请输入您想查找的中介公司">
+            <input type="submit" value="搜索中介" class="submit">
+        </form>
+    </div>
+    <!-- 搜索区 -->
+    <!-- 左边列表区 -->
+    <div class="whole_example fn-clear">
+        <div class="all_Intermediary fn-clear">
+            <span class="totle_select">全部中介</span>
+            <p>全部中介共有 <span id="totalStore">-</span> 家符合条件的房产中介</p>
+        </div>
+        {#$zjcomPage = $page#}
+        {#house action="zjComList" return="zjcom" page={#$page#} keywords={#$keywords#} pageSize="8"#}
+        <div class="for_example fn-clear">
+            <div class="visit_consult">
+                <a href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}"><img src="{#changeFileSize url={#$zjcom.litpic#} type='large'#}"></a>
+                <p>已有<span>{#$zjcom.click#}</span>人访问</p></div>
+            <div class="home_love">
+                <ul>
+                    <li class="my_love"><a href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}">{#$zjcom.title#}</a></li>
+                    <li class="fn-clear"><i class="tel"></i><span>公司电话：{#$zjcom.tel#}</span></li>
+                    <li class="fn-clear loap_z"><a href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}"><i class="nav_map"></i>{#$zjcom.address#}</a></li>
+                    <li><a href="{#getUrlPath service='house' template='store-detail' id=""|cat:$zjcom.id#}" class="check_looking">查看房源</a><a href="{#getUrlPath service='house' template='store-detail' tpl='broker' id=""|cat:$zjcom.id#}" class="check_looking check_account">查看经纪人</a></li>
+                </ul>
+            </div>
+            <div class="kinds_apartment">
+                <ul>
+                    <li><span>出 租 房</span><a href="{#getUrlPath service='house' template='store-detail' tpl="zu" id=""|cat:$zjcom.id#}">{#$zjcom.countZu#}套</a></li>
+                    <li><span>二 手 房</span><a href="{#getUrlPath service='house' template='store-detail' tpl="sale" id=""|cat:$zjcom.id#}" class="elevent">{#$zjcom.countSale#}套</a></li>
+                </ul>
+            </div>
+        </div>
+        {#/house#}
+        {#$totalStore = (int)$pageInfo.totalCount#}
+        {#if $pageInfo.totalCount == 0#}
+            <div class="empty">抱歉！ 暂无相关数据</div>
+        {#/if#}
+        <!-- 换页 -->
+        {#getPageList service='house' template='store' param="{#if $keywords != ""#}keywords={#$keywords#}{#/if#}"#}
+        <!-- 换页 -->
+    </div>
+    <!-- 左边列表区 -->
+    <!-- 右边列表区 -->
+    <div class="select_example">
+        <div class="frist_part">
+            <p>房产资讯</p>
+            {#house action="news" return="news" litpic="1" page="1" pageSize="5"#}
+            <div class="house-detail fn-clear">
+                <a href="{#$news.url#}" target="_blank">
+                    <img src="{#changeFileSize url={#$news.litpic#} type='large'#}" alt="{#$news.title#}"></a>
+                <a href="{#$news.url#}" class="down_price" title="{#$news.title#}">{#$news.title#}</a>
+            </div>
+            {#/house#}
+            {#if $pageInfo.totalCount == 0#}
+            <div class="empty">抱歉！ 没有相关资讯</div>
+            {#/if#}
+        </div>
+        <div class="second_part">
+            <p class="news-t">最新开盘</p>
+            {#house action="loupanList" return="loupannew" orderby="4" page="1" pageSize="8"#}
+            <div class="fn-clear one_bg">
+                <a class="ov_flow" href="{#$loupannew.url#}" target="_blank"> <span>{#$_bindex.loupannew#}</span>{#$loupannew.title#}</a>
+                <p class="miter_yuan">
+                    {#if $loupannew.price != 0#}
+                        {#$loupannew.price#}{#if $loupannew.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}
+                    {#else#}
+                        待定
+                    {#/if#}
+                </p>
+            </div>
+            {#/house#}
+            {#if $pageInfo.totalCount == 0#}
+            <div class="empty">抱歉！ 未找到相关房源</div>
+            {#/if#}
+        </div>
+        <div class="second_part">
+            <p class="news-t">热门楼盘</p>
+            {#house action="loupanList" return="loupanhot" filter="hot" page="1" pageSize="8"#}
+            <div class="fn-clear one_bg">
+                <a class="ov_flow" href="{#$loupanhot.url#}" target="_blank"> <span>{#$_bindex.loupanhot#}</span>{#$loupanhot.title#}</a>
+                <p class="miter_yuan">
+                    {#if $loupanhot.price != 0#}
+                        {#$loupanhot.price#}{#if $loupanhot.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}
+                    {#else#}
+                        待定
+                    {#/if#}
+                </p>
+            </div>
+            {#/house#}
+            {#if $pageInfo.totalCount == 0#}
+                <div class="empty">抱歉！ 未找到相关房源</div>
+            {#/if#}
+        </div>
+    </div>
+</div>
+
+
+
+{#include file="footer.html"#}
+<script>
+    var totalCount = {#$totalStore#}, page = {#$zjcomPage#};
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/store.js"></script>
+</body>
+</html>

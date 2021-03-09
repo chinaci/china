@@ -1,0 +1,50 @@
+<div class="wrap crumb fn-clear">
+	<div class="cl">
+		<a href="{#$house_channelDomain#}" target="_blank">网站首页</a> > <a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">楼盘列表</a> > <a href="{#getUrlPath service='house' template='loupan' addrid={#$detail_areaid#}#}" target="_blank">{#$detail_addr[$detail_addr|count-2]#}楼盘</a> > <a href="{#getUrlPath service='house' template='loupan' addrid={#$detail_areaid#} business={#$detail_addrid#}#}" target="_blank">{#$detail_addr[$detail_addr|count-1]#}楼盘</a> > <a href="{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}">{#$detail_title#}</a> > <span>{#$crumbTitle#}</span>
+	</div>
+	<div class="cr">
+		<span class="time">{#$detail_pubdate|date_format:'%Y'#}年{#$detail_pubdate|date_format:'%m'#}月{#$detail_pubdate|date_format:'%d'#}日更新</span>
+	</div>
+</div>
+
+<div class="wrap dh fn-clear">
+	<div class="dh-l fn-clear">
+		<div class="qrimg" id="qrimg"></div>
+		<div class="name-d">
+			<div class="name-dt">
+				<h1 class="name"><a href="{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}" title="{#$detail_title#}">{#$detail_title#}</a></h1>
+				<span class="status s{#$detail_salestate#}">
+					{#if $detail_salestate == 0#}
+					新盘
+					{#else if $detail_salestate == 1#}
+					在售
+					{#else if $detail_salestate == 2#}
+					尾盘
+					{#else if $detail_salestate == 3#}
+					售馨
+					{#/if#}
+				</span>
+			</div>
+			<div class="name-db">
+				<span>{#$detail_protype#}</span>
+				{#if $detail_bussiness != ""#}<span>{#$detail_bussiness#}</span>{#/if#}
+				<span>{#$detail_buildtype#}</span>
+			</div>
+		</div>
+	</div>
+	<div class="dh-r">
+		<div class="tel"><s></s>{#$detail_tel#}</div>
+	</div>
+</div>
+
+<div class="wrap loupan-nav">
+	<ul>
+		<li{#if $loupanNav == 1#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}">楼盘首页</a></li>
+		<li{#if $loupanNav == 2#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-info" id={#$detail_id#}#}">详细信息</a></li>
+		<li{#if $loupanNav == 3#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-hx" id={#$detail_id#}#}">户型</a></li>
+		<li{#if $loupanNav == 4#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-album" id={#$detail_id#}#}">楼盘相册</a></li>
+		<li{#if $loupanNav == 6#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-qj" id={#$detail_id#}#}">全景看房</a></li>
+		<li{#if $loupanNav == 7#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-video" id={#$detail_id#}#}">视频看房</a></li>
+		<li{#if $loupanNav == 5#} class="curr"{#/if#}><a href="{#getUrlPath service="house" template="loupan-news" id={#$detail_id#}#}">楼盘动态</a></li>
+	</ul>
+</div>
