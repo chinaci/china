@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $keywords#}搜索：{#$keywords#}{#else#}{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#}{#/if#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var typeid = {#$typeid#}, addrid = 0, atpage = 1, totalCount = 0, pageSize = 20, keyword = "{#$keywords#}";
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="wrap crumbs fn-clear">
+	<div class="cont">
+		<a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+		<s></s>
+		{#if $list_id#}
+		{#$list_crumbs#}
+		{#else#}
+		信息列表
+		{#/if#}
+	</div>
+	{#if $keywords#}<a class="filter-item search" href="javascript:;">关键词：{#$keywords#}<span class="close">×</span></a>{#/if#}
+	<div class="count">为您找到<strong id="totalCount">0</strong>条信息<a href="javascript:;" class="switch"><i></i></a></div>
+</div>
+
+<div class="wrap">
+	<div class="filter">
+
+		{#if $list_id == 0#}
+		<dl class="fn-clear" id="fnav">
+			<dt>分类：</dt>
+			<dd>
+				<a href="{#getUrlPath service='info' template='list'#}" class="curr">不限</a>
+				{#info action="type" return="type"#}
+				<a href="{#getUrlPath service='info' template='list' id=$type.id#}">{#$type.typename#}{#if $type.lower#}<s></s>{#/if#}</a>
+				{#/info#}
+			</dd>
+		</dl>
+		{#/if#}
+
+		{#if $list_lower > 0#}
+		<dl class="fn-clear" id="subnav" data-id="{#$list_id#}">
+			<dt>分类：</dt>
+			<dd>
+				<a href="javascript:;" data-id="{#$list_id#}" class="curr">不限</a>
+				{#info action="type" return="type" type=$list_id son="1"#}
+				<a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}{#if $type.lower#}<s></s>{#/if#}</a>
+				{#/info#}
+				<div class="subnav fn-clear">
+					{#info action="type" return="type1" type=$list_id son="1"#}
+					{#if $type1.lower#}
+					<div id="subnav{#$type1.id#}">
+						<a href="javascript:;" data-id="{#$type1.id#}">不限</a>
+						{#info action="type" return="type2" type=$type1.id#}
+						<a href="javascript:;" data-id="{#$type2.id#}">{#$type2.typename#}</a>
+						{#/info#}
+					</div>
+					{#/if#}
+					{#/info#}
+				</div>
+			</dd>
+		</dl>
+		{#/if#}
+
+		<dl class="fn-clear" id="addr">
+			<dt>区域：</dt>
+			<dd>
+				<a href="javascript:;" data-id="0" class="curr">不限</a>
+				{#info action="addr" return="addr" son="1"#}
+				<a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}{#if $addr.lower#}<s></s>{#/if#}</a>
+				{#/info#}
+				<div class="subnav fn-clear">
+					{#info action="addr" return="addr1" son="1"#}
+					{#if $addr1.lower#}
+					<div id="addr{#$addr1.id#}">
+						<a href="javascript:;" data-id="{#$addr1.id#}">不限</a>
+						{#info action="addr" return="addr2" type=$addr1.id#}
+						<a href="javascript:;" data-id="{#$addr2.id#}">{#$addr2.typename#}</a>
+						{#/info#}
+					</div>
+					{#/if#}
+					{#/info#}
+				</div>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear fn-hide">
+			<dt>价格：</dt>
+			<dd>
+				<a href="javascript:;" data-id="0" class="curr">不限</a>
+				<a href="javascript:;" data-id="1">100{#echoCurrency type='short'#}以下</a>
+				<a href="javascript:;" data-id="2">100-300{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="3">300-500{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="4">500-1000{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="5">1000-1500{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="6">1500-2000{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="6">2000-3000{#echoCurrency type='short'#}</a>
+				<a href="javascript:;" data-id="6">3000{#echoCurrency type='short'#}以上</a>
+				<div class="price">
+					<input type="input" class="p1" placeholder="{#echoCurrency type='symbol'#}" maxlength="5" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" />-<input type="input" class="p2" placeholder="{#echoCurrency type='symbol'#}" maxlength="5" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" /><input type="button" class="btn" value="筛选" />
+				</div>
+			</dd>
+		</dl>
+
+		<div id="itemOptions"></div>
+
+		{#if $list_item#}
+		{#foreach from=$list_item key=key item=item#}
+		{#if $item.formtype != "text"#}
+		<dl class="item fn-clear" data-name="{#$item.field#}" data-id="{#$item.id#}">
+			<dt>{#$item.title#}：</dt>
+			<dd>
+				<a href="javascript:;" data-id="0" class="curr">不限</a>
+				{#foreach from=$item.options key=k item=options#}
+				<a href="javascript:;" data-id="{#$options#}">{#$options#}</a>
+				{#/foreach#}
+			</dd>
+		</dl>
+		{#/if#}
+		{#/foreach#}
+		{#/if#}
+
+		{#*
+		<dl class="fn-clear" id="valid">
+			<dt>有效期：</dt>
+			<dd>
+				<a href="javascript:;" data-id="0" class="curr">不限</a>
+				<a href="javascript:;" data-id="3">三天</a>
+				<a href="javascript:;" data-id="7">一周</a>
+				<a href="javascript:;" data-id="30">一个月</a>
+				<a href="javascript:;" data-id="90">三个月</a>
+			</dd>
+		</dl>
+		*#}
+
+		<div class="more fn-hide"><a href="javascript:;">更多选项<i></i></a></div>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="sortbar fn-clear">
+		<div class="tabs">
+			<ul class="fn-clear">
+				<li data-id="0" class="curr"><a href="javascript:;">全部信息</a></li>
+				<li data-id="1"><a href="javascript:;">个人发布</a></li>
+				<li data-id="2"><a href="javascript:;">商家发布</a></li>
+			</ul>
+		</div>
+		<div class="views">
+			<ul class="fn-clear">
+				<li class="tpage"><a href="javascript:;" class="prev diabled"><i></i></a><span class="atpage"><strong>1</strong>/1</span><a href="javascript:;" class="next diabled"><i></i></a></li>
+				<li class="window"><a href="javascript:;"><i></i>大图</a></li>
+				<li class="rowlist curr"><a href="javascript:;"><i></i>列表</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="sort">
+		<ul class="fn-clear">
+			<li class="st curr" data-sort="0"><a href="javascript:;">默认排序</a></li>
+			<li class="st" data-sort="1"><a href="javascript:;">最新发布</a></li>
+			<li class="st" data-sort="2"><a href="javascript:;">浏览量</a></li>
+			<li class="st price fn-hide" data-sort="2"><a href="javascript:;">按价格<i class="arrow-b"></i></a></li>
+			<li class="pic"><a href="javascript:;" class="check"><i></i>只看有图</a></li>
+			<li class="rec"><a href="javascript:;" class="check"><i></i>推荐</a></li>
+			<li class="fire"><a href="javascript:;" class="check"><i></i>火急</a></li>
+			<!-- <li class="top1"><a href="javascript:;" class="check"><i></i>置顶</a></li> -->
+		</ul>
+	</div>
+</div>
+
+<div class="wrap loading"><img src="{#$cfg_staticPath#}images/loading_h8.gif" /><br />努力加载中，请稍候...</div>
+<div class="wrap failed"><img src="{#$cfg_staticPath#}images/ui/loadFailed.gif" /><br /><span>暂无相关数据！</span></div>
+<div class="wrap main"></div>
+<div class="wrap bmain fn-hide"></div>
+
+<div class="wrap pagination fn-clear"></div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

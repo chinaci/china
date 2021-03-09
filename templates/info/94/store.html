@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$member['nickname']#} - {#$info_title#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/vip_record.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="vip_record_infor">
+  <img src="{#if $detail_member['photo'] == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$detail_member['photo']#}" type="small"#}{#/if#}" onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" />
+  <h1>{#$member['nickname']#}</h1>
+  <span>注册时间：<em>{#$member['regtime']|date_format:"%Y-%m-%d"#}</em></span>
+</div>
+
+<div class="vip_record_lead">
+  <span>发布信息记录</span>
+</div>
+
+<div class="vip_record_list">
+  <ul>
+	{#info action="ilist" return="ilist" userid={#$id#} pageSize=1000#}
+    <li>
+      <span><a href="{#$ilist.url#}" class="fn-clear" target="_blank">{#$ilist.title#}</a><em>({#$ilist.typename#})</em></span>
+      <p>{#$ilist.pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+	  {#if $ilist.price == 0#}
+		<p>面议</p>
+	  {#else#}
+	  <p>{#echoCurrency type='symbol'#}{#$ilist.price#}</p>
+	  {#/if#}
+    </li>
+	{#/info#}
+  </ul>
+</div>
+
+{#include file="bottom.html"#}
+</body>
+</html>
