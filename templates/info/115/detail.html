@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#} - {#$list_typename#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$list_typename#},{#$info_channelName#}" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}" media="all" />
+{#if $detail_video#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css?v={#$cfg_staticVersion#}" media="all" />
+{#/if#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', id = {#$detail_id#};
+	var user_id = '{#$detail_member['userid']#}';
+	var imconfig = {
+		'mod':'info',
+		'chatid':"{#$detail_member.userid#}",
+		'title': '{#$detail_title#}',
+		"price": '<em>￥</em>{#$detail_price#}',
+		"imgUrl": '{#changeFileSize url={#$detail_imglist[0]["path"]#} type='small'#}',
+		"link": '{#getUrlPath service="info" template="detail" id=$detail_id#}',
+
+	}
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+<div class="detail_top">
+	<div class="wrap fn-clear">
+		<div class="per_box">
+			<div class="perHead">
+                {#if $detail_member.userid#}
+				<a href="{#if $is_shop#}{#getUrlPath service=info action=business id=$shop_id#}{#else#}{#getUrlPath service=info action=homepage id=$detail_member.userid#}{#/if#}" target="_blank">
+					<img src="{#$detail_member['photo']#}" alt="">
+				</a>
+				<div class="perIntro fn-clear">
+					<em></em>
+					<div class="per_tab">
+						<div class="rbox">
+							<a href="javascript:;">
+								<p><b>{#$detail_fabuCount#}</b>条</p>
+								<span>Ta发布信息</span>
+							</a>
+						</div>
+						<div class="line"></div>
+						<div class="rbox">
+							<a href="javascript:;">
+								<p><b>{#$detail_member['mons']#}</b>月</p>
+								<span>Ta加入会员</span>
+							</a>
+						</div>
+					</div>
+					<div class="pbtn_box">
+						{#if $detail_info_shop_id#}
+						<a href="javascript:;" class="btn_coll {#if $detail_is_collected#}collected{#/if#}" data-type="1"><i></i>收藏店铺</a>
+						{#else#}
+						<a href="javascript:;" class="btn_coll {#if $detail_is_collected#}collected{#/if#}" data-type="0"><i></i>关注</a>
+						{#/if#}
+
+						{#if $detail_info_shop_id#}
+						<a href="{#getUrlPath service=info action=business id=$detail_info_shop_id#}" target="_blank" class="btnSIndex">店铺主页 ></a>
+						{#else#}
+						<a href="{#getUrlPath service=info action=homepage id=$detail_member['userid']#}" target="_blank" class="btnSIndex">个人主页 ></a>
+						{#/if#}
+					</div>
+				</div>
+                {#/if#}
+
+			</div>
+			<div class="perInfo">
+                {#if $detail_member.userid#}
+				<a href="{#if $is_shop#}{#getUrlPath service=info action=business id=$shop_id#}{#else#}{#getUrlPath service=info action=homepage id=$detail_member.userid#}{#/if#}" target="_blank">
+					<h3>{#$detail_member.nickname#} <i class="vip"></i></h3>
+				</a>
+                {#else#}
+                <h3>{#$detail_person#}</h3>
+                {#/if#}
+
+				<div class="box_mark fn-clear">
+                    {#if $detail_member.userid#}
+					{#if $detail_info_shop_id#}
+					<span class="m_mark mark1">商家</span>
+					{#else#}
+					<span class="m_mark mark3">个人</span>
+					{#/if#}
+					<span class="m_mark mark2">{#if $detail_typename#}{#$detail_typename#}{#/if#}</span>
+					{#if $detail_member['certifyState']#}<span class="m_per"><i></i>身份认证</span>{#/if#}
+					{#if $detail_member['phoneCheck']#}<span class="m_tel"><i></i>手机验证</span>{#/if#}
+                    {#else#}
+                    <span class="m_mark mark3">个人</span>
+                    {#/if#}
+				</div>
+			</div>
+
+		</div>
+		<div class="btn_box">
+			<a href="javascript:;" class="btnSc {#if $detail_collect#}btnYsc{#/if#}">{#if $detail_collect#}<i></i>已收藏{#else#}<i></i>收藏{#/if#}</a>
+			<a href="javascript:;" class="btnShare newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_imglist[0].path#}"><i></i>分享</a>
+			<a href="javascript:;" class="btnJb"><i></i>举报</a>
+			<a href="javascript:;" class="btnLook">
+				<i></i>手机看
+				<div class="qrcode">
+					<div id="qrcode"></div>
+					<em></em>
+				</div>
+			</a>
+		</div>
+
+	</div>
+</div>
+<div class="wrap crumbs fn-clear">
+	<div class="cont"><a href="{#$info_channelDomain#}">首页</a> <s></s>
+		<a href="{#getUrlPath service=info action=list id=$detail_p_typeid#}">{#$detail_p_typename#}</a> <s></s>
+		<a href="{#getUrlPath service=info action=list id=$detail_typeid#}">{#$detail_typename#}</a> <s></s>
+		<a href="javascript:;">{#$detail_title#}</a></div>
+</div>
+
+<div class="wrap detail_box fn-clear">
+	{#if $detail_imglist#}
+	<div class="d_slide" id="d_slide">
+		<ul class="album">
+			{#foreach from=$detail_imglist item=imglist#}
+			<li><a href="{#$imglist['path']#}" target="_blank"><i></i><img alt="{#$imglist['info']#}" src="{#$cfg_staticPath#}images/blank.gif" _src="{#$imglist['path']#}" /></a></li>
+			{#/foreach#}
+		</ul>
+		<div class="thumb">
+			<div class="plist">
+				<ul>
+					{#foreach from=$detail_imglist item=imglist#}
+					<li><a href="javascript:;"><i></i><img src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}" /></a></li>
+					{#/foreach#}
+				</ul>
+			</div>
+			<a href="javascript:;" class="sprev"><i></i></a>
+			<a href="javascript:;" class="snext"><i></i></a>
+		</div>
+		{#if $detail_video#}
+		<s class="video_icon" title="播放视频"></s>
+		<div class="popupVideo">
+			<a href="javascript:;" class="close">×</a>
+			<video id="my-video" class="video-js" controls autoplay preload="auto" data-setup="{}" style="width: 716px; height: 600px;">
+				<source src="{#$detail_video#}" type="video/mp4">
+			</video>
+		</div>
+		{#/if#}
+	</div>
+	{#/if#}
+
+
+	<!-- <div class="d_slide" id="d_slide">
+		<ul class="album">
+			{#if $detail_video#}
+			<li>
+				<a href="{#$detail_video_pic#}" target="_blank">
+					<div class="videobox">
+						<video width="100%" height="100%" controls src="{#$detail_video#}" type="video/mp4" poster="{#$detail_video_pic#}" object-fit: fill></video>
+					</div>
+				</a>
+			</li>
+			{#/if#}
+
+			{#foreach from=$detail_imglist item=imglist#}
+			<li><a href="{#$imglist['path']#}" target="_blank"><i></i>
+				<img alt="{#$imglist['info']#}" src="{#$imglist['path']#}" _src="{#$imglist['path']#}" /></a></li>
+			{#/foreach#}
+
+		</ul>
+		<div class="thumb">
+			<div class="plist">
+				<ul>
+					{#if $detail_video#}
+					<li>
+						<a href="javascript:;">
+							<img src="{#$detail_video_pic#}">
+							<span class="ivd"></span>
+						</a>
+					</li>
+					{#/if#}
+
+					{#foreach from=$detail_imglist item=imglist#}
+					<li><a href="javascipt:;"><img src="{#changeFileSize url="{#$imglist['path']#}" type="small"#}"></a></li>
+					{#/foreach#}
+
+				</ul>
+			</div>
+			<a href="javascript:;" class="sprev">
+				<i></i>
+			</a>
+			<a href="javascript:;" class="snext">
+				<i></i>
+			</a>
+		</div>
+	</div> -->
+	<div class="property">
+		<h2>{#$detail_title#}</h2>
+		<div class="box_mark">
+			<span class="m_mark mark3">{#if $detail_info_shop_id#}商家{#else#}个人{#/if#}</span> {#if $detail_top#}<i class="top"></i>{#/if#}
+		</div>
+		<dl class="fn-clear">
+			{#if $detail_price_switch==0#}
+			{#if $detail_price neq 0#}
+			 <dd class="price"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</dd>
+			{#else#}
+			<dt class="tprice">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+			<dd class="price price1">面议</dd>
+			{#/if#}
+			{#/if#}
+
+			<dt>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类：</dt>
+			<dd>
+				<a href="#" target="_blank"></a>
+				<a href="{#getUrlPath service=info action=list id=$detail_p_typeid#}" target="_blank">{#$detail_p_typename#} </a> >
+				<a href="{#getUrlPath service=info action=list id=$detail_typeid#}" target="_blank">{#$detail_typename#}</a></dd>
+			<dt>区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域：</dt>
+			<dd class="addr">{#$detail_address#}</dd>
+
+			<dt>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</dt>
+			<dd class="tel">
+				{#if $userinfo#}
+				<a href="javascript:;"><i></i> {#if $detail_member['phone']#}{#$detail_member['phone']#}{#else#}暂无{#/if#}</a>
+				{#else#}
+				<a href="{#$cfg_basehost#}/login.html"><i></i> 登录后显示</a>
+				{#/if#}
+			</dd>
+			<dt>其他联系：</dt>
+			<dd class="other">
+				{#if $shop_wechat#}<a href="javascript:;" class="a_wechat"><i class="wxIcon"></i>获取微信</a>{#/if#}
+				<a href="{#if $detail_member['qq']#}http://wpa.qq.com/msgrd?v=3&uin={#$detail_member['qq']#}&site=qq&menu=yes{#else#}javascript:;{#/if#}" class="a_qq" target="_blank"><i></i>{#if $detail_member['qq']#}{#$detail_member['qq']#}{#else#}暂无{#/if#}</a>
+			</dd>
+		</dl>
+		<div class="tool">
+			<dl>
+				<dt>浏览次数：</dt><dd>{#$detail_click#}</dd>
+				<dt>发布时间：</dt><dd>{#date("Y-m-d H:i:s", $detail_pubdate)#}</dd>
+				<dt>有&nbsp;效&nbsp;&nbsp;期：</dt><dd>{#$detail_validCeil#}</dd>
+			</dl>
+		</div>
+		<div class="btn_group">
+
+			<!-- s有价格时显示在线购买 -->
+			{#if $detail_price neq 0 && $detail_info['price_switch']==0#}
+			 <a href="{#getUrlPath service=info action=confirm id=$detail_id#}" class="btn_gobuy">在线购买</a>
+			{#else#}
+			<div class="btnBox fn-clear">
+	            {#if $detail_member['qq']#}<a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_member['qq']#}&site=qq&menu=yes" target="_blank"  class="bcontact_qq">QQ在线联系</a>{#/if#}
+	            {#if $shop_wechat#}<a href="javascript:;" class="bcontact_wx">微信在线联系</a>{#/if#}
+			</div>
+			{#/if#}
+			<!-- e有价格时显示在线购买 -->
+			{#if $detail_member.userid#}<a href="javascript:;" data-type="detail" class="chat_to-Link">联系TA</a>{#/if#}
+		</div>
+
+	</div>
+</div>
+
+<div class="wrap detail_main fn-clear">
+	<div class="recom_more">
+		<div class="recTitle">更多推荐</div>
+		<ul class="recom_main fn-clear">
+			{#foreach from=$detail_tj_infos item=tj#}
+				<li class="recom_box">
+					<div class="box_collect"><i></i></div>
+					<a href="{#$tj['url']#}">
+						<div class="recom_img">
+							<img src="{#changeFileSize url="{#$tj['litpic']#}" type="small"#}" alt="">
+							{#if $tj['video']#}
+							<div class="cover_play">
+								<img src="{#$templets_skin#}images/Icon_play.png" alt="">
+							</div>
+							{#/if#}
+							<div class="box_mark">
+								<span class="m_pic"><em>{#$tj['pcount']#}</em>图</span>
+							</div>
+						</div>
+						<div class="recom_info">
+							{#if $tj['price_switch']==0#}<p class="info_price">{#if $tj['price'] neq 0#}<b>{#echoCurrency type='symbol'#}</b>{#$tj['price']#}{#else#}价格面议{#/if#}</p>{#/if#}
+							<p class="m_info">{#$tj['title']#}</p>
+							<div class="info_address fn-clear">
+								<span class="fn-left location">{#$tj.address.2#}/{#$tj.address.1#}</span>
+								<span class="fn-right telphone" data-tel="{#$tj['member']['phone']#}">
+									{#if {#$ilist.member.phone#}#}<img src="{#$templets_skin#}images/Icon_tel.png" alt="">{#/if#}
+								</span>
+								<div class="c_telphone">{#$tj['member']['phone']#} <i></i></div>
+							</div>
+						</div>
+					</a>
+				</li>
+			{#/foreach#}
+		</ul>
+	</div>
+	<div class="det_con">
+		<div class="sortbar fn-clear">
+			<div class="tabs">
+				<ul class="fn-clear">
+					<li data-id="0" class="curr"><a href="javascript:;">信息详情</a></li>
+					<li data-id="1"><a href="javascript:;">用户评论</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="det_info dshow">
+			{#if $detail_item#}
+			<div class="attributes fn-clear">
+				{#foreach from=$detail_item item=item#}
+				{#if $item.value != ""#}
+				<dl><dt>{#$item.type#}：</dt><dd>{#$item.value#}&nbsp;</dd></dl>
+				{#/if#}
+				{#/foreach#}
+			</div>
+			{#/if#}
+			<div class="content">
+				{#$detail_body#}
+			</div>
+		</div>
+
+		<div class="det_info">
+			<div class="comment fn-clear">
+				<div class="c-title fn-clear">精彩评论
+					<span>文明上网理性发言，请遵守<a href="#">信息评论服务协议</a></span>
+					<a href="javascript:;" class="tnum">共{#$detail_common#}条评论</a>
+				</div>
+				<div class="c-area">
+					<div class="textarea" contenteditable="true" data-type="parent"></div>
+					{#if $userinfo#}
+                    <a href="javascript:;" class="subtn">发表</a>
+                    {#else#}
+                    <a href="javascript:;" class="subtn login">登录</a>
+                    {#/if#}
+				</div>
+				<div class="c-content">
+					<div class="c-nav fn-clear">
+						<span class="c-title">全部评论</span>
+						<span class="c-orderby fn-clear">
+							<a href="javascript:;" class="ctime active" data-id="time">时间</a>
+							<a href="javascript:;" class="chot" data-id="hot">热度</a>
+						</span>
+					</div>
+					<ul class="c-list" id="commentList" data-page="0">
+						<div class="loading"></div>
+					</ul>
+					<div id="loadMore">加载更多</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<!-- 微信弹出层 -->
+<div class="modal-wx">
+	<div class="modal-bg"></div>
+
+	<div class="modal-main">
+		<div class="closebox">
+			<img src="{#$templets_skin#}images/icon_close.png" alt="">
+		</div>
+		<div class="main-code">
+			{#if $shop_wechat#}
+			<img src="{#$shop_wechat#}" alt="">
+			{#else#}
+			<p>暂无</p>
+			{#/if#}
+		</div>
+	</div>
+</div>
+<script type="text/template" id="replaytemp">
+    <div class="c-area">
+        <div class="textarea" contenteditable="true"></div>
+        <a href="javascript:;" class="subtn">回复</a>
+    </div>
+</script>
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+{#if $detail_video#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

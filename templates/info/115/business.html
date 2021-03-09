@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_user['company']#} - {#$info_channelName#}</title>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/info.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/abigimage.jquery.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templatePath = '{#$templets_skin#}';
+	var criticalPoint = 1240, criticalClass = "w1200", keywords = '';
+	var detail_id = {#$detail_id#}, user_id = '{#$detail_uid#}', cookiePre = '{#$cfg_cookiePre#}';
+    var addrid = 0, atpage = 1, totalCount = 0, pageSize = 20;
+
+    $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+    imconfig = {
+    	chatid : '{#$detail_user['userid']#}'
+    }
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+<div class="PicFocus">
+    <div class="slideBox slideBox1">
+	    <div class="slidewrap">
+	        <div class="slide">
+				<div class="bd">
+                    {#foreach from=$detail_pics item=pics#}
+				    <div class="slideshow-item" >
+				  		<a href="javascript:;" target="_blank"><img src="{#$pics#}" alt=""></a>
+				    </div>
+                    {#/foreach#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+	        <a href="javascript:;" class="prev"></a>
+	        <a href="javascript:;" class="next"></a>
+	    </div>
+	</div>
+</div>
+
+<div class="wrap fn-clear storebox">
+	<div class="storeInfo fn-clear">
+		<div class="sctop fn-clear">
+			<span class="sl"><i></i>{#$detail_click#}</span>
+			<span class="sr">
+				<i></i>手机看
+				<div class="qrcode">
+					<div id="qrcode"></div>
+					<em></em>
+				</div>
+			</span>
+		</div>
+
+		<div class="headImg">
+			<img src="{#$detail_user['photo']#}" alt="">
+			<i class="vip"></i>
+		</div>
+		<h3>{#$detail_user['company']#}</h3>
+		<div class="box_mark fn-clear">
+			<span class="m_mark mark1">商家</span>
+			<span class="m_mark mark2">{#$detail_typename#}</span>
+			{#if $detail_user['certifyState']#}<span class="m_per"><i></i>身份认证</span>{#/if#}
+			{#if $detail_user['phoneCheck']#}<span class="m_tel"><i></i>手机认证 </span>{#/if#}
+		</div>
+		<div class="colbox">
+			{#if $detail_is_follow#}
+			<a href="javascript:;" class="btn_ygz btn_gz">已关注</a>
+			{#else#}
+			<a href="javascript:;" class="btn_gz"><i></i>关注</a>
+			{#/if#}
+			<a href="javascript:;" data-type="user" class="chat_to-Link">联系他</a>
+		</div>
+		<div class="st_tab">
+			<div class="rbox rbinfo">
+				<a href="javascript:;">
+					<p><b>{#if $pinfos_sum_count#}{#$pinfos_sum_count#}{#else#}0{#/if#}</b>条</p>
+					<span>Ta发布信息</span>
+				</a>
+			</div>
+			<div class="line"></div>
+			<div class="rbox rbcare">
+				<a href="javascript:;">
+					<p><b>{#$detail_guanzhu#}</b>人</p>
+					<span>Ta的关注</span>
+				</a>
+			</div>
+			<div class="line"></div>
+			<div class="rbox rbfans">
+				<a href="javascript:;">
+					<p><b>{#$detail_fensi#}</b>人</p>
+					<span>Ta的粉丝</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="storeIntro">
+		<ul class="toptab fn-clear">
+			<li class="active"><a href="javascript:;">基本信息</a></li>
+			<li><a href="javascript:;">视频展示</a></li>
+			<li><a href="javascript:;">店铺介绍</a></li>
+			<!--<li><a href="javascript:;">企业官网</a></li>-->
+			<!--<li class="btn_pay"><a href="javascript:;" ><img src="{#$templets_skin#}images/icon_pay.png" alt="">在线付款</a></li>-->
+		</ul>
+		<div class="mainIntro baseInfo show">
+			<div class="bInfoCon fn-clear">
+				<div class="bIbox">
+					<div class="conbox">
+						<div class="ibcover"></div>
+						<div class="content">
+							<img src="{#$templets_skin#}images/bIcon_tel.png" alt="">
+							<p>{#if $userinfo#}{#$detail_tel#}{#else#}<a style="color: #5d6d87;" href="{#$cfg_basehost#}/login.html">登录后显示</a>{#/if#}</p>
+						</div>
+					</div>
+					<div class="ifbcover tel"></div>
+				</div>
+				<div class="bIbox">
+					<div class="conbox">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_user['qq']#}&site=qq&menu=yes" target="_blank">
+							<div class="ibcover"></div>
+							<div class="content">
+								<img src="{#$templets_skin#}images/bIcon_qq.png" alt="">
+								<p>{#$detail_user['qq']#}</p>
+							</div>
+						</a>
+					</div>
+					<div class="ifbcover qq"></div>
+				</div>
+				<div class="bIbox wx_box">
+					<div class="conbox">
+						<div class="ibcover"></div>
+						<div class="content">
+							<img src="{#$templets_skin#}images/bIcon_wx.png" alt="">
+							<p>{#if $detail_wechat_pic#}扫码添加微信{#else#}微信暂无{#/if#}</p>
+						</div>
+					</div>
+					<div class="ifbcover wechat"></div>
+				</div>
+			</div>
+			<div class="posbox">
+				<i></i> <span>{#$detail_address#}</span>
+			</div>
+
+			<div class="albumBox">
+				<div class="slideBox slideBox2">
+					<div class="bd">
+						<ul class="fn-clear">
+
+							<li>
+                                {#foreach $detail_pics item=pics#}
+								<div class="slide">
+									<a href="{#$pics#}">
+										<img src="{#$pics#}">
+									</a>
+								</div>
+                                {#/foreach#}
+							</li>
+
+
+						</ul>
+					</div>
+					<div class="hd">
+						<ul></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mainIntro">
+			{#if $detail_video#}
+			<div class="videobox">
+				<video width="100%" height="100%" controls src="{#$detail_video#}" type="video/mp4" poster="{#$video_pic#}" object-fit: fill></video>
+			</div>
+			{#else#}
+			<span>该商家暂时没有视频</span>
+			{#/if#}
+
+
+		</div>
+		<div class="mainIntro">
+			<div class="shopIntro">
+				{#$detail_body#}
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<!-- 微信弹出层 -->
+<div class="modal-wx">
+	<div class="modal-bg"></div>
+
+	<div class="modal-main">
+		<div class="closebox">
+			<img src="{#$templets_skin#}images/icon_close.png" alt="">
+		</div>
+		<div class="main-code">
+			<img src="{#if $detail_wechat_pic#}{#$detail_wechat_pic#}{#else#}<p>暂无</p>{#/if#}" alt="">
+		</div>
+	</div>
+</div>
+
+
+<div class="info_content">
+	<!-- tab 导航 -->
+	<div class="wrap">
+		<div class="sortbar fn-clear">
+			<div class="tabs">
+				<ul class="fn-clear">
+					<li data-id="0" class="curr"><a href="javascript:;">全部信息</a></li>
+					<!--<li data-id="1"><a href="javascript:;">全部评论</a></li>-->
+				</ul>
+			</div>
+			<div class="views">
+				<ul class="fn-clear">
+					<li class="tpage"><a href="javascript:;" class="prev diabled"><i></i></a><span class="atpage"> <em>1</em> / 1 </span><a href="javascript:;" class="next"><i></i></a></li>
+					<!--<li class="window"><a href="javascript:;"><i></i>大图</a></li>-->
+					<!--<li class="rowlist  curr"><a href="javascript:;"><i></i>列表</a></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- 列表 -->
+	<!--<div class="wrap lmain fn-clear ">-->
+		<!--<div class="fn-left pub main">-->
+			<!--<ul class="fn-clear recTop topborder">-->
+
+			<!--</ul>-->
+			<!--<ul class="fn-clear recCom">-->
+
+
+			<!--</ul>-->
+		<!--</div>-->
+		<!--<div class="fn-right other_box">-->
+			<!--<div class="tgtel">推广热线 <b>400-025-1158</b></div>-->
+			<!--<div class="adbox">-->
+				<!--<img src="{#$templets_skin#}upfile/adPic.png" alt="">-->
+			<!--</div>-->
+			<!--<div class="r_other">其他人还在看</div>-->
+			<!--<div class="pub bmain">-->
+				<!--<ul>-->
+					<!--{#info action="ilist_v2" return="ilist" orderby="3" pageSize="2"#}-->
+					<!--<li>-->
+						<!--<div class="box_collect"><i></i></div>-->
+
+						<!--<a href="{#$ilist.url#}">-->
+							<!--<div class="recom_img">-->
+								<!--<img src="{#$ilist.litpic#}" alt="">-->
+								<!--{#if $ilist.video#}-->
+								<!--<div class="cover_play">-->
+									<!--<img src="{#$templets_skin#}images/Icon_play.png" alt="">-->
+								<!--</div>-->
+								<!--{#/if#}-->
+								<!--<div class="box_mark">-->
+									<!--{#if $ilist.video neq 1#}-->
+									<!--<span class="m_pic"><em>{#$ilist.pcount#}</em>图</span>-->
+									<!--{#/if#}-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="recom_info">-->
+								<!--<p class="info_price">{#if $ilist.price neq 0#}<b>¥</b>{#$ilist.price#}{#else#}价格面议{#/if#}</p>-->
+								<!--<p class="m_info">{#$ilist.title#}</p>-->
+								<!--<div class="info_address fn-clear">-->
+									<!--<span class="fn-left location">{#$ilist.address.2#}/{#$ilist.address.1#}</span>-->
+									<!--<span class="fn-right telphone" data-tel="{#$ilist.member.phone#}">-->
+								<!--{#if {#$ilist.member.phone#}#}<img src="{#$templets_skin#}images/Icon_tel.png" alt="">{#/if#}-->
+									<!--</span>-->
+									<!--<div class="c_telphone">{#$ilist.member.phone#} <i></i></div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</a>-->
+					<!--</li>-->
+					<!--{#/info#}-->
+				<!--</ul>-->
+			<!--</div>-->
+
+		<!--</div>-->
+
+	<!--</div>-->
+	<!-- 大图 -->
+	<div class="wrap pub bmain">
+		<ul class="fn-clear main_list">
+
+		</ul>
+	</div>
+</div>
+
+<div class="fans_content fn-hide">
+	<!-- tab 导航 -->
+	<div class="wrap">
+		<div class="sortbar fn-clear">
+			<div class="tabs">
+				<ul class="fn-clear">
+					<li data-id="0" class="curr"><a href="javascript:;">Ta的关注</a></li>
+					<li data-id="1"><a href="javascript:;">Ta的粉丝</a></li>
+				</ul>
+			</div>
+			<div class="views">
+				<ul class="fn-clear">
+					<li class="tpage"><a href="javascript:;" class="prev diabled"><i></i></a><span class="atpage"> <em>1</em> / 2 </span><a href="javascript:;" class="next"><i></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap care_fans">
+		<ul class="fn-clear">
+
+
+
+		</ul>
+	</div>
+</div>
+
+<!-- 加载失败 -->
+<div class="wrap failed"><img src="{#$templets_skin#}images/icon_faild.png"><span>没有找到符合条件的结果</span></div>
+
+<div class="wrap pagination fn-clear"></div>
+
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/store.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/abigimage.jquery.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

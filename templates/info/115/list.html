@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#if $list_typename#}{#$list_typename#}{#else#}分类信息列表{#/if#}{#/if#}- {#$info_channelName#} - {#$cfg_webname#}</title>
+    <meta name="keywords" content="{#$list_keywords#}" />
+    <meta name="description" content="{#$list_description#}" />
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/info.css?v={#$cfg_staticVersion#}" media="all" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var typeid = '{#$list_id#}';
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var addrid = 0, atpage = 1, totalCount = 0, pageSize = 20;
+        var keywords = '{#$keywords#}';
+        var list_lower = '{#$list_lower#}';
+        var money ="{#echoCurrency type='symbol'#}";
+    </script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+<!-- 导航 s-->
+{#include file="header_search.html"#}
+
+<!-- 导航 e-->
+
+<div class="wrap crumbs fn-clear">
+    <div class="cont">
+        <a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+        <s></s>
+        {#if $list_id#}{#$list_crumbs#}{#else#}信息列表{#/if#}
+    </div>
+    {#if $keywords#}<a class="filter-item search" href="javascript:;">关键词：<em>{#$keywords#}</em><span class="close">×</span></a>{#/if#}
+</div>
+
+
+<div class="filter_box">
+    <div class="wrap">
+        <div class="filter">
+            {#if $list_id == 0#}
+            <dl class="fn-clear" id="fnav">
+                <dt>分类</dt>
+                <dd>
+                    <div class="f_more">更多<i></i></div>
+                    <div class="item_box">
+                        <a href="{#getUrlPath service='info' template='list'#}" class="curr">不限</a>
+                        {#info action="type" return="type"#}
+                        <a href="{#getUrlPath service='info' template='list' id=$type.id#}">{#$type.typename#}{#if $type.lower#}{#/if#}</a>
+                        {#/info#}
+                    </div>
+                </dd>
+            </dl>
+            {#/if#}
+            {#if $list_lower > 0#}
+            <dl class="fn-clear" id="subnav" data-id="{#$list_id#}">
+                <dt>分类</dt>
+                <dd>
+                    <div class="f_more">更多<i></i></div>
+                    <div class="item_box">
+                        <a href="javascript:;" data-id="{#$list_id#}" class="curr">不限</a>
+                        {#info action="type" return="type" type=$list_id son="1"#}
+                        <a href="javascript:;" data-type="flag" data-id="{#$type.id#}">{#$type.typename#}{#if $type.lower#}<s></s>{#/if#}</a>
+                        {#/info#}
+                        <div class="subnav fn-clear">
+                            {#info action="type" return="type1" type=$list_id son="1"#}
+                            {#if $type1.lower#}
+                            <div id="subnav{#$type1.id#}">
+                                <a href="javascript:;" data-id="{#$type1.id#}">不限</a>
+                                {#info action="type" return="type2" type=$type1.id#}
+                                <a href="javascript:;" data-id="{#$type2.id#}">{#$type2.typename#}</a>
+                                {#/info#}
+                            </div>
+                            {#/if#}
+                            {#/info#}
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            {#/if#}
+
+            <!--<dl class="fn-clear" id="">-->
+            <!--<dt>来源</dt>-->
+            <!--<dd>       -->
+            <!--<div class="item_box">-->
+            <!--<a href="javascript:;" class="curr">不限</a>-->
+            <!--<a href="javascript:;" data-id="2">商家<s></s></a>-->
+            <!--<a href="javascript:;" data-id="1">个人<s></s></a>-->
+            <!--</div>-->
+            <!--</dd>-->
+            <!--</dl>-->
+
+            <dl class="fn-clear" id="addr">
+                <dt>区域</dt>
+                <dd>
+                    <a href="javascript:;" data-id="0" class="curr">不限</a>
+                    {#info action="addr" return="addr" son="once"#}
+                    <a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}{#if $addr.lower#}<s></s>{#/if#}</a>
+                    {#/info#}
+                    <div class="subnav fn-clear">
+                        {#info action="addr" return="addr1" son="1"#}
+                        {#if $addr1.lower#}
+                        <div id="addr{#$addr1.id#}">
+                            <a href="javascript:;" data-id="{#$addr1.id#}">不限</a>
+                            {#info action="addr" return="addr2" type=$addr1.id#}
+                            <a href="javascript:;" data-id="{#$addr2.id#}">{#$addr2.typename#}</a>
+                            {#/info#}
+                        </div>
+                        {#/if#}
+                        {#/info#}
+                    </div>
+                </dd>
+            </dl>
+            <dl class="fn-clear">
+                <dt>价格</dt>
+                <dd>
+                    <a href="javascript:;" data-id="0" class="curr">不限</a>
+                    <a href="javascript:;" data-id="0,100">100{#echoCurrency type='short'#}以下</a>
+                    <a href="javascript:;" data-id="100,300">100-300{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="300,500">300-500{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="500,1000">500-1000{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="1000,1500">1000-1500{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="1500,2000">1500-2000{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="2000,3000">2000-3000{#echoCurrency type='short'#}</a>
+                    <a href="javascript:;" data-id="3000,10000000">3000{#echoCurrency type='short'#}以上</a>
+
+                </dd>
+            </dl>
+
+            <div id="itemOptions">
+
+                {#if $list_item#}
+                {#foreach from=$list_item key=key item=item#}
+                {#if $item.formtype != "text"#}
+                <dl class="item fn-clear" data-name="{#$item.field#}" data-id="{#$item.id#}">
+                    <dt>{#$item.title#}</dt>
+                    <dd>
+                        <a href="javascript:;" data-id="0" class="curr">不限</a>
+                        {#foreach from=$item.options key=k item=options#}
+                        <a href="javascript:;" data-id="{#$options#}">{#$options#}</a>
+                        {#/foreach#}
+                    </dd>
+                </dl>
+                {#/if#}
+                {#/foreach#}
+                {#/if#}
+
+            </div>
+            <div class="more fn-hide"><a href="javascript:;">更多选项<i></i></a></div>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="sortbar fn-clear">
+        <div class="tabs">
+            <ul class="fn-clear">
+                <li data-id="0" class="curr"><a href="javascript:;">全部信息</a></li>
+                <li data-id="1"><a href="javascript:;">个人发布</a></li>
+                <li data-id="2"><a href="javascript:;">商家发布</a></li>
+            </ul>
+        </div>
+        <div class="views">
+            <ul class="fn-clear">
+                <li class="tpage"><a href="javascript:;" class="prev diabled"><i></i></a><span class="atpage"> <em>1</em> / 2 </span><a href="javascript:;" class="next"><i></i></a></li>
+                <li class="window curr"><a href="javascript:;"><i></i>大图</a></li>
+                <li class="rowlist"><a href="javascript:;"><i></i>列表</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sort">
+        <ul class="fn-clear">
+            <li class="st curr" data-sort="1"><a href="javascript:;">默认排序</a></li>
+            <!--<li class="st" data-sort="3"><a href="javascript:;">评分</a></li>-->
+            <li class="st" data-sort="2"><a href="javascript:;">浏览量</a></li>
+            <li class="videopic vid" data-sort="vid">
+                <a href="javascript:;">
+                    <label><em></em></label>只看有视频<i class="picon-new"></i>
+                </a>
+            </li>
+            <li class="videopic pic" data-sort="pic">
+                <a href="javascript:;">
+                    <label><em></em></label>只看有图
+                </a>
+            </li>
+            <li class="st price" data-sort="5">
+                <a href="javascript:;">
+                    按价格 <s></s><i></i></span>
+                </a>
+                <div class="inp_price">
+                    <input type="input" class="p1" placeholder="{#echoCurrency type='symbol'#}" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">-
+                    <input type="input" class="p2" placeholder="{#echoCurrency type='symbol'#}" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                    <input type="button" class="btn" value="确定">
+                </div>
+
+            </li>
+
+            <!-- <li class="fire"><a href="javascript:;" class="check"><i></i>火急</a></li> -->
+            <!-- <li class="top1"><a href="javascript:;" class="check"><i></i>置顶</a></li> -->
+        </ul>
+    </div>
+</div>
+
+<!-- 加载失败 -->
+<div class="wrap failed"><img src="{#$templets_skin#}images/icon_faild.png"><span>没有找到符合条件的结果</span></div>
+
+<!-- 列表 -->
+<div class="wrap lmain fn-clear ">
+    <div class="fn-left pub main">
+        <ul class="fn-clear recTop topborder">
+
+
+        </ul>
+        <ul class="fn-clear recCom">
+
+        </ul>
+    </div>
+
+
+    <div class="fn-right other_box">
+        <div class="tgtel">推广热线 <b>400-025-1158</b></div>
+        <div class="adbox">
+            <img src="{#$templets_skin#}upfile/adPic.png" alt="">
+        </div>
+        <div class="r_other">其他人还在看</div>
+        <div class="pub bmain">
+            <ul>
+                {#info action="ilist_v2" return="ilist" orderby="3" pageSize="2"#}
+                <li>
+                    <div class="box_collect"><i></i></div>
+
+                    <a href="{#$ilist.url#}">
+                        <div class="recom_img">
+                            <img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}" alt="">
+                            {#if $ilist.video#}
+                            <div class="cover_play">
+                                <img src="{#$templets_skin#}images/Icon_play.png" alt="">
+                            </div>
+                            {#/if#}
+                            <div class="box_mark">
+                                {#if $ilist.video neq 1#}
+                                <span class="m_pic"><em>{#$ilist.pcount#}</em>图</span>
+                                {#/if#}
+                            </div>
+                        </div>
+                        <div class="recom_info">
+                            {#if $ilist.price_switch==0#}<p class="info_price">{#if $ilist.price neq 0#}<b>{#echoCurrency type='symbol'#}</b>{#$ilist.price#}{#else#}价格面议{#/if#}</p>{#/if#}
+                            <p class="m_info">{#$ilist.title#}</p>
+                            <div class="info_address fn-clear">
+                                <span class="fn-left location">{#$ilist.address.2#}/{#$ilist.address.1#}</span>
+                                <span class="fn-right telphone" data-tel="{#$ilist.member.phone#}">
+								{#if {#$ilist.member.phone#}#}<img src="{#$templets_skin#}images/Icon_tel.png" alt="">{#/if#}
+									</span>
+                                <div class="c_telphone">{#if $userinfo#}{#$ilist.member.phone#}{#else#}登录后显示{#/if#} <i></i></div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {#/info#}
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div class="wrap pub bmain fn-hide">
+    <ul class="fn-clear main_list">
+
+    </ul>
+</div>
+
+<div class="wrap pagination fn-clear"></div>
+
+
+
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/info.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+.user_info .m_per i,.user_info .m_tel i,.m_info i{display: inline-block;width: 22px;height: 22px;background: url(../images/listSprite.png) no-repeat;vertical-align: middle;margin-top:-2px;margin-right: 5px;}
+
+.topbox{position: relative;height: 266px;margin-bottom: 40px;}
+.usertop{height: 200px;background: #fff;border: solid 1px #f6f6f6;box-shadow: 0px 1px 13px 0px rgba(0, 44, 125, 0.13);position: absolute;top:0;z-index: 5;}
+.usertop .l{padding:50px 30px;width:738px;float: left;}
+.usertop .user_head{width: 100px;height: 100px;float:left;border-radius: 50%;overflow: hidden; box-shadow: 0px 3px 13px 0px rgba(0, 18, 155, 0.13);margin-right: 40px;}
+.usertop .user_head img{display: block;width: 100%;height: 100%;}
+.user_info{float: left;width: 570px;position: relative;}
+.user_info h3{overflow: hidden;margin-bottom: 20px;}
+.user_info h3 span{float: left;font-size: 20px;color:#4b4b4e;font-weight: bold;line-height: 40px;max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.user_info h3 .btn_care{float: left;margin-left: 10px;width:64px;height:24px;color:#fff;font-size:14px;border-radius: 12px;background: #ffb400;text-align: center;line-height: 24px; margin-top: 8px;}
+.user_info h3 .btn_care i{display: inline-block;width: 12px;height: 12px;background: url(../images/icon_care.png) no-repeat center;background-size:cover; vertical-align: middle;margin-top: -3px;}
+.user_info h3 .btn_care.cared{background: #c0c1c4;}
+.usertop .box_mark .m_mark{font-size: 15px;text-align: center;height: 24px;line-height: 24px;float: left;margin-right: 10px;}
+
+.user_info .box_mark .m_per,.user_info .box_mark .m_tel{float:left;width:96px;height: 24px;line-height: 24px;text-align: center;font-size: 14px;margin-right:10px;}
+.user_info .box_mark .m_per{background:#64e3b5;color:#fff;}
+.user_info .box_mark .m_tel{background: #84bbff;color:#fff;}
+
+.user_info .m_per i{background-position: 0 -76px;}
+.user_info .m_tel i{background-position: -22px -76px;}
+
+/*手机看*/
+.mobile_box{position: absolute;right: 0;top: 50%;margin-top:-40px;}
+.mobile_box div{width: 80px;height: 80px;text-align: center;background: #f7f8fb;}
+#qrcode{width: 80px;height: 80px;display: block;}
+.m_info i{background-position: -44px -76px;margin: 17px auto 14px;}
+.m_info span{display: block;font-size: 14px;color:#4c4c4f;}
+
+/*顶部右侧信息*/
+.usertop .r{float: right;width: 400px;height: 60px;box-shadow: -1px 0px 5px 0px rgba(0, 44, 125, 0.07);background: #fff;padding:70px 0;overflow: hidden;}
+.usertop .r .rbox{float:left;text-align: center;width:33%;}
+.usertop .r .rbox a{display: block;}
+.usertop .line{float:left;height: 20px;width: 1px;background: #bcbcc4;margin-top:20px;}
+.usertop .rbox p{font-size: 14px;color:#fd4939;}
+.usertop .rbox p b{font-size: 24px;}
+.usertop .rbox span{display: block;font-size: 14px;color:#8d8d91;}
+
+/*联系*/
+.wrap.contact_box{width: 1150px;}
+.contact_box{position: absolute;bottom:0;z-index: 2;height: 66px;line-height: 66px;background: #f7f8fb;box-shadow: 0px 1px 13px 0px rgba(0, 44, 125, 0.13);padding:0 25px;}
+.contact_box a{font-size: 18px;color:#5a5a5e;}
+.contact_box a:hover{color:#4f7dff;}
+.contact_box .line{display: inline-block;height: 20px;width: 1px;background: #bcbcc4;line-height: 50px;vertical-align: middle;margin:-10px 25px 0;}
+.btn_pay{ display: inline-block;vertical-align: middle;margin-top: -8px;color:#fff!important;font-size:17px!important;text-align:center;width: 138px;height: 36px; line-height: 36px;border:solid 1px rgb(255, 172, 91); background: -moz-linear-gradient( 45deg, rgb(255,186,54) 0%, rgb(255,138,80) 100%); background: -webkit-linear-gradient( 45deg, rgb(255,186,54) 0%, rgb(255,138,80) 100%); background: -ms-linear-gradient( 45deg, rgb(255,186,54) 0%, rgb(255,138,80) 100%);box-shadow: 0px 3px 3px 0px rgba(255, 70, 34, 0.23);filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #ffba36, endColorstr = #ff8a50);}
+.btn_pay img{display: inline-block;vertical-align: middle;margin-right: 5px;}
+.contact_box a i{display: inline-block;width: 25px;height: 25px;background: url(../images/listSprite.png) no-repeat;vertical-align: middle;margin-top:-2px;margin-right: 5px;}
+.contact_box .c_tel i{background-position: -95px 0;}
+.contact_box .c_qq i{background-position: -95px -25px;}
+.contact_box .c_wx i{background-position: -95px -50px;}
+
+.main .recom_info .box_mark .m_per,.main .recom_info .box_mark .m_tel{background: none}
+
+/*聊天ann*/
+.btn_group{float: right;height: 38px; font-size: 16px; line-height: 38px; margin-top: 14px; }
+.btn_group a.pay_btn:hover{color: #fff;}
+.btn_group .chat_to-Link{width: 130px; background: #fff; box-shadow: 0 3px 3px rgba(10,9,47,.04); display: inline-block; text-align: center; margin-right: 10px;}
+.btn_group .chat_to-Link:before{content: ''; width: 18px; height: 18px; background: url(../images/msg_icon.png) no-repeat; background-size: cover; vertical-align: middle;display: inline-block; margin-right: 12px;}
+.btn_group .pay_btn{width: 140px; color: #fff; display: inline-block;border-radius: 4px; text-align: center; box-shadow: 0 3px 3px rgba(255,70,34,.23);
+background: -webkit-linear-gradient(45deg, #ffba36 , #ff8a50); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(45deg, #ffba36 , #ff8a50); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(45deg, #ffba36 , #ff8a50); /* Firefox 3.6 - 15 */
+  background: linear-gradient(45deg, #ffba36 , #ff8a50); /* 标准的语法 */}
+.btn_group .pay_btn:before{content: ''; width: 25px; height:24px; background: url(../images/pay_btn.png) no-repeat; background-size: cover; vertical-align: middle;display: inline-block; margin-right: 6px;}
+.btn_group .chat_to-Link:hover{background-color: #ebebeb;}
