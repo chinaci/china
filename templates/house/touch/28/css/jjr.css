@@ -1,0 +1,50 @@
+body{background: #f5f5f5;}
+
+.header{overflow: hidden;position: relative;}
+.header-l{float: left;}
+.header-l img{width: .3rem;margin:.15rem .1rem;}
+.header-c{text-align: center;line-height: .9rem;font-size: .3rem;}
+.header-r{float: right;position: absolute;right: 0;top:0;}
+.header-r img{width: .6rem;margin:.15rem .1rem;}
+
+
+.jjr-store{background: #FFF;}
+.jjr-store dl{padding: .4rem .3rem;border-bottom: 1px solid #f4f4f4;overflow: hidden;}
+.jjr-store dl dt{float: left;width: 1rem;height: 1rem;margin-right: .2rem;border-radius: 50%;display: table-cell;overflow: hidden;}
+.jjr-store dl dt img{width: 100%;height: 100%;vertical-align: middle;}
+.jjr-store dl dd{float: left;display: table-cell;}
+.jjr-store dd h3{height: .5rem;font-size: .3rem;color: #0c0d0e;margin-bottom: .1rem;text-overflow: ellipsis;white-space: nowrap;font-weight: 100;}
+.jjr-store dd h3 em{margin-right: .1rem;}
+.jjr-store dd h3 span{border: 0;background: #91d397;line-height: .3rem;font-size: .16rem;color: #fff;padding: 0 .1rem;display: inline-block;margin-left: .1rem;}
+.jjr-store dd p{color: #83868f;line-height: .4rem;}
+.jjr-store dd p span{color: #0c0d0e;padding-right: .14rem;}
+
+/*房源切换*/
+.jjr-list{padding: .3rem .3rem 0 .3rem;overflow: hidden;background-color: #fff;margin: .2rem 0;text-align: center;}
+.list-tab{display: inline-block;;height: .6rem;line-height: .65rem;text-align: center;border: 1px solid #df3031;margin: .1rem auto .4rem;border-radius: .24rem;font-size: .24rem;overflow: hidden;}
+.list-tab .tab-s{display: inline-block;width: 1.3rem;color: #df3031;}
+.list-tab .active{color: #fff;background: #df3031;}
+.list-td{float: left;width: 48%;margin-right: 4%;margin-bottom: .4rem;}
+.list-td .td-img,.list-td .td-img img{width: 100%;height: 2.5rem;}
+.list-td .td-txt{line-height: .4rem;text-align: left;}
+.list-td .td-txt h3{font-size: .28rem;color: #0c0d0e;margin: .1rem 0;text-overflow: ellipsis; white-space: nowrap;font-weight: 100; overflow: hidden;}
+.list-td .td-txt .gray-p{color: #83868f;font-size: .24rem;}
+.list-td .td-txt .gray-p em{margin-right: .1rem;}
+.list-td .td-txt .red-p{color: #df3031;font-size: .24rem;}
+.list-td:nth-child(even) {margin-right: 0;}
+.footer{margin-bottom: .9rem;}
+
+
+/*底部手机悬浮*/
+.mobile{height: .9rem;width: 100%;position: fixed;bottom: 0;left: 0;background-color: #f4f4f4;display: table;z-index: 10;}
+.mobile-img{width: .9rem;padding-left: .15rem;font-size: .22rem;display: table-cell;vertical-align: middle;}
+.mobile-img img{width: .8rem;height: .8rem;}
+.mobile-info{padding-left: .15rem;font-size: .22rem;display: table-cell;vertical-align: middle;}
+.mobile-info p:first-child{color: #83868f;}
+.mobile-info p:last-child{color: #3c3f46;margin-top: .1rem;}
+.mobile-call{overflow: hidden;width: 1.2rem;display: table-cell;vertical-align: middle;}
+.mobile-call a {display: block;height: .9rem;background: #df3031;color: #ffffff;text-align: center;font-size: .22rem;padding-top: .12rem;line-height: 1;}
+.mobile-call a i {display: block;width: .4rem;height: .4rem;margin: 0 auto .12rem;background: url(../images/tel_icons.png) no-repeat;background-size: 1.2rem auto;}
+
+/*更多房源*/
+.more{line-height: .8rem;font-size: .28rem;color: #565c67;text-align: center;border-top: 1px solid #f4f4f4;}

@@ -1,0 +1,19 @@
+/*二居*/
+.hx-module-tit{background: #f5f5f5;position: relative;height: .3rem;background: #f5f5f5;border-bottom: 1px solid #ebebeb;padding: .34rem .2rem .26rem .2rem;font-size: 0;border-top: 1px solid #ebebeb;}
+.hx-module-tit p{height: .3rem;line-height: .3rem;font-size: .28rem;}
+.hx-module-tit p span{display: inline-block;margin-right: .1rem;height: .3rem;width: .04rem;background: #d91819;vertical-align: text-top;}
+.hx-module ul{padding: 0 .2rem;}
+.hx-module ul li{position: relative;}
+.hx-module ul a{display: block;padding: .24rem 0;border-bottom: 1px solid #ebebeb;font-size: .3rem;}
+.hx-module .hx-left{display: -webkit-box;}
+.hx-left .hx-img-box{display: inline-block;position: relative;height: 1.5rem;width: 2rem;margin-right: .2rem;overflow: hidden;vertical-align: top;}
+.hx-left .hx-img-box img {width: 100%;min-height: 1.5rem;}
+.hx-left dl{position: relative;-webkit-box-flex: 1;width: 0;min-height: 1.5rem;vertical-align: top;font-size: .26rem;}
+.hx-left dl dt{padding: 0 .34rem .16rem 0;font-size: .3rem;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.hx-left dl .info-value{display: block;vertical-align: middle;font-size: .36rem;margin-bottom: .12rem;color: #d91819;}
+.hx-left dl .info-area{height: .3rem;padding-bottom: .12rem;color: #999;line-height: .3rem;}
+.hx-right{position: absolute;right: 0;top: 0;margin-top: .92rem;}
+.loupan-icons {display: inline-block;vertical-align: middle;margin: 0 0 0 .28rem;width: .14rem;height: .24rem;position: relative;}
+.loupan-icons .triangle-front{border-top: .12rem solid transparent;border-bottom: .12rem solid transparent;border-left: .14rem solid #fff;width: 0;height: 0;position: absolute;top: 0;left: 0;z-index: 1;}
+.loupan-icons .triangle-back {border-top: .12rem solid transparent;border-bottom: .12rem solid transparent;border-left: .14rem solid #ccc;width: 0;height: 0;position: absolute;top: 0;left: .02rem;}
+.hx-module ul a.last{border: 0}

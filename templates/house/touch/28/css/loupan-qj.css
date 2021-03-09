@@ -1,0 +1,9 @@
+.mainBox ul {padding:.2rem;}
+.mainBox ul li {float:left;width:3.5rem;margin-right: .1rem;margin-bottom: .2rem;box-shadow: 0 0 6px 1px #eee;}
+.mainBox ul li:nth-child(2) {margin-right: 0;}
+.mainBox ul li .pic {position: relative;height:2.5rem;overflow: hidden;}
+.mainBox ul li .pic img {width:100%;min-height: 2.5rem;}
+.mainBox ul li .pic span {position: absolute;bottom: .2rem;right:.2rem;padding:.05rem .2rem;background:rgba(0,0,0,.4);border-radius:8px;color:#fff;font-size: .2rem;}
+.mainBox ul li p {height: .72rem;margin:.15rem .1rem;line-height: .36rem;font-size: .24rem;color:#252525;overflow: hidden;}
+
+.mainBox iframe {width:100%;border:none;height: calc(100% - 5px);}

@@ -1,0 +1,10 @@
+.mainBox {padding: 0 .2rem;}
+.mainBox li {float: none; width: auto; margin: 0; padding: .2rem .1rem; box-shadow: none; border-bottom: 1px solid #e9e9e9;}
+.mainBox li:last-child {border-bottom: 0;}
+.mainBox li h5 {font-size: .3rem; padding: 0;}
+.mainBox li p {padding: .1rem 0 .2rem; margin: 0; height: auto; color: #aaa;}
+.mainBox li .bt {height: .5rem; line-height: .4rem;}
+.mainBox li .bt span {float: left; border: 1px solid #f60; color: #f60; line-height: .4rem; padding: 0 .1rem;}
+.mainBox li .bt i {float: right; color: #aaa;}
+
+.loading {padding:.4rem 0;text-align: center;}
