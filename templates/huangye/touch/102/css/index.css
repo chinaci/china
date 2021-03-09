@@ -1,0 +1,51 @@
+body{ background: #f8f8f8;}
+
+/*头部幻灯片部分*/
+.wrapper{  padding-top:0.93rem;}
+.huoniao_iOS .wrapper {padding-top:0;}
+.wrapper .swiper-container {height: 3.5rem;color: #fff;text-align: center;}
+.wrapper .swiper-container .slideshow-item {-webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0; width: 100%; height: 100%; position: relative;}
+.wrapper .swiper-container .slideshow-item img {display: inline-block; height: 3.5rem;}
+.wrapper .pagination {position: absolute;z-index: 20;left: 0;bottom: 0;width: 100%;}
+.wrapper .swiper-pagination-switch {display: inline-block;width: 0.12rem;height: 0.12rem;border-radius: 0.16rem;background: rgba(255,255,255,0.3);margin-right: 5px;opacity: 0.8;border: 1px solid #fff;cursor: pointer;}
+.wrapper .swiper-active-switch {background: #fff;}
+.wrapper .swiper-dynamic-links {text-align: center;}
+.wrapper .swiper-pagination-bullet-active{background: #fff!important;opacity: 1!important;}
+.wrapper .swiper-pagination-bullet{width: 6px;height: 6px;background: #fff;opacity: .5;}
+
+
+/*滑动导航*/
+.mainNav{background: #fff;position: relative;overflow: hidden; height: 3.42rem;}
+.mainNav ul{height: 3.2rem; overflow: hidden;}
+.mainNav li{width: 20%;float: left;text-align: center;    margin: .12rem 0;}
+.mainNav li a{display: block;}
+.mainNav li span.icon-circle{display: block;width: 1.5rem;margin: 0 auto;padding-top: .1rem; padding-bottom: .02rem;}
+.mainNav li span.icon-txt {font-size: .28rem;}
+.mainNav li span img{display: block;width: .85rem;height: .85rem;margin: 0 auto;}
+.mainNav .swiper-pagination-bullet{background: #e6e6e6 !important;width: 6px;height: 6px; opacity: 1;}
+.mainNav .swiper-pagination-bullet-active{background: #6d56f7 !important;}
+.mainNav .swiper-wrapper{height: auto !important;}
+
+/*向你推荐--头部*/
+.more{position: absolute;right: 0;color:#919191;font-size:.28rem;}
+.more i{display: block;  width: .2rem;  float: right;  height: .24rem;  background: url(../images/more.png) no-repeat center;  background-size: .18rem;  margin-top: .33rem;  margin-left: .1rem;}
+
+
+
+/*优秀商家*/
+.business .list-left a img{width: .9rem!important;height: .9rem!important;border-radius: 50%;-webkit-border-radius: 50%;}
+.business .list-right a{color:#252525!important;font-size: .32rem!important;}
+.business .list-right p{color:#838383!important;}
+.business .list-right a.phone{ position: absolute; top: .42rem; right: 0;display:block;color:#ef432a!important;font-size:.24rem!important;width: 1.3rem;padding:0.1rem;border: solid 1px #e56d5c;border-radius: 4px;-webkit-border-radius: 4px;}
+
+.up{ display: none;}
+#slideNav .swiper-pagination-bullet{ opacity:1; background-color: #fff;}
+#slideNav .swiper-pagination{bottom: 0!important;}
+#slideNav .swiper-pagination-bullet-active{opacity: .6; background: #000;}
+
+
+.areaChose{position: absolute; top: 1.25rem; left: .24rem; color: #fff; font-size: .26rem; background-color: rgba(51,51,51,.5); height: .4rem; border-radius: .2rem; z-index: 9; min-width: 1.2rem; display: flex; align-items: center; justify-content: center; padding: 0 .1rem; box-sizing: border-box; }
+.huoniao_iOS .areaChose{top:.25rem}
+.areaChose span{display: block; max-width: 1.1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.areaChose::after{content: ''; display: block; width: .2rem ;height: .2rem; background: url(/static/images/city_arr.png) no-repeat center; background-size: cover; margin-left: .1rem;}
+.wrapper{position: relative;}

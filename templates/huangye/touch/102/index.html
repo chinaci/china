@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$huangye_title#}</title>
+<meta name="apptitle" content="{#$huangye_channelName#}">
+<meta name="keywords" content="{#$huangye_keywords#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme='absolute' pageTitle="$huangye_channelName"#}
+
+<!-- 头部幻灯片 -->
+<div class="wrapper">
+	{#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+	<a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=huangye" class="areaChose"><span>{#$siteCityInfo['name']#}</span></a>
+	{#/if#}
+	<div class="swiper-container" id="slider">
+		<div class="swiper-wrapper">
+			{#myad title="便民黄页_模板二_移动端_广告一" type="slide"#}
+		</div>
+  	<div class="pagination"></div>
+	</div>
+</div>
+<!-- 头部幻灯片 end -->
+<!-- 滑动导航 -->
+<div class="mainNav">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<ul class="fn-clear">
+				{#business return="type" action="type"#}
+				<li>
+					<a href="{#getUrlPath service="huangye" template="list" typeid=$type.id addrid=$addrid business=$business#}">
+						<span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"></span>
+						<span class="icon-txt">{#$type.typename#}</span>
+					</a>
+				</li>
+				{#/business#}
+			</ul>
+		</div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+<!-- 滑动导航 end-->
+
+
+<!--向您推荐-->
+<div class="hy-content fn-clear">
+	<div class="head-title">
+		<p class="fn-clear"><span class="s-line"></span>向您推荐  <a href="{#getUrlPath service='huangye' template='list'#}" class="more">查看更多 <i></i></a></p>
+	</div>
+	<ul class="ul-list fn-clear" id="nearby"></ul>
+	<p class="load">正在加载，请稍后</p>
+</div>
+<!--向您推荐 end-->
+
+<!--优秀商家-->
+<div class="hy-content fn-clear business">
+	<div class="head-title">
+		<p class="fn-clear"><span class="s-line"></span>优秀商家  <a href="{#getUrlPath service='business' template='list'#}" class="more">查看更多 <i></i></a></p>
+	</div>
+	<ul class="ul-list fn-clear business">
+		{#business return="list" action="blist" pageSize="4"#}
+		<li>
+			<div class="list-left">
+				<a href="{#$list.url#}" class="fn-clear">
+					<img src="{#$list.logo#}" >
+				</a>
+			</div>
+			<div class="list-right">
+				<a href="{#$list.url#}">{#$list.title#}</a>
+				<p class="fn-clear">{#$list.address#}</p>
+				{#if $list.tel#}<a href="tel:{#$list.tel#}" class="phone"><i class="hy-mobile"></i>电话</a>{#/if#}
+			</div>
+		</li>
+		{#/business#}
+	</ul>
+</div>
+<!--优秀商家 end-->
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$huangye_description#}',
+		"title": '{#$huangye_title#}',
+		"imgUrl": '{#$huangye_logoUrl#}',
+		"link": '{#$huangye_channelDomain#}',
+	};
+	
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/touch_bottom_5.0.html" active="index" bottom_module="huangye"#}
+<!-- {#include file="_footer.html"#} -->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

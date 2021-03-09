@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#elseif $list_typename != ''#}{#$list_typename#}{#else#}列表{#/if#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var typeid = {#$typeid#}, business = {#$business#}, addrid = {#$addrid#}, keywords = '{#$keywords#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#if $list_typename != ''#}{#$list_typename#}{#else#}{#$huangye_title#}{#/if#}"#}
+
+<div class="choice">
+	<ul>
+		<li>
+			<a href="javascript:;">
+				<span>{#if $typeid#}{#if $typeArr[1]#}{#$typeArr[1]#}{#else#}{#$typeArr[0]#}{#/if#}{#else#}全部类别{#/if#}<font id="count">(0)</font></span>
+				<em></em>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" class="last">
+				<span>全部区域</span>
+				<em></em>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="choice-list">
+	<div class="list-left ol fn-clear">
+		<div class="cl-left box">
+			<ul>
+				<li data-id="0"{#if $typeid == 0#} class="bc"{#/if#}><a href="javascript:;">全部类别</a></li>
+				{#business return="type" action="type"#}
+				<li data-id="{#$type.id#}"{#if $type.id == $typeIds[0]#} class="bc"{#/if#}><a href="javascript:;">{#$type.typename#}</a></li>
+				{#/business#}
+			</ul>
+		</div>
+		<div class="cl-right box">
+			<ul class="cl-rr" id="typeCon"></ul>
+		</div>
+	</div>
+	<div class="list-right ol fn-clear">
+		<div class="cl-left box">
+			<ul>
+				<li class="bc" data-id="0">
+					<a href="javascript:;">全部区域</a>
+				</li>
+				{#business return="addr" action="addr"#}
+				<li data-id="{#$addr.id#}"><a href="javascript:;">{#$addr.typename#}</a></li>
+				{#/business#}
+			</ul>
+		</div>
+		<div class="cl-right box">
+			<ul class="cl-rr" id="addrCon"></ul>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	<div class="content-list">
+		<ul id="listCon">
+			<li class="loading">正在加载，请稍后...</li>
+		</ul>
+	</div>
+</div>
+<div class="fanye">
+	<div class="fan-l"><span>&lt;</span></div>
+	<div class="page">1/1</div>
+	<div class="fan-r"><span>&gt;</span></div>
+</div>
+<div class="disk"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$huangye_description#}',
+		"title": '{#if $list_typename != ''#}{#$list_typename#}{#else#}{#$huangye_title#}{#/if#}',
+		"imgUrl": '{#$huangye_logoUrl#}',
+		"link": '{#getUrlPath service='huangye' template='list' typeid={#$typeid#}#}',
+	};
+</script>
+{#include file="_footer.html"#}
+
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

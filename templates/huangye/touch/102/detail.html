@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}}</title>
+<meta name="keywords" content="{#$detail_title#},{#$list_typename#},{#$huangye_channelName#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/photoswipe-default-skin.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/photoswipe.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+  var skin = "{#$templets_skin#}", id = {#$detail_id#};
+  var address = '{#$detail_address#}', addressdet = '{#$detail_addressdet#}', lnglat = [{#$detail_longitude#},{#$detail_latitude#}], title = '{#$detail_title#}';
+  var uid = {#$detail_userid#}, uname = '{#$detail_user.username#}', reply = {#$detail_common#};
+  var pageData = {
+    title: '{#$detail_title#}',
+    address: '{#$detail_addressdet#}',
+    lnglat: '{#$detail_lnglat#}',
+    lat: '{#$detail_latitude#}',
+    lng: '{#$detail_longitude#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}'
+  };
+  var	JubaoConfig = {
+    "module" : 'huangye',
+    "action" : 'detail',
+    "id" : '{#$detail_id#}'
+  };
+</script>
+{#$pageUrl = {#getUrlPath service="huangye" template="detail" id=$detail_id#}#}
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute" pageTitle="{#$huangye_channelName#}"#}
+
+<div class="intro-top">
+	<ul class="ul-list">
+		<li>
+			<div class="list-left">
+				<a href="#" class="fn-clear">
+					<img src="{#$detail_litpic#}" alt="{#$detail_title#}" >
+				</a>
+			</div>
+			<div class="list-right">
+				<a href="#" style="color:#1c1c1c;">{#$detail_title#} {#if $detail_rz1==1 || $detail_rz2==1 || $detail_rz3==1 || $detail_rz4==1#}<span class="state">已认证</span>{#/if#}</a>
+				<p class="fn-clear"> <span class="htime">{#$detail_pubdate|date_format: "%Y.%m.%d"#}</span> <span class="see"><i class="hy-see"></i>{#$detail_click#}</span></p>
+				<p class="fn-clear">
+					<a href="{#$detail_bUrl#}" class="to-shop">进入店铺</a>
+					{#if $detail_webUrl#}<a href="{#$detail_webUrl#}" class="to-guanwang">进入官网</a>{#/if#}
+				</p>
+			</div>
+			<div class="share HN_PublicShare"><img src="{#$templets_skin#}images/share.png"> <br>分享</div>
+		</li>
+		<li>
+			<a class="fn-clear appMapBtn"><i class="hy-address"></i>{#$detail_addressdet#}  <i class="hy-next"></i></a>
+		</li>
+		<li>
+			<a class="fn-clear"><i class="hy-phone"></i>{#$detail_telNum#}  <i class="hy-next"></i></a>
+		</li>
+	</ul>
+
+</div>
+{#if $detail_imglist#}
+<div class="my-gallery comment-pic-slide de-pic" itemscope itemtype="">
+  <div class="swiper-wrapper pic">
+    {#foreach from=$detail_imglist item="imglist" key="k"#}
+    <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+      <a href="{#changeFileSize url="{#getFilePath($imglist)#}" type="large"#}" itemprop="contentUrl" data-size="400x300">
+        <img src="{#changeFileSize url="{#getFilePath($imglist)#}" type="small"#}" itemprop="thumbnail" alt="{#$detail_title#}" />
+      </a>
+    </figure>
+    {#/foreach#}
+  </div>
+</div>
+{#/if#}
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item">
+            	<div class="pswp__zoom-wrap">
+            	</div>
+            </div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#if $detail_nav#}
+<div class="navblank">
+    <div class="swiper-container" id="swiper-container1">
+        <div class="swiper-wrapper">
+            {#foreach from=$detail_nav item="item" key="k"#}
+            <div class="swiper-slide {#if $k == 0#} class="active-nav"{#/if#}" data-action="about"><a href="javascript:;">{#$item.nav#}</a></div>
+            {#/foreach#}
+        </div>
+    </div>
+    <div class="nav-left"></div>
+    <div class="nav-right"></div>
+    <div class="nav-next"></div>
+</div>
+
+
+<!-- 内容部分 -->
+<div class="container">
+    <div class="swiper-container" id="swiper-container2" style="width:100%;">
+        <div class="swiper-wrapper">
+            {#foreach from=$detail_nav item="item" key="k"#}
+            <div class="swiper-slide">
+                <div class="content-slide about" data-module="about">
+                    <div class="text-con">
+                        {#if $item.mbody != ''#}{#$item.mbody#}{#else#}{#$item.body#}{#/if#}
+                    </div>
+                </div>
+				        <div class="m-con">查看全部 <i class="hy-down"></i></div>
+            </div>
+            {#/foreach#}
+            <div class="swiper-slide">
+                <div class="content-slide shengming">
+                    <div class="text-con">
+                        {#if $item.mbody != ''#}{#$item.mbody#}{#else#}{#$item.body#}{#/if#}
+                    </div>
+                </div>
+				<div class="m-con">查看全部 <i class="hy-down"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+{#/if#}
+
+<!--精彩评论-->
+<div class="hy-content fn-clear discuss" id="replyList" data-url="{#getUrlPath service='huodong' template='business' id='%id'#}">
+	<div class="head-title">
+		<p class="fn-clear"><span class="s-line"></span>精彩评论<a href="javascript:;" class="reply"><i></i>发表评论</a></p>
+	</div>
+	<ul></ul>
+	<div class="loading" data-img="{#$cfg_staticPath#}/images/ui/loading.gif"><img src="{#$cfg_staticPath#}/images/ui/loading.gif" alt=""></div>
+	<div class="see-more" style="display: none;">查看全部 <i class="hy-down"></i></div>
+
+	<!--<div class="fanye" >
+		<div class="fan-l"><span>&lt;</span></div>
+		<div class="page">1/1</div>
+		<div class="fan-r"><span>&gt;</span></div>
+	</div>-->
+</div>
+<!--精彩评论 end-->
+
+<!--推荐店铺-->
+<div class="hy-content fn-clear recommend">
+	<div class="head-title">
+		<p class="fn-clear"><span class="s-line"></span>推荐店铺</p>
+	</div>
+	<ul class="ul-list fn-clear" id="nearby"></ul>
+  <p class="load">正在加载，请稍后</p>
+	<div class="more-con ">
+		<a href="{#getUrlPath service="huangye" template="list"#}">查看全部 <i class="hy-right"></i></a>
+	</div>
+
+</div>
+<!--推荐店铺 end-->
+<div class="sjew fn-hide">
+	<span><p>关闭</p>{#$detail_title#}</span>
+	<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$pageUrl#}" alt="">
+</div>
+<div class="jweixn fn-hide">
+	<span><p>关闭</p>{#$detail_title#}</span>
+	{#if $detail_weixin || $detail_weixinQr#}
+	{#if $detail_weixinQr#}<img src="{#$detail_weixinQr#}" alt="">{#/if#}
+	长按识别二维码
+	{#if $detail_weixin#}<br>或添加微信：<b>{#$detail_weixin#}</b>{#/if#}
+	{#else#}
+	<img src="{#$templets_skin#}images/notweixinerweima.png" alt="">
+	{#/if#}
+</div>
+<div class="tymodal fn-hide">
+	<a href="javascript:;" class="close"></a>
+	<div class="title"></div>
+	<div class="text"></div>
+</div>
+<div class="disk"></div>
+
+<!-- 评论框 -->
+<div class="layer">
+	<div class="top fn-clear">
+	<div class="top-l fn-left"><a href="javascript:;">发表评论</a></div>
+	<div class="top-r fn-right">发表</div>
+	</div>
+	<div class="txt">
+		<div class="textarea" contenteditable="true"></div>
+	</div>
+	<div class="editor">
+		<input class="item emotion" type="button" />
+	</div>
+	<div class="emotion-box">
+		<ul>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '地址：{#$detail_addressdet#}，电话：{#$detail_telNum#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service="huangye" template="detail" id=$detail_id#}',
+	};
+</script>
+{#include file="_footer.html"#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/photoswipe.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

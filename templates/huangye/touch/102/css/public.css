@@ -1,0 +1,72 @@
+/*内容头部*/
+.hy-content{ background: #ffffff; margin-top: .12rem;}
+.hy-content.business{ padding-bottom: 1rem;}
+.head-title{height: .94rem;line-height:.94rem;padding:0 .2rem;border-bottom: solid 1px #ededed;}
+.head-title p{font-size:.28rem;position: relative;}
+.s-line{display: block;float: left;width: .07rem;  height: .32rem;  background: #51aeec;  border-radius: 2px;  margin-right: .2rem;  margin-top: .33rem;  -webkit-border-radius: 2px;}
+
+
+/*列表内容*/
+.ul-list{padding:0 .2rem;}
+.ul-list li{position: relative;overflow: hidden;padding:.3rem 0;border-bottom: solid 1px #ededed;}
+.ul-list li:last-child{border:none!important;}
+.ul-list li .list-left{float: left;margin-right: .2rem;}
+.ul-list li .list-left a img{width: 1.5rem;height: 1.5rem;}
+.ul-list li .list-right{line-height: .47rem;overflow: hidden;}
+.ul-list li .list-right a{display: block;color:#6d56f7;font-size: .3rem;white-space: nowrap;/*text-overflow:ellipsis;*/overflow: hidden;}
+.ul-list li .list-right a .state{color: #fff; background: #ffcc02; font-size: .1rem!important; padding: .02rem .15rem; border-radius: 6px;margin-right: .1rem;}
+.ul-list li .list-right a .state1{ background: #f44; }
+.ul-list li .list-right a .state:first-child {margin-left: .3rem;}
+.ul-list li .list-right p{color: #5e5e5e; font-size: .24rem;white-space: nowrap;overflow: hidden;text-overflow:ellipsis;}
+.ul-list li .list-right p i{display: block;width:.3rem;float: left;margin-right: .15rem; margin-top:.06rem;}
+.ul-list li .list-right .mark{float:right;color: #00a2ff; margin-left: .2rem;display: inline-block;white-space: nowrap;}
+.ul-list li .list-right .metre{position: absolute;right: 0;color:#a0a0a0;}
+.hy-address{height:.34rem;background: url(../images/position.png) no-repeat center;}
+.hy-phone{height:.3rem;background: url(../images/phone.png) no-repeat center;}
+.hy-mobile{ width:.3rem; height: .4rem;  display: block;  float: left;  background: url(../images/mobile.png) no-repeat center;  background-size: .28rem;  margin: 0.05rem .12rem 0 .18rem;}
+
+
+/*列表 e*/
+/*翻页 s*/
+.fanye{  border-top: 0.02rem solid #eeeeee; background: #ffffff;  text-align: center; position: relative; padding:0.3rem 0; font-size: 0.28rem; color: #aaa;}
+.fanye .fan-l{  display: block; position: absolute; left:0.2rem; top: 0.26rem;}
+.fanye  span{ cursor: default; color: #aaa; border: 0.02rem solid #ebebeb; background-color: #f0f0f0; background-image: -webkit-gradient(linear,left top,left bottom,from(#fafafa),to(#f0f0f0));  padding: 0 1rem; border-radius: 0.06rem;  vertical-align: middle; display: inline-block;}
+.fanye .fan-r{  display: block; position: absolute; top: 0.26rem; left: auto; right: 0.2rem;}
+/*翻页 e*/
+
+
+/*底部 s*/
+.footer{  padding: .4rem .2rem;  position: relative;  margin-bottom: 0.92rem;}
+.footernav{  margin-bottom: .1rem; text-align: center;}
+.footernav a{  display: inline-block; padding: 0 2%; border-right: 0.02rem solid #c9c9c9; font-size: .32rem; color: #999; line-height: 1;}
+.footernav a:last-child{ border-right: none;}
+.copyright{ font-size: .24rem; color: #aaa; text-align: center;}
+/*底部 e*/
+/*底部固定导航 s*/
+.daohang{ bottom: 0; top: auto; height: 1rem; background: #ffffff; border-top: 0.02rem solid #eeeeee; position: fixed; width: 100%}
+.daohang ul li{ line-height:0.32rem; text-align: center; font-size: 0.24rem; float: left; width:33%; height:0.92rem;}
+.daohang ul li a{ display: block; color: #818187; padding-top:0.12rem;}
+.daohang ul li a span{ background: url(../images/bm_icons.png) no-repeat; display: block; width:0.5rem; height:0.48rem; margin: auto; background-size:2rem auto;}
+.daohang ul .dh-1 a span{ background-position: 0.04rem 0rem;}
+.daohang ul .dh-2 a span{ background-position: -0.46rem -6.52rem; background-size: 1.7rem auto;}
+.daohang ul .dh-3 a span{  background-position: 0.04rem -6.5rem; background-size: 1.7rem auto;}
+.daohang ul .dh-4 a span{ background-position: 0.04rem -0.58rem;}
+/*底部固定导航 e*/
+/*遮罩层*/
+.disk { background-color: #000; opacity: .7!important; top: 0; left: 0; bottom: 0; width: 100%; z-index: 1001; position: fixed; display: none;}
+
+
+/*底部*/
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem;  -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+/*.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}*/
+
+
+.load {padding: .2rem 0;text-align: center;color: #666;}

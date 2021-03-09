@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$huangye_title#}</title>
+<meta name="keywords" content="{#$huangye_keywords#}" />
+<meta name="description" content="{#$huangye_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huangye_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme='transparent absolute' pageTitle="$huangye_channelName"#}
+
+<!-- 头部幻灯片 -->
+<div class="wrapper">
+	<div class="swiper-container" id="slider">
+	    <div class="swiper-wrapper">
+				{#myad title="便民黄页_模板一_移动端_广告一" type="slide"#}
+	    </div>
+  	<div class="pagination"></div>
+	</div>
+</div>
+<!-- 头部幻灯片 end -->
+
+<div class="list swiper-container" id="slideNav">
+	<div class="swiper-wrapper">
+		{#business return="type" action="type"#}
+		{#if ($_bindex.type-1)%8 == 0#}
+		{#if $_bindex.type > 1#}
+			</ul>
+		</div>
+		{#/if#}
+		<div class="swiper-slide">
+			<ul>
+		{#/if#}
+				<li class="li-{#$_bindex.type#}">
+					<a href="{#getUrlPath service="huangye" template="list" typeid=$type.id addrid=$addrid business=$business#}">
+						<img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"><b>{#$type.typename#}</b>
+					</a>
+				</li>
+		{#/business#}
+			</ul>
+		</div>
+	</div>
+	<div class="swiper-pagination swiper-pagination-bullets"></div>
+</div>
+{#*
+<div class="in">
+	<a href="#">太OUT了，你的店铺还没有被收录？
+		<div class="to"><span>我要入驻</span><i></i></div>
+	</a>
+</div>
+*#}
+<div class="content-lead fn-clear">
+	<ul>
+		<li class="ll"><a href="javascript:;">向您推荐</a></li>
+		<li><a href="javascript:;">最新加入</a></li>
+		<li><a href="javascript:;">热门排行</a></li>
+	</ul>
+</div>
+<div class="content">
+	<div class="content-list">
+		<ul>
+			{#business return="list" action="blist" orderby="2" pageSize="8"#}
+			<li>
+				<a href="{#$list.url#}">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$list.logo#}" alt="">
+					<div class="li-right">
+						<div class="bt">{#$list.title#}</div>
+						<p>{#$list.project#}</p>
+					</div>
+					{#if $list.tel#}<a href="tel:{#$list.tel#}" class="phone"></a>{#/if#}
+				</a>
+			</li>
+			{#/business#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">暂无相关信息！</li>
+			{#/if#}
+		</ul>
+		<div class="content-foot">
+			<a href="{#getUrlPath service="huangye" template="list"#}">查看更多</a>
+		</div>
+	</div>
+	<div class="content-list up">
+		<ul>
+			{#business return="list" action="blist" pageSize="8"#}
+			<li>
+				<a href="{#$list.url#}">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$list.logo#}" alt="">
+					<div class="li-right">
+						<div class="bt">{#$list.title#}</div>
+						<p>{#$list.project#}</p>
+					</div>
+					{#if $list.tel#}<a href="tel:{#$list.tel#}" class="phone"></a>{#/if#}
+				</a>
+			</li>
+			{#/business#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">暂无相关信息！</li>
+			{#/if#}
+		</ul>
+		<div class="content-foot">
+			<a href="{#getUrlPath service="huangye" template="list"#}">查看更多</a>
+		</div>
+	</div>
+	<div class="content-list up">
+		<ul>
+			{#business return="list" action="blist" orderby="1" pageSize="8"#}
+			<li>
+				<a href="{#$list.url#}">
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$list.logo#}" alt="">
+					<div class="li-right">
+						<div class="bt">{#$list.title#}</div>
+						<p>{#$list.project#}</p>
+					</div>
+					{#if $list.tel#}<a href="tel:{#$list.tel#}" class="phone"></a>{#/if#}
+				</a>
+			</li>
+			{#/business#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">暂无相关信息！</li>
+			{#/if#}
+		</ul>
+		<div class="content-foot">
+			<a href="{#getUrlPath service="huangye" template="list"#}">查看更多</a>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$huangye_description#}',
+		"title": '{#$huangye_title#}',
+		"imgUrl": '{#$huangye_logoUrl#}',
+		"link": '{#$huangye_channelDomain#}',
+	};
+</script>
+
+{#include file="_footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

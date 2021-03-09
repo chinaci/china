@@ -1,0 +1,57 @@
+
+/*列表 s*/
+.content-list ul{ background-color: #eeeeee;}
+.content-list ul li{ overflow: hidden; font-size:0.24rem; padding: 0.2rem; margin-bottom: 0.02rem; background: #ffffff; min-height: 1rem; position: relative;}
+.content-list ul li.empty { line-height: 1rem; text-align: center; color: #666;}
+.content-list ul li a img{  width: 1rem; overflow: hidden; height: 1rem; border-radius: 1rem; float: left; margin-right: 0.2rem; overflow: hidden; position: absolute; left: 0.2rem; top: 0.2rem;}
+.content-list ul li .phone{ width: 0.68rem; height: 0.68rem; top: 50%; right: 0.2rem; margin-top: -0.34rem; background: url(../images/business_icons.png) no-repeat 0px -11.28rem; position: absolute; background-size: 2rem auto; text-indent: -999rem; overflow: hidden;}
+.li-right{ font-size: 0.36rem; line-height:0.4rem; color: #333; margin-left: 1.14rem;}
+.li-right .bt{ margin-top:0.08rem; font-weight: normal; float: left; width: 5.2rem;}
+.li-right p{ margin-top:0.08rem; color: #999999; line-height: 0.36rem; height: 0.36rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 4.78rem; float: left; font-size: 0.28rem;}
+/*列表 e*/
+/*翻页 s*/
+.fanye{  border-top: 0.02rem solid #eeeeee; background: #ffffff;  text-align: center; position: relative; padding:0.3rem 0; font-size: 0.28rem; color: #aaa;}
+.fanye .fan-l{  display: block; position: absolute; left:0.2rem; top: 0.26rem;}
+.fanye  span{ cursor: default; color: #aaa; border: 0.02rem solid #ebebeb; background-color: #f0f0f0; background-image: -webkit-gradient(linear,left top,left bottom,from(#fafafa),to(#f0f0f0));  padding: 0 1rem; border-radius: 0.06rem;  vertical-align: middle; display: inline-block;}
+.fanye .fan-r{  display: block; position: absolute; top: 0.26rem; left: auto; right: 0.2rem;}
+/*翻页 e*/
+/*收录 s*/
+.in{ position: relative; z-index: 1; background-color: #fff; padding: 0.2rem;}
+.in a{ color: #aaa; font-size: 0.32rem; line-height: 0.5rem;}
+.to{ position: absolute; right: 0.2rem; top: 0.2rem;}
+.to span{ vertical-align: top; margin-top: 0.02rem; color: #fff; font-size:0.24rem; line-height:0.48rem; background-color: #3399ff; border-radius:0.04rem; padding: 0 0.12rem; float: left;}
+.to i{ display: inline-block; vertical-align: 0.02rem; background: url(../images/business_icons.png) no-repeat -1.48rem -9.3rem; background-size: 2rem auto; width: 0.52rem; height: 0.64rem;}
+/*收录 e*/
+
+/*底部 s*/
+.footer{  padding: .4rem .2rem;  position: relative;  margin-bottom: 0.92rem;}
+.footernav{  margin-bottom: .1rem; text-align: center;}
+.footernav a{  display: inline-block; padding: 0 2%; border-right: 0.02rem solid #c9c9c9; font-size: .32rem; color: #999; line-height: 1;}
+.footernav a:last-child{ border-right: none;}
+.copyright{ font-size: .24rem; color: #aaa; text-align: center;}
+/*底部 e*/
+/*底部固定导航 s*/
+.daohang{ bottom: 0; top: auto; height: 1rem; background: #ffffff; border-top: 0.02rem solid #eeeeee; position: fixed; width: 100%}
+.daohang ul li{ line-height:0.32rem; text-align: center; font-size: 0.24rem; float: left; width:33%; height:0.92rem;}
+.daohang ul li a{ display: block; color: #818187; padding-top:0.12rem;}
+.daohang ul li a span{ background: url(../images/bm_icons.png) no-repeat; display: block; width:0.5rem; height:0.48rem; margin: auto; background-size:2rem auto;}
+.daohang ul .dh-1 a span{ background-position: 0.04rem 0rem;}
+.daohang ul .dh-2 a span{ background-position: -0.46rem -6.52rem; background-size: 1.7rem auto;}
+.daohang ul .dh-3 a span{  background-position: 0.04rem -6.5rem; background-size: 1.7rem auto;}
+.daohang ul .dh-4 a span{ background-position: 0.04rem -0.58rem;}
+/*底部固定导航 e*/
+/*遮罩层*/
+.disk { background-color: #000; opacity: .7!important; top: 0; left: 0; bottom: 0; width: 100%; z-index: 1001; position: fixed; display: none;}
+
+
+/*底部*/
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem;  -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}

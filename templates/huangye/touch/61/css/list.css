@@ -1,0 +1,202 @@
+body{
+  padding-top: 0!important;
+  padding-bottom: 1rem;
+}
+.choice{
+    background-color: #fff;
+    border-bottom: 0.02rem solid #f0f0f0;
+    height: 0.78rem;
+    position: absolute;
+    top:.9rem;
+    width: 100%;
+    z-index: 1002;
+}
+.choice.lead_top1{
+    position: fixed;
+    top: 0!important;
+}
+.padTop20 .choice{
+    top: 0;
+}
+.padTop20 .choice-list{
+    top: .8rem;
+}
+.padTop20 .choice.lead_top1{
+    position: fixed;
+    top: 0!important;
+}
+.choice ul li{
+	width: 50%;
+	float: left;
+    padding: 0.18rem 0;
+    border-bottom: 0.02rem solid #f0f0f0;
+}
+.choice ul li a{
+	overflow: hidden;
+    display: block;
+    text-align: center;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    position: relative;
+     border-right: 0.02rem solid #eee;
+    color: #666;
+}
+.choice ul .last{
+	border-right: none;
+}
+.choice ul li a span{
+	font-size: 0.32rem;
+}
+.choice ul li a span p{
+	display: inline-block;
+}
+.choice li a em,.choice li a em:after{
+	vertical-align:-0.06rem;
+	margin-left:0.1rem;
+	display:inline-block;
+	border-color:#adadad transparent transparent transparent;
+	border-width:0.12rem;
+	border-style:solid;
+	transition:transform .3s ease;
+    -webkit-transition:-webkit-transform .3s ease;
+    transform-origin:50% 25% 0;
+	-webkit-transform-origin:50% 25% 0;
+    position:relative; z-index:1;
+}
+.choice li a em:after {
+	content:' ';
+	border-color:#fff transparent transparent transparent;
+	position:absolute;
+	margin:-0.16rem 0 0 -0.12rem;
+}
+.content{
+	margin-top:.7rem;
+}
+.content-list ul li a .li-right em{
+    background-color: #12a83a;
+    border-radius:0.04rem;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 0.28rem;
+    padding: 0 0.08rem;
+    margin-left: 0.1rem;
+    vertical-align: 0.08rem;
+}
+.content-list ul li a .li-right .title {display: inline-block;max-width: 50%;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.content-list ul li a .li-right  i{
+	background: #ff645a;
+    border-radius:0.04rem;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 0.28rem;
+    padding: 0 0.08rem;
+    margin-left: 0.1rem;
+    vertical-align: 0.08rem;
+    font-style: normal;
+}
+.choice-list{
+    background-color: #fff;
+       position: fixed;
+    width: 100%;
+    top: 1.7rem;
+    z-index: 1011;
+}
+.cl-left{
+    float: left;
+    width: 50%;
+    overflow-x:hidden;
+    height: 360px;
+}
+.cl-left span a{
+    padding-left: 0.2rem;
+    border-bottom: 0.02rem solid #e8e8e8;
+    position: relative;
+    display: block;
+    padding-left: 0.3rem;
+    line-height: 0.88rem;
+    height: 0.88rem;
+    overflow: hidden;
+    color: #595959;
+    font-size: 0.32rem;
+}
+.choice-list ul a{
+    padding-left: 0.2rem;
+    border-bottom: 0.02rem solid #e8e8e8;
+    position: relative;
+    display: block;
+    padding-left: 0.3rem;
+    line-height: 0.88rem;
+    height: 0.88rem;
+    overflow: hidden;
+    color: #595959;
+    font-size: 0.32rem;
+}
+.bc a{
+    background-color: #f9f9f9;
+    color: #f60!important;
+}
+.cl-right ul{
+    float:right;
+    width: 50%;
+    height: 360px;
+    background:#f9f9f9;
+    overflow-x:hidden;
+}
+.cl-right ul a{
+    background-color: #f9f9f9;
+}
+.list-right{
+    background: #fff;
+    overflow-x: hidden;
+    height: 360px;
+    position: relative;
+    display: none;
+}
+.list-left{
+    display: none;
+}
+.disk{
+    background-color: #000;
+    opacity: .7!important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1001;
+    position: fixed;
+    display: none;
+}
+.by{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+}
+.lisc a em{
+        border-color: #f60 transparent transparent transparent!important;
+    transform: rotateZ(180deg);
+    -webkit-transform: rotateZ(180deg);
+    transition: transform .3s ease;
+    -webkit-transition: -webkit-transform .3s ease;
+    transform-origin: 50% 25% 0;
+    -webkit-transform-origin: 50% 25% 0;
+}
+.lisc  a em, .lisc  a em{
+    border-color: #f60 transparent transparent transparent!important;
+    transform: rotateZ(180deg);
+    -webkit-transform: rotateZ(180deg);
+    transition: transform .3s ease;
+    -webkit-transition: -webkit-transform .3s ease;
+    transform-origin: 50% 25% 0;
+    -webkit-transform-origin: 50% 25% 0;
+}
+.lisc a span{
+    color: #f60;
+}
+.lisc a span p{
+    color: #f60;
+}
+
+.content {min-height: 200px;}
+.loading {line-height: 1rem;text-align: center;color: #666;}

@@ -1,0 +1,37 @@
+{#if $template == 'detail'#}
+<div class="de-bottom">
+	<ul>
+		<li class="de-1">
+      {#if $detail_collect#}
+      <a href="javascript:;" class="collect active"> <s></s> <span>已收藏</span> </a>
+      {#else#}
+			<a href="javascript:;" class="collect"> <s></s> <span>收藏</span> </a>
+      {#/if#}
+		</li>
+		<li class="de-2">
+			<a href="tel:{#$detail_telNum#}"> <s></s> 电话 </a>
+		</li>
+		<li class="de-3">
+			<a href="javascript:;"> <s></s> 加微信 </a>
+		</li>
+		<li class="de-4">
+			<a href="javascript:;" class="appMapBtn"> <s></s> 一键导航 </a>
+		</li>
+
+	</ul>
+</div>
+{#else#}
+<div class="fixFooter">
+  <ul>
+    <li class="ficon1 active"><a href="{#$huangye_channelDomain#}"><i></i>首页</a></li>
+    {#if !$userinfo || $userinfo.userType == 1#}<li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='enter'#}"><i></i>入驻</a></li>{#/if#}
+    <li class="ficon3"><a href="{#getUrlPath service="member" type='user' template="business-config"#}"><i></i>管理</a></li>
+    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+  </ul>
+</div>
+{#/if#}
+
+<script type="text/javascript">
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
