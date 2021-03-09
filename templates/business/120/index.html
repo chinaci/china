@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商家{#/if#}</title>
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/business.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+	<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	</script>
+</head>
+
+<body class='w1200'>
+	{#$channel = 'business'#}
+	{#$hotline = $cfg_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+		<!-- 中间商家部分 s -->
+		<div class="Business">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+        <div class="bd">
+					{#myad title="商家_模板二_电脑端_广告一" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+      </div>
+			<!-- 幻灯片 e -->
+			<!-- 商家导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					{#business action="type" return='bjtype' page="1" pageSize="6"#}
+					<li{#if $_bindex.bjtype == 1#} class="NewsNav_bc on"{#/if#} ><a href="javascript:;" data-id="{#$bjtype.id#}">{#$bjtype.typename#}</a></li>
+					{#/business#}
+				</ul>
+				<span><a href="javascript:;">更多<i></i></a>
+					<div class="more_list">
+						<ul>
+							{#business action="type" return='cjtype' page="1"#}
+							{#if $_bindex.cjtype >6#}
+							<li><a href="javascript:;" data-id="{#$cjtype.id#}">{#$cjtype.typename#}</a></li>
+							{#/if#}
+							{#/business#}
+						</ul>
+					</div>
+				</span>
+			</div>
+			<!-- 商家导航栏 e-->
+			<!-- 商家列表 s -->
+			<div class="BN_list" id="BN_list">
+			</div>
+			<!-- 商家列表 e -->
+		</div>
+	<!-- 中间商家部分 e -->
+	<!-- 右侧信息汇总 s -->
+		<div class="Information">
+			<div class="issue fn-clear"><a target="_blank" href="{#$member_busiDomain#}">入驻商家</a></div>
+			<!-- <div class="Infor_list">
+				<div class="Infor_lead"><em>商家优惠券</em></div>
+				<div class="Coupon">
+					<div class="Coupon_TxT fn-clear">
+						<div class="cou_pic"><a href="#"><img src="{#$templets_skin#}upfile/ioqah.png" alt=""></a></div>
+						<div class="cou_name">
+							<ul>
+								<li><a href="#">重庆朝天门自助火锅</a></li>
+								<li>满199减50</li>
+							</ul>
+							<div class="get"><a href="#">领取</a></div>
+						</div>
+					</div>
+					<div class="Coupon_TxT fn-clear">
+						<div class="cou_pic"><a href="#"><img src="{#$templets_skin#}upfile/ioqah.png" alt=""></a></div>
+						<div class="cou_name">
+							<ul>
+								<li><a href="#">重庆朝天门自助火锅</a></li>
+								<li>满199减50</li>
+							</ul>
+							<div class="get"><a href="#">领取</a></div>
+						</div>
+					</div>
+					<div class="Coupon_TxT fn-clear">
+						<div class="cou_pic"><a href="#"><img src="{#$templets_skin#}upfile/ioqah.png" alt=""></a></div>
+						<div class="cou_name">
+							<ul>
+								<li><a href="#">重庆朝天门自助火锅</a></li>
+								<li>满199减50</li>
+							</ul>
+							<div class="get"><a href="#">领取</a></div>
+						</div>
+					</div>
+					<div class="Coupon_TxT bb_none fn-clear">
+						<div class="cou_pic"><a href="#"><img src="{#$templets_skin#}upfile/ioqah.png" alt=""></a></div>
+						<div class="cou_name">
+							<ul>
+								<li><a href="#">重庆朝天门自助火锅</a></li>
+								<li>满199减50</li>
+							</ul>
+							<div class="get"><a href="#">领取</a></div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="ad">
+				{#myad title="商家_模板二_电脑端_广告二"#}
+			</div>
+			<div class="Infor_list carousel">
+				<div class="Infor_lead carousel_lead"><em>最新入驻商家</em></div>
+				<div class="shop_list carousel_list">
+
+	        {#business action='blist' return='list' store='2' pageSize="15"#}
+					<div class="shop fn-clear">
+						{#if $list.logo != ''#}
+						<div class="shop_pic"><a  target="_blank" href="{#$list.url#}"><img src="{#$list.logo#}" alt=""></a></div>
+						{#/if#}
+						<h1><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></h1>
+						<div class="tel">
+							{#if $list.tel != ''#}
+								<i></i>{#$list.tel#}
+								{#else#}
+								<i></i>暂无联系方式！
+							{#/if#}
+						</div>
+						<div class="location fn-clear"><em>服饰类</em><span>{#$list.addrname[0]#} {#$list.addrname[1]#}</span></div>
+					</div>
+					{#/business#}
+
+				</div>
+			</div>
+			<!-- <div class="Infor_list">
+				<div class="Infor_lead"><em>商家直播</em></div>
+				<div class="shop_list">
+					<div class="shop fn-clear">
+						<div class="shop_pic"><a href="#"><img src="{#$templets_skin#}upfile/asdqw.png" alt=""></a></div>
+						<h1><a href="#">速八酒店</a></h1>
+						<div class="online">在线人数<em>7837</em></div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+					<div class="shop fn-clear">
+						<div class="shop_pic"><a href="#"><img src="{#$templets_skin#}upfile/asdqw.png" alt=""></a></div>
+						<h1><a href="#">速八酒店</a></h1>
+						<div class="online">在线人数<em>7837</em></div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+					<div class="shop bb_none fn-clear">
+						<div class="shop_pic"><a href="#"><img src="{#$templets_skin#}upfile/asdqw.png" alt=""></a></div>
+						<h1><a href="#">速八酒店</a></h1>
+						<div class="online">在线人数<em>7837</em></div>
+						<div class="minute"><a href="#">详细 >></a></div>
+					</div>
+				</div>
+			</div> -->
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧信息汇总 e -->
+
+
+
+	</div>
+<!-- 主干部分 e-->
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

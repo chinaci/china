@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=1" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=3" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v=3" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+	{#$channel = "business"#}
+
+{#include file="../../siteConfig/public_top_v1.html"#}
+
+{#$pageCurr = "index"#}
+{#include file="nav.html"#}
+
+{#if $detail_banner#}
+<!-- 幻灯片 s -->
+<div class="banner">
+	<div class="slide" id="slide">
+		<div class="bd">
+			{#foreach from=$detail_banner item=banner#}
+			<div class="slideshow-item"><img src="{#$banner.pic#}"></div>
+			{#/foreach#}
+		</div>
+	</div>
+</div>
+<!-- 幻灯片 e -->
+{#/if#}
+
+
+	<!-- 实力商家 s -->
+	<div class="module-4 wrap fn-clear">
+		<div class="store-info fn-left">
+			<div class="store-logo"><span class="logo"></span></div>
+			<div class="store-abstract">
+				<p class="name">{#$detail_title#}</p>
+				<div class="certify fn-clear">
+					{#if $detail_member['phoneCheck']#}<a href="javascript:;" class="cert_item cert_item_mobile" title="通过手机真实性验证"></a>{#/if#}
+                    {#if $detail_member['certifyState']#}<a href="javascript:;" class="cert_item cert_item_authen" title="通过有效身份证验证"></a>{#/if#}
+                    {#if $detail_member['licenseState']#}<a href="javascript:;" class="cert_item cert_item_permit" title="通过营业执照验证"></a>{#/if#}
+  				    {#foreach from=$detail_auth item=auth#}
+                      <a href="javascript:;" class="cert_item custom" title="{#$auth.typename#}">{#$auth.jc#}</a>
+  				    {#/foreach#}
+				</div>
+				<div class="detail">
+					{#if $detail_member['company']#}
+					<dl class="fn-clear">
+						<dt>联系人：</dt>
+						<dd>{#$detail_member['company']#}</dd>
+					</dl>
+					{#/if#}
+					<dl class="fn-clear">
+						<dt>满意度：</dt>
+						<dd>{#$detail_rating#}</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>经营类目：</dt>
+						<dd>{#$detail_typename#}</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>所在地区：</dt>
+						<dd>{#$detail_addrname[0]#} {#$detail_addrname[1]#}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="gather fn-left">
+			<ul class="tab fn-clear">
+				<li class="curr"><a href="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}">介绍</a></li>
+				<li><a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">动态</a></li>
+				<li><a href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}">相册</a></li>
+				<li><a href="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">全景</a></li>
+				<li><a href="{#getUrlPath service='business' template='video' bid={#$detail_id#}#}">视频</a></li>
+			</ul>
+			<div class="content">
+				<div class="con-item fn-clear" style="display: block;">
+					<div class="gstxt">
+						{#$detail_intro#}
+					</div>
+				</div>
+				<div class="con-item fn-clear">
+					<ul class="dtlist">
+						{#business action='news_list' return='news' uid={#$detail_id#} pageSize='7'#}
+						<li><span>[{#$news.typename#}]</span><a href="{#$news.url#}" target="_blank">{#$news.title#}</a><em>{#$news.pubdate|date_format:"%Y-%m-%d"#}</em></li>
+						{#/business#}
+					</ul>
+				</div>
+				<div class="con-item conimg">
+					<ul class="xclist fn-clear">
+						{#business action='albums_type' return='albums' uid={#$detail_id#}#}
+						{#if $_bindex.albums < 5 && $albums.litpic#}
+						<li><a href="{#$albums.url#}" target="_blank"><img src="{#changeFileSize url="{#$albums.litpic#}" type="small"#}" alt="{#$albums.typename#}"></a><p class="xc-name">{#$albums.typename#}</p><i class="bg"></i></li>
+						{#/if#}
+						{#/business#}
+					</ul>
+				</div>
+				<div class="con-item conimg">
+					<ul class="xclist fn-clear">
+						{#business action='panor_list' return='panor' uid={#$detail_id#} pageSize='4'#}
+						<li><a href="{#$panor.url#}" target="_blank"><img src="{#changeFileSize url="{#$panor.litpic#}" type="small"#}" alt="{#$panor.title#}"></a><p class="xc-name">{#$panor.title#}</p><i class="bg"></i></li>
+						{#/business#}
+					</ul>
+				</div>
+				<div class="con-item conimg">
+					<ul class="xclist fn-clear">
+						{#business action='video_list' return='video' uid={#$detail_id#} pageSize='4'#}
+						<li><a href="{#$video.url#}" target="_blank"><img src="{#changeFileSize url="{#$video.litpic#}" type="small"#}" alt="{#$video.title#}"></a><p class="xc-name">{#$video.title#}</p><i class="bg"></i></li>
+						{#/business#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 实力商家 e -->
+
+	{#if $detail_store['tuan']#}
+	<!-- 团购 s -->
+	<div class="module-5 wrap">
+		<p class="tuan-tit fn-clear"><span class="fn-left">团购</span><em class="fn-right"><a href="{#getUrlPath service='business' template='tuan' bid={#$detail_id#}#}">更多+</a></em></p>
+		<div class="tuanbox">
+			<ul class="tuanlist fn-clear">
+				{#tuan action="tlist" return="tuan" store=$detail_store['tuan']['sid'] pageSize="4"#}
+				<li>
+					<a href="{#$tuan.url#}" target="_blank" class="tgimg"><img src="{#$tuan.litpic#}" alt="{#$tuan.title#}"></a>
+					<p class="tgtxt"><a href="{#$tuan.url#}" target="_blank">{#$tuan.title#}</a></p>
+					<p class="tginfo">{#$tuan.subtitle#}</p>
+					<p class="tgprice fn-clear"><span class="p">&nbsp; <em>{#$tuan.price#}</em></span><span class="mp">{#echoCurrency type='symbol'#}{#$tuan.market#}</span><span class="sale">已售{#$tuan.sale#}</span></p>
+					{#if in_array("yuyue", $tuan.flag)#}<p class="yue"><span>免预约</span></p>{#/if#}
+				</li>
+				{#/tuan#}
+			</ul>
+		</div>
+	</div>
+	<!-- 团购 e -->
+	{#/if#}
+
+	{#if $detail_store['shop']#}
+	<!-- 商场 s -->
+	<div class="module-6 wrap">
+		<p class="sp-tit fn-clear"><span class="fn-left">商品精选</span><em class="fn-right"><a href="{#getUrlPath service='business' template='shop' bid={#$detail_id#}#}">更多+</a></em></p>
+		<div class="splist fn-clear">
+			{#shop action="slist" return="shop" store=$detail_store['shop']['sid'] pageSize="10"#}
+			<div class="spitem{#if $_bindex.shop == 5 || $_bindex.shop == 10#} brn{#/if#}">
+				<div class="spbox">
+					<a href="{#$shop.url#}" target="_blank" class="spimg"><img src="{#changeFileSize url={#$shop.litpic#} type='middle'#}" alt="{#$shop.title#}"></a>
+					<p class="spname"><a href="{#$shop.url#}" target="_blank">{#$shop.title#}</a></p>
+					<p class="sprice">{#echoCurrency type='symbol'#}{#$shop.price#}</p>
+					<p class="spbuy"><a href="{#$shop.url#}" target="_blank">立即购买</a></p>
+				</div>
+			</div>
+			{#/shop#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉，暂无相关商品！</div>
+			{#/if#}
+		</div>
+	</div>
+	<!-- 商场 e -->
+	{#/if#}
+
+	{#if $detail_store['house']#}
+	<!-- 房产 s -->
+	<div class="module-7">
+		<div class="wrap">
+			<div class="fctit fn-clear">
+				<span class="like fn-left">房源信息</span>
+				<ul class="fctab fn-clear fn-left">
+					<li class="curr"><a href="{#getUrlPath service='business' template='house-sale' bid={#$detail_id#}#}">二手房</a></li>
+					<li><a href="{#getUrlPath service='business' template='house-zu' bid={#$detail_id#}#}" class="brn">租房</a></li>
+				</ul>
+			</div>
+			<div class="fclist">
+				<div class="fcitem">
+					<div class="fcslide esfslide">
+						<a href="javascript:;" class="slidebtn prev"></a>
+						<a href="javascript:;" class="slidebtn next"></a>
+						<div class="bd">
+							<ul>
+								{#house action="saleList" return="sale" comid={#$detail_store['house']#} page="1" pageSize="10"#}
+								<li>
+									<a href="{#$sale.url#}" target="_blank" class="fcimg"><img src="{#changeFileSize url={#$sale.litpic#} type='large'#}" alt="{#$sale.title#}"></a>
+									<p class="fcname fn-clear"><a href="{#$sale.communityUrl#}" target="_blank" class="fn-left">{#$sale.community#}</a><span class="fprice fn-right"><em>{#$sale.price#}</em>万</span></p>
+									<p class="fcdes fn-clear"><span class="fn-left froom">{#$sale.room#} · {#$sale.area#} m²</span><span class="fn-right">{#$sale.unitprice#}元/m²</span></p>
+								</li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+					<div class="fcslide zfslide">
+						<a href="javascript:;" class="slidebtn prev"></a>
+						<a href="javascript:;" class="slidebtn next"></a>
+						<div class="bd">
+							<ul>
+								{#house action="zuList" return="zu" comid={#$detail_store['house']#} page="1" pageSize="10"#}
+								<li>
+									<a href="{#$zu.url#}" target="_blank" class="fcimg"><img src="{#changeFileSize url={#$zu.litpic#} type='large'#}" alt="{#$zu.title#}"></a>
+									<p class="fcname fn-clear"><a href="{#$zu.communityUrl#}" target="_blank" class="fn-left">{#$zu.community#}</a><span class="fprice fn-right"><em>{#$zu.price#}</em>元/月</span></p>
+									<p class="fcdes fn-clear"><span class="fn-left froom">{#$zu.room#} · {#$zu.area#} m²</span><span class="fn-right">{#$zu.rentype#}</span></p>
+								</li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 房产 e -->
+	{#/if#}
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js"></script>
+</body>
+</html>

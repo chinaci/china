@@ -1,0 +1,22 @@
+<!-- 导航 s -->
+<div class="main-nav">
+	<ul class="wrap fn-clear">
+		<li{#if $pageCurr == "index"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='detail' bid={#$detail_id#}#}">首页</a></li>
+		<li{#if $pageCurr == "intro"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}">介绍</a></li>
+		<li{#if $pageCurr == "news"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">动态</a></li>
+		<li{#if $pageCurr == "albums"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}">相册</a></li>
+		<li{#if $pageCurr == "panor"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">全景</a></li>
+		<li{#if $pageCurr == "video"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='video' bid={#$detail_id#}#}">视频</a></li>
+		{#if $detail_store['tuan']#}<li{#if $pageCurr == "tuan"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='tuan' bid={#$detail_id#}#}">团购</a></li>{#/if#}
+		{#if $detail_store['shop']#}<li{#if $pageCurr == "shop"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='shop' bid={#$detail_id#}#}">商城</a></li>{#/if#}
+		{#if $detail_store['house']#}<li{#if $pageCurr == "house"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='house-sale' bid={#$detail_id#}#}">房产</a></li>{#/if#}
+		{#if $detail_store['job']#}<li{#if $pageCurr == "job"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='job' bid={#$detail_id#}#}">招聘</a></li>{#/if#}
+		{#if $detail_store['info']#}<li><a href="{#getUrlPath service='info' template='store' id={#$detail_store['info']#}#}" target="_blank">二手</a></li>{#/if#}
+		{#if $detail_store['renovation']#}<li><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_store['renovation']#}#}" target="_blank">装修</a></li>{#/if#}
+		{#if $detail_store['waimai']#}<li><a href="{#getUrlPath service='waimai' template='index'#}" target="_blank">外卖</a></li>{#/if#}
+		{#if $detail_store['huangye']#}<li><a href="{#getUrlPath service='huangye' template='detail' id={#$detail_store['huangye']#}#}" target="_blank">黄页</a></li>{#/if#}
+		{#if $detail_store['huodong']#}<li><a href="{#getUrlPath service='huodong' template='business' id={#$detail_store['huodong']#}#}" target="_blank">活动</a></li>{#/if#}
+		{#if $detail_store['website']#}<li><a href="{#getUrlPath service='website' template="site{#$detail_store['website']#}"#}" target="_blank">站点</a></li>{#/if#}
+	</ul>
+</div>
+<!-- 导航 e -->
