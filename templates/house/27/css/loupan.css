@@ -1,0 +1,183 @@
+.filter .t-fi-item li a s,
+.filter .t-fi-item li a i,
+.filter dl.more .item label s,
+.m-o .ob s,
+.m-o .fi.on s,
+.list .item .cen .map s,
+.list .item .rig .cont s,
+.list .item .plan li .p-icon {background-image: url('../images/listSprite.png'); background-repeat: no-repeat;}
+
+a:hover {text-decoration: underline;}
+
+/* 筛选 */
+.filter {position: relative; z-index: 10; margin-bottom: 25px; border: 1px solid #eee; font-size: 14px;}
+
+/* 区域&公交/地铁 */
+.filter .t-fi {padding: 7px 10px; line-height: 40px; background-color: #fafafa; border-bottom: 1px solid #eee;}
+.filter .t-fi .smap {float: right; font-size: 14px; margin-right: 10px;}
+.filter .t-fi-item {float: left;}
+.filter .t-fi-item li {float: left; margin-right: 10px;}
+.filter .t-fi-item li a {position: relative; display: block; padding: 0 25px 0 35px; border: 1px solid #eee; background-color: #fff; font-size: 14px;}
+.filter .t-fi-item li a:hover {font-weight: 700;}
+.filter .t-fi-item li.curr a {font-weight: 700; color: #cd0001;}
+.filter .t-fi-item li a s {position: absolute; left: 15px; top: 11px; width: 15px; height: 17px;}
+.filter .t-fi-item li.subway a s {background-position: -30px 0; top: 12px;}
+.filter .t-fi-item li a:hover s, .filter .t-fi-item li.curr a s {background-position: -15px 0;}
+.filter .t-fi-item li.subway a:hover s, .filter .t-fi-item li.subway.curr a s {background-position: -45px 0;}
+.filter .t-fi-item li a i {position: absolute; right: 12px; top: 18px; width: 9px; height: 5px; background-position: -13px -38px;}
+.filter .t-fi-item li.curr a i {background-position: -13px -32px;}
+
+.keywords {float: left; margin: 1px 0 0 15px;}
+.keywords label {float: left; margin-right: 5px;}
+.keywords a {float: left; padding: 0 5px 0 8px; margin-top: 9px; border: 1px dashed #f33; line-height: 20px; color: #f33;}
+.keywords a:hover {text-decoration: none;}
+.keywords a s {text-decoration: none; margin-left: 3px;}
+
+
+/* 区域&公交/地铁数据 */
+.filter .sub-fi {display: none; position: relative; clear: left; margin: 55px 0 5px; padding: 10px; border: 1px solid #eee; background-color: #fff;}
+.filter .sub-fi s, .filter .sub-fi i {position: absolute; left: 60px; top: -8px; height: 0; width: 0; margin-left: -7px; border-style: solid; border-width: 0 8px 8px; border-color: transparent;}
+.filter .sub-fi s {border-bottom-color: #e0e0e0;}
+.filter .sub-fi i {border-width: 0 7px 7px; top: 1px; left: 0; border-bottom-color: #fff;}
+.filter .sub-fi.subway s {left: 190px;}
+.filter .sub-fi .curr {color: #cd0001; font-weight: 700;}
+.filter .sub-fi .pos-item {padding: 0 10px 0; line-height: 28px;}
+.filter .sub-fi .pos-item a {margin-right: 20px; white-space: nowrap;}
+.filter .sub-fi .pos-sub-item {padding: 10px 10px 0; margin-top: 10px; border-top: 1px solid #eee; line-height: 28px;}
+.filter .sub-fi .pos-sub-item a {margin-right: 20px; white-space: nowrap;}
+
+/* 筛选条件 */
+.filter dl {border-bottom: 1px dotted #eee;}
+.filter dl.more {border: none;}
+.filter dt {float: left; width: 70px; padding: 15px 0; text-align: right;}
+.filter dd {position: relative; overflow: hidden; padding: 5px 0 10px;}
+.filter dd a {float: left; padding: 5px 10px; margin: 5px 5px 0 0; white-space: nowrap;}
+.filter dd a.curr {color: #cd0001; font-weight: 700;}
+
+/* 更多筛选 */
+.filter dl.more dt {padding: 21px 0 0;}
+.filter dl.more dd {overflow: visible;}
+.filter dl.more .item {float: left; position: relative; height: 23px; line-height: 23px; border: 1px solid #ddd; margin: 15px 0 10px 10px;}
+.filter dl.more .item.curr {color: #cd0001; border-color: #cd0001;}
+.filter dl.more .item label {display: block; position: relative; padding: 0 33px 0 10px; cursor: pointer;}
+.filter dl.more .item label s {position: absolute; right: 8px; top: 10px; width: 9px; height: 5px; background-position: -13px -38px;}
+.filter dl.more .item.curr label {font-weight: 700;}
+.filter dl.more .item.curr label s {background-position: -49px -38px;}
+.filter dl.more .item ul {display: none; position: absolute; top: 23px; left: -1px; right: -1px; border: 1px solid #ddd; background-color: #fff; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
+.filter dl.more .item ul a {display: block; float: none; height: 25px; line-height: 25px; font-size: 12px; margin: 0; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.filter dl.more .item ul a:hover {background-color: #fafafa;}
+
+
+/* 内容 */
+.main {float: left; width: 660px;}
+.w1200 .main {width: 860px;}
+
+.main .m-t {position: relative; z-index: 1; height: 45px; line-height: 43px; border: 1px solid #eee; background-color: #fafafa;}
+.main .m-t ul {float: left; position: relative;}
+.main .m-t ul li {float: left;}
+.main .m-t ul a {display: block; padding: 0 18px; font-size: 16px; margin-right: 1px;}
+.main .m-t ul .curr a {margin: -1px 0 0 -1px; height: 45px; line-height: 42px; color: #cd0001; background-color: #fff; border: 1px solid #eee; border-bottom: 0; border-top: 2px solid #cd0001;}
+
+.main .m-t .sta {float: right; margin-right: 10px; color: #333;}
+.main .m-t .sta strong {font-size: 14px; color: #cd0001; font-weight: 500;}
+
+/* 排序 */
+.m-o {padding: 10px 0; height: 25px; line-height: 25px;}
+.m-o .m-l {float: left;}
+.m-o .m-r {float: right;}
+.m-o a {position: relative;}
+.m-o .m-l a {margin-right: 15px;}
+.m-o a.curr {color: #cd0001;}
+.m-o .ob {padding-right: 17px;}
+.m-o .ob s {position: absolute; right: 0; top: 3px; width: 12px; height: 12px; background-position: 0 -18px;}
+.m-o .ob.curr s {background-position: -39px -18px;}
+.m-o .ob.up s {background-position: -13px -18px;}
+.m-o .ob.up.curr s {background-position: -26px -18px;}
+
+.m-o .fi {padding-left: 18px;}
+.m-o .fi s {position: absolute; left: 0; top: 2px; width: 12px; height: 12px; border: 1px solid #ddd; background-color: #fff;}
+.m-o .fi.on {color: #cd0001;}
+.m-o .fi.on s {background-position: 0 -32px;}
+
+.ml20 {margin-left: 20px;}
+
+/* 列表 */
+.list .item {position: relative; margin: 15px 0 30px; padding-bottom: 30px; border-bottom: 1px solid #f3f3f3;}
+.list .item .info {height: 135px;}
+.list .item .pic {position: absolute; left: 0; top: 0; width: 180px; height: 135px;}
+.list .item .pic img {width: 180px; height: 135px; display: block; background: #fff url("/static/images/ajax-loader.gif") no-repeat center center;}
+.list .item .cen {padding: 0 190px 0 200px;}
+.list .item .tit {height: 25px; line-height: 25px; margin-bottom: 12px; font-size: 24px; overflow: hidden;}
+.list .item .sta {height: 20px; padding: 0 5px; line-height: 20px; font-size: 12px; color: #fff; display: inline-block; vertical-align: middle; margin-left: 5px;}
+.list .item .sta.s0 {background: #68bbef;}
+.list .item .sta.s1 {background: #9bbd5a;}
+.list .item .sta.s2 {background: #dd1144;}
+.list .item .sta.s3 {background: #8a8a8a;}
+.list .item .tit em {font-size: 12px; color: #999; margin-left: 5px; display: inline-block; vertical-align: middle;}
+.list .item .cen p {height: 28px; font-size: 14px; line-height: 28px; overflow: hidden;}
+.list .item .cen .map {position: relative; color: #666; margin-left: 10px; padding-left: 18px; font-size: 12px; display: inline-block; vertical-align: 0px;}
+.list .item .cen .map s {position: absolute; left: 0; top: 5px; width: 13px; height: 16px; background-position: -61px 0;}
+.list .item .cen .links {margin: 2px 0 18px;}
+.list .item .cen .links em {color: #eee; margin: 0 10px;}
+.list .item .cen .tags {height: 22px; line-height: 20px; overflow: hidden;}
+.list .item .cen .tags span {float: left; color: #97c134; font-size: 12px; height: 20px; border: 1px solid #97c134; padding: 0 10px; margin: 0 10px 0 0;}
+.list .item .rig {position: absolute; right: 0; top: 0; width: 190px; height: 135px;}
+.list .item .rig .pri {height: 85px; line-height: 85px; text-align: right;}
+.list .item .rig .pri em {color: #e43; font-size: 14px;}
+.list .item .rig .pri strong {display: inline-block; vertical-align: -3px; font-weight: 500; color: #e43; font-size: 40px; font-family: Georgia; padding: 0 5px;}
+.list .item .rig .pri span {font-size: 12px;}
+.list .item .rig .pri .dd {color: #e43; font-size: 16px;}
+.list .item .rig .cont {position: absolute; right: 0; bottom: 10px; width: 70px; height: 22px; line-height: 22px; text-align: center; border: 1px solid #eee; border-radius: 2px;}
+.list .item .rig .cont s {display: inline-block; width: 10px; height: 10px; margin-right: 7px; background-position: -52px -19px;}
+.list .item .rig a:hover.cont {border-color: #e43;}
+.list .item .rig a:hover.cont s {background-position: -63px -19px;}
+.list .item .rig .kp {position: absolute; right: 0; bottom: 5px; color: #333;}
+
+/* 户型 */
+.list .item .plan {margin-top: 10px; margin-bottom: -30px;}
+.list .item .plan li {height: 36px; line-height: 36px; border-bottom: 1px solid #f3f3f3;}
+.list .item .plan li:hover {background-color: #f5f5f5;}
+.list .item .plan li.loading {height: 110px; line-height: 110px; text-align: center;}
+.list .item .plan li.loading:hover {background-color: #fff;}
+.list .item .plan li.loading img {display: inline-block; margin-right: 5px;}
+.list .item .plan li .p-icon {float: left; position: relative; width: 12px; height: 12px; margin: 12px 8px 0 0; background-position: -23px -32px; cursor: pointer;}
+.list .item .plan li .p-icon:hover {background-position: -36px -32px;}
+.list .item .plan li .p-icon img {display: none; position: absolute; left: 12px; top: 0; width: 400px; height: 300px;}
+.list .item .plan li .p-icon:hover {z-index: 10;}
+.list .item .plan li .p-icon:hover img {display: block; cursor: default;}
+.list .item .plan li a {position: relative; overflow: hidden; display: block;}
+.list .item .plan li a span {float: left;}
+.list .item .plan li a .p-tit {width: 40%;}
+.list .item .plan li a .p-area {width: 10%;}
+.list .item .plan li a .p-face {width: 20%;}
+.list .item .plan li a .p-price {float: right; width: 30%; text-align: right;}
+.list .item .plan li a .p-price strong {color: #e43; font-family: Georgia; font-size: 16px; font-weight: 500; vertical-align: 1px; margin-right: 3px;}
+.list .item .plan li.lm {border: 0; text-align: right;}
+.list .item .plan li.lm:hover {background-color: #fff;}
+.list .item .plan li.lm a {display: inline-block;}
+
+.list .empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #efefef;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 10px;}
+.pagination li a:hover ,.pagination li.page_current span {background: #fe5050; color: #fff; border-color: #fe5050;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
+
+
+/* 侧栏 */
+.sidebar {float: right; width: 300px; margin-left: 40px; font-size: 14px;}
+.sidebar dl {margin-bottom: 15px;}
+.sidebar dt {height: 35px; line-height: 35px; font-size: 20px; color: #333; border-bottom: 1px solid #ededed; padding-bottom: 10px; margin-bottom: 10px;}
+.sidebar dd {height: 35px; line-height: 35px; color: #666;}
+.sidebar dd span {float: left; height: 35px;  display: block; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sidebar dd .tit {width: 125px;}
+.sidebar dd .info {width: 85px;}
+.sidebar dd .price {width: 85px; text-align: right;}
+.sidebar .news dd {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.sidebar .news dd a {position: relative; padding-left: 15px;}
+.sidebar .news dd a s {position: absolute; left: 3px; top: 8px; width: 4px; height: 4px; background-color: #ccc; overflow: hidden;}
+.sidebar .empty {height: 150px; line-height: 150px; text-align: center; color: #999;}

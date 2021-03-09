@@ -1,0 +1,136 @@
+/*主体内容*/
+.content{background: #fe766c; padding-bottom: 50px;}
+.content .bg-img{position: absolute; top: -1px; right: -30px; z-index: -1;}
+.w1200 .content .bg-img{z-index: 1;}
+.content .content-left{color: #fff; position: relative; margin-top: 40px; width: 450px;}
+.w1200 .content .content-left{width: 650px;}
+.content-left .cl-tit{padding-left: 25px; background: url(../images/dabai.png) no-repeat 0 -320px;}
+.content-left .cl-tit h3{font-size: 36px; line-height: 36px;}
+.content-left .cl-tit h1{font-size: 50px; line-height: 50px; margin-top: 15px;}
+.content-left .message{width: 370px; font-size: 18px; line-height: 30px; margin: 30px 0;}
+.content-left .cl-contact a{display: block; float: left; width: 110px; height: 30px; background: url(../images/dabai.png) no-repeat 0 -262px; font-size: 14px; color: #666; margin-right: 10px; line-height: 30px;}
+.content-left .cl-contact a i{display: block; float: left; width: 18px; height: 20px; margin: 5px 5px 0 10px; background: url(../images/dabai.png) no-repeat 0 -153px;}
+.content-left .cl-contact a.icon-2 i{background-position: 0 -196px;}
+.content-left .apply{font-size: 24px; margin-top: 55px;}
+.news-slide{margin-top: 20px;}
+.news-slide .news-tit{height: 34px; line-height: 34px;}
+.news-slide .news-tit span{display: block; float: left; width: 102px; font-size: 18px; margin-right: 10px;}
+.w1200 .news-slide .news-tit span{width: 152px;}
+.news-slide .bd{height: 90px; overflow: hidden;}
+.news-slide .bd li{height: 30px; line-height: 30px;}
+.news-slide .bd li span{float: left; display: block; width: 102px; font-size: 14px; margin-right: 10px; height: 30px; overflow: hidden;}
+.w1200 .news-slide .bd li span{width: 152px;}
+.content-right{width: 465px; margin-top: 45px; background: #fff; }
+.content-right h3{font-size: 24px; text-align: center; color: #333; line-height: 60px; height: 60px; margin-bottom: 10px;}
+.content-right form{padding: 0 25px 10px 25px; color: #656565; font-size: 14px;}
+.content-right .inp-big{height: 36px; line-height: 36px; margin-bottom: 15px;}
+.content-right .inp-big dt{float: left; font-size: 16px; }
+.content-right .inp-big dd{position: relative;}
+.content-right .inp-big dd .error{position: absolute; top: -38px; height: 20px; line-height: 20px; left: 80px;}
+.content-right .inp-big dd input{height: 38px; line-height: 38px; border: 1px solid #e1e1e1; width: 333px; text-indent: 10px;}
+.content-right .inp-big dd .wan{position: absolute; right: 10px;}
+.content-right .inp-check{height: 36px; line-height: 36px; margin-bottom: 15px;}
+.content-right .inp-check dt{float: left; font-size: 16px;}
+.content-right .inp-check dd label{font-size: 14px; margin-right: 9px; cursor: pointer; }
+.content-right .inp-check dd label input{vertical-align: middle; margin-right: 5px; display: inline-block;}
+.content-right .inp-small{float: left; position: relative;}
+.content-right .inp-small i{position: absolute; background: url(../images/dabai.png) no-repeat 0 0; display: block; width: 16px; height: 19px; margin-right: 10px; float: left; top: 12px; left: 14px;}
+.content-right .inp-small input{height: 40px; line-height: 40px; width: 161px; border: 1px solid #e1e1e1; padding-left: 39px;}
+.content-right .inp-name{margin-right: 10px;}
+.content-right .inp-name .error{position: absolute; top: -29px; left: 40px; display: none;}
+.content-right .inp-mobile .error{position: absolute; top: -29px; left: 40px; display: none;}
+.content-right .inp-mobile i{background-position: 0 -35px; left: 18px;}
+.content-right .words{margin-top: 10px; width: 383px; height: 93px; padding: 10px 15px; border: 1px solid #e1e1e1;}
+.content-right .words i{display: block; width: 18px; height: 17px; background: url(../images/dabai.png) no-repeat 0 -73px; float: left;}
+.content-right .words textarea{width: 350px; height: 83px; margin-left: 13px; border: none; }
+.content-right .submit{width: 100%; height: 45px; line-height: 45px; background: #f47373; color: #fff; text-align: center; border: 0; font-size: 20px; margin-top: 20px; cursor: pointer;}
+.content-right .tip{margin-top: 10px; text-align: center;}
+.content-right .tip i{color: #D21938; margin-right: 10px; font-style: normal;}
+.content-right .error{background: #da5c4f; color: #fff; padding: 5px 10px; height: 20px; line-height: 20px; border-radius: 4px; -webkit-animation: popup .3s ease-out; -moz-animation: popup .3s ease-out; animation: popup .3s ease-out; display: none;}
+.content-right .error i{position: absolute; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #da5c4f; top: 30px; left: 15px; border-width: 7px 0 7px 9px;}
+
+/*优势*/
+.wrap-tit{font-size: 24px; margin-bottom: 20px;}
+.advantage{background: url(../images/advantage_bg.jpg) right 115px no-repeat; padding: 50px 0 10px;}
+.advantage ul{width: 740px;}
+.advantage ul li{width: 190px; text-align: center; float: left; font-size: 14px; color: #666; line-height: 24px; margin-bottom: 15px;}
+.w1200 .advantage ul li{width: 246px;}
+.advantage ul li em{display: block; width: 122px; height: 74px; font-size: 18px; padding-top: 38px; margin: 0 auto; background: url(../images/dabai.png) no-repeat; }
+.advantage ul li.li-1 em{background-position: -27px 0; color: #31b1ff;}
+.advantage ul li.li-2 em{background-position: -151px 0; color: #ba88ff;}
+.advantage ul li.li-3 em{background-position: -27px -112px; color: #3dd0c7;}
+.advantage ul li.li-4 em{background-position: -151px -112px; color: #fb8438;}
+.advantage ul li.li-5 em{background-position: 0 -450px; color: #738ffc;}
+.advantage ul li.li-6 em{background-position: -151px -450px; color: #fa7373;}
+.advantage ul li p{line-height: 30px; overflow: hidden; height: 30px;}
+
+/*精英队*/
+.team{background-color: #f0f4f5; padding: 30px 0; margin: 30px 0;}
+.team-left{width: 700px; overflow: hidden; height: 385px;}
+.w1200 .team-left{width: 900px; }
+.team-left li{width: 200px; float: left; margin-right: 25px; background: #fff;}
+.team-left li img{width: 200px; height: 210px; vertical-align: top;}
+.team-left li .team-info{border: 1px solid #e1e1e1; border-top: 0; padding: 10px 0 36px 0; }
+.team-left li .team-info .name{margin: 0 10px; line-height: 24px; height: 24px; font-size: 16px;}
+.team-left li .team-info .name span{width: 155px; height: 24px; overflow: hidden; float: left;}
+.team-left li .team-info .name a{display: block; width: 18px; height: 20px; float: right; background: url(../images/dabai.png) -126px -242px no-repeat; }
+.team-left li .team-info .time{font-size: 16px; color: #666; margin: 8px 10px 0; line-height: 24px;}
+.team-left li .team-info .time em{color: #ff7900; font-size: 18px;}
+.team-left li .team-info .star{margin: 10px 10px 0;}
+.team-left li .team-info .star s{background: url(../images/rate.png) repeat-x; height: 14px; width: 75px; display: block; position: relative;}
+.team-left li .team-info .star s i{background: url(../images/rate.png) repeat-x; height: 14px; display: block; position: absolute; background-position: 0 -14px; left: 0; top: 0;}
+.team-left li .team-info .info{font-size: 14px; border-top: 1px dashed #e1e1e1; padding: 10px 0 0 0; margin: 15px 10px 0;}
+.team-right{width: 250px; height: 385px; color: #fff; background: url(../images/team_bg.jpg) no-repeat;}
+.team-right h1{font-size: 34px; text-align: center; }
+.team-right h3{font-size: 22px; text-align: center; margin-bottom: 20px; }
+.team-right ul{width: 202px; margin: 0 auto;}
+.team-right ul li{width: 200px; height: 44px; line-height: 44px; border: 1px solid #b4e9f0; background: #16b5e0; border-radius: 10px; font-size: 20px; margin-bottom: 20px; text-align: center; }
+
+/*多图广告*/
+.adv-list{margin-bottom: 40px;}
+.adv-slide{position: relative;}
+.adv-slide img:hover{opacity: .9;}
+.adv-slide .bd{overflow: hidden; height: 224px;}
+.adv-slide .bd ul{width: 1235px;}
+.adv-slide li{width: 310px; margin-right: 35px; float: left; position: relative;}
+.w1200 .adv-slide li{width: 376px;}
+.adv-slide a{display: block; }
+.adv-slide a img{width: 310px; height: 220px;}
+.w1200 .adv-slide a img{width: 376px;}
+.adv-slide span{background: url(../images/bg1.png); position: absolute; left: 0; right: 0; bottom: 4px;}
+.adv-slide span a{color: #fff; text-align: center; font-size: 16px; display: block; line-height: 36px; height: 36px; overflow: hidden;}
+.adv-slide .prev, .adv-slide .next{width: 25px; height: 48px; position: absolute; top: 68px; background: #000 url(../images/kanfanicon.png) no-repeat; opacity: .6; filter: alpha(opacity=60);}
+.adv-slide .prev{left: 0; background-position: 0 -260px;}
+.adv-slide .next{right: 2px; background-position: -75px -260px; }
+
+
+/*浮动导航*/
+.scroll{position: fixed;bottom: 150px;left: 53%;z-index: 99;margin-left: 465px;}
+.w1200 .scroll{margin-left: 560px;}
+.scroll a{background: #dddddd url(../images/kanfanicon.png) no-repeat;text-align: center;width: 35px;height: 37px;display: block;margin-bottom: 5px;color: #fff;margin-left: 10px;text-indent: -999px;overflow: hidden;padding: 3px 5px 0;line-height: 17px;}
+.scroll a:hover{color: #fff!important;text-decoration: none;}
+.scroll a.hover{background: #D51938;text-indent: 0; }
+.scroll a.s-hot{background-position: 10px -776px;}
+.scroll a.s-zx{background-position: 8px -819px;}
+.scroll a.s-xf{background-position: 8px -854px;}
+.scroll a.s-lp{background-position: 8px -894px;}
+.scroll a.s-esf{background-position: 10px -936px;}
+.scroll a.s-wx{background-position: -53px -865px;}
+.scroll a.s-top{background-position: -64px -777px;line-height: 20px;background-color: #676767;}
+.wx-down, .app-down{position: relative;}
+.wx-down-box, .app-down-box{position: absolute;left: -175px;top: 0;width: 170px;height: 270px;background: #fff;border: 1px solid #e5e5e5;text-align: center; display: none;}
+.wx-down-box img, .app-down-box img{width: 150px;height: 150px;}
+.wx-down-box h3, .app-down-box h3{font-size: 18px;margin-bottom: 15px;}
+.wx-down-box p, .app-down-box p{color: #666;font-size: 14px;}
+
+/*遮罩层*/
+.mask{background: #000; opacity: .3; filter: alpha(opacity=30); z-index: 9999; position: fixed; top: 0; left: 0; bottom: 0; right: 0; display: none;}
+
+/*弹出层*/
+.layer{width: 560px; box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3); position: fixed; left: 50%; margin-left: -280px; top: 200px; background: #fff; z-index: 99999; border: 6px solid #ccc; padding-bottom: 20px; -webkit-animation: popup .3s ease-out; -moz-animation: popup .3s ease-out; animation: popup .3s ease-out; display: none;}
+.layer .layer-tit a{display: block; width: 32px; height: 32px; background: #b2b2b2 url(../images/kanfanicon.png) no-repeat 6px -676px; margin: 10px 10px 0 0;}
+.layer h1{font-size: 24px; margin: 0 0 30px 0; text-align: center; line-height: 30px; }
+.layer .layer-icon{height: 80px; width: 80px; margin: 0 auto 30px; background: url(../images/kanfanicon.png) 0 -1070px no-repeat; }
+.layer-failed .layer-icon{background-position: 0px -1171px;}
+.layer h3{font-size: 20px; line-height: 26px; text-align: center; }
+.layer a.btn{display: block; width: 130px; height: 46px; line-height: 46px; text-align: center; background: #da5c4f; margin: 40px auto 0; color: #fff; font-size: 14px;}

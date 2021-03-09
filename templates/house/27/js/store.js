@@ -1,0 +1,3 @@
+$(function(){
+    $('#totalStore').text(totalCount);
+})
