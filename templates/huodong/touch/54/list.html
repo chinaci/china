@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $typename#}{#$typename#}{#else#}找活动{#/if#}</title>
+<meta name="keywords" content="{#$typename#},{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var pageUrl = '{#getUrlPath service="huodong" template="list"#}', typeid = {#$typeid#}, page = 1, pageSize = 10, keywords = '{#$keywords#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = "找活动"#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+
+<div class="list-head">
+	<ul>
+		<li class="list-head-1" data-id="{#$typeid#}">
+			<a href="javascript:;">
+				<span>{#if $typename#}{#$typename#}{#else#}分类{#/if#}</span>
+			</a>
+		</li>
+		<li class="list-head-1">
+			<a href="javascript:;">
+				<span>时间</span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<span>费用</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="list-body"><ul></ul></div>
+<div class="fenlei">
+	<div class="fenlei-1 choose-type">
+		<ul>
+			<li data-id=""{#if $typeid == '' || $typeid == 0#} class="oo"{#/if#}>
+				<a href="javascript:;">全部分类</a>
+			</li>
+			{#huodong action='type' return='type'#}
+			<li data-id="{#$type.id#}"{#if $typeid == $type.id#} class="oo"{#/if#}>
+				<a href="javascript:;">{#$type.typename#}</a>
+			</li>
+			{#/huodong#}
+		</ul>
+	</div>
+	<div class="fenlei-1 choose-info">
+		<ul>
+			<li data-id="" class="oo">
+				<a href="javascript:;">不限</a>
+			</li>
+			<li data-id="today">
+				<a href="javascript:;">今天</a>
+			</li>
+			<li data-id="tomorrow">
+				<a href="javascript:;">明天</a>
+			</li>
+			<li data-id="week">
+				<a href="javascript:;">近一周</a>
+			</li>
+			<li data-id="month">
+				<a href="javascript:;">近一月</a>
+			</li>
+		</ul>
+	</div>
+	<div class="fenlei-1 choose-sort">
+		<ul>
+			<li data-id="" class="oo">
+				<a href="javascript:;">全部</a>
+			</li>
+			<li data-id="0">
+				<a href="javascript:;">收费</a>
+			</li>
+			<li data-id="1">
+				<a href="javascript:;">免费</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="mask"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$huodong_description#}',
+		"title": '{#if $typename#}{#$typename#}{#else#}找活动{#/if#}',
+		"imgUrl": '{#$huodong_logoUrl#}',
+		"link": '{#getUrlPath service="huodong" template="list"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

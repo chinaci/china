@@ -1,0 +1,115 @@
+html{background-color: rgb(238, 238, 238);}
+i,em{font-style: normal;}
+a:active, a:hover {text-decoration: none;}
+
+.l-search{
+    overflow: hidden;
+    background: url(../images/search_bg.jpg) no-repeat bottom center;
+    background-size: 100%;
+}
+.l-search .find{
+	    height:0.88rem;
+    border-radius: 0.6rem;
+    padding: 0 0.8rem 0 0.3rem;
+    overflow: hidden;
+    margin: 0.7rem 0.4rem 0.4rem;
+    position: relative;
+    background: rgba(255,255,255,0.6);
+}
+.l-search .find input{
+	line-height: 0.88rem;
+    width: 100%;
+    border: none;
+    padding: 0;
+    outline: none;
+    vertical-align: middle;
+    background: transparent;
+}
+.l-search .find a{
+	width: 0.8rem;
+    height: 0.88rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(../images/icon_search.png) no-repeat left center;
+    background-size: 0.6rem;
+    opacity: 0.6;
+}
+.l-search .find-list{
+	overflow: hidden;
+    padding: 0 0.2rem 0.5rem 0;
+    text-align: center;
+}
+.l-search .find-list a{
+	    display: inline-block;
+    font-size: 0.24rem;
+    color: #fff;
+    padding: 0.02rem 0.2rem;
+    border: 0.02rem solid #fff;
+    background: rgba(0,0,0,0);
+    margin: 0 0 0.2rem 0.2rem;
+    border-radius: 0.2rem;
+}
+/* .jingxuan{
+        padding: 0.3rem 0.14rem 0.36rem;
+    background: #fff;
+}
+.jingxuan span{
+     display: block;
+    float: left;
+    padding: 0 0.1rem;
+}
+.jingxuan span a img{
+    height: 1.87rem;
+    margin-left: 0.02rem;
+    position: relative;
+    border-radius: 0.1rem;
+    overflow: hidden;
+    width: 3.39rem;
+} */
+.search-list{
+	    overflow: hidden;
+    margin: 0.2rem 0.2rem 0;
+    border-radius: 0.1rem;
+    border: 0.02rem solid #e8e8e8;
+    background-color: #FFF;
+}
+.search-list ul{
+	    overflow: hidden;
+    margin: 0 0.2rem;
+}
+.search-list ul .list-1{
+	    display: block;
+    width: 50%;
+    height: 0.88rem;
+    float: left;
+    border-top: 0.02rem solid #eee;
+}
+.search-list ul .list-2{
+	    display: block;
+    width: 50%;
+    height: .88rem;
+    float: left;
+    border-top: 0.02rem solid #eee;
+    background: url(../images/icon_index_4.png) no-repeat left;
+    background-size: 0.02rem 0.4rem;
+}
+.search-list ul li a img{
+	    width: 0.4rem;
+    height: 0.4rem;
+    float: left;
+    margin: 0.24rem 0.2rem 0 0.6rem;
+}
+.search-list ul li a span{
+	display: inline-block;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    float: left;
+    margin-top: 0.22rem;
+    font-size: 0.28rem;
+    color: #15232a;
+}
+.search-foot{
+    height: 1rem;
+    float: left;
+}

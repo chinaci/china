@@ -1,0 +1,165 @@
+.absolute.header {
+  position: fixed;
+}
+.by{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.list-head{
+    width: 100%;
+    height:0.64rem;
+    background-color: #efeff4;
+    position: fixed;
+    top:0.9rem;
+    z-index: 3003;
+    border-bottom: 0.02rem solid #ddd;
+    font-size: .24rem;
+}
+.huoniao_iOS .list-head{top: 0;}
+.list-head ul li{
+    width: 33%;
+    height:0.64rem;
+    float: left;
+}
+.list-head ul li a{
+    display: block;
+    width: 100%;
+    height: 0.64rem;
+    text-align: center;
+}
+.list-head ul li a span {
+    background: url(../images/icon_index_3.png) no-repeat right / 0.18rem 0.12rem;
+    color: #666;
+    font-size: 0.24rem;
+    height: 0.64rem;
+    line-height: 0.64rem;
+    padding-right:0.26rem;
+    margin: 0 auto;
+}
+.list-body{
+	    margin-top: 1.5rem;
+}
+.huoniao_iOS .list-body{margin-top: .7rem;}
+.list-body ul li{
+	    overflow: hidden;
+    border-bottom: 0.02rem solid #d9d9d9;
+}
+.list-body ul li a{
+    display: block;
+    overflow: hidden;
+    border-bottom: 0.02rem solid #F5F5F8;
+    background: #fff;
+    padding: 0.24rem;
+}
+.list-body ul li a img{
+	    width:2.74rem;
+        height:1.6rem;
+        float: left;
+        margin-right: 0.2rem;
+}
+.lb-txt{
+    height: 1.6rem;
+    position: relative;
+}
+.lb-txt h2{
+	    height:0.76rem;
+    font-size: 0.28rem;
+    font-weight: normal;
+    color: #000;
+    line-height:0.38rem;
+    margin: -0.02rem 0 0.3rem;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.lb-txt p{
+	font-size: 0.22rem;
+    color: #aaa;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: 2.8rem;
+}
+.lb-txt span i{
+    width: 2.6rem;
+    float: left;
+    font-size: 0.22rem;
+    color: #aaa;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: normal;
+}
+.lb-txt span b{
+	margin: 0;
+    display: inline;
+    color: #ff9e00;
+    line-height: 0.32rem;
+    float: right;
+    margin-top: 0.1rem;
+    font-size: 0.32rem
+}
+.lb-txt span b em{
+	text-decoration: none;
+	font-size: 0.24rem
+}
+.active{
+    color: #333;
+    font-weight: bold;
+}
+.fenlei{
+        position: fixed;
+    top: 1.45rem;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+}
+.huoniao_iOS .fenlei{top: .6rem;}
+.fenlei .fenlei-1{
+    display: none;
+}
+.fenlei ul{
+    max-height: 7.4rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.fenlei ul li{
+        width: 100%;
+}
+.fenlei ul li a{
+    display: block;
+    height: 0.8rem;
+    line-height:0.8rem;
+    border-top: 0.02rem solid #e8e8e8;
+    background-color: #FFF;
+    color: #666;
+    padding-left:0.3rem;
+    font-size: 0.28rem;
+    text-align: left;
+}
+.fenlei ul li.ff{
+    border-top:none;
+}
+.mask{
+        width: 100%;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    bottom: 0;
+    display: none;
+}
+.oo a{
+    color: #0099e9!important;
+}
+
+.loading {padding:.5rem .2rem;text-align: center;font-size: .24rem;}
+.loading.toend {padding:.2rem;}

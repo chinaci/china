@@ -1,0 +1,149 @@
+html{background-color: rgb(238, 238, 238); padding-bottom: 1.5rem;}
+
+.picscroll{
+    position: relative;
+        margin: 0 auto;
+    overflow: hidden;
+    z-index: 1;
+}
+.picscroll li span {display: none;}
+.picscroll li img {max-width: 100%; height: auto;}
+.indicator{
+	position: absolute;
+	    bottom: 0.3rem;
+    left: 2.9rem;
+}
+.indicator i{
+	height: 0.15rem;
+    width: 0.15rem;
+    margin-left: 0.2rem;
+    display: block;
+    float: left;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+}
+.indicator i.active{
+    background-color: #007aff;
+    opacity: 2;
+}
+.hd-body{
+	    overflow: hidden;
+    padding: 0 0.2rem;
+}
+.hd-body ul li{
+    display: block;
+    border: 0.02rem solid #e8e8e8;
+    border-radius: 0.1rem;
+    margin-top: 0.1rem;
+    background-color: #FFF;
+}
+.main-lead{
+	height: 0.8rem;
+    line-height: 0.8rem;
+	margin-left:0.2rem;
+}
+.main-lead .zz{
+    border-radius: 30px;
+    border: 1px solid #e8e8e8;
+    float: left;
+    background-color: #efefef;
+	margin-top: 0.12rem;
+}
+.main-lead a i{
+	background-image: url(../images/rz_icon_g.png)no-repeat;
+	width: 0.22rem;
+	height: 0.26rem;
+	display: block;
+}
+.main-lead a img{
+    width: 0.56rem;
+    height: 0.56rem;
+    border-radius: 6rem;
+    float: left;
+}
+.main-lead p{
+	margin-left: 0.1rem;
+	float: left;
+}
+.main-lead p a{
+	    display: inline-block;
+    font-size: 0.28rem;
+    color: #576b95;
+    float: left;
+}
+.main-lead p i img{
+	width: 0.22rem;
+	height:0.26rem;
+	margin-left: 0.1rem;
+}
+.ll img{
+	width:100%;
+	display: block;
+}
+.main-infor h1{
+	text-align: left;
+    font-weight: normal;
+    font-size: 0.32rem;
+    color: #15232a;
+    margin: 0.14rem 0.2rem 0.16rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.main-time {
+	overflow: hidden;
+    margin: 0rem 0.2rem 0 0.2rem;
+    position: relative;
+}
+.main-time p{
+    height: 0.32rem;
+    line-height: 0.32rem;
+    background: url(../images/icon_index_time.png) no-repeat left;
+    background-size: 0.26rem 0.26rem;
+    padding-left: 0.36rem;
+    font-size: 0.24rem;
+    color: #aaa;
+}
+.main-time p{
+	float: left;
+}
+.main-time span{
+	float: right;
+	font-size: .24rem;
+}
+.main-time span i{
+	font-size: 0.32rem;
+    color: #ff9e00;
+}
+.main-place{
+	overflow: hidden;
+    margin: 0rem 0.2rem 0.1rem 0.2rem;
+    position: relative;
+		font-size: .24rem;
+}
+.main-place span{
+	    height: 0.32rem;
+    line-height: 0.32rem;
+    background: url(../images/icon_index_attr.png) no-repeat left;
+    background-size: 0.26rem 0.26rem;
+    padding-left: 0.36rem;
+    font-size: 0.24rem;
+    color: #aaa;
+}
+.foot{
+font-size: .24rem;
+	    display: block;
+    height: 0.8rem;
+    text-align: center;
+}
+.foot a{
+   display: inline-block;
+    line-height: 0.32rem;
+    margin:0.24rem auto;
+    background: url(../images/icon_index_5.png) no-repeat right;
+    background-size: 0.16rem 0.16rem;
+    padding-right: 0.26rem;
+    font-size: 0.24rem;
+    color: #0099e9;
+}

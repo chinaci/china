@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>活动详情</title>
+<meta name="keywords" content="{#$detail_typename[0]#},{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var orderUrl = '{#getUrlPath service="huodong" template="order" id={#$detail_id#} fid="%fid%"#}'
+	var id = {#$detail_id#}, feetype = {#$detail_feetype#}, uid = {#$detail_uid#}, uname = '{#$detail_user.username#}', reply = {#$detail_reply#};
+	var	JubaoConfig = {
+		"module" : 'huodong',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+	var touch_poster = 1;  //是否有海报按钮
+</script>
+</head>
+<style>
+	.html2Wrap .detailed-title p{display: block; overflow: hidden;}
+</style>
+<body>
+<!-- nav -->
+{#$pageTitle = "活动详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+
+<!-- 海报s -->
+<div class="html2Wrap">
+	<div class="html2_node" id="html2_node">
+		<div class="html2Con">
+			<div class="detailed-title">
+				<p>{#$detail_title#}</p>
+			</div>
+			<div class="de-lead">
+				<div class="dele-left">
+					<span>{#$detail_pubdate|date_format:"%Y-%m-%d"#}</span>
+					<p><img src="{#$templets_skin#}images/mb_share_wrap_icon_1.png" alt=""> {#$detail_click#}</p>
+				</div>
+			</div>
+			<div class="de-list">
+				<ul>
+					<li class="list-1">
+						<b></b>
+						<p>{#$detail_began|date_format:"%Y-%m-%d %H:%M"#} 至 {#$detail_end|date_format:"%Y-%m-%d %H:%M"#}</p>
+					</li>
+					<li class="list-2">
+						<b></b>
+						<p>{#$detail_addrname[1]#} {#$detail_addrname[2]#} {#$detail_addrname[3]#} {#$detail_address#}</p>
+					</li>
+					<li class="list-3">
+						<b></b>
+						<p>已报名<span>{#$detail_reg#}</span>人{#if $detail_feetype == 0#} / 限<span>{#$detail_max#}</span>人报名{#/if#}</p>
+					</li>
+					<li class="list-4">
+						<b></b>
+						{#if $detail_feetype == 1#}
+						<em>收费</em><i></i>
+						{#else#}
+						<em>免费</em>
+						{#/if#}
+					</li>
+				</ul>
+			</div>
+			<div class="de-host">
+				<div class="de-host-i">
+					<div class="touxiang">
+						<a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}"><img src="{#$detail_user['photo']#}" alt=""></a>
+					</div>
+					<ul class="fn-clear">
+						<li>
+							<a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}"><h2>{#$detail_user['username']#}</h2></a>
+						</li>
+						<li>
+							<p>举办活动：{#$detail_user['huodongCount']#}场，参与人数：{#$detail_user['regCount']#}人</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="himgGroup">
+				{#if $detail_imglist|@count ==0#}
+					<div class="himg_box_single"><img src="{#$detail_litpic#}"></div>
+				{#else#}
+					{#$r = $detail_imglist|@count #}
+					{#foreach from=$detail_imglist item=img key="key"#}
+					{#if $r==1#}
+					<div class="himg_box_single"><img src="{#$img#}"></div>
+					{#elseif $key<3#}
+					<div class="himg_box1"><img src="{#$img#}"></div>
+					{#/if#}
+					{#/foreach#}
+				{#/if#}
+			</div>
+		</div>
+		<div class="html2_pub">
+			<h2 class="h_title">{#$cfg_shareTitle#}</h2>
+			<p>{#$cfg_shareDesc#}</p>
+			<div class="html2_qrcode"><img src="/include/qrcode.php?data={#getUrlPath service='huodong' template='detail'  id={#$detail_id#} #}"></div>
+			<h3><span>长按识别二维码看详情</span></h3>
+		</div>
+
+	</div>
+</div>
+{#include file="../../../siteConfig/touch_poster.html"#}
+<!-- 海报 -->
+
+
+
+
+	<div class="detailed-head">
+		<img src="{#$detail_litpic#}" alt="{#$detail_title#}">
+	</div>
+	<div class="detailed-title">
+		<p>{#$detail_title#}</p>
+	</div>
+	<div class="de-lead">
+		<div class="dele-left">
+			<span>{#$detail_pubdate|date_format:"%Y-%m-%d"#}</span>
+			<p><img src="{#$templets_skin#}images/mb_share_wrap_icon_1.png" alt=""> {#$detail_click#}</p>
+		</div>
+	</div>
+	<div class="de-list">
+		<ul>
+			<li class="list-1">
+				<b></b>
+				<p>{#$detail_began|date_format:"%Y-%m-%d %H:%M"#} 至 {#$detail_end|date_format:"%Y-%m-%d %H:%M"#}</p>
+			</li>
+			<li class="list-2">
+				<b></b>
+				<p>{#$detail_addrname[1]#} {#$detail_addrname[2]#} {#$detail_addrname[3]#} {#$detail_address#}</p>
+			</li>
+			<li class="list-3">
+				<b></b>
+				<p>已报名<span>{#$detail_reg#}</span>人{#if $detail_feetype == 0#} / 限<span>{#$detail_max#}</span>人报名{#/if#}</p>
+			</li>
+			<li class="list-4">
+				<b></b>
+				{#if $detail_feetype == 1#}
+				<em>收费</em><i></i>
+				{#else#}
+				<em>免费</em>
+				{#/if#}
+			</li>
+		</ul>
+	</div>
+	<div class="de-host">
+		<div class="de-host-i">
+			<div class="touxiang">
+				<a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}"><img src="{#$detail_user['photo']#}" alt=""></a>
+			</div>
+			<ul class="fn-clear">
+				<li>
+					<a href="{#getUrlPath service='huodong' template='business' id={#$detail_uid#}#}"><h2>{#$detail_user['username']#}</h2></a>
+				</li>
+				<li>
+					<p>举办活动：{#$detail_user['huodongCount']#}场，参与人数：{#$detail_user['regCount']#}人</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div class="content-lead">
+			<p>活动详情</p>
+		</div>
+		<div class="content-body">
+			{#$detail_body#}
+		</div>
+	</div>
+	<div class="apply">
+		<div class="apply-lead">
+			<p class="al-left">已报名({#$detail_reg#})</p>
+		</div>
+		<div class="member">
+			<ul class="fn-clear">
+				{#huodong action='regList' hid={#$detail_id#}#}
+				<li>
+					<a href="{#getUrlPath service='huodong' template='business' id={#$row.uid#}#}"><img src="{#if $row.photo#}{#$row.photo#}{#else#}{#$cfg_staticPath|cat:"images/noPhoto_100.jpg"#}{#/if#}" alt=""></a>
+					<a href="{#getUrlPath service='huodong' template='business' id={#$row.uid#}#}">{#$row.nickname|default:'匿名'#}</a>
+				</li>
+				{#/huodong#}
+			</ul>
+		</div>
+	</div>
+	<div class="discuss" id="replyList" data-url="{#getUrlPath service='huodong' template='business' id='%id'#}">
+		<div class="discuss-lead">
+			<p>讨论(<em>{#$detail_reply#}</em>)</p>
+			<span class="reply">我要讨论</span>
+		</div>
+		<ul></ul>
+		<div class="loading"><img src="{#$cfg_staticPath#}/images/ui/loading.gif" alt=""></div>
+	</div>
+	<div class="select">
+		<div class="apply-lead">
+			<p class="al-left">相关活动</p>
+			<a href="{#getUrlPath service='huodong' template='list'#}" class="al-right">查看更多</a>
+		</div>
+		<ul>
+			{#huodong action='hlist' return='list' typeid={#$detail_typeid#} page='1' pageSize='10'#}
+			<li>
+				<a href="{#$list.url#}">
+					<img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}" alt="{#$list.title#}">
+					<div class="select-txt">
+						<h3>{#$list.title#}</h3>
+						<p>{#$list.addrname[0]#} {#$list.addrname[1]#}</p>
+						<span>
+							<b>{#$list.began|date_format:"%Y-%m-%d %H:%M"#}</b>
+							<em>{#if $list.feetype == 1#}{#echoCurrency type='symbol'#}{#$list.mprice#}{#else#}免费{#/if#}</em>
+						</span>
+					</div>
+				</a>
+			</li>
+			{#/huodong#}
+		</ul>
+	</div>
+	<div class="detailed-foot">
+		<a href="{#$huodong_channelDomain#}" class="foot-1">返回首页</a>
+		{#if $userinfo#}
+		<a href="{#$cfg_basehost#}/logout.html" class="foot-2">退出</a>
+		{#else#}
+		<a href="{#$cfg_basehost#}/login.html" class="foot-2">登录</a>
+		{#/if#}
+	</div>
+	<div class="deta-join">
+		<ul>
+			<li class="jo-1">
+				<a href="{#getUrlPath service='huodong' template='fabu'#}"><span></span><p>我也要发活动</p></a>
+			</li>
+			<li class="jo-2">
+				{#if $detail_collect == "has"#}
+				<a href="javascript:;" class="collect gy"><span></span><p>已收藏</p></a>
+				{#else#}
+				<a href="javascript:;" class="collect"><span></span><p>收藏</p></a>
+				{#/if#}
+			</li>
+			<li class="jo-3">
+			{#if $now < $detail_end#}
+				{#if $detail_isbaoming#}
+				<a href="javascript:;" class="baoming-yes cancel"><span></span><p>取消报名</p></a>
+				{#else#}
+					{#if $detail_surplus > 0#}
+						{#if $detail_feetype#}
+							<a href="javascript:;" class="baoming-yes tm"><span></span><p>我要报名<br><em>剩余{#($detail_surplus/3600/24)|ceil#}天截止</em></p></a>
+						{#else#}
+							{#if $detail_max <= $detail_reg#}
+							<a href="javascript:;" class="baomingend"><span></span><p>名额已用完</p></a>
+							{#else#}
+							<a href="javascript:;" class="baoming-yes tm"><span></span><p>我要报名<br><em>（剩余{#($detail_surplus/3600/24)|ceil#}天截止）</em></p></a>
+							{#/if#}
+						{#/if#}
+					{#else#}
+						<a href="javascript:;" class="baomingend"><span></span><p>报名已截止</p></a>
+					{#/if#}
+				{#/if#}
+			{#else#}
+				<a href="javascript:;" class="baomingend"><span></span><p>活动已结束</p></a>
+			{#/if#}
+			</li>
+		</ul>
+	</div>
+
+	<div class="black"></div>
+	<div class="baoming">
+		<div class="bm-lead">
+			<p>请在以下收费类型中选择</p>
+			<span><img src="{#$templets_skin#}images/web_party_date_close2.png" alt=""></span>
+		</div>
+		<ul>
+			{#if $detail_feetype == 1#}
+			{#$no=0#}
+			{#foreach from=$detail_feeList item=fee#}
+			<li{#if $no++ == 0#} class="baoming-first"{#/if#} data-id="{#$fee.id#}">
+				<div class="bm-1">
+					<p>{#$fee.title#}</p><span>{#if $fee.max == 0#}不限制人数{#else#}剩余：<b>{#$fee.max-$fee.reg#}</b>{#/if#}</span>
+				</div>
+				<div class="bm-2"><p>{#echoCurrency type='symbol'#}</p>{#$fee.price#}</div>
+				<div class="bm-3"></div>
+			</li>
+			{#/foreach#}
+			{#/if#}
+		</ul>
+		<div class="baoming-foot">
+			<a href="javascript:;" class="baomin_next">下一步</a>
+		</div>
+	</div>
+
+	<div class="black1"></div>
+	<div class="baoming1">
+		<div class="bm-lead">
+			<p>填写报名信息</p>
+			<span class="close_alert"><img src="{#$templets_skin#}images/web_party_date_close2.png" alt=""></span>
+		</div>
+		<div class="popupForm">
+			<dl class="fn-clear" data-id="姓名" data-type="text" data-required="1">
+				<dt>姓名</dt>
+				<dd><input type="text" placeholder="请输入您的姓名"{#if $userinfo#} value="{#$userinfo['nickname']#}"{#/if#} /></dd>
+			</dl>
+			<dl class="fn-clear" data-id="手机" data-type="text" data-required="1">
+				<dt>手机</dt>
+				<dd>
+					<div class="inpbdr fn-clear">
+				      <span class="areacode_span"><label>+{#$internationalPhoneSection[0]['code']#}</label></span>    
+				      <input type="text" placeholder="请输入您的手机"{#if $userinfo#} value="{#$userinfo['phone']#}"{#/if#} class="code_phone" />
+				    </div>
+				    <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">					
+				</dd>
+			</dl>
+			{#foreach from=$detail_property item=p key=k#}
+			<dl class="fn-clear" data-id="{#$p.title#}" data-type="{#$p.type#}" data-required="{#$p.required#}">
+				<dt>{#$p.title#}{#if $p.required == 0#} (选填){#/if#}</dt>
+				<dd>
+					{#if $p.type == 'text'#}
+					<input type="text" placeholder="请输入{#$p.title#}" />
+					{#elseif $p.type == 'text_long'#}
+					<textarea maxlength="200" placeholder="请输入{#$p.title#}"></textarea>
+					{#elseif $p.type == 'single_vote'#}
+					{#foreach from=$p.val item=i#}
+					<label><input type="radio" name="single{#$k#}" value="{#$i#}" /> {#$i#}</label>
+					{#/foreach#}
+					{#elseif $p.type == 'multi_vote'#}
+					{#foreach from=$p.val item=i#}
+					<label><input type="checkbox" name="single{#$k#}" value="{#$i#}" /> {#$i#}</label>
+					{#/foreach#}
+					{#/if#}
+				</dd>
+			</dl>
+			{#/foreach#}
+		</div>
+		<div class="baoming-foot">
+			<a href="javascript:;" class="baomin_next1">下一步</a>
+		</div>
+	</div>
+
+	<div class="layer">
+		<div class="top fn-clear">
+		<div class="top-l fn-left"><a href="javascript:;">发表讨论</a></div>
+		<div class="top-r fn-right">发表</div>
+		</div>
+		<div class="txt">
+			<div class="textarea" contenteditable="true"></div>
+		</div>
+		<div class="editor">
+			<input class="item emotion" type="button" />
+		</div>
+		<div class="emotion-box">
+			<ul>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+				<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+<!-- 区号弹出层 s -->
+  <div class="layer_code">
+    {#* 国籍/地区  *#}
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div> 
+    <div class="layer_list" id="layer_list">
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <!-- 区号弹出层 e -->
+  <div class="mask-code" id="maskReg"></div>
+<div id="popupReg-captcha-mobile"></div>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '时间：{#$detail_began|date_format:"%Y-%m-%d %H:%M"#} 至 {#$detail_end|date_format:"%Y-%m-%d %H:%M"#}，地址：{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='huodong' template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

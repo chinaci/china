@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>搜索活动</title>
+<meta name="keywords" content="搜索活动,{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = '搜索活动'#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="l-search">
+	<div class="find">
+		<form action="{#getUrlPath service='huodong' template='list'#}" class="search_form">
+			<input type="text" placeholder="搜索活动" name="keywords" id="keywords">
+			<a href="javascript:;" class="search_btn"></a>
+		</form>
+	</div>
+	<div class="find-list">
+		{#huodong action='hlist' orderby='reg' pageSize='5' #}
+		<a href="{#getUrlPath service='huodong' template='detail' id="{#$row.id#}"#}">{#substr($row.title,0,12)#}</a>
+		{#/huodong#}
+	</div>
+</div>
+<div class="search-list">
+	<ul>
+		{#huodong action='type' return='type'#}
+		<li class="list-{#if ($_bindex.type+1)%2 == 0#}1{#else#}2{#/if#}">
+			<a href="{#getUrlPath service='huodong' template='list' typeid="{#$type.id#}"#}">
+				<img src="{#$templets_skin#}images/type_icon_{#$_bindex.type#}.png" alt="">
+				<span>{#$type.typename#}</span>
+			</a>
+		</li>
+		{#/huodong#}
+		<li class="list-{#if ($pageInfo.totalCount+1)%2 == 0#}1{#else#}2{#/if#}">
+			<a href="{#getUrlPath service='huodong' template='list'#}">
+				<img src="{#$templets_skin#}images/type_icon_all.png" alt="">
+				<span>全部活动</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="search-foot"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$huodong_description#}',
+		"title": '{#$huodong_title#}',
+		"imgUrl": '{#$huodong_logoUrl#}',
+		"link": '{#$huodong_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/search.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

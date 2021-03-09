@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>活动列表</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/information.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+var id = {#$id#}, page = 1, pageSize = 9999;
+</script>
+</head>
+<body>
+	<div class="infor-head fn-clear">
+		<a href="javascript:history.back(-1);" class="goBack"></a>
+		<div class="touxiang">
+			<p><img src="{#$photo#}" alt=""></p>
+		</div>
+		<div class="id">{#$username#}</div>
+		<div class="canyu">
+			<span><font>{#$huodongCount#}</font>场活动</span><span><font>{#$regCount#}</font>人参与</span>
+		</div>
+	</div>
+	<div class="all">
+		<p>全部活动</p>
+	</div>
+	<div class="list-body">
+		<ul></ul>
+	</div>
+
+<script src="{#$cfg_basehost#}/static/js/common-touch.js"></script>
+<script src="{#$templets_skin#}js/business.js"></script>
+</body>
+</html>
