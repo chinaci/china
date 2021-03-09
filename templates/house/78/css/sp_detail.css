@@ -1,0 +1,119 @@
+a:hover {text-decoration: underline;}
+
+.crumb {border-bottom: 1px solid #eee;}
+
+.zu-info {position: relative; margin: 20px auto;}
+.zu-info .name {margin-bottom: 8px; font-size: 24px; color: #000;}
+.zu-info .time {color: #999; line-height: 25px;}
+.zu-info .tools {position: absolute; right: 0; bottom: 5px;}
+.zu-info .tools a {position: relative; float: left; margin-left: 22px; padding-left: 20px;}
+.zu-info .tools a i {position: absolute; left: 0; top: 1px; width: 16px; height: 16px; background: url('../images/zuSprite.png');}
+.zu-info .tools a.share i {background-position: -26px 0;}
+.zu-info .tools a.report i {background-position: -44px 0;}
+
+
+/* 幻灯 */
+.slide {float: left; width: 430px; position: relative;}
+.slide .bigimg {height: 290px; overflow: hidden;}
+.slide .bigimg li {height: 290px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.slide .bigimg li i {display: inline-block; height: 100%; vertical-align: middle;}
+.slide .bigimg li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.slide .imgctrl {position: relative; height: 60px; padding: 0 20px; margin-top: 10px;}
+.slide .imgctrl ul {height: 60px; overflow: hidden;}
+.slide .imgctrl li {float: left; width: 88px; height: 57px; border: 1px solid #efefef; margin: 0 3px 0 4px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; cursor: pointer;}
+.slide .imgctrl li.on {border-color: #cd0001;}
+.slide .imgctrl li i {display: inline-block; height: 100%; vertical-align: middle;}
+.slide .imgctrl li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+
+.slide .imgctrl .tprev, .slide .imgctrl .tnext {position: absolute; top: 0; bottom: 0; width: 15px; background-color: #f7f7f7;}
+.slide .imgctrl .tprev {left: 0;}
+.slide .imgctrl .tnext {right: 0;}
+.slide .imgctrl .tprev s, .slide .imgctrl .tnext s {position: absolute; left: 50%; top: 50%; width: 5px; height: 9px; margin: -5px 0 0 -3px; background: url(../images/hx-pic-icon.png) -28px 0;}
+.slide .imgctrl .tnext s {background-position: -34px 0;}
+.slide .imgctrl a:hover.tprev s {background-position: -28px -10px;}
+.slide .imgctrl a:hover.tnext s {background-position: -34px -10px;}
+
+.slide .prev, .slide .next {position: absolute; top: 130px; width: 40px; height: 50px; background: url('../images/slider.png') 0 -25px; filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; z-index: 6; transition: opacity .2s;}
+.slide .prev {left: 0;}
+.slide .next {right: 0; background-position: 0 -100px;}
+.slide:hover .prev, .slide:hover .next {filter: alpha(opacity=40); -moz-opacity: 0.4; -khtml-opacity: 0.4; opacity: 0.4;}
+.slide a:hover.prev, .slide a:hover.next {filter: alpha(opacity=80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8;}
+
+
+/* 基本信息 */
+.param {float: left; width: 410px; margin-left: 25px; font-size: 14px;}
+.param .price {margin-bottom: 5px;}
+.param .data span {float: left; width: 50%; height: 35px; line-height: 35px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.param .data span label {float: left; width: 75px;}
+.param p {line-height: 35px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.param p a {color: #2c81cd;}
+.param .price {color: #bc0a0a;}
+.param .price strong {font-size: 20px; margin-right: 3px; font-weight: 500;}
+.param em {font-size: 12px; color: #666;}
+.param .tel {position: relative; height: 53px; margin: 20px 0 0 83px; line-height: 53px; background-color: #f7f7f7; font-size: 30px; color: #7d7d7d; border-radius: 0 30px 30px 0; text-align: center; text-indent: -20px;}
+.param .tel s {position: absolute; left: -83px; top: 0; width: 83px; height: 53px; background: url('../images/saleDetailSprite.png');}
+
+/* 发布人信息 */
+.manager {display: none; float: right; position: relative; width: 262px; padding: 35px 18px; background-color: #f7f7f7; border: 1px solid #eee;}
+.w1200 .manager {display: block;}
+.manager i {position: absolute; right: 5px; top: -6px; width: 30px; height: 39px; background: url('../images/saleDetailSprite.png') -84px 0;}
+.manager .pho {float: left; width: 112px; height: 153px; margin-right: 17px; border: 1px solid #ececec; box-shadow: 0 0 5px rgba(176,176,176,0.19);}
+.manager .pho img {display: block; width: 106px; height: 147px; border: 3px solid #fff;}
+.manager .info {position: relative; overflow: hidden;}
+.manager .info h3 {font-size: 16px; margin-bottom: 3px;}
+.manager .info h3 a {color: #000;}
+.manager .info p {font-size: 14px;}
+.manager .info p a {color: #666;}
+.manager .info .split {height: 1px; overflow: hidden; background-color: #fff; border-top: 1px solid #ebebeb; margin: 15px 0;}
+.manager .cert span {float: left; width: 50%; text-align: center;}
+.manager .info span s {display: block; width: 47px; height: 26px; margin: 0 auto 3px; background: url('../images/saleDetailSprite.png');}
+.manager .info .per s {background-position: -132px 0;}
+.manager .info .com s {background-position: -132px -26px;}
+
+/* 导航 */
+.sub-nav {position: relative; z-index: 100; height: 45px; margin-top: 30px;}
+.sub-nav .wrap {position: relative; height: 43px; background-color: #f7f7f7; line-height: 43px; border-top: 2px solid #c0140a;}
+.container .fixnav {position: absolute; left: 0; top: 0; right: 0;}
+.container .fixed .fixnav {position: fixed;}
+.sub-nav li {float: left;}
+.sub-nav li a {display: block; padding: 0 25px; font-size: 16px;}
+.sub-nav li.curr a {background-color: #c0140a; color: #fff;}
+
+
+/* 内容 */
+.sub-title {margin-top: 20px; border-bottom: 1px solid #eee; height: 30px; line-height: 30px;}
+.sub-title span {display: inline-block; padding-right: 10px; border-bottom: 1px solid #000; color: #000; font-size: 18px;}
+.content {padding: 10px 0; margin-top: 10px; font-size: 14px; line-height: 1.8em;}
+
+/* 照片 */
+.gallery {padding-left: 10px;}
+.gallery li {float: left; width: 450px; height: 350px; overflow: hidden; margin: 0 0 25px 25px; background-color: #ededed;}
+.w1200 .gallery li {width: 540px; height: 400px; margin: 0 0 28px 30px;}
+.gallery li a {display: block; position: relative; height: 350px; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.w1200 .gallery li a {height: 400px;}
+.gallery li a i {display: inline-block; height: 100%; vertical-align: middle;}
+.gallery li a img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.gallery li a s {position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; background: url('../images/gallery_mag.png'); display: none;}
+.gallery li a:hover s {display: block;}
+
+.mlist {padding: 15px 0; border-top: 1px solid #eee;}
+.mlist h2 {padding-bottom: 10px; font-size: 18px;}
+.gzlist {overflow: hidden; margin: 30px auto 0;}
+.gzlist h3 {font-size: 20px; margin-bottom: 18px;}
+.gzlist ul {width: 180%;}
+.gzlist li {float: left; margin: 0 45px 0 0; width: 216px; font-size: 14px;}
+.w1200 .gzlist li {margin-right: 30px;}
+.gzlist .pic, .gzlist .pic img {width: 216px; height: 150px; display: block;}
+.gzlist .pic {position: relative;}
+.gzlist .pic i, .gzlist .pic em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+.gzlist .pic i {background-color: #c0140a;}
+.gzlist .pic em {background-color: #93b94c;}
+.gzlist .title {font-size: 16px; margin: 3px 0 0; line-height: 30px; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.gzlist .price {color: #333; line-height: 25px;}
+.gzlist .price strong {color: #c0140a; font-weight: 500;}
+.gzlist .price span {float: right;}
+
+/*收藏*/
+.zu-info .tools a.collect {padding-left: 22px;}
+.zu-info .tools a.collect i {width: 16px;background: url('../images/collect.png')}
+.zu-info .tools a.collect.has i {background-position: -16px 0;};

@@ -1,0 +1,155 @@
+/* sprite */
+.jsq s, .bj s, .kp s, .smap s, .hx s, .tcount s, .tools a s, .checkbox i, .mark-tip-sign {position: absolute; left: 0; top: 0; background-image: url('../images/loupanSprite.png'); background-repeat: no-repeat;}
+
+/* 楼盘基本信息 */
+.loupan-detail {padding: 30px 0;}
+
+/* 图集 */
+.lp-img {float: left; position: relative; width: 420px; margin-right: 15px; overflow: hidden;}
+.lp-img .slider {height: 310px; overflow: hidden;}
+.lp-img .slider li {display: none; position: relative; display: block; width: 420px; height: 310px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.lp-img .slider li i {display: inline-block; height: 100%; vertical-align: middle;}
+.lp-img .slider img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
+.lp-img .imgctrl {margin-top: 10px;}
+.lp-img .imgctrl ul {width: 120%;}
+.lp-img .imgctrl li {float: left; position: relative; width: 80px; height: 60px; text-align: center; border: 2px solid #fff; cursor: pointer;}
+.lp-img .imgctrl li img {width: 80px; height: 60px;}
+.lp-img .imgctrl li s {display: none;}
+.lp-img .imgctrl li.on {border-color: #e43;}
+.lp-img .imgctrl li.on s {display: block; position: absolute; top: -16px; left: 50%; margin-left: -5px; height: 0; width: 0; border: 7px solid transparent; border-bottom-color: #e43;}
+.lp-img .prev, .lp-img .next {position: absolute; top: 130px; width: 40px; height: 50px; background: url('../images/slider.png') 0 -25px; filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; z-index: 6; transition: opacity .2s;}
+.lp-img .prev {left: 0;}
+.lp-img .next {right: 0; background-position: 0 -100px;}
+.lp-img:hover .prev, .lp-img:hover .next {filter: alpha(opacity=40); -moz-opacity: 0.4; -khtml-opacity: 0.4; opacity: 0.4;}
+.lp-img a:hover.prev, .lp-img a:hover.next {filter: alpha(opacity=80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8;}
+
+/* 说明 */
+.lp-txt {position: relative; overflow: hidden; font-size: 15px;}
+.lp-txt .price {height: 50px; line-height: 50px; margin: -5px 0 10px;}
+.lp-txt .price label {color: #666;}
+.lp-txt .price strong {font-size: 40px; color: #e43; font-weight: 500; font-family: Georgia; vertical-align: -5px;}
+.jsq, .bj, .kp, .smap, .hx {position: relative; padding-left: 25px; margin-left: 10px;}
+.jsq {margin-left: 20px;}
+.jsq s {width: 12px; height: 14px; background-position: -2px 0; top: 3px; left: 5px;}
+a:hover.jsq s {background-position: -18px 0;}
+.bj s, .kp s {width: 12px; height: 16px; background-position: -2px -30px; top: 2px; left: 6px;}
+a:hover.bj s, a:hover.kp s {background-position: -18px -30px;}
+.smap s {width: 14px; height: 16px; background-position: -1px -14px; top: 2px; left: 5px;}
+a:hover.smap s {background-position: -17px -14px;}
+.hx s {width: 13px; height: 10px; background-position: -2px -46px; top: 5px; left: 5px;}
+a:hover.hx s {background-position: -18px -46px;}
+
+.lp-txt p {line-height: 36px; color: #333; overflow: hidden; white-space: nowrap;}
+.lp-txt p label {color: #999;}
+.ml30 {margin-left: 30px;}
+.kp {margin-left: 15px;}
+.zlhx a {margin-right: 15px;}
+.red {color: #e43;}
+.gray {color: gray;}
+
+
+/* 看房团 */
+.lp-txt .tuan {padding: 10px 15px 15px; margin-top: 5px; background: #fff2e9;}
+.lp-txt .tuan label {float: left; margin-right: 5px; color: #999; line-height: 35px;}
+.lp-txt .tuan .tinfo {position: relative; overflow: hidden;}
+.lp-txt .tuan .tinfo p {color: #c00; padding-bottom: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.lp-txt .tuan .tinfo .time {float: left; line-height: 28px;}
+.lp-txt .tuan .tinfo .time span {line-height: 26px; font-size: 14px; color: #333;}
+.lp-txt .tuan .tinfo .time em {color: #fff; width: 25px; height: 26px; display: inline-block; background: #333; border-radius: 3px; margin: 0 4px; text-align: center;}
+.lp-txt .tuan .tinfo .tcount {position: relative; float: left; margin: 0 20px 0 15px; padding-left: 25px; line-height: 28px;}
+.lp-txt .tuan .tinfo .tcount s {width: 16px; height: 16px; background-position: 0 -56px; top: 6px; left: 6px;}
+.lp-txt .tuan .tinfo .sqbtn {float: left; border-radius: 4px; background-color: #f33; color: #fff; width: 77px; height: 28px; line-height: 28px; text-align: center;}
+.lp-txt .tuan .tinfo a:hover.sqbtn {background-color: #f00}
+
+
+/* 动态 */
+.news {position: relative; overflow: hidden; margin-bottom: 30px;}
+.tit {height: 30px; line-height: 26px; color: #333; font-size: 30px; padding-left: 13px; border-left: 3px solid #ee4433; overflow: hidden;}
+.tit h3 {float: left;}
+.tit .more {float: right; font-size: 14px; margin-top: 2px;}
+.news .tit {margin-bottom: 15px;}
+.news .nl {border-top: 1px solid #eee; padding-top: 15px;}
+.news .nl dl {margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 15px;}
+.news .nl dt {height: 30px; line-height: 30px; overflow: hidden;}
+.news .nl dt span {float: right; width: 85px; color: #999; font-size: 14px;}
+.news .nl dt a {position: relative; overflow: hidden; font-size: 18px;}
+.news .nl dt a em {height: 19px; padding: 0 5px; line-height: 19px; border: 1px solid #fa9344; color: #fa9344; display: inline-block; vertical-align: 2px; margin-right: 15px; font-size: 14px;}
+.news .nl dd {display: none; color: #666; line-height: 25px; margin-top: 10px; font-size: 14px; word-break: break-all;}
+.news .nl dd a {color: #e43; margin-left: 5px;}
+.news .nl .curr dt a {font-size: 24px;}
+.news .nl .curr dd {display: block;}
+
+
+/* 位置 */
+.map {margin: 40px auto;}
+.map-con {margin-top: 20px;}
+.map-box {position: relative; overflow: hidden; height: 500px;}
+.map-detail {float: right; width: 400px; margin-left: 20px;}
+.map-con.google .map-detail {display: none;}
+.map-con.amap .map-detail {display: none;}
+.map-con.qq .map-detail {display: none;}
+.map-tab {height: 35px; border-bottom: 2px solid #e43; font-size: 20px; margin-bottom: 10px;}
+.map-tab li {float: left; width: 100px; height: 35px; line-height: 35px; text-align: center; cursor: pointer; overflow: hidden;}
+.map-tab li.active {background-color: #e43; color: #fff;}
+.map-list p {height: 36px; display: block; line-height: 36px; margin-left: 10px; overflow: hidden; white-space: nowrap; font-size: 16px;}
+.map-ul {margin-top: 3px; height: 378px; overflow-y: auto; overflow-x: hidden;}
+.map-ul .load {text-align: center; line-height: 200px;}
+.map-ul li {height: 46px; line-height: 46px; margin-left: 10px; cursor: pointer;}
+.map-ul li .icon {float: left; width: 36px; height: 36px; vertical-align: middle;}
+.map-icon {background: url('../images/map_icon_24.png') no-repeat 0 0; _background: url('../images/map_icon_8.png') no-repeat 0 0;}
+.map-ul li .sch, .mark-icon-box .sch {background-position: 0 0;}
+.map-ul li.active .sch, .mark-icon-box .sch:hover, .life-map-active .sch {background-position: 0 -44px;}
+.map-ul li .hos, .mark-icon-box .hos {background-position: -47px 0;}
+.map-ul li.active .hos, .mark-icon-box .hos:hover, .life-map-active .hos {background-position: -47px -44px;}
+.map-ul li .bus, .mark-icon-box .bus {background-position: -96px 0;}
+.map-ul li.active .bus, .mark-icon-box .bus:hover, .life-map-active .bus {background-position: -96px -44px;}
+.map-ul li .buy, .mark-icon-box .buy {background-position: -142px 0;}
+.map-ul li.active .buy, .mark-icon-box .buy:hover, .life-map-active .buy {background-position: -142px -46px;}
+.map-ul li .met, .mark-icon-box .met {background-position: -190px 0;}
+.map-ul li.active .met, .mark-icon-box .met:hover, .life-map-active .met {background-position: -190px -45px;}
+.map-ul li .bin, .mark-icon-box .bin {background-position: -237px 0;}
+.map-ul li.active .bin, .mark-icon-box .bin:hover, .life-map-active .bin {background-position: -237px -46px;}
+.map-ul li .bank, .mark-icon-box .bank {background-position: -284px 0;}
+.map-ul li.active .bank, .mark-icon-box .bank:hover, .life-map-active .bank {background-position: -284px -45px;}
+
+.mark-icon-box {width: 28px; height: 36px; position: absolute; top: 260px; z-index: 98;}
+.mark-icon-box .mark-icon {width: 36px; height: 36px; display: block; cursor: pointer;}
+.mark-tip {width: 218px; font-size: 14px; position: absolute; z-index: 99; background: #fff; padding: 5px 15px 5px 27px; border-radius: 5px; box-shadow: 3px 3px 8px #888;}
+.mark-tip-sign {width: 14px; height: 16px; position: absolute; left: 9px; top: 8px; background-position: -1px -14px;}
+.mark-tip .title {line-height: 22px; color: #e43;}
+.mark-tip .title span {display: block; width: 170px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.mark-tip .title b {font-weight: normal; display: block; position: absolute; top: 5px; right: 10px;}
+.mark-tip .content {line-height: 20px; color: #333; max-height: 60px; display: block; overflow: hidden; _height: 60px;}
+.mark-tip .icon {width: 17px; height: 9px; background-position: -51px -90px; position: absolute; bottom: -9px; left: 20px; _bottom: -16px;}
+.life-mark {position: absolute; text-align: center; white-space: nowrap; top: 100px; z-index: 99;}
+.life-mark .text {font-size: 16px; color: #fff; padding: 0 20px; line-height: 30px; background: #f60; border-radius: 4px;}
+.life-mark .icon {width: 32px; height: 20px; background-position: 0 -90px; margin: 0 auto -12px; display: block;}
+
+.map-ul li .text {float: left; line-height: 40px; width: 265px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.map-ul li .text .gray {font-size: 14px;}
+.map-ul .distance {margin-right: 2px; float: right; font-size: 14px; line-height: 40px; overflow: hidden;}
+
+
+/* 热门推荐 */
+.h-rec {overflow: hidden;}
+.r-list {width: 110%; margin-top: 30px;}
+.r-item {float: left; width: 300px; margin-right: 50px;}
+.w1200 .r-item {width: 353px; margin-right: 70px;}
+.r-item h4 {font-size: 20px; margin-bottom: 18px;}
+.r-item dl {height: 105px;}
+.r-item dt {float: left; width: 140px; height: 105px; margin-right: 25px;}
+.r-item dt a, .r-item dt img {width: 140px; height: 105px; display: block;}
+.r-item dd {position: relative; overflow: hidden;}
+.r-item dd .title {display: block; padding-bottom: 10px; font-size: 16px; line-height: 1em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.r-item dd p {padding-bottom: 5px; color: #999; font-size: 14px;}
+.r-item dd .price {color: #e43;}
+.r-item dd .btn {display: block; width: 76px; height: 26px; background: #ee4433; line-height: 26px; color: #fff; text-align: center;}
+.r-item ul {margin-top: 15px; font-size: 12px;}
+.w1200 .r-item ul {font-size: 14px;}
+.r-item li {height: 25px; line-height: 25px; margin-bottom: 4px;}
+.r-item li a {float: left; display: block; width: 100px; margin-right: 26px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.w1200 .r-item li a {width: 138px;}
+.r-item li .price {float: left; width: 80px; color: #e43; overflow: hidden;}
+.w1200 .r-item li .price {width: 94px;}
+.r-item li .addr {float: right; width: 80px; color: #666; text-align: right; overflow: hidden;}
+.w1200 .r-item li .addr {width: 94px;}

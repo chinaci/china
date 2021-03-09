@@ -1,0 +1,621 @@
+.house{
+	width: 675px;
+	float: left;
+	margin:0 22px;
+}
+
+
+
+
+/*幻灯片*/
+.flash{
+	width: 675px;
+	height: 350px;
+	overflow: hidden;
+	margin-top: 20px;
+	position: relative;
+}
+.flash .bd {height: 350px;}
+.flash img{
+	width: 100%;
+	height: 100%;
+}
+.flash .slideshow-item{
+	position: relative;
+	height: 350px;
+}
+.flash .slideinfo{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+.flash .slideinfo .bg{
+
+}
+.flash .slideinfo h3{
+	z-index: 2;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	display: none;
+}
+.flash .slideinfo h3 a{
+	color: #fff;
+	font-size: 18px;
+	width: 450px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.flash .hd{
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	z-index: 2;
+}
+.flash .hd ul li{
+	float: left;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #7d7c77;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.flash .hd ul li.on{
+	background: #fff;
+}
+
+
+/*公用导航栏*/
+.NewsNav {
+	background: #f4f4f4;
+	height: 50px;
+	line-height: 50px;
+	width: 675px;
+	overflow: hidden;
+}
+.NewsNav ul li {
+	float: left;
+	width: 96px;
+	text-align: center;
+	font-size: 16px;
+	position: relative;
+}
+.NewsNav ul li:after{
+	content:"";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 96px;
+	height: 2px;
+	background: #23b8f6;
+	display: none;
+}
+.NewsNav ul li.NewsNav_bc:after{
+	display: block;
+}
+.NewsNav ul li a{
+	display: block;
+	font-weight: 600;
+}
+.NewsNav ul li i{
+    width: 17px;
+    height: 10px;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -6px -7px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.NewsNav ul li:hover i{
+	background-position: -32px -65px;
+}
+
+
+/*房产信息列表*/
+.House_List{
+	width: 675px;
+}
+.House_detail{
+	padding: 25px 5px;
+	border-bottom: 1px solid #dadada;
+}
+.House_detail:hover{
+	background: rgba(241, 241, 241, 0.39);
+}
+.House_detail .House_pic{
+	float: left;
+	width: 194px;
+	height: 151px;
+	overflow: hidden;
+	margin-right: 15px;
+	background: url(../images/pic.png) no-repeat center;
+}
+.House_detail .House_pic img{
+	width: 100%;
+	min-height: 150px;
+}
+.House_detail .House_title{
+	height: 30px;
+	line-height: 30px;
+}
+.House_detail .House_title .House_lead{
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+	width: 314px;
+	height: 60px;
+	overflow: hidden;
+    /*white-space: nowrap;*/
+		/*text-overflow: ellipsis;*/
+}
+.House_detail .House_title .House_lead.new_house{
+	height: 30px;
+}
+.House_detail .House_title .House_lead .sale{
+	padding: 2px 5px;
+	color: #fff;
+	border-radius: 2px;
+	background: #23b8f6;
+	margin-left: 5px;
+	font-size: 12px;
+}
+.House_detail .House_title .House_lead .bao{
+	padding: 2px 5px 2px 3px;
+	color: #fff;
+	border-radius: 2px;
+	background: #aef4de;
+	font-size: 12px;
+	margin-left: 5px;
+}
+.House_detail .House_title .House_price{
+	float: right;
+	color: #acacac;
+	font-size: 14px;
+}
+.House_detail .House_title .House_price em{
+	font-size: 18px;
+	color: #f56c1a;
+	font-weight: bold;
+}
+.House_detail .House_title .House_price i{
+	font-style: normal;
+	color: #acacac;
+	font-size: 12px;
+}
+.House_detail .House_tips{
+	margin-top: 8px;
+}
+.House_detail .House_tips em{
+	border: 1px solid #bababa;
+	color: #bababa;
+	border-radius: 2px;
+	font-size: 14px;
+	padding: 0 5px;
+	margin-right: 5px;
+}
+.House_detail .House_type{
+	color: #bababa;
+	font-size: 14px;
+	margin-top: 40px;
+}
+.House_detail .House_type2{
+	font-size: 14px;
+	margin-top: 74px;
+}
+.House_detail .House_type2 em{
+	color: #bababa;
+	margin: 0 5px;
+}
+.House_detail .House_location{
+	color: #bababa;
+	font-size: 14px;
+	margin-top: 10px;
+	height: 21px;
+	line-height: 21px;
+}
+.House_detail .House_location span{
+	float: left;
+	width: 450px;
+	height: 21px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.House_detail .House_location span i{
+    width: 17px;
+    height: 20px;
+    display: inline-block;
+    background: url(../images/infor.png) no-repeat;
+    background-position: -147px -218px;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+.House_detail .House_location2{
+	font-size: 14px;
+	margin-top: 5px;
+	height: 21px;
+	line-height: 21px;
+}
+.House_detail .House_location2 span{
+	float: left;
+	width: 450px;
+	height: 21px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.House_detail .House_location2 span i{
+    width: 17px;
+    height: 20px;
+    display: inline-block;
+    background: url(../images/infor.png) no-repeat;
+    background-position: -147px -218px;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+.House_detail .House_Tel{
+	font-size: 18px;
+	margin-top: 7px;
+}
+.House_detail .House_Tel i{
+	width: 25px;
+	height: 25px;
+	background: url(../images/infor.png) no-repeat;
+	background-position: -225px -215px;
+	display: inline-block;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+}
+.broker{
+	padding: 25px 5px;
+	border-bottom: 1px solid #dadada;
+}
+.broker:hover{
+	background: rgba(241, 241, 241, 0.39);
+}
+.broker .broker_pic{
+	float: left;
+	width: 125px;
+	margin-right: 30px;
+	height: 125px;
+	background: url(../images/per.png) no-repeat center;
+	background-size: 125px;
+}
+.broker .broker_pic img{
+	width: 125px;
+	height: 125px;
+	border-radius: 100%;
+}
+.broker .broker_name{
+	font-size: 20px;
+	font-weight: bold;
+}
+.broker .broker_name i{
+    vertical-align: text-bottom;
+    margin-left: 5px;
+    width: 25px;
+    height: 26px;
+    background: url(../images/infor.png) no-repeat;
+    display: inline-block;
+    background-position: -2px -3px;
+}
+.broker .broker_tel{
+	height: 30px;
+}
+.broker .broker_tel span{
+	float: right;
+	font-size: 18px;
+}
+.broker .broker_tel span i{
+    width: 25px;
+    height: 25px;
+    background: url(../images/infor.png) no-repeat;
+    background-position: -225px -215px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+.broker .broker_infor{
+	font-size: 14px;
+	color: #b2b2b2;
+	margin-top: 15px;
+}
+.broker .broker_infor ul li{
+	margin-top: 5px;
+}
+.broker .broker_infor a{
+	color: #b2b2b2;
+}
+
+/*右侧房产信息汇总*/
+.Information{
+	float: left;
+	width: 351px;
+	overflow: hidden;
+}
+.issue{
+	width: 371px;
+	height: 62px;
+	margin-top: 20px;
+}
+.issue a{
+	width: 170px;
+	height: 62px;
+	line-height: 62px;
+	font-size: 16px;
+	float: left;
+	text-align: center;
+	background: url(../images/btn_bc1.png) no-repeat;
+	background-size: 170px;
+	margin-right: 10px;
+}
+.Infor_list{
+	margin-top: 25px;
+	border: 1px solid #ebebeb;
+}
+.Infor_list .Infor_lead{
+	height: 44px;
+	line-height: 44px;
+	padding: 0 15px;
+	background: #f8f8f8;
+}
+.Infor_list .Infor_lead em{
+	font-size: 16px;
+	padding-left: 10px;
+	border-left: 3px solid #23b8f6;
+}
+.apply{
+	padding: 15px 15px 20px 15px;
+	font-size: 14px;
+}
+.apply .select{
+	height: 35px;
+	line-height: 35px;
+	margin-bottom: 10px;
+}
+.apply .select.choice{
+	height: 70px;
+}
+.apply .select em{
+	width: 85px;
+	float: left;
+	margin-right: 20px;
+	text-align: right;
+}
+.apply .select input{
+	width: 212px;
+	height: 33px;
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+	text-indent: 10px;
+}
+.apply .select .choice_box {
+	position: relative;
+	overflow: hidden;
+}
+.apply .select .choice_box label{
+	position: relative;
+}
+.apply .select .choice_box input{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+.apply .select .choice_box span{
+	padding-left: 20px;
+	background: url(../images/kuang.png) no-repeat left;
+	margin: 5px;
+}
+.apply .select .choice_box span.sure{
+	background: url(../images/kuang_1.png) no-repeat left;
+}
+.apply .btn{
+	margin-top: 20px;
+}
+.apply .btn input{
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	background: #23b8f6;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.apply .btn input:hover{
+	background: #179fd8;
+}
+.fast{
+	background: #f8f8f8;
+	padding: 0 15px;
+	padding-bottom: 10px;
+}
+.fast ul{
+	border-top: 1px dashed #dbdbdb;
+	padding-top: 5px;
+}
+.fast ul li{
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	font-size: 14px;
+	padding-left: 15px;
+	position: relative;
+	width: 314px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fast ul li i{
+    width: 4px;
+    height: 4px;
+    background: #000;
+    position: absolute;
+    left: 5px;
+    top: 12px;
+}
+.fast ul li.bb_top{
+	border-top: 1px dashed #dbdbdb;
+	padding-top: 5px;
+}
+.fast ul li.bb_top i{
+	top: 17px;
+}
+.Rent{
+	margin-top: 20px;
+    background: #f8f8f8;
+}
+.Rent .Rent_lead ul li{
+	float: left;
+	width: 50%;
+	text-align: center;
+	height: 50px;
+	border-bottom: 2px solid #e5e5e5;
+	line-height: 50px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.Rent .Rent_lead ul li.Rent_bc{
+	border-bottom: 2px solid #23b8f6;
+	color: #23b8f6;
+}
+.Rent_list{
+	padding: 0 12px;
+}
+.Rent_list .Rent_detail{
+	padding: 16px 0;
+	border-bottom: 1px solid #e3e3e3;
+}
+.Rent_list .Rent_detail .Rent_pic{
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	background: url(../images/pic.png) no-repeat center;
+}
+.Rent_list .Rent_detail .Rent_pic img{
+	width: 100%;
+	min-height: 100px;
+}
+.Rent_list .Rent_detail .remt_title{
+	height: 25px;
+	line-height: 25px;
+}
+.Rent_list .Rent_detail .remt_title h1{
+	float: left;
+	width: 141px;
+	height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+.Rent_list .Rent_detail .remt_title span{
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+	float: right;
+}
+.Rent_list .Rent_detail .remt_title span em{
+	color: #f36e1e;
+}
+.Rent_list .Rent_detail .house_infor{
+	font-size: 14px;
+}
+.Rent_list .Rent_detail .house_infor em{
+	color: #a9a9a9;
+	margin: 0 5px;
+}
+.Rent_list .Rent_detail .rent_place{
+	height: 25px;
+}
+.Rent_list .Rent_detail .rent_place span{
+	float: left;
+	width: 216px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Rent_list .Rent_detail .rent_tel{
+	font-size: 14px;
+	margin-top: 2px;
+}
+.Rent_list .Rent_detail .rent_tel i{
+	width: 22px;
+    height: 22px;
+    background: url(../images/infor.png) no-repeat;
+    background-position: -261px -215px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+.Qrcode{
+	margin-top: 20px;
+}
+.Qrcode ul{
+	width: 380px;
+}
+.Qrcode ul li{
+	width: 165px;
+	height: 200px;
+	float: left;
+	margin-right: 18px;
+}
+.Qrcode ul li img{
+	width: 146px;
+	height: 146px;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.Qrcode ul li p{
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.mnbtn{
+	height: 100px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	line-height: 100px;
+}
+.load-add{
+	width: 100%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 14px;
+	background: #f8f8f8;
+	color: #bfbfbf;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.load-add:hover{
+	background: #23b8f6;
+	color: #fff;
+}
+.loading{
+    text-align: center;
+    margin: 50px 0;
+    font-size: 20px;
+}
+.loading img{
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}

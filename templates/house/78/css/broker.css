@@ -1,0 +1,236 @@
+.filter .t-fi-item li a s,
+.orderby .o-r a s {background-image: url('../images/listSprite.png'); background-repeat: no-repeat;}
+
+.ml30 {margin-left: 30px;}
+a:hover {text-decoration: underline;}
+
+.detail.crumb {border-bottom: 1px solid #eee; margin-bottom: 20px;}
+
+/* 筛选 */
+.filter {position: relative; z-index: 10; margin-bottom: 25px; border: 1px solid #eee; font-size: 14px;}
+
+/* 筛选条件 */
+.filter dl {border-bottom: 1px dotted #eee;}
+.filter dl.more {border: none;}
+.filter dt {float: left; width: 70px; padding: 15px 0; text-align: right;}
+.filter dd {position: relative; overflow: hidden; padding: 5px 0 10px;}
+.filter dd a {float: left; padding: 5px 10px; margin: 5px 5px 0 0; white-space: nowrap;}
+.filter dd a.curr {color: #bc0a0a; font-weight: 700;}
+
+
+/* 侧栏 */
+.sidebar {float: right; width: 300px; margin-left: 30px;}
+.sidebar .rec {margin-bottom: 20px;}
+.sidebar .rec .rt {height: 40px; line-height: 40px; border-bottom: 1px solid #eee;}
+.sidebar .rec .rt span {float: left; padding: 0 10px 0 3px; font-size: 18px; border-bottom: 1px solid #bc0a0a;}
+.sidebar .rec dl {margin-top: 20px;}
+.sidebar .rec dl:hover {background-color: #f5f5f5;}
+.sidebar .rec dt, .sidebar .rec dt a, .sidebar .rec dt img {float: left; width: 95px; height: 110px;}
+.sidebar .rec dd {position: relative; overflow: hidden; padding-left: 20px; font-size: 14px;}
+.sidebar .rec dd h4 {font-size: 16px; margin-bottom: 10px;}
+.sidebar .rec dd p {line-height: 1.8em;}
+
+/* 经纪人基本信息 */
+.profile {border-top: 2px solid #bd0b0b; padding: 20px 12px; border-bottom: 1px solid #ebebeb;}
+.profile dt {float: left; width: 94px; height: 94px; border: 1px solid #f1f1f0; padding: 3px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px rgba(176, 176, 175, 0.4); overflow: hidden;}
+.profile dt img {width: 94px; height: 94px; display: block; border-radius: 50%;}
+.profile dd {position: relative; overflow: hidden; padding-left: 20px;}
+.profile dd h2 {font-size: 16px; line-height: 40px; color: #000;}
+.profile dd ul {margin-top: 10px;}
+.profile dd li {float: left; width: 40%; text-align: center;}
+.profile dd li s {display: block; width: 34px; height: 21px; margin: 0 auto; background: url('../images/broker.png');}
+.profile dd li.mc s {background-position: -34px 0;}
+
+.sidebar .tel {position: relative; height: 53px; margin: 20px 0 20px 83px; line-height: 53px; background-color: #f7f7f7; font-size: 24px; color: #7d7d7d; border-radius: 0 30px 30px 0; text-align: center; text-indent: -20px;}
+.sidebar .tel s {position: absolute; left: -83px; top: 0; width: 83px; height: 53px; background: url('../images/saleDetailSprite.png');}
+
+.sidebar .item {margin: 10px 0;}
+.sidebar .item dt {height: 40px; line-height: 40px; border-bottom: 1px solid #eee;}
+.sidebar .item dt span {float: left; padding: 0 10px 0 3px; font-size: 18px; border-bottom: 1px solid #bc0a0a;}
+.sidebar .item dd .p {border-bottom: 1px dashed #d8d8d8; padding: 15px 0; font-size: 14px; line-height: 1.8em;}
+.sidebar .item dd .p label {float: left; width: 75px; color: #666;}
+.sidebar .item dd .p p {position: relative; overflow: hidden;}
+.sidebar .item dd .p p a {margin-right: 10px;}
+
+
+.sidebar .ad img {margin: 0; max-width: 300px;}
+
+
+.main {position: relative; overflow: hidden; padding-right: 30px; border-right: 1px solid #eee;}
+
+/* 排序 */
+.orderby {height: 40px; border-bottom: 1px solid #eee; line-height: 40px;}
+.orderby label {float: left; padding: 0 10px; font-size: 18px; border-bottom: 1px solid #bc0a0a;}
+.orderby label strong {font-weight: 500; color: #bc0a0a;}
+
+.empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
+
+/* 列表 */
+.list .item {padding: 30px 0; border-bottom: 1px solid #eee;}
+.list .item:hover {background-color: #f5f5f5;}
+.list .item .link {float: right; width: 200px; padding-top: 40px; text-align: center;}
+.list .item .link a {font-size: 16px;}
+.list .item .link .tel {min-width: 160px; height: 35px; display: inline-block; margin-top: 5px; font-size: 16px; background: #f7f7f7; border: 1px solid #eee; border-radius: 5px; line-height: 35px;}
+.list .item .link .tel s {float: left; width: 13px; height: 19px; margin: 8px 0 0 12px; background: url('../images/broker.png') -68px 0;}
+.list .item .link .tel span {float: left; margin-left: 12px; padding: 0 10px; border-left: 1px solid #eee;}
+.list .item:hover .link .tel {border-color: #ba0a0a; background: #ba0a0a; color: #fff;}
+.list .item:hover .link .tel s {background-position: -81px 0;}
+.list .item:hover .link .tel span {border-color: #a20909;}
+.list .item dl {position: relative; overflow: hidden;}
+.list .item dt, .list .item dt a, .list .item dt img {float: left; width: 130px; height: 155px;}
+.list .item dd {position: relative; overflow: hidden; padding-left: 20px;}
+.list .item h3 {height: 28px; line-height: 28px; font-size: 16px; margin-bottom: 5px;}
+.list .item h3 a {float: left; color: #000; margin-right: 10px;}
+.list .item h3 span {float: left; margin: 5px 0 0 8px; width: 34px; height: 21px; background: url('../images/broker.png');}
+.list .item h3 span.mc {background-position: -34px 0;}
+.list .item p {line-height: 25px; font-size: 14px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.list .item .count {display: inline-block; border: 1px solid #efefef; margin-top: 10px; background: #f7f7f7; height: 30px; line-height: 30px; font-size: 14px; color: #e3e3e3; overflow: hidden;}
+.list .item .count a {margin: 0 10px;}
+.list .item .count span {margin-right: -3px;}
+
+
+/* 经纪人房源列表 */
+.orderby {height: 45px; border-bottom: 1px solid #eee; line-height: 45px;}
+.orderby li {float: left; border: 1px solid #eee; border-bottom: 0; margin-right: -1px; background-color: #f9f9f9; font-size: 16px; line-height: 44px;}
+.orderby li.curr {background-color: #fff; border-top: 2px solid #c0140a;}
+.orderby li a {color: #000; padding: 0 25px; display: block;}
+
+/* 二手房列表 */
+.sale li {padding: 26px 0; border-bottom: 1px dotted #e1e1e1;}
+.sale li:hover {background-color: #fafafa;}
+.sale li .pic {float: left; width: 173px; height: 130px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
+.sale li .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%;}
+.sale li .pic i {display: inline-block; height: 100%; vertical-align: middle;}
+.sale li a:hover.pic {opacity: .8; filter: alpha(opacity=80);}
+.sale li .info {position: relative; overflow: hidden; padding-left: 20px;}
+.sale li .info h2 {overflow: hidden; text-overflow: ellipsis; font-size: 20px; white-space: nowrap; height: 32px; line-height: 20px;}
+.sale li .info h2 a {color: #000;}
+.sale li .info .col1 {float: left; width: 315px;}
+.w1200 .sale li .info .col1 {width: 515px;}
+.sale li .info .col1 p {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sale li .info .col1 .w {height: 35px; line-height: 35px; font-size: 14px; font-weight: 700; color: #666;}
+.sale li .info .col1 .w a {float: left; color: #666; margin-right: 15px;}
+.sale li .info .col1 .w span {float: left; margin-right: 15px;}
+.sale li .info .col1 .o {height: 28px; line-height: 28px; font-size: 14px; color: #888;}
+.sale li .info .col1 .o a {color: #888;}
+.sale li .info .col1 .o span {margin: 0 10px;}
+.sale li .info .col1 .tags {padding-top: 10px;}
+.sale li .info .col1 .tags span {float: left; height: 23px; border: 1px solid #fff; padding: 0 5px; line-height: 23px; font-size: 12px; margin-right: 5px;}
+.sale li .info .col1 .tags .t0, .sale li .info .col1 .tags .t3 {background-color: #f2f9fe; border-color: #82a1bb; color: #6c879e;}
+.sale li .info .col1 .tags .t1, .sale li .info .col1 .tags .t4 {background-color: #f2fff8; border-color: #86c7a2; color: #57846a;}
+.sale li .info .col1 .tags .t2, .sale li .info .col1 .tags .t5 {background-color: #fff; border-color: #4db500; color: #588c31;}
+.sale li .info .col2 {float: left; width: 130px; text-align: right;}
+.sale li .info .col2 .price {color: #e4393c;}
+.sale li .info .col2 .price strong {font-size: 30px; margin-right: 3px; font-family: tahoma; letter-spacing: -1px;}
+.sale li .info .col2 p, .sale li .info .col3 p {font-size: 12px; color: #999; font-family: Arial;}
+
+
+/* 出租房列表 */
+.zu .l-item {border-bottom: 1px solid #dedede; padding: 30px 0;}
+.zu .l-item:hover {background-color: #f5f5f5;}
+.zu .l-item .more {float: right; width: 200px; text-align: right;}
+.zu .l-item .more .price {margin-top: 15px;}
+.zu .l-item .more .price em, .zu .l-item .more .price strong {color: #c0140a;}
+.zu .l-item .more .price em {font-size: 14px;}
+.zu .l-item .more .price strong {font-size: 36px; font-family: Georgia; font-weight: 500; padding: 0 5px;}
+.zu .l-item dl {position: relative; overflow: hidden;}
+.zu .l-item dt {float: left; width: 180px; height: 135px; overflow: hidden; margin-right: 20px;}
+.zu .l-item dt a, .zu .l-item dt img {width: 180px; height: 135px; display: block;}
+.zu .l-item dt a {position: relative;}
+.zu .l-item dt a em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+.zu .l-item dt a i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+.zu .l-item dd {position: relative; overflow: hidden;}
+.zu .l-item dd h3 {font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.zu .l-item dd p {margin-top: 8px; height: 23px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.zu .l-item dd p.u {font-size: 12px;}
+.zu .l-item .addr-icon {display: inline-block; width: 10px; height: 13px; margin: -3px 5px 0 15px; background: url('../images/zuSprite.png') no-repeat; vertical-align: middle;}
+.zu .l-item dd p i {padding: 0 10px; color: #dadada; font-style: normal;}
+.zu .l-item .upd {display: inline-block; width: 12px; height: 13px; margin: -1px 5px 0 0; background: url('../images/zuSprite.png') -13px 0; vertical-align: middle;}
+.zu .l-item dd .tag {display: inline-block; height: 18px; line-height: 18px; padding: 0 5px; margin-right: 3px; border-width: 1px; border-style: solid;}
+.zu .l-item dd .t1 {border-color: #93b94c; color: #93b94c; margin-left: 20px;}
+.zu .l-item dd .t2 {border-color: #f18614; color: #f18614;}
+.zu .l-item dd .t3 {border-color: #14a0f1; color: #14a0f1;}
+
+
+/* 写字楼 */
+.xzl .l-item {border-bottom: 1px solid #dedede; padding: 30px 0;}
+.xzl .l-item:hover {background-color: #f5f5f5;}
+.xzl .l-item .more {float: right; width: 200px; text-align: right; margin-right: 15px;}
+.xzl .l-item .more .price {margin-top: 15px;}
+.xzl .l-item .more .price em, .xzl .l-item .more .price strong {color: #c0140a;}
+.xzl .l-item .more .price em {font-size: 14px;}
+.xzl .l-item .more .price strong {font-size: 36px; font-family: Georgia; font-weight: 500; padding: 0 5px;}
+.xzl .l-item dl {position: relative; overflow: hidden;}
+.xzl .l-item dt {float: left; width: 180px; height: 135px; overflow: hidden; margin-right: 20px;}
+.xzl .l-item dt a, .xzl .l-item dt img {width: 180px; height: 135px; display: block;}
+.xzl .l-item dt a {position: relative;}
+.xzl .l-item dt a em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+.xzl .l-item dt a i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+.xzl .l-item dd {position: relative; overflow: hidden;}
+.xzl .l-item dd h3 {font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.xzl .l-item dd p {margin-top: 8px; height: 23px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.xzl .l-item dd p.u {font-size: 12px;}
+.xzl .l-item .addr-icon {display: inline-block; width: 10px; height: 13px; margin: -3px 5px 0 0; background: url('../images/zuSprite.png') no-repeat; vertical-align: middle;}
+.xzl .l-item dd p i {padding: 0 10px; color: #dadada; font-style: normal;}
+.xzl .l-item .upd {display: inline-block; width: 12px; height: 13px; margin: -1px 5px 0 0; background: url('../images/zuSprite.png') -13px 0; vertical-align: middle;}
+.xzl .l-item dd .tag {display: inline-block; height: 18px; line-height: 18px; padding: 0 5px; margin-right: 3px; border-width: 1px; border-style: solid;}
+.xzl .l-item dd .t0 {margin-left: 20px;}
+.xzl .l-item dd .t0, .xzl .l-item dd .t3, .xzl .l-item dd .t6 {border-color: #93b94c; color: #93b94c;}
+.xzl .l-item dd .t1, .xzl .l-item dd .t4, .xzl .l-item dd .t7 {border-color: #f18614; color: #f18614;}
+.xzl .l-item dd .t2, .xzl .l-item dd .t5, .xzl .l-item dd .t8 {border-color: #14a0f1; color: #14a0f1;}
+
+
+ /* 商铺 */
+ .sp .l-item {border-bottom: 1px solid #dedede; padding: 30px 0;}
+ .sp .l-item:hover {background-color: #f5f5f5;}
+ .sp .l-item .more {float: right; width: 200px; text-align: right; margin-right: 15px;}
+ .sp .l-item .more .price {margin-top: 15px;}
+ .sp .l-item .more .price em, .sp .l-item .more .price strong {color: #c0140a;}
+ .sp .l-item .more .price em {font-size: 14px;}
+ .sp .l-item .more .price strong {font-size: 36px; font-family: Georgia; font-weight: 500; padding: 0 5px;}
+ .sp .l-item dl {position: relative; overflow: hidden;}
+ .sp .l-item dt {float: left; width: 180px; height: 135px; overflow: hidden; margin-right: 20px;}
+ .sp .l-item dt a, .sp .l-item dt img {width: 180px; height: 135px; display: block;}
+ .sp .l-item dt a {position: relative;}
+ .sp .l-item dt a em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+ .sp .l-item dt a i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+ .sp .l-item dd {position: relative; overflow: hidden;}
+ .sp .l-item dd h3 {font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+ .sp .l-item dd p {margin-top: 8px; height: 23px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+ .sp .l-item dd p.u {font-size: 12px;}
+ .sp .l-item .addr-icon {display: inline-block; width: 10px; height: 13px; margin: -3px 5px 0 0; background: url('../images/zuSprite.png') no-repeat; vertical-align: middle;}
+ .sp .l-item dd p i {padding: 0 10px; color: #dadada; font-style: normal;}
+ .sp .l-item .upd {display: inline-block; width: 12px; height: 13px; margin: -1px 5px 0 0; background: url('../images/zuSprite.png') -13px 0; vertical-align: middle;}
+
+
+/* 厂房 */
+.cf .l-item {border-bottom: 1px solid #dedede; padding: 30px 0;}
+.cf .l-item:hover {background-color: #f5f5f5;}
+.cf .l-item .more {float: right; width: 200px; text-align: right; margin-right: 15px;}
+.cf .l-item .more .price {margin-top: 30px;}
+.cf .l-item .more .price em, .cf .l-item .more .price strong {color: #c0140a;}
+.cf .l-item .more .price em {font-size: 14px;}
+.cf .l-item .more .price strong {font-size: 36px; font-family: Georgia; font-weight: 500; padding: 0 5px;}
+.cf .l-item dl {position: relative; overflow: hidden;}
+.cf .l-item dt {float: left; width: 180px; height: 135px; overflow: hidden; margin-right: 20px;}
+.cf .l-item dt a, .cf .l-item dt img {width: 180px; height: 135px; display: block;}
+.cf .l-item dt a {position: relative;}
+.cf .l-item dt a em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+.cf .l-item dt a i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+.cf .l-item dd {position: relative; overflow: hidden;}
+.cf .l-item dd h3 {font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.cf .l-item dd p {margin-top: 8px; height: 23px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.cf .l-item dd p.u {font-size: 12px;}
+.cf .l-item .addr-icon {display: inline-block; width: 10px; height: 13px; margin: -3px 5px 0 0; background: url('../images/zuSprite.png') no-repeat; vertical-align: middle;}
+.cf .l-item dd p i {padding: 0 10px; color: #dadada; font-style: normal;}
+.cf .l-item .upd {display: inline-block; width: 12px; height: 13px; margin: -1px 5px 0 0; background: url('../images/zuSprite.png') -13px 0; vertical-align: middle;}
+
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; margin-top: 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #efefef;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 10px;}
+.pagination li a:hover ,.pagination li.page_current span {background: #fe5050; color: #fff; border-color: #fe5050;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
