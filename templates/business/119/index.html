@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="business"#}
+
+<!-- 幻灯片部分 s-->
+<div class="banner">
+  <div class="slide" id="slide">
+    <div class="bd">
+      <div class="slideobj">
+        {#myad title="商家_模板一_电脑端_广告一" type="slide"#}
+      </div>
+      <div class="hd">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 幻灯部分 e -->
+
+<div class="container">
+
+  <!-- 加盟商家 s -->
+  <div class="jmsj"> <i class="title">加盟商家</i>
+    <div class="jmsj_nav">
+      <ul class="left fn-left">
+        <li class="left fn-left"></li>
+        {#business action="type" return="type"#}
+        {#if $_bindex.type < 10#}
+        <li><a href="{#getUrlPath service='business' template='list' param="typeid={#$type.id#}"#}">{#$type.typename#}</a></li>
+        {#/if#}
+        {#/business#}
+        <li class="right fn-right"></li>
+      </ul>
+      <a href="{#getUrlPath service='business' template='list'#}" target="_blank" class="right fn-right">更多>></a> </div>
+    <div class="sj">
+      <ul class="con">
+        {#business action='blist' return='list' pageSize="15"#}
+        <li>
+            <a href="{#$list.url#}" target="_blank">
+              <div class="code" data-url="{#$list.url#}"></div>
+              <div class="logo"><img src="{#$list.logo#}"></div>
+              <p>{#$list.title#}</p>
+            </a>
+        </li>
+        {#/business#}
+        <li class="more"> <a href="{#getUrlPath service='business' template='list'#}" target="_blank">更多加盟商家></a> </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 加盟商家 e -->
+
+  {#if in_array("shop", $installModuleArr)#}
+  <!-- 推荐商品 s -->
+  <p class="tj_title">推荐商品<a href="{#$shop_channelDomain#}" target="_blank"><span>今日热销款</span><i></i></a></p>
+  <div style="position:relative">
+    <ul class="tj_nav">
+      {#shop action="type" return="stype"#}
+      {#if $_bindex.stype < 10#}
+      <li><a href="{#getUrlPath service='shop' template='list' param="typeid={#$stype.id#}"#}">{#$stype.typename#}</a></li>
+      {#/if#}
+      {#/shop#}
+    </ul>
+    <div class="tjsp">
+      {#shop action="type" return="stype1"#}
+      {#if $_bindex.stype1 < 10#}
+      <p style="display:none">
+          {#shop action="type" return="stype2" type=$stype1.id#}
+          <a href="{#getUrlPath service='shop' template='list' param="typeid={#$stype2.id#}"#}" target="_blank" title="{#$stype2.typename#}">{#$stype2.typename#}</a>
+          {#/shop#}
+      </p>
+      {#/if#}
+      {#/shop#}
+    </div>
+  </div>
+  <div class="tjsp_con">
+    <ul >
+      {#shop action="slist" return="list" flag="0" pageSize="8"#}
+      <li><a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}"></a>
+        <p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+        <div><em><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}<s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></em><span><font>{#$list.sales#}</font>人已买</span></div>
+      </li>
+      {#/shop#}
+    </ul>
+  </div>
+  <!-- 推荐商品 e -->
+  {#/if#}
+
+  {#if in_array("tuan", $installModuleArr)#}
+  <!-- 每日团购 s -->
+  <div class="jrtg jmsj"> <i class="title">每日团购</i>
+    <div class="jmsj_nav">
+      <ul class="left fn-left">
+        <li class="left fn-left"></li>
+        {#tuan action="type" return='type'#}
+        <li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+        {#/tuan#}
+        <li class="right fn-right"></li>
+      </ul>
+      <a href="{#$tuan_channelDomain#}" target="_blank" class="right fn-right">更多&gt;&gt;</a>
+    </div>
+    <div class="multipleLine">
+      <div class="hd"> <a class="next"></a> <a class="prev"></a> </div>
+      <div class="bd">
+        <div class="ulWrap">
+
+          <ul>
+            {#tuan action="tlist" return="tuanlist" pageSize="12"#}
+            <li>
+              <div class="pic">
+                <div class="left fn-left">
+                <div class="left1"><a href="{#$tuanlist.url#}" target="_blank"><img src="{#changeFileSize url="{#$tuanlist.litpic#}" type="small"#}" /></a></div></div>
+                <div class="right fn-right">
+                  <h3><a href="{#$tuanlist.url#}" target="_blank">{#$tuanlist.title#}</a></h3>
+                  <p>{#$tuanlist.subtitle#}</p>
+                  <div class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$tuanlist.price#}</em><span><a href="{#$tuanlist.url#}" target="_blank">立即团购</a></span></div>
+                </div>
+              </div>
+            </li>
+            {#if !(($_bindex.tuanlist)%4) && $_bindex.tuanlist != 12#}
+        </ul>
+        <ul>
+            {#/if#}
+            {#/tuan#}
+          </ul>
+
+        </div>
+        <!-- ulWrap End -->
+      </div>
+      <!-- bd End -->
+    </div>
+    <!-- multipleLine End -->
+
+  </div>
+  <!-- 每日团购 e -->
+  {#/if#}
+
+</div>
+<!-- 内容部分结束 -->
+
+<!-- 底部 s -->
+<div class="footer">
+    <div class="top"></div>
+    <div class="foot">
+        <ul>
+        <li>
+          <p class="t">01认证图标，前台展现</p>
+          <p>身份真实，易于辨别，权威认证，更加可信</p>
+        </li>
+        <li>
+          <p class="t">02商户信息，自主管理</p>
+          <p>更新商户信息，快捷准确，免费上传官方相册</p>
+        </li>
+        <li>
+          <p class="t">03管理口碑，改善营运</p>
+          <p>用户口碑，随看随回，营运分析，提高服务质量 </p>
+        </li>
+        <ul>
+        <i></i>
+    </div>
+    <div class="bot">
+        <p>
+            {#siteConfig action="singel"#}
+      		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a> <span>丨</span>
+      		{#/siteConfig#}
+            <a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+        </p>
+        {#$cfg_powerby#}
+    </div>
+</div>
+<!-- 底部 e -->
+
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

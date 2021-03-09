@@ -1,0 +1,22 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px;}
+.main-con{padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 30px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*外卖列表*/
+.wmlist{width: 940px;}
+.w1200 .wmlist{width: 1140px;}
+.wmitem{width: 223px; overflow: hidden; margin-right: 10px; margin-top: 10px; float: left;}
+.w1200 .wmitem{width: 273px;}
+.wmitem .wmbox{width: 217px; border: 1px solid #E5E5E5; overflow: hidden; position: relative;}
+.w1200 .wmitem .wmbox{width: 267px;}
+.wmitem:hover .wmbox{border: 1px solid #C40000;}
+.wmitem .wmbox a{display: block; padding-bottom: 20px; border: 1px solid transparent;}
+.wmitem:hover .wmbox a{border: 1px solid #C40000;}
+.wmitem .wminfo{padding: 0 10px;}
+.wmitem .wmimg{width: 100%; height: 250px;}
+.wmitem .wmname{color: #000; margin: 12px 0 9px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+.wmitem .wmsale{color: #989898; font-size: 12px; line-height: 15px; margin: 16px 0 15px; height: 15px; width: 85%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.wmitem .wmprice{color: #dd2727; font-weight: 700; font-size: 18px;}
+.wmitem .wmcart{position: absolute; width: 54px; height: 54px; background: url(../images/cart.png) no-repeat; bottom: 22px; right: 16px; display: block;}

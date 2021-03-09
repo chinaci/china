@@ -1,0 +1,24 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px; min-height: 600px;}
+.slidebar{width: 200px;}
+.slidebar li{height: 55px;}
+.slidebar li.curr{background: #f60; position: relative; z-index: 2}
+.slidebar li.curr a{border: none; color: #fff;}
+.slidebar li a{display: block; line-height: 55px; height: 55px; width: 140px; margin-left: 30px; border-top: 1px solid #e8e8e8;}
+.main-con{width: 718px; padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5; min-height: 600px;}
+.w1200 .main-con{width: 918px;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 20px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*相册*/
+.picList{width: 760px;}
+.w1200 .picList{width: 960px;}
+.picList li{float: left; margin: 0 30px 30px 0; background: #fff;}
+.picList li:hover{background: #e6e6e6;}
+.picList .picimg{display: block; width: 157px; height: 157px;}
+.w1200 .picList .picimg{width: 207px; height: 207px;}
+.picList .picimg img{display: block; width: 100%; height: 100%;}
+
+/*相册详细*/
+.picd-img img{max-width: 700px; height: auto; display: block; margin: 0 auto;}
+.w1200 .picd-img img{max-width: 900px;}

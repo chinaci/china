@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商家视频-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=1" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=3" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/video.css?v=3" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+	{#$channel = "business"#}
+	
+{#include file="../../siteConfig/public_top_v1.html"#}
+
+{#$pageCurr = "video"#}
+{#include file="nav.html"#}
+
+  <div class="wrap">
+    <div class="main">
+      <div class="main-con">
+        <h3>商家视频</h3>
+        <div class="main-body">
+          <ul class="qjList fn-clear">
+			{#business action="video_list" return="list" uid={#$detail_id#} typeid={#$id#} page={#$page#} pageSize="20"#}
+            <li><a href="{#$list.url#}" target="_blank" class="qimg"><img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}" alt="{#$list.title#}"><i class="start"></i></a><p class="qname"><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p></li>
+			{#/business#}
+		  </ul>
+        </div>
+
+		<!-- 分页 -->
+		<div class="fn-clear">
+		    {#getPageList service='business' template='video' bid={#$detail_id#} pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+{#include file="footer.html"#}
+</body>
+</html>

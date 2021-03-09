@@ -1,0 +1,21 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px; min-height: 600px;}
+.main-con{padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5; min-height: 600px;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 30px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*全景*/
+.qjList{width: 1160px;}
+.qjList li{float: left; margin: 0 39px 30px 0; background: #fff; width: 200px;}
+.w1200 .qjList li{width: 250px;}
+.qjList li:hover{background: #e6e6e6;}
+.qjList .qimg{display: block; height: 200px; width: 100%; position: relative;}
+.w1200 .qjList .qimg{height: 250px;}
+.qjList .qimg img{display: block; width: 100%; height: 100%;}
+.qjList .start{position: absolute; left: 50%; top: 50%; margin-left: -20px; margin-top: -20px; display: block; width: 40px; height: 38px; transition: all .3s; background: url(../images/index_icons.png); border-radius: 40px;}
+.qjList .qname{height: 26px; line-height: 26px; margin: 5px 0; width: 100%; overflow: hidden;}
+.qjList .qname a{padding: 0 10px; display: block;}
+
+/*全景详细*/
+.video-detail embed{width: 900px; height: 680px; display: block; margin: 0 auto;}
+.w1200 .video-detail iframe {width: 100%; height: 600px}

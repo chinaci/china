@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}商家列表{#/if#}-{#$business_title#}</title>
+<meta name="keywords" content="{#$business_keywords#}" />
+<meta name="description" content="{#$business_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=1" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='business' template='list'#}#}
+
+<body>
+	{#$channel = "business"#}
+	
+{#include file="../../siteConfig/public_top_v1.html"#}
+
+  <div class="wrap">
+
+    <!-- 筛选框 s -->
+    <div class="filter">
+      <div class="filter-bar fn-clear">
+        <div class="filter-item">
+          <span class="selected">{#if $addrid#}{#if $addrNameArr[1]#}{#$addrNameArr[0]#} > {#$addrNameArr[1]#}{#else#}{#$addrNameArr[0]#}{#/if#}{#else#}所有地区{#/if#}</span>
+          <div class="area-box">
+            <div class="area-box-body">
+              <div class="area-all"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid=''#}">所有地区</a></div>
+              <ul class="area-list fn-clear">
+				{#business action="addr" return="addr"#}
+                <li class="sub"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#}#}" class="parsent{#if $addrid == $addr.id#} curr{#/if#}">{#$addr.typename#}</a>
+                  <ul class="sublist fn-clear">
+					{#business action="addr" return="addr1" type={#$addr.id#}#}
+                    <li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr1.id#}#}"{#if $addrid == $addr1.id#} class="curr"{#/if#}>{#$addr1.typename#}</a></li>
+					{#/business#}
+                  </ul>
+                </li>
+				{#/business#}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="filter-item">
+          <span class="selected">{#if $typeid#}{#if $typeNameArr[1]#}{#$typeNameArr[0]#} > {#$typeNameArr[1]#}{#else#}{#$typeNameArr[0]#}{#/if#}{#else#}类目{#/if#}</span>
+          <ul class="select-item">
+			<li{#if !$typeid#} class="curr"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=''#}">全部分类</a></li>
+			{#business action="type" return="type"#}
+            <li{#if $typeid == $type.id#} class="curr"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$type.id#}#}">{#$type.typename#}</a></li>
+			{#/business#}
+          </ul>
+        </div>
+        <div class="filter-item">
+          <span class="selected">{#if $orderby == 1#}人气{#elseif $orderby == 2#}好评{#else#}排序{#/if#}</span>
+          <ul class="select-item">
+            <li{#if !$orderby#} class="curr"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}">默认</a></li>
+            <li{#if $orderby == 1#} class="curr"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}">人气</a></li>
+            <li{#if $orderby == 2#} class="curr"{#/if#}><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='2'#}">好评</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- 筛选框 e -->
+
+    <!-- 列表 s -->
+    <div class="main">
+	  {#business action="blist" return="list" addrid={#$addrid#} typeid={#$typeid#} title={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+      <div class="main-item fn-clear">
+        <div class="main-itemL fn-left">
+          <div class="bg"></div>
+          <div class="main-itemL-body">
+            <div class="main-title fn-clear">
+              <div class="imgbox fn-left"><a href="{#$list.url#}" target="_blank"><img src="{#$list.logo#}" alt="{#$list.title#}" title="{#$list.title#}"></a></div>
+              <div class="txtbox">
+                <div class="txt-title fn-clear">
+                  <a href="{#$list.url#}" target="_blank" class="fn-left tit">{#$list.title#}</a>
+				  {#if $list.qq#}<a href="http://wpa.qq.com/msgrd?v=3&uin={#$list.qq#}&Menu=yes" class="fn-left alitalk" title="QQ在线交谈" target="_blank"><img src="http://wpa.qq.com/pa?p=2:{#$list.qq#}:4" /></a>{#/if#}
+                </div>
+                <div class="txt-icon">
+                  <span>经营类目: {#$list.typename[0]#} > {#$list.typename[1]#}</span>
+                </div>
+                <div class="certed_list">
+                  {#if $list.member['phoneCheck']#}<a href="javascript:;" class="cert_item cert_item_mobile" title="通过手机真实性验证"></a>{#/if#}
+                  {#if $list.member['certifyState']#}<a href="javascript:;" class="cert_item cert_item_authen" title="通过有效身份证验证"></a>{#/if#}
+                  {#if $list.member['licenseState']#}<a href="javascript:;" class="cert_item cert_item_permit" title="通过营业执照验证"></a>{#/if#}
+				  {#foreach from=$list.auth item=auth#}
+                  <a href="javascript:;" class="cert_item custom" title="{#$auth.typename#}">{#$auth.jc#}</a>
+				  {#/foreach#}
+                </div>
+              </div>
+            </div>
+            <div class="main-info fn-clear">
+              <dl class="fn-clear">
+                <dt class="fn-left">联系人：</dt>
+                <dd class="fn-left">{#$list.member['company']#}</dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt class="fn-left">联系电话：</dt>
+                <dd class="fn-left">{#$list.tel#}</dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt class="fn-left">所在地：</dt>
+                <dd class="fn-left">{#$list.addrname[0]#} {#$list.addrname[1]#}</dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt class="fn-left">营业时间：</dt>
+                <dd class="fn-left">{#$list.opentime#}</dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt class="fn-left">人均消费：</dt>
+                <dd class="fn-left">{#$list.amount#}</dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt class="fn-left">好评率：</dt>
+                <dd class="fn-left"><span class="percent">{#$list.rating/5*100#}%</span></dd>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+        <div class="main-itemR">
+          <div class="main-itemR-body">
+            <p class="fn-clear import"><a href="{#$list.url#}" target="_blank" class="fn-right">进入本店铺></a></p>
+            <ul class="goods-list">
+			  {#foreach from=$list.pics item=pic key=k#}
+			  {#if $k < 3#}
+              <li>
+                <a target="_blank" href="{#$list.url#}">
+                  <img alt="" src="{#$pic#}" class="cover">
+                </a>
+              </li>
+			  {#/if#}
+			  {#/foreach#}
+            </ul>
+            <div class="main-itemR-code">
+              <div class="corner"></div>
+              <div class="qrcode" target="_blank">
+                <div class="qr" data-url="{#$list.url#}"></div>
+                <br>
+                扫一扫, 进入手机旺铺
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	  {#/business#}
+
+	  {#if $pageInfo.totalCount == 0#}
+	  <div class="empty">抱歉，暂未找到相关店铺！</div>
+	  {#/if#}
+    </div>
+    <!-- 列表 e -->
+
+	<!-- 分页 -->
+	<div class="fn-clear">
+	    {#getPageList service='business' template='list' pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+	</div>
+
+  </div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+/*框架*/
+.main{border: 1px solid #e6e6e6; background: #f4f4f4; margin-top: 50px;}
+.main-con{padding: 0 40px 50px; box-shadow: -4px 0 11px 0px #cacaca; background: #fff; line-height: 1.5;}
+.main-con h3{height: 55px; line-height: 55px; border-bottom: 1px solid #ddd; margin-bottom: 30px; color: #bbb; font-weight: bold; font-size: 16px;}
+
+/*团购列表*/
+.splist{border: 1px solid #eaeaea;}
+.splist .spitem{width: 182px; border-right: 1px dashed #E5E5E5; text-align: center; float: left;}
+.w1200 .splist .spitem{width: 222px;}
+.splist .spitem.brn{border-right: none;}
+.splist .spitem .spbox{width: 180px; margin: 0 auto 40px;}
+.w1200 .splist .spitem .spbox{width: 200px;}
+.splist .spitem .spimg{display: block; width: 148px; height: 160px; margin: 0 auto;}
+.w1200 .splist .spitem .spimg{width: 200px; height: 200px;}
+.splist .spitem .spimg img{display: block; width: 100%; height: 100%;}
+.splist .spitem .spname{height: 20px; line-height: 20px; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.splist .spitem .spname a{color: #666;}
+.splist .spitem .sprice{font-size: 18px; margin-bottom: 10px; margin-top: 5px;}
+.splist .spitem .spbuy a{height: 20px; width: 90px; display: block; border: 1px solid #DD2727; color: #DD2727; line-height: 20px; border-radius: 2px; font-size: 12px; margin: 0 auto;}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商家租房-{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=1" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=3" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/house.css?v=3" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+	{#$channel = "business"#}
+	
+{#include file="../../siteConfig/public_top_v1.html"#}
+
+{#$pageCurr = "house"#}
+{#include file="nav.html"#}
+
+  <div class="wrap">
+    <div class="main">
+      <div class="main-con">
+        <ul class="htab fn-clear">
+          <li><a href="{#getUrlPath service='business' template='house-sale' bid={#$detail_id#}#}">急售房源</a><em></em></li>
+          <li class="curr"><a href="{#getUrlPath service='business' template='house-zu' bid={#$detail_id#}#}">热门租房</a><em></em></li>
+        </ul>
+        <div class="main-body">
+          <div class="fclist">
+            <div class="fcslide esfslide">
+				<ul class="fn-clear">
+					{#house action="zuList" return="zu" comid={#$detail_store['house']#} page={#$page#} pageSize="20"#}
+					<li>
+						<a href="{#$zu.url#}" target="_blank" class="fcimg"><img src="{#changeFileSize url={#$zu.litpic#} type='large'#}" alt="{#$zu.title#}"></a>
+						<p class="fcname fn-clear"><a href="{#$zu.communityUrl#}" target="_blank" class="fn-left">{#$zu.community#}</a><span class="fprice fn-right"><em>{#$zu.price#}</em>元/月</span></p>
+						<p class="fcdes fn-clear"><span class="fn-left froom">{#$zu.room#} · {#$zu.area#} m²</span><span class="fn-right">{#$zu.rentype#}</span></p>
+					</li>
+					{#/house#}
+				</ul>
+			</div>
+
+          </div>
+        </div>
+
+		<!-- 分页 -->
+		<div class="fn-clear">
+		    {#getPageList service='business' template='house-zu' bid={#$detail_id#} pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+{#include file="footer.html"#}
+</body>
+</html>
