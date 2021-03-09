@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}楼盘动态_团购|优惠|打折信息-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#}楼盘动态,{#$detail_title#}团购,{#$detail_title#}优惠,{#$detail_title#}打折信息" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#}详情信息频道为您提供{#$detail_title#}售楼处电话、地址、物业费、物业电话、开盘时间、入住时间、地图、周边楼盘等最新{#$detail_title#}新楼盘信息，找新房上{#$siteCityInfo['name']#}{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_news.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData = {
+		id: {#$detail_id#},
+		panName: '{#$detail_title#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+{#$loupanNav = 5#}
+{#$crumbTitle = "楼盘动态"#}
+{#include file="loupan_top.html"#}
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+		<dl>
+			<dt><h3>最近浏览的楼盘</h3></dt>
+			{#house action="loupanHistory" return="loupan"#}
+			<dd>
+				<span class="title"><a href="{#$loupan.url#}" target="_blank" title="{#$loupan.title#}">{#$loupan.title#}</a></span>
+				<span class="info">{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#echoCurrency type='short'#}/㎡{#/if#}</span>
+				<span class="price">{#$loupan.addr[0]#}</span>
+			</dd>
+			{#/house#}
+		</dl>
+		<dl>
+			<dt>热销楼盘</dt>
+			{#house action="loupanList" return="loupan" filter="hot" page="1" pageSize="5"#}
+			<dd>
+				<span class="title"><a href="{#$loupan.url#}" target="_blank" title="{#$loupan.title#}">{#$loupan.title#}</a></span>
+				<span class="info">{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#echoCurrency type='short'#}/㎡{#/if#}</span>
+				<span class="price">{#$loupan.addr[0]#}</span>
+			</dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+		<dl>
+			<dt>推荐楼盘</dt>
+			{#house action="loupanList" return="loupan" filter="rec" page="1" pageSize="5"#}
+			<dd>
+				<span class="title"><a href="{#$loupan.url#}" target="_blank" title="{#$loupan.title#}">{#$loupan.title#}</a></span>
+				<span class="info">{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#echoCurrency type='short'#}/㎡{#/if#}</span>
+				<span class="price">{#$loupan.addr[0]#}</span>
+			</dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+		<dl>
+			<dt>本月最新楼盘</dt>
+			{#house action="loupanList" return="loupan" times="tmonth" page="1" pageSize="5"#}
+			<dd>
+				<span class="title"><a href="{#$loupan.url#}" target="_blank" title="{#$loupan.title#}">{#$loupan.title#}</a></span>
+				<span class="info">{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#echoCurrency type='short'#}/㎡{#/if#}</span>
+				<span class="price">{#$loupan.addr[0]#}</span>
+			</dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+		<dl class="news">
+			<dt>热门楼盘动态</dt>
+			{#house action="loupanNewsList" return="list" rand="1" page="1" pageSize="10"#}
+			<dd><a href="{#$list.url#}" title="{#$list.title#}"><s></s>{#$list.title#}</a></dd>
+			{#/house#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">暂无相关信息</div>
+			{#/if#}
+		</dl>
+	</div>
+	<div class="container">
+		<div class="article">
+			{#house action="loupanNewsList" loupanid={#$detail_id#} page={#$page#} pageSize="10"#}
+			<dl>
+				<dd>
+					<h3><a href="{#$row.url#}" title="[{#$row.loupan#}]{#$row.title#}">[{#$row.loupan#}]{#$row.title#}</a></h3>
+					<p>{#$row.note#}<a href="{#$row.url#}" target="_blank">阅读全文...</a></p>
+					<div class="bt"><span class="time"><s></s>{#$row.pubdate|date_format:'%Y-%m-%d'#}</span></div>
+				</dd>
+			</dl>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉，该楼盘暂无动态！</div>
+			{#/if#}
+		</div>
+
+		{#getPageList service='house' template='loupan-news' id="{#$detail_id#}"#}
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_public.js"></script>
+</body>
+</html>

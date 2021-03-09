@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$xzl_seotitle#}写字楼{#$pageType#}网，{#$siteCityInfo['name']#}办公楼租赁，商务楼租金价格信息-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}写字楼{#$pageType#}网,{#$siteCityInfo['name']#}办公楼租赁,商务楼租金价格信息" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}写字楼{#$pageType#}频道,为您提供丰富的{#$siteCityInfo['name']#}写字楼{#$pageType#},办公楼，商务楼{#$pageType#}信息,经纪人更新写字楼房源,帮助您快速找到理想的写字楼。找办公楼,就上{#$cfg_shortname#}。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/xzl.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'xzl'#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='xzl' type={#$type#}#}">写字楼{#$pageType#}</a>
+		</div>
+		<div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='xzl'#}" method="get">
+				<input type="search" placeholder="请输入小区名称、地址" name="keywords" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div>
+	</div>
+	<div class="filter">
+		{#if $keywords != ""#}
+		<dl class="fn-clear keywords">
+			<dt>搜索：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords='' param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">{#$keywords#} <s>&times;</s></a>
+			</dd>
+		</dl>
+		{#/if#}
+		<dl class="fn-clear">
+			<dt>供求：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type=0 addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if !$type#} class="curr"{#/if#}>出租</a>
+				<a href="{#getUrlPath service='house' template='xzl' type=1 addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $type#} class="curr"{#/if#}>出售</a>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>区域：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid=0 business=0 area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addr.id#} business=0 area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		{#if $addrid != 0#}
+		<div class="sub-fi area">
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business=0 area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+			{#house action="addr" return='addr' type={#$addrid#}#}
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$addr.id#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+			{#/house#}
+		</div>
+		{#/if#}
+		<dl class="fn-clear">
+			<dt>面积：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == ''#} class="curr"{#/if#}>不限</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area=',100' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == ',100'#} class="curr"{#/if#}>100平米以下</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='100,150' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '100,150'#} class="curr"{#/if#}>100-150平米</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='150,200' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '150,200'#} class="curr"{#/if#}>150-200平米</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='200,300' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '200,300'#} class="curr"{#/if#}>200-300平米</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='300,500' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '300,500'#} class="curr"{#/if#}>300-500平米</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='500,1000' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '500,1000'#} class="curr"{#/if#}>500-1000平米</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area='1000,' price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $area == '1000,'#} class="curr"{#/if#}>1000平米以上</a>
+			</dd>
+		</dl>
+		{#if $type == 0#}
+		<dl class="fn-clear">
+			<dt>租金：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ''#} class="curr"{#/if#}">不限</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price=',30' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ',30'#} class="curr"{#/if#}">30{#echoCurrency type='short'#}/平米•月以下</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='30,60' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '30,60'#} class="curr"{#/if#}">30-60{#echoCurrency type='short'#}</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='60,90' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '60,90'#} class="curr"{#/if#}">60-90{#echoCurrency type='short'#}</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='90,120' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '90,120'#} class="curr"{#/if#}">90-120{#echoCurrency type='short'#}</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='120,150' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '120,150'#} class="curr"{#/if#}">120-150{#echoCurrency type='short'#}</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='150,' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '150,'#} class="curr"{#/if#}">150{#echoCurrency type='short'#}以上</a>
+			</dd>
+		</dl>
+		{#else#}
+		<dl class="fn-clear">
+			<dt>总价：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ''#} class="curr"{#/if#}">不限</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price=',100' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == ',100'#} class="curr"{#/if#}">100万{#echoCurrency type='short'#}以下</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='100,200' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '100,200'#} class="curr"{#/if#}">100-200万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='200,300' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '200,300'#} class="curr"{#/if#}">200-300万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='300,500' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '300,500'#} class="curr"{#/if#}">300-500万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='500,800' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '500,800'#} class="curr"{#/if#}">500-800万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='800,1200' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '800,1200'#} class="curr"{#/if#}">800-1200万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='1200,2000' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '1200,2000'#} class="curr"{#/if#}">1200-2000万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price='2000,' protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $price == '2000,'#} class="curr"{#/if#}">2000万以上</a>
+			</dd>
+		</dl>
+		{#/if#}
+		<dl class="fn-clear">
+			<dt>类型：</dt>
+			<dd class="fn-clear">
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype='' usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $protype == ''#} class="curr"{#/if#}>不限</a>
+				{#house action="item" return="item" type="8"#}
+				<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$item.id#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $protype == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap orderby fn-clear">
+	<ul class="l-tab">
+		<li{#if $usertype == ''#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype='' keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">全部</a></li>
+		<li{#if $usertype == 1#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype='1' keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">中介房源</a></li>
+		<li{#if $usertype == 0 && $usertype != ''#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype='0' keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">个人房源</a></li>
+	</ul>
+	<div class="o-r">
+		<span class="o-c">
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#}#}"{#if $orderby == ""#} class="curr"{#/if#}>默认排序</a>
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="orderby={#if $orderby == 2#}3{#else#}2{#/if#}"#}" class="ob{#if $orderby == 2 || $orderby == 3#} curr{#/if#}{#if $orderby == 3#} up{#/if#}">面积<s></s></a>
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="orderby={#if $orderby == 4#}5{#else#}4{#/if#}"#}" class="ob{#if $orderby == 4 || $orderby == 5#} curr{#/if#}{#if $orderby != 5#} up{#/if#}">总价<s></s></a>
+			<a href="{#getUrlPath service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="orderby=1"#}" class="ob{#if $orderby == 1#} curr{#/if#}">最新<s></s></a>
+		</span>
+		<span class="o-p">
+			<a href="javascript:;" class="prev" title="上一页"></a>
+			<a href="javascript:;" class="next" title="下一页"></a>
+		</span>
+	</div>
+</div>
+
+<div class="wrap list" id="list">
+
+	{#$addr = $addrid#}
+	{#if $business != 0#}
+	{#$addr = $business#}
+	{#/if#}
+	{#house action="xzlList" return="xzl" type={#$type#} addrid={#$addr#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+	<div class="l-item fn-clear">
+		{#if $xzl.isbid == 1#}<em class="jj">置顶</em>{#/if#}
+		<div class="more">
+			{#if $xzl.type == 0#}
+			<div class="price">{#if $xzl.price > 0#}<em>{#echoCurrency type='symbol'#}</em><strong>{#$xzl.price#}</strong>{#echoCurrency type='short'#}/m²•月{#else#}<strong>面议</strong>{#/if#}</div>
+            {#if $xzl.price > 0#}<p>{#($xzl.price * $xzl.area)|string_format:"%.2f"#}{#echoCurrency type='short'#}/月</p>{#/if#}
+			{#else#}
+			<div class="price">{#if $xzl.price > 0#}<em>{#echoCurrency type='symbol'#}</em><strong>{#$xzl.price#}</strong>万{#else#}<strong>面议</strong>{#/if#}</div>
+            {#if $xzl.price > 0#}<p>{#($xzl.price / $xzl.area * 10000)|string_format:"%.2f"#}{#echoCurrency type='short'#}/m²</p>{#/if#}
+			{#/if#}
+		</div>
+		<dl class="fn-clear">
+			<dt><a href="{#$xzl.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$xzl.litpic#} type='small'#}" alt="{#$xzl.title#}" title="{#$xzl.title#}" />{#if $xzl.usertype == 0#}<em>个人</em>{#else#}<i>中介</i>{#/if#}</a></dt>
+			<dd>
+				<h3><a href="{#$xzl.url#}" target="_blank" title="{#$xzl.title#}">{#$xzl.title#}</a></h3>
+				<p><span class="addr-icon"></span><a href="{#getUrlPath service="house" template="xzl" type={#$type#} addrid=0 business={#$xzl.addrid#}#}">{#foreach from=$xzl.addr item=addr#}{#$addr#}-{#/foreach#}</a>{#$xzl.address#}{#if $xzl.nearby != ""#}&nbsp;&nbsp;[靠近：{#$xzl.nearby#}]{#/if#}</p>
+				<p>{#$xzl.loupan#}<i>|</i>{#$xzl.zhuangxiu#}<i>|</i>{#$xzl.protype#}<i>|</i>{#$xzl.area#}平米</p>
+				<p class="u">{#if $xzl.usertype == 0#}<a>{#$xzl.username#}</a>{#else#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$xzl.userid#} tpl='xzl'#}" target="_blank">{#$xzl.nickname#}</a>{#/if#}<span class="upd"></span>{#$xzl.timeUpdate#}更新{#foreach from=$xzl.config item=config key=k#}<span class="tag t{#$k#}">{#$config#}</span>{#/foreach#}</p>
+			</dd>
+		</dl>
+	</div>
+	{#/house#}
+
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty">抱歉！ 未找到相关房源</div>
+	{#/if#}
+
+</div>
+
+{#getPageList service='house' template='xzl' type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+{#include file="footer.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="house" template="xzl" type={#$type#} addrid={#$addrid#} business={#$business#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} page="%page%" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}';</script>
+<script type="text/javascript" src="{#$templets_skin#}js/xzl.js"></script>
+</body>
+</html>

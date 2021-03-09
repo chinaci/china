@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}二手房-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#},{#$siteCityInfo['name']#}{#$detail_title#},{#$detail_title#}二手房,{#$detail_title#}租房,{#$detail_address#}" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、房型图、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
+
+{#$pageCurr = 'community'#}
+{#include file="top.html"#}
+
+{#$communityNav = 4#}
+{#$crumbTitle = "二手房"#}
+{#include file="community_top.html"#}
+
+<div class="wrap fn-clear">
+
+	<ul class="sale">
+
+		{#house action="saleList" return="sale" community={#$detail_id#} page={#$page#} pageSize="20"#}
+		<li class="fn-clear">
+			<a href="{#$sale.url#}" target="_blank" class="pic"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}" /><i></i></a>
+			<div class="info">
+				<h2><a href="{#$sale.url#}" target="_blank" title="{#$sale.title#}">{#$sale.title#}</a></h2>
+				<div class="fn-clear">
+					<div class="col1">
+						<p class="w">
+							<a href="{#getUrlPath service='house' template='sale' addrid=0 business={#$sale.addrid#}#}" title="{#$sale.addr[0]#} {#$sale.addr[1]#}" target="_blank">{#$sale.addr[0]#} {#$sale.addr[1]#}</a>
+							<span>{#$sale.room#}</span><span>{#$sale.direction#}</span><span>{#$sale.zhuangxiu#}</span>
+						</p>
+						<p class="o">
+							第{#$sale.bno#}层,共{#$sale.floor#}层<span>/</span>{#$sale.buildage#}年
+						</p>
+						<div class="tags fn-clear">
+							{#foreach from=$sale.flags item=flag key=key#}
+							<span class="t{#$key#}">{#$flag#}</span>
+							{#/foreach#}
+						</div>
+					</div>
+					<div class="col2">
+						<div class="num"><strong>{#$sale.area#}</strong>㎡</div>
+						<p>建筑面积</p>
+					</div>
+					<div class="col3">
+						<div class="price"><strong>{#$sale.price#}</strong>{#echoCurrency type='short'#}</div>
+						<p>{#$sale.unitprice#} {#echoCurrency type='short'#}/m²</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		{#/house#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<li class="empty">抱歉！ 未找到相关房源</li>
+		{#/if#}
+
+	</ul>
+
+	{#getPageList service='house' template='community-sale' community={#$detail_id#}#}
+
+</div>
+
+{#include file="footer.html"#}
+</body>
+</html>

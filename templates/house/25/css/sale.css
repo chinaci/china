@@ -1,0 +1,153 @@
+.filter dl.more .item label s,
+.filter .icheck.on s,
+.sortby .sort a s,
+.lhead ul li a s,
+.lhead ul li a i {background-image: url('../images/saleSprite.png'); background-repeat: no-repeat;}
+
+.ml30 {margin-left: 30px;}
+a:hover {text-decoration: underline;}
+
+.main {background-color: #fafafa;}
+
+/* 筛选 */
+.filter {position: relative; z-index: 10; margin-bottom: 25px; border: 1px solid #efefef; font-size: 14px; background-color: #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.1);}
+
+/* 区域&公交/地铁 */
+.filter .t-fi {margin-bottom: 20px; line-height: 46px; border-bottom: 2px solid #be0a0a;}
+.filter .t-fi .inf {float: right; font-size: 14px; margin-right: 20px; line-height: 46px;}
+.filter .t-fi label {float: left; width: 70px; padding: 5px 0; text-align: right;}
+.filter .t-fi-item {float: left;}
+.filter .t-fi-item li {float: left; margin-right: 5px;}
+.filter .t-fi-item li a {position: relative; display: block; padding: 0 25px; font-size: 16px;}
+.filter .t-fi-item li.curr a {color: #fff; background-color: #be0a0a;}
+
+.keywords {float: left; margin: 1px 0 0 15px;}
+.keywords label {float: left; margin-right: 5px; line-height: 34px;}
+.keywords a {float: left; padding: 0 5px 0 8px; margin-top: 11px; border: 1px dashed #f33; line-height: 20px; color: #f33;}
+.keywords a:hover {text-decoration: none;}
+.keywords a s {text-decoration: none; margin-left: 3px;}
+
+/* 筛选条件 */
+.filter dl {padding: 1px 0;}
+.filter dt {float: left; width: 70px; padding: 3px 5px 0 0; font-size: 16px; text-align: right;}
+.filter dd {position: relative; overflow: hidden; padding-right: 30px;}
+.filter dd a {float: left; padding: 5px 10px; margin: 0 5px 0 0; white-space: nowrap;}
+.filter dd a.curr {color: #39ac6a; font-weight: 700;}
+.filter dd .sub-item {padding: 5px 0; margin: 5px 0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+
+/* 更多筛选 */
+.filter dl.more {border-top: 1px solid #e0e0e0; margin-top: 15px;}
+.filter dl.more dt {padding: 14px 0 0; font-size: 12px; font-weight: 700;}
+.filter dl.more dd {overflow: visible; font-size: 12px;}
+.filter dl.more .item {float: left; position: relative; z-index: 5; height: 23px; line-height: 23px; border: 1px solid #ddd; margin: 11px 0 10px 10px;}
+.filter dl.more .item label {display: block; position: relative; padding: 0 40px 0 10px; cursor: pointer;}
+.filter dl.more .item.on {border-color: #39ac6a;}
+.filter dl.more .item.on label {color: #39ac6a; font-weight: 700;}
+.filter dl.more .item label s {position: absolute; right: 8px; top: 9px; width: 10px; height: 5px; background-position: -41px 0;}
+.filter dl.more .item ul {display: none; position: absolute; top: 23px; left: -1px; right: -1px; border: 1px solid #ddd; background-color: #fff; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
+.filter dl.more .item ul a {display: block; float: none; height: 25px; line-height: 25px; margin: 0; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.filter dl.more .item ul a:hover {background-color: #fafafa;}
+
+/* 多选 */
+.filter .item-check {float: left; margin-left: 40px;}
+.filter .icheck {position: relative; float: left; margin-right: 20px; padding: 14px 0 0 23px;}
+.filter .icheck s {position: absolute; left: 0; top: 15px; width: 14px; height: 14px; border: 1px solid #bbb; background-color: #fff;}
+.filter .icheck.on s {border-color: #808080; background-position: -39px -6px;}
+
+/* 排序 */
+.sortby {height: 47px; border-top: 1px solid #e0e0e0; font-size: 12px;}
+.sortby label {float: left; width: 70px; padding: 14px 5px 0 0; margin-right: 6px; font-size: 12px; font-weight: 700; text-align: right;}
+.sortby .sort {position: relative; z-index: 1; float: left; margin-left: -1px; border-left: 1px solid transparent; border-right: 1px solid transparent;}
+.sortby .sort.on {border-color: #e0e0e0;}
+.sortby .sort>a {display: block; padding: 0 15px; line-height: 47px;}
+.sortby .sort.on>a {color: #39ac6a; font-weight: 700;}
+.sortby .sort>a s {display: inline-block; width: 10px; height: 5px; vertical-align: 1px; margin-left: 8px; background-position: -41px 0;}
+.sortby .sort>a:hover {background-color: #f5f5f5;}
+.sortby .sort.on>a:hover {background-color: #fff;}
+.sortby .sort ul {display: none; position: absolute; left: -1px; top: 0; right: 0; width: 110px; padding: 8px 0 8px 15px; background-color: #fff; border: 1px solid #e0e0e0; border-top: 0; line-height: 31px;}
+.sortby .sort.hover {z-index: 2;}
+.sortby .sort.hover ul {display: block;}
+
+
+.list {margin: 0 auto 50px; border: 1px solid #efefef; background-color: #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.1);}
+.lhead {height: 50px; padding: 0 25px 0 0; border-bottom: 1px solid #e0e0e0; line-height: 50px;}
+.lhead ul {float: left;}
+.lhead ul li {float: left; margin-left: 25px; font-size: 14px;}
+.lhead ul li a {position: relative; padding-left: 25px; color: #000;}
+.lhead ul li a s {position: absolute; left: 0; top: 2px; width: 18px; height: 15px;}
+.lhead ul li.on a {color: #009de8;}
+.lhead ul li.on a s {background-position: 0 -18px;}
+.lhead ul li.hshow a s {background-position: -20px 0;}
+.lhead ul li.hshow.on a s {background-position: -20px -18px;}
+.lhead ul li a i {position: absolute; right: -28px; top: -5px; width: 24px; height: 11px; background-position: -56px 0;}
+.lhead h2 {float: right; font-weight: 700; color: #000;}
+.lhead h2 strong {font-size: 16px; padding: 0 5px; color: #e4393c;}
+
+#list .empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
+#list li {padding: 26px; position: relative; border-bottom: 1px dotted #e1e1e1;}
+#list li:hover {background-color: #fafafa;}
+#list li .jj {position: absolute; top: 0; right: 0; height: 18px; padding: 0 5px; line-height: 17px; background-color: #ccc; color: #fff; font-size: 12px; font-style: normal; background-color: #000;}
+#list li .pic {position: relative;float: left; width: 173px; height: 130px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
+#list li .pic em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+#list li .pic i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+#list li .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%;}
+#list li a:hover.pic {opacity: .8; filter: alpha(opacity=80);}
+#list li .info {position: relative; overflow: hidden; padding-left: 20px;}
+#list li .info h2 {overflow: hidden; text-overflow: ellipsis; font-size: 20px; white-space: nowrap; height: 32px; line-height: 20px;}
+#list li .info h2 a {color: #000;}
+#list li .info .col1 {float: left; width: 460px;}
+.w1200 #list li .info .col1 {width: 600px;}
+#list li .info .col1 .w {height: 35px; line-height: 35px; font-size: 14px; font-weight: 700; color: #666;}
+#list li .info .col1 .w a {float: left; color: #666; margin-right: 25px;}
+#list li .info .col1 .w span {float: left; margin-right: 25px;}
+#list li .info .col1 .o {height: 28px; line-height: 28px; font-size: 14px; color: #888;}
+#list li .info .col1 .o a {color: #888;}
+#list li .info .col1 .o span {margin: 0 10px;}
+#list li .info .col1 .tags {padding-top: 10px;}
+#list li .info .col1 .tags span {float: left; height: 23px; border: 1px solid #fff; padding: 0 5px; line-height: 23px; font-size: 12px; margin-right: 5px;}
+#list li .info .col1 .tags .t0, #list li .info .col1 .tags .t3 {background-color: #f2f9fe; border-color: #82a1bb; color: #6c879e;}
+#list li .info .col1 .tags .t1, #list li .info .col1 .tags .t4 {background-color: #f2fff8; border-color: #86c7a2; color: #57846a;}
+#list li .info .col1 .tags .t2, #list li .info .col1 .tags .t5 {background-color: #fff; border-color: #4db500; color: #588c31;}
+#list li .info .col2 {float: left; width: 130px; text-align: right;}
+#list li .info .col2 .num {margin-top: 15px;}
+#list li .info .col2 .num strong {font-size: 16px;}
+#list li .info .col2 p, #list li .info .col3 p {font-size: 12px; color: #999; font-family: Arial;}
+#list li .info .col2 p {margin-top: 6px;}
+#list li .info .col3 {float: right; width: 150px; text-align: center;}
+#list li .info .col3 .price {color: #e4393c; margin-top: 3px;}
+#list li .info .col3 .price strong {font-size: 30px; margin-right: 3px; font-family: tahoma; letter-spacing: -1px;}
+
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; margin-top: 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #efefef;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 10px;}
+.pagination li a:hover ,.pagination li.page_current span {background: #fe5050; color: #fff; border-color: #fe5050;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
+
+
+
+/* 排序 */
+.orderby {height: 45px; line-height: 45px;}
+.orderby .l-tab {float: left; height: 44px; font-size: 18px; line-height: 44px;}
+.orderby .l-tab li {float: left; border: 1px solid #eee; border-bottom: 0; margin-left: -1px; background-color: #f9f9f9;}
+.orderby .l-tab a {color: #000; padding: 0 60px; display: block;}
+.orderby .l-tab a:hover {text-decoration: none;}
+.orderby .l-tab li.curr {background-color: #fff; border-top: 2px solid #c0140a;}
+
+.orderby .o-r {float: right; height: 20px; line-height: 20px; padding-top: 7px;}
+.orderby .o-r a {float: left; position: relative; margin-left: 15px;}
+.orderby .o-r a.curr {color: #bc0a0a;}
+.orderby .o-r .ob {padding-right: 17px;}
+.orderby .o-r .ob s {position: absolute; right: 0; top: 5px; width: 12px; height: 12px; background-position: 0 -18px;}
+.orderby .o-r .ob.curr s {background-position: -39px -18px;}
+.orderby .o-r .ob.up s {background-position: -13px -18px;}
+.orderby .o-r .ob.up.curr s {background-position: -26px -18px;}
+.orderby .o-p {float: left; display: none; margin: 0 10px; padding-top: 2px;}
+.orderby .o-p a {display: block; width: 17px; height: 17px; margin-left: 5px; background-image: url('../images/btnPage_17.gif');}
+.orderby .o-p a.dis {cursor: no-drop;}
+.orderby .o-p a.next {background-position: -22px 0;}
+.orderby .o-p a.prev.dis {background-position: 0 -20px;}
+.orderby .o-p a.next.dis {background-position: -22px -20px;}

@@ -1,0 +1,77 @@
+<div class="footer">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li>
+				<dt>买房工具</dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='calculator' do='sy'#}" target="_blank">商贷计算器</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='news'#}" target="_blank">购房百科</a><br />
+					<a href="{#getUrlPath service='house' template='calculator' do='gjj'#}" target="_blank">公积金贷款计算器</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='broker'#}" target="_blank">经纪人</a><br />
+					<a href="{#getUrlPath service='house' template='calculator' do='zh'#}" target="_blank">组合贷款计算器</a>
+				</dd>
+			</li>
+			<li>
+				<dt><a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">新房</a></dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='tmonth'#}" target="_blank">新开盘楼盘</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="hot"#}" target="_blank">热销楼盘</a><br />
+					<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="rec"#}" target="_blank">推荐楼盘</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" target="_blank">看房团</a><br />
+					{#if $cfg_subway_state#}<a href="{#getUrlPath service='house' template='loupan' param='from=subway'#}" target="_blank">{#$cfg_subway_title#}</a><em>|</em>{#/if#}
+					<a href="{#getUrlPath service='house' template='loupan' template='map-loupan'#}" target="_blank">地图找房</a>
+				</dd>
+			</li>
+			<li>
+				<dt><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">写字楼</a></dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='' area='' room='' direction='' buildage='' floor='' zhuangxiu='' flags='0'#}" target="_blank">急售房源</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='' area='' room='' direction='' buildage='' floor='' zhuangxiu='' flags='1'#}" target="_blank">免税房源</a><br />
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='' area='' room='' direction='' buildage='' floor='' zhuangxiu='' flags='3'#}" target="_blank">校区房</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='' area='' room='' direction='' buildage='' floor='' zhuangxiu='' flags='4'#}" target="_blank">满五年</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='sale' addrid=0 business=0 subway=0 station=0 price='' area='' room='' direction='' buildage='' floor='' zhuangxiu='' flags='5'#}" target="_blank">推荐</a><br />
+					{#if $cfg_subway_state#}<a href="{#getUrlPath service='house' template='sale' param='from=subway'#}" target="_blank">{#$cfg_subway_title#}</a><em>|</em>{#/if#}
+					<a href="{#getUrlPath service='house' template='loupan' template='map-sale'#}" target="_blank">地图找房</a>
+				</dd>
+			</li>
+			<li>
+				<dt><a href="{#getUrlPath service='house' template='zu'#}" target="_blank">租房</a></dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='zu' addrid=0 business=0 subway=0 station=0 price='' room='' zhuangxiu='' rentype='1'#}" target="_blank">整租房源</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='zu' addrid=0 business=0 subway=0 station=0 price='' room='' zhuangxiu='' rentype='2'#}" target="_blank">合租房源</a><br />
+					<a href="{#getUrlPath service='house' template='zu' addrid=0 business=0 subway=0 station=0 price='' room='' zhuangxiu='' rentype='1' type='1'#}" target="_blank">100%个人房源</a><em>|</em>
+					{#if $cfg_subway_state#}<a href="{#getUrlPath service='house' template='zu' param='from=subway'#}" target="_blank">{#$cfg_subway_title#}</a><br />{#/if#}
+					<a href="{#getUrlPath service='house' template='loupan' template='map-zu'#}" target="_blank">地图找房</a>
+				</dd>
+			</li>
+			<li class="last">
+				<dt><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">商业</a>&nbsp;&nbsp;<a href="{#getUrlPath service='house' template='cf'#}" target="_blank">土地</a></dt>
+				<dd class="fn-clear">
+					<a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">租写字楼</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='xzl' type='1'#}" target="_blank">购写字楼</a><br />
+					<a href="{#getUrlPath service='house' template='sp'#}" target="_blank">租商铺</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='sp' type='1'#}" target="_blank">购商铺</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='sp' type='2'#}" target="_blank">转商铺</a><br />
+					<a href="{#getUrlPath service='house' template='cf'#}" target="_blank">租厂房</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='cf' type='2'#}" target="_blank">售厂房</a><em>|</em>
+					<a href="{#getUrlPath service='house' template='cf' type='1'#}" target="_blank">转厂房</a>
+				</dd>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="copyright">
+	<p class="link">
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>|
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+	</p>
+	{#$cfg_powerby#}<br />{#$cfg_statisticscode#}
+</div>
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js"></script>
