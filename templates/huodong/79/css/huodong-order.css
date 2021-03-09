@@ -1,0 +1,36 @@
+.content {width: 1200px; margin: 0 auto;}
+.order {border: 1px solid #ddd; margin: 35px auto;}
+.o-h {height: 38px; background-color: #f8f8f8; line-height: 38px; text-align: center; font-size: 14px; color: #666; border-bottom: 1px solid #ddd;}
+.order .h1 {width: 500px; float: left; margin-left: 20px;}
+.order .h2 {width: 400px; float: left;}
+.order .h3 {width: 278px; float: left;}
+.o-b {padding: 18px 0; border-bottom: 1px solid #ddd;}
+.o-b .h1 img {float: left; width: 100px; height: 58px;}
+.o-b .h1 .o-i {position: relative; overflow: hidden; padding-left: 10px;}
+.o-b .h1 h2 {line-height: 20px; font-size: 14px; text-align: left; padding-bottom: 5px;}
+.o-b .h1 p {line-height: 18px; font-size: 12px; text-align: left; color: #aaa;}
+.o-b .h2, .o-b .h3 {font-size: 14px; text-align: center;}
+.o-b .h3 {color: #f60;}
+.o-p {padding: 30px 20px; font-size: 14px;}
+.o-p dt {float: left; line-height: 42px; padding-right: 20px;}
+.o-p dd {position: relative; overflow: hidden;}
+.o-p .bank-icon {position: relative; float: left; width: 174px; height: 42px; padding: 1px; border: 1px solid #dedede; margin: 0 15px 0 0; background-color: #fff; transition: none; -moz-transition: none; -webkit-transition: none; -o-transition: none;}
+.o-p .bank-icon span {display: block; height: 26px; margin: 7px auto 0; background-image: url('/templates/member/images/bank.png?v=2'); background-repeat: no-repeat;}
+.o-p .active {padding: 0; border: 2px solid #f60;}
+.o-p .active b {position: absolute; right: 0; bottom: 0; width: 20px; height: 21px; background: url('../images/bankActive.png');}
+
+/* 平台支付icon定位 */
+.o-p .terrace .bank-icon span {margin: 7px auto 0;}
+.alipay {width: 73px; background-position: -4px -938px;}  /* 支付宝 */
+.unionpay {width: 100px; background-position: -4px -1008px;}  /* 银联在线 */
+.bankpayment {width: 105px; background-position: -4px -1303px;}  /* 储蓄卡网银 */
+.tenpay {width: 73px; background-position: -4px -974px;}  /* 财付通 */
+.wxpay {width: 101px; background-position: -3px -1045px;}  /* 微信支付 */
+.baidu {width: 90px; background-position: -4px -1198px;}  /* 百度钱包 */
+.paypal {width: 87px; background-position: -4px -1121px;}  /* PayPal */
+.jdpay {width: 95px; background-position: -4px -1273px;}  /* 京东钱包 */
+.yeepay {width: 91px; background-position: -4px -1236px;}  /* 易宝支付 */
+.rfbp_icbc{width: 90px; background-position: -2px -1444px;}  /* 工行E商通 */
+
+#tj {float: right; width: 180px; height: 42px; text-align: center; line-height: 42px; color: #fff; font-size: 16px; background-color: #0099e9; margin: 0 auto; border-radius: 3px; border: none; cursor: pointer;}
+#tj:hover {background-color: #0082c5;}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+	<meta charset="{#$cfg_soft_lang#}">
+	<title>{#$huodong_channelName#}</title>
+	<meta name="keywords" content="{#$huodong_keywords#}" />
+	<meta name="description" content="{#$huodong_description#}" />
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+	<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	</script>
+</head>
+
+<body class="w1200">
+	{#$channel = 'huodong'#}
+	{#$hotline = $huodong_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+			<!-- 中间活动信息部分 s -->
+		<div class="huodong">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+		        <div class="bd">
+					{#myad title="活动_模板二_电脑端_广告一" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					{#huodong action="type" return='bjtype' page="1" pageSize="6"#}
+					<li{#if $_bindex.bjtype == 1#} class="NewsNav_bc on"{#/if#} ><a target="_blank" href="javascript:;" data-id="{#$bjtype.id#}">{#$bjtype.typename#}</a></li>
+					{#/huodong#}
+				</ul>
+				<span><a href="javascript:;">更多<i></i></a>
+					<div class="more_list">
+						<ul>
+							{#huodong action="type" return='cjtype' page="1"#}
+							{#if $_bindex.cjtype >8#}
+							<li><a href="javascript:;" data-id="{#$cjtype.id#}">{#$cjtype.typename#}</a></li>
+							{#/if#}
+							{#/huodong#}
+						</ul>
+					</div>
+				</span>
+			</div>
+			<!-- 导航栏 e-->
+			<!--活动信息列表 s-->
+			<div class="HD_list" id="HD_list">
+			</div>
+			<!--活动信息列表 e-->
+		</div>
+	<!-- 中间活动信息部分 e -->
+	<!-- 右侧发布活动以及精彩评论 s -->
+		<div class="Information">
+			<div class="issue fn-clear"><a target="_blank" href="{#getUrlPath service='huodong'  template='fabu'#}">发布活动信息</a></div>
+			<div class="infor_list">
+				<div class="infor_lead fn-clear">
+					<em style="width:90px;">优秀主办方</em><a target="_blank" class="fn-hide" href="{#$info_channelDomain#}">更多<i></i></a>
+				</div>
+				{#huodong service='huodong' action='organizer' page='1' pageSize='10'#}
+				<div class="Release fn-clear"><a href="{#$row.url#}" target="_blank">
+					<div class="Release_pic"><img src="{#$row.photo#}"></div>
+					<div class="Release_infor">
+						<div class="RI_txt">{#$row.nickname#}</div>
+					</div>
+				</a></div>
+				{#/huodong#}
+			</div>
+			<div class="ad">
+				{#myad id="212"#}
+			</div>
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧发布活动以及精彩评论 e -->
+	</div>
+<!-- 主干部分 e-->
+
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

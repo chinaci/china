@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>支付结果 - {#$huodong_title#}</title>
+<meta name="keywords" content="{#$huodong_keywords#}" />
+<meta name="description" content="{#$huodong_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index_public.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huodong-payreturn.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$huodong_channelDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="_top.html"#}
+
+{#if $state == 1#}
+<!-- 成功信息 s -->
+<div class="rewordS-success">
+	<div class="wrap">
+		<div class="rewordS-success-txt">
+			<h1>恭喜您，报名成功！</h1>
+			<p>交易时间：{#$date|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+		</div>
+
+		<div class="rewordS-list">
+			<ul>
+				<li><span class="rewordS-list-tit">交易订单：</span><span class="rewordS-list-info blue">{#if $userinfo#}<a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank" title="交易明细列表">{#$ordernum#}</a>{#else#}{#$ordernum#}{#/if#}</span></li>
+				<li><span class="rewordS-list-tit">报名活动：</span><span class="rewordS-list-info blue"><a href="{#$url#}" target="_blank" title="{#$title#}">{#$title#}</a></span></li>
+				<li><span class="rewordS-list-tit">报名费用：</span><span class="rewordS-list-info orange">{#echoCurrency type='symbol'#}{#$amount#}</span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 成功信息 e -->
+{#else#}
+<!-- 错误信息 s -->
+<div class="rewordS-error">
+	<div class="wrap">
+		<div class="rewordS-error-txt">
+			<h1>抱歉，支付失败！</h1>
+			<p>如有问题，请联系客服：{#$cfg_hotline#}</p>
+		</div>
+	</div>
+</div>
+<!-- 错误信息 e -->
+{#/if#}
+
+{#include file="_footer.html"#}
+</body>
+</html>

@@ -1,0 +1,19 @@
+{#include file="../../siteConfig/top1.html"#}
+
+<!-- 头部 -->
+<div class="head_">
+	<div class="head fn-clear">
+		<div class="header">
+			<a href="{#$huodong_channelDomain#}" title="{#$huodong_channelName#}"><img src="{#$huodong_logoUrl#}"></a>
+			<ul>
+				<li><a href="{#$huodong_channelDomain#}">首页</a></li>
+				<li><a href="{#getUrlPath service='huodong' template='fabu'#}" class="find">+发活动</a></li>
+				<li><a href="{#getUrlPath service='huodong' template='list'#}">找活动</a></li>
+			</ul>
+			<form action="{#getUrlPath service='huodong' template='list'#}">
+				<p><input name="keywords" placeholder="搜索活动" value="{#$keywords#}"><a href="javascript:;"><img src="{#$templets_skin#}images/searcnBtn.png"></a></p>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- 头部 -->
