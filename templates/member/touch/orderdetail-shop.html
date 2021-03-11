@@ -1,0 +1,306 @@
+
+{#$stateInfo = ""#}
+{#if $detail_orderstate == 0#}
+	{#$stateInfo = $langData['siteConfig'][9][22]#}
+{#elseif $detail_orderstate == 1 || $detail_orderstate == 11#}
+	{#$stateInfo = $langData['siteConfig'][9][25]#}
+{#elseif $detail_orderstate == 3#}
+	{#$stateInfo = $langData['siteConfig'][9][37]#}
+{#elseif $detail_orderstate == 6#}
+	{#if $detail_retState == 1#}
+		{#if $detail_expDate == 0#}
+			{#$stateInfo = $langData['siteConfig'][9][43]#}
+		{#else#}
+			{#$stateInfo = $langData['siteConfig'][9][42]#}
+		{#/if#}
+	{#else#}
+		{#$stateInfo = $langData['siteConfig'][9][41]#}
+	{#/if#}
+{#elseif $detail_orderstate == 7#}
+	{#$stateInfo = $langData['siteConfig'][9][34]#}
+{#elseif $detail_orderstate == 10#}
+	{#$stateInfo = $langData['siteConfig'][6][15]#}
+{#/if#}
+	<dl class="info-section">
+		<dt>
+			<span class="info-title">{#$langData['siteConfig'][19][318]#}：</span><em class="info-text">{#$stateInfo#}</em>
+			{#if $detail_orderstate == 7#}
+			&nbsp;&nbsp;{#$langData['siteConfig'][19][42]#}：{#$detail_retOkdate|date_format:"%Y-%m-%d %H:%M:%S"#}
+			{#/if#}
+		</dt>
+
+		{#* {#$langData['siteConfig'][9][22]#} *#}
+		{#if $detail_orderstate == 0#}
+		<dd class="last">
+			<p>{#$langData['siteConfig'][20][61]#}</p>
+		</dd>
+		{#/if#}
+
+		{#* {#$langData['siteConfig'][9][24]#} *#}
+		{#if $detail_orderstate == 1 || $detail_orderstate == 1#}
+		<dd class="last">
+			<p>{#$langData['siteConfig'][20][62]#}</p>
+		</dd>
+		{#/if#}
+
+
+		{#* {#$langData['siteConfig'][6][45]#} || 退款成功 *#}
+		{#if $detail_orderstate == 6 || ($detail_orderstate == 7 && $detail_paydate != 0)#}
+		<dd class="last">
+
+			{#if ($detail_orderstate == 7 && $detail_paydate != 0) || $detail_retState == 1#}
+			<ul class="retUl">
+				<li><label>{#$langData['siteConfig'][19][43]#}：</label>{#$detail_retType#}</li>
+				<li><label>{#$langData['siteConfig'][19][44]#}：</label>{#$detail_retNote#}</li>
+				{#if $detail_retPics|@count > 0#}
+				<li class="retPics"><label>{#$langData['siteConfig'][19][45]#}：</label>
+					<div class="picbox">
+						{#foreach from=$detail_retPics item=pics key=k#}
+						<a href="{#$pics.path#}" target="_blank"><img src="{#changeFileSize url="{#$pics.path#}" type="small"#}" /></a>
+						{#/foreach#}
+					</div>
+				</li>
+				{#/if#}
+				<li><label>{#$langData['siteConfig'][19][46]#}：</label>{#$detail_retDate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+			</ul>
+			{#/if#}
+
+			{#if $detail_retSnote != ""#}
+			<ul class="retUl store">
+				<li><label>{#$langData['siteConfig'][19][47]#}：</label>{#$detail_retSnote#}</li>
+				{#if $detail_retSpics|@count > 0#}
+				<li class="retPics"><label>{#$langData['siteConfig'][19][48]#}：</label>
+					{#foreach from=$detail_retSpics item=pics key=k#}
+					<a href="{#$pics.path#}" target="_blank"><img src="{#changeFileSize url="{#$pics.path#}" type="small"#}" /></a>
+					{#/foreach#}
+				</li>
+				{#/if#}
+				<li><label>{#$langData['siteConfig'][19][49]#}：</label>{#$detail_retSdate|date_format:"%Y-%m-%d %H:%M:%S"#}</li>
+			</ul>
+			{#/if#}
+
+			<div class="operation">
+				{#if $detail_orderstate == 6 && $detail_expDate != 0#}
+				<small>{#$langData['siteConfig'][19][707]#}：</small><a class="btn sh" href="javascript:;">{#$langData['siteConfig'][6][45]#}</a>
+				{#elseif $detail_retOkdate != 0#}
+				<!-- <a class="btn" href="javascript:;">退款去向</a> -->
+				{#/if#}
+			</div>
+		</dd>
+		{#/if#}
+
+</dl>
+
+    {#if $cfg_juhe && $cfg_juhe['express']#}
+    {#if ($detail_orderstate == 3 || $detail_orderstate == 4 || $detail_orderstate == 6 || $detail_orderstate == 7) && $detail_expNumber != '' && $detail_expDate != 0#}
+    <!--物流信息-->
+ 	<div class="info-block loc_name_box">
+		<div class="loc_name fn-clear"><span class="fn-left">{#$langData['siteConfig'][19][63]#}：{#$juhe_express_company[$detail_expCompany]#}</span> <span class="fn-right">{#$langData['siteConfig'][19][64]#}：{#$detail_expNumber#}</span></div>
+	</div>
+	<div class="info-block">
+		<div class="xInfo_box">
+			<div class="fn-clear loc_info">
+				<div class="picbox fn-left"><img src="{#$templets_skin#}images/car_icon.png" alt=""></div>
+				<div class="txtbox fn-left">
+					<p class="state">{#$langData['siteConfig'][19][63]#}：{#$juhe_express_company[$detail_expCompany]#}</p>
+					<p class="num">{#$langData['siteConfig'][19][64]#}：{#$detail_expNumber#}</p>
+					<p class="tim">{#$detail_expDate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+				</div>
+			</div>
+			<div class="more"><span>{#$langData['siteConfig'][41][40]#}</span><i></i></div> {#* 查看更多信息  *#}
+		</div>
+		<div class="wInfo_box">
+			<div class="loc_scroll_box">
+                    {#foreach from=$detail_expTrack item=exp key=k#}
+					<div class="loc_scroll">
+						<img src="{#$templets_skin#}images/intro-0{#if $k==0#}2{#else#}1{#/if#}.png" alt="">
+						<p class="loc">{#$exp.remark#}</p>
+						<p class="date">{#$exp.datetime#}</p>
+					</div>
+                    {#/foreach#}
+			</div>
+			<div class="more_active" id="more_btn"><span>{#$langData['siteConfig'][41][41]#}</span><i></i></div> {#* 全部收起  *#}
+		</div>
+	</div>
+    {#/if#}
+    {#/if#}
+
+    {#if !$cfg_juhe || !$cfg_juhe['express']#}
+	{#if ($detail_orderstate == 3 || $detail_orderstate == 4 || $detail_orderstate == 6 || $detail_orderstate == 7) && $detail_expNumber != '' && $detail_expDate != 0#}
+	<div class="info-block">
+		<div class="info-title">{#$langData['siteConfig'][19][62]#}</div>
+		<div class="info-content">
+			<dl><dt>{#$langData['siteConfig'][19][63]#}：</dt><dd>{#$juhe_express_company[$detail_expCompany]#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][64]#}：</dt><dd>{#$detail_expNumber#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][65]#}：</dt><dd>{#$detail_expDate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][66]#}：</dt><dd><a href="https://www.baidu.com/s?wd={#$juhe_express_company[$detail_expCompany]#} {#$detail_expNumber#}" target="_blank" style="color:#027cff;">{#$langData['siteConfig'][6][94]#}</a></dd></dl>
+		</div>
+	</div>
+	{#/if#}
+    {#/if#}
+
+
+	{#* {#$langData['siteConfig'][6][66]#} *#}
+	{#if $detail_orderstate == 1 || $detail_orderstate == 11 || ($detail_orderstate == 2 && $detail_paydate != 0) || ($detail_orderstate == 6 && $detail_retState == 0)#}
+	<div class="layer">
+		<div class="top fn-clear">
+      <div class="top-l" id="typeback"><a href="javascript:;">{#$langData['siteConfig'][6][117]#}</a></div>
+			<div class="top-c">{#$langData['siteConfig'][6][66]#}</div>
+			<div class="top-r"></div>
+    </div>
+		<div class="fn-clear">
+	    <div class="imgbox">
+	      <div class="addimg">
+	        <ul class="fileList fn-clear noimg" id="fileList">
+	          <li class="add uploadbtn"><div id="filePicker" class="btn"></div></li>
+	        </ul>
+	      </div>
+	    </div>
+	    <p class="uploader-btn"></p>
+	  </div>
+    <dl class="inpbox">
+      <dt><span>{#$langData['siteConfig'][19][43]#}</span></dt>
+      <dd class="selgroup">
+        <select id="type" name="type">
+					<option value="">{#$langData['siteConfig'][7][2]#}</option>
+					<option value="{#$langData['siteConfig'][19][197]#}">{#$langData['siteConfig'][19][197]#}</option>
+					<option value="{#$langData['siteConfig'][19][198]#}">{#$langData['siteConfig'][19][198]#}</option>
+					<option value="{#$langData['siteConfig'][19][199]#}">{#$langData['siteConfig'][19][199]#}</option>
+					<option value="{#$langData['siteConfig'][19][200]#}">{#$langData['siteConfig'][19][200]#}</option>
+					<option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>
+        </select>
+      </dd>
+      <input type="hidden" name="typeid" id="typeid" value="">
+    </dl>
+    <dl class="inpbox">
+      <dt><span>{#$langData['siteConfig'][19][44]#}</span></dt>
+      <dd><textarea placeholder="" name="" class="textarea" id="textarea"></textarea></dd>
+    </dl>
+		<div class="submit">
+			<a href="javascript:;" id="submit">{#$langData['siteConfig'][6][68]#}</a>
+		</div>
+		<div class="error"></div>
+	</div>
+	{#/if#}
+
+	{#if $detail_peisongid#}
+	<div class="info-block">
+      <div class="info-title">{#$langData['siteConfig'][9][79]#}</div>  {#* 配送员信息 *#}
+      <div class="info-content">
+      	<dl><dt>{#$langData['siteConfig'][9][80]#}：</dt><dd>{#$detail_peisongname#}</dd></dl>  {#* 配送员 *#}
+      	<dl><dt>{#$langData['siteConfig'][19][56]#}：</dt><dd><a href="tel:{#$detail_peisongtel#}" style="text-decoration: underline;">{#$detail_peisongtel#}</a></dd></dl>  {#* 联系电话 *#}
+      	{#if $detail_peidate#}<dl><dt>{#$langData['siteConfig'][17][26]#}：</dt><dd>{#$detail_peidate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>{#/if#}  {#* 接单时间 *#}
+      	{#if $detail_songdate#}<dl><dt>{#$langData['siteConfig'][17][45]#}：</dt><dd>{#$detail_songdate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>{#/if#}  {#* 取货时间 *#}
+      	{#if $detail_okdate#}<dl><dt>{#$langData['siteConfig'][9][81]#}：</dt><dd>{#$detail_okdate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>{#/if#}  {#* 完成时间 *#}
+      </div>
+    </div>
+	{#/if#}
+
+  <div class="info-block">
+    <div class="info-title">{#$langData['siteConfig'][19][54]#}</div>
+    <div class="info-content">
+    	<dl><dt>{#$langData['siteConfig'][19][55]#}：</dt><dd>{#$detail_username#}</dd></dl>
+    	<dl><dt>{#$langData['siteConfig'][19][56]#}：</dt><dd>{#$detail_usercontact#}</dd></dl>
+    	<dl><dt>{#$langData['siteConfig'][19][57]#}：</dt><dd>{#$detail_useraddr#}</dd></dl>
+    	<dl><dt>{#$langData['siteConfig'][19][58]#}：</dt><dd>{#$detail_note#}</dd></dl>
+    </div>
+  </div>
+
+  <div class="info-block">
+  	<div class="info-title">{#$langData['siteConfig'][19][322]#}</div>
+  	<div class="shop-pro">
+  		{#foreach from=$detail_product item="product"#}
+      <div class="item" data-id="103">
+        <div class="domain fn-clear">
+					{#if $detail_store#}
+					<a href="{#$detail_store['domain']#}" class="name fn-left">{#$detail_store['title']#}</a>
+					{#else#}
+          <a href="javascript:;" class="name fn-left">{#$langData['siteConfig'][19][709]#}</a>
+					{#/if#}
+        </div>
+        <div class="info fn-clear">
+          <div class="imgbox fn-left">
+            <a href="{#getUrlPath service='shop' template='detail' id={#$product.id#}#}"><img src="{#changeFileSize url={#$product.litpic#} type='small'#}" alt=""></a>
+          </div>
+          <div class="txtbox">
+            <div class="title"><p>{#$product.title#}</p><span>{#echoCurrency type='symbol'#}{#$product.price#}</span></div>
+            <p class="chosed">{#$product.specation|replace:"$$$":"、"#}</p>
+          </div>
+					{#if ($detail_orderstate == 1 && $detail_paytypeold!='delivery') || ($detail_orderstate == 2 && $detail_paydate != 0 && $detail_paytypeold!='delivery') || ($detail_orderstate == 6 && $detail_retState == 0 && $detail_paytypeold!='delivery')#}
+          <div class="opbtn">
+            <a href="javascript:;" class="gray apply-refund-link">{#$langData['siteConfig'][6][66]#}</a>
+          </div>
+					{#/if#}
+					{#if $detail_orderstate == 0#}
+					<div class="opbtn">
+            <a href="{#$detail_payurl#}" class="gray apply-refund-link">{#$langData['siteConfig'][6][64]#}</a>
+          </div>
+					{#/if#}
+					{#if $detail_orderstate == 3#}
+					<div class="opbtn">
+            <a href="{#getUrlPath service='member' type='user' template='write-comment' module='shop' id={#$id#}#}" class="gray apply-refund-link">{#if $detail_common == 1#}{#$langData['siteConfig'][8][2]#}{#else#}{#$langData['siteConfig'][19][365]#}{#/if#}</a>
+          </div>
+					{#/if#}
+        </div>
+        <ul class="calculate">
+          <li><span>{#$langData['siteConfig'][19][311]#}</span><em>×{#$product.count#}</em></li>
+          {#if $product.discount != 0#}
+  				<li><span>{#$langData['siteConfig'][19][326]#}</span><em>{#$product.discount#}</em></li>
+  				{#/if#}
+
+          {#if $detail_orderstate != 0#}
+  					{#if $product.point > 0#}
+            <li><span>{#$cfg_pointName#}{#$langData['siteConfig'][19][327]#}</span><em>-{#$product.point/$cfg_pointRatio#}</em></li>
+  					{#/if#}
+  					{#if $product.balance > 0#}
+						<li><span>{#$langData['siteConfig'][19][328]#}</span><em>-{#$product.balance#}</em></li>
+  					{#/if#}
+  				{#/if#}
+
+        </ul>
+      </div>
+
+  		{#/foreach#}
+
+
+        <ul class="calculate">
+            <li><span>{#$langData['siteConfig'][19][325]#}</span><em>{#$detail_logistic#}</em></li>
+        </ul>
+
+  		<div class="sum">
+  			<div class="right">{#$langData['siteConfig'][19][330]#}：<font class="fn-right"><strong>{#$detail_totalPayPrice#}</strong></font></span></div>
+  		</div>
+  	</div>
+  </div>
+
+	{#if $detail_store#}
+	<div class="info-block">
+		<div class="info-title">{#$langData['siteConfig'][19][708]#}</div>
+		<div class="info-content">
+			{#if !$detail_storeBranch#}
+			<dl><dt>{#$langData['siteConfig'][19][59]#}：</dt><dd>{#$detail_store['title']#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][642]#}：</dt><dd>{#$detail_store['people']#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][56]#}：</dt><dd><a href="tel:{#$detail_store['tel']#}" style="text-decoration: underline;">{#$detail_store['tel']#}</a></dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][9]#}：</dt><dd>{#$detail_store['address']#}</dd></dl>
+			{#else#}
+			<dl><dt>{#$langData['siteConfig'][19][59]#}：</dt><dd>{#$detail_storeBranch['title']#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][642]#}：</dt><dd>{#$detail_storeBranch['people']#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][56]#}：</dt><dd><a href="tel:{#$detail_storeBranch['tel']#}" style="text-decoration: underline;">{#$detail_storeBranch['tel']#}</a></dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][9]#}：</dt><dd>{#$detail_storeBranch['address']#}</dd></dl>
+			{#/if#}
+		</div>
+	</div>
+	{#/if#}
+
+
+	<div class="info-block">
+		<div class="info-title">{#$langData['siteConfig'][19][319]#}</div>
+		<div class="info-content">
+			<dl><dt>{#$langData['siteConfig'][19][50]#}：</dt><dd>{#$detail_ordernum#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][51]#}：</dt><dd>{#$detail_orderdate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>
+			{#if $detail_paydate != 0#}
+			<dl><dt>{#$langData['siteConfig'][19][52]#}：</dt><dd>{#$detail_paytype#}</dd></dl>
+			<dl><dt>{#$langData['siteConfig'][19][53]#}：</dt><dd>{#$detail_paydate|date_format:"%Y-%m-%d %H:%M:%S"#}</dd></dl>
+			{#/if#}
+		</div>
+	</div>

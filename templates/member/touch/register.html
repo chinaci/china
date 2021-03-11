@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{#$langData['siteConfig'][1][1]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/register.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', redirectUrl = '{#$redirectUrl#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+  var geetest = {#$cfg_geetest#};
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = {#$cfg_webname#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#$cfg_basehost#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+
+<body>
+{#include file="../../siteConfig/touch_top.html" pageTitle="{#$langData['siteConfig'][1][1]#}"#}
+
+<div class="main">
+  {#$first = 0#}
+  {#if in_array('2',$regtypeArr)#}
+  {#$first = 1#}
+  <!-- 手机号注册 -->
+  <div class="regbox regbox-mobile">
+    <form action="">
+      <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+      <dl class="f-mobile">
+      <dt><i class="icon_mobile"></i><label for=""><font id="areaCodeLab">+{#$internationalPhoneSection[0]['code']#}</font><span></span></label></dt>
+        <dd><input type="text" class="inp account" name="account" id="tel" placeholder="{#$langData['siteConfig'][20][27]#}"></dd>
+      </dl>
+      <dl>
+        <dt><i class="icon_yzm"></i></dt>
+        <dd><input type="text" class="inp" name="vcode" placeholder="{#$langData['siteConfig'][20][32]#}"><a href="javascript:;" class="get-yzm js_getyzm disabled">{#$langData['siteConfig'][4][1]#}</a></dd>
+      </dl>
+      <dl>
+        <dt><i class="icon_lock"></i></dt>
+        <dd><input type="text" class="inp" name="password" placeholder="{#$langData['siteConfig'][20][502]#}"></dd>
+      </dl>
+      <div class="f-agree">
+        <label for=""><input type="checkbox" class="agree"><span></span>{#$langData['siteConfig'][6][2]#}<a href="{#getUrlPath service='siteConfig' template='protocol' title='会员注册协议'#}">《{#$langData['siteConfig'][12][0]#}》</a></label> {#* 会员注册协议  *#}
+      </div>
+      <div class="f-submit">
+        <a href="javascript:;" class="submit disabled">{#$langData['siteConfig'][1][4]#}</a>
+      </div>
+    </form>
+  </div>
+  {#/if#}
+  {#if in_array('1',$regtypeArr)#}
+  {#$first = 1#}
+  <!-- 用户名注册 -->
+  <div class="regbox regbox-username"{#if $first#} style="display:none;"{#/if#}>
+    <form action="">
+      <dl>
+      <dt><i class="icon_username"></i></dt>
+        <dd><input type="text" class="inp account" name="account" id="username" placeholder="{#$langData['siteConfig'][32][48]#}"></dd> {#* 请输入您的用户名  *#}
+      </dl>
+      <dl>
+        <dt><i class="icon_lock"></i></dt>
+        <dd><input type="text" class="inp" name="password" placeholder="{#$langData['siteConfig'][20][502]#}"></dd>
+      </dl>
+      {#if in_array('1',$fieldsArr)#}
+      <!-- 真实姓名 -->
+      <dl>
+        <dt><i class="icon_realname"></i></dt>
+        <dd><input type="text" class="inp" name="nickname" placeholder="{#$langData['siteConfig'][32][50]#}"></dd>{#* 请输入您的真实姓名  *#}
+      </dl>
+      {#/if#}
+      {#if in_array('2',$fieldsArr)#}
+      <!-- 邮箱 -->
+      <dl>
+        <dt><i class="icon_email"></i></dt>
+        <dd><input type="text" class="inp" name="email" placeholder="{#$langData['siteConfig'][20][31]#}"></dd>
+      </dl>
+      {#/if#}
+      {#if in_array('3',$fieldsArr)#}
+      <!-- 手机 -->
+      <dl>
+        <dt><i class="icon_mobile"></i></dt>
+        <dd>
+          <span class="areacode_span"><label for="">+{#$internationalPhoneSection[0]['code']#}</label></span>
+          <input type="text" class="inp code_phone" name="phone" placeholder="{#$langData['siteConfig'][20][27]#}">
+        </dd>
+      </dl>
+      {#/if#}
+      {#if !empty($cfg_seccodetype)#}
+      <dl>
+        <dt><i class="icon_vericode"></i></dt>
+        <dd><input type="text" class="inp" name="vericode" id="vericode" placeholder="{#$langData['siteConfig'][20][176]#}"><img src="/include/vdimgck.php" class="vericode_img"></dd>    {#* 请输入验证码  *#}
+      </dl>
+      {#/if#}
+      <div class="f-agree">
+        <label for=""><input type="checkbox" class="agree"><span></span>{#$langData['siteConfig'][6][2]#}<a href="{#getUrlPath service='siteConfig' template='protocol' title='会员注册协议'#}">《{#$langData['siteConfig'][12][0]#}》</a></label>    {#* 会员注册协议  *#}
+      </div>
+      <div class="f-submit">
+        <a href="javascript:;" class="submit disabled">{#$langData['siteConfig'][1][4]#}</a>
+      </div>
+    </form>
+  </div>
+  {#/if#}
+  {#if in_array('3',$regtypeArr)#}
+  <!-- 邮箱注册 -->
+  <div class="regbox regbox-email"{#if $first#} style="display:none;"{#/if#}>
+    <form action="">
+      <dl>
+      <dt><i class="icon_email"></i></dt>
+        <dd><input type="text" class="inp account" name="account" id="email" placeholder="{#$langData['siteConfig'][20][31]#}"></dd>
+      </dl>
+      <dl>
+        <dt><i class="icon_yzm"></i></dt>
+        <dd><input type="text" class="inp" name="vcode" placeholder="{#$langData['siteConfig'][20][503]#}"><a href="javascript:;" class="get-yzm disabled">{#$langData['siteConfig'][4][1]#}</a></dd>
+      </dl>
+      <dl>
+        <dt><i class="icon_lock"></i></dt>
+        <dd><input type="text" class="inp" name="password" placeholder="{#$langData['siteConfig'][20][502]#}"></dd>
+      </dl>
+      <div class="f-agree">
+        <label for=""><input type="checkbox" class="agree"><span></span>{#$langData['siteConfig'][6][2]#}<a href="{#getUrlPath service='siteConfig' template='protocol' title='会员注册协议'#}">《{#$langData['siteConfig'][12][0]#}》</a></label> {#* 会员注册协议  *#}
+      </div>
+      <div class="f-submit">
+        <a href="javascript:;" class="submit disabled">{#$langData['siteConfig'][1][4]#}</a>
+      </div>
+    </form>
+  </div>
+  {#/if#}
+</div>
+<footer id="footer">
+  {#if in_array('2',$regtypeArr)#}<div class="item item-mobile active" data-type="2" data-rtype="3"><i></i><p>{#$langData['siteConfig'][1][2]#}</p></div>{#/if#}
+  {#if in_array('1',$regtypeArr)#}<div class="item item-username" data-type="1" data-rtype="1"><i></i><p>{#$langData['siteConfig'][1][9]#}</p></div>{#/if#} {#* 用户名注册  *#}
+  {#if in_array('3',$regtypeArr)#}<div class="item item-email" data-type="3" data-rtype="2"><i></i><p>{#$langData['siteConfig'][1][3]#}</p></div>{#/if#}
+</footer>
+
+<!-- 区号弹出层 s -->
+<div class="layer">
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div>
+    <div class="layer_list" id="layer_list">
+      <ul>
+
+      </ul>
+    </div>
+</div>
+<!-- 区号弹出层 e -->
+<div class="mask-code" id="maskReg"></div>
+<div id="popupReg-captcha-mobile"></div>
+
+<div class="phone_msg fn-hide">
+  <div class="box">
+    <div class="bdt"><div class="bdr"></div></div>
+    <a href="javascript:;" class="close">×</a>
+    <div class="content">
+         {#* 手机号  *#}
+      <p class="info">{#$langData['siteConfig'][37][86]#}<span class="blur"></span>{#$langData['siteConfig'][2][17]#}</p>    {#* 已被注册过，请直接登陆  *#}
+      <a href="{#$cfg_basehost#}/login.html"class="btn">{#$langData['siteConfig'][2][0]#}</a>
+         {#* 如您忘记密码，点击  *#}
+      <p class="fpwd">{#$langData['siteConfig'][5][23]#}<a href="{#$cfg_basehost#}/fpwd.html" class="blur">{#$langData['siteConfig'][5][3]#}</a></p>    {#* 找回密码  *#}
+    </div>
+  </div>
+  <div class="bg"></div>
+</div>
+
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$templets_skin#}js/register.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

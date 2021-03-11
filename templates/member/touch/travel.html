@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$langData['travel'][0][0]#}</title>   {#* 旅游频道 *#}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/travel.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var module = 'travel';
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['travel'][0][0]#}{#* 旅游频道 *#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+
+<ul class="link">
+  {#if $userinfo.userType==2#}
+  <li><a href="{#getUrlPath service='member' template='config-travel'#}"><i class="icon-config-shop"></i>{#$langData['travel'][11][0]#}</a></li>{#* 店铺配置 *#}
+  <li><a href="{#getUrlPath service='member' template='order-travel'#}"><i class="icon-order-travel"></i>{#$langData['homemaking'][0][31]#}</a></li>{#* 订单管理 *#}
+  {#/if#}
+  {#if $isTravelStore#}
+  {#if !empty($bind_moduleArr) && in_array(1, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' template='travel-hotel'#}"><i class="icon-hotel_manage"></i>{#$langData['travel'][11][1]#}</a></li>{#* 酒店管理 *#}
+  {#/if#}
+  {#if !empty($bind_moduleArr) && in_array(2, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' template='travel-ticket'#}"><i class="icon-ticket_manage"></i>{#$langData['travel'][11][2]#}</a></li>{#* 景点门票管理 *#}
+  {#/if#}
+  {#if !empty($bind_moduleArr) && in_array(3, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' template='travel-rentcar'#}"><i class="icon-rentcar_manage"></i>{#$langData['travel'][11][3]#}</a></li>{#* 租车管理 *#}
+  {#/if#}
+  {#if $userinfo.userType==1 || !empty($bind_moduleArr) && in_array(5, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' type='user' template='travel-video'#}"><i class="icon-video_manage"></i>{#$langData['travel'][11][4]#}</a></li>{#* 视频管理 *#}
+  {#/if#}
+  {#if $userinfo.userType==1 || !empty($bind_moduleArr) && in_array(6, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' type='user' template='travel-strategy'#}"><i class="icon-travel_manage"></i>{#$langData['travel'][11][5]#}</a></li>{#* 旅游攻略管理 *#}
+  {#/if#}
+  {#if !empty($bind_moduleArr) && in_array(7, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' template='travel-visa'#}"><i class="icon-visa_manage"></i>{#$langData['travel'][11][6]#}</a></li>{#* 签证管理 *#}
+  {#/if#}
+  {#if !empty($bind_moduleArr) && in_array(4, $bind_moduleArr)#}
+  <li><a href="{#getUrlPath service='member' template='travel-agency'#}"><i class="icon-agency_manage"></i>{#$langData['travel'][11][7]#}</a></li>{#* 周边游 *#}
+  {#/if#}
+  {#/if#}
+  
+</ul>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+</body>
+</html>
