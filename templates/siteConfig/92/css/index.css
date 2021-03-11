@@ -1,0 +1,1575 @@
+.PicFocus{
+    float: left;
+    width: 395px;
+    height: 395px;
+    overflow: hidden;
+    position: relative;
+}
+.PicFocus .slideobj {
+  height: 395px;
+}
+.PicFocus img{
+    width: 395px;
+    height: 395px;
+    display: block;
+}
+.PicFocus .hd{
+    position: absolute;
+    height: 25px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.PicFocus .hd ul li{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background: #aaabaa;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.PicFocus .hd ul li.on{
+    width: 20px;
+    height: 6px;
+    border-radius: 6px;
+    background: #fff;
+}
+.PicFocus:hover .prev{
+    display: block;
+}
+.PicFocus:hover .next{
+    display: block;
+}
+.PicFocus .prev{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    left: 5px;
+    top: 180px;
+    display: none;
+    -webkit-animation: leftFadeIn .5s ease-out;
+    -moz-animation: leftFadeIn .5s ease-out;
+    animation: leftFadeIn .5s ease-out;
+}
+.PicFocus .prev:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: 11px 1px;
+}
+.PicFocus .next{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    right: 5px;
+    top: 180px;
+    display: none;
+    -webkit-animation: rightFadeIn .5s ease-out;
+    -moz-animation: rightFadeIn .5s ease-out;
+    animation: rightFadeIn .5s ease-out;
+}
+.PicFocus .next:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -20px 1px;
+}
+.NewsBox{
+    float: left;
+    margin-left: 12px;
+    width: 480px;
+}
+.NewsBox .Newslead{
+    background: #f8f8f8;
+    height: 45px;
+    line-height: 45px;
+}
+.NewsBox .Newslead ul li{
+    float: left;
+    width: 160px;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    cursor: pointer;
+}
+.NewsBox .Newslead ul li:after{
+    content: "";
+    width: 160px;
+    height: 2px;
+    background: #2babff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.NewsBox .Newslead ul li.newbc:after{
+    display: block;
+}
+.NewsList{
+    margin-top: 15px;
+}
+.NewsDE{
+    line-height: 33px;
+}
+.NewsDE.active{
+    display: block;
+}
+.NewsDE .NewsCon a em{
+    float: left;
+    width: 62px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    font-size: 12px;
+    color: #2babff;
+    border: 1px solid #2babff;
+    margin-right: 10px;
+    overflow: hidden;
+    margin-top: 7px;
+}
+.NewsDE .NewsCon a span{
+    float: left;
+    width: 323px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.NewsDE .NewsCon a i{
+    float: right;
+    font-style: normal;
+    color: #bebebe;
+    font-size: 12px;
+}
+.NewsInfo{
+    float: left;
+    margin-left: 13px;
+    width: 300px;
+}
+.NewsInfo .gonggao{
+    border: 1px solid #efefef;
+}
+.NewsInfo .gonggao .gg_lead{
+    height: 44px;
+    background: #f8f8f8;
+    line-height: 44px;
+}
+.NewsInfo .gonggao .gg_lead span{
+    float: left;
+    font-size: 14px;
+}
+.NewsInfo .gonggao .gg_lead span i{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -66px -30px;
+    margin-left: 10px;
+    margin-right: 7px;
+}
+.NewsInfo .gonggao .gg_lead a{
+    float: right;
+    font-size: 12px;
+    color: #999999;
+}
+.NewsInfo .gonggao .gg_lead a i{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -31px -63px;
+    margin-right: 2px;
+}
+.NewsInfo .gonggao .gg_list{
+    padding: 6px 10px;
+    height: 148px;
+}
+.NewsInfo .gonggao .gg_list ul li{
+    position: relative;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+.NewsInfo .gonggao .gg_list ul li a{
+    font-size: 14px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.NewsInfo .gonggao .gg_list ul li:after{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    border: 2px solid #c3c3c3;
+    position: absolute;
+    left: 4px;
+    top: 10px;
+}
+.statistics{
+	margin-top: 25px;
+}
+.statistics .sta_txt{
+	width: 99px;
+	float: left;
+	text-align: center;
+}
+.statistics .sta_line{
+	width: 1px;
+	height: 88px;
+	background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -370px -26px;
+	float: left;
+}
+.statistics .sta_txt p{
+	font-size: 16px;
+}
+.statistics .sta_txt span{
+	color: #36bef7;
+	font-size: 14px;
+}
+.statistics .sta_txt i{
+	width: 99px;
+	height: 52px;
+	display: block;
+	margin-bottom: 5px;
+    background: url(../images/skin8Icon.png) no-repeat center;
+}
+.statistics .sta_txt i.down{
+    background-position: -389px -1px;
+}
+.statistics .sta_txt i.view_num{
+    background-position: -389px -57px;
+}
+.statistics .sta_txt i.fa_num{
+    background-position: -389px -116px;
+}
+.BusinessBtn{
+    width: 300px;
+    height: 43px;
+    line-height: 43px;
+    background: #2babff;
+    border: 1px solid #28a0ef;
+    border-radius: 3px;
+    margin-top: 16px;
+}
+.BusinessBtn a{
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+.ad{
+    margin-top: 20px;
+}
+.PublicLead{
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    margin-top: 30px;
+}
+.PublicLead .PL_name{
+    font-size: 18px;
+    float: left;
+}
+.PublicLead .PL_link{
+    float: right;
+    font-size: 14px;
+}
+.PublicLead .PL_link i{
+    width: 24px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -1px -59px;
+    margin-left: 3px;
+}
+.PublicLead .PL_name i{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    margin-right: 5px;
+}
+.PublicLead .PL_name.businessicon i{
+    background-position: -90px -26px;
+}
+.PublicLead .PL_name.houseicon i{
+    background-position: -234px -26px;
+}
+.PublicLead .PL_name.infoicon i{
+    background-position: -126px -26px;
+}
+.PublicLead .PL_name.tuanicon i{
+    background-position: -161px -26px;
+}
+.PublicLead .PL_name.shopicon i{
+    background-position: -195px -26px;
+}
+.PublicLead .PL_name.jobicon i{
+    background-position: -91px -26px;
+}
+.PublicLead .PL_name.datingicon i{
+    background-position: -274px -26px;
+}
+.PublicLead .PL_name.huangyeicon i{
+    background-position: -314px -25px;
+}
+.BusinessList{
+    width: 1200px;
+    overflow: hidden;
+}
+.BusinessList ul{
+    width: 1300px;
+}
+.BusinessList ul li{
+    float: left;
+    width: 155px;
+    height: 155px;
+    border: 1px solid #ececec;
+    overflow: hidden;
+    position: relative;
+    margin-right: 16.9px;
+    margin-top: 16.9px;
+}
+.BusinessList ul li:hover .code{
+    opacity: 1;
+}
+.BusinessList ul li:hover .logo{
+    opacity: 0;
+}
+.BusinessList ul li .code{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 155px;
+    height: 155px;
+    display:table;
+    text-align:center;
+    opacity: 0;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    transition: 0.5s all ease;
+}
+.BusinessList ul li .code i{
+    display:table-cell;
+    vertical-align:middle;
+}
+.BusinessList ul li .logo{
+    width: 155px;
+    height: 155px;
+    display:table;
+    text-align:center;
+    opacity: 1;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    transition: 0.3s all ease;
+}
+.BusinessList ul li .logo i{
+    display:table-cell;
+    vertical-align:middle;
+}
+.BusinessList ul li .logo img{
+    max-width: 105px;
+}
+.HouseList{
+    border: 1px solid #efefef;
+    margin-top: 15px;
+}
+.HouseList .HouseLead{
+    width: 111px;
+    float: left;
+    text-align: center;
+    background: #f8f8f8;
+}
+.HouseList .HouseLead ul li{
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+.HouseList .HouseLead ul li:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 44px;
+    width: 2px;
+    background: #2babff;
+    display: none;
+}
+.HouseList .HouseLead ul li.HL_bc{
+    background: #fff;
+}
+.HouseList .HouseLead ul li.HL_bc:after{
+    display: block;
+}
+.HouseType {
+    float: left;
+    width: 1087px;
+    overflow: hidden;
+}
+.HouseType .HouseCom{
+    display: none;
+    opacity: 0;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    transition: 0.5s all ease;
+}
+.HouseType .HouseCom.active{
+    opacity: 1;
+    display: block;
+}
+.NewList{
+    margin-left: 13px;
+    margin-top: 23px;
+    width: 1120px;
+}
+.NewList .Newhouse_Box{
+    float: left;
+    width: 329px;
+    height: 120px;
+    margin-right: 40px;
+    overflow: hidden;
+    margin-bottom: 23px;
+}
+.NewList .Newhouse_Box .Newhouse_pic{
+    float: left;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 15px;
+  	background: #f5f5f5;
+}
+.NewList .Newhouse_Box .Newhouse_pic img{
+    width: 100%;
+    height: 100%;
+}
+.NewList .Newhouse_Box .Newhouse_name{
+    font-size: 16px;
+    height: 25px;
+    line-height: 25px;
+}
+.NewList .Newhouse_Box .Newhouse_name a{
+    float: left;
+    max-width: 147px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 7px;
+}
+.NewList .Newhouse_Box .Newhouse_name em{
+    padding: 3px 7px;
+    background: #2babff;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+}
+.NewList .Newhouse_Box .Newhouse_tips {
+    height: 22px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.NewList .Newhouse_Box .Newhouse_tips em{
+    float: left;
+    width: 56px;
+    height: 20px;
+    line-height: 20px;
+    color: #919191;
+    border: 1px solid #919191;
+    font-size: 12px;
+    margin-right: 5px;
+    text-align: center;
+}
+.NewList .Newhouse_Box .location{
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #919191;
+    margin-top: 9px;
+}
+.NewList .Newhouse_Box .location i{
+    width: 15px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -6px -90px;
+}
+.NewList .Newhouse_Box .Newhouse_price{
+    margin-top: 10px;
+}
+.NewList .Newhouse_Box .Newhouse_price i{
+    color: #f56c1a;
+    font-size: 12px;
+    font-style: normal;
+}
+.NewList .Newhouse_Box .Newhouse_price span{
+    font-size: 16px;
+    color: #f56c1a;
+    margin: 0 3px 0 0;
+}
+.NewList .Newhouse_Box .Newhouse_price em{
+    font-size: 12px;
+    color: #a0a0a0;
+}
+.SecondList{
+    margin-left: 9px;
+    float: left;
+    width: 1120px;
+    margin-top: 26px;
+}
+.SecondList .Second_box{
+    float: left;
+    width: 348px;
+    margin-right: 14px;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 21px;
+}
+.SecondList .Second_box .Second_pic{
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    float: left;
+    margin-right: 14px;
+  	background: #f5f5f5;
+}
+.SecondList .Second_box .Second_pic img{
+    width: 100%;
+    height: 100%;
+}
+.SecondList .Second_box .Second_name{
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 47px;
+}
+
+.SecondList .Second_box .Second_tips{
+    font-size: 12px;
+    color: #919191;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 14px 0;
+}
+.SecondList .Second_box .Second_price span{
+    color: #f56c1a;
+    font-size: 16px;
+    margin-right: 5px;
+}
+.SecondList .Second_box .Second_price span i{
+    font-size: 12px;
+    font-style: normal;
+}
+.SecondList .Second_box .Second_price em{
+    font-size: 12px;
+    color: #919191;
+}
+.SecondList .Second_box .Second_price em.flag{
+    padding: 3px 7px;
+    background: #2babff;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-left: 7px;
+    float: right;
+}
+.ZuList{
+    margin-left: 9px;
+    float: left;
+    width: 1120px;
+    margin-top: 26px;
+}
+.ZuList .Zu_box{
+    float: left;
+    width: 345px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-bottom: 21px;
+}
+.ZuList .Zu_pic{
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    float: left;
+    margin-right: 14px;
+    position: relative;
+  	background: #f5f5f5;
+}
+.MidTips i{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    top: 0;
+    right: 0;
+}
+.MidTips i.per{
+    background-position: -15px -122px;
+}
+.MidTips i.mid{
+    background-position: -88px -122px;
+}
+.ZuList .Zu_pic img{
+    width: 100%;
+    height: 100%;
+}
+.ZuList .Zu_title{
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 44px;
+}
+.ZuList .Zu_tips{
+    font-size: 12px;
+    color: #919191;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 14px 0;
+}
+.ZuList .Zu_foot{
+    height: 30px;
+    line-height: 30px;
+}
+.ZuList .Zu_foot .Zu_location{
+    float: left;
+    font-size: 12px;
+    color: #919191;
+    width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ZuList .Zu_foot .Zu_location i{
+    display: inline-block;
+    width: 17px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -6px -90px;
+}
+.ZuList .Zu_foot .Zu_price{
+    float: right;
+    font-size: 12px;
+    color: #919191;
+}
+.ZuList .Zu_foot .Zu_price i{
+    font-style: normal;
+    color: #f56c1a;
+}
+.ZuList .Zu_foot .Zu_price em{
+    font-size: 20px;
+    color: #f56c1a;
+}
+.XZLList{
+    margin-left: 9px;
+    float: left;
+    width: 1120px;
+    margin-top: 26px;
+}
+.XZLList .XZL_Box{
+    float: left;
+    width: 345px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-bottom: 21px;
+}
+.XZLList .XZL_Box .XZL_pic{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin-right: 15px;
+    position: relative;
+  	background: #f5f5f5;
+}
+.XZLList .XZL_Box .XZL_pic img{
+    width: 100%;
+    height: 100%;
+}
+.XZLList .XZL_Box .XZL_title{
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 47px;
+}
+.XZLList .XZL_Box .XZL_price span{
+    color: #f56c1a;
+}
+.XZLList .XZL_Box .XZL_price span em{
+    font-size: 20px;
+}
+.XZLList .XZL_Box .XZL_price i{
+    font-style: normal;
+    color: #919191;
+}
+.XZLList .XZL_Box .XZL_tips{
+    color: #919191;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.XZLList .XZL_Box .XZL_location{
+    height: 17px;
+    line-height: 17px;
+    margin-top: 5px;
+}
+.XZLList .XZL_Box .XZL_location a{
+    color: #919191;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.XZLList .XZL_Box .XZL_location i{
+    display: inline-block;
+    width: 17px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -6px -90px;
+}
+.SPList{
+    margin-left: 9px;
+    float: left;
+    width: 1120px;
+    margin-top: 26px;
+}
+.SPList .SP_Box{
+    float: left;
+    width: 345px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-bottom: 21px;
+}
+.SPList .SP_Box .SP_pic{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin-right: 15px;
+    position: relative;
+  	background: #f5f5f5;
+}
+.SPList .SP_Box .SP_pic img{
+    width: 100%;
+    height: 100%;
+}
+.SPList .SP_Box .SP_title{
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 47px;
+}
+.SPList .SP_Box .SP_price{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.SPList .SP_Box .SP_price span{
+    color: #f56c1a;
+}
+.SPList .SP_Box .SP_price span em{
+    font-size: 20px;
+}
+.SPList .SP_Box .SP_price span s{
+    color: #000;
+    text-decoration: none;
+}
+.SPList .SP_Box .SP_price i{
+    font-style: normal;
+    color: #919191;
+}
+.SPList .SP_Box .SP_tips{
+    color: #919191;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.SPList .SP_Box .SP_location{
+    height: 17px;
+    line-height: 17px;
+    margin-top: 5px;
+}
+.SPList .SP_Box .SP_location a{
+    color: #919191;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.SPList .SP_Box .SP_location i{
+    display: inline-block;
+    width: 17px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -6px -90px;
+}
+.CFList{
+    margin-left: 9px;
+    float: left;
+    width: 1120px;
+    margin-top: 26px;
+}
+.CFList .CF_Box{
+    float: left;
+    width: 345px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-bottom: 21px;
+}
+.CFList .CF_Box .CF_pic{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin-right: 15px;
+    position: relative;
+  	background: #f5f5f5;
+}
+.CFList .CF_Box .CF_pic img{
+    width: 100%;
+    height: 100%;
+}
+.CFList .CF_Box .CF_title{
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 47px;
+}
+.CFList .CF_Box .CF_price{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.CFList .CF_Box .CF_price span{
+    color: #f56c1a;
+}
+.CFList .CF_Box .CF_price span em{
+    font-size: 20px;
+}
+.CFList .CF_Box .CF_price span s{
+    color: #000;
+    text-decoration: none;
+}
+.CFList .CF_Box .CF_price i{
+    font-style: normal;
+    color: #919191;
+}
+.CFList .CF_Box .CF_tips{
+    color: #919191;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.CFList .CF_Box .CF_location{
+    height: 17px;
+    line-height: 17px;
+    margin-top: 5px;
+}
+.CFList .CF_Box .CF_location a{
+    color: #919191;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.CFList .CF_Box .CF_location i{
+    display: inline-block;
+    width: 17px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -6px -90px;
+}
+.BrokerList{
+    margin-top: 50px;
+    width: 1120px;
+    overflow: hidden;
+}
+.BrokerList .BrokerBox{
+    float: left;
+    padding: 0 24px;
+    border-right: 1px solid #ededed;
+    width: 169px;
+    height: 239px;
+}
+.BrokerList .BrokerBox .BrokerPic{
+    width: 93px;
+    height: 93px;
+    border-radius: 93px;
+    overflow: hidden;
+    margin: 0 auto;
+  	background: #f5f5f5;
+}
+.BrokerList .BrokerBox .BrokerPic img{
+    width: 100%;
+}
+.BrokerList .BrokerBox .BrokerIn{
+    width: 57px;
+    height: 22px;
+    line-height: 22px;
+    color: #2babff;
+    border: 1px solid #2babff;
+    text-align: center;
+    margin: 13px auto 5px;
+}
+.BrokerList .BrokerBox .BrokerIn a{
+    display: block;
+    color: #2babff;
+}
+.BrokerList .BrokerBox p{
+    text-align: center;
+    font-size: 16px;
+}
+.BrokerList .BrokerBox p.tel{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.BrokerList .BrokerBox ul li{
+    color: #919191;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.BrokerList .BrokerBox ul li a{
+    color: #919191;
+}
+.InfoList{
+    margin-top: 15px;
+    width: 1200px;
+    overflow: hidden;
+}
+.InfoList .InfoCon {
+    width: 1225px;
+    height: 377px;
+    overflow: hidden;
+}
+.InfoList .InfoCon .InfoDe{
+    float: left;
+    width: 385px;
+    height: 377px;
+    margin-right: 23px;
+}
+.InfoList .InfoCon .InfoDe .InfoLead{
+    width: 385px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    background: #c8c5f8;
+}
+.InfoList .InfoCon .InfoDe.IT0 .InfoLead{
+    background: #f8c3c3;
+}
+.InfoList .InfoCon .InfoDe.IT1 .InfoLead{
+    background: #d0e2fa;
+}
+.InfoList .InfoCon .InfoDe.IT2 .InfoLead{
+    background: #c8c5f8;
+}
+.InfoList .InfoCon .InfoDe.IT3 .InfoLead{
+    background: #f8c3c3;
+}
+.InfoList .InfoCon .InfoDe.IT4 .InfoLead{
+    background: #d0e2fa;
+}
+.InfoList .InfoCon .InfoDe.IT5 .InfoLead{
+    background: #c8c5f8;
+}
+.InfoList .InfoCon .InfoDe.IT6 .InfoLead{
+    background: #f8c3c3;
+}
+.InfoList .InfoCon .InfoDe.IT7 .InfoLead{
+    background: #d0e2fa;
+}
+.InfoList .InfoCon .InfoDe.IT8 .InfoLead{
+    background: #c8c5f8;
+}
+.InfoList .InfoCon .InfoDe .InfoTxT{
+    font-size: 14px;
+    margin-top: 10px;
+}
+.InfoList .InfoCon .InfoDe .InfoTxT p{
+    height: 32px;
+    line-height: 32px;
+}
+.InfoList .InfoCon .InfoDe .InfoTxT em{
+    color: #919191;
+    float: left;
+    margin-right: 3px;
+}
+.InfoList .InfoCon .InfoDe .InfoTxT p a{
+    width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+.InfoList .InfoCon .InfoDe .InfoTxT p i{
+    float: right;
+    color: #919191;
+    font-style: normal;
+}
+.InfoPage{
+    text-align: center;
+    width: auto;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.InfoPage ul li{
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 11px;
+    background: #ebebeb;
+    font-size: 12px;
+    overflow: hidden;
+    color: #ebebeb;
+    margin: 0 3px;
+    cursor: pointer;
+    text-align: center;
+}
+.InfoPage ul li.on{
+    width: 18px;
+    height: 18px;
+    background: #54cbf2;
+    color: #fff;
+    position: relative;
+    top: 3px;
+}
+.TuanList{
+    width: 1200px;
+    margin-top: 15px;
+    position: relative;
+}
+.TuanList:hover .prev{
+    display: block;
+}
+.TuanList:hover .next{
+    display: block;
+}
+.TuanList .TuanBB{
+    height: 676px;
+    overflow: hidden;
+}
+.TuanList .TuanDe{
+    padding: 12px;
+    float: left;
+    width: 376px;
+}
+.TuanList .TuanDe:hover{
+    background: #f8f8f8;
+}
+.TuanList .TuanDe .Tuan_pic{
+    width: 376px;
+    height: 228px;
+    border-radius: 5px;
+    overflow: hidden;
+  	background: #f5f5f5;
+}
+.TuanList .TuanDe .Tuan_pic img{
+    width: 100%;
+    height: 100%;
+}
+.TuanList .TuanDe .Tuan_title{
+    font-size: 16px;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.TuanList .TuanDe .Tuan_tips{
+    color: #bcbcbc;
+    padding: 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.TuanList .TuanDe .Tuan_foot .Tuan_price{
+    float: left;
+    width: 187px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.TuanList .TuanDe .Tuan_foot .Tuan_price span{
+    font-size: 20px;
+    color: #f16f10;
+}
+.TuanList .TuanDe .Tuan_foot .Tuan_price em{
+    font-size: 12px;
+}
+.TuanList .TuanDe .Tuan_foot .Tuan_price s{
+    color: #bcbcbc;
+    margin-left: 10px;
+}
+.TuanList .TuanDe .Tuan_foot .Tuan_sell{
+    float: right;
+    text-align: right;
+    color: #000;
+}
+.TuanList .prev{
+    width: 50px;
+    height: 50px;
+    background: #e6e6e6;
+    border-radius: 5px;
+    -webkit-animation: rightFadeIn .5s ease-out;
+    -moz-animation: rightFadeIn .5s ease-out;
+    animation: rightFadeIn .5s ease-out;
+    position: absolute;
+    left: -70px;
+    top: 245px;
+    /* display: none; */
+}
+.TuanList .prev:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: 17px 6px;
+}
+.TuanList .next{
+    width: 50px;
+    height: 50px;
+    background: #e6e6e6;
+    border-radius: 5px;
+    -webkit-animation: leftFadeIn .5s ease-out;
+    -moz-animation: leftFadeIn .5s ease-out;
+    animation: leftFadeIn .5s ease-out;
+    position: absolute;
+    right: -70px;
+    top: 245px;
+    /* display: none; */
+}
+.TuanList .next:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -13px 6px;
+}
+.ShopBox{
+    overflow: hidden;
+}
+.ShopList{
+    margin-top: 15px;
+    width: 1220px;
+}
+.ShopList .ShopDe{
+    float: left;
+    border: 1px solid #ececec;
+    margin-right: 11px;
+    margin-bottom: 13px;
+}
+.ShopList .ShopDe .ShopPic{
+    width: 229px;
+    height: 229px;
+  	background: #f5f5f5;
+}
+.ShopList .ShopDe .ShopPic img{
+    width: 100%;
+    height: 100%;
+}
+.ShopList .ShopDe .ShopTitle{
+    font-size: 16px;
+    padding-left: 8px;
+    margin-top: 10px;
+    width: 187px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ShopList .ShopDe .ShopFoot {
+    padding-left: 8px;
+    padding-bottom: 5px;
+    padding-right: 8px;
+}
+.ShopList .ShopDe .ShopFoot .ShopPrice {
+    float: left;
+}
+.ShopList .ShopDe .ShopFoot .ShopPrice span{
+    font-size: 20px;
+    color: #f16f10;
+}
+.ShopList .ShopDe .ShopFoot .ShopPrice span em{
+    font-size: 12px;
+}
+.ShopList .ShopDe .ShopFoot .ShopPrice s{
+    color: #919191;
+    margin-left: 5px;
+}
+.ShopList .ShopDe .ShopFoot .ShopSell{
+    float: right;
+    color: #919191;
+    margin-top: 8px;
+}
+.ShopList .ShopDe .ShopFoot .ShopSell em{
+    color: #f17215;
+    margin-left: 3px;
+}
+.JobBox{
+    height: 630px;
+    overflow: hidden;
+}
+.JobBox .PublicLead{
+    overflow: visible;
+}
+.JobList{
+    margin-top: 15px;
+}
+.JobList .JL_box{
+    width: 298px;
+    float: left;
+    border: 1px solid #ececec;
+}
+.JobList .JL_box .JL_lead{
+    height: 41px;
+    line-height: 41px;
+    background: #f8f8f8;
+    padding:0 10px;
+}
+.JobList .JL_box .JL_lead .JL_name{
+    font-size: 14px;
+    float: left;
+}
+.JobList .JL_box .JL_lead .JL_name i{
+    width: 18px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    margin-right: 5px;
+    background-position: -227px -54px;
+}
+.JobList .JL_box .JL_lead .JL_link{
+    float: right;
+    font-size: 12px;
+}
+.JobList .JL_box .JL_lead .JL_link a{
+    font-size: 12px;
+    color: #919191;
+}
+.JobList .JL_box .JL_lead .JL_link a i{
+    width: 15px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -32px -63px;
+}
+.JobList .JL_box .JL_list{
+    padding: 0 10px;
+    height: 511px;
+    overflow: hidden;
+}
+.JobList .JL_box .JL_list .JL_de{
+    padding: 13px 0;
+    border-bottom: 1px dashed #e8e8e8;
+}
+.JobList .JL_box .JL_list .JL_de .JL_pic{
+    float: left;
+    width: 76px;
+    height: 100px;
+    overflow: hidden;
+    margin-right: 14px;
+  	background: #f5f5f5;
+}
+.JobList .JL_box .JL_list .JL_de .JL_pic img{
+    width: 100%;
+    height: 100%;
+}
+.JobList .JL_box .JL_list .JL_de .JL_name{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.JobList .JL_box .JL_list .JL_de .JL_name em{
+    font-size: 12px;
+    color: #919191;
+}
+.JobList .JL_box .JL_list .JL_de ul li{
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000;
+}
+.JobList .JL_box .JL_list .JL_de ul li em{
+    color: #919191;
+}
+.JobList .JobCon{
+    float: left;
+    width: 900px;
+    overflow: hidden;
+}
+.Job_lead{
+    width: 366px;
+    float: left;
+    margin-left: 453px;
+}
+.Job_lead ul li{
+    float: left;
+    text-align: center;
+    width: 122px;
+    font-size: 16px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+.Job_lead ul li.JBL_bc{
+    border-bottom: 2px solid #2babff;
+}
+.Job_debox{
+    width: 900px;
+    overflow: hidden;
+    margin-top: 5px;
+    opacity: 0;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    transition: 0.3s all ease;
+}
+.Job_debox.active{
+    display: block;
+    opacity: 1;
+}
+.zhaopin{
+    margin-top: 10px;
+}
+.zhaopin ul{
+    width: 910px;
+}
+.zhaopin ul li{
+    float: left;
+    width: 190px;
+    padding: 0 18px;
+    border-right: 1px solid #f2f2f2;
+    padding-bottom: 15px;
+}
+.zhaopin ul li p{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.zhaopin ul li span{
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #919191;
+}
+.company ul{
+    width: 910px;
+}
+.company ul li{
+    float: left;
+    padding: 0 40px;
+    width: 220px;
+    border-right: 1px solid #f2f2f2;
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.company ul li a{
+    display: block;
+    font-size: 16px;
+}
+.zhaopinhui .PartyBox{
+    width: 920px;
+    margin-top: 16px;
+}
+.zhaopinhui .Party{
+    float: left;
+    width: 270px;
+    height: 150px;
+    padding: 0 15px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.zhaopinhui .Party .Party_title{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+.zhaopinhui .Party ul li{
+    font-size: 12px;
+    color: #919191;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 20px;
+    line-height: 20px;
+}
+.zhaopinhui .Party .Party_btn{
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    width: 67px;
+    height: 27px;
+    background: #2babff;
+    line-height: 27px;
+    text-align: center;
+    border-radius: 5px;
+}
+.zhaopinhui .Party .Party_btn a{
+    color: #fff;
+    font-size: 12px;
+}
+.DatingBox{
+    overflow: hidden;
+}
+.DatingList{
+    margin-top: 15px;
+    width: 1227px;
+}
+.DatingList .Dating_de{
+    float: left;
+    width: 193px;
+    height: 193px;
+    background: #f8f8f8;
+    text-align: center;
+    margin-right: 10px;
+}
+.DatingList .Dating_de .Dating_pic{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    margin: 0 auto;
+    margin-top: 32px;
+    margin-bottom: 10px;
+  	background: #fff;
+}
+.DatingList .Dating_de .Dating_pic img{
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+}
+.DatingList .Dating_de .Dating_pic .women{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -176px -133px;
+}
+.DatingList .Dating_de .Dating_pic .man{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -220px -133px;
+}
+.DatingList .Dating_de .Dating_name{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.DatingList .Dating_de .Dating_name em{
+    font-size: 12px;
+}
+.DatingList .Dating_de .Dating_tips{
+    color: #919191;
+    font-size: 12px;
+}
+.DatingList .Dating_de .Dating_tips em{
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: #919191;
+    position: relative;
+    top: -2px;
+    margin: 0 4px;
+}
+.HuangyeBox{
+    overflow: hidden;
+}
+.TelList{
+    background: #f8f8f8;
+    margin-top: 15px;
+    padding: 20px 0 0;
+    width: 1220px;
+}
+.TelList .TelBox{
+    float: left;
+    width: 185px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+}
+.TelList .TelBox .Tel_icon{
+    width: 30px;
+    height: 30px;
+    float: left;
+    background: url(../images/skin8Icon.png) no-repeat center;
+    background-position: -305px -60px;
+    margin-right: 6px;
+    margin-top: 7px;
+}
+.TelList .TelBox .Tel_num{
+    font-size: 16px;
+}
+.TelList .TelBox .Tel_company{
+    font-size: 12px;
+    color: #919191;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

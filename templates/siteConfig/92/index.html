@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}" />
+<meta name="description" content="{#$cfg_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', templets_skin = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../public_top_v1.html" channel="index"#}
+
+{#if in_array("article", $installModuleArr)#}
+<!-- 顶部资讯 s-->
+<div class="ArticleBox wrap fn-clear">
+    <!-- 焦点图 s -->
+    <div class="PicFocus">
+        <div class="slideBox slideBox1">
+            <div class="slidewrap">
+                <div class="slide">
+                    <div class="bd">
+                        <div class="slideobj">{#myad title="首页_模板九_电脑端_广告一" type="slide"#}</div>
+                    </div>
+                    <div class="hd"><ul></ul></div>
+                </div>
+                <a href="javascript:;" class="prev"></a>
+                <a href="javascript:;" class="next"></a>
+            </div>
+        </div>
+    </div>
+    <!-- 焦点图 e -->
+    <!-- 顶部新闻盒子 s-->
+    <div class="NewsBox">
+        <div class="Newslead fn-clear">
+            <ul>
+                <li class="newbc">头条热门</li>
+                <li>精华推荐</li>
+                <li>最新资讯</li>
+            </ul>
+        </div>
+        <div class="NewsList">
+            <div class="NewsDE active">
+                {#article action="alist" return="alist" flag="h" pageSize="10"#}
+                <div class="NewsCon fn-clear"><a href="{#$alist.url#}" target="_blank" title="{#$alist.title|strip_tags#}"><em>{#if $alist.typeName[1]#}{#$alist.typeName[1]#}{#else#}{#$alist.typeName[0]#}{#/if#}</em><span>{#$alist.title#}</span><i>{#$alist.pubdate|date_format:"%Y-%m-%d"#}</i></a></div>
+                {#/article#}
+            </div>
+            <div class="NewsDE fn-hide">
+                {#article action="alist" return="alist" flag="r" pageSize="10"#}
+                <div class="NewsCon fn-clear"><a href="{#$alist.url#}" target="_blank" title="{#$alist.title|strip_tags#}"><em>{#if $alist.typeName[1]#}{#$alist.typeName[1]#}{#else#}{#$alist.typeName[0]#}{#/if#}</em><span>{#$alist.title#}</span><i>{#$alist.pubdate|date_format:"%Y-%m-%d"#}</i></a></div>
+                {#/article#}
+            </div>
+            <div class="NewsDE fn-hide">
+                {#article action="alist" return="alist" orderby="1" pageSize="10"#}
+                <div class="NewsCon fn-clear"><a href="{#$alist.url#}" target="_blank" title="{#$alist.title|strip_tags#}"><em>{#if $alist.typeName[1]#}{#$alist.typeName[1]#}{#else#}{#$alist.typeName[0]#}{#/if#}</em><span>{#$alist.title#}</span><i>{#$alist.pubdate|date_format:"%Y-%m-%d"#}</i></a></div>
+                {#/article#}
+            </div>
+        </div>
+    </div>
+    <!-- 顶部新闻盒子 e-->
+    <!-- 网站资讯 s-->
+    <div class="NewsInfo">
+        <div class="gonggao">
+            <div class="gg_lead fn-clear"><span><i></i>公告栏</span><a target="_blank" href="{#getUrlPath service='siteConfig' template='notice'#}">更多<i></i></a></div>
+            <div class="gg_list">
+                <ul>
+                    {#siteConfig action="notice" return="notice"  pageSize="5"#}
+                    <li><a href="{#$notice.url#}" target="_blank" title="{#$notice.title#}">{#$notice.title#}</a></li>
+                    {#/siteConfig#}
+                </ul>
+            </div>
+        </div>
+        <div class="statistics fn-clear">
+            <div class="sta_txt"><a href="javascript:;">
+                <i class="down"></i><p>已入驻</p><span>{#$businessSettledCount#}</span>
+            </a></div>
+            <div class="sta_line"></div>
+            <div class="sta_txt"><a href="javascript:;">
+                <i class="view_num"></i><p>会员</p><span>{#$memberStatistics['total']#}</span>
+            </a></div>
+            <div class="sta_line"></div>
+            <div class="sta_txt"><a href="javascript:;">
+                <i class="fa_num"></i><p>在线</p><span>{#$memberStatistics['online']#}</span>
+            </a></div>
+        </div>
+        <div class="BusinessBtn"><a href="{#$member_busiDomain#}">商家入驻</a></div>
+    </div>
+    <!-- 网站资讯 e-->
+</div>
+<!-- 顶部资讯 e-->
+{#/if#}
+
+<!-- 广告位 s -->
+<div class="ad wrap">{#myad title="首页_模板九_电脑端_广告二"#}</div>
+<!-- 广告位 e -->
+
+<!-- 商家板块 s -->
+<div class="BusinessBox wrap">
+    <div class="PublicLead fn-clear">
+        <div class="PL_name businessicon"><i></i>商家推荐</div>
+        <div class="PL_link"><a href="{#getUrlPath service='business'#}" target="_blank">查看更多<i></i></a></div>
+    </div>
+    <div class="BusinessList fn-clear">
+        <ul>
+            {#business action='blist' return='list' store='2' pageSize="14"#}
+            <li>
+                <a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+                  <div class="code"><i data-url="{#$list.url#}"></i></div>
+                  <div class="logo"><i><img src="{#$list.logo#}"></i></div>
+                </a>
+            </li>
+            {#/business#}
+        </ul>
+    </div>
+</div>
+<!-- 商家板块 e -->
+
+{#if in_array("house", $installModuleArr)#}
+<!-- 房产模块 s-->
+<div class="HouseBox wrap">
+    <div class="PublicLead fn-clear">
+        <div class="PL_name houseicon"><i></i>房产</div>
+        <div class="PL_link"><a href="{#getUrlPath service='house'#}" target="_blank">查看更多<i></i></a></div>
+    </div>
+    <div class="HouseList fn-clear">
+        <div class="HouseLead">
+            <ul>
+                <li class="HL_bc">新房</li>
+                <li>二手房</li>
+                <li>租房</li>
+                <li>写字楼</li>
+                <li>商铺</li>
+                <li>厂房/仓库</li>
+                <li>经纪人</li>
+            </ul>
+        </div>
+        <div class="HouseType">
+            <div class="HouseCom NewList active fn-clear">
+				{#house action='loupanList' return='nlist' pageSize="6"#}
+                <div class="Newhouse_Box fn-clear">
+                    <div class="Newhouse_pic"><a href="{#$nlist.url#}" target="_blank"><img src="{#$nlist.litpic#}" alt=""></a></div>
+                    <div class="Newhouse_name fn-clear"><a href="{#$nlist.url#}" target="_blank" title="{#$nlist.title#}">{#$nlist.title#}</a><em>{#if $nlist.salestate == 0#}待售{#else if $nlist.salestate == 1#}在售{#else if $nlist.salestate == 2#}尾盘{#else#}售完{#/if#}</em></div>
+                    <div class="Newhouse_tips fn-clear">{#foreach from=$nlist.buildtype item=config#}<em>{#$config#}</em>{#/foreach#}</div>
+                    <div class="location"><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=$nlist.addrid#}"><i></i>{#$nlist.address#}</a></div>
+                    <div class="Newhouse_price">{#if $nlist.price == 0#}待定{#else#}<i>{#echoCurrency type='symbol'#}</i><span>{#$nlist.price#}</span>{#if $nlist.ptype == 1#}<em>/{#echoCurrency type='short'#}㎡</em>{#else#}<em>万{#echoCurrency type='short'#}/套</em>{#/if#}{#/if#}</div>
+                </div>
+				{#/house#}
+            </div>
+			<div class="HouseCom SecondList fn-clear">
+				{#house action='saleList' return='slist' pageSize="6"#}
+				<div class="Second_box fn-clear">
+					<div class="Second_pic"><a href="{#$slist.url#}" target="_blank"><img src="{#$slist.litpic#}" alt=""></a></div>
+					<div class="Second_name"><a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">{#$slist.title#}</a></div>
+					<div class="Second_tips">{#$slist.area#}㎡/{#$slist.room#}/{#$slist.direction#}/{#$slist.zhuangxiu#}</div>
+					<div class="Second_price"><span><i>{#echoCurrency type='symbol'#}</i>{#$slist.price#}万</span><em>{#echoCurrency type='symbol'#}{#$slist.unitprice#}/㎡</em>{#foreach from=$slist.flags item=flag key=key#}<em class="flag">{#$flag#}</em>{#/foreach#}</div>
+				</div>
+				{#/house#}
+			</div>
+			<div class="HouseCom ZuList fn-clear">
+				{#house action='zuList' return='zlist' pageSize="6"#}
+				<div class="Zu_box fn-clear">
+					<div class="Zu_pic MidTips"><a href="{#$zlist.url#}" target="_blank"><img src="{#$zlist.litpic#}" alt=""></a>{#if $zlist.usertype == 0#}<i class="per"></i>{#elseif $zlist.usertype == 1#}<i class="mid"></i>{#/if#}</div>
+					<div class="Zu_title"><a href="{#$zlist.url#}" target="_blank" title="{#$zlist.title#}">{#$zlist.title#}</a></div>
+					<div class="Zu_tips">{#$zlist.area#}m²/{#$zlist.room#}/{#$zlist.direction#}/{#$zlist.zhuangxiu#}</div>
+					<div class="Zu_foot fn-clear">
+						<div class="Zu_location"><a href="{#getUrlPath service='house' template='zu' addrid=0 business={#$zlist.addrid#}#}"><i></i>{#$zlist.addr[0]#}</a></div>
+						<div class="Zu_price"><i>{#echoCurrency type='symbol'#}</i><em>{#$zlist.price#}</em>/月</div>
+					</div>
+				</div>
+				{#/house#}
+			</div>
+			<div class="HouseCom XZLList fn-clear">
+				{#house action="xzlList" return="xzl"  pageSize="6"#}
+				<div class="XZL_Box fn-clear">
+					<div class="XZL_pic MidTips">
+						<a href="{#$xzl.url#}" target="_blank"><img src="{#changeFileSize url={#$xzl.litpic#} type='small'#}" alt=""></a>
+						{#if $xzl.usertype == 0#}<i class="per"></i>{#else#}<i class="mid"></i>{#/if#}
+					</div>
+					<div class="XZL_title"><a href="{#$xzl.url#}" target="_blank" title="{#$xzl.title#}">{#$xzl.title#}</a></div>
+					<div class="XZL_price">
+						{#if $xzl.type == 0#}
+						<span>{#echoCurrency type='symbol'#}<em>{#$xzl.price#}</em>/m²•月</span> <i>{#echoCurrency type='symbol'#}{#($xzl.price * $xzl.area)|string_format:"%.2f"#}/月</i>
+						{#else#}
+						<span>{#echoCurrency type='symbol'#}<em>{#$xzl.price#}</em>万</span> <i>{#echoCurrency type='symbol'#}{#($xzl.price / $xzl.area * 10000)|string_format:"%.2f"#}/m²</i>
+						{#/if#}
+					</div>
+					<div class="XZL_tips">{#$xzl.loupan#}/{#$xzl.zhuangxiu#}/{#$xzl.protype#}/{#$xzl.area#}平米</div>
+					<div class="XZL_location"><a href="{#getUrlPath service="house" template="xzl" type={#$type#} addrid=0 business={#$xzl.addrid#}#}"><i></i>{#$xzl.addr[0]#}-{#$xzl.addr[1]#}</a></div>
+				</div>
+				{#/house#}
+			</div>
+			<div class="HouseCom SPList fn-clear">
+				{#house action="spList" return="sp"  pageSize="6"#}
+					<div class="SP_Box fn-clear">
+						<div class="SP_pic MidTips">
+							<a href="{#$sp.url#}" target="_blank"><img src="{#changeFileSize url={#$sp.litpic#} type='small'#}" alt=""></a>
+							{#if $sp.usertype == 0#}<i class="per"></i>{#else#}<i class="mid"></i>{#/if#}
+						</div>
+						<div class="SP_title"><a href="{#$sp.url#}" target="_blank" title="{#$sp.title#}">{#$sp.title#}</a></div>
+						<div class="SP_price">
+							{#if $sp.type == 0 || $sp.type == 2#}
+							<span>{#echoCurrency type='symbol'#}<em>{#($sp.price/10000)|string_format:"%.2f"#}</em>万/月</span>
+							{#/if#}
+							{#if $sp.type == 1#}
+							<span>{#echoCurrency type='symbol'#}<em>{#$sp.price|string_format:"%.0f"#}</em>万</span>
+							<i>{#echoCurrency type='symbol'#}{#($sp.price / $sp.area)|string_format:"%.2f"#}万/m²</i>
+							{#/if#}
+							{#if $sp.type == 2#}<span style="margin-left:5px;"><s>转让费：{#$sp.transfer#}万</s></span>{#/if#}
+						</div>
+						<div class="SP_tips">{#$sp.protype#}/{#$sp.zhuangxiu#}/第{#$sp.bno#}层 / 共{#$sp.floor#}层/{#$sp.area#}平米</div>
+						<div class="SP_location"><a href="{#getUrlPath service="house" template="sp" type={#$type#} addrid=0 business={#$sp.addrid#}#}"><i></i>{#$sp.addr[0]#}-{#$sp.addr[1]#}</a></div>
+					</div>
+				{#/house#}
+			</div>
+			<div class="HouseCom CFList fn-clear">
+				{#house action="cfList" return="cf"  pageSize="6"#}
+					<div class="CF_Box fn-clear">
+						<div class="CF_pic MidTips">
+							<a href="{#$cf.url#}" target="_blank"><img src="{#changeFileSize url={#$cf.litpic#} type='small'#}" alt=""></a>
+							{#if $cf.usertype == 0#}<i class="per"></i>{#else#}<i class="mid"></i>{#/if#}
+						</div>
+						<div class="CF_title"><a href="{#$cf.url#}" target="_blank" title="{#$cf.title#}">{#$cf.title#}</a></div>
+						<div class="CF_price">
+							{#if $cf.type != 2#}
+								<span>{#echoCurrency type='symbol'#}<em>{#($cf.price/10000)|string_format:"%.2f"#}</em>万/月</span>
+							{#else#}
+								<span>{#echoCurrency type='symbol'#}<em>{#$cf.price|string_format:"%.0f"#}</em>万</span>
+							{#/if#}
+							{#if $cf.type == 1#}<span><s>转让费：{#$cf.transfer#}万</s></span>{#/if#}
+						</div>
+						<div class="CF_tips">{#$cf.protype#}/{#$cf.area#}平米</div>
+						<div class="CF_location"><a href="{#getUrlPath service="house" template="cf" type={#$type#} addrid=0 business={#$cf.addrid#}#}"><i></i>{#$cf.addr[0]#}-{#$cf.addr[1]#}</a></div>
+					</div>
+				{#/house#}
+			</div>
+			<div class="HouseCom BrokerList fn-clear">
+				{#house action="zjUserList" return="broker" pageSize="5"#}
+				<div class="BrokerBox">
+					<div class="BrokerPic"><a href="{#$broker.url#}" target="_blank"><img src="{#$broker.litpic#}" alt=""></a></div>
+					<div class="BrokerIn"><a href="{#$broker.url#}" target="_blank">进入店铺</a></div>
+					<p>{#$broker.nickname#}</p>
+					<p class="tel">{#$broker.phone#}</p>
+					<ul>
+						<li>所属公司：<a href="{#getUrlPath service='house' template='store-detail' id={#$broker.zjcom#}#}" target="_blank">{#$broker.zjcomName#}</a></li>
+						<li>服务商圈：<a href="{#getUrlPath service='house' template='broker' addrid={#$broker.areaid#} business={#$broker.addrid#}#}" target="_blank">{#$broker.address[0]#} {#$broker.address[1]#}</a> </li>
+						{#if $broker.community#}
+						<li>主营小区： {#foreach from=$broker.communityArr item=community key=k#}
+						{#if $k < 5#}
+						<a href="{#getUrlPath service='house' template='community-detail' id={#$community#}#}" target="_blank">{#$broker.communityName[$k]#}</a>&nbsp;&nbsp;&nbsp;
+						{#/if#}
+						{#/foreach#}</li>
+						{#/if#}
+					</ul>
+				</div>
+				{#/house#}
+			</div>
+        </div>
+    </div>
+</div>
+<!-- 房产模块 e-->
+{#/if#}
+
+<!-- 广告位 s -->
+<div class="ad wrap">{#myad title="首页_模板九_电脑端_广告三"#}</div>
+<!-- 广告位 e -->
+
+{#if in_array("info", $installModuleArr)#}
+<!-- 信息模块 s -->
+<div class="InfoBox wrap">
+	<div class="PublicLead fn-clear">
+		<div class="PL_name infoicon"><i></i>服务信息</div>
+		<div class="PL_link"><a href="{#getUrlPath service='info'#}" target="_blank">查看更多<i></i></a></div>
+	</div>
+	<div class="InfoList">
+		<div class="InfoBB">
+			<div class="InfoCon fn-clear">
+				{#info action="type" return="type" pageSize="13"#}
+				<div class="InfoDe">
+					<div class="InfoLead"><a href="{#getUrlPath service='info' template="list" id="{#$type.id#}"#}" target="_blank">{#$type.typename#}</a></div>
+					<div class="InfoTxT">
+						{#info action="ilist" return="alist" thumb="1" typeid={#$type.id#} pageSize="10"#}
+						<p><a href="{#$alist.url#}" title="{#$alist.title#}" target="_blank"><em>[{#$alist.typename#}]</em> {#$alist.title#}</a><i>{#$alist.pubdate|date_format:"%m-%d"#}</i></p>
+						{#/info#}
+					</div>
+				</div>
+				{#/info#}
+			</div>
+		</div>
+		<div class="InfoPage fn-clear"><ul></ul></div>
+	</div>
+</div>
+<!-- 信息模块 e -->
+{#/if#}
+
+{#if in_array("tuan", $installModuleArr)#}
+<!-- 团购模块 s -->
+<div class="TuanBox wrap">
+	<div class="PublicLead fn-clear">
+		<div class="PL_name tuanicon"><i></i>团购</div>
+		<div class="PL_link"><a href="{#getUrlPath service='tuan'#}" target="_blank">查看更多<i></i></a></div>
+	</div>
+	<div class="TuanList">
+		<div class="TuanBB">
+			<div class="TuanCon fn-clear">
+				{#tuan action="tlist" return="list" pageSize="30"#}
+				<div class="TuanDe"><a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+					<div class="Tuan_pic"><img src="{#changeFileSize url="{#$list.litpic#}" type="o_large"#}" alt="{#$list.title#}"></div>
+					<div class="Tuan_title">{#$list.title#}</div>
+					<div class="Tuan_tips">{#$list.subtitle#}</div>
+					<div class="Tuan_foot fn-clear">
+						<div class="Tuan_price"><span><em>{#echoCurrency type='symbol'#}</em>{#$list.price#}</span><s>{#echoCurrency type='symbol'#}{#$list.market#}</s></div>
+						<div class="Tuan_sell">已售 {#$list.sale#}</div>
+					</div>
+				</a></div>
+				{#/tuan#}
+			</div>
+		</div>
+		<a href="javascript:;" class="prev"></a>
+		<a href="javascript:;" class="next"></a>
+	</div>
+</div>
+<!-- 团购模块 e -->
+{#/if#}
+
+{#if in_array("shop", $installModuleArr)#}
+<!-- 商城模块 s-->
+<div class="ShopBox wrap">
+	<div class="PublicLead fn-clear">
+		<div class="PL_name shopicon"><i></i>推荐商品</div>
+		<div class="PL_link"><a href="{#getUrlPath service='shop'#}" target="_blank">查看更多<i></i></a></div>
+	</div>
+	<div class="ShopList fn-clear">
+		{#shop action="slist" return="list" flag="0" pageSize="10"#}
+		<div class="ShopDe"><a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+			<div class="ShopPic"><img  src="{#changeFileSize url="{#$list['litpic']#}" type="large"#}" alt="{#$list.title#}"></div>
+			<div class="ShopTitle">{#$list.title#}</div>
+			<div class="ShopFoot fn-clear">
+				<div class="ShopPrice"><span><em>{#echoCurrency type='symbol'#}</em>{#$list.price#}</span><s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></div>
+				<div class="ShopSell">已售<em>{#$list.sales#}</em></div>
+			</div>
+		</a></div>
+		{#/shop#}
+	</div>
+</div>
+<!-- 商城模块 e-->
+{#/if#}
+
+<!-- 广告位 s -->
+<div class="ad wrap">{#myad title="首页_模板九_电脑端_广告四"#}</div>
+<!-- 广告位 e -->
+
+{#if in_array("job", $installModuleArr)#}
+<!-- 招聘模块 s -->
+<div class="JobBox wrap">
+	<div class="PublicLead fn-clear">
+		<div class="PL_name jobicon"><i></i>招聘求职</div>
+		<div class="Job_lead fn-clear">
+			<ul>
+				<li class="JBL_bc">推荐职位</li>
+				<li>招聘企业</li>
+				<li>招聘会</li>
+			</ul>
+		</div>
+		<div class="PL_link"><a href="{#getUrlPath service='job'#}" target="_blank">查看更多<i></i></a></div>
+	</div>
+	<div class="JobList fn-clear">
+		<div class="JL_box">
+			<div class="JL_lead"><div class="JL_name"><i></i>个人简历</div><div class="JL_link"><a href="{#getUrlPath service='job' template="resume"#}" target="_blank">查看更多<i></i></a></div></div>
+			<div class="JL_list">
+				{#job action="resume" return="resume" pageSize="4"#}
+				<div class="JL_de fn-clear"><a href="{#$resume.url#}" target="_blank">
+					<div class="JL_pic"><img src="{#$resume.photo#}" alt=""></div>
+					<div class="JL_name">{#$resume.name#}  <em>{#$resume.addr[0]#}{#$resume.addr[1]#}</em></div>
+					<ul>
+						<li><em>学历：</em>{#$resume.educational#}</li>
+						<li><em>专业：</em>{#$resume.professional#}</li>
+						<li><em>工作经验：</em>{#$resume.workyear#}年</li>
+						<li><em>求职意向：</em>{#$resume.type#}</li>
+					</ul>
+				</a></div>
+				{#/job#}
+			</div>
+		</div>
+		<div class="JobCon">
+			<div class="Job_debox zhaopin active fn-clear">
+				<ul>
+					{#job action="post" return="post"  pageSize="36"#}
+					<li><a href="{#$post.url#}" target="_blank"><p>{#$post.title#}</p><span>{#$post.company['title']#}</span></a></li>
+					{#/job#}
+				</ul>
+			</div>
+			<div class="Job_debox company fn-clear fn-hide">
+				<ul>
+					{#job action="company" return="company"  pageSize="48"#}
+					<li><a href="{#$company.url#}" target="_blank" title="{#$company.title#}">{#$company.title#}</a></li>
+					{#/job#}
+				</ul>
+			</div>
+			<div class="Job_debox zhaopinhui fn-clear fn-hide">
+				<div class="PartyBox">
+					{#job action="fairs" return="fairs" pageSize="9"#}
+					<div class="Party">
+						<div class="Party_title"><a href="{#$fairs.url#}" title="{#$fairs.title#}" target="_blank">{#$fairs.title#}</a></div>
+						<ul>
+							<li>场馆：{#$fairs.fairs['title']#}</li>
+							<li>时间：{#$fairs.date#} {#$fairs.began#}-{#$fairs.end#}</li>
+							<li>地址：{#$fairs.fairs.addr[0]#} {#$fairs.fairs.addr[1]#} {#$fairs.fairs.address#}</li>
+							{#if $fairs.fairs.tel != ""#}
+							<li>电话：{#$fairs.fairs.tel#}</li>
+							{#/if#}{#if $fairs.fairs.fax != ""#}
+							<li>传真：{#$fairs.fairs.fax#}</li>
+							{#/if#}{#if $fairs.fairs.email != ""#}
+							<li>邮箱：{#$fairs.fairs.email#}</li>
+							{#/if#}
+						</ul>
+						<div class="Party_btn"><a href="{#$fairs.url#}#detail" target="_blank">详细介绍</a></div>
+					</div>
+					{#/job#}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 招聘模块 e -->
+{#/if#}
+
+{#if in_array("dating", $installModuleArr)#}
+<!-- 交友模块 s -->
+<div class="DatingBox wrap">
+	<div class="PublicLead fn-clear">
+		<div class="PL_name datingicon"><i></i>附近的人</div>
+		<div class="PL_link"><a href="{#getUrlPath service='dating'#}" target="_blank">查看更多<i></i></a></div>
+	</div>
+	<div class="DatingList fn-clear">
+		{#dating action="memberList" return="member"  property="r" pageSize="6"#}
+		<div class="Dating_de"><a href="{#$member.url#}" target="_blank">
+			<div class="Dating_pic"><img alt="{#$member.nickname#}" src="{#$member.photo#}">{#if $member.sex == 1#}<i class="man"></i>{#else#}<i class="women"></i>{#/if#}</div>
+			<div class="Dating_name">{#$member.nickname#}</div>
+			<div class="Dating_tips">{#$member.height#}cm <em></em> {#$member.educationName#} <em></em> {#$member.age#}岁</div>
+		</a></div>
+		{#/dating#}
+	</div>
+</div>
+<!-- 交友模块 e -->
+{#/if#}
+
+{#include file="../public_foot_v3.html" module='siteConfig' theme='gray'#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
