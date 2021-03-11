@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#} - {#$cityname#}{#$tuan_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuanDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+{#include file="top.html"#}
+
+{#if $search_keyword != ""#}
+{#$skeyword = "search_keyword=$search_keyword"#}
+{#/if#}
+
+<div class="wrap fn-clear">
+
+	<div class="w-filter fn-clear" id="w-filter">
+
+		<a class="quanbu" href="{#getUrlPath service="tuan" template="list"#}">全部</a>
+		<span class="greater">&gt;</span>
+		<div class="category-wrapper">
+			<a class="active-category">{#if $list_parid == 0#}全部{#else#}{#$list_parname#}{#/if#}<span class="triggle"></span></a>
+			<ul class="all-category fn-clear">
+				<li><a href="{#getUrlPath service="tuan" template="list"#}#w-filter"{#if $list_parid == 0#} class="active"{#/if#}>全部</a></li>
+				{#tuan action="type" return='type'#}
+				<li><a href="{#$type.url#}#w-filter"{#if $type.id == $list_parid#} class="active"{#/if#}>{#$type.typename#}</a></li>
+				{#/tuan#}
+			</ul>
+		</div>
+		{#if $list_id != $list_parid || $list_addrid != 0 || $list_business != 0 || $list_subway != 0 || $search_keyword != ""#}
+			<span class="greater">&gt;</span>
+			{#if $list_id != $list_parid#}<a class="filter-item typeid" href="{#getUrlPath service="tuan" template="list" typeid="{#$list_parid#}" addrid=$list_addrid business=$list_business subway=$list_subway station=$list_station param="{#$skeyword#}"#}#w-filter">分类：{#$list_typename#}<span class="close">×</span></a>{#/if#}
+
+			{#if $list_addrid != 0 && $list_business == 0#}<a class="filter-item addrid" href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid="0" business=$list_business subway=$list_subway station=$list_station param="{#$skeyword#}"#}#w-filter">区域：{#$list_addrname#}<span class="close">×</span></a>{#/if#}
+
+			{#if $list_business != 0#}<a class="filter-item bussiness" href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid=$list_addrid business="0" subway=$list_subway station=$list_station param="{#$skeyword#}"#}#w-filter">商圈：{#$list_businessname#}<span class="close">×</span></a>{#/if#}
+
+			{#if $cfg_subway_state#}
+			{#if $list_subway != 0#}<a class="filter-item subway" href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid=$list_addrid business=$list_business subway="0" param="{#$skeyword#}"#}#w-filter">{#$cfg_subway_title#}：{#$list_subwayname#}<span class="close">×</span></a>{#/if#}
+			{#/if#}
+
+			{#if $search_keyword != ""#}<a class="filter-item search" href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid=$list_addrid business=$list_business subway=$list_subway station=$list_station#}#w-filter">关键词：{#$search_keyword#}<span class="close">×</span></a>{#/if#}
+		{#/if#}
+
+	</div>
+
+	<div class="filter-wrapper">
+		<dl class="fn-clear">
+			<dt>分类</dt>
+			<dd>
+				<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_parid#}" addrid=$list_addrid business=$list_business subway=$list_subway station=$list_station param="{#$skeyword#}"#}#w-filter" class="qb{#if $list_parid == $list_id#} active{#/if#}"><span>全部</span></a>
+				<div class="filter-item">
+					{#tuan action="type" return="type" type={#$list_parid#}#}
+					<a href="{#getUrlPath service="tuan" template="list" typeid="{#$type.id#}" addrid=$list_addrid business=$list_business subway=$list_subway station=$list_station param="{#$skeyword#}"#}#w-filter"{#if $list_id == $type.id#} class="active"{#/if#}><span>{#$type.typename#}</span></a>
+					{#/tuan#}
+				</div>
+			</dd>
+		</dl>
+		<dl class="nbb fn-clear">
+			<dt>区域</dt>
+			<dd>
+				<div class="district-tab">
+					<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="0" param="{#$skeyword#}"#}#w-filter" class="qb{#if $list_addrid == 0 && $list_business == 0 && $list_subway == 0#} active{#/if#}"><span>全部</span></a>
+					<div class="filter-item">
+						{#if $cfg_subway_state#}<a href="javascript:;"{#if $list_subway != 0#} class="selected"{#/if#}><span>{#$cfg_subway_title#}附近<s><i></i></s></span></a>{#/if#}
+						<a href="javascript:;"{#if $list_subway == 0 || $list_addrid != 0 || $list_business != 0#} class="selected"{#/if#}><span>行政区<s><i></i></s></span></a>
+					</div>
+				</div>
+				<div class="district-cont">
+					<div class="district-wrap"{#if $list_subway != 0#} style="display: block;"{#/if#}>
+						<div class="district-list">
+							{#siteConfig action="subway" return='subway'  city={#$siteCityInfo['cityid']#}#}
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway={#$subway.id#} param="{#$skeyword#}"#}#w-filter"{#if $list_subway == $subway.id#} class="active"{#/if#}><span>{#$subway.title#}</span></a>
+							{#/siteConfig#}
+						</div>
+						{#if $list_subway != 0#}
+						<div class="district-sub-list">
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway=$list_subway station=0 param="{#$skeyword#}"#}#w-filter"{#if $list_station == 0#} class="active"{#/if#}><span>全部</span></a>
+							{#siteConfig action="subwayStation" return='subwayStation' type=$list_subway#}
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway=$list_subway station=$list_station station=$subwayStation.id param="{#$skeyword#}"#}#w-filter"{#if $list_station == $subwayStation.id#} class="active"{#/if#}><span>{#$subwayStation.title#}</span></a>
+							{#/siteConfig#}
+						</div>
+						{#/if#}
+					</div>
+					<div class="district-wrap"{#if $list_subway == 0 || $list_addrid != 0 || $list_business != 0#} style="display: block;"{#/if#}>
+						<div class="district-list">
+							{#tuan action="addr" return='addr'#}
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid={#$addr.id#} business="0" subway="0" param="{#$skeyword#}"#}#w-filter"{#if $list_addrid == $addr.id#} class="active"{#/if#}><span>{#$addr.typename#}</span></a>
+							{#/tuan#}
+						</div>
+						{#if $list_addrid != 0#}
+						<div class="district-sub-list">
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid={#$list_addrid#} business="0" subway="0" param="{#$skeyword#}"#}#w-filter"{#if $list_business == 0#} class="active"{#/if#}><span>全部</span></a>
+							{#tuan action="circle" return="circle" type={#$list_addrid#}#}
+							<a href="{#getUrlPath service="tuan" template="list" typeid="{#$list_id#}" addrid={#$list_addrid#} business={#$circle.id#} subway="0" param="{#$skeyword#}"#}#w-filter"{#if $list_business == $circle.id#} class="active"{#/if#} title="{#$circle.name#}"><span>{#$circle.name#}</span></a>
+							{#/tuan#}
+						</div>
+						{#/if#}
+					</div>
+				</div>
+			</dd>
+		</dl>
+
+		{#tuan action="typeItem" return="item" typeid={#$list_parid#}#}
+		<dl class="fn-clear items" data-field="field_{#$item.id#}">
+			<dt>{#$item.title#}</dt>
+			<dd>
+				<a href="javascript:;" class="qb active"><span>全部</span></a>
+				<div class="filter-item">
+					{#foreach from=$item.options item=option#}
+					<a href="javascript:;"><span>{#$option#}</span></a>
+					{#/foreach#}
+				</div>
+			</dd>
+		</dl>
+		{#/tuan#}
+	</div>
+
+	<div class="w-sort-bar">
+		<div class="bar-area" id="bar-area">
+			<div class="wrap"><div class="w-sort-bg">
+				<div class="l">
+					<a href="javascript:;" class="active" data-sort="">默认</a>
+					<a href="javascript:;" class="sort-down" data-sort="1">销量<s></s></a>
+					<a href="javascript:;" class="price" data-sort="3">价格<s></s><i></i></a>
+					<a href="javascript:;" class="sort-up" data-sort="5">最新发布<s></s></a>
+					<div class="flags">
+						<label data-val="dujia"><s></s>独家</label>
+						<label data-val="yuyue"><s></s>免预约</label>
+						<label data-val="quan"><s></s>代金券</label>
+					</div>
+				</div>
+				<div class="r">
+					<div class="search">
+						<form action="" method="get">
+							<input class="searchinput" id="searchinput" autocomplete="off" value="{#$search_keyword#}" placeholder="搜索团购商品" name="search_keyword" />
+							<button type="submit"></button>
+						</form>
+					</div>
+					<div class="pagination">
+						<span class="pg-prev"><i class="trigger"></i><span class="text">上一页</span></span>
+						<span class="pg-next"><span class="text">下一页</span><i class="trigger"></i></span>
+						<span class="sum"><em>1</em>/1</span>
+					</div>
+				</div>
+			</div></div>
+		</div>
+	</div>
+
+</div>
+
+<div class="wrap mod-list" id="mod-item" style="padding-top: 0;">
+	<ul class="fn-clear">
+		{#tuan action="tlist" return="list" typeid={#$list_id#} addrid={#$list_addrid#} business={#$list_business#} subway={#$list_subway#} station={#$list_station#} title="{#$search_keyword#}" page={#$page#} pageSize="60"#}
+		<li>
+			<a href="{#$list.url#}" target="_blank">
+				<span class="marks">
+					{#foreach from=$list.flag item=flag#}
+					<span class="item {#$flag#}"></span>
+					{#/foreach#}
+				</span>
+				<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}" />
+				<span class="geo"><i></i><strong>商圈：</strong>{#$list.store.circle#}</span>
+				<h4>{#$list.title#}</h4>
+				<h3 title="{#$list.subtitle#}">{#$list.subtitle#}</h3>
+				<div class="item-prices">
+					<div class="price"><i>{#echoCurrency type='symbol'#}</i><em class="actPrice">{#$list.price#}</em></div>
+					<div class="dock"><del class="orig-price">{#echoCurrency type='symbol'#}{#$list.market#}</del></div>
+					<div class="prompt"><span class="sold-num"><em>{#$list.sale#}</em> 件已售</span></div>
+					<div class="link">马上抢</div>
+				</div>
+			</a>
+		</li>
+		{#/tuan#}
+	</ul>
+
+	{#if $pageInfo.totalCount == 0#}
+	<div class="loading">暂无相关信息！</div>
+	{#else#}
+	<div class="loading fn-hide">加载中，请稍候...</div>
+	{#/if#}
+
+	<div class="pagination fn-clear"></div>
+
+</div>
+
+<script>
+	var city = '{#$city#}',
+			parid = {#$list_parid#},
+			typeid = {#$list_id#},
+			addrid = {#$list_addrid#},
+			business = {#$list_business#},
+			subway = {#$list_subway#},
+			station = {#$list_station#},
+			keywords = '{#$search_keyword#}',
+			atpage = {#$page#},
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 60;
+</script>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=4"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/list.js?v=4"></script>
+</body>
+</html>

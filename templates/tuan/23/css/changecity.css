@@ -1,0 +1,28 @@
+a:hover, a:link{text-decoration: none;}
+
+/* LGOO */
+.header {margin:40px auto 20px;}
+.header .logo {float: left;width: 270px;height: 61px; margin-top: -5px;}
+.header .logo a {display: block;overflow: hidden;}
+.header .logo a:hover {text-decoration: none;}
+.header .logo h2 {float: none;margin-bottom: 6px;line-height: 1;font-size: 24px;color: #333; margin-top: 8px;}
+.header .shortname p{font-size: 16px; color: #b5b5b5;}
+.header .logo span {font-size: 13px;color: #999;}
+.header .logo img {float: left;margin-right: 10px;vertical-align: middle;}
+
+.header .kefu {float: right;}
+.header .kefu dt ,.header .kefu dd {float: left;}
+.header .kefu dd {margin-left: 15px;}
+.header .kefu dt img {margin-top: 3px;width: 44px;height: 43px;}
+.header .kefu p {white-space: nowrap;}
+.header .kefu .p1 {font-size: 14px;color: #333;}
+.header .kefu .p2 {font-size: 20px;}
+
+.area_bg{background: url(../images/area_bg.png) center center no-repeat; height: 480px;}
+.split-line{height: 1px; background: #eaeaea; margin-bottom: 30px;}
+.wrap{width: 1200px;}
+.topTit{font-size: 20px; margin-bottom: 25px;}
+.cityArea a{display: inline-block; float: left; padding: 12px 34px; border: 1px solid #eaeaea; border-radius: 4px; font-size: 18px; margin: 0 25px 25px 0;}
+.cityArea a:hover{color: #23b8f6; border-color: #23b8f6; background: url(../images/selected.png) right bottom no-repeat; transition: all 0s; -moz-transition: all 0s; -webkit-transition: all 0s; -o-transition: all 0s;}
+
+.footer{border-top: 0; margin-top: 25px;}

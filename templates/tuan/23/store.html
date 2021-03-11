@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_member['nickname']#} - {#$cityname#}{#$tuan_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$tuan_keywords#}" />
+<meta name="description" content="{#$tuan_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/shop_detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuanDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var site_map = '{#$site_map#}';
+	var id = {#$detail_id#}, lnglat = '{#$detail_lnglat#}', detailTitle = '{#$detail_member['nickname']#}', detailAddr = '{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+{#include file="top.html"#}
+
+	<!-- 顶部商家信息 s -->
+	<div class="ShopInfo_box">
+		<div class="ShopInfo wrap">
+			<div class="shop_name">{#$detail_member['nickname']#}</div>
+			<div class="report_btn"><a href="javascript:;" class="report"><i></i>举报</a></div>
+			<div class="ShopInfo_de  fn-clear">
+				<ul>
+					<li class="shop_location">
+						<i></i>
+						<p>地址</p>
+						<span>{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}{#if $site_map == "baidu"#}<a href="javascript:;" class="showbig"></a>{#/if#}</span>
+					</li>
+					<li class="shop_tel">
+						<i></i>
+						<p>电话</p>
+						<span>{#$detail_tel#}</span>
+					</li>
+					<li class="shop_com">
+						<i></i>
+						<p>评论</p>
+						<span>{#$detail_totalCommon#}</span>
+					</li>
+					<li class="shop_type">
+						<i></i>
+						<p>分类</p>
+						<span>{#$detail_typename#}</span>
+					</li>
+				</ul>
+				<div class="shop_tips"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 顶部商家信息 e -->
+	<!-- 正在团购列表 s -->
+	<div class="Tuan wrap">
+		<div class="ShopDE_title fn-clear"><em>正在团购</em></div>
+		<div class="Tuan_List">
+			{#tuan action="tlist" return="list" store=$detail_id#}
+			<div class="TuanContent fn-clear">
+				<div class="TuanInfo">
+					<div class="Tuan_pic"><a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url=$list.litpic type='small'#}" alt="{#$list.title#}"></a></div>
+					<p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+					<span>已售 {#$list.sale#}</span>
+				</div>
+				<div class="TuanTime">截止到{#$list.enddate|date_format:"%Y.%m.%d"#}</div>
+				<div class="price">
+					<p><em>{#echoCurrency type='symbol'#}</em>{#$list.price#}</p>
+					<span>门店价 <s>{#echoCurrency type='symbol'#}{#$list.market#}</s></span>
+				</div>
+				<div class="TuanBtn"><a href="{#$list.url#}" target="_blank">立即抢购</a></div>
+			</div>
+			{#/tuan#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">该商家暂无正在团购的商品。</div>
+			{#/if#}
+		</div>
+	</div>
+	<!-- 正在团购列表 e -->
+	<!-- 商家详情 s -->
+	<div class="Business wrap">
+		<div class="ShopDE_title fn-clear"><em>商家详情</em></div>
+		<div class="Business_list fn-clear">
+			{#if $detail_imgGroup#}<div class="business_pic"><img src="{#$detail_imgGroup[0]#}" alt=""><em>共{#$detail_imgGroup|@count#}张</em></div>{#/if#}
+			<div class="business_info">
+				<ul>
+					<li><em>营业时间：</em>{#$detail_openStart#} - {#$detail_openEnd#}</li>
+					{#if $detail_circle#}<li><em>附件商圈：</em>{#$detail_circle#}</li>{#/if#}
+					{#if $detail_subway && $cfg_subway_state#}<li><em>附件{#$cfg_subway_title#}：</em>{#$detail_subway#}</li>{#/if#}
+					{#if $detail_note#}<li><em>门店介绍：</em>{#$detail_note#}</li>{#/if#}
+				</ul>
+			</div>
+			<div class="business_closest">
+				<div class="BC_lead fn-clear">
+					<ul>
+						<li class="BCL_bc">附近同类团购</li>
+						<li>附近同类商家</li>
+					</ul>
+				</div>
+				<div class="BC_box">
+					<div class="BC_list">
+						{#tuan action="tlist" return="list" addrid=$detail_addrid pageSize="4"#}
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url=$list.litpic type='small'#}" alt="{#$list.title#}"></a></div>
+							<p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+							<span>{#$list.sale#}人已团购</span>
+							<div class="BCC_price">{#echoCurrency type='symbol'#} {#$list.price#}</div>
+						</div>
+						{#/tuan#}
+					</div>
+					<div class="BC_list fn-hide">
+						{#tuan action="tlist" return="list" typeid=$detail_typeid pageSize="4"#}
+						<div class="BC_connect fn-clear">
+							<div class="BCC_pic"><a href="{#$list.url#}" target="_blank"><img src="{#changeFileSize url=$list.litpic type='small'#}" alt="{#$list.title#}"></a></div>
+							<p><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></p>
+							<span>{#$list.sale#}人已团购</span>
+							<div class="BCC_price">{#echoCurrency type='symbol'#} {#$list.price#}</div>
+						</div>
+						{#/tuan#}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 商家详情 e -->
+	<!-- 评论板块 s -->
+	<div class="Comment wrap" id="comment">
+		<div class="ShopDE_title fn-clear"><em>消费评价</em></div>
+			<div class="review-list">
+
+			<!-- 筛选&&排序 -->
+			<ul class="filter fn-clear">
+				<li class="current" data-filter=""><a href="javascript:;">全部</a></li>
+				<li data-filter="pic" class=""><a href="javascript:;">晒图评价</a></li>
+				<li data-filter="lower" class=""><a href="javascript:;">只看低分</a></li>
+				<li class="fn-right">
+					<select>
+						<option value="default">默认排序</option>
+						<option value="time">时间排序</option>
+					</select>
+				</li>
+			</ul>
+
+			<!-- 列表 -->
+			<div class="ratelist">
+				<p class="loading"><img src="{#$cfg_staticPath#}images/loading_h8.gif" /></p>
+				<ul id="rateList"></ul>
+				<!-- 分页 -->
+				<div class="pagination fn-clear"></div>
+			</div>
+
+		</div>
+	</div>
+	<!-- 评论板块 e -->
+
+{#if $detail_imgGroup#}
+<!-- 图片弹出层 s -->
+<div class="disk"></div>
+<div class="list">
+	<div class="close"></div>
+	<a href="javascript:;" class="next"></a>
+	<a href="javascript:;" class="prev"></a>
+	<div class="bd">
+		{#foreach from=$detail_imgGroup item=img#}
+		<div>
+			<a href="javascript:;">
+				<img src="{#$img#}">
+			</a>
+		</div>
+		{#/foreach#}
+	</div>
+	<div class="page_count"></div>
+</div>
+<!-- 图片弹出层 e -->
+{#/if#}
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+{#if $site_map == "baidu"#}
+<script type="text/javascript" src="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+{#/if#}
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/shop_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

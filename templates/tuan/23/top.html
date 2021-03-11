@@ -1,0 +1,76 @@
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$tuanDomain#}" title="{#$tuan_channelName#}"><img src="{#$tuan_logoUrl#}" alt="{#$tuan_channelName#}" /></a></h1>
+	<div class="search">
+		<form name="search" method="get" action="{#getUrlPath service="tuan" template="list"#}">
+			<div class="s-type">
+				<span class="arrow"></span>
+				<ul>
+					<li class="active" data-type="1">团购</li>
+					<li data-type="2">商家</li>
+				</ul>
+			</div>
+			<input name="search_keyword" type="text" class="txt_search" id="search_keyword" value="{#$search_keyword#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="请输入商品名称、地址等" data-role="input" />
+			<input id="search_button" type="submit" value="搜 索" class="btn-s" />
+		</form>
+		<p class="hot-s">
+			{#siteConfig module="tuan" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	<div class="service">
+		<ul class="fn-clear">
+			<li class="return"><a href="#"><i></i>随时退</a></li>
+			<li class="auto"><a href="#"><i></i>过期自动退</a></li>
+			<li class="free"><a href="#"><i></i>不满意免单</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="wrap nav fn-clear">
+	<div class="lnav">
+		<div class="t-category">全部分类</div>
+		<div class="category-popup">
+			<ul class="fn-clear">
+				{#tuan action="type" return='type'#}
+				{#if $_bindex.type > 8#}
+				<li class="fn-hide">
+				{#else#}
+				<li>
+				{#/if#}
+				  <div class="fix">
+						<div class="name"><a href="{#$type.url#}">{#$type.typename#}</a></div>
+						{#tuan action="type" return='subtype' type="{#$type.id#}" page="1" pageSize="2"#}
+						<a href="{#$subtype.url#}" class="item">{#$subtype.typename#}</a>
+						{#/tuan#}
+						{#if $type.lower > 0#}<i class="arrow"></i>{#/if#}
+					</div>
+					{#if $type.lower > 0#}
+					<div class="sub-category">
+						<dl>
+							<dt><h2 class="title"><a href="{#$type.url#}">{#$type.typename#}</a></h2></dt>
+							<dd class="fn-clear">
+								{#tuan action="type" return='subtype1' type="{#$type.id#}"#}
+								<a href="{#$subtype1.url#}">{#$subtype1.typename#}</a>
+								{#/tuan#}
+							</dd>
+						</dl>
+					</div>
+					{#/if#}
+				</li>
+				{#/tuan#}
+			</ul>
+			<div class="more"><i></i></div>
+		</div>
+	</div>
+	<div class="tnav">
+		<ul class="fn-clear">
+			<li><a href="{#$tuanDomain#}">首页</a></li>
+			<li><a href="{#getUrlPath service="tuan" template="new"#}">今日新单</a></li>
+			<li><a href="{#$shop_channelDomain#}" target="_blank">购物</a></li>
+			<li><a href="{#$waimai_channelDomain#}" target="_blank">身边外卖</a></li>
+			<li><a href="{#$integral_channelDomain#}">{#$cfg_pointName#}兑换</a></li>
+		</ul>
+		{#if $cfg_qiandao_state#}<a href="{#getUrlPath service='member' type='user' template='qiandao'#}" class="qiandao"><s></s>签到送礼</a>{#/if#}
+	</div>
+</div>

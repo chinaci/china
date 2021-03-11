@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$cityname#}{#$tuan_title#}</title>
+<meta name="keywords" content="{#$tuan_keywords#}" />
+<meta name="description" content="{#$tuan_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', sy = true, cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<!-- 顶部幻灯 s -->
+<div class="wrap slideshow_1200_60">
+	<div id="slideshow120060">
+		{#myad title="团购秒杀_模板一_电脑端_广告一" type="slide"#}
+	</div>
+	<div id="slidebtn120060" class="slidebtn"></div>
+	<a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+<!-- 顶部幻灯 e -->
+
+{#include file="top.html"#}
+
+<div class="wrap fn-clear">
+	<div class="h-content">
+		<dl class="fn-clear">
+			<dt><i class="fire"></i>热门团购</dt>
+			<dd>
+				<ul class="fn-clear">
+					{#tuan action="hotype" return='hot'#}
+					<li><a href="{#$hot.url#}">{#$hot.typename#}</a></li>
+					{#/tuan#}
+				</ul>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><i class="area"></i>全部区域</dt>
+			<dd class="addr fn-clear">
+				<a href="javascript:;" class="more">更多<s></s></a>
+				<ul class="fn-clear">
+					{#tuan action="addr" return='addr'#}
+					<li><a href="{#getUrlPath service='tuan' template='list' typeid='0' addrid=$addr.id#}">{#$addr.typename#}</a></li>
+					{#/tuan#}
+				</ul>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><i class="buss"></i>热门商圈</dt>
+			<dd>
+				<ul class="fn-clear">
+					{#tuan action="hotCircle" return='hot'#}
+					<li><a href="{#getUrlPath service='tuan' template='list' typeid='0' addrid='0' business=$hot.id#}">{#$hot.name#}</a></li>
+					{#/tuan#}
+				</ul>
+			</dd>
+		</dl>
+		<div class="weekhot">
+			<div class="hd fn-clear">
+				<h3><i></i>本周精选</h3>
+				<div class="cbtn" id="weekHotBtn"></div>
+			</div>
+			<div class="hc" id="weekHot">
+				<ul class="con fn-clear">
+					<li class="fn-clear">
+					{#tuan action="tlist" return='list' rec="1" pagesize="10" page="1"#}
+						<div class="item">
+							<em class="discount">{#$list.discount#}</em>
+							<a href="{#$list.url#}" class="pic" target="_blank"><img src="{#$list.litpic#}"></a>
+							<div class="title">
+								<span class="split"></span>
+								<h4><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></h4>
+								<p>{#$list.subtitle#}</p>
+							</div>
+							<span class="price">{#echoCurrency type='symbol'#}<strong>{#$list.price#}</strong></span>
+						</div>
+						{#if $_bindex.list%2 == 0#}
+						</li><li class="fn-clear">
+						{#/if#}
+					{#/tuan#}
+					</li>
+				</ul>
+				<span class="bg-left"></span>
+				<span class="bg-right"></span>
+				<a href="javascript:;" class="prev" id="weekHot_prev"></a>
+				<a href="javascript:;" class="next" id="weekHot_next"></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="h-right">
+		<div class="lottery-t">
+			<span class="ico">美梦成真</span>
+			<a href="#" class="all">全部<i></i></a>
+		</div>
+		<div class="lottery-c">
+			<div id="lottery">
+				{#myad title="团购秒杀_模板一_电脑端_广告二" type="slide"#}
+			</div>
+			<div id="lotteryBtn" class="slidebtn"></div>
+			<a href="javascript:;" class="prev" id="lottery_prev"></a>
+			<a href="javascript:;" class="next" id="lottery_next"></a>
+		</div>
+		<div class="appdown">
+			<p class="tit"><strong>1{#echoCurrency type='short'#}秒杀</strong>优惠不断</p>
+			<img src="{#$cfg_weixinQr#}" />
+			<p class="tip">微信关注扫一扫</p>
+		</div>
+	</div>
+	<div class="appad">{#myad title="团购秒杀_模板一_电脑端_广告三"#}</div>
+</div>
+
+<div class="wrap ontime">
+	<div class="hd">
+		<h3>整点团</h3>
+		<span class="not">大牌秒杀，限量稀缺</span>
+		<div class="cutime">
+			<span class="red">距离本场结束</span> 仅剩：<span class="clock" id="countDown"><s class="h">-</s>时<s class="m">-</s>分<s class="s">-</s>秒<s class="ms">-</s></span>
+		</div>
+		{#*<a href="#" class="more"><strong>+</strong>更多整点团</a>*#}
+	</div>
+	<ul class="fn-clear time-list">
+		<li><a href="#">9:00</a></li><li><a href="#">10:00</a></li><li><a href="#">11:00</a></li><li><a href="#">12:00</a></li>
+		<li><a href="#">13:00</a></li><li><a href="#">14:00</a></li><li><a href="#">15:00</a></li><li><a href="#">16:00</a></li>
+		<li><a href="#">17:00</a></li><li><a href="#">18:00</a></li><li><a href="#">19:00</a></li><li><a href="#">20:00</a></li>
+		<li><a href="#">21:00</a></li><li><a href="#">22:00</a></li>
+	</ul>
+	<div class="slide" id="ontime">
+		<a class="prev"></a>
+		<a class="next"></a>
+		<div class="loading">加载中，请稍候...</div>
+		<ul class="list"></ul>
+	</div>
+</div>
+
+<div class="wrap brand fn-hide">
+	<div class="hd">
+		<h3>品牌团</h3>
+		<span class="not">每日严选 品牌折扣限时抢</span>
+		<div class="rec">
+			<a href="#" class="hot">今日123个精选品牌</a>
+			<a href="#">女士精品</a>
+			<a href="#">精品男士</a>
+			<a href="#">美容饰品</a>
+			<a href="#">母婴百货</a>
+			<a href="#">家装家电数码</a>
+		</div>
+		<a href="#" class="more"><strong>+</strong>更多品牌团</a>
+	</div>
+	<div class="hc">
+		<ul class="fn-clear">
+			<li>
+				<a href="#">
+					<img src="http://gju4.alicdn.com/bao/uploaded/i1/10000065276563125/TB2oNxtbFXXXXchXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju4.alicdn.com/bao/uploaded/i2/10000064517786526/TB29H4tbFXXXXcYXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">全场低至3折</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="http://gju3.alicdn.com/bao/uploaded/i3/10000065002758999/TB2yTR8bFXXXXc.XXXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju4.alicdn.com/bao/uploaded/i3/10000078305688061/TB2xXoUbpXXXXcSXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">全场低至1折</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="http://gju1.alicdn.com/bao/uploaded/i1/10000065410627174/TB2ZSJDbFXXXXXbXpXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju1.alicdn.com/bao/uploaded/i1/10000065237260674/TB2kHVEbFXXXXcAXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">家装年货精品团</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="http://gju1.alicdn.com/bao/uploaded/i1/10000064899298601/TB2AE07bFXXXXXoXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju4.alicdn.com/bao/uploaded/i1/10000065440554372/TB267B6bFXXXXXUXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">29{#echoCurrency type='short'#}起年货疯抢</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="http://gju4.alicdn.com/bao/uploaded/i2/10000065530782413/TB2dGCXbFXXXXa9XXXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju1.alicdn.com/bao/uploaded/i2/10000065090330806/TB2dmOfbFXXXXcgXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">年终家电狂欢节</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="http://gju2.alicdn.com/bao/uploaded/i3/10000065373446602/TB2QYeBbFXXXXa_XpXXXXXXXXXX_!!0-0-juitemmedia.jpg_468x468Q90.jpg_.webp">
+					<div class="bar">
+						<span class="soldcount"><em>8073</em>人想买</span>
+						<span class="info">
+							<span class="coupon">领券<i></i></span>
+							<span class="lefttime">距开团仅剩19分钟</span>
+						</span>
+					</div>
+					<div class="card">
+						<img src="http://gju2.alicdn.com/bao/uploaded/i1/10000067190151588/TB2_e07bFXXXXaqXXXXXXXXXXXX_!!0-0-juitemmedia.jpg_80x60Q90.jpg_.webp">
+						<span class="discount"><span>去看看</span></span>
+						<span class="title">明星最爱的羽绒服</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="mod-list" id="mod-list">
+	<div class="fixnav">
+	  <div class="navbg">
+			<div class="wrap">
+				<ul class="fn-clear">
+					{#tuan action="type" return='type'#}
+					<li><a href="{#$type.url#}">{#$type.typename#}</a></li>
+					{#/tuan#}
+				</ul>
+			</div>
+		</div>
+		<div class="filterbg">
+			<div class="wrap">
+				<h5>每日10:00上新</h5>
+				<div class="mod-filter">
+					<ul class="sort fn-clear">
+						<li class="sort-"><a href="javascript:;" class="on">默认</a></li>
+						<li class="sort-1"><a href="javascript:;">销量<i></i></a></li>
+						<li class="sort-3"><a href="javascript:;">价格<i></i></a></li>
+					</ul>
+					<ul class="filter fn-clear">
+						<li class="filter-"><a href="javascript:;" class="on">全部</a></li>
+						<li class="filter-today"><a href="javascript:;">今日新开团</a></li>
+						<li class="filter-old"><a href="javascript:;">昨日开团</a></li>
+						<li class="filter-foreshow"><a href="javascript:;">预告</a></li>
+					</ul>
+					<div class="search">
+						<form name="search" method="get" action="{#getUrlPath service="tuan" template="list"#}">
+							<input class="searchinput" autocomplete="off" value="" placeholder="搜索团购商品" name="search_keyword" />
+							<button type="submit"></button>
+						</form>
+					</div>
+					<div class="pagination">
+						<span class="pg-prev"><i class="trigger"></i><span class="text">上一页</span></span>
+						<span class="pg-next"><span class="text">下一页</span><i class="trigger"></i></span>
+						<span class="sum"><em>1</em>/1</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap" id="mod-item">
+		<ul class="fn-clear">
+			{#tuan action="tlist" return="list" pageSize="72"#}
+			<li>
+				<a href="{#$list.url#}" target="_blank">
+					<span class="marks">
+						{#foreach from=$list.flag item=flag#}
+						<span class="item {#$flag#}"></span>
+						{#/foreach#}
+					</span>
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}" />
+					<span class="geo"><i></i><strong>商圈：</strong>{#$list.store.circle#}</span>
+					<h4>{#$list.title#}</h4>
+					<h3 title="{#$list.subtitle#}">{#$list.subtitle#}</h3>
+					<div class="item-prices">
+						<div class="price"><i>{#echoCurrency type='symbol'#}</i><em class="actPrice">{#$list.price#}</em></div>
+						<div class="dock"><del class="orig-price">{#echoCurrency type='symbol'#}{#$list.market#}</del></div>
+						<div class="prompt"><span class="sold-num"><span class="fire"></span>已售 <em>{#$list.sale#}</em></span></div>
+					</div>
+				</a>
+			</li>
+			{#/tuan#}
+		</ul>
+		{#if $pageInfo.totalCount == 0#}
+		<div class="loading">暂无数据！</div>
+		{#else#}
+		<div class="loading fn-hide">加载中，请稍候...</div>
+		{#/if#}
+	</div>
+</div>
+
+<script>
+	var atpage = 1, totalCount = {#$pageInfo.totalCount#}, totalPage = {#$pageInfo.totalPage#}, pageSize = 72;
+</script>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=4"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=4"></script>
+</body>
+</html>
