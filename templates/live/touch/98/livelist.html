@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$live_typename#}</title>
+<meta name="keywords" content="{#$live_keywords#}"/>
+<meta name="description" content="{#$live_description#}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}"/>
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+    var masterDomain = '{#$cfg_basehost#}',typeid='{#$typeid#}',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+{#$pageTitle = "火鸟直播"#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+<!--头部导航条-->
+<div class="nav fn-clear">
+    <div class="nav_more">
+        <a href="#" class="more_btn"></a>
+    </div>
+    <div class="menu_list fn-clear" style="visibility: visible;">
+    	{#live action="type" return="typenav" type="0"#}
+        <a {#if $typeid==$typenav.id #}class="active"{#/if#}href="{#$typenav.newurl#}">{#$typenav.typename#}</a>
+        {#/live#}
+    </div>
+</div>
+<div class="con_box show">
+    <!--直播列表-->
+    <div class="live_list livelist">
+        <ul class="list_box">
+        </ul>
+    </div>
+</div>
+<div class="publist">
+    <a href="{#$liveurl#}">
+        <img src="{#$templets_skin#}images/live_publish.png" alt=""><br>
+        发直播
+    </a>
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$live_description#}',
+		"title": '{#$live_typename#}-{#$live_title#}',
+		"imgUrl": '{#$live_logoUrl#}',
+		"link": '{#$live_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/live_list.js"></script>
+</body>
+</html>

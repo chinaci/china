@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$title#}</title>
+<meta name="keywords" content="{#$live_keywords#}"/>
+<meta name="description" content="{#$live_description#}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+    var staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+{#$pageTitle = {#$title#}#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+<div class="publish_live">
+   <div class="live_video">
+   		<img src="{#$litpic#}" style="height: 3.5rem;width: 100%;">
+   </div>
+    <div class="detail_main">
+        <ul class="set_info publish_info">
+            <li><span>直播分类</span><span class="det_right">{#$typename#}</span></li>
+            <li><span>开始时间</span><span class="det_right">{#$ftime#}</span></li>
+            <li><span>浏览人数</span><span class="det_right">{#$click#}</span></li>
+            <li><span>点赞量</span><span class="det_right">1.3万</span></li>
+            <li><span>横竖屏</span><span class="det_right">{#$wayname#}</span></li>
+            <li><span>类型</span><span class="det_right">{#$catidtype#}</span></li>
+            <li><span>清晰度</span><span class="det_right">{#$flowname#}</span></li>
+            <li><span>推流地址</span><span class="det_right">{#$pushurl#}</span></li>
+        </ul>
+        <div class="live_button">
+            <button class="btn_start">开始直播</button>
+            <button class="btn_end">结束直播</button>
+        </div>
+    </div>
+    <div class="reset_con">重新编辑</div>
+</div>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

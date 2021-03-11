@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$userinfo.username#}</title>
+<meta name="keywords" content="{#$live_keywords#}"/>
+<meta name="description" content="{#$live_description#}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.js"></script>
+<script>
+  var hiddenid="{#$userinfo.userid#}",masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+{#$pageTitle = {#$userinfo.username#}#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+<div class="an_list">
+    <ul class="an_main">
+    </ul>
+</div>
+<script type="text/javascript" src="{#$templets_skin#}js/anchor_list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
