@@ -1,0 +1,9 @@
+.state0 {color: red;}
+.state1 {color: blue;}
+.state2 {color: gray;}
+
+.chooseState label {display: block; cursor: pointer; font-size: 16px; padding: 5px 20px;}
+.chooseState label input {width: 15px; height: 15px; display: inline-block; vertical-align: middle; margin: -3px 3px 0 0;}
+
+.ui_state_tips .ui_icon_bg {margin: 5px 0 2px 9px;}
+.ui_state_tips .ui_content {margin-top: 9px;}
