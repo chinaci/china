@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>一句话{#if $type#}求职{#else#}招聘{#/if#}-{#$job_title#}</title>
+<meta name="keywords" content="{#if $type#}一句话求职{#else#}一句话招聘{#/if#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#if $type#}一句话求职{#else#}一句话招聘{#/if#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sentence.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, type = {#$type#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='bole'#}#}
+
+<body>
+{#$pageMark = "sentence"|cat:$type#}
+{#include file="top.html"#}
+
+<div class="banner">
+	<div class="wrap"><a href="javascript:;" class="put">发布一句话{#if $type#}求职{#else#}招聘{#/if#}</a></div>
+</div>
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+
+		{#* 一句话求职显示推荐简历 *#}
+		{#if $type#}
+		<div class="s-item">
+			<div class="s-tit">
+				<h5>推荐简历</h5>
+				<a href="{#getUrlPath service='house' template='resume'#}" target="_blank">查看更多>></a>
+			</div>
+			<div class="s-con">
+				{#job action="resume" return="resume"#}
+				<dl class="fn-clear">
+					<dt><a href="{#$resume.url#}" target="_blank"><img src="{#$resume.photo#}" /></a></dt>
+					<dd>
+						<a href="{#$resume.url#}" target="_blank">{#$resume.name#}</a>
+						<p>学历：{#$resume.educational#}</p>
+						<p>工作经验：{#$resume.workyear#}年</p>
+						<p>求职意向：{#$resume.type#}</p>
+					</dd>
+				</dl>
+				{#/job#}
+			</div>
+		</div>
+
+		{#* 一句话招聘显示推荐公司 *#}
+		{#else#}
+		<div class="s-item">
+			<div class="s-tit">
+				<h5>推荐公司</h5>
+				<a href="{#getUrlPath service='house' template='company'#}" target="_blank">查看更多>></a>
+			</div>
+			<div class="s-con company">
+				{#job action="company" return="company" property="r" pageSize="10"#}
+				<dl class="fn-clear">
+					<dt><a href="{#$company.url#}" target="_blank"><img src="{#$company.logo#}" /></a></dt>
+					<dd>
+						<a href="{#$company.url#}" target="_blank">{#$company.title#}</a>
+						<p>{#$company.industry#}</p>
+						<p class="fn-clear">{#$company.scale#}<em>{#$company.addr[$company.addr|@count-2]#} {#$company.addr[$company.addr|@count-1]#}</em></p>
+					</dd>
+				</dl>
+				{#/job#}
+			</div>
+		</div>
+		{#/if#}
+
+	</div>
+	<div class="main">
+		{#job action='sentence' type={#$type#} page={#$page#} pageSize='20'#}
+		<div class="item" data-id="{#$row.id#}">
+			<div class="r">
+				<span class="tel"><s></s>{#$row.contact#}</span>
+				<p>（<em>{#$row.people#}</em> <small>{#$row.pubdate#}</small>）</p>
+			</div>
+			<div class="l">
+				<h5>{#$row.title#}</h5>
+				<p>{#$row.note#}</p>
+			</div>
+		</div>
+		{#/job#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">抱歉！ 未找到相关信息</div>
+		{#/if#}
+
+		{#getPageList service='job' template='sentence' pageType='dynamic' param="type={#$type#}&page=#page#"#}
+	</div>
+</div>
+
+<div class="popup-fabu">
+	<div class="fabu-form">
+		<div class="tit">快速发布一句话{#if $type#}求职{#else#}招聘{#/if#}<s></s></div>
+		<div class="con">
+			<dl class="fn-clear">
+				<dt>职位名称</dt>
+				<dd><input type="text" id="title" maxlength="100" /></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>需求描述</dt>
+				<dd><textarea id="note" rows="4" maxlength="500" placeholder="请输入具体要求~"></textarea></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>联系人</dt>
+				<dd class="fn-clear">
+					<div class="doubel">
+						<input type="text" id="people" maxlength="20" />
+					</div>
+					<label class="lr">
+						<span>联系电话</span><input type="text" id="contact" maxlength="50" />
+					</label>
+				</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>管理密码</dt>
+				<dd class="fn-clear">
+					<div class="doubel">
+						<input type="text" id="password" maxlength="50" />
+					</div>
+					<label class="lr edit fn-hide">
+						<span>管理</span>
+						<label><input type="radio" name="manage" value='1' checked /> 修改</label>
+						<label><input type="radio" name="manage" value='2' /> 删除</label>
+					</label>
+				</dd>
+			</dl>
+			<button id="tj">立即发布</button>
+		</div>
+	</div>
+	<div class="mask"></div>
+</div>
+
+{#include file="footer.html"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/sentence.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

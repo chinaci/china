@@ -1,0 +1,40 @@
+html {background-color: #f4f4f4;}
+/*搜索*/
+.search{float: left;height: 40px;line-height: 40px;}
+.search input.inp{width: 268px;font-size: 14px;border: none;text-indent: 10px}
+.search input.submit{width: 50px;height: 38px;background: #f48a19;color: #fff;border: none;position: relative;top: -1px;}
+
+.boxlist {margin-top: 15px;clear: both;}
+
+.boxlist {width: 790px;}
+.w1200 .boxlist {width: 990px;}
+.boxlist li {position: relative;float: left;width:252px;margin-right: 10px;margin-top: 10px;background: #fff;}
+.w1200 .boxlist li {width: 320px;}
+.boxlist li .pic {position: relative;width: 100%;height: 152px;float: left; z-index: 1;}
+.w1200 .boxlist li .pic {width: 152px;}
+.boxlist li .txt {position: relative;width: 100%;height: 152px;float: left; z-index: 2;}
+.w1200 .boxlist li .txt {width: 165px;padding-left: 0;}
+.boxlist li .txt p {padding:0 20px;line-height: 30px;font-size: 13px;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.w1200 .boxlist li .txt p {padding: 0 10px 0 0;}
+.boxlist li .n {margin-top: 10px;font-size: 12px;color: #25af60;}
+.boxlist li .n a {margin-right: 10px;font-size: 16px;color: #333;}
+.boxlist li .n a:hover {color: #0088cc;}
+.boxlist li .red {margin-right: 4px;}
+.boxlist li .tp {margin-right: 8px;color: #999;}
+.boxlist li .pic a {display: block;}
+.boxlist li .pic img {display: block;width: 115px;height: 115px;margin:0 auto;padding:19px 22px 21px 16px;border-radius:50%;}
+.boxlist li .bg {position: absolute;left:0;top:0;width: 100%;height: 152px;background-image:url(../images/ty_152.png);background-position: center center;background-repeat: no-repeat;}
+
+.boxlist li:hover {background:#a1e083;box-shadow: 0 0 10px #ABAAAA;z-index: 2;}
+.boxlist li:hover .pic {background:#a1e083;}
+.boxlist li:hover a ,.boxlist li:hover * {color:#fff;}
+.boxlist li:hover .bg {background-image:url(../images/ty_152_h.png);}
+
+.boxlist li.empty {float: none; width: 780px; height: 300px; line-height: 300px; text-align: center; font-size: 14px; margin: 0;}
+.w1200 .boxlist li.empty {width: 980px;}
+.boxlist li.empty:hover {box-shadow: none; background: #fff;}
+
+
+.red {color: #ff7300;}
+.blue {color: #0088cc;}
+.green {color: #25af60;}

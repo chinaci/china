@@ -1,0 +1,48 @@
+html {background-color: #f4f4f4;}
+/*搜索*/
+.search{float: left;height: 40px;line-height: 40px;}
+.search input.inp{width: 268px;font-size: 14px;border: none;text-indent: 10px}
+.search input.submit{width: 50px;height: 38px;background: #f48a19;color: #fff;border: none;position: relative;top: -1px;}
+
+
+.boxlist {margin: 15px 0 40px;clear: both;}
+
+.boxlist li {position: relative;margin-top: 10px;padding:20px;border: 1px solid #e8e8e8;transition:all .25s ease-in;-webkit-transition:all .25s ease-in;-moz-transition:all .25s ease-in;background: #fff;}
+.boxlist li .logo {float: left; width: 250px; height: 130px;}
+.boxlist li .logo a {width: 248px; height: 128px; border: 1px solid #fff; text-align: center; display: block;}
+.boxlist li .logo i {display: inline-block; height: 100%; vertical-align: middle;}
+.boxlist li .logo img {max-width: 248px; max-height: 130px; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+.boxlist li .t1 {float: left;width: 260px;padding: 0 15px 0 25px;border-right: 1px solid #e8e8e8;}
+.w1200 .boxlist li .t1 {width: 435px;}
+.boxlist li:hover {box-shadow: 0 0 50px rgba(0,0,0,.15);}
+.boxlist li:hover .logo a {border-color: #e8e8e8;}
+.boxlist .t1 p {font-size: 14px;color: #999;}
+.boxlist .name {margin-bottom: 10px;}
+.boxlist .name a {font-size: 24px;color: #333;}
+.boxlist .name a:hover {color: #f26f20;}
+.boxlist .ctaglist {margin-bottom: 5px;}
+.boxlist .place span {display: inline-block;float: left;}
+.w1200 .boxlist .place span {max-width: 275px;}
+.boxlist .place a {color: #0088cc;margin-left:5px;}
+.boxlist .place a:hover {text-decoration: underline;}
+.boxlist .place , .boxlist .business {height: 21px;margin: 6px 0 0px 0;padding-left: 24px;overflow: hidden;}
+.boxlist .place {background-position: -252px -125px;}
+.boxlist .business {background-position: -251px -99px;}
+.boxlist li .t2 {float: right;width: 160px;padding: 0 10px;text-align: center;}
+.w1200 .boxlist li .t2 {width: 192px;}
+.boxlist .t2 p {padding:10px 0;}
+.boxlist .t2 .sp1 {font-size: 16px;color: #666;}
+.boxlist .t2 .sp2 {font-size: 38px;color: #f26f20;}
+.boxlist .t2 .sp3 {font-size: 12px;color: #999;}
+
+.boxlist li.empty {border: 0; height: 300px; line-height: 300px; text-align: center; font-size: 14px; background: #fff;}
+.boxlist li.empty:hover {box-shadow: none; background: #fff;}
+
+.boxlist .name a , .boxlist .place span ,.boxlist .business {display: block;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+
+
+.pagination {margin:5px 0 35px;}
+
+/* 背景图 */
+.state {position: absolute;left:20px;top:0;z-index: 2;background-position: -246px -204px;}
+.boxlist .place , .boxlist .business {background-image:url(../images/jobicons.png);background-repeat: no-repeat;}

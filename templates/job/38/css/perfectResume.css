@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+.main {margin: 60px auto 0;}
+.userpic {position: relative;width: 200px;height: 200px;margin:0 auto;}
+/*.userpic .bg {position: absolute;left:0;top:0;width: 242px;height: 242px;background: url(../images/y_242.png) no-repeat;}*/
+.userpic img {display: block;width: 190px;height: 190px;border-radius:50%;border:5px solid #fff;box-shadow: 0 0 15px #B7B3B3;}
+.box {width: 455px;margin:-65px auto 190px;box-shadow: 0 0 50px #B7B3B3;}
+.form {padding:80px 68px 50px;}
+.form ,.form a {color: #919191;font-size: 14px;}
+.form .title {margin:15px 0;font-size: 18px;color: #333;text-align: center;}
+.form-row {position: relative;margin:10px 0;}
+.form-row .type {position: absolute;left:0;top: 0;line-height: 45px;padding-left: 10px;}
+.form-row .int {width: 228px;padding:11px 12px 11px 75px;border:1px solid #e5e6e7;color: #333;}
+.form-row .half {width: 45%;float: left;line-height: 45px;}
+.form-row .halfl {margin-right: 10%;}
+.sel {position: relative;line-height: 45px;border:1px solid #e5e6e7;}
+.date-sel {z-index: 10001;}
+.sel .btn {display: block;width: 99px;height: 43px;padding:0 30px 0 10px;color: #919191;white-space:nowrap;text-overflow:ellipsis;background:#f8f8f8;border:1px solid #fff;overflow: hidden;}
+#addr {width:auto;}
+.selList , .timeList {display: none;position: absolute;top:45px;left:0;min-width:100%;padding:5px 0;background-color: #fff; border: 1px solid #e9e8e8; border-top: none; -moz-box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.3); box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;z-index: 2;}
+.sel.selopen .btn {background: #ececec;}
+.sel.selopen .selList ,.sel.selopen .timeList {display: block;}
+.selList a {display: block;padding:0 20px;line-height: 24px;}
+.selList a.hover ,.selList a:hover {background: #ea8b35;color: #fff;}
+.form s {position: absolute;right:15px;top:20px;display: block;width: 0; height: 0; border-width: 6px; border-style: solid dashed dashed dashed; border-color: #d3d3d3 transparent transparent transparent;}
+.form-row .has-error {border-color: #E66C12}
+.error {height: 30px;margin-top: 15px;line-height: 20px;color: #E24F3F;}
+.btnk {position: relative;margin: 0 0 20px;}
+.form .submit {background:#ea6557;color: #fff;font-size: 16px;text-align: center;border:0;border-radius:4px;cursor: pointer;}
+.form .submit:hover {background: #E24F3F;}
+.btnk .submit {display: inline-block;height: 48px;line-height: 48px;}
+.btnk.full .submit {width: 100%;}
+.btnk.fr {text-align: right;}
+.btnk.fr .submit {padding:0 18px;}
+.form-btn {clear: both;}
+.form-btn p {text-align: center;}
+.btnk .back {position: absolute;left:0;top:0;display: block;line-height: 50px;font-size: 14px;color: #666;}
+.btnk .back:hover {text-decoration: underline;}
+.yearsbox {max-height: 140px;overflow-y: auto;}
+
+
+/*  */
+.addk .t {position: relative;height: 20px;padding-left: 2px;line-height: 20px;}
+.addk .jh {position: absolute;left:-22px;top:1px;display: inline-block;height: 17px; width: 16px;margin-right: 5px;border: 1px solid green; border-radius: 50%; line-height: 14px; color: green;  text-align: center;}
+#addInfo {display: block;}
+#addInfo:hover {color: #333;}
+
+.timeList {width: 324px;}
+.box3 .timeList {width: 245px;}
+.timeList {padding:0 20px;}
+.timeList a {display: inline-block;width: 45px;line-height: 24px;margin:2px;float: left;text-align: center;color: #666;}
+.timeList a.disabled {color: #ccc;}
+.timeList a:hover ,.timeList a.curr {background: #ed8f36;color: #fff;border-radius:3px;}
+.timeList a.disabled ,.timeList a.disabled:hover {color: #ccc;background:none;cursor: default;}
+.timeList a.curr {}
+.timeList .years {width: 76%;float: left;}
+.timeList .months {width: 24%;float: left;}
+.box3 .timeList .years {width: 100%;}
+.timeList .months a {width: 28px;}
+.timeList p {margin:0 2px 4px;line-height: 30px;text-align: center;border-bottom:1px solid #BFBFBF;}
+.mainsel {overflow: hidden;}
+.fastsel {clear: both;width: 100%;margin-top:5px;padding-top: 5px;border-top: 1px solid #ccc;overflow: hidden;}
+
+.box2 .form , .box4 .form {padding-bottom:15px;}
+.box2 .form-btn , .box3 .form-btn {margin:0 -50px;}
+.contentList {position: relative;width: 319px;float: left;z-index: 2;}
+.zindextop {z-index: 3;}
+.contentList .con_close {position: absolute;right:-40px;top:10px;display: block;width: 20px;height: 20px;font-size: 0;padding:3px;background-image: url(../images/jobicons.png);background-position: -261px -250px;background-color: #5AA23C;line-height: 20px;text-align: center;}
+.contentList .con_close:hover {background-color: #67C141;}
+.addk {clear: both;}
+
+
+
+#mydes {width: 291px;height: 110px;line-height: 28px;padding-left: 12px;color: #000;resize: vertical;word-break:break-all;overflow: hidden;}
+.form-row .char {position: absolute;bottom:-32px;right:5px;padding-left: 75px;font-size: 12px;z-index: 2;}
+#cahrNum {color: #fe7e7e;}
+.expample {display: none;}
+.expample p {line-height: 22px;margin:10px 0;padding-bottom: 5px;color: #999;border-bottom: 1px dotted #E4E4E4;word-break:break-all;}
+.expample p a {float: right;margin-left: 10px;padding:0 4px;background:#D2D2D2;color: #fff;}
+.expample p a:hover {background:#EF9337;}
+.expample p:hover {color: #ea8b35;}
+
+
+/* 日历 */
+.date-box {position: absolute; top: 45px; left: 0; width: 324px; padding: 5px 20px; background-color: #fff; border: 1px solid #e9e8e8; border-top: none; -moz-box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.3); box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out; z-index: 10001;}
+.date-year-box {width: 246px;float: left;}
+.date-month-box {width: 78px;float: left;}
+
+.date-years-list {height: 168px;overflow: hidden;}
+.date-listbox {position: relative;}
+.date-title {margin:0 2px 4px;line-height: 30px;text-align: center;border-bottom:1px solid #BFBFBF;font-size: 14px;color: #919191;}
+.date-list a {display: inline-block; width: 45px; line-height: 24px; margin: 2px; float: left; text-align: center; color: #666; font-size: 14px;}
+.date-month-list a {width: 28px;}
+.date-list a.curr , .date-list a:hover {background: #ed8f36; color: #fff; border-radius: 3px; }
+.date-list a.disabled ,.date-list a.disabled:hover {color: #ccc;background:none;cursor: default;}
+
+.date-btn {position: relative;padding:10px 0;clear: both;}
+.date-btn a {padding:4px 6px;font-family: 'simsun';font-size: 14px;color: #666;font-weight: bold;}
+.date-btn a.do {font-size: 12px;font-weight: normal;color: #666;}
+.date-btn a.do:hover {color: #999;}
+.date-btn a.do1:hover {color: #f00;}
+.date-btn a.do1.disabled,.date-btn a.do1.disabled:hover {color: #999;cursor: default;}
+
+#date_bg {position: fixed;left:0;top:0;width: 100%;height: 100%;background:none;z-index: 10000;}
+#date_ok {position: absolute;right:0;top:6px;}

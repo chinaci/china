@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$job_title#}</title>
+<meta name="keywords" content="{#$job_keywords#}" />
+<meta name="description" content="{#$job_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageMark = "index"#}
+{#include file="top.html"#}
+
+<!-- 搜索&登录 s -->
+<div class="wrap fn-clear">
+	<div class="fsearch">
+		<p class="link">热门搜索：
+			{#siteConfig module="job" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a><span></span>
+			{#/siteConfig#}
+		</p>
+		<div class="s-form fn-clear">
+			<div class="zn"><span id="zn" data-id="0">职能类别</span><s></s></div>
+			<div class="input">
+				<label for="q"><s></s>请输入职位或公司名关键字</label>
+				<input type="text" id="q" autocomplete="off" />
+			</div>
+			<div class="area"><span id="area" data-id="0">工作地区</span><s></s></div>
+			<a href="javascript:;" class="s-btn" id="sBtn" data-url="{#getUrlPath service='job' template='zhaopin' param="jtype=%type&title=%title&addr=%addr#J_crumbs"#}">搜索</a>
+		</div>
+	</div>
+
+	<div class="flogin fn-clear">
+		<div class="fitem per">
+			<h3><a href="{#$member_userDomain#}" target="_blank">人才登录</a></h3>
+			<a href="{#$cfg_basehost#}/register.html" target="_blank" class="l">人才注册</a>
+			<a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank" class="r">填写简历</a>
+		</div>
+		<div class="fitem com">
+			<h3><a href="{#$member_busiDomain#}" target="_blank">企业登录</a></h3>
+			<a href="{#$cfg_basehost#}/register.html" target="_blank" class="l">企业注册</a>
+			<a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank" class="r">发布职位</a>
+		</div>
+	</div>
+</div>
+<!-- 搜索&登录 e -->
+
+<!-- 伯乐 s -->
+<div class="wrap fn-hide">
+	<div class="mt">
+		<h2>正在招聘的伯乐<s></s></h2>
+		<a href="{#getUrlPath service='job' template='bole'#}" class="more">更多>></a>
+	</div>
+	<div class="bole">
+		<ul class="fn-clear">
+			{#job action="bole" return="bole" status="1" pageSize="7"#}
+			<li>
+				<div class="i1">
+					<a href="{#$bole.url#}" target="_blank" class="img"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$bole.photo#}" /></a>
+					<p>
+						<a href="{#$bole.url#}" target="_blank" class="name" title="{#$bole.realname#}">{#$bole.realname#}</a>
+						{#if $bole.type == 1#}
+						<i class="icon-hr" title="HR">HR</i>
+						{#elseif $bole.type == 2#}
+						<i class="icon-lt" title="猎头">猎头</i>
+						{#elseif $bole.type == 3#}
+						<i class="icon-gg" title="高管">高管</i>
+						{#/if#}
+					</p>
+					<p>{#$bole.work#}</p>
+				</div>
+				<div class="i2">
+					<div class="info fn-clear">
+						<a href="{#$bole.url#}" target="_blank" class="img"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$bole.photo#}" /></a>
+						<div class="txt">
+							<p>
+								<a href="{#$bole.url#}" target="_blank" class="name" title="{#$bole.realname#}">{#$bole.realname#}</a>
+								{#if $bole.type == 1#}
+								<i class="icon-hr" title="HR">HR</i>
+								{#elseif $bole.type == 2#}
+								<i class="icon-lt" title="猎头">猎头</i>
+								{#elseif $bole.type == 3#}
+								<i class="icon-gg" title="高管">高管</i>
+								{#/if#}
+							</p>
+							<p>{#$bole.work#}</p>
+							<p><a href="{#getUrlPath service='job' template='company' id="{#$bole.cid#}"#}" target="_blank">{#$bole.company#}</a></p>
+							<div class="sj">
+								<a href="{#getUrlPath service='job' template='bole-fans' id="{#$bole.id#}"#}" target="_blank">{#$bole.fcount#}<br />关注</a>
+								<a href="{#getUrlPath service='job' template='bole-review' id="{#$bole.id#}"#}" target="_blank" class="m">{#$bole.rcount#}<br />评价</a>
+								<a href="{#getUrlPath service='job' template='bole-job' id="{#$bole.id#}"#}" target="_blank">{#$bole.pcount#}<br />职位</a>
+							</div>
+						</div>
+					</div>
+					<p title="{#$bole.industry#}">招聘行业：{#$bole.industry#}</p>
+					<dl class="fn-clear">
+						<dt>招聘职能：</dt>
+						<dd title="{#$bole.zhineng#}">{#$bole.zhineng#}</dd>
+					</dl>
+				</div>
+			</li>
+			{#/job#}
+		</ul>
+	</div>
+</div>
+<!-- 伯乐 e -->
+
+<!-- 热门职位 s -->
+<div class="wrap hd">
+	<div class="mt">
+		<h2>热门职位<s></s></h2>
+		<div class="corl">
+			<a href="javascript:;" class="l" id="zwLeft">&lt;</a>
+			<a href="javascript:;" class="r" id="zwRight">&gt;</a>
+		</div>
+	</div>
+	<div class="hot-zw" id="hotZw">
+		<div class="l-item">
+			{#job action="industry" return="type"#}
+
+			{#if $_bindex.type == 7#}
+		</div>
+		<div class="l-item">
+			{#/if#}
+
+			<dl>
+				<dt><s class="icon{#$_bindex.type#}"></s>{#$type.typename#} (<a href="{#getUrlPath service='job' template='zhaopin' param="industry={#$type.id#}"#}" class="post_count" data-id="{#$type.id#}" target="_blank">{#$jobCount#}</a>个职位)</dt>
+				<dd>
+					{#job action="industry" return="subtype" type="{#$type.id#}" pageSize="7"#}
+					<span><a href="{#getUrlPath service='job' template='zhaopin' param="industry={#$subtype.id#}"#}" target="_blank">{#$subtype.typename#}</a></span>
+					{#/job#}
+				</dd>
+			</dl>
+			{#/job#}
+		</div>
+	</div>
+</div>
+<!-- 热门职位 s -->
+
+<!-- 紧急招聘 e -->
+<div class="wrap hd">
+	<div class="mt">
+		<h2>紧急招聘<s></s></h2>
+		<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<div class="jj fn-clear">
+		{#job action="company" return="company" property="u"#}
+		<dl>
+			<dt><a href="{#$company.url#}" target="_blank"><i></i><img alt="{#$company.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$company.logo#}" /></a></dt>
+			<dd>
+				<ul class="fn-clear">
+					{#job action="post" return="post" pageSize="4" company="{#$company.id#}"#}
+					<li><a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}">{#$post.title#}</a></li>
+					{#/job#}
+				</ul>
+			</dd>
+		</dl>
+		{#/job#}
+	</div>
+</div>
+<!-- 紧急招聘 e -->
+
+<!-- 名企招聘 s -->
+<div class="wrap">
+	<div class="mt">
+		<h2>名企招聘<s></s></h2>
+		<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<div class="mq fn-clear">
+		{#job action="company" return="company" property="m" pageSize="15"#}
+		<dl>
+			<dt><a href="{#$company.url#}" target="_blank"><i></i><img alt="{#$company.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$company.logo#}" /></a></dt>
+			<dd>
+				<ul>
+					{#job action="post" return="post" pageSize="4" company="{#$company.id#}"#}
+					<li><a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}">{#$post.title#}</a></li>
+					{#/job#}
+				</ul>
+				<p><a href="{#getUrlPath service='job' template='company-job' id={#$post.company['id']#}#}" target="_blank">查看所有职位>></a></p>
+			</dd>
+		</dl>
+		{#/job#}
+	</div>
+</div>
+<!-- 名企招聘 e -->
+
+<!-- 推荐企业 s -->
+<div class="wrap hd">
+	<div class="mt">
+		<h2>推荐企业<s></s></h2>
+		<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<ul class="tj fn-clear">
+		{#job action="company" return="company" property="r" pageSize="24"#}
+		<li>
+			<a href="{#$company.url#}" target="_blank" class="t" title="{#$company.title#}">{#$company.title#}</a>
+			{#job action="post" return="post" pageSize="3" company="{#$company.id#}"#}
+			<span><a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}">{#$post.title#}</a></span>
+			{#/job#}
+		</li>
+		{#/job#}
+	</ul>
+</div>
+<!-- 推荐企业 e -->
+
+<!-- 招聘会 s -->
+<div class="wrap">
+	<div class="mt">
+		<h2>招聘会<s></s></h2>
+		<a href="{#getUrlPath service='job' template='zhaopinhui'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<table class="zph">
+		<thead>
+			<tr>
+				<th class="fe"></th>
+				<th>主题</th>
+				<th>时间</th>
+				<th>区域</th>
+				<th>地址</th>
+				<th>浏览次数</th>
+				<th class="fe"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{#job action="fairs" return="fairs" pageSize="6"#}
+			<tr>
+				<td class="fe"></td>
+				<td><a href="{#$fairs.url#}" target="_blank">{#$fairs.title#}</a></td>
+				<td>{#$fairs.date#}</td>
+				<td>{#$fairs.fairs.addr[0]#} {#$fairs.fairs.addr[1]#}</td>
+				<td>{#$fairs.fairs.address#}</td>
+				<td>{#$fairs.click#}</td>
+				<td class="fe"></td>
+			</tr>
+			{#/job#}
+		</tbody>
+	</table>
+</div>
+<!-- 招聘会 e -->
+
+<!-- 最新简历 s -->
+<div class="wrap hd">
+	<div class="mt">
+		<h2>最新简历<s></s></h2>
+		<a href="{#getUrlPath service='job' template='resume'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<div class="jl fn-clear">
+		{#job action="resume" return="resume"#}
+		<dl>
+			<dt><a href="{#$resume.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$resume.photo#}" /></a></dt>
+			<dd>
+				<p>姓名：<span>{#$resume.name#}</span><br />学历：{#$resume.educational#}<br />{#$resume.college#}</p>
+				<a href="{#$resume.url#}" target="_blank">查看简历</a>
+			</dd>
+		</dl>
+		{#/job#}
+	</div>
+</div>
+<!-- 最新简历 e -->
+
+<!-- 资讯 s -->
+<div class="wrap fn-clear">
+	<div class="n-list">
+		<div class="n-top">
+			<h3>人才速递</h3>
+			<a href="{#getUrlPath service='job' template='news' type="1"#}" target="_blank" class="more">更多>></a>
+		</div>
+		<div class="n-rec">
+			{#myad title="招聘求职_模板一_电脑端_广告二"#}
+		</div>
+		<ul>
+			{#job action="news" return="news" typeid="1" pageSize="6"#}
+			<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a><span>{#$news.pubdate|date_format:'%Y-%m-%d'#}</span></li>
+			{#/job#}
+		</ul>
+	</div>
+	<div class="n-list m">
+		<div class="n-top">
+			<h3>招聘现场</h3>
+			<a href="{#getUrlPath service='job' template='news' type="2"#}" target="_blank" class="more">更多>></a>
+		</div>
+		<div class="n-rec">
+			{#myad title="招聘求职_模板一_电脑端_广告三"#}
+		</div>
+		<ul>
+			{#job action="news" return="news" typeid="2" pageSize="6"#}
+			<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a><span>{#$news.pubdate|date_format:'%Y-%m-%d'#}</span></li>
+			{#/job#}
+		</ul>
+	</div>
+	<div class="n-list">
+		<div class="n-top">
+			<h3>培训进修</h3>
+			<a href="{#getUrlPath service='job' template='news' type="3"#}" target="_blank" class="more">更多>></a>
+		</div>
+		<div class="n-rec">
+			{#myad title="招聘求职_模板一_电脑端_广告四"#}
+		</div>
+		<ul>
+			{#job action="news" return="news" typeid="3" pageSize="6"#}
+			<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a><span>{#$news.pubdate|date_format:'%Y-%m-%d'#}</span></li>
+			{#/job#}
+		</ul>
+	</div>
+</div>
+<!-- 资讯 e -->
+
+<div class="wrap ad">{#myad title="招聘求职_模板一_电脑端_广告五"#}</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>
