@@ -1,0 +1,33 @@
+<div class="main-content-right fn-right">
+  <div class="new-btn"><a href="{#if $pageCurr == "detail"#}{#$tieba_channelDomain#}#publish{#else#}#publish{#/if#}">免费发布新帖</a></div>
+  {#if $userinfo#}
+  <div class="hoster">
+    <h3>我的贴吧</h3>
+    <dl class="fn-clear">
+      <dt class="fn-left"><a href="{#$member_userDomain#}" target="_blank"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /></a></dt>
+      <dd class="fn-left">
+        <h2>{#$userinfo.nickname#}</h2>
+        <p>帖子：<em>{#$tizi_memberTotal#}</em></p>
+        <p>精华：<em>{#$tizi_memberJinghuaTotal#}</em></p>
+        <p>注册：{#$userinfo.regtime|date_format:"%Y-%m-%d"#}</p>
+      </dd>
+    </dl>
+  </div>
+  {#/if#}
+  <div class="mode-type">
+    <h3>板块分类</h3>
+    <ul class="fn-clear">
+      {#tieba action="type"#}
+      <li{#if $typeid == $row.id || $parentid == $row.id#} class="on"{#/if#}><a href="{#getUrlPath service='tieba' template='list' typeid={#$row.id#}#}">{#$row.typename#}</a></li>
+      {#/tieba#}
+    </ul>
+  </div>
+  <div class="topic-box">
+    <h3>贴吧热议榜</h3>
+    <ul>
+      {#tieba action='tlist' return='hot' orderby='reply' page='1' pageSize='10'#}
+      <li><span{#if $_bindex.hot < 4#} class="topic-hot"{#else#} class="topic-rank"{#/if#}>{#$_bindex.hot#}</span><a href="{#$hot.url#}" class="topic-tit" target="_blank">{#$hot.title#}</a><span class="topic-num">{#$hot.reply#}</span></li>
+      {#/tieba#}
+    </ul>
+  </div>
+</div>

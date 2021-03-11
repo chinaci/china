@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="{#$cfg_soft_lang#}">
+	<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+	<meta name="keywords" content="{#$tieba_keywords#}" />
+	<meta name="description" content="{#$tieba_description#}" />
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css">
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=2" media="all" />
+	<link rel="stylesheet" href="{#$templets_skin#}css/tieba.css?v2">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+	<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var payReturn = "{#getUrlPath service='member' type='user' template='manage' action='tieba'#}";
+	</script>
+</head>
+
+<body class='w1200'>
+	{#$channel = 'tieba'#}
+	{#$hotline = $tieba_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+
+			<!-- 中间贴吧主要信息 s -->
+		<div class="tieba">
+			<!-- 顶部固定图片 s -->
+			<div class="picture">
+				{#myad title="贴吧社区_模板二_电脑端_广告一"#}
+			</div>
+			<!-- 顶部固定图片 e -->
+			<!-- 贴吧导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					{#tieba action="type" return='bjtype' page="1" pageSize="8"#}
+					<li{#if $_bindex.bjtype == 1#} class="NewsNav_bc on"{#/if#} ><a  href="javascript:;" data-id="{#$bjtype.id#}">{#$bjtype.typename#}</a></li>
+					{#/tieba#}
+				</ul>
+				<span><a href="javascript:;">更多<i></i></a>
+					<div class="more_list">
+						<ul>
+							{#tieba action="type" return='cjtype' page="1"#}
+							{#if $_bindex.cjtype >8#}
+							<li><a href="javascript:;" data-id="{#$cjtype.id#}">{#$cjtype.typename#}</a></li>
+							{#/if#}
+							{#/tieba#}
+						</ul>
+					</div>
+				</span>
+			</div>
+			<!-- 贴吧导航栏 e-->
+			<!-- 贴吧信息列表 s -->
+			<div class="EXhand_List" id="EXhand_List"></div>
+			<!-- 贴吧信息列表 e -->
+		</div>
+	<!-- 中间贴吧主要信息 e -->
+	<!-- 右侧贴吧信息汇总 s -->
+		<div class="Information">
+			<div class="issue"><a target="_blank" href="{#getUrlPath service='tieba' template='fabu'#}">发布帖子</a></div>
+			<!-- <div class="Infor_search fn-clear"><input type="text" placeholder="吧内搜索..."><em><i></i></em></div> -->
+			<!-- 签到 s -->
+			{#if $userinfo#}
+			<div class="Personal_Center fn-clear">
+				<div class="Per_pic"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /></div>
+				<div class="Per_name"><a target="_blank" href="{#$member_userDomain#}">{#$userinfo.nickname#}</a></div>
+				<div class="Per_box fn-clear">
+					<ul>
+						<li>发帖<em>{#$tizi_memberTotal#}</em></li>
+						<li>精华<em>{#$tizi_memberJinghuaTotal#}</em></li>
+					</ul>
+					<!-- <a class="sign" href="#"><i></i>签到</a> -->
+				</div>
+			</div>
+			{#/if#}
+			<!-- 签到 e -->
+			<!-- 会员专区 s -->
+			<!-- <div class="infor_list">
+				<div class="infor_lead fn-clear"><em>会员专区</em></div>
+				<div class="vip_club fn-clear">
+					<ul>
+						{#dating action='memberList' return='memberList'  page='1' pageSize='8'#}
+						<li><a target="_blank" href="{#$memberList.url#}"><div class="vip_pic"><img src="{#$memberList.photo#}" alt="{#$memberList.nickname#}"></div><h1><em>{#$memberList.nickname#}</em><i></i></h1></a><p>关注</p></li>
+						{#/dating#}
+					</ul>
+				</div>
+			</div> -->
+			<!-- 会员专区 e -->
+			<!-- 贴吧热议榜 s -->
+			<div class="infor_list">
+				<div class="infor_lead fn-clear"><em>贴吧热议榜</em></div>
+				<div class="Rank fn-clear">
+					<ul>
+						{#tieba action='tlist' return='hot' orderby='reply' page='1' pageSize='10'#}
+						<li {#if $_bindex.hot < 4#} class="rank_top"{#/if#}><em>{#$_bindex.hot#}</em><a target="_blank" href="{#$hot.url#}">{#$hot.title#}</a><span>{#$hot.reply#}</span></li>
+						{#/tieba#}
+					</ul>
+				</div>
+			</div>
+			<!-- 贴吧热议榜 e -->
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧贴吧信息汇总 e -->
+	</div>
+<!-- 主干部分 e-->
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v3"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v3"></script>
+	<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+
+</body>
+</html>

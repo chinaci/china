@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../member/css/fabu-pay.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+var id = 0;
+
+var payReturn = "{#getUrlPath service='member' type='user' template='manage' action='tieba'#}";
+</script>
+</head>
+
+{#$pageCurr = "index"#}
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+{#include file="_top_search.html"#}
+
+<div class="wrap">
+
+  {#include file="_top.html"#}
+
+
+
+{#include file="../../member/fabu-pay.html" module="tieba"#}
+{#include file="_footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../member/js/fabu-pay.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v=2"></script>
+</body>
+</html>

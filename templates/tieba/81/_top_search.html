@@ -1,0 +1,112 @@
+<div class="fixedwrap">
+	<div class="fixedpane">
+		<!-- head s -->
+		<div class="wrap header fn-clear">
+			<div class="logo">
+				<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}"><h2>{#$cfg_shortname#}</h2></a>
+			</div>
+			<div class="kefu"><script src="/include/json.php?action=adjs&id=156" language="javascript"></script></div>
+			<div class="searchwrap">
+				<div class="search">
+					<form action="">
+						<div class="type">
+							<dl>
+								<dt><a href="javascript:;" class="keytype">商家</a><em></em></dt>
+								<dd>
+									<a href="javascript:;" class="active curr">商家</a>
+									<a href="javascript:;">店铺</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="inputbox">
+							<div class="inpbox"><input type="text" class="searchkey"></div>
+							<div class="hotkey">
+								{#siteConfig module="index" action="hotkeywords" return="hotkeywords"#}
+								{#if $_bindex.hotkeywords <= 3#}
+								<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+								{#/if#}
+								{#/siteConfig#}
+							</div>
+						</div>
+						<input type="submit" class="submit" value="搜索">
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- head e -->
+
+		<!-- 导航 s -->
+		<div class="nav">
+			<div class="wrap">
+				<ul class="mainnav fn-clear">
+					<li><a href="{#$cfg_basehost#}" class="nav-m">首页</a></li>
+					{#if in_array("article", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$article_channelDomain#}" class="nav-m" target="_blank">新闻资讯</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									{#article action="type" return="atype" pageSize="5"#}
+									<a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a>
+									{#/article#}
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}" class="nav-m" target="_blank">跳蚤市场<i class="picon picon-latest"></i></a></li>{#/if#}
+					{#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}" class="nav-m" target="_blank">团购秒杀<i class="picon picon-hui"></i></a></li>{#/if#}
+					{#if in_array("house", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$house_channelDomain#}" class="nav-m" target="_blank">房屋租售</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#getUrlPath service='house' template='zu'#}" target="_blank">找出租房</a>
+									<a href="{#getUrlPath service='house' template='sale'#}" target="_blank">找出售房</a>
+									<a href="{#getUrlPath service='house' template='map' action='loupan'#}" target="_blank">地图找房</a>
+									<a href="{#getUrlPath service='house' template='loupan' param='from=subway'#}" target="_blank">地铁找房</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("job", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$job_channelDomain#}" class="nav-m" target="_blank">招聘求职</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">最新职位</a>
+									<a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">我要找工作</a>
+									<a href="{#getUrlPath service='job' template='company'#}" target="_blank">企业招聘</a>
+									<a href="{#getUrlPath service='job' template='resume'#}" target="_blank">最新简历</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("renovation", $installModuleArr)#}
+					<li class="dropdown">
+						<div class="dropbox">
+							<dl>
+								<dt><a href="{#$renovation_channelDomain#}" class="nav-m" target="_blank">装修市场</a><i class="picon picon-down2"></i></dt>
+								<dd>
+									<a href="{#$build_channelDomain#}" target="_blank">建材商城</a>
+									<a href="{#$home_channelDomain#}" target="_blank">家居商城</a>
+									<a href="{#getUrlPath service='renovation' template='zb'#}" target="_blank">装修招标</a>
+									<a href="{#$furniture_channelDomain#}" target="_blank">家具商城</a>
+								</dd>
+							</dl>
+						</div>
+					</li>
+					{#/if#}
+					{#if in_array("marry", $installModuleArr)#}<li><a href="{#$marry_channelDomain#}" class="nav-m" target="_blank">婚嫁频道<i class="picon picon-join"></i></a></li>{#/if#}
+					{#if in_array("dating", $installModuleArr)#}<li><a href="{#$dating_channelDomain#}" class="nav-m" target="_blank">同城交友</a></li>{#/if#}
+					<li><a href="{#$tieba_channelDomain#}" class="nav-m" target="_blank">贴吧社区</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 导航 e -->
