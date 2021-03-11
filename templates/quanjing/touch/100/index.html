@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$quanjing_title#}</title>
+<meta name="keywords" content="{#$quanjing_keywords#}" />
+<meta name="description" content="{#$quanjing_description#}" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}"/>
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+
+<script>
+    var masterDomain = '{#$cfg_basehost#}',typeid = {#$typeid|default:0#},staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+{#$pageTitle = $quanjing_title#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+
+<!--banner轮播图-->
+<div class="wrapper">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {#myad title="全景_模板一_移动端_广告一" type='slide'#}
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+
+<div class="choice">
+    <ul>
+        <li>
+            <a href="javascript:;">
+                <span>{#if $typeid#}{#$list_typename#}<font id="count">(0)</font>{#else#}分类{#/if#}</span>
+                <em></em>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="last">
+                <span>全部</span>
+                <em></em>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="choice-list">
+    <div class="list-left ol fn-clear" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); display: none;">
+        <div class="cl-left box">
+            <ul>
+                <li data-id="0"{#if !$typeid#} class="bc"{#/if#}><a href="javascript:;">不限</a></li>
+                {#quanjing action="type" return="type"#}
+                <li data-id="{#$type.id#}"{#if $typeid && $list_pid == $type.id#} class="bc"{#/if#}><a href="javascript:;">{#$type.typename#}<i></i></a></li>
+                {#/quanjing#}
+            </ul>
+        </div>
+        <div class="cl-right box">
+            <ul class="cl-rr" id="typeCon"></ul>
+        </div>
+    </div>
+    <div class="list-right ol fn-clear" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); display: none;">
+        <div class="cl-left box">
+            <ul class="sort">
+                <li class="bc" data-id="0"><a href="javascript:;">全部</a></li>
+                <li data-id="1"><a href="javascript:;">最新</a></li>
+                <li data-id="2"><a href="javascript:;">人气</a></li>
+            </ul>
+        </div>
+        <div class="cl-right box">
+            <ul class="cl-rr" id="addrCon"></ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="content">
+    <ul id="listCon" class="ul-list">
+
+    </ul>
+</div>
+
+<div class="disk" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); display: none;"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$quanjing_description#}',
+		"title": '{#$quanjing_title#}',
+		"imgUrl": '{#$quanjing_logoUrl#}',
+		"link": '{#$quanjing_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<!-- 轮播图 -->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>
