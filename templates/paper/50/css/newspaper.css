@@ -1,0 +1,133 @@
+body{
+	background-image: url(../images/bg.gif);
+}
+.w1200 .wrap {
+	width: 1000px;
+}
+.topInfo{
+	margin-bottom: 0px;
+}
+.news-lead{
+	    background: url(../images/topbg.gif) center top no-repeat;
+    height: 225px;
+    position: relative;
+}
+.news-mm{
+	width: 990px;
+	margin: 0 auto;
+}
+.main-1{
+	width: 1000px;
+    padding-top: 25px;
+}
+.main-1 .partone{
+	border: 1px #d2d2d2 solid;
+}
+.main-1 .partone .partone-lead{
+	line-height: 28px;
+    font-size: 20px;
+    font-family: 黑体;
+    color: #46322b;
+    padding: 12px 0 10px 20px;
+    height: 28px;
+    background-color: #f0f0f0;
+    border-bottom: 1px #e3e3e3 solid;
+}
+.main-1 .partone .partone-paper ul li{
+	width: 211px;
+	height: 305px;
+	float: left;
+	margin: 25px 0px 0 30px;
+	text-align: center;
+}
+.main-1 .partone .partone-paper ul li b{
+	background: url(../images/paper_bg.jpg) center no-repeat;
+    padding-left: 6px!important;
+    padding-top: 4px;
+    display: block;
+}
+.main-1 .partone .partone-paper ul li b:hover{
+	background: url(../images/paper_bg_over.jpg) center no-repeat;
+    padding-left: 6px!important;
+    padding-top: 4px;
+    display: block;
+}
+.main-1 .partone .partone-paper ul{
+	background-color: #fafafa;
+    padding-bottom: 20px;
+}
+.main-1 .partone .partone-paper ul li a img{
+	width: 175px;
+    height: 245px;
+}
+.main-1 .partone .partone-paper ul li p{
+	    padding-left: 20px;
+	    font-size: 14px;
+	    float: left;
+	line-height: 30px;
+	    width: 175px;
+	    text-align: left;
+}
+.main-1 .partone .partone-paper ul li p em {
+	float: right;
+}
+.main-1 .partone .partone-paper ul li span{
+	padding-left: 20px;
+	    font-size: 14px;
+	    width: 175px;
+	    float: left;
+	    text-align: left;
+}
+.main-1 .partone .partone-paper ul li span a i{
+	    font-size: 14px;
+	    color: #cd000f;
+	    float: right;
+	    font-style: normal;
+}
+.main-1 .partone .partone-paper ul li span a i:hover{
+	    color: #ed6c00;
+    text-decoration: none;
+}
+.footer-login{
+	padding: 40px 0 20px;
+	margin-top: 50px;
+	border-top: 1px solid #d2d2d2;
+}
+.footer-login .pice-1{
+	margin: 0 12px;
+}
+.choice{
+	position: absolute;
+	right: 0;
+	top: 120px;
+}
+.news-choice{
+	font-size: 14px;
+	color: #626262;
+	font-weight: bold;
+	float: left;
+}
+.choice select option{
+	font-size: 12px;
+}
+.date-choice{
+	margin-left: 20px;
+	float: left;
+	font-size: 14px;
+	color: #626262;
+	font-weight: bold;
+}
+.choice button{
+	background-color: #7c8187;
+	width: 63px;
+	height: 28px;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+	margin-left: 5px;
+	float: left;
+}
+
+
+.footer .qr, .w1200 .help .qr {display: none;}

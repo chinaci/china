@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$title#} - {#$paper_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newspaper.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$paper_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, searchUrl = '{#getUrlPath service="paper" template="list" id="%1" param="date=%2"#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap news-lead">
+	<div class="choice">
+		<div class="news-choice">
+			报纸选择：
+			<select id="company">
+				<option value="">---请选择报纸---</option>
+				{#paper action='store' return='store' pageSize='100'#}
+				<option value="{#$store.id#}"{#if $id == $store.id#} selected{#/if#}>{#$store.title#}</option>
+				{#/paper#}
+			</select>
+		</div>
+		<div class="date-choice">
+			日期选择：
+			<div class="fn-right"><input id="date" placeholder="请输入日期" value="{#$date|date_format:"%Y-%m-%d"#}" class="laydate-icon" onclick="laydate()"></div>
+		</div>
+		<button id="search">搜索</button>
+	</div>
+</div>
+<div class="news-main fn-clear">
+	<div class="news-mm">
+		<div class="main-1 fn-clear">
+			<div class="partone fn-clear">
+				<div class="partone-lead">
+					<p>{#$title#}</p>
+				</div>
+				<div class="partone-paper  fn-clear">
+					<ul class=" fn-clear">
+						{#paper action='forumList' return='forum' company={#$id#} date={#$date#} pageSize='1000'#}
+						<li>
+							<b><a href="{#$forum.url#}" target="_blank"><img src="{#changeFileSize url="{#$forum.litpic#}" type="middle"#}"></a></b>
+							<p>{#$title#}<em>{#$forum.date#}</em></p>
+						</li>
+						{#$i = $i + 1#}
+						{#/paper#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/newspaper.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+.w1200 .wrap {
+	width: 1000px;
+}
+
+.txt{
+  float: right;
+  background-color: #FFF;
+width: 527px;
+    border: 1px #d2d2d2 solid;
+  margin-top: 50px;
+}
+.txt-lead{
+  width: 517px;
+padding-top: 10px;
+padding-right: 10px;
+height: 25px;    background-color: #f0f0f0;
+}
+.txt p{
+      margin-left: 6px;
+      color: #694916;
+}
+.txtcenter{
+  text-align: center;
+}
+.tc-1{
+  margin-top: 5px;
+margin-bottom: 5px;
+color: #555555;
+font-size: 12px;
+}
+.tc-2{
+  font-size: 18px;
+    color: #913204;
+    margin: 15px 0;
+    font-weight: bold;
+}
+.txt-bottom{
+  border-top: 1px #d4d2d3 solid;
+line-height: 28px;
+padding: 10px;
+font-size: 14px;
+    color: black;
+    margin-left: 6px;
+margin-right: 6px;
+}
+.bdsharebuttonbox{
+  width: 230px;
+  height: 28px;
+  margin: 0 auto;
+}
+.txt-foot{
+  padding-top: 15px;
+      width: 450px;
+      margin: 0 auto;
+}
+.txt-foot p{
+  margin-left: 0px;
+  float: left;
+  margin-bottom: 10px;
+
+}
+.txt-foot p a{
+  display: block;
+  width: 150px
+}
+.footer .qr {display: none;}

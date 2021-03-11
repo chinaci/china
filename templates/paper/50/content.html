@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#$detail_title#} - {#$paper_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newspaper-list.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newspaper-detailed.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$paper_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, searchUrl = '{#getUrlPath service="paper" template="list" id={#$cid#} param="date=%1"#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="bobo">
+	<div class="layout fn-clear">
+		<div class="lay-left">
+	  		<!-- 版面图Start -->
+	  		<div id="IECN" class="main">
+    			<img id="imageth" src="{#$litpic#}" usemap="#map_of_yyb">
+			</div>
+			<map name="map_of_yyb">
+				{#paper action="contentList" return='list' id={#$pid#} pic_width="390" pic_height="566"#}
+	    		<area id="items{#$_bindex.list#}" name="{#$list.title#}" onmouseover="draw(this,'{#$list.coor['left']#},{#$list.coor['top']#},{#$list.coor['right']#},{#$list.coor['top']#},{#$list.coor['right']#},{#$list.coor['bottom']#},{#$list.coor['left']#},{#$list.coor['bottom']#}');" onmouseout="undraw();" class="areablock" shape="POLY" coords="{#$list.coor['left']#},{#$list.coor['top']#},{#$list.coor['right']#},{#$list.coor['top']#},{#$list.coor['right']#},{#$list.coor['bottom']#},{#$list.coor['left']#},{#$list.coor['bottom']#}" href="{#$list.url#}">
+				{#/paper#}
+			</map>
+    		<!---版面图End-->
+
+			<div class="page-1">
+				<div class="page-bb">{#$title#}</div>
+				<div class="page-cc">
+					{#if $prevPaper#}<a href="{#$prevPaper#}"><img src="{#$templets_skin#}images/last_02.jpg"></a>{#/if#}
+					{#if $nextPaper#}<a href="{#$nextPaper#}"><img src="{#$templets_skin#}images/next_02.jpg"></a>{#/if#}
+				</div>
+			</div>
+			<div class="zhuanti">
+				<div class="zhuanti-lead">
+					<ul>
+						<li class="uil">专题推荐</li>
+						<li>图片新闻</li>
+					</ul>
+				</div>
+				<div class="zz">
+					<ul class="zhuanti-txt">
+						{#special action='slist' return='slist' pageSize='8'#}
+						<li><p>.</p><a href="{#$slist.domain#}" target="_blank" title="{#$slist.title#}">{#$slist.title#}</a></li>
+						{#/special#}
+					</ul>
+					<ul class="zhuanti-img">
+						{#article action='alist' return='alist' flag='h,r' thumb='1' pageSize='2'#}
+						<li>
+							<a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}"><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}"></a>
+							<p><a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a></p>
+							<span>{#$alist.description|truncate:36#} <a href="{#$alist.url#}" target="_blank">[详细]</a> </span>
+						</li>
+						{#/article#}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="lay-right">
+			<div class="lri-lead">
+				<a href="{#$paper_channelDomain#}">返回首页</a>
+				<div class="fn-right">
+    				<input placeholder="请输入日期" class="laydate-icon">
+				</div>
+			</div>
+			<div class="qiehuan">
+				<p>
+					{#if $prevForum#}<a href="{#$prevForum#}"{#if $prevForum == ""#} onclick="javascript:alert('此为第一期！');"{#/if#}><img src="{#$templets_skin#}images/last.gif"></a>{#/if#}
+					{#if $nextForum#}<a href="{#$nextForum#}"{#if $nextForum == ""#} onclick="javascript:alert('此为最后一期！');"{#/if#}><img src="{#$templets_skin#}images/next.gif"></a>{#/if#}
+				</p>
+				<span>{#$smarty.now|date_format:"%Y"#}年{#$smarty.now|date_format:"%m"#}月{#$smarty.now|date_format:"%d"#}日 星期{#$week#}</span>
+			</div>
+			<div class="txt">
+				<div class="txtcenter">
+					<ul><li class="tc-2">{#$detail_title#}</li></ul>
+				</div>
+				<div class="txt-bottom">
+					{#$detail_body#}
+				</div>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_more" data-cmd="more"></a>
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a>
+					<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+					<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+					<a href="#" class="bds_people" data-cmd="people" title="分享到人民微博"></a>
+				</div>
+				<script>
+					var staticPath = (u=window.staticPath||window.cfg_staticPath)?u:((window.masterDomain?window.masterDomain:document.location.origin)+'/static/');
+					var shareApiUrl = staticPath.indexOf('https://')>-1?staticPath+'api/baidu_share/js/share.js':'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5);
+					window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdStyle":"1","bdSize":"16"},"share":{"bdSize":0}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src=shareApiUrl];
+				</script>
+				<div class="txt-foot">
+					<p><a href="{#getUrlPath service='paper' template='forum' id={#$pid#}#}"><img src="{#$templets_skin#}images/foot_01.jpg" alt="" /></a></p>
+					{#if $prevContent#}<p><a href="{#$prevContent#}"><img src="{#$templets_skin#}images/foot_02.jpg" alt="" /></a></p>{#/if#}
+					{#if $nextContent#}<p><a href="{#$nextContent#}"><img src="{#$templets_skin#}images/foot_03.jpg" alt="" /></a></p>{#/if#}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="showRedpop" id="showRedpops"></div>
+<div class="showImgpop" id="showImgpops"></div>
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/newspaper.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/displayblock.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/newspaper-list.js"></script>
+</body>
+</html>
