@@ -1,0 +1,37 @@
+{#include file="../../siteConfig/top1.html"#}
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$shop_channelDomain#}" title="{#$shop_channelName#}"><img src="{#$shop_logoUrl#}" alt="{#$shop_channelName#}" /></a></h1>
+	<div class="search">
+		<form name="search" method="get" action="{#getUrlPath service='shop' template='list'#}">
+			<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="{#$langData['shop'][5][63]#}" data-role="input" />
+			<button id="search_button" type="submit" class="btn-s"><s></s>{#$langData['siteConfig'][6][109]#}</button>
+		</form>
+		<p class="hot-s">
+			<span>{#$langData['waimai'][2][58]#}：</span>
+			{#siteConfig module="shop" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	<div class="topcart">
+		<a href="{#getUrlPath service='shop' template='cart'#}" class="cart-btn"><span class="icon"></span><i>0</i>{#$langData['shop'][5][5]#}<s><em></em></s></a>
+		<div class="cart-con">
+			<div class="spacer"></div>
+			<p class="empty">{#$langData['shop'][5][64]#}</p>
+			<div class="cartlist"><ul></ul><div class="cartft fn-clear">{#$langData['siteConfig'][19][689]|replace:'1':'<em></em>'#} {#$langData['siteConfig'][19][664]#}：<span class="pric">{#echoCurrency type='symbol'#}<strong>0.00</strong></span> <small>({#$langData['shop'][0][11]#})</small><a href="{#getUrlPath service='shop' template='cart'#}" class="cartbtn">{#$langData['shop'][5][65]#}</a></div></div>
+		</div>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li{#if $pageCurr == 'index'#} class="curr"{#/if#}><a href="{#$shop_channelDomain#}">{#$langData['siteConfig'][0][0]#}</a></li>
+			<li><a href="{#getUrlPath service='shop' template='list' param="flag=3"#}">{#$langData['shop'][5][66]#}<s class="new"></s></a></li>
+			<li><a href="{#getUrlPath service='shop' template='list' param="flag=1"#}">{#$langData['shop'][5][67]#}</a></li>
+			<li{#if $pageCurr == 'brand'#} class="curr"{#/if#}><a href="{#getUrlPath service='shop' template='brand'#}">{#$langData['shop'][5][68]#}</a></li>
+			<li{#if $pageCurr == 'store'#} class="curr"{#/if#}><a href="{#getUrlPath service='shop' template='store'#}">{#$langData['shop'][5][61]#}</a></li>
+			<li><a href="{#$tuan_channelDomain#}" target="_blank">{#$langData['shop'][5][69]#}</a></li>
+		</ul>
+	</div>
+</div>

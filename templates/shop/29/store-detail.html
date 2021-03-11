@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}"/>
+<meta name="description" content="{#$shop_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/businessD.css?v={#$cfg_staticVersion#}" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var id = {#$detail_id#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'store'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}">{#$langData['siteConfig'][0][0]#}</a>><a href="{#getUrlPath service='shop' template='store'#}">{#$langData['shop'][5][61]#}</a>><a href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#}#}">{#$detail_title#}</a></p>
+</div>
+
+<div class="content clearfix">
+	<div class="left sjLeft">
+		<div class="select">
+			<div class="tab">
+				<span class="left">{#$langData['siteConfig'][19][108]#}</span><font class="left">|</font>
+				<p>
+					<a{#if $pid == 0#} class="on"{#/if#} href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#}#}">{#$langData['siteConfig'][22][96]#}</a>
+					{#shop action="category" store={#$detail_id#}#}
+					<a{#if $pid == $row.id#} class="on"{#/if#} href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$row.id#}#}">{#$row.typename#}</a>
+					{#/shop#}
+				</p>
+			</div>
+			{#if $pid != 0 && $child > 0#}
+			<div class="tab">
+				<span class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font class="left">&nbsp;</font>
+				<p>
+					<a{#if $tid == 0#} class="on"{#/if#} href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$pid#}#}">{#$langData['siteConfig'][22][96]#}</a>
+					{#shop action="category" store={#$detail_id#} type={#$pid#}#}
+					<a{#if $tid == $row.id#} class="on"{#/if#} href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$row.id#}#}">{#$row.typename#}</a>
+					{#/shop#}
+				</p>
+			</div>
+			{#/if#}
+		</div>
+		<div class="codi">
+			<input class="left search" id="keywords" type="text" onblur="if(value==''){value='{#$langData['shop'][2][10]#}'}" onfocus="if(value=='{#$langData['shop'][2][10]#}'){value=''}" value="{#if $keywords != ""#}{#$keywords#}{#else#}{#$langData['shop'][2][10]#}{#/if#}" />
+			<div><input type="text" id="price1" value="{#$price[0]#}" />{#echoCurrency type='symbol'#}</div><div class="line"></div><div><input type="text" id="price2" value="{#$price[1]#}" />{#echoCurrency type='symbol'#}</div>
+			<a href="javascript:;" id="search">{#$langData['siteConfig'][6][109]#}</a>
+		</div>
+		<ul class="sjlistD fn-clear">
+			{#shop action="slist" return="list" store={#$detail_id#} storetype={#$typeid#} title={#$keywords#} price="{#if $price#}{#$price[0]#},{#$price[1]#}{#/if#}" page={#$page#} pageSize="40"#}
+			<li>
+				<a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$list.litpic#} type='middle'#}"></a>
+				<div>
+					<p><a href="{#$list.url#}" title="{#$list.title#}" target="_blank">{#$list.title#}</a></p>
+					<span><em>{#echoCurrency type='symbol'#}{#$list.price#}</em><s>{#echoCurrency type='symbol'#}{#$list.mprice#}</s></span>
+				</div>
+			</li>
+			{#/shop#}
+			{#if $pageInfo.totalCount == 0#}
+			<li class="empty">{#$langData['shop'][5][2]#}</li>
+			{#/if#}
+		</ul>
+
+		<!--分页-->
+		{#getPageList service='shop' template='store-detail' id={#$detail_id#} typeid={#$typeid#} param="{#if $keywords != ""#}keywords={#$keywords#}{#/if#}{#if $price#}{#if $keywords != ""#}&{#/if#}price={#$price[0]#},{#$price[1]#}{#/if#}"#}
+	</div>
+
+	<div class="right sjRight">
+		<div class="sjInfo">
+		<i class="icon"></i>
+			<h3>{#$langData['shop'][5][37]#}</h3>
+			<div class="sjLogo">
+				<s></s><img src="{#$detail_logo#}" alt="{#$detail_title#}" title="{#$detail_title#}" />
+			</div>
+			<p><em>{#$detail_title#}</em></p>
+			<p><a href="javascript:;" class="collect{#if $detail_collect == 1#} has{#/if#}"><i></i>{#$langData['siteConfig'][19][240]#}</a></p>
+			<span><font class="left">{#$langData['siteConfig'][19][642]#}：</font><em>{#$detail_people#}</em></span>
+			<span><font class="left">{#$langData['siteConfig'][3][1]#}：</font><em>{#$detail_tel#}</em></span>
+			<span><font class="left">{#$langData['siteConfig'][19][9]#}：</font><em>
+				{#foreach from=$detail_addr item=addr#}
+									{#$addr#}
+									{#/foreach#} {#$detail_address#}</em></span>
+			<span><font class="left">{#$langData['shop'][5][38]#}：</font><em>{#$detail_project#}</em></span>
+		</div>
+
+		<div class="sjInfo hot">
+			<h3>热卖商品排行</h3>
+			<ul>
+				{#shop action="slist" return="sl" store={#$detail_id#} orderby=1 page=1 pageSize=10#}
+				<li><i{#if $_bindex.sl < 4#} class="red"{#/if#}>{#$_bindex.sl#}</i><p{#if $_bindex.sl == 1#} class="on"{#/if#}>{#$sl.title#}</p>
+					<dl{#if $_bindex.sl == 1#} class="on"{#/if#}><dt><a href="{#$sl.url#}" title="{#$sl.title#}"><img src="{#changeFileSize url={#$sl.litpic#} type='small'#}"></a></dt><dd class="t"><a href="{#$sl.url#}" title="{#$sl.title#}">{#$sl.title#}</a></dd><dd>{#$sl.price#}</dd></dl>
+				</li>
+				{#/shop#}
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+{#include file="bottom.html"#}
+<script>var pageUrl = '{#getUrlPath service="shop" template="store-detail" id={#$detail_id#} typeid={#$typeid#}#}';</script>
+<script type="text/javascript" src="{#$templets_skin#}js/buninessD.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

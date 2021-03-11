@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][22][89]#}-{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}"/>
+<meta name="description" content="{#$shop_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/payreturn.css?v={#$cfg_staticVersion#}" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}" target="_blank">{#$langData['siteConfig'][0][0]#}</a> > {#$langData['siteConfig'][22][89]#}</p>
+</div>
+
+<div class="have">
+	<div class="state">
+		<div class="right">
+			<ul>
+				<li class="one on"><s></s><div><i>1</i><em>{#$langData['siteConfig'][22][12]#}</em></div></li>
+				<li class="two on"><s></s><div><i>2</i><em>{#$langData['shop'][5][12]#}</em></div></li>
+				<li class="three on"><s></s><div><i>3</i><em>{#$langData['shop'][5][7]#}</em></div></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="swrap">
+
+		{#if $state != 1#}
+		<h2 class="s-title"><s></s>{#$langData['shop'][5][58]#}</h2>
+		{#else#}
+		<h2 class="s-title success">
+			<s></s>
+			{#$langData['shop'][5][59]#}
+			<small>{#$langData['shop'][5][60]#}</small>
+		</h2>
+
+		<div class="s-con">
+
+
+			<p class="s-addr">{#$langData['siteConfig'][19][33]#}：{#$orderListArr[0].people#}</p>
+			<p class="s-addr">{#$langData['siteConfig'][19][345]#}：{#$orderListArr[0].address#}</p>
+			<p class="s-addr">{#$langData['siteConfig'][19][424]#}：{#$orderListArr[0].contact#}</p>
+
+
+
+			{#foreach from=$orderListArr item="order"#}
+			<div class="sj">
+				<ul class="title clearfix">
+					<li class="t0"><i class="on"></i></li>
+					<li class="t11"><font>{#$langData['siteConfig'][17][12]#}: </font>{#if $order['store'].domain#}<a href="{#$order['store'].domain#}" target="_blank" title="{#$order['store'].title#}">{#$order['store'].title#}</a>
+					{#if $order['store'].qq#}<s><a href="http://wpa.qq.com/msgrd?v=3&uin={#$order['store'].qq#}&Site={#$shop_title#}&Menu=yes" target="_blank" title="{#$langData['shop'][5][8]#}"></a></s>{#/if#}{#else#}{#$order['store'].store#}{#/if#}</li>
+					<li class="om">{#$langData['siteConfig'][19][308]#}：<a href="{#getUrlPath service='member' type='user' template='orderdetail' module='shop' id={#$order.orderid#}#}" target="_blank">{#$order.ordernum#}</a></li>
+				</ul>
+
+				{#foreach from=$order.product item="product"#}
+				<ul class="sp clearfix">
+					<li class="t0"></li>
+					<li class="t1"><a href="{#getUrlPath service='shop' template='detail' id={#$product.id#}#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$product.litpic#} type='small'#}"></a></li>
+					<li class="t2"><a href="{#getUrlPath service='shop' template='detail' id={#$product.id#}#}" target="_blank">{#$product.title#}</a><br /><small>{#$product.specation|replace:"$$$":"、"#}</small></li>
+					<li class="t3">
+						<span><em>{#$langData['siteConfig'][19][323]#}</em><strong>{#$product.price#}</strong></span>
+						<i>×</i>
+						<span><em>{#$langData['siteConfig'][19][324]#}</em><strong>{#$product.count#}</strong></span>
+                        {#*
+						<i>+</i>
+						<span><em>{#$langData['siteConfig'][19][325]#}</em><strong>{#$product.logistic#}</strong></span>
+                        *#}
+						{#if $product.discount != 0#}
+						<i>-</i>
+						<span><em>{#$langData['siteConfig'][19][326]#}</em><strong>{#$product.discount#}</strong></span>
+						{#/if#}
+						{#if $product.point > 0#}
+						<i>-</i>
+						<span><em>{#$cfg_pointName#}{#$langData['siteConfig'][19][327]#}</em><strong>{#$product.point/$cfg_pointRatio#}</strong></span>
+						{#/if#}
+						{#if $product.balance > 0#}
+						<i>-</i>
+						<span><em>{#$langData['siteConfig'][19][328]#}</em><strong>{#$product.balance#}</strong></span>
+						{#/if#}
+						<i>=</i>
+						<span><em>{#$langData['siteConfig'][19][329]#}</em><strong>{#$product.payprice#}</strong></span>
+					</li>
+
+				</ul>
+				{#/foreach#}
+
+				<div class="bz">
+                    {#$langData['siteConfig'][19][848]#}：{#$order.note#}
+                    <span class="fn-right">{#$langData['siteConfig'][19][325]#}：{#$order.logistic#}</span>
+                </div>
+			</div>
+			{#/foreach#}
+
+			<div class="sum">
+				<div class="right">{#$langData['siteConfig'][19][330]#}：<font>{#echoCurrency type='symbol'#}<strong>{#$totalPayPrice#}</strong></font></div>
+			</div>
+
+		</div>
+		{#/if#}
+	</div>
+
+
+</div>
+
+{#include file="bottom.html"#}
+</body>
+</html>

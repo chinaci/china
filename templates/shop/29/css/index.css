@@ -1,0 +1,109 @@
+/* 大图幻灯 */
+.banner {height: 350px; position: relative; z-index: 12;}
+.slide {width: 1920px; height: 350px; overflow: hidden; position: relative; z-index: 9; left: 50%; margin-left: -960px;}
+.slide .slideshow-item {position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 11;}
+.slide .slideshow-item a, .slide .slideshow-item a img {width: 1920px; height: 350px; display: block;}
+.slide .slideshow-item .slideinfo {display: none;}
+.banner .wrap {position: relative; height: 350px; z-index: 10;}
+.banner .slidebtn {position: absolute; width: 100%; bottom: 20px; left: 0; z-index: 10; text-align: center;}
+.banner .slidebtn a {background: #000; width: 20px; height: 20px; border-radius: 100%; display: inline-block; _display: inline; text-align: center; margin: 0 0 0 5px; font-size: 12px; color: #fff;}
+.banner .slidebtn a.activeSlide {background: #c40000;}
+
+.container {background-color: #f7f7f7; padding: 20px 0 30px;}
+.mt {height: 40px; line-height: 40px; padding: 0 5px 5px;}
+.mt h3 {float: left; font-size: 22px; color: #323232;}
+.mt .more {float: right; color: #323232; font-size: 14px;}
+
+.mt1 {position: relative; height: 60px; line-height: 60px; padding: 0 0 5px;}
+.mt1 h3 {text-align: center; font-size: 26px; color: #323232;}
+.mt1 .tcorl {position: absolute; right: 5px; top: 30px;}
+.mt1 .tcorl a {float: left; width: 7px; height: 7px; font-size: 0; line-height: 7px; overflow: hidden; margin-left: 9px; border: 2px solid #ff2832; background-color: #ff2832; border-radius: 7px;}
+.mt1 .tcorl a.activeSlide {background-color: #fff;}
+
+/* 优质商家推荐 */
+.recbus {height: 160px; background-color: #fff; box-shadow: 0 0 15px #dfdfdf; overflow: hidden; margin-bottom: 10px;}
+.recbus li {float: left; width: 142px; height: 80px; text-align: center;}
+.w1200 .recbus li {width: 150px;}
+.recbus li a {display: block; height: 80px; overflow: hidden;}
+.recbus li a img {padding-top: 15px; height: 51px; vertical-align: middle;}
+.recbus li a p {overflow: hidden; height: 20px; line-height: 20px; filter: alpha(opacity = 0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; color: #666;}
+
+/* 产品所有分类 */
+.tlist {position: relative; height: 280px; background-color: #fff; box-shadow: 0 0 15px #dfdfdf; overflow: hidden; margin-bottom: 10px;}
+.tlist .item {right: -10px;}
+.tlist dl {float: left; width: 143px; padding-bottom: 17px;}
+.w1200 .tlist dl {width: 150px;}
+.tlist dt {height: 127px; margin-bottom: 16px;}
+.tlist dt a {display: block; padding-top: 26px;}
+.tlist dt img {width: 63px; height: 63px; display: block; margin: 0 auto 8px;}
+.tlist dt h5 {height: 30px; line-height: 30px; font-size: 14px; color: #000; background-color: #f4f4f4; border-left: 1px solid #fff; text-align: center; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.tlist .item dl:last-child h5 {border-right: 1px solid #fff;}
+.tlist dl:hover h5 {background-color: #dfdfdf;}
+.tlist dd {width: 132px; height: 115px; padding: 5px 5px 0; border-right: 1px solid #efefef; overflow: hidden;}
+.w1200 .tlist dd {width: 139px;}
+.tlist .item dl:last-child dd {border-right: 0;}
+.tlist dd a {float: left; max-width: 118px; color: #666; margin: 0 1px 8px; padding: 2px 6px; white-space: nowrap; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.tlist dd a:hover {color: #fff; background: #ff2832;}
+
+/* 限时大抢购 */
+.panic {margin-bottom: -10px;}
+.panic ul {width: 1024px;}
+.w1200 .panic ul {width: 1224px;}
+.panic li {float: left; width: 319px; margin: 0 22px 20px 0;}
+.w1200 .panic li {width: 385px; margin: 0 23px 20px 0;}
+.panic li a {display: block; padding-top: 10px; background-color: #fff; box-shadow: 0 0 15px #dfdfdf; -webkit-transition: all .1s linear; -moz-transition: all .1s linear; transition: all .1s linear;}
+.panic li a:hover {background-color: #ff2832; box-shadow: 0 0 25px #9b9b9b;}
+.panic li .p {position: relative; width: 300px; height: 266px; overflow: hidden; margin: 0 10px 0; background-color: #fff;}
+.w1200 .panic li .p {width: 365px; height: 365px;}
+.panic li .p img {width: 400px; height: 400px; margin-left: -55px; background: #f5f5f5;}
+.w1200 .panic li .p img {margin-left: -20px;}
+.panic li .t {position: absolute; left: 0; right: 0; bottom: -100px; padding: 5px 10px; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.panic li a:hover .t {bottom: 0;}
+.panic li .t h4 {position: relative; z-index: 2; font-size: 14px; color: #333;}
+.panic li .t span {position: absolute; z-index: 1; left: 0; top: 0; right: 0; bottom: 0; height: 100%; background-color: #fff; filter: alpha(opacity = 70); -moz-opacity: .7; -khtml-opacity: .7; opacity: .7;}
+.panic li .i {height: 55px; line-height: 55px; font-size: 14px; color: #929292;}
+.panic li .i strong {float: left; font-size: 18px; color: #f40; margin-left: 10px;}
+.w1200 .panic li .i strong {font-size: 26px;}
+.panic li .i del {float: left; margin-left: 10px; line-height: 60px;}
+.w1200 .panic li .i del {margin-left: 20px;}
+.panic li .i span {float: right; line-height: 60px;}
+.panic li .i span em {color: #dd2727;}
+.panic li .i s {float: right; width: 38px; height: 38px; margin: 8px 10px 0 15px; border-radius: 50%; background-color: #ff2832;}
+.panic li .i s i {width: 24px; height: 23px; display: block; margin: 7px auto 0; vertical-align: middle; background: url('../images/sprite.png') no-repeat -54px -21px; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.panic li a:hover .i, .panic li a:hover .i strong, .panic li a:hover .i span em  {color: #fff;}
+.panic li a:hover .i s {background-color: #fff;}
+.panic li a:hover .i s i {background-position: -30px -21px;}
+
+/* 推荐商品 */
+.rlist {margin-bottom: 15px; background-color: #fff; border-top: 1px solid #ededed; border-left: 1px solid #ededed; box-shadow: 0 0 15px #dfdfdf;}
+.rlist ul {width: 1030px;}
+.w1200 .rlist ul {width: 1230px;}
+.rlist li {float: left; width: 200px; height: 310px;}
+.w1200 .rlist li {width: 240px;}
+.rlist li a {display: block; height: 293px; padding: 20px 0 0 0; margin: 0 auto; border-right: 1px solid #ededed; border-bottom: 1px solid #ededed; -webkit-transition: all .1s linear; -moz-transition: all .1s linear; transition: all .1s linear;}
+.rlist li a img {width: 180px; height: 120px; display: block; margin: 0 auto; background: #f5f5f5;}
+.w1200 .rlist li a img {width: 200px; height: 200px;}
+.rlist li a h5 {height: 36px; line-height: 18px; overflow: hidden; width: 170px; margin: 15px auto 0;}
+.rlist li a p {width: 170px; margin: 0 auto; padding-top: 5px; text-align: center;}
+.rlist li a p strong {color: #fa5000; font-size: 20px; font-weight: 500;}
+.rlist li a p del {color: #a7a7a7; margin-left: 5px;}
+.rlist li a:hover {background-color: #ff2832; box-shadow: 0 0 25px #9b9b9b; border-color: #ff2832;}
+.rlist li a:hover h5 {text-decoration: underline; color: #fff;}
+.rlist li a:hover p strong, .rlist li a:hover p del {color: #fff;}
+
+/* 商城资讯 */
+.news {overflow: hidden;}
+.news ul {width: 1030px;}
+.w1200 .news ul {width: 1230px;}
+.news li {float: left; width: 253px; margin-bottom: 20px;}
+.w1200 .news li {width: 303px;}
+.news li a {display: block; padding-right: 10px; line-height: 45px; font-size: 16px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.news li a img {display: block; width: 243px; height: 170px; -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.news li a:hover img {-moz-opacity: 1; -khtml-opacity: 1; opacity: 1;}
+.w1200 .news li a img {width: 293px; height: 200px; background: #fff;}
+.news .more a {position: relative; height: 170px; background-color: #f8f8f8; font-size: 32px; color: #ccc; text-align: center; line-height: 130px;}
+.w1200 .news .more a {height: 200px; line-height: 160px;}
+.news .more a:hover {background-color: #ff2832; color: #fff;}
+.news .more s {position: absolute; width: 50px; height: 10px; left: 100px; top: 100px; background: url('../images/sprite.png') no-repeat -42px -11px;}
+.w1200 .news .more s {left: 122px; top: 115px;}
+.news .more a:hover s {background-position: -42px 0;}

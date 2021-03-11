@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}" />
+<meta name="description" content="{#$shop_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'index'#}
+{#include file="top.html"#}
+
+<div class="banner">
+	<div class="wrap">
+		<div class="slide" id="slide">{#myad title="商城_模板一_电脑端_广告一" type="slide"#}</div>
+		<div class="slidebtn" id="slidebtn"></div>
+	</div>
+</div>
+
+<div class="container">
+
+	<!-- 推荐优质商家 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>{#$langData['shop'][5][39]#}</h3>
+			<a href="{#getUrlPath service='shop' template='store'#}" target="_blank" class="more">{#$langData['shop'][5][40]#}</a>
+		</div>
+		<div class="recbus">
+			<ul class="fn-clear">
+				{#shop action="store" return="store" rec="1" pageSize="16"#}
+				<li><a href="{#$store.url#}" target="_blank"><img src="{#$store.logo#}" alt="{#$store.title#}" /><p>{#$store.title#}</p></a></li>
+				{#/shop#}
+			</ul>
+		</div>
+	</div>
+	<!-- 推荐优质商家 e -->
+
+	<!-- 产品所有分类 s -->
+	<div class="wrap">
+		<div class="mt1">
+			<h3>{#$langData['shop'][5][41]#}</h3>
+			<div class="tcorl"></div>
+		</div>
+		<div class="tlist">
+			<div class="item fn-clear">
+				{#shop action="type" return="type"#}
+				{#if $_bindex.type == 9#}
+			</div>
+			<div class="item fn-clear">
+				{#/if#}
+				<dl>
+					<dt><a href="{#getUrlPath service='shop' template='list' param="typeid={#$type.id#}"#}" target="_blank" class="t{#$type.id#}" title="{#$type.typename#}"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"><h5>{#$type.typename#}</h5></a></dt>
+					<dd>
+						{#shop action="type" return="type1" type=$type.id#}
+						<a href="{#getUrlPath service='shop' template='list' param="typeid={#$type1.id#}"#}" target="_blank" title="{#$type1.typename#}">{#$type1.typename#}</a>
+						{#/shop#}
+					</dd>
+				</dl>
+				{#/shop#}
+			</div>
+		</div>
+	</div>
+	<!-- 产品所有分类 e -->
+
+	<!-- 限时大抢购 s -->
+	<div class="wrap">
+		<div class="mt1"><h3>{#$langData['shop'][5][42]#}</h3></div>
+		<div class="panic">
+			<ul class="fn-clear">
+				{#shop action="slist" return="list" flag="3" limited="2" pageSize="9"#}
+				<li>
+					<a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+						<div class="p">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}" />
+							<div class="t"><h4>{#$list.title#}</h4><span></span></div>
+						</div>
+						<div class="i">
+							<strong>{#echoCurrency type='symbol'#}{#$list.price#}</strong>
+							<del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del>
+							<s><i></i></s>
+							<span>{#$langData['shop'][3][16]#}：<em>{#$list.sales#}</em></span>
+						</div>
+					</a>
+				</li>
+				{#/shop#}
+			</ul>
+		</div>
+		<div class="ad">{#myad title="商城_模板一_电脑端_广告二"#}</div>
+	</div>
+	<!-- 限时大抢购 e -->
+
+	<!-- 推荐商品 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>{#$langData['siteConfig'][18][20]#}</h3>
+			<a href="{#getUrlPath service='shop' template='list' typeid='0' attr='0'#}" target="_blank" class="more">{#$langData['shop'][5][43]#}</a>
+		</div>
+		<div class="rlist">
+			<ul class="fn-clear">
+				{#shop action="slist" return="list" flag="0" pageSize="10"#}
+				<li>
+					<a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}" />
+						<h5>{#$list.title#}</h5>
+						<p><strong>{#echoCurrency type='symbol'#}{#$list.price#}</strong><del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></p>
+					</a>
+				</li>
+				{#/shop#}
+			</ul>
+		</div>
+		<div class="ad">{#myad title="商城_模板一_电脑端_广告三"#}</div>
+	</div>
+	<!-- 推荐商品 e -->
+
+	<!-- 特价商品 s -->
+	<div class="wrap">
+		<div class="mt">
+			<h3>{#$langData['shop'][5][44]#}</h3>
+			<a href="{#getUrlPath service='shop' template='list' typeid='0' attr='1'#}" target="_blank" class="more">{#$langData['shop'][5][43]#}</a>
+		</div>
+		<div class="rlist">
+			<ul class="fn-clear">
+				{#shop action="slist" return="list" flag="1" pageSize="10"#}
+				<li>
+					<a href="{#$list.url#}" target="_blank" title="{#$list.title#}">
+						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}" />
+						<h5>{#$list.title#}</h5>
+						<p><strong>{#echoCurrency type='symbol'#}{#$list.price#}</strong><del>{#echoCurrency type='symbol'#}{#$list.mprice#}</del></p>
+					</a>
+				</li>
+				{#/shop#}
+			</ul>
+		</div>
+	</div>
+	<!-- 特价商品 e -->
+
+	<!-- 商城资讯 s -->
+	<div class="wrap">
+		<div class="mt1">
+			<h3>{#$langData['shop'][5][45]#}</h3>
+		</div>
+		<div class="news">
+			<ul class="fn-clear">
+				{#shop action="news" return="news" pageSize="7"#}
+				<li><a href="{#$news.url#}" target="_blank" title="{#$news.title#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$news['litpic']#}" type="middle"#}" alt="{#$news.title#}" />{#$news.title#}</a></li>
+				{#/shop#}
+				<li class="more"><a href="{#getUrlPath service='shop' template='news'#}" target="_blank" title="{#$langData['shop'][5][46]#}">{#$langData['shop'][5][46]#}<s></s></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 商城资讯 e -->
+
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

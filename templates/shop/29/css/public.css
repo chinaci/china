@@ -1,0 +1,110 @@
+a:hover {color: #ff2832;}
+
+.header .btn-s s,
+.topcart .cart-btn .icon,
+.nav li a s {background-image: url('../images/sprite.png'); background-repeat: no-repeat;}
+
+/* 头部 */
+.header {padding: 30px 0;}
+h1.logo {float: left; width: 227px; height: 61px; margin-left: 5px;}
+h1.logo a, h1.logo img { max-width: 227px; max-height: 61px;}
+
+/* 搜索 */
+.header .search {float: left; margin: 0 0 0 70px;}
+.header .search .stype {float: left; position: relative; width: 75px; border: 3px solid #ff2832; height: 40px; line-height: 40px; border-right: 0;}
+.header .search .stype label {display: block; position: relative; height: 100%; padding-left: 15px; font-size: 14px; color: #7d7d7d; cursor: pointer;}
+.header .search .stype label s, .header .search .stype label i {position: absolute; display: block; width: 0; height: 0; border-style: solid; border-color: transparent; z-index: 10;}
+.header .search .stype label s {border-width: 4px; right: 12px; top: 18px; border-bottom-width: 0; border-top-color: #7d7d7d;}
+.header .search .stype label i {border-width: 3px; top: -4px; left: 0; margin-left: -3px; border-bottom-width: 1px; border-top-color: #fff;}
+.header .search .stype ul {display: none; background-color: #fff; padding-bottom: 5px; -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2); -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2); box-shadow: 0 5px 10px rgba(0,0,0,.2); -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
+.header .search .stype ul li {height: 30px; line-height: 30px;}
+.header .search .stype ul li a {display: block; padding-left: 15px; font-size: 14px;}
+.header .search .stype ul li a:hover {background-color: #f1f1f1;}
+.header .txt_search {float: left; border: 3px solid #ff2832; border-right: 0; width: 280px; height: 20px; padding: 10px 5px; line-height: 20px; font-size: 14px; color: #1b1b1b; font-family: 'microsoft yahei';}
+.w1200 .header .txt_search {width: 450px;}
+.header .btn-s {float: left; position: relative; color: #fff; font-weight: bold; cursor: pointer; background-color: #ff2832; height: 46px; font-size: 18px; border: 0; font-family: 'microsoft yahei'; font-weight: 500; text-align: right; padding: 0 15px 0 36px;}
+.header .btn-s s {position: absolute; width: 17px; height: 17px; display: block; left: 15px; top: 15px;}
+
+/* 热门搜索 */
+.header .hot-s {width: 420px; height: 26px; overflow: hidden; line-height: 26px; clear: both;}
+.w1200 .header .hot-s {width: 580px;}
+.header .hot-s span {float: left; color: #999; margin-right: 5px;}
+.header .hot-s a {float: left; margin-right: 10px; color: #06c;}
+.header .hot-s a:hover {color: #fd5115; text-decoration: underline;}
+
+/* 购物车 */
+.topcart {float: right; position: relative; z-index: 100; width: 188px; height: 44px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;}
+.topcart.hover {box-shadow: 0 0 10px #cacaca;}
+.topcart .cart-btn {position: relative; display: block; height: 30px; margin: 7px 6px 0; padding-left: 54px; line-height: 29px; background-color: #f7f7f7; font-size: 18px; color: #666;}
+.topcart .cart-btn .icon {position: absolute; z-index: 1; width: 30px; height: 21px; left: 8px; top: 4px; background-position: 0 -17px;}
+.topcart .cart-btn i {position: absolute; z-index: 2; left: 27px; top: -4px; min-width: 8px; padding: 2px 4px; border-radius:8px; background-color: #c00; color: #fff; font-size: 11px; line-height: 12px; font-style: normal; text-align: center;}
+.topcart .cart-btn s, .topcart .cart-btn em {position: absolute; right: 7px; top: 12px; display: block; width: 0; height: 0; border-style: solid; border-color: transparent; z-index: 10;}
+.topcart .cart-btn s {border-width: 5px; right: 12px; border-bottom-width: 0; border-top-color: #7d7d7d;}
+.topcart .cart-btn em {border-width: 4px; top: -5px; left: 0; margin-left: -4px; border-bottom-width: 1px; border-top-color: #fff;}
+.topcart .cart-con {display: none; position: absolute; top: 42px; right: -1px; width: 300px; background-color: #fff; border: 1px solid #ddd; box-shadow: 0 0 10px #cacaca; border-radius: 5px 0 5px 5px; -webkit-animation:topFadeIn .2s ease-out; -moz-animation:topFadeIn .2s ease-out; animation:topFadeIn .2s ease-out; z-index: }
+.topcart .cart-con .spacer {position: absolute; top: -9px; right: 0; width: 188px; height: 9px; background-color: #fff;}
+.topcart .cart-con .empty {padding: 40px 10px 40px 40px; line-height: 1.8em; font-size: 14px;}
+.topcart .cart-con .empty a {padding: 0 5px; color: #317ee7;}
+.topcart .cart-con .empty a:hover {text-decoration: underline;}
+
+
+.cartlist { position: relative; padding:10px 0; max-width: 800px}
+.cartlist ul {max-height: 440px; overflow: hidden; overflow-y: auto;}
+.cartlist li {height: 50px; padding: 12px 20px; border-bottom: 1px dashed #eee;}
+.cartlist li:hover {background-color: #f9f9f9;}
+.cartlist li .pic {float: left;}
+.cartlist li .pic,.cartlist li .pic img {width: 70px; height: 50px;}
+.cartlist li .info {position: relative; overflow: hidden; padding-left: 10px;}
+.cartlist li .info h5 {height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px;}
+.cartlist li .info p {height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.cartlist li .info span {float: left;}
+.cartlist li .info strong {color: #f46060; font-weight: 500;}
+.cartlist li .info .del {float: right; display: none; -webkit-transition:all 0.4;-o-transition: all 0.4;transition: all 0.4;}
+.cartlist .lookCart{display: block; width: 80%; height:35px; font-size: 16px; color: #fff; line-height: 35px; text-align: center; background: #dd5555; border-radius: 5px; margin:20px auto;}
+.cartlist .allPrice{margin:10px 20px 0;}
+.cartlist .allPrice span{color:#dd5555; font-size: 18px; }
+.topcart .loading {padding: 50px 0; text-align: center; font-size: 14px;}
+
+.cartft {padding: 20px; text-align: center; font-size: 14px;}
+.cartft .pric {color: #ff2832;}
+.cartft .pric strong {font-size: 16px; font-weight: 500;}
+.cartft .cartbtn {display: block; width: 80%; height: 30px; margin: 10px auto 0; line-height: 30px; text-align: center; background-color: #ff2832; color: #fff;}
+
+/* 导航 */
+.nav {height: 46px; background-color: #ff2832;}
+.nav li {float: left; width: 110px; height: 46px; margin-right: 1px; line-height: 46px;}
+.w1200 .nav li {width: 132px;}
+.nav li a {display: block; position: relative; height: 100%; text-align: center; color: #fff; font-size: 18px; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.nav li.curr a, .nav li a:hover {background-color: #e11f28;}
+.nav li a s {position: absolute; right: 25px; top: -7px;}
+.nav li a s.new {width: 24px; height: 14px; background-position: -17px 0;}
+
+.footer.gray {margin-top: 0; background: #fff;}
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333; margin-top: 30px;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #fff;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 10px;}
+.pagination li a:hover ,.pagination li.page_current span {background: #333; color: #fff; border-color: #333;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
+
+
+/* 加入购物车动画 */
+.flyer-img{display: block;width: 40px; height: 40px; border-radius: 20px; z-index: 10000}
+b.flyend{position: absolute; left:22px; top:0px; width:18px; height:18px; border-radius:9px; text-align: center;line-height:18px;  color: #fff; background: #ff2832; z-index: 10000; opacity: 1; font-weight: lighter;}
+
+/*底部*/
+.footer-login {margin-top: 40px;}
+.footer-login p {line-height: 38px;text-align: center;font-size: 14px;color: #666;}
+.footer-login a {color: #666;}
+.footer-login a:hover {color: #f60;text-decoration: underline;}
+.footer-login .pice {margin:0 14px;color: #ddd;}
+
+.clearfix:after{visibility:hidden; display:block; font-size:0;	content:" "; clear:both; height:0;}
+.clearfix {zoom:1; /* for IE6 IE7 */}
+i{font-style: normal;}
+.left{float: left;}
+.right{float: right;}
+.hide{display: none;}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}"/>
+<meta name="description" content="{#$shop_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/businessD.css?v={#$cfg_staticVersion#}" media="all"/>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+
+	var detailID = {#$detail_id#};     //当前信息ID
+	var detailTitle = '{#$detail_title#}';
+	var detailPrice = {#$detail_price#};
+	var maxCount = {#$detail_limit#};  //最多购买数量
+	var detailThumb = '{#changeFileSize url={#$detail_litpic#} type='small'#}';   //当前商品缩略图
+	var detailUrl = '{#getUrlPath service="shop" template="detail" id=$detail_id#}';
+	var date = [];
+	{#if $detail_flag|strpos:"3" !== false#}
+	date = [{#$smarty.now#}, {#$detail_btime#}, {#$detail_etime#}];
+	{#/if#}
+
+	//商品信息-商品颜色和尺寸
+	var sku_conf = {
+
+			//属性表
+			"property": [
+				{#foreach from=$detail_specificationArr item=spe#}
+				{
+					"name": "{#$spe.typename#}",
+					"options": [
+						{#foreach from=$spe.item item=item#}
+						{"id": {#$item.id#},	"name": "{#$item.name#}"},
+						{#/foreach#}
+					]
+				},
+				{#/foreach#}
+			]
+
+			//属性值
+			,"data": {
+
+				{#foreach from=$detail_specification item=spe#}
+				"{#$spe.spe|replace:"-":";"#}": {price: {#$spe.price[1]#}, mprice: {#$spe.price[0]#}, stock: {#$spe.price[2]#}},
+				{#/foreach#}
+			}
+	};
+
+	//商品规格选择
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}" target="_blank">{#$langData['siteConfig'][0][0]#}</a> >
+		{#foreach from=$detail_typename item=typename key=k name=foo#}
+		<a href="{#getUrlPath service='shop' template='list' param="typeid={#$detail_typeids[$k]#}"#}" target="_blank">{#$typename#}</a>
+		{#if !$smarty.foreach.foo.last#}>{#/if#}
+		{#/foreach#}
+	</p>
+</div>
+
+<div class="content clearfix">
+	<div class="left sjLeft">
+		<form action="{#getUrlPath service='shop' template='confirm-order'#}" id="buyForm" method="post">
+			<input type="hidden" name="pros[]" id="pros" value="" />
+			<dl class="singleGoods clearfix">
+				<dt>
+					<div class="box">
+						<div class="tb-booth tb-pic tb-s310">
+							<a href="{#$detail_pics[0].path#}"><img src="{#$detail_pics[0].path#}" rel="{#$detail_pics[0].path#}" class="jqzoom" /></a>
+						</div>
+						<ul class="tb-thumb" id="thumblist">
+							{#foreach from=$detail_pics item=pic key=k#}
+							{#if $k < 5#}
+							<li{#if $k == 0#} class="tb-selected"{#/if#}>
+								<div class="tb-pic tb-s40"><a href="javascript:;">
+									<img src="{#changeFileSize url={#$pic.path#} type='small'#}" mid="{#$pic.path#}" big="{#$pic.path#}"></a>
+								</div>
+							</li>
+							{#/if#}
+							{#/foreach#}
+						</ul>
+					</div>
+				</dt>
+				<dd class="title"><p>{#$detail_title#}</p><em>{#$detail_logisticNote#}</em></dd>
+				<dd class="info">
+					<ul>
+						<em>{#$langData['shop'][0][6]#}</em>
+						<li><span>{#$langData['waimai'][5][23]#}：</span><s>{#echoCurrency type='symbol'#}{#$detail_mprice#}</s></li>
+						<li><span>{#$langData['siteConfig'][26][159]#}：</span><font>{#echoCurrency type='symbol'#}{#$detail_price#}</font></li>
+						{#if $detail_volume > 0#}<li><span>{#$langData['siteConfig'][19][565]#}：</span><label>{#$detail_volume#}m³</label></li>{#/if#}
+						{#if $detail_weight > 0#}<li><span>{#$langData['siteConfig'][19][566]#}：</span><label>{#$detail_weight#}kg</label></li>{#/if#}
+						{#if $detail_flag|strpos:"3" !== false#}
+						<li><span>{#$langData['shop'][5][33]#}：</span><label class="expiry"></label></li>
+						{#/if#}
+						{#if $detail_inventory > 0#}
+						<li class="count"><span>{#$langData['siteConfig'][19][311]#}：</span>
+							<div class="num"><input type="text" value="1" readonly ><i class="up"></i><i class="down"></i></div><dfn class="left">{#$langData['shop'][3][1]#}</dfn><var class="left" style="margin-left:20px; font-size: 12px;">{#$langData['siteConfig'][19][525]#}<b>{#$detail_inventory#}</b>{#$langData['shop'][3][1]#}</var><cite style="display: none;">{#$langData['shop'][2][24]#}</cite>
+						</li>
+						{#/if#}
+					</ul>
+				</dd>
+				{#if $detail_inventory <= 0#}
+				<dd class="cartBuy"><a class="btn" href="javascript:;">{#$langData['siteConfig'][16][142]#}</a></dd>
+				{#else#}
+				<dd class="cartBuy"><a class="buyNow" href="javascript:;">{#$langData['siteConfig'][18][35]#}</a><a class="cart" href="javascript:;">{#$langData['shop'][1][4]#}</a></dd>
+				{#/if#}
+				<dd class="collectBtn">{#if $detail_collect == 1#}<a class="collect has" href="javascript:;" data-temp="detail" data-id="{#$detail_id#}"><i></i>{#$langData['siteConfig'][19][240]#}</a>{#else#}<a class="collect" href="javascript:;" data-temp="detail" data-id="{#$detail_id#}"><i></i>{#$langData['siteConfig'][19][240]#}</a>{#/if#}</dd>
+			</dl>
+		</form>
+
+		<div class="detailComment">
+			<div class="left">
+				<a class="on" href="javascript:;">{#$langData['waimai'][2][74]#}</a>
+				<a href="javascript:;">{#$langData['shop'][5][34]#}</a>
+			</div>
+			<div class="right">
+				<span style="float: left; vertical-align: middle; line-height: 28px;">{#$langData['siteConfig'][23][123]#}：</span>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_more" data-cmd="more"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="{#$langData['siteConfig'][23][121]#}"></a>
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="{#$langData['shop'][5][35]#}"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="{#$langData['shop'][5][36]#}"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="{#$langData['siteConfig'][23][120]#}"></a>
+				</div>
+			</div>
+		</div>
+		<div class="allCon">
+			<div class="con detailCon">
+				<div class="detailCon_type fn-clear">
+					<ul>
+						{#foreach from=$detail_property item=type#}
+						<li>{#$type.typename#}：{#$type.val#}</li>
+						{#/foreach#}
+					</ul>
+				</div>
+				<div class="detailbody">
+					{#$detail_body#}
+				</div>
+			</div>
+			<div class="con comentCon"  style="display: none;">
+				<div class="rate">
+					<div class="left score"><span>{#$detail_rating * 100#}<em>%</em></span><i></i></div>
+					<div class="left percent">
+						<dl><dt>{#$langData['siteConfig'][19][335]#}({#$detail_score1 * 20#}%)</dt><dd><span style=" width: {#$detail_score1 / 5 * 100#}%;"></span></dd></dl>
+						<dl><dt>{#$langData['siteConfig'][19][336]#}({#$detail_score2 * 20#}%)</dt><dd><span style=" width: {#$detail_score2 / 5 * 100#}%;"></span></dd></dl>
+						<dl><dt>{#$langData['siteConfig'][19][338]#}({#$detail_score3 * 20#}%)</dt><dd><span style=" width: {#$detail_score3 / 5 * 100#}%;"></span></dd></dl>
+					</div>
+				</div>
+				<div class="all-comment">
+					<div class="left commentSel">
+						<a class="on" href="javascript:;" data-filter="">{#$langData['shop'][3][8]#}</a>
+						<a href="javascript:;" data-filter="h">{#$langData['siteConfig'][18][6]#}</a>
+						<a href="javascript:;" data-filter="z">{#$langData['siteConfig'][19][368]#}</a>
+						<a href="javascript:;" data-filter="c">{#$langData['siteConfig'][19][369]#}</a>
+					</div>
+				</div>
+				<div class="comment-list">
+					<p class="loading"><img src="{#$cfg_basehost#}/static/images/loading_h8.gif"></p>
+					<ul  id="comment-list"></ul>
+					<div class="pagination fn-clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="right sjRight">
+		{#if $detail_store#}
+		<div class="sjInfo">
+			<i class="icon"></i>
+			<h3>{#$langData['shop'][5][37]#}</h3>
+			<div class="sjLogo">
+				<a href="{#$detail_store['domain']#}" target="_blank"><s></s><img src="{#$detail_store['logo']#}"></a>
+			</div>
+			<p><em><a href="{#$detail_store['domain']#}" target="_blank">{#$detail_store['title']#}</a></em></p>
+			<span><font class="left">{#$langData['siteConfig'][19][642]#}：</font><em>{#$detail_store['people']#}</em></span>
+			<span><font class="left">{#$langData['siteConfig'][3][1]#}：</font><em>{#$detail_store['tel']#}</em></span>
+			<span><font class="left">{#$langData['siteConfig'][19][9]#}：</font><em>{#$detail_store['addr'][0]#} {#$detail_store['addr'][1]#} {#$detail_store['address']#}</em></span>
+			<span><font class="left">{#$langData['shop'][5][38]#}：</font><em>{#$detail_store['project']#}</em></span>
+		</div>
+		{#else#}
+		<div class="sjInfo">
+			<i class="icon"></i>
+			<h3>{#$langData['shop'][5][37]#}</h3>
+			<div class="sjLogo"><br />{#$langData['shop'][4][37]#}</div>
+		</div>
+		{#/if#}
+
+		<div class="sjInfo hot">
+			<h3>热卖商品排行</h3>
+			<ul>
+				{#shop action="slist" flag="2" orderby="1" page="1" pageSize="10"#}
+				<li><i{#if $_bindex.row < 4#} class="red"{#/if#}>{#$_bindex.row#}</i><p{#if $_bindex.row == 1#} class="on"{#/if#}>{#$row.title#}</p>
+					<dl{#if $_bindex.row == 1#} class="on"{#/if#}><dt><a href="{#$row.url#}" title="{#$row.title#}"><img src="{#changeFileSize url={#$row.litpic#} type='small'#}" alt="{#$row.title#}" /></a></dt><dd class="t"><a href="{#$row.url#}" title="{#$row.title#}">{#$row.title#}</a></dd><dd>{#echoCurrency type='symbol'#}{#$row.price#}</dd></dl>
+				</li>
+				{#/shop#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.imagezoom.min.js"></script>
+<!--[if lte IE 9]>
+<script src="{#$cfg_staticPath#}js/ui/requestAnimationFrame.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/goodsD.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
