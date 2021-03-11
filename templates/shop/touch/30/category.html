@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}{#$langData['siteConfig'][19][488]#}{#/if#}-{#$shop_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/category.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+	<div class="container">
+		<!-- 头部 -->
+		{#$pageTitle = $langData['siteConfig'][19][393]#}
+		{#include file="../../../siteConfig/touch_top.html"#}
+		<!-- 头部 end -->
+		<!-- 内容部分 -->
+		<div class="main">
+			<div class="main-left l">
+				<div class="left-box" id="left-box">
+					<ul>
+						{#shop action="type" return="type"#}
+						<li {#if $_bindex.type == 1#}class="active"{#/if#}><a href="javascript:;">{#$type.typename#}</a></li>
+						{#/shop#}
+					</ul>
+				</div>
+			</div>
+			<div class="main-right" id="right-box">
+				<div class="right-box">
+					{#shop action="type" return="type2"#}
+					<ul {#if $_bindex.type2 > 1#}class="dn"{#/if#}>
+						<li><a href="{#$shop_channelDomain#}/list.html?typeid={#$type2.id#}"><span>{#$langData['siteConfig'][9][0]#}</span></a></li>
+						{#shop action="type" return="type3" type=$type2.id#}
+						<li><a href="{#$shop_channelDomain#}/list.html?typeid={#$type3.id#}"><span>{#$type3.typename#}</span></a></li>
+						{#/shop#}
+					</ul>
+					{#/shop#}
+				</div>
+			</div>
+		</div>
+		<!-- 内容部分 end-->
+	</div>
+<script src="{#$templets_skin#}js/iscroll-probe.js"></script>
+<script src="{#$templets_skin#}js/category.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '{#$pageTitle#}',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#getUrlPath service="shop" template="category"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

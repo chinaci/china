@@ -1,0 +1,112 @@
+*{padding: 0;margin: 0;}
+body{font-family:Microsoft YaHei,Helvetica,STHeiti,Droid Sans Fallback;font-size: .24rem;max-width: 1080px;margin: 0 auto;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+html{background-color: #f5f5f5;}
+a,li{text-decoration: none;list-style: none;color: #333;outline: 0;}
+.l{float: left;}
+.r{float: right;}
+em,i{font-style: normal;}
+.mt10{margin-top: .2rem;}
+.padTop20{padding-top: 20px;}
+
+/*头部*/
+/*头部*/
+.header{display: -webkit-box;font-size: .32rem;line-height: .8rem;max-width: 1080px;position: relative;z-index: 10;}
+.header-l{-webkit-box-flex: 1;}
+.header-l a{display: table-cell;;height: .8rem;width: .8rem;vertical-align: middle;}
+.header-l img{display: block;width: .48rem;margin: 0 auto;}
+.header-address{-webkit-box-flex: 1;text-align: center; color: #fff;}
+.header-search{-webkit-box-flex: 1;}
+.header a{color: #fff;	}
+.header-search a{display: table-cell;;height: .8rem;width: .8rem;vertical-align: middle;float: right; position: relative;}
+.header-search img{display: block;width: .45rem;margin: .2rem auto;}
+.header-search a .num{position: absolute; right: 0; top: .1rem; color: #fff; background: #f00; min-width: .3rem; display: block; border-radius: 100%; line-height: .3rem; height: .3rem; font-size: .24rem; text-align: center;}
+.header .total-cart{position: relative; background: url(../images/car.png) center center no-repeat; background-size: .5rem auto;}
+.header .total-cart em{position: absolute; font-size: .24rem; background: #e63b53; color: #fff; height: .3rem; line-height: .3rem; min-width: .3rem; border-radius: .4rem; top: .1rem;}
+
+
+.transparent.header{height: 2.5rem;width: 100%;background: url(../images/bg1.jpg) no-repeat !important;background-size: 100% 2.5rem; z-index: 1;}
+.header, .open.header, .open.transparent.header {z-index: 999991; height: .9rem;}
+.seller-info{height: 1.2rem;background: #fff;border-bottom: 1px solid #ebebeb;position: relative;padding-left: 1.64rem; z-index: 2;}
+.seller-info-img{width: 1.24rem;height: 1.24rem; line-height: 1.2rem; position: absolute; text-align: center; background: #fff; border: 1px solid #ccc; bottom: .2rem;left: .2rem;}
+.seller-info-img img {display: inline-block; vertical-align: middle; max-width: 1.2rem;}
+.seller-info-tit{width: 70%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;line-height: 1rem;}
+.seller-info-tit span{height: .36rem;line-height: .6rem;font-size: .3rem;}
+
+
+/*筛选框*/
+.select-box{font-size: .26rem;position: relative;z-index: 10;background: #fff}
+.select-nav{border-bottom: 1px solid #f1f1f1;height: .8rem;}
+.select-nav ul{display: -webkit-box;}
+.select-nav ul.top{position: fixed;top: 0;left: 0;right: 0;background: #fff;border-bottom: 1px solid #f1f1f1;}
+.select-nav ul li{-webkit-box-flex: 1;text-align: center;}
+.select-nav ul li.active a{color: #ef4949;}
+.select-nav ul li a{padding: .2rem 0;display: block;}
+.select-nav ul li a em{color: #e8e8e8;float: right;}
+.select-nav .option-price i{display: inline-block;width: .1rem;height: .14rem;background: url(../images/sx.png) center center no-repeat;background-size: .1rem .14rem;padding: 0 0 .04rem .1rem;}
+.select-nav li.active-1 .option-price i{background: url(../images/sx2.png) center center no-repeat;background-size: .1rem .14rem;}
+.select-nav li.active-2 .option-price i{background: url(../images/sx1.png) center center no-repeat;background-size: .1rem .14rem;}
+.select-nav .option-xuan i{display: inline-block;width: .14rem;height: .1rem;background: url(../images/xia.png) center center no-repeat;background-size: .14rem .1rem;padding: 0 0 .04rem .1rem;}
+.select-nav li.active .option-xuan i{background: url(../images/xia1.png) center center no-repeat;background-size: .14rem .1rem;}
+
+/*精选推荐*/
+.command-list{margin-top: .2rem; min-height: 8rem;}
+.command-list-tit{height: .7rem;line-height: .7rem;;background: #fff;font-size: .28rem;padding-right: .2rem;}
+.command-list-tit span{border-left: .08rem solid #eb3e42;padding-left: .2rem;}
+.command-list-con{padding-left: .16rem;margin-top: .2rem;}
+.command-list-con li{width: 50%;display: block;float: left;}
+.command-list-con li a{display: block;margin: 0 .16rem .16rem 0;}
+.pro-img{width: 100%;}
+.pro-img img{display: block;width: 100%;height: 4rem;}
+.pro-txt{background: #fff;border-bottom: 1px solid #f1f1f1;height: 1.6rem;overflow: hidden;padding: .1rem;line-height: .36rem;}
+.pro-txt h4{font-size: .24rem;font-weight: 100;width: 100%;height: .32rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.pro-txt .pro-price span{font-size: .28rem;color: #e63b53;margin-right: .1rem;}
+.pro-txt .pro-price em{font-size: .22rem;color: #9b9b9b;text-decoration:line-through}
+.pro-txt .pro-info{font-size: .22rem;display: -webkit-box;margin-top: .1rem;color: #9b9b9b;}
+.pro-txt .pro-info span{-webkit-box-flex: 1;display: block;}
+.pro-txt .yellow{color: #fd7d45;}
+.ter{text-align: right;}
+.more{line-height: .8rem;font-size: .28rem;text-align: center;display: none;}
+
+.command-list .loading{line-height: 1rem; text-align: center; font-size: .26rem; margin: 1px; }
+
+.chooseType a:hover {color: #333;}
+/*筛选框*/
+.choose{position: relative;z-index: 10}
+.choose-box{visibility: hidden; position: absolute;top: .8rem;left: 0;right: 0;z-index: 10;}
+.choose-box.top{position: fixed;top:.8rem;}
+.choose-box .load {text-align: center; line-height: 6rem;}
+.choose-local ul{min-height: 100%;}
+.choose-local li{height: .8rem;line-height: .8rem;font-size: .28rem;text-indent: .2rem;border-bottom: 1px solid #f7f7f7;position: relative;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#choose-sort{max-height: 6rem;overflow: hidden;}
+#choose-info-second,#choose-info,#choose-area-second,#choose-sort,#choose-area,#choose-more{height: 6rem;background: #fff;}
+.choose-stage-l-short{width: 49%;float: left;}
+.choose-stage-r{width: 51%;float: left;display: none;}
+.choose-local li.active{background: #f5f5f5;}
+#choose-area li.on:before,#choose-sort li.on:before,#choose-info-second li.on:before,#choose-area-second li.on:before,#choose-sort-third li.on:before{content: '';position: absolute;width: 2px;height: 20px;background: #ff6666;left: 0;top: 50%;margin-top: -10px;}
+.choose-local li.active:before {content: '';position: absolute;width: 2px;height: 20px;background: #ff6666;left: 0;top: 50%;margin-top: -10px;}
+.choose-local li.current:before{content: '';position: absolute;width: 2px;height: 20px;background: #ff6666;left: 0;top: 50%;margin-top: -10px;}
+.choose-more li span{margin-right: .2rem;color: #bbb;}
+.confirm{height: .8rem;line-height: .8rem;text-align: center;font-size: .3rem;background: #ff6666}
+.confirm a{color: #fff;}
+.back{height: .8rem;line-height: .8rem;text-align: center;font-size: .3rem;background: #fff;border-top: 1px solid #ff6666;}
+.back a{color: #ff6666;}
+.more-box{position: absolute;left: 0;right: 0;top: 0;background: #fff;z-index: 111;height: 6rem;}
+#choose-more-second{height: 6rem;}
+#choose-info-second ul{min-height: 100%;}
+.h100{min-height: 100%;}
+.choose-stage-c{width: 51%;float: left;display: none;height: 6rem;overflow: hidden;}
+.choose-stage-th{width: 33.3%;float: left;height: 6rem;overflow: hidden;display: none;}
+#choose-sort-third{background: #ddd;border-bottom: none;}
+#choose-more-second ul{display: none;}
+.choose-local{background: #fff; width: 100%; max-height: 6rem; border-top: 1px solid #f2f2f2;display: -webkit-box;}
+#info-box .fchoose{height: 6rem; background: #fff; border-right: 1px solid #f9f9f9; box-sizing: border-box;-webkit-box-flex:1;overflow: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.choose-more-search{height: 4rem; padding: 0 .3rem;}
+#choose-more{height: 4.8rem;}
+
+.disk{height: 100%;width: 100%;background: rgba(0,0,0,.6);position: fixed;top: 0;right: 0;z-index: 9;display: none;}
+
+
+.collect {position: absolute;right:.2rem;top:.3rem;color: #999;}
+.collect:hover, .collect:active {color: #999;}
+.collect i {display: inline-block;width: .3rem;height: .3rem;margin: -.03rem .1rem 0 0;background-image: url('../images/collect_no.png');background-size:contain;background-repeat:no-repeat;background-position:center;vertical-align: middle;}
+.collect.has i {background-image: url('../images/collect_has.png');}

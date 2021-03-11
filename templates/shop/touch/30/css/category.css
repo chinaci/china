@@ -1,0 +1,24 @@
+*{padding: 0;margin: 0;}
+body{font-family:Microsoft YaHei,Helvetica,STHeiti,Droid Sans Fallback;font-size: .24rem;max-width: 1080px;margin: 0 auto;background-color: #f5f5f5;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+a,li{text-decoration: none;list-style: none;color: #333;outline: 0;}
+.clear{clear: both;}
+.l{float: left;}
+.r{float: right;}
+em,i{font-style: normal;}
+.mt10{margin-top: .2rem;}
+input{font-family:Microsoft YaHei,Helvetica,STHeiti,Droid Sans Fallback;}
+.padTop20 .main{margin-top: 1.4rem;}
+
+
+/*内容部分*/
+.main-left{width: 1.8rem;background: #f9f9f9;}
+.main-left li a{width: 1.5rem;height: 1rem;text-align: left;padding-left: .24rem;display: block;line-height: 1rem;font-size: .3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.main-left li.active a{border-left: .08rem solid #ef4949;border-bottom: 1px solid #f1f1f1;background: #fff;color: #ef4949;}
+.main-right{background: #fff;margin-left: 1.8rem;padding-left: .5rem;}
+.main-right li{width: 50%;float: left;}
+.main-right li a{display: inline-block;width: 100%;}
+.main-right li img{width: 1rem;height: 1rem;}
+.main-right li a span{display: block;font-size: .24rem;color: #444;width: 96%;margin:0 2%;line-height: .64rem;height: .64rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+#left-box{overflow: hidden;}
+.dn{display: none;}
+.right-box ul{overflow: auto;padding-top: .4rem;}

@@ -1,0 +1,12 @@
+{#$channelName = $shop_channelName#}
+{#$backUrl = "javascript:history.go(-1);"#}
+{#$title = $langData['siteConfig'][19][832]#}
+{#$service = "shop"#}
+
+{#$totalAmount = 0#}
+{#foreach from=$product item="list"#}
+{#$totalAmount = $totalAmount + ($list.price * $list.count)#}
+{#/foreach#}
+{#$totalAmount = $totalAmount + $logistic#}
+
+{#include file="../../../member/touch/public-pay.html"#}

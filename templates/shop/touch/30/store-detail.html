@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}-{#$shop_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}';
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+var storeid = {#$detail_id#}, atpage = 1, pageSize = 20;
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#include file="../../../siteConfig/touch_top.html" headTheme="transparent" pageTitle={#$langData['shop'][0][17]#}#}
+	<!-- 头部 end -->
+
+		<!-- 头部 -->
+		<div class="seller-info">
+			<div class="seller-info-img"><img src="{#$detail_logo#}" /></div>
+			<div class="seller-info-tit">
+				<span>{#$detail_title#}</span>
+			</div>
+			{#if $detail_collect == 1#}<a href="javascript:;" class="collect has" data-temp="store-detail"><i></i>已收藏</a>{#else#}<a href="javascript:;" class="collect" data-temp="store-detail"><i></i>收藏</a>{#/if#}
+		</div>
+		<!-- 头部 end -->
+
+		<div class="select-box">
+			<div class="select-nav">
+				<ul>
+					<li class="chooseType" data-type="0"><a href="javascript:;"><span>{#$langData['siteConfig'][9][0]#}</span><em>|</em></a></li>
+					<li class="active op-li" data-type="0"><a href="javascript:;"><span>{#$langData['siteConfig'][18][27]#}</span><em>|</em></a></li>
+					<li class="op-li" data-type="1"><a href="javascript:;"><span>{#$langData['shop'][3][16]#}</span><em>|</em></a></li>
+					<li class="toggle-li"><a href="javascript:;" class="option-price"><span>{#$langData['siteConfig'][19][428]#}<i></i></span><em>|</em></a></li>
+					<li class="op-li" data-type="5"><a href="javascript:;"><span>{#$langData['shop'][3][17]#}</span></a></li>
+				</ul>
+			</div>
+			<div class="choose-box">
+				<div class="choose-local dn" id="info-box">
+					<div class="fchoose fn-left active" id="choose0">
+						<ul>
+							<li data-id="0" class="active" data-typename="{#$langData['siteConfig'][22][96]#}">{#$langData['siteConfig'][22][96]#}</li>
+							{#shop action="category" store={#$detail_id#}#}
+							<li data-id="{#$row.id#}">{#$row.typename#}</li>
+							{#/shop#}
+						</ul>
+					</div>
+					<div class="fchoose fn-left active" id="choose1">
+						{#$k=1#}
+						{#shop action="category" store={#$detail_id#} return=row1#}
+						<div class="sub_box" id="sub_{#$row1.id#}" style="display:none;">
+						<ul>
+							<li data-id="{#$row1.id#}" data-typename="{#$row1.typename#}">不限</li>
+							{#shop action="category" type=$row1.id store={#$detail_id#} return=row2#}
+							<li{#if $pid == $row2.id#} class="on"{#/if#} data-id="{#$row2.id#}" data-typename="{#$row2.typename#}">{#$row2.typename#}</li>
+							{#/shop#}
+						</ul>
+						{#$k=$k+1#}
+						</div>
+						{#/shop#}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- 精选推荐 -->
+		<div class="command-list">
+			<div class="command-list-con">
+				<ul class="fn-clear">
+				</ul>
+			</div>
+			<div class="more">
+				<span>{#$langData['shop'][2][11]#}</span>
+			</div>
+		</div>
+		<!-- 精选推荐 end-->
+
+	</div>
+
+<div class="disk"></div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/sj-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#getUrlPath service='shop' template='list' param="typeid={#$typeid#}"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
