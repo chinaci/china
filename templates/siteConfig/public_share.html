@@ -1,0 +1,14 @@
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$Share_description#}',
+		"title": '{#$Share_title#}',
+		"imgUrl":'{#$Share_img#}',
+		"link": '{#$Share_url#}',
+	};
+    document.head.appendChild(document.createElement('script')).src = '{#$cfg_staticPath#}js/publicShare.js?v=' + ~(-new Date());
+	// document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>

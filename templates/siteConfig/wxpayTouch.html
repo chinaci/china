@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][19][712]#}</title>  {#* 微信支付 *#}
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+</head>
+
+<body onload="callpay()">
+<script type="text/javascript">
+//调用微信JS api 支付
+function jsApiCall(){
+
+    var jsApiParameters = {#$jsApiParameters#};
+
+    var wx_miniprogram;
+    wx.miniProgram.getEnv(function (res) {
+        wx_miniprogram = res.miniprogram;
+    });
+
+    //小程序
+    if(window.__wxjs_environment == 'miniprogram' || wx_miniprogram){
+        var params = '?timestamp='+jsApiParameters.timeStamp+'&nonceStr='+jsApiParameters.nonceStr+'&signType='+jsApiParameters.signType+'&paySign='+encodeURIComponent(jsApiParameters.paySign)+'&prepay_id='+(jsApiParameters.package).replace('prepay_id=', '')+'&returnUrl='+encodeURIComponent('{#$returnUrl#}');
+        var path = '/pages/wxpay/index'+params;
+        wx.miniProgram.redirectTo({url: path});
+
+    //公众号
+    }else{
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            {#$jsApiParameters#},
+            function(res){
+                //成功
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                    location.href = '{#$returnUrl#}';
+                }else{
+                    //location.href = '{#$returnUrl#}';
+                }
+                //统一再跳转到支付页面，由支付页面验证是否支付成功！
+            }
+        );
+	}
+}
+
+function callpay(){
+	if (typeof WeixinJSBridge == "undefined"){
+			if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+			}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+					document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+			}
+	}else{
+			jsApiCall();
+	}
+}
+</script>
+</body>
+</html>

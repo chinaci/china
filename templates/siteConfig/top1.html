@@ -1,0 +1,123 @@
+<script type="text/javascript">var cookiePre = '{#$cfg_cookiePre#}', cfg_clihost = '{#$cfg_clihost#}', cfg_module = '{#$service#}',cfg_cityInfo = '{#$siteCityInfoArr#}'; </script>
+
+<!-- 多语言 -->
+<script src="{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}"></script>
+
+<!-- 顶部信息 s -->
+<div class="topInfo">
+	<div class="wrap fn-clear">
+		<div class="loginbox">
+			{#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+			<span class="siteCityInfo">{#$siteCityInfo['name']#}</span>
+			<span class="changeCityBtn">
+				「<a href="javascript:;">{#$langData['siteConfig'][37][78]#}</a>」      {#* 切换城市 *#}
+				<div class="changeCityList">
+					<p class="setwidth"></p>
+					<div class="boxpd">
+						<div class="sj"><i></i></div>
+						<div class="box">
+							<div class="content fn-clear">
+								<p class="tit">{#$langData['siteConfig'][37][3]#}：</p>      {#* 请选择您所在的城市 *#}
+								<ul></ul>
+				      		</div>
+				      <div class="morecontent fn-hide">
+								<dl class="hot">
+									<dt>{#$langData['siteConfig'][37][79]#}</dt>      {#* 热门 *#}
+									<dd></dd>
+								</dl>
+								<div class="more">
+									<dl class="pytit">
+										<dt>{#$langData['siteConfig'][19][892]#}</dt>      {#* 城市 *#}
+										<dd></dd>
+									</dl>
+									<div class="list"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			{#/if#}
+			{#if $userinfo#}
+			{#$userDomain = $member_userDomain#}
+			{#if $userinfo.userType == 2#}
+			{#$userDomain = $member_busiDomain#}
+			{#/if#}
+			<div class="loginafter fn-clear" id="navLoginBefore">
+				<span class="fn-left">{#$langData['siteConfig'][0][12]#}，</span><a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a>{#if $userinfo.message > 0#}<a href="{#$userDomain#}/message.html?state=0" style="margin-left: -5px;" target="_blank">(<font color="#ff0000">{#$userinfo.message#}</font>)</a>{#/if#}<a href="{#$userDomain#}" target="_blank">{#$langData['siteConfig'][6][22]#}</a><span class="separ fn-left" style="margin: 0 5px 0 -5px;">|</span><a href="{#$cfg_basehost#}/logout.html" class="logout">{#$langData['siteConfig'][2][6]#}</a>
+			</div>
+			{#else#}
+			<div class="loginbefore fn-clear" id="navLoginAfter">
+				<a href="{#$cfg_basehost#}/register.html" class="regist">{#$langData['siteConfig'][1][0]#}</a>
+				<span class="fn-left">&nbsp;/&nbsp;</span>
+				<span class="logint"><a href="{#$cfg_basehost#}/login.html">{#$langData['siteConfig'][2][0]#}</a></span>
+				{#siteConfig action="getLoginConnect" return="row1"#}
+				{#if $_bindex.row1 < 4#}
+				<a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type={#$row1.code#}" title="{#$row1.name#}" target="_blank"><i class="picon"><img src="{#$cfg_basehost#}/api/login/{#$row1.code#}/img/24.png?v={#$cfg_staticVersion#}" /></i></a>
+				{#/if#}
+				{#/siteConfig#}
+			</div>
+			{#/if#}
+		</div>
+		<ul class="menu topbarlink fn-clear">
+			<li>
+				<a href="{#$cfg_basehost#}" style="color: #f60;">{#$langData['siteConfig'][0][5]#}</a><span class="separ">|</span>
+			</li>
+			<li class="dropdown user">
+				<a href="{#$member_userDomain#}">{#$langData['siteConfig'][0][7]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					{#if in_array("info", $installModuleArr) || in_array("tuan", $installModuleArr) || in_array("shop", $installModuleArr) || in_array("integral", $installModuleArr) || in_array("education", $installModuleArr) || in_array("waimai", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='order'#}" target="_blank">{#$langData['siteConfig'][10][4]#}</a>{#/if#}
+					<a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank">{#$langData['siteConfig'][19][266]#}</a>
+					<a href="{#getUrlPath service='member' type='user' template='security'#}" target="_blank">{#$langData['siteConfig'][0][8]#}</a>
+				</div>
+			</li>
+			<li><a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><i class=""><img src="{#$cfg_staticPath#}images/public_top_icon_mobile.png" /></i>{#$langData['siteConfig'][3][2]#}</a><span class="separ">|</span>
+				<div class="pop">
+					<s></s>
+					<p>{#$langData['siteConfig'][19][267]#}<a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150" /></a></p>
+				</div>
+			</li>
+			<li><a href="javascript:;"><i class=""><img src="{#$cfg_staticPath#}images/public_top_icon_wechat.png" /></i>{#$langData['siteConfig'][19][286]#}</a><span class="separ">|</span>
+				<div class="pop" style="left: -26px;">
+					<s></s>
+					<p>{#$langData['siteConfig'][19][268]#}<img src="{#$cfg_weixinQr#}" width="150" height="150" /></p>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:;">{#$langData['siteConfig'][11][2]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					{#if in_array("article", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank">{#$langData['siteConfig'][19][235]#}</a>{#/if#}
+					{#if in_array("info", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">{#$langData['siteConfig'][19][236]#}</a>{#/if#}
+					{#if in_array("house", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='config' action='house'#}" target="_blank">{#$langData['siteConfig'][11][6]#}</a>{#/if#}
+					{#if in_array("huodong", $installModuleArr)#}<a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">{#$langData['siteConfig'][11][7]#}</a>{#/if#}
+					{#if in_array("tieba", $installModuleArr)#}<a href="{#getUrlPath service='tieba' template='fabu'#}" target="_blank">{#$langData['siteConfig'][11][3]#}</a>{#/if#}
+					{#if in_array("live", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='live'#}" target="_blank">{#$langData['siteConfig'][10][28]#}</a>{#/if#}  {#* 发起直播 *#}
+					{#if in_array("vote", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='vote'#}" target="_blank">{#$langData['siteConfig'][10][27]#}</a>{#/if#}  {#* 发布投票 *#}
+					{#if in_array("car", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='car'#}" target="_blank">{#$langData['car'][4][31]#}</a>{#/if#}  {#* 发布二手车 *#}
+					{#if in_array("sfcar", $installModuleArr)#}<a href="{#getUrlPath service='member' type='user' template='fabu' action='sfcar'#}" target="_blank">{#$langData['siteConfig'][6][215]#}</a>{#/if#}
+				</div>
+			</li>
+			<li class="dropdown webmap">
+				<a href="javascript:;">{#$langData['siteConfig'][19][271]#}<i class="picon picon-down"></i></a>
+				<div class="submenu">
+					{#siteConfig action="siteModule" return="module" type="1"#}
+					<a href="{#$module.url#}"{#if $module.target#} target="_blank"{#/if#} style="{#if $module.color#} color: {#$module.color#};{#/if#}{#if $module.bold#} font-weight: 700;{#/if#}">{#$module.name#}</a>
+					{#/siteConfig#}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部信息 e -->
+<script type="text/template" id="notLoginHtml">
+	<div class="loginbefore fn-clear" id="navLoginAfter">
+		<a href="{#$cfg_basehost#}/register.html" class="regist">{#$langData['siteConfig'][1][0]#}</a>
+		<span class="fn-left">&nbsp;/&nbsp;</span>
+		<span class="logint"><a href="{#$cfg_basehost#}/login.html">{#$langData['siteConfig'][2][0]#}</a></span>
+		{#siteConfig action="getLoginConnect" return="row2"#}
+		{#if $_bindex.row2 < 4#}
+		<a class="loginconnect" href="{#$cfg_basehost#}/api/login.php?type={#$row2.code#}" title="{#$row2.name#}" target="_blank"><i class="picon"><img src="{#$cfg_basehost#}/api/login/{#$row2.code#}/img/24.png" /></i></a>
+		{#/if#}
+		{#/siteConfig#}
+	</div>
+</script>

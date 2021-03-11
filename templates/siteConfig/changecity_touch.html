@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$cfg_webname#}</title>
+<meta name="apptitle" content="{#$langData['siteConfig'][37][4]#}">
+<meta name="keywords" content="{#$cfg_keywords#}" />
+<meta name="description" content="{#$cfg_description#}" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/changecity_touch.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', cfg_clihost = '{#$cfg_clihost#}';
+	var templets = '{#$templets_skin#}', staticPath = '{#$cfg_staticPath#}';
+	var cookiePre = '{#$cfg_cookiePre#}' ,backModule = '{#$backModule#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 s -->
+{#$pageTitle = $langData['siteConfig'][37][4]#}      {#* 选择城市 *#}
+{#include file="touch_top.html"#}
+<!-- 头部 e -->
+
+<!-- 选择城市 -->
+<div class="search-box">
+	<form action="" method="post">
+		<i class="icon"><img src="{#$cfg_staticPath#}images/icon-search.png" alt=""></i>
+		<input type="text" name="" value="" placeholder="输入城市名或拼音查询">
+		<em class="close"><img src="{#$cfg_staticPath#}images/icon-close.png" alt=""></em>
+	</form>
+</div>
+<div class="main">
+	<p class="table-tit no-select">{#$langData['siteConfig'][37][5]#}</p>      {#* 当前定位城市 *#}
+	<div class="local">
+		<p>{#$langData['siteConfig'][37][6]#}</p>      {#* 定位中.. *#}
+		<span class="localBtn">{#$langData['siteConfig'][37][7]#}</span>      {#* 重新定位 *#}
+	</div>
+	<div class="table-city"></div>
+	<div class="szm navbar jump-ul"></div>
+</div>
+
+<div class="search-list"><ul></ul></div>
+
+<div class="letter">A</div>
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = {#$cfg_webname#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#$cfg_basehost#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type='text/javascript' src="{#$cfg_staticPath#}js/changecity_touch.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
