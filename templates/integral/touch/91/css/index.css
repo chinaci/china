@@ -1,0 +1,43 @@
+body, html{font-size: .28rem;}
+.banner{overflow: hidden;}
+.banner img{width: 100%; display: block;}
+
+/*导航*/
+.nav{margin: .2rem 0;}
+.nav-list{padding: 0.16rem 0 0 0;}
+.nav-item{float: left;width: 25%;margin-bottom: 15px;text-align: center;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.nav-item .nav-img{width: 1rem;height: 1rem;margin: 0 auto .1rem;}
+.nav-item .nav-img img{width: 1rem;height: 1rem;margin: 0 auto;}
+
+/*精品推荐*/
+.youxuan{margin: .2rem 0; background: #fff; padding: 0 .2rem 0 .2rem;}
+.yx-tit{position: relative; font-weight: 400; margin: .1rem 0 .2rem;}
+.yx-tit span{border-left: 3px solid #24a4f5; padding-left: .15rem; line-height: .35rem; font-size: .3rem; display: inline-block;}
+.yxbox .slideshow-item{width: 50%; float: left; text-align: center; margin-bottom: .1rem;}
+.yxbox .slideshow-item img{width: 94%; display: block; height: 2rem; border: 1px solid #efefef; margin: 0 auto .1rem; border-radius: .06rem; overflow: hidden;}
+.yxbox .slideshow-item .slideinfo{display: none;}
+
+.shopbox{padding: 0 .2rem; margin: .2rem 0;}
+.yx-tit .more{float: right; color: #878787; padding-right: .4rem; background: url(../images/jf_more.png) right center no-repeat; background-size: .32rem auto;}
+.shopUl li{float: left; width: 50%; border-radius: .1rem; overflow: hidden;}
+.shopUl li a{display: block; border: 1px solid #f2f2f2; overflow: hidden;}
+.shopUl li:nth-child(2n+1) a{margin-right: .1rem;}
+.shopUl li:nth-child(2n) a{margin-left: .1rem;}
+.shopUl li .imgbox{padding: .3rem 0; height: 1.5rem; border-bottom: 1px solid #f2f2f2;}
+.shopUl li .imgbox img{height: 100%; display: block; margin: 0 auto;}
+.txtbox .title{line-height: .5rem; height: .5rem; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; padding: 0 .15rem; margin-top: .06rem;}
+.txtbox .price{padding: 0 .15rem; margin: .15rem 0 .15rem 0;}
+.txtbox .price em{color: #fe5050; font-size: .32rem;}
+.txtbox .price span{border: 1px solid #24a4f5; border-radius: .04rem; color: #24a4f5; margin-left: .2rem; padding: 0 .1rem;}
+.txtbox .bg{background: #24a4f5; color: #fff; text-align: center; padding: .08rem 0;}
+
+.tuijian .shopUl ul{white-space: nowrap; overflow-x: scroll; -webkit-overflow-scrolling: touch;}
+.tuijian .shopUl li{float: none; display: inline-block;}
+
+.blank{height: 1rem;}
+
+
+.shopUl .empty {padding:.5rem 0;text-align: center;border:1px solid #f2f2f2;color: #ccc;}
+
+.mypoint {margin-left: .5rem;color: #999;}
+.mypoint em {color: #f60;}

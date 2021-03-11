@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>{#$integral_title#}</title>
+<meta name="keywords" content="{#$integral_keywords#}" />
+<meta name="description" content="{#$integral_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = $cfg_pointName|cat:"商城"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+{#$typeCount = 0#}
+<div class="nav">
+  <div class="nav-list fn-clear">
+    {#integral action="type" return=type#}
+    {#if $_bindex.type < 9#}
+    <a href="{#getUrlPath service='integral' template='list' param="typeid={#$type.id#}"#}" class="nav-item"><div class="nav-img"><img src="{#$type.icon#}"></div>{#$type.typename#}</a>
+    {#/if#}
+    {#$typeCount = $typeCount + 1#}
+    {#/integral#}
+  </div>
+</div>
+
+<div class="youxuan">
+  <div class="yx-tit"><span>精品推荐</span>{#if $userinfo#}<font class="mypoint">您的{#$cfg_pointName#}：<em>{#$userinfo.point#}</em></font>{#/if#}</div>
+  <div class="yxbox fn-clear">
+    {#myad title="积分商城_模板一_移动端_广告一" type="slide"#}
+  </div>
+</div>
+
+{#integral action="type" return=toptype#}
+<div class="shopbox">
+  <div class="yx-tit fn-clear"><span>{#$toptype.typename#}</span><a href="{#getUrlPath service='integral' template='list' param="typeid={#$toptype.id#}"#}" class="more">查看更多</a></div>
+  <div class="shopUl">
+    <ul class="fn-clear">
+      {#integral action="slist" typeid=$toptype.id pageSize=2 return=list#}
+      <li>
+        <a href="{#$list.url#}">
+          <div class="imgbox"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+          <div class="txtbox">
+            <p class="title">{#$list.title#}</p>
+            <p class="price"><em>{#echoCurrency type='symbol'#} {#$list.price#}</em><span>{#$list.point#}{#$cfg_pointName#}</span></p>
+            <p class="bg">{#$cfg_pointName#}抵扣&nbsp;&nbsp;&nbsp;{#echoCurrency type='symbol'#}{#$list.point/$cfg_pointRatio#}</p>
+          </div>
+        </a>
+      </li>
+      {#/integral#}
+
+    </ul>
+    {#if !$pageInfo['totalCount']#}
+    <div class="empty">暂无相关礼品</div>
+    {#/if#}
+  </div>
+</div>
+
+{#*广告位*#}
+{#if $_bindex.toptype + 1 == $typeCount#}
+<div class="banner">{#myad id=999#}</div>
+{#/if#}
+
+{#/integral#}
+
+<div class="shopbox tuijian">
+  <div class="yx-tit fn-clear"><span>为你推荐</span></div>
+  <div class="shopUl">
+    <ul class="fn-clear">
+      {#integral action="slist" flag="0" pageSize=2 return=list#}
+      <li>
+        <a href="{#$list.url#}">
+          <div class="imgbox"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+          <div class="txtbox">
+            <p class="title">{#$list.title#}</p>
+            <p class="price"><em>{#echoCurrency type='symbol'#} {#$list.price#}</em><span>{#$list.point#}{#$cfg_pointName#}</span></p>
+            <p class="bg">{#$cfg_pointName#}抵扣&nbsp;&nbsp;&nbsp;{#echoCurrency type='symbol'#}{#$list.point/$cfg_pointRatio#}</p>
+          </div>
+        </a>
+      </li>
+      {#/integral#}
+    </ul>
+  </div>
+</div>
+
+<div class="shopbox">
+  <div class="yx-tit fn-clear"><span>{#$cfg_pointName#}人气</span></div>
+  <div class="shopUl">
+    <ul class="fn-clear">
+      {#integral action="slist" flag="2" pageSize=2 return=list#}
+      <li>
+        <a href="{#$list.url#}">
+          <div class="imgbox"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+          <div class="txtbox">
+            <p class="title">{#$list.title#}</p>
+            <p class="price"><em>{#echoCurrency type='symbol'#} {#$list.price#}</em><span>{#$list.point#}{#$cfg_pointName#}</span></p>
+            <p class="bg">{#$cfg_pointName#}抵扣&nbsp;&nbsp;&nbsp;{#echoCurrency type='symbol'#}{#$list.point/$cfg_pointRatio#}</p>
+          </div>
+        </a>
+      </li>
+      {#/integral#}
+    </ul>
+  </div>
+</div>
+
+<div class="shopbox">
+  <div class="yx-tit fn-clear"><span>{#$cfg_pointName#}新品</span></div>
+  <div class="shopUl">
+    <ul class="fn-clear">
+      {#integral action="slist" orderby=5 pageSize=2 return=list#}
+      <li>
+        <a href="{#$list.url#}">
+          <div class="imgbox"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+          <div class="txtbox">
+            <p class="title">{#$list.title#}</p>
+            <p class="price"><em>{#echoCurrency type='symbol'#} {#$list.price#}</em><span>{#$list.point#}{#$cfg_pointName#}</span></p>
+            <p class="bg">{#$cfg_pointName#}抵扣&nbsp;&nbsp;&nbsp;{#echoCurrency type='symbol'#}{#$list.point/$cfg_pointRatio#}</p>
+          </div>
+        </a>
+      </li>
+      {#/integral#}
+    </ul>
+  </div>
+</div>
+
+<div class="blank"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$integral_description#}',
+		"title": '{#$integral_title#}',
+		"imgUrl": '{#$integral_logoUrl#}',
+		"link": '{#$integral_channelDomain#}',
+	};
+</script>
+{#include file='_footer.html'#}
+</body>
+</html>

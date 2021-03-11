@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>{#$typename#}_{#$integral_title#}</title>
+<meta name="keywords" content="{#$integral_keywords#}" />
+<meta name="description" content="{#$integral_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+  var masterDomain = '{#$cfg_basehost#}';
+  var typeid = {#$typeid#};
+  var pointName = '{#$cfg_pointName#}';
+  var pointRatio = '{#$cfg_pointRatio#}';
+  var staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = "商品列表"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="choose-tab">
+  <ul>
+		<li data-type="typeid" data-id="{#$typeid#}" class="typeid"><a href="javascript:;"><i><span>分类</span></i></a></li>
+    <li data-type="orderbyType" class="orderby" data-id=""><a href="javascript:;"><i><span>排序</span></i></a></li>
+    <li data-type="jifen" class="jifen" data-id=""><a href="javascript:;"><i><span>积分</span></i></a></li>
+    <li data-type="payType" class="payType" data-id=""><a href="javascript:;"><i><span>支付方式</span></i></a></li>
+  </ul>
+</div>
+
+<div class="choose-box">
+  <div class="choose-local dn fn-clear" id="info-box">
+    <div class="fchoose fn-left" id="choose0">
+      <ul>
+        {#integral action="type" return=toptype#}
+        <li data-id="{#$toptype.id#}"{#if $toptype.lower#} data-lower="1"{#/if#}{#if $typeid == $toptype.id#} class="active"{#/if#}><span>{#$toptype.typename#}</span>
+        <div class="sub fn-hide">
+          <p data-id="{#$toptype.id#}" data-type="{#$toptype.typename#}">全部</p>
+          {#integral action="type" type=$toptype.id return=subtype#}
+          <p data-id="{#$subtype.id#}"{#if $typeid == $subtype.id#} class="active"{#/if#}>{#$subtype.typename#}</p>
+          {#/integral#}
+        </div>
+        </li>
+        {#/integral#}
+      </ul>
+    </div>
+    <div class="schoose fn-left" id="choose1">
+      <ul></ul>
+    </div>
+  </div>
+  <div class="choose-local dn" id="sort-box">
+    <ul>
+    	<li data-id="" class="active">综合排序</li>
+    	<li data-id="1">销量从高到低</li>
+    	<li data-id="2">销量从低到高</li>
+    	<li data-id="4">价格从高到低</li>
+    	<li data-id="3">价格从低到高</li>
+    </ul>
+  </div>
+	<div class="choose-local dn" id="jifen-box">
+    <ul>
+    	<li data-id="" class="active">不限</li>
+    	<li data-id="0,1000">0-1000</li>
+    	<li data-id="1000,2000">1000-2000</li>
+    	<li data-id="2000,3000">2000-3000</li>
+    	<li data-id="3000,5000">3000-5000</li>
+    	<li data-id="5000,10000">5000-10000</li>
+    	<li data-id="10000,20000">10000-20000</li>
+    	<li data-id="20000,">20000及以上</li>
+    </ul>
+  </div>
+  <div class="choose-local dn" id="pay-box">
+    <ul>
+      <li data-id="" class="active">不限</li>
+    	<li data-id="1">全积分</li>
+    	<li data-id="2">积分+现金</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 搜索框 s -->
+<div class="search-box fn-clear" action="" method="get">
+	<div class="search fn-left"><input type="text" id="search_keyword" class="txt_search" value="" autocomplete="off" placeholder="输入关键词搜索"></div>
+	<div class="search-btn fn-right"><input type="button" data-role="btn" name="search" id="search_button" class="btn-s" value="确定">
+	</div>
+</div>
+<!-- 搜索框 e -->
+
+<div class="shopUl">
+  <ul class="fn-clear"></ul>
+  <div class="loading">正在获取，请稍后</div>
+</div>
+
+<div class="mask"></div>
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$integral_description#}',
+		"title": '{#$typename#}',
+		"imgUrl": '{#$integral_logoUrl#}',
+		"link": '{#getUrlPath service='integral' template='list' param="typeid={#$typeid#}"#}',
+	};
+</script>
+{#include file='_footer.html'#}
+
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}" charset="utf-8"></script>
+</body>
+</html>

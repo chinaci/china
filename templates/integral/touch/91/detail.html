@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>{#$detail_title#}_{#$integral_title#}</title>
+<meta name="keywords" content="{#$integral_keywords#}" />
+<meta name="description" content="{#$integral_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/photoswipe.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script>
+  var masterDomain = '{#$cfg_basehost#}';
+  var staticPath = '{#$cfg_staticPath#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var detail = {
+    'id' : {#$detail_id#},
+    'price' : {#$detail_price#},
+    'point' : {#$detail_point#},
+    'inventory' : {#$detail_inventory#}
+  }
+  var pointRatio = {#$cfg_pointRatio#};
+  var userPoint = {#if $userinfo#}{#$userinfo['point']#}{#else#}0{#/if#};
+  var confirmUrl = '{#getUrlPath service="integral" template="confirm-order" param="id=$detail_id&count=#count"#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = "商品详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="de_img"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>
+
+<div class="txtbox">
+  <p class="title">{#$detail_title#}</p>
+  <p class="sub">{#$detail_description#}</p>
+  <p class="price"><span class="orange"><em class="num">{#$detail_price#}{#echoCurrency type='short'#}+{#$detail_point#}{#$cfg_pointName#}</em></span><i>积分抵现金{#$detail_point / $cfg_pointRatio#}{#echoCurrency type='short'#}</i></p>
+  <p class="mprice">原价：{#echoCurrency type='symbol'#}{#$detail_mprice#}&nbsp;&nbsp;&nbsp;邮费：{#$detail_freight#}{#echoCurrency type='short'#}&nbsp;&nbsp;&nbsp;已兑换<em class="orange">{#$detail_sales#}</em>次</p>
+</div>
+
+<div class="shop-info">
+	<div class="shop-tab">
+		<ul class="">
+			<li class="active"><a href="javascript:;">图文详情</a></li>
+			{#*<li class=""><a href="javascript:;">用户评价</a></li>*#}
+		</ul>
+	</div>
+	<div class="shop-con">
+		<div class="shop-box">
+			<div class="shop_detail">
+        {#if $detail_mbody#}{#$detail_mbody#}{#else#}{#$detail_body#}{#/if#}
+			</div>
+		</div>
+		<div class="shop-box fn-hide">
+			<div class="comment-box">
+        <div class="judge-user">
+          <div class="user-tit">
+            <dl class="fn-clear">
+              <dt><img src=""></dt>
+              <dd class="user-name">苏州酷曼软件技术有限公司<i class="grade grade1"></i></dd>
+              <dd><div class="shop-star"><span>2016-10-19</span></div></dd>
+            </dl>
+          </div>
+          <div class="user-comment">
+            <p>学校地址/地址白天没人，请尽量安排其它时间送货 (特别安排可能会超出预计送货天数)配送说明：请尽快发货，谢谢！！！配送说明：请尽快发货，谢谢！！！</p>
+            <div class="my-gallery" data-pswp-uid="1">
+              <figure itemprop="associatedMedia"><a href="" id="pic0_0" data-size="1600x900"><img src=""></a></figure>
+              <figure itemprop="associatedMedia"><a href="" id="pic0_1" data-size="825x550"><img src=""></a></figure>
+              <figure itemprop="associatedMedia"><a href="" id="pic0_2" data-size="1600x900"><img src=""></a></figure>
+              <figure itemprop="associatedMedia"><a href="" id="pic0_3" data-size="828x550"><img src=""></a></figure>
+              <figure itemprop="associatedMedia"><a href="" id="pic0_4" data-size="1600x900"><img src=""></a></figure>
+              <figure itemprop="associatedMedia"><a href="" id="pic0_5" data-size="826x550"><img src=""></a></figure>
+            </div>
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{#if $detail_inventory#}
+<a href="javascript:;" class="want">我要兑换</a>
+{#else#}
+<a href="javascript:;" class="want disabled">我要兑换</a>
+{#/if#}
+
+<div class="mask"></div>
+
+<div class="footBox">
+	<div class="deBox fn-clear">
+		<img src="{#$detail_litpic#}" alt="" class="fn-left">
+		<div class="txtbox fn-left">
+			<p>{#$detail_title#}</p>
+			<p class="orange">{#echoCurrency type='symbol'#} {#$detail_price#}</p>
+		</div>
+	</div>
+	<div class="btnBox fn-clear">
+		<span class="fn-left">兑换数量</span>
+		<div class="btn fn-right">
+			<span class="reduce"></span>
+			<span class="count" data-inventory="{#$detail_inventory#}">1</span>
+			<span class="add{#if $detail_inventory <= 1#} disabled{#/if#}"></span>
+		</div>
+	</div>
+  {#*
+	<div class="select">
+		<p class="fn-clear"><span class="fn-left">兑换方式</span></p>
+		<p class="radio">
+      {#$usePoint = 0#}
+      {#if $detail_point / $cfg_pointRatio == $detail_price#}
+      {#$usePoint = 1#}
+      <a href="javascript:;" class="active" data-type="point">全积分</a>
+      {#else#}
+      <a href="javascript:;" class="disabled" data-type="point">全积分</a>
+      {#/if#}
+      <a href="javascript:;"{#if $usePoint == 0#} class="active" data-type="blend"{#/if#}>积分+现金</a>
+    </p>
+	</div>
+  *#}
+  {#if $detail_inventory#}
+  <a href="javascript:;" class="sureBtn">兑换</a>
+  {#else#}
+  <a href="javascript:;" class="sureBtn disabled">兑换</a>
+  {#/if#}
+
+</div>
+
+<div class="pswp"tabindex="-1"role="dialog"aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close"title="Close (Esc)"></button><button class="pswp__button pswp__button--zoom"title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left"title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right"title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='integral' template='detail' id=$detail_id#}',
+	};
+</script>
+<script type="text/javascript">
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/photoswipe.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/pic-swiper.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}" charset="utf-8"></script>
+</body>
+</html>
