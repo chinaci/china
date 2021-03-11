@@ -1,0 +1,71 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;}
+body.show {opacity:1;}
+html{background: #f4f4f4;}
+i,em{font-style: normal;}
+
+/*用户信息*/
+.user{background: #129bf0;padding: .8rem .4rem;}
+.user-img{width: 1.4rem;height: 1.4rem;border-radius: 1.4rem;box-shadow: 3px 0 0px rgba(0, 0, 0, .1), -3px 0 0 rgba(0, 0, 0, .1), 0 -3px 0px rgba(0, 0, 0, .1), 0 3px 2px rgba(0, 0, 0, .1);margin-right: .2rem; overflow: hidden;}
+.user-img img{display: block;width: 100%;border-radius: 1.4rem;}
+.user-box{color: #fff;}
+.user-box .user-info{font-size: .3rem; max-width: 5rem; overflow: hidden;}
+.user-box .user-info h3{line-height: .8rem;font-size: .3rem;text-indent: .1rem;height: .8rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.user-box .user-info h3 a {color: #fff;}
+.user-box .user-info .zheng{font-size: .26rem;}
+.user-box .user-info .zheng i{width: .4rem;height: .4rem;background: url(../images/renzheng.png) no-repeat;background-size: .38rem .38rem;display: inline-block;vertical-align: bottom;margin-right: .1rem;}
+.user-tip{font-size: .3rem;}
+.user-tip{border-radius: .25rem; color: #fff;}
+.user-tip a{display: block; color: #fff;}
+.user-tip span{padding: .15rem .2rem .15rem .9rem;background: #108bd8 url(../images/ruzhu.png) .3rem center no-repeat;background-size: .45rem auto;border-radius: .25rem;font-size: .26rem;}
+.info-box{background: #fff;font-size: .3rem; position: relative;}
+.info-box a{display: block;text-align: center;margin: .2rem 0;width: 33%;overflow: hidden; font-size: .26rem; float: left;}
+.info-box .packet i{display: block;width: .4rem;height: .4rem;background: url(../images/hongbao.png) center center no-repeat;background-size: .4rem .38rem;margin: 0 auto;margin-bottom: .05rem;}
+.info-box .remain i{display: block;margin: 0 auto;text-align: center;color: #ff7a18;margin-bottom: .05rem;height: .4rem;overflow: hidden;}
+.info-box .point i{display: block;color: #ff0c0e;}
+.info-box .point em.icon{display: inline-block;height: .4rem;width: .5rem;background: url(../images/jinbi.png) left center no-repeat;background-size: .5rem .4rem;margin: 0 auto;margin-bottom: .05rem;vertical-align: bottom;}
+.info-box .hui i{display: block;color: #129bf0;}
+.info-box .line{width: 1px; position: absolute; top: .35rem; bottom: .35rem; background: #ccc;}
+.info-box i{font-size: .26rem;}
+.info-box i strong{font-weight: normal; font-size: .32rem;}
+
+/*我的口袋*/
+.pocket{background: #fff;margin-top: .2rem;}
+.pocket-tit{border-bottom: 1px solid #f4f4f4;}
+.pocket-tit a{display: block;padding: 0 .2rem 0 0.3rem;line-height: .8rem;font-size: .3rem; position: relative;}
+.pocket-tit a:before{content: ""; width: 3px; position: absolute; left: .1rem; top: .25rem; bottom: .25rem; background: #129bf0;}
+.pocket-tit a span{background: url(../images/right.png) right center no-repeat;background-size: .2rem auto;float: right; font-size: .26rem; color: #999; padding-right: .3rem;}
+.pocket-box{padding: .2rem 0 .2rem 0;}
+.pocket-box a{display: block;text-align: center;font-size: .26rem;line-height: .4rem;color: #666; width: 25%; float: left; position: relative;}
+.pocket-box i{display: block; width: 100%; height: .6rem; }
+.pocket-box i.info-1{background: url(../images/info1.png) center center no-repeat; background-size: .45rem auto;}
+.pocket-box i.info-2{background: url(../images/info2.png) center center no-repeat; background-size: .45rem auto;}
+.pocket-box i.info-3{background: url(../images/info3.png) center center no-repeat; background-size: .45rem auto;}
+.tznum{position: absolute; width: .3rem; height: .3rem; display: block; left: 1rem; top: 0; background: #ff0c0e; color: #fff; border-radius: .3rem; line-height: 1.2;}
+.pocket-box i.info-4{background: url(../images/info4.png) center center no-repeat; background-size: .45rem auto;}
+.pocket-box i.pocket-1{background: url(../images/pocket1.png) center center no-repeat; background-size: .6rem auto;}
+.pocket-box i.pocket-2{background: url(../images/pocket2.png) center center no-repeat; background-size: .6rem auto;}
+.pocket-box i.pocket-3{background: url(../images/pocket3.png) center center no-repeat; background-size: .6rem auto;}
+.pocket-box i.pocket-4{background: url(../images/pocket4.png) center center no-repeat; background-size: .6rem auto;}
+
+
+/*必备工具*/
+.tool{background: #fff;margin-top: .2rem;font-size: .26rem;}
+.tool-tit{line-height: .8rem;border-bottom: 1px solid rgb(245, 237, 237);font-size: .3rem;padding-left: .2rem;}
+.tool-img{display: block;width: .6rem;height: .6rem;margin: 0 auto .1rem;}
+.tool-img img{display: block;width: 100%;height: 100%;}
+.tool li{width: 25%;float: left;text-align: center;border-bottom: 1px solid rgb(245, 237, 237);}
+.tool li a{display: block;padding: .4rem 0;border-right: 1px solid rgb(245, 237, 237);}
+.tool li:nth-child(4n) a{border-right: none;}
+
+/*帮助*/
+.help{background: #fff;margin: .2rem 0 1.2rem;}
+.help .help-box{padding: 0 .2rem;display: block;line-height: 1rem;font-size: .26rem;}
+.help-box .service{background: url(../images/right.png) right center no-repeat;background-size: .3rem auto;border-bottom: 1px solid rgb(245, 237, 237);}
+.help-box .service i{display: inline-block;width: .4rem;height: .4rem;vertical-align: middle;margin-right: .1rem;}
+.help-box .icon-1{background: url(../images/icon1.png) left center no-repeat;background-size: .38rem .38rem;}
+.help-box .icon-2{background: url(../images/icon2.png) left center no-repeat;background-size: .38rem .38rem;}
+.help-box .icon-3{background: url(../images/icon3.png) left center no-repeat;background-size: .38rem .38rem;}
+.help-box .grey{color: #999;float: right;padding-right: .5rem;}
+
+#appSetting {display: none;}
