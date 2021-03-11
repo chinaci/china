@@ -1,0 +1,33 @@
+html {background-color: #f4f4f4;}
+
+.boxlist .th {margin-top: 15px; padding: 0 15px; border: 1px solid #dcdcdc; background-color: #fff; -webkit-box-shadow: 0 1px 0 #eee; -moz-box-shadow: 0 1px 0 #eee; -ms-box-shadow: 0 1px 0 #eee; box-shadow: 0 1px 0 #eee; font-size: 14px;}
+.boxlist .th table {width: 100%;}
+.boxlist .th th {height: 50px;}
+.boxlist .th th.w, .clist td.w {border-left: 1px solid #f3f3f3; border-right: 1px solid #f3f3f3; width: 110px; text-align: center;}
+
+.digit {text-align: center; width: 400px;}
+.digit em {display: inline-block; vertical-align: middle;}
+.digit s {display: inline-block; vertical-align: middle; width: 208px; height: 18px; margin: 0 15px; padding-top: 1px; padding-bottom: 1px; position: relative; background: url("../images/salary-bar.png") no-repeat left center;}
+.digit s i {position: absolute; width: 8px; height: 12px; top: 4px; display: block; background: url('../images/salary-i.png') no-repeat 0 -103px;}
+
+.clist {padding: 0 15px; margin-top: 15px; padding-bottom: 15px; border: 1px solid #dcdcdc; background-color: #fff; -webkit-box-shadow: 0 1px 0 #eee; -moz-box-shadow: 0 1px 0 #eee; -ms-box-shadow: 0 1px 0 #eee; box-shadow: 0 1px 0 #eee;}
+.clist .tc {padding: 15px 0; line-height: 52px; font-size: 14px; border-bottom: 1px solid #f3f3f3;}
+.clist .tc .logo {float: left; width: 102px; height: 52px; margin-right: 15px;}
+.clist .tc .logo a {width: 100px; height: 50px; border: 1px solid #e7e7e7; text-align: center; display: block;}
+.clist .tc .logo i {display: inline-block; height: 100%; vertical-align: middle;}
+.clist .tc .logo img {max-width: 100px; max-height: 50px; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+.clist .tc a.tit {font-size: 16px;}
+.clist .tc span {color: #999;}
+.clist .tc a, .clist .tc span {float: left;}
+.clist .tc a.more {float: right; color: #2c84cc;}
+.clist .tc a:hover.more, .clist .tc a:hover.tit {text-decoration: underline;}
+.clist table {width: 100%;}
+.clist td {height: 50px; border-bottom: 1px solid #f3f3f3; font-size: 14px;}
+
+.tl {padding: 5px 15px 15px; border: 1px solid #dcdcdc; background-color: #fff; -webkit-box-shadow: 0 1px 0 #eee; -moz-box-shadow: 0 1px 0 #eee; -ms-box-shadow: 0 1px 0 #eee; box-shadow: 0 1px 0 #eee; font-size: 14px; margin-top: 20px;}
+.tl p {margin-top: 10px;}
+.tl .s-c-flag {display: inline-block; width: 60px; vertical-align: middle; height: 16px; background-color: #bcd891; margin-right: 10px;}
+.tl .s-c-flag2 {width: 10px; background-color: #81b924; margin-left: 50px;}
+.tl .grey {color: #999;}
+
+.empty {padding: 5px 15px 15px; border: 1px solid #dcdcdc; background-color: #fff; -webkit-box-shadow: 0 1px 0 #eee; -moz-box-shadow: 0 1px 0 #eee; -ms-box-shadow: 0 1px 0 #eee; box-shadow: 0 1px 0 #eee; font-size: 14px; text-align: center; height: 328px; line-height: 300px; margin: 20px 0 0;}

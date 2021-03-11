@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>招聘首页</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css">
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', templets = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+<!-- 顶部 s -->
+	<div class="top">
+		<div class="wrap fn-clear">
+			<div class="top-l fn-left">
+				<a href="{#$cfg_basehost#}">门户首页>></a>
+				<a href="#" class="icon-phone">手机版</a>
+			</div>
+			<div class="top-r fn-right">
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+
+				<div class="loginBar-a fn-left">
+					<a href="{#$userDomain#}">{#$userinfo.nickname#}</a>
+					<span>欢迎来到分类信息频道！ <a href="{#$cfg_basehost#}/logout.html" class="exit logout">[退出]</a></span><em class="line">|</em>
+					<a href="{#$userDomain#}">管理我的信息</a>
+				</div>
+
+				{#else#}
+				<div class="loginBar-b fn-left">
+					<div class="login-l fn-left">
+						<a href="{#$cfg_basehost#}/login.html">登录</a><em>|</em>
+						<a href="{#$cfg_basehost#}/register.html" target="_blank">注册</a>
+					</div>
+					<div class="login-r share fn-left">
+						<a class="m0 loginconnect" href="{#$cfg_basehost#}/api/login.php?type=qq" target="_blank"><img src="{#$templets_skin#}images/qqlogin.gif" alt=""></a>
+						<a class="m0 loginconnect" href="{#$cfg_basehost#}/api/login.php?type=wechat" target="_blank"><img src="{#$templets_skin#}images/wechat_login2.png" alt=""></a>
+					</div>
+				</div>
+				{#/if#}
+
+				<div class="login-help fn-right">
+					<a href="#">使用帮助</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 顶部 e -->
+
+<!-- 头部 s -->
+	<div class="header">
+		<div class="wrap fn-clear">
+			<div class="header-l fn-left">
+				<a href="{#$cfg_basehost#}"><img src="{#$job_logoUrl#}" alt=""></a>
+			</div>
+			<div class="header-c fn-left">
+				<form action="" method="get" class="fn-clear">
+					<div class="search-nav">
+						<div class="search-nav-box">
+							<span>招聘求职</span><em></em>
+						</div>
+						<ul>
+							{#siteConfig action="siteModule" return="module"#}
+							<li>{#$module.name#}</li>
+							{#/siteConfig#}
+						</ul>
+					</div>
+					<input type="text" name="" value="" placeholder="请输入关键字" class="inp-txt">
+					<input type="button" name="" value="搜索" class="inp-btn">
+				</form>
+			</div>
+			<div class="header-r fn-right">
+				<a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank">免费发布信息</a>
+			</div>
+		</div>
+	</div>
+<!-- 头部 e -->
+
+<!-- 总导航 s -->
+	<div class="nav">
+		<div class="wrap">
+			<ul>
+				<li><a href="{#$job_channelDomain#}">网站首页</a></li>
+				{#$i = 0#}
+				{#siteConfig action="siteModule" return="module"#}
+				{#if $i < 12#}
+				<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+				{#/if#}
+				{#$i = $i + 1#}
+				{#/siteConfig#}
+			</ul>
+		</div>
+	</div>
+<!-- 总导航 e -->
+
+<!-- 头部广告位 s -->
+	<div class="adv-1">
+		<div class="wrap">
+			{#myad title="招聘求职_模板四_电脑端_广告一"#}
+		</div>
+	</div>
+<!-- 头部广告位 e -->
+
+<!-- 详细导航 s -->
+	<div class="subNav">
+		<div class="wrap">
+			<div class="subNav-tit">
+				<ul>
+					<li class="on"><a href="{#$job_channelDomain#}">招聘首页</a></li>
+					<li><a href="{#getUrlPath service='job' template='zhaopin'#}">聘	岗位</a></li>
+					<li><a href="{#getUrlPath service='job' template='company'#}">招聘企业</a></li>
+					<li><a href="{#getUrlPath service='job' template='resume'#}">求职简历</a></li>
+					<li><a href="{#getUrlPath service='job' template='news'#}">职场资讯</a></li>
+					<li><a href="{#getUrlPath service='job' template='zhaopinhui'#}">招聘会</a></li>
+					<li><a href="{#getUrlPath service='job' template='payroll'#}">工资统计</a></li>
+					<li><a href="{#getUrlPath service='job' template='doc'#}">文档下载</a></li>
+				</ul>
+			</div>
+			<div class="subNav-box">
+				<form action="{#getUrlPath service='job' templates='zhaopin' param='jtype=a1&educational=a2&experience=a3&salary=a4&gnature=a5&title=a6'#}" method="get">
+					<div class="choose fn-clear">
+						<div class="choose-item-first">
+							<p><a href="javascript:;"><i></i><span id="zn" data-id="">点击选择职位类别</span></a></p>
+						</div>
+						<div class="choose-item">
+							<p><a href="javascript:;"><i></i><span class="a2" data-id="">学历要求</span></a></p>
+							<div class="dropdown">
+								<ul>
+									<li><a href="javascript:;" data-id="">不限</a></li>
+									{#job action="item" return="type" type="2"#}
+									<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+									{#/job#}
+								</ul>
+							</div>
+						</div>
+						<div class="choose-item">
+							<p><a href="javascript:;"><i></i><span class="a3" data-id="">经验要求</span></a></p>
+							<div class="dropdown">
+								<ul>
+									<li><a href="javascript:;" data-id="">不限</a></li>
+									{#job action="item" return="type" type="1"#}
+									<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+									{#/job#}
+								</ul>
+							</div>
+						</div>
+						<div class="choose-item">
+							<p><a href="javascript:;"><i></i><span class="a4" data-id="">薪水范围</span></a></p>
+							<div class="dropdown">
+								<ul>
+									{#job action="item" return="type" type="3"#}
+									<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+									{#/job#}
+								</ul>
+							</div>
+						</div>
+						<div class="choose-item">
+							<p><a href="javascript:;"><i></i><span class="a5" data-id="">公司性质</span></a></p>
+							<div class="dropdown">
+								<ul>
+									<li><a href="javascript:;" data-id="">不限</a></li>
+									{#job action="item" return="type" type="5"#}
+									<li><a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}</a></li>
+									{#/job#}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="subSearch fn-clear">
+						<input type="text" name="" value="" placeholder="输入公司名称或职位" class="subSearch-txt fn-left" id="q">
+						<a data-url="{#getUrlPath service='job' templates='zhaopin' param='jtype=a1&educational=a2&experience=a3&salary=a4&gnature=a5&title=a6'#}" class="subSearch-btn fn-left" id="sBtn">
+					</div>
+					<div class="hot-txt">
+						<strong>热门职位</strong>
+						{#siteConfig module="job" action="hotkeywords" return="hotkeywords"#}
+						<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+						{#/siteConfig#}
+					</div>
+			</form>
+			</div>
+		</div>
+	</div>
+<!-- 详细导航 e -->
+
+<!-- 分类 s -->
+	<div class="type">
+		<div class="wrap fn-clear">
+			<div class="type-l fn-left">
+				<div class="type-job">
+					<p><a href="{#$job_channelDomain#}">人才登录</a></p>
+					<a href="{#$cfg_basehost#}/register.html" target="_blank">人才注册</a>
+					<a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">发布求职简历</a>
+				</div>
+				<div class="type-person">
+					<p><a href="{#$member_busiDomain#}" target="_blank">企业登录</a></p>
+					<a href="{#$cfg_basehost#}/register.html" target="_blank">企业注册</a>
+					<a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank">发布招聘信息</a>
+				</div>
+			</div>
+			<div class="type-r fn-right">
+				<ul>
+					{#job action="post" return="post" pageSize="28"#}
+					<li><a href="{#$post.url#}">{#$post.title#}</a></li>
+					{#/job#}
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- 分类 e -->
+
+<!-- 名企招聘 s -->
+	<div class="module module-1">
+		<div class="wrap">
+			<div class="module-tit fn-clear">
+				<div class="module-tit-l fn-left">
+					<strong>名企招聘</strong>
+				</div>
+				{#*
+				<div class="module-tit-r fn-right">
+					<p><a href="#">申请名企</a>招聘 打造名企品牌</p>
+				</div>
+				*#}
+			</div>
+			<div class="famous-box">
+				<div class="wrap">
+					{#myad title="招聘求职_模板四_电脑端_广告二"#}
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 名企招聘 e -->
+
+<!-- 推荐招聘 s -->
+	<div class="module module-2">
+		<div class="wrap">
+			<div class="module-tit fn-clear">
+				<div class="module-tit-l fn-left">
+					<strong>推荐招聘</strong>
+				</div>
+				{#*
+				<div class="module-tit-r fn-right">
+					<p><a href="#">推荐招聘</a>信息 提高招聘效率6-8倍</p>
+				</div>
+				*#}
+			</div>
+			<div class="introduce-box">
+				<ul class="fn-clear">
+					{#job action="company" return="company" property="r" pageSize="68"#}
+					<li>
+						<em class="tag"></em>
+						<div class="intro-tit">
+							<a href="{#$company.url#}" target="_blank">{#$company.title#}</a>
+						</div>
+						<div class="intro-con fn-clear">
+							{#job action="post" return="post" pageSize="3" company="{#$company.id#}"#}
+							<a href="{#$post.url#}#jobDetail" target="_blank">{#$post.title#}</a>
+							{#/job#}
+						</div>
+						<div class="intro-info">
+							性质：<span class="nature">{#$company.nature#}</span>行业：<span>{#$company.industry#}</span>
+						</div>
+					</li>
+					{#/job#}
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- 推荐招聘 e -->
+
+<!-- 最新招聘 s -->
+	<div class="module module-3">
+		<div class="wrap">
+			<div class="module-tit fn-clear">
+				<div class="module-tit-l fn-left">
+					<strong>最新招聘</strong>
+				</div>
+				<div class="module-tit-r fn-right">
+					<p><a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank">免费发布</a>一条！ 查看 <a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">更多职位</a></p>
+				</div>
+			</div>
+			<div class="lastest-box">
+				<ul class="lastest-ul fn-clear">
+					{#job action="company" return="company" pageSize="68"#}
+					<li>
+						<div class="lastest-tit">
+							<a href="{#$post.url#}#jobDetail" target="_blank">{#$company.title#}</a><span class="fn-right new">New</span>
+						</div>
+						<div class="lastest-info">性质：<span>{#$company.nature#}</span>行业：<span>{#$company.industry#}</span></div>
+					</li>
+					{#/job#}
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- 最新招聘 e -->
+
+<!-- 求职简历 s -->
+	<div class="module module-4">
+		<div class="wrap">
+			<div class="module-tit fn-clear">
+				<div class="module-tit-l fn-left">
+					<strong>求职简历</strong>
+				</div>
+				<div class="module-tit-r fn-right">
+					<p><a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">登记我的简历</a>让工作主动找上门！ 查看<a href="{#getUrlPath service='job' template='resume'#}" target="_blank">更多简历</a></p>
+				</div>
+			</div>
+			<div class="resume-box">
+				<div class="resume-slide">
+					<div class="bd">
+						<div class="resume-list">
+							<ul class="fn-clear">
+								{#job action="resume" return="resume" page="1" pageSize="4"#}
+								<li class="fn-clear">
+									<div class="resume-img fn-left">
+										<a href="{#$resume.url#}" target="_blank"><img src="{#$resume.photo#}" alt="" /></a>
+									</div>
+									<div class="resume-txt fn-left">
+										<div class="resume-name">
+											<a href="{#$resume.url#}" target="_blank">{#$resume.name#}</a><div class="resume-tag fn-right"><span>{#if $resume.sex == 0#}男{#else#}女{#/if#}<em>|</em>{#$resume.name#}岁<em>|</em>{#$resume.educational#}</span></div>
+										</div>
+										<div class="resume-hope">
+											专业：<span>{#$resume.professional#}</span>
+										</div>
+										<p class="resume-info">期望薪资：{#$resume.salary#}元</p>
+									</div>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+						<div class="resume-list">
+							<ul class="fn-clear">
+								{#job action="resume" return="resume" page="2" pageSize="4"#}
+								<li class="fn-clear">
+									<div class="resume-img fn-left">
+										<a href="{#$resume.url#}" target="_blank"><img src="{#$resume.photo#}" alt="" /></a>
+									</div>
+									<div class="resume-txt fn-left">
+										<div class="resume-name">
+											<a href="{#$resume.url#}">{#$resume.name#}</a><div class="resume-tag fn-right"><span>{#if $resume.sex == 0#}男{#else#}女{#/if#}<em>|</em>{#$resume.name#}<em>|</em>{#$resume.educational#}</span></div>
+										</div>
+										<div class="resume-hope">
+											专业：<span>{#$resume.professional#}</span>
+										</div>
+										<p class="resume-info">期望薪资：{#$resume.salary#}元</p>
+									</div>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+						<div class="resume-list">
+							<ul class="fn-clear">
+								{#job action="resume" return="resume" page="3" pageSize="4"#}
+								<li class="fn-clear">
+									<div class="resume-img fn-left">
+										<a href="{#$resume.url#}"><img src="{#$resume.photo#}" alt="" /></a>
+									</div>
+									<div class="resume-txt fn-left">
+										<div class="resume-name">
+											<a href="{#$resume.url#}">{#$resume.name#}</a><div class="resume-tag fn-right"><span>{#if $resume.sex == 0#}男{#else#}女{#/if#}<em>|</em>{#$resume.name#}<em>|</em>{#$resume.educational#}</span></div>
+										</div>
+										<div class="resume-hope">
+											专业：<span>{#$resume.professional#}</span>
+										</div>
+										<p class="resume-info">期望薪资：{#$resume.salary#}元</p>
+									</div>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="job-list">
+					<ul class="fn-clear">
+						{#$i = 0#}
+						{#job action="resume" return="resume_" page="1" pageSize="44"#}
+						{#$cla = ''#}
+						{#if $i < 4#}
+							{#$cla = ' bg'#}
+						{#/if#}
+						{#if $resume_.sex == 0#}
+							{#$cla = $cla|cat:' man'#}
+						{#/if#}
+						<li class="{#$cla#}">
+							<em class="job-sex fn-left"></em><a href="{#$resume_.url#}" class="job-name">{#$resume_.name#}</a><span class="job-age">{#$resume_.age#}岁</span><span class="job-record">{#$resume_.educational#}</span><span class="job-info">{#$resume_.professional#}</span>
+						</li>
+						{#if $i >= 7#}
+						{#$i = 0#}
+						{#else#}
+						{#$i = $i + 1#}
+						{#/if#}
+						{#/job#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 求职简历 e -->
+
+<!-- 资讯 s -->
+	<div class="module module-4">
+		<div class="wrap">
+			<div class="news-box fn-clear">
+				<div class="news-box-l fn-left">
+					<div class="news-tit">
+						<ul class="news-tab fn-clear">
+							<li class="on">全部资讯</li>
+							<li>人才速递</li>
+							<li>招聘现场</li>
+							<li>培训进修</li>
+						</ul>
+						<a href="{#getUrlPath service='job' template='news'#}" target="_blank" class="more">+更多</a>
+					</div>
+					<div class="news-con">
+						<div class="news-list">
+							<ul>
+								{#job action="news" return="news" pageSize="12"#}
+								<li>
+									<a href="{#$news.url#}" target="_blank">{#$news.title#}</a><span class="time">{#$news.pubdate|date_format:'%m-%d'#}</span>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+						<div class="news-list fn-hide">
+							<ul>
+								{#job action="news" return="news" typeid="1" pageSize="12"#}
+								<li>
+									<a href="{#$news.url#}" target="_blank">{#$news.title#}</a><span class="time">{#$news.pubdate|date_format:'%m-%d'#}</span>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+						<div class="news-list fn-hide">
+							<ul>
+								{#job action="news" return="news" typeid="2" pageSize="12"#}
+								<li>
+									<a href="{#$news.url#}" target="_blank">{#$news.title#}</a><span class="time">{#$news.pubdate|date_format:'%m-%d'#}</span>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+						<div class="news-list fn-hide">
+							<ul>
+								{#job action="news" return="news" typeid="3" pageSize="12"#}
+								<li>
+									<a href="{#$news.url#}" target="_blank">{#$news.title#}</a><span class="time">{#$news.pubdate|date_format:'%m-%d'#}</span>
+								</li>
+								{#/job#}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="news-box-r fn-right">
+					<div class="news-tit">
+						<h3>招聘求职工具箱</h3><a href="{#getUrlPath service='job' template='news'#}" target="_blank" class="more">+更多</a>
+					</div>
+					<div class="news-tool">
+						<ul>
+							<li><a href="#">通用求职简历模版</a></li>
+							<li><a href="#">应届生简历模版下载</a></li>
+							<li><a href="#">空白版个人简历表格word</a></li>
+							<li><a href="#">彩色背景简历模板下载</a></li>
+							<li><a href="#">月度考勤统计表</a></li>
+							<li><a href="#">新员工培训计划表</a></li>
+							<li><a href="#">工作内容调查日报表</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 资讯 e -->
+
+<!-- 底部 s -->
+	<div class="footer">
+		<div class="wrap">
+			<div class="footer-top fn-clear">
+				<div class="footer-url fn-left"><a href="{#$cfg_basehost#}/">{#$cfg_basehost#}/</a></div>
+				<div class="footer-label fn-right">
+					{#siteConfig action="singel"#}
+					<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><em>|</em>
+					{#/siteConfig#}
+					<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+				</div>
+			</div>
+			<div class="footer-bottom fn-clear">
+				<div class="footer-img fn-left">
+					<a href="#"><img src="{#$templets_skin#}images/bqico02.gif" alt="" /></a>
+					<a href="#"><img src="{#$templets_skin#}images/too07.gif" alt="" /></a>
+					<a href="#"><img src="{#$templets_skin#}images/too08.gif" alt="" /></a>
+				</div>
+				<div class="footer-info fn-right">
+					{#$cfg_powerby#}
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 底部 e -->
+
+
+<!-- 遮罩层 s -->
+	<div class="mask"></div>
+<!-- 遮罩层 e -->
+
+<!-- 浮动层 s -->
+	<div class="floatNav">
+		<div class="float-li mobile">
+			<a href="javascript:;" class="bg"></a>
+			<div class="code box">
+				<p>扫描访问手机版</p><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt="" />
+			</div>
+		</div>
+		<div class="float-li tool">
+			<a href="javascript:;" class="bg"></a>
+			<div class="help-box box">
+				<div class="help-tit">分类小帮手</div>
+				<ul class="fn-clear">
+					<li><a href="#">查看所有类别</a></li>
+					<li><a href="#">免费发布信息</a></li>
+					<li><a href="#">修改我的信息</a></li>
+					<li><a href="#">删除我的信息</a></li>
+				</ul>
+				<div class="help-tit">本站客服帮助</div>
+				<div class="link fn-clear">
+					<div class="link-l fn-left">
+						<p>{#$job_hotline#}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="float-li top">
+			<a href="javascript:;" class="bg"></a>
+		</div>
+	</div>
+<!-- 浮动层 e -->
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_basehost#}/static/js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/slide.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

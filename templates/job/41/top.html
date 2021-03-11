@@ -1,0 +1,39 @@
+{#include file="../../siteConfig/top1.html"#}
+
+{#if $pageMark == "index"#}
+<!-- 顶部幻灯 s -->
+<div class="wrap slideshow_1200_60">
+	<div id="slideshow120060">
+	  {#myad title="招聘求职_模板一_电脑端_广告一" type="slide"#}
+	</div>
+	<div id="slidebtn120060" class="slidebtn"></div>
+	<a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+<!-- 顶部幻灯 e -->
+{#/if#}
+
+<div class="head">
+	<div class="wrap header fn-clear">
+		<h1 class="logo"><a href="{#$job_channelDomain#}" title="{#$job_channelName#}"><img src="{#$job_logoUrl#}" alt="{#$job_channelName#}" /></a></h1>
+		<div class="service">
+			<s></s>全国免费咨询热线<h3>{#$job_hotline#}</h3>
+		</div>
+	</div>
+</div>
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li{#if $pageMark == "index"#} class="curr active"{#/if#}><a href="{#$job_channelDomain#}">首页</a></li>
+		<li{#if $pageMark == "zhaopin"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='zhaopin'#}">职位</a></li>
+		<li{#if $pageMark == "company"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='company'#}">公司</a></li>
+		<li{#if $pageMark == "resume"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='resume'#}">简历<s></s></a></li>
+		<li{#if $pageMark == "sentence1"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='sentence' param='type=1'#}">一句话求职</a></li>
+		<li{#if $pageMark == "sentence0"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='sentence' param='type=0'#}">一句话招聘</a></li>
+		<li{#if $pageMark == "zhaopinhui"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='zhaopinhui'#}">招聘会</a></li>
+		<li{#if $pageMark == "doc"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='doc'#}">文档下载</a></li>
+		<li{#if $pageMark == "payroll"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='payroll'#}">工资统计</a></li>
+		<li{#if $pageMark == "news"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='news'#}">职场资讯</a></li>
+	</ul>
+</div>
+<!-- 导航 e -->

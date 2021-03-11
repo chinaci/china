@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找伯乐-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="找伯乐,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找伯乐,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/bole.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='bole'#}#}
+
+<body>
+{#$pageMark = "bole"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear" id="J_crumbs">
+	<div class="screening">
+		<div class="hd">
+			<i></i><p>筛选条件</p>
+		</div>
+		<div class="bd">
+			<dl class="open">
+				<dt><a href="javascript:;">身份类型<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype=''#}#J_crumbs"{#if $btype == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype=1#}#J_crumbs"{#if $btype == 1#} class="curr"{#/if#}>HR</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype=2#}#J_crumbs"{#if $btype == 2#} class="curr"{#/if#}>猎头</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype=3#}#J_crumbs"{#if $btype == 3#} class="curr"{#/if#}>高管</a>
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">招聘状态<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} status=''#}#J_crumbs"{#if $status == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} status=1#}#J_crumbs"{#if $status == 1#} class="curr"{#/if#}>正在招聘中</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} status=2#}#J_crumbs"{#if $status == 2#} class="curr"{#/if#}>有好的人才可以考虑</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} status=3#}#J_crumbs"{#if $status == 3#} class="curr"{#/if#}>暂不招聘</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="chose fn-clear">
+			<div class="moreScreening fn-left">
+				<dl id="addrObj">
+					<dt><a href="javascript:;" class="m" id="addr1" title="{#$addrName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addr='%addr%'#}#J_crumbs">{#if $addrName == ""#}工作地点{#else#}{#$addrName#}{#/if#}<i></i></a></dt>
+					<dd class="area area1"></dd>
+				</dl>
+				<dl id="industryObj">
+					<dt><a href="javascript:;" class="m" id="industry" title="{#$industryName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} industry='%industry%'#}#J_crumbs">{#if $industryName == ""#}行业领域{#else#}{#$industryName#}{#/if#}<i></i></a></dt>
+					<dd class="industry area1"></dd>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;" class="m" id="zn" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} jtype='%type%'#}#J_crumbs">{#if $typeName == ""#}职位类型{#else#}{#$typeName#}{#/if#}<i></i></a></dt>
+				</dl>
+			</div>
+			<div class="fn-right">
+				<div class="sort">
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == ''#} class="curr"{#/if#}>默认</a>
+					|
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=1#}#J_crumbs" class="time{#if $orderby == 1#} curr{#/if#}">点评数<i class="icon-sort"></i></a>
+					|
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=2#}#J_crumbs" class="time{#if $orderby == 2#} curr{#/if#}">职位数<i class="icon-sort"></i></a>
+				</div>
+				<div class="tcount">共<label id="totalCount">0</label>位伯乐</div>
+				<div class="pages">
+					<a href="javascript:;" class="prev" title="上一页">&lt;</a>
+					<span class="atpage">{#$page#}</span>/<span class="total" id="totalPage">1</span>
+					<a href="javascript:;" class="next" title="下一页">&gt;</a>
+				</div>
+			</div>
+		</div>
+		<!-- 伯乐列表 s -->
+		<div class="boxlist">
+			<ul class="fn-clear">
+				{#job action="bole" return="bole" btype={#$btype#} status={#$status#} addr={#$addr#} industry={#$industry#} jtype={#$jtype#} orderby={#$orderby#} page={#$page#} pageSize="40"#}
+				<li>
+					<div class="s1">
+						<div class="pic">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$bole.photo#}" alt="{#$bole.realname#}" />
+							<div class="bg"></div>
+						</div>
+						<div class="txt">
+							{#$tag = ""#}
+							{#if $bole.type == 1#}
+							{#$tag = "hr"#}
+							{#elseif $bole.type == 2#}
+							{#$tag = "lie"#}
+							{#elseif $bole.type == 3#}
+							{#$tag = "guan"#}
+							{#/if#}
+							<div class="name">{#$bole.realname#}<i class="bltag bltag-{#$tag#}"></i></div>
+							<p class="position">{#$bole.work#}</p>
+							<p class="company"><a href="{#getUrlPath service='job' template='company' id={#$bole.cid#}#}" target="_blank">{#$bole.company#}</a></p>
+						</div>
+					</div>
+					<div class="s2">
+						<div class="des">
+							<div class="d">
+								<dl>
+									<dt>招聘行业：</dt>
+									<dd title="{#$bole.industry#}">{#$bole.industry#}</dd>
+								</dl>
+								<dl>
+									<dt>招聘职能：</dt>
+									<dd title="{#$bole.zhineng#}">{#$bole.zhineng#}</dd>
+								</dl>
+								<dl>
+									<dd>招聘职位：{#$bole.pcount#}</dd>
+									<dd>所在区域：{#$bole.addr[0]#}-{#$bole.addr[1]#}</dd>
+								</dl>
+							</div>
+							<div class="btn"><a href="{#$bole.url#}" target="_blank">委托档案</a></div>
+						</div>
+						<div class="bg"></div>
+					</div>
+				</li>
+				{#/job#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">抱歉！ 暂无相关伯乐信息！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<!-- 伯乐列表 e -->
+
+		<!-- 分页 -->
+		{#getPageList service='job' template='bole' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/plist.js"></script>
+</body>
+</html>

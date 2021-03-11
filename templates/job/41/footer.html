@@ -1,0 +1,41 @@
+<!-- 底部 s -->
+<div class="footer">
+	<div class="wrap">
+		<div class="service fn-clear">
+			{#siteConfig action='helpsType' return='type' pageSize="5"#}
+			<dl>
+				<dt>{#$type.typename#}</dt>
+				<dd>
+					{#siteConfig action='helpsType' type={#$type.id#} return='type1' pageSize="5"#}
+					<a href="{#getUrlPath service='siteConfig' template='help' id={#$type1.id#}#}" target="_blank">{#$type1.typename#}</a>
+					{#/siteConfig#}
+				</dd>
+			</dl>
+			<i></i>
+			{#/siteConfig#}
+			<dl>
+				<dt>关于我们</dt>
+				<dd>
+					{#siteConfig action="singel" pageSize="5"#}
+					<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a>
+					{#/siteConfig#}
+				</dd>
+			</dl>
+		</div>
+		<div class="copyright">
+			{#$cfg_powerby#}
+		</div>
+	</div>
+</div>
+<!-- 底部 e -->
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=1"></script>

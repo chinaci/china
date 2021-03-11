@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找工作-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="找工作,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找工作,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zhaopin.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='zhaopin'#}#}
+
+<body>
+{#$pageMark = "zhaopin"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear" id="J_crumbs">
+	<div class="screening">
+		<div class="hd">
+			<i></i><p>筛选条件</p>
+		</div>
+		<div class="bd">
+			<dl class="open">
+				<dt><a href="javascript:;">职位性质<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=''#}#J_crumbs"{#if $nature == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=0#}#J_crumbs"{#if $nature == 0 && $nature != ""#} class="curr"{#/if#}>全职</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=1#}#J_crumbs"{#if $nature == 1#} class="curr"{#/if#}>兼职</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=2#}#J_crumbs"{#if $nature == 2#} class="curr"{#/if#}>临时</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=3#}#J_crumbs"{#if $nature == 3#} class="curr"{#/if#}>实习</a>
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">工作经验<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} experience=''#}#J_crumbs"{#if $experience == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="1"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} experience={#$type.id#}#}#J_crumbs"{#if $experience == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">学历要求<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} educational=''#}#J_crumbs"{#if $educational == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="2"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} educational={#$type.id#}#}#J_crumbs"{#if $educational == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">薪资范围<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} salary=''#}#J_crumbs"{#if $salary == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="3"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} salary={#$type.id#}#}#J_crumbs"{#if $salary == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="chose fn-clear">
+			<div class="moreScreening fn-left">
+				<dl id="addrObj">
+					<dt><a href="javascript:;" class="m" id="addr1" title="{#$addrName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addr='%addr%'#}#J_crumbs">{#if $addrName == ""#}工作地点{#else#}{#$addrName#}{#/if#}<i></i></a></dt>
+					<dd class="area area1"></dd>
+				</dl>
+				<dl id="industryObj">
+					<dt><a href="javascript:;" class="m" id="industry" title="{#$industryName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} industry='%industry%'#}#J_crumbs">{#if $industryName == ""#}行业领域{#else#}{#$industryName#}{#/if#}<i></i></a></dt>
+					<dd class="industry area1"></dd>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;" class="m" id="zn" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} jtype='%type%'#}#J_crumbs">{#if $typeName == ""#}职位类型{#else#}{#$typeName#}{#/if#}<i></i></a></dt>
+				</dl>
+				<dl class="sub">
+					<dt><a href="javascript:;" class="m" title="{#$gnatureName#}">{#if $gnatureName == ""#}公司性质{#else#}{#$gnatureName#}{#/if#}<i></i></a></dt>
+					<dd class="msub">
+						<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} gnature=''#}#J_crumbs">不限</a>
+						{#job action="item" return="type" type="5"#}
+						<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} gnature={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+						{#/job#}
+					</dd>
+				</dl>
+				<dl class="sub">
+					<dt><a href="javascript:;" class="m" title="{#$scaleName#}">{#if $scaleName == ""#}公司规模{#else#}{#$scaleName#}{#/if#}<i></i></a></dt>
+					<dd class="msub">
+						<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} scale=''#}#J_crumbs">不限</a>
+						{#job action="item" return="type" type="6"#}
+						<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} scale={#$type.id#}#}#J_crumbs">{#$type.typename#}</a>
+						{#/job#}
+					</dd>
+				</dl>
+			</div>
+			<div class="fn-right">
+				<div class="sort">
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == ''#} class="curr"{#/if#}>默认</a>
+					|
+					{#if $orderby == 1#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=2#}#J_crumbs" class="time{#if $orderby != ""#} curr{#/if#}">时间<i class="icon-sort"></i></a>
+					{#else#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=1#}#J_crumbs" class="time{#if $orderby != ""#} curr{#/if#}">时间<i class="icon-sort icon-sort-c"></i></a>
+					{#/if#}
+				</div>
+				<div class="pages">
+					<a href="javascript:;" class="prev" title="上一页">&lt;</a>
+					<span class="atpage">{#$page#}</span>/
+					<span class="total" id="totalPage">1</span>
+					<a href="javascript:;" class="next" title="下一页">&gt;</a>
+				</div>
+			</div>
+		</div>
+		<div class="topDo fn-clear">
+			<div class="checkAll unseltxt">
+				<label for="checkAll" class="cklab">
+					<input type="checkbox" id="checkAll" class="checka job-check" />
+					<i></i>
+					<span>全选</span>
+				</label>
+				<a href="javascript:;" class="yp">应聘</a>
+				<a href="javascript:;" class="sc">收藏</a>
+				<div class="totalCount">共为您找到 <label id="totalCount">0</label> 个职位</div>
+			</div>
+			<div class="search">
+				<form action="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} title='%title%'#}#J_crumbs" method="get">
+					<input type="search" value="{#if $title#}{#$title#}{#else#}请输入职位名称或公司名称{#/if#}" class="inp" id="search_v" name="title" onfocus="if(this.value=='请输入职位名称或公司名称') this.value=''" onblur="if(this.value=='') this.value='请输入职位名称或公司名称'" />
+					<input type="submit" value="搜索" class="submit">
+				</form>
+			</div>
+		</div>
+		<!-- 职位列表 s -->
+		<div class="job-list">
+			{#job action="post" return="post" nature={#$nature#} experience={#$experience#} educational={#$educational#} salary={#$salary#} gnature={#$gnature#} scale={#$scale#} addr={#$addr#} industry={#$industry#} jtype={#$jtype#} title={#$title#} page={#$page#} pageSize="20"#}
+			<div class="job-item" data-id="{#$post.id#}">
+				{#if (strstr($post.property, "u") && strstr($post.property, "r")) || strstr($post.property, "u")#}
+				<span class="state state-jipin" title="急聘"></span>
+				{#/if#}
+				{#if !strstr($post.property, "u") && strstr($post.property, "r")#}
+				<span class="state state-tuijian" title="推荐"></span>
+				{#/if#}
+				<div class="hd">
+					<label class="cklab"><input type="checkbox" class="job-check" value="{#$post.id#}" /><i></i></label>
+					<a href="{#$post.url#}#jobDetail" class="name" target="_blank">{#$post.title#}</a>
+					<i class="nature n{#$post.nature#}">{#if $post.nature == 0#}全职{#elseif $post.nature == 1#}兼职{#elseif $post.nature == 2#}临时{#elseif $post.nature == 3#}实习{#/if#}</i>
+				</div>
+				<div class="bd">
+					<div class="base fn-clear">
+						<div class="cname"><a href="{#$post.company['domain']#}" target="_blank">{#$post.company['title']#}</a></div>
+						<div class="ctaglist">
+							{#if $post.company['license']#}<a href="javascript:;" class="ctag ctag-renzhen" style="cursor:default;" title="认证企业"></a>{#/if#}
+							<a href="{#$post.company['domain']#}" target="_blank" class="ctag ctag-pic"></a>
+							<a href="{#$post.company['domain']#}" target="_blank" class="ctag ctag-shipin"></a>
+							<!-- <a href="javascript:;" class="ctag ctag-weixin"><div class="ewmbox"><img src="upfile/ewm_wx.png" alt=""></div></a> -->
+							<!-- <a href="" class="ctag ctag-qq"></a> -->
+							<a href="javascript:;" class="ctag ctag-ewm" style="cursor:default;" data-url="{#$post.company['domain']#}"><div class="ewmbox"></div></a>
+						</div>
+						<div class="j">
+							<span>{#$post.addr[0]#}&nbsp;&nbsp;{#$post.addr[1]#}</span> <em>|</em>
+							<span>{#$post.educational#}</span> <em>|</em>
+							<span>{#$post.experience#}</span> <em>|</em>
+							<span class="red">{#$post.salary#}</span> <em>|</em>
+							<span>{#$post.timeUpdate#}发布</span>
+						</div>
+					</div>
+					<div class="d">
+						<div class="duties fn-clear">
+							<div class="des">
+								<span class="txt">岗位职责：</span>
+								{#$post.note#}
+							</div>
+						</div>
+						<div class="btn">
+							<a href="javascript:;" class="yp">应聘</a>
+							<a href="javascript:;" class="sc">收藏</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{#/job#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉！ 暂无相关职位信息！</div>
+			{#/if#}
+		</div>
+		<!-- 职位列表 e -->
+
+		<!-- 分页 -->
+		{#getPageList service='job' template='zhaopin' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/plist.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/zhaopin.js"></script>
+</body>
+</html>

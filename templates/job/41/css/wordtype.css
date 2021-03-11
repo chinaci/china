@@ -1,0 +1,96 @@
+html {background-color: #f4f4f4;}
+
+.main {margin-top: 25px;border: 1px solid #ffe6a4; background-color: #fff;}
+.main .title {background: #feffef;text-align: center;}
+.main .title h2 {display: inline-block;padding: 25px 15px 10px;border-bottom: 1px solid #F3D6BC;font-size: 26px;color: #000;}
+.main .title .small {width: 130px;height: 17px;margin:10px auto 25px;background: url(../images/downtitle.png) no-repeat;}
+.main .bd {padding:0 100px 20px;}
+.main dl {width: 48%;float: left;margin:15px 2% 15px 0;padding:10px 0;}
+.main dl dd {padding: 0 50px 0 0;overflow: hidden;}
+.main dl .name a {font-size: 21px;color: #000;white-space: nowrap;}
+.main dl .name a:hover {color: #f60;}
+.main dl .name span {margin-left: 10px;font-size: 16px;color: #666;}
+.main dl .des {height: 42px;line-height: 21px;font-size: 14px;color: #666;overflow: hidden;}
+
+.main dl dt {width: 83px;height: 83px;margin:0 10px;float: left;background-position: -415px 0;}
+.main dl dt .icon {position: relative;display: block;width: 100%;height: 100%;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; -o-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; -moz-animation-fill-mode: both; -o-animation-fill-mode: both; animation-fill-mode: both;}
+.main dl dt , .main dl dt .icon {background-image:url(../images/wordicons.png);background-repeat:no-repeat; }
+.main dl .down_1 .icon {background-position: 0 0;}
+.main dl .down_2 .icon {background-position: -83px 0;}
+.main dl .down_3 .icon {background-position: -166px 0;}
+.main dl .down_4 .icon {background-position: -249px 0;}
+.main dl .down_5 .icon {background-position: -332px 0;}
+.main dl .down_6 .icon {background-position: 0 -83px;}
+.main dl .down_7 .icon {background-position: -83px -83px;}
+.main dl .down_8 .icon {background-position: -166px -83px;}
+.main dl .down_9 .icon {background-position: -249px -83px;}
+.main dl .down_10 .icon {background-position: -332px -83px;}
+
+.main dl:hover {box-shadow:0 0 45px #c7c7c7;background: #F5CDA9;}
+.main dl:hover dt .icon {-webkit-animation-name: swap;
+  animation-name: swap;}
+
+
+@-webkit-keyframes swap {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 0 100%;
+    -webkit-transform: scale(0, 0) rotate(360deg) translateY(-100%);
+  }
+
+  30% {
+    -webkit-transform-origin: 0 100%;
+    -webkit-transform: scale(0, 0) rotate(360deg) translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform-origin: 100% 100%;
+    -webkit-transform: scale(1, 1) rotate(0deg) translateY(0%);
+  }
+}
+@keyframes twisterInDown {
+  0% {
+    opacity: 0;
+    transform-origin: 0 100%;
+    transform: scale(0, 0) rotate(360deg) translateY(-100%);
+  }
+
+  30% {
+    transform-origin: 0 100%;
+    transform: scale(0, 0) rotate(360deg) translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scale(1, 1) rotate(0deg) translateY(0%);
+  }
+}
+
+@-webkit-keyframes swap {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 0 100%;
+    -webkit-transform: scale(0, 0) translate(-700px, 0px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform-origin: 100% 100%;
+    -webkit-transform: scale(1, 1) translate(0px, 0px);;
+  }
+}
+@keyframes swap {
+  0% {
+    opacity: 0;
+    transform-origin: 0 100%;
+    transform: scale(0, 0) translate(-700px, 0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scale(1, 1) translate(0px, 0px);
+  }
+}
