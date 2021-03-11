@@ -1,0 +1,4 @@
+.container ul.list li{height: 619px;}
+.container ul.list li .info{padding: 18px 20px;}
+.container ul.list li .info p.name{font-size: 24px;color: rgb(31, 32, 33);font-weight: bold;margin-bottom: 10px;width: 240px;overflow: hidden;height: 36px}
+.container ul.list li .info p.time{font-size: 14px;color: rgb(83, 86, 89);line-height: 36px;}
