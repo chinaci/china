@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$job_title#}</title>
+<meta name="keywords" content="{#$job_keywords#}" />
+<meta name="description" content="{#$job_description#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/job.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+<body class="w1200">
+	{#$pageMark = "index"#}
+	{#include file="top.html"#}
+	<div class="FirstFloor wrap fn-clear">
+		<div class="NavList">
+			<ul>
+				{#job action="type" return='type'#}
+				{#if $_bindex.type > 7 && $template == 'index'#}
+				<li class="fn-hide">
+				{#else#}
+				{#if $_bindex.type == 7 #}
+				<li class="bbnone">
+				{#else#}
+				<li>
+				{#/if#}
+				{#/if#}
+					<a href="{#getUrlPath service='job' template='zhaopin' param="jtype={#$type.id#}"#}" class="name">{#$type.typename#}</a>
+					<i class="arrow"></i>
+					{#job action="type" return='subtype' type="{#$type.id#}" page="1" pageSize="1"#}
+					<a href="{#getUrlPath service='job' template='zhaopin' param="jtype={#$subtype.id#}"#}" class="item">{#$subtype.typename#}</a>
+					{#/job#}
+					<div class="sub-category">
+						{#job action="type" return='subtype1' type="{#$type.id#}"#}
+						<dl>
+							<dt><h2 class="title"><a href="{#getUrlPath service='job' template='zhaopin' param="jtype={#$subtype1.id#}"#}">{#$subtype1.typename#}</a></h2></dt>
+							<dd class="fn-clear">
+								{#job action="type" return='subtype2' type="{#$subtype1.id#}"#}
+								<a href="{#getUrlPath service='job' template='zhaopin' param="jtype={#$subtype2.id#}"#}">{#$subtype2.typename#}</a>
+								{#/job#}
+							</dd>
+						</dl>
+						{#/job#}
+					</div>
+				</li>
+				{#/job#}
+			</ul>
+			{#if $template == 'index'#}<div class="more"><i></i></div>{#/if#}
+		</div>
+		<div class="slideBox">
+			<div class="slidewrap">
+				<div class="slide">
+					<div class="bd">
+						<div class="slideobj">{#myad title="招聘求职_模板六_电脑端_广告一" type="slide"#}</div>
+					</div>
+					<div class="hd"><ul></ul></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 推荐职位 s-->
+	<div class="Recommend wrap">
+		<div class="RecoLead fn-clear">
+			<ul>
+				<li class="active">推荐职位</li>
+				<li class="second">热门职位</li>
+				<li>急缺职位</li>
+			</ul>
+		</div>
+		<div class="PositionList fn-clear">
+			<div class="PositionType">
+				{#job action="post" return="post" property="r" pageSize="9"#}
+				<div class="PositionBox">
+					<a href="{#$post.url#}" target="_blank" title="{#$post.title#}">
+						<div class="PositionTitle fn-clear">
+							<div class="PositionName">{#$post.title#}</div><div class="PositionTime">[{#$post.pubdate|date_format:"%m-%d"#}]</div>
+							<div class="PositionPrice">{#$post.salary#}</div>
+						</div>
+						<div class="PositionInfo">{#$post.experience#}经验 / {#$post.educational#}</div>
+						<div class="PositionTips "><em>{#$post.type#}</em></div>
+					</a>
+					<a href="{#$post.company['domain']#}" target="_blank" title="{#$post.company.title#}">
+						<div class="PositionForm">
+							<div class="PF_pic"><img src="{#$post.company.logo#}" alt=""></div>
+							<div class="PF_name">{#$post.company.title#}</div>
+							<div class="PF_info">{#$post.company.address#}</div>
+						</div>
+					</a>
+				</div>
+				{#/job#}
+			</div>
+			<div class="PositionType fn-hide">
+				{#job action="post" return="post" property="h" pageSize="9"#}
+				<div class="PositionBox">
+					<a href="{#$post.url#}" target="_blank" title="{#$post.title#}">
+						<div class="PositionTitle fn-clear">
+							<div class="PositionName">{#$post.title#}</div><div class="PositionTime">[{#$post.pubdate|date_format:"%m-%d"#}]</div>
+							<div class="PositionPrice">{#$post.salary#}</div>
+						</div>
+						<div class="PositionInfo">{#$post.experience#}经验 / {#$post.educational#}</div>
+						<div class="PositionTips "><em>{#$post.type#}</em></div>
+					</a>
+					<a href="{#$post.company['domain']#}" target="_blank" title="{#$post.company.title#}">
+						<div class="PositionForm">
+							<div class="PF_pic"><img src="{#$post.company.logo#}" alt=""></div>
+							<div class="PF_name">{#$post.company.title#}</div>
+							<div class="PF_info">{#$post.company.address#}</div>
+						</div>
+					</a>
+				</div>
+				{#/job#}
+			</div>
+			<div class="PositionType fn-hide">
+				{#job action="post" return="post" property="u" pageSize="9"#}
+				<div class="PositionBox">
+					<a href="{#$post.url#}" target="_blank" title="{#$post.title#}">
+						<div class="PositionTitle fn-clear">
+							<div class="PositionName">{#$post.title#}</div><div class="PositionTime">[{#$post.pubdate|date_format:"%m-%d"#}]</div>
+							<div class="PositionPrice">{#$post.salary#}</div>
+						</div>
+						<div class="PositionInfo">{#$post.experience#}经验 / {#$post.educational#}</div>
+						<div class="PositionTips "><em>{#$post.type#}</em></div>
+					</a>
+					<a href="{#$post.company['domain']#}" target="_blank" title="{#$post.company.title#}">
+						<div class="PositionForm">
+							<div class="PF_pic"><img src="{#$post.company.logo#}" alt=""></div>
+							<div class="PF_name">{#$post.company.title#}</div>
+							<div class="PF_info">{#$post.company.address#}</div>
+						</div>
+					</a>
+				</div>
+				{#/job#}
+			</div>
+		</div>
+		<div class="PositionMore"><a href="{#getUrlPath service='job' template='zhaopin'#}">查看更多</a></div>
+	</div>
+	<!-- 推荐职位 e-->
+	<!-- 广告位 s-->
+	<div class="AD_box wrap">{#myad id="219"#}</div>
+	<!-- 广告位 e-->
+	<!-- 职场资讯 s-->
+	<div class="News wrap">
+		<div class="PublicLead fn-clear">
+			<div class="PublicName">职场资讯</div>
+			<div class="PublicMore"><a href="{#getUrlPath service='job' template='news'#}" target="_blank">更多 >></a></div>
+		</div>
+		<div class="NewsList fn-clear">
+			{#job action="news" return="news" pageSize="6"#}
+			<div class="NewsBox fn-clear"><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">
+				{#if $news.litpic#}
+				<div class="NewsPic"><img src="{#$news.litpic#}" alt=""></div>
+				<div class="NewsTitle">
+					<div class="NT_txt">{#$news.title#}</div><em>{#$news.typename#}</em>
+				</div>
+				{#else#}
+				<div class="NewsTitle long">
+					<div class="NT_txt">{#$news.title#}</div><em>{#$news.typename#}</em>
+				</div>
+				{#/if#}
+				<div class="NewsTips">
+					<div class="News_time"><i></i>{#$news.pubdate|date_format:"%Y-%m-%d"#}</div>
+					<div class="News_see"><i></i>{#$news.click#}</div>
+				</div>
+				<div class="NewsCon">{#$news.description#}</div>
+			</a></div>
+			{#/job#}
+		</div>
+	</div>
+	<!-- 职场资讯 e-->
+	<!-- 推荐公司 s-->
+	<div class="Company wrap">
+		<div class="PublicLead fn-clear">
+			<div class="PublicName">推荐公司</div>
+		</div>
+		<div class="CompanyList fn-clear">
+			{#job action="company" return="com" property="r" pageSize="8"#}
+			<div class="CompanyBox">
+				<a href="{#$com.url#}" target="_blank">
+					<div class="cy_Pic"><img src="{#$com.logo#}" alt=""></div>
+					<div class="cy_name">{#$com.title#}</div>
+					<div class="cy_type">{#$com.nature#}</div>
+					<div class="cy_dec">{#$com.industry#}</div>
+				</a>
+				<div class="cy_foot fn-clear">
+					<ul>
+						<li><a href="{#getUrlPath service='job' template='company-job' id={#$com.id#}#}" target="_blank"><span>{#$com.pcount#}</span><p>职位</p></a></li>
+						<li class="middle"><a href="{#getUrlPath service='job' template='company-salary' id={#$com.id#}#}" target="_blank"><span>{#$com.wcount#}</span><p>工资</p></a></li>
+						<li><a href="{#getUrlPath service='job' template='company-album' id={#$com.id#}#}" target="_blank"><span>{#$com.pics|@count#}</span><p>相册</p></a></li>
+					</ul>
+				</div>
+			</div>
+			{#/job#}
+		</div>
+		<div class="CompanyMore"><a href="{#getUrlPath service='job' template='company'#}">查看更多</a></div>
+	</div>
+	<!-- 推荐公司 e-->
+	<!-- 广告位 s-->
+	<div class="AD_box wrap">{#myad id="220"#}</div>
+	<!-- 广告位 e-->
+	<!-- 个人简历 s -->
+	<div class="Resume wrap fn-clear">
+		<div class="ResumeList">
+			<div class="PublicLead fn-clear">
+				<div class="PublicName">个人简历</div>
+			</div>
+			<div class="ResumeDE fn-clear">
+				{#job action="resume" return="resume"  pageSize="12"#}
+				<div class="ResumeBox fn-clear"><a href="{#$resume.url#}" target="_blank" >
+					<div class="RB_pic"><img src="{#$resume.photo#}" alt=""></div>
+					<div class="RB_name">{#$resume.name#}<em>{#$resume.addr[0]#}{#$resume.addr[1]#}</em></div>
+					<p><em>学历：</em>{#$resume.educational#}</p>
+					<p><em>工作经验：</em>{#$resume.workyear#}年</p>
+					<p><em>求职意向：</em>{#$resume.type#}</p>
+				</a></div>
+				{#/job#}
+			</div>
+		</div>
+		<div class="JobFair">
+			<div class="PublicLead fn-clear">
+				<div class="PublicName">招聘会</div>
+				<div class="PublicMore"><a target="_blank" href="{#getUrlPath service='job' template='zhaopinhui'#}">更多 ></a></div>
+			</div>
+			{#job action="fairs" return="fairs"  pageSize="5"#}
+			<div class="FairBox fn-clear"><a href="{#$fairs.url#}" title="{#$fairs.title#}" target="_blank">
+				<div class="Fair_pic"><img src="{#$fairs.fairs['pics'][0]['pic']#}" alt="{#$fairs['title']#}"></div>
+				<div class="Fair_title">{#$fairs.title#}</div>
+				<div class="Fair_location"><i></i>{#$fairs.fairs.address#}</div>
+				<div class="Fair_foot">
+					<div class="Fair_area">{#$fairs.fairs.addr[0]#} {#$fairs.fairs.addr[1]#}</div>
+					<div class="Fair_time">{#$fairs.date#}</div>
+				</div>
+			</a></div>
+			{#/job#}
+		</div>
+	</div>
+	<!-- 个人简历 e -->
+	<!-- 求职百宝箱 s-->
+	<div class="TreasureBox">
+		<div class="TreasureCon wrap">
+			<div class="TreasureTitle"><i></i>求职百宝箱<i></i></div>
+			<div class="TreasureTitle2">专业服务 为你的求职保驾护航</div>
+			<div class="TreasureList fn-clear">
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=1#}">
+					<p>求职准备</p>
+					<span>解读求职攻略，知道简历撰写，基于总是垂青于有准备的人！求职前做好充分准备，快人一步赢在就业前！</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=2#}">
+					<p>简历模板</p>
+					<span>简历如何撰写？海量分专业简历模板供你下载参考，只有想不到，没有找不到，立刻行动，马上下载！</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=3#}">
+					<p>招聘笔试</p>
+					<span>如何顺利通过笔试，拿下自己应聘的职位？常见笔试题目经典笔试经验尽在“招聘笔试”，点击即享。</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=4#}">
+					<p>招聘面试</p>
+					<span>面试技巧、面试礼仪……360度解读面试，教你抓住考官的心，一“面”搞定HR，拿下面试堡垒！</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=5#}">
+					<p>工作签约</p>
+					<span>签约可以明确自己与单位双方的权利和义务。应届毕业生正式签约前，这些问题你应该了解。</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=6#}">
+					<p>实习兼职</p>
+					<span>甩掉学生的稚气，开启属于你的职场之门。实习兼职——为打造个人职场品牌做出第一份努力。</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=7#}">
+					<p>公务员考试</p>
+					<span>不做“白领”做“红领”，如何在公务员考试时脱颖而出？真题练习、面试技巧点击即可下载！</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=8#}">
+					<p>求职宝典</p>
+					<span>职场礼仪、职场人际、职场攻略，最新最全的职场潜规则，让你“人在职场飘，也能不挨刀”！</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=9#}">
+					<p>人在职场</p>
+					<span>磨刀不误砍柴工，求职技巧不容忽视，找工作前了解一些求职宝典，可以让你的求职事半功倍。</span>
+				</a></div>
+				<div class="TreasureDE"><a target="_blank" href="{#getUrlPath service='job' template='doc' typeid=10#}">
+					<p>法律法规</p>
+					<span>维护个人基本权利，保障自身职场利益，国家政策与法律法规，为你的职场生活保驾护航！</span>
+				</a></div>
+			</div>
+		</div>
+	</div>
+	<!-- 求职百宝箱 e-->
+
+	{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v1"></script>
+</body>
+</html>

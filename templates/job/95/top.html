@@ -1,0 +1,32 @@
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+<div class="Head_box">
+	<div class="Head wrap fn-clear">
+		<div class="logo"><a href="{#$job_channelDomain#}" title="{#$job_channelName#}"><img src="{#$job_logoUrl#}" alt="{#$job_channelName#}" /></a></div>
+		<div class="search_box">
+			<form class="" action="{#getUrlPath service='job' template='zhaopin'#}" method="post">
+				<input name="keywords" type="text" class="txt_search" id="search_keyword"  autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="搜索职位/公司" data-role="input" />
+				<input data-role="btn" name="search" id="search_button" type="submit" value="" class="btn-s" />
+			</form>
+		</div>
+		<div class="kefu">
+			<div class="KF_title">客服热线</div>
+			<div class="KF_tel">{#$job_hotline#}</div>
+		</div>
+	</div>
+</div>
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li{#if $pageMark == "index"#} class="curr active"{#/if#}><a href="{#$job_channelDomain#}">首页</a></li>
+		<li{#if $pageMark == "zhaopin"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='zhaopin'#}">职位</a></li>
+		<li{#if $pageMark == "company"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='company'#}">公司</a></li>
+		<li{#if $pageMark == "resume"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='resume'#}">简历<s></s></a></li>
+		<li{#if $pageMark == "sentence1"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='sentence' param='type=1'#}">一句话求职</a></li>
+		<li{#if $pageMark == "sentence0"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='sentence' param='type=0'#}">一句话招聘</a></li>
+		<li{#if $pageMark == "zhaopinhui"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='zhaopinhui'#}">招聘会</a></li>
+		<li{#if $pageMark == "doc"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='doc'#}">文档下载</a></li>
+		<li{#if $pageMark == "payroll"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='payroll'#}">工资统计</a></li>
+		<li{#if $pageMark == "news"#} class="curr active"{#/if#}><a href="{#getUrlPath service='job' template='news'#}">职场资讯</a></li>
+	</ul>
+</div>
+<!-- 导航 e -->
