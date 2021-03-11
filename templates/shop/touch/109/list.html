@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>{#if $seo_title != ""#}{#$seo_title#}{#else#}{#$langData['shop'][0][17]#}{#/if#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var typeid = {#if $typeid#}{#$typeid#}{#else#}0{#/if#}, detailListId = 'maincontent';
+	jQuery = $;
+</script>
+</head>
+
+<body>
+	<!-- 头部 -->
+	{#include file="../../../siteConfig/touch_top.html" headTheme="absolute" pageTitle={#$langData['shop'][0][17]#}#}
+	<!-- 头部 end -->
+
+	<!-- 内容 -->
+		<div class="main">
+			<div class="choose">
+			      <div class="choose-tab">
+				        <ul>
+							<li data-type="typeid" data-id="{#if $typeid#}{#$typeid#}{#else#}0{#/if#}" class="typeid style1"><a href="javascript:;"><i><span>{#if !empty($typeid)#}{#$typeName#}{#else#}分类{#/if#}</span></i></a></li>
+				            <li data-type="orderbyType" class="orderby sale" data-id="1"><a href="javascript:;"><i><span>销量</span></i></a></li>
+				            <li data-type="orderbyType" class="orderby price" data-id="3"><a href="javascript:;"><i><span>价格</span></i></a></li>
+				            <li class="style1"><a href="javascript:;"><i><span>筛选</span></i></a></li>
+				        </ul>
+			      </div>
+		          <div class="choose-box">
+				        <div class="choose-local dn" id="info-box"></div>
+				        <div class="choose-local dn"> </div>
+				        <div class="choose-local dn"> </div>
+						<div class="choose-local dn info-screen">
+				          <div class="choose-more" id="choose-more">
+				            <div class="choose-more-search">
+									<div class="drop-range">
+										<h3>价格区间(元)</h3>
+										<input type="number" class="price1" name="" placeholder="最低价" onkeyup="value=value.replace(/[^\d.]/g,'')">
+										<span>至</span>
+										<input type="number" class="price2" name="" placeholder="最高价" onkeyup="value=value.replace(/[^\d.]/g,'')">
+									</div>
+				            </div>
+				            <div class="confirm">
+				              <a href="javascript:;" class="btn_reset">重置</a>
+				              <a href="javascript:;" class="btn_confirm">确定</a>
+				            </div>
+			            </div>
+			      </div>
+	     	</div>
+	     	<!-- 搜索 s-->
+			<div class="search-form fn-clear">
+				<form action="{#getUrlPath service='shop' template='list'#}" id="sForm">
+					<s class="isearch"></s>
+					<input type="text" id="keywords" name="keywords" value="{#$keywords#}" class="inp search" placeholder="{#if !$image#}商品/品牌{#/if#}">
+					<span id="search">搜索</span>
+
+					{#if $imagesearch && $image#}
+					<div class="imgsearch-holder">
+						<div class="img-box">
+							<div class="img-container"><img class="img" src="{#$image#}"></div>
+						</div>
+						<div class="x-btn">
+		                  <span class="icon-btn-x">&times;</span>
+		                </div>
+					</div>
+					{#/if#}
+
+					{#if $imagesearch#}
+			  		<div class="imgsearch{#if $image#} fn-hide{#/if#}">
+			  			<span class="imgsearch-btn"></span>
+			  			<input type="file" name="Filedata" class="fn-hide" id="Filedata_imgsearch">
+			  		</div>
+			  		{#/if#}
+
+				</form>
+
+
+
+			</div>
+			<!-- 搜索 e-->
+			<div class="main-list">
+				<div class="list-box">
+					<div class="disk"></div>
+					<ul id="maincontent">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div></div>
+	<!-- 内容 end-->
+
+	<div class="mask"></div>
+
+<script>
+	var atpage = 1,
+		pageSize = 10,
+		image = '{#$image#}',
+		keywords = '{#$keywords#}';
+</script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script type='text/javascript' src='{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '{#$seo_title#}',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#getUrlPath service='shop' template='list' param="typeid={#$typeid#}"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

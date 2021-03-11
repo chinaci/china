@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>店铺列表</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}',templets = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	var typeid = {#if $typeid#}{#$typeid#}{#else#}0{#/if#}, detailListId = 'maincontent';
+	jQuery = $;
+</script>
+</head>
+
+<body>
+	<!-- 头部 -->
+	{#include file="../../../siteConfig/touch_top.html" headTheme="absolute" pageTitle="店铺列表"#}
+	<!-- 头部 end -->
+
+	<!-- 内容 -->
+		<div class="main">
+	     	<!-- 搜索 s-->
+			<div class="search-form fn-clear">
+				<form action="#" id="sForm">
+					<s class="isearch"></s>
+					<input id="keywords" value="{#$keywords#}" name="keywords" type="text" class="inp search" placeholder="店铺/品牌">
+					<span id="search">搜索</span>
+				</form>
+
+			</div>
+			<!-- 搜索 e-->
+			<div class="main-list">
+				<div class="list-box">
+					<ul id="maincontent">
+
+						<div class="loading"><span></span><span></span><span></span><span></span><span></span></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div></div>
+	<!-- 内容 end-->
+
+	<div class="mask"></div>
+
+<script>
+	var atpage = 1,
+		pageSize = 10,
+		keywords = '{#$keywords#}';
+</script>
+<script src="{#$templets_skin#}js/store.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '店铺列表',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#getUrlPath service='shop' template='store'#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

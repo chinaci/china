@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>{#$shop_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	jQuery = $;
+</script>
+</head>
+
+<body>
+	<!-- 头部 -->
+	{#include file="../../../siteConfig/touch_top.html" pageTitle=$shop_channelName#}
+	<!-- 头部 end -->
+
+	<!-- banner s -->
+	<div class="banner">
+	  <div class="wrapper">
+	      <div class="swiper-container">
+	          <div class="swiper-wrapper">
+	              {#myad title="商城_模板二_移动端_广告一" type="slide"#}
+	          </div>
+	          <div class="pagination"></div>
+	      </div>
+	  </div>
+	</div>
+	<!-- banner e -->
+
+	<!-- 头条资讯 s -->
+	<div class="pubBox ttNews fn-clear">
+		<div class="lBox">
+			<a href="{#getUrlPath service='shop' template='news'#}">
+				<img src="{#$templets_skin#}images/toutiao.png" alt="">
+			</a>
+		</div>
+
+		<div class="mBox">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide swiper-no-swiping">
+			        	{#shop action="news" return="list" pageSize=6#}
+		        		<p><a href="{#$list.url#}"><span>{#date("m/d",$list.pubdate)#}</span>{#$list.title#}</a> </p>
+		        		{#if $_bindex.list<6 && !(($_bindex.list) % 2)#}
+		        		</div>
+						  <div class="swiper-slide swiper-no-swiping">
+			        	{#/if#}
+			        	{#/shop#}
+			        </div>
+			    </div>
+			</div>
+		</div>
+
+	</div>
+	<!-- 头条资讯 e -->
+	<!-- 搜索 s-->
+	<div class="search-form fn-clear">
+	  <div class="sobj">
+	    <div class="type">
+	        <label>商品</label>
+	        <s></s>
+	    </div>
+
+	    <div class="inp">
+	      <form action="{#getUrlPath service='shop' template='list'#}" id="sform">
+	        <s></s>
+	        <input id="keywords" name="keywords" type="text" placeholder="输入您要搜索的关键词">
+	        <span id="search">搜索</span>
+	      </form>
+
+		  {#if $imagesearch#}
+		  <div class="imgsearch">
+			  <span class="imgsearch-btn"></span>
+			  <input type="file" name="Filedata" class="fn-hide" id="Filedata_imgsearch">
+		  </div>
+		  {#/if#}
+
+	    </div>
+	  </div>
+
+	  <div class="typelist">
+	    	<p>商品</p>
+	    	<p>店铺</p>
+	  </div>
+	</div>
+	<!-- 搜索 e-->
+
+	<!-- 模块链接 s -->
+	<div class="pubBox module">
+		<ul class="fn-clear">
+			<li>
+				<a href="{#getUrlPath service='shop' template='qianggou'#}">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/qianggou.png"></span>
+					 <span class="icon-txt">限时抢购</span>
+				</a>
+			</li>
+			<li>
+				<a href="{#getUrlPath service='shop' template='secKill'#}">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/miaosha.png"></span>
+					 <span class="icon-txt">准点秒杀</span>
+				</a>
+			</li>
+			<li>
+				<a href="{#getUrlPath service='integral' template='index'#}">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/jifen.png"></span>
+					 <span class="icon-txt">积分商城</span>
+				</a>
+			</li>
+			<!--<li>
+				<a href="javascript:;">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/zhibo.png"></span>
+					 <span class="icon-txt">购物直播</span>
+				</a>
+			</li>-->
+			<li>
+				<a href="{#getUrlPath service='shop' template='store'#}">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/shangjia.png"></span>
+					 <span class="icon-txt">推荐商家</span>
+				</a>
+			</li>
+			{#shop action="type" return="type"#}
+			{#if $_bindex.type<6#}
+			<li>
+				<a href="{#getUrlPath service='shop' template='list' param="typeid={#$type.id#}"#}">
+					 <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+					 <span class="icon-txt">{#$type.typename#}</span>
+				</a>
+			</li>
+			{#elseif $_bindex.type==7#}
+			<li>
+				<a href="{#$shop_channelDomain#}/category.html">
+					 <span class="icon-circle"><img src="{#$templets_skin#}images/gengduo.png"></span>
+					 <span class="icon-txt">更多分类</span>
+				</a>
+			</li>
+			{#/if#}
+			{#/shop#}
+		</ul>
+	</div>
+	<!-- 模块链接 e -->
+
+	<!-- 限时抢购 s-->
+	<div class="pubBox qgou">
+		<a href="{#getUrlPath service='shop' template='qianggou'#}">
+			<div class="qiangBg">
+				<div class="boxTitle fn-clear"><img src="{#$templets_skin#}images/xianshi.png" alt=""> <span>|&nbsp;&nbsp;错过优惠不再</span></div>
+				<div class="boxCon fn-clear">
+					<div class="cleft">
+						<div class="jsTime fn-clear" id="timeCounter"  data-time="">
+							<span class="hour">00</span><em>:</em>
+							<span class="minute">00</span><em>:</em>
+							<span class="second">00</span>
+						</div>
+						<div class="imgBox">
+							<div class="ibox">
+						     </div>
+						     <div class="ibox">
+						     </div>
+						</div>
+					</div>
+					<div class="cright">
+						<div class="ibox">
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+	<!-- 限时抢购 e-->
+
+	<!-- 准点秒杀 s-->
+	<div class="public msha">
+		<a href="{#getUrlPath service='shop' template='secKill'#}">
+			<div class="msbg">
+				<div class="boxTitle fn-clear"><i class="ms"></i><img src="{#$templets_skin#}images/zdms.png" alt=""> <span>|&nbsp;&nbsp;超低价格 只拼手速</span>
+				</div>
+			</div>
+			<div class="puBox fn-clear">
+			    {#shop action="slist" limited="5" pageSize=3 return=list#}
+				<div class="goodbox">
+					<div class="boxImg">
+						<img src="{#if !empty($list.litpic)#}{#$list.litpic#}{#else#}{#$cfg_basehost#}/static/images/blank.gif{#/if#}" alt="">
+					</div>
+					<div class="boxText">
+						<b>{#echoCurrency type='symbol'#}</b> <strong>{#$list.price#}</strong>
+					</div>
+				</div>
+				{#/shop#}
+				<div class="botbg"></div>
+			</div>
+		</a>
+	</div>
+	{#if $pageInfo.totalCount < 3#}
+	<style>.msha{display:none;}</style>
+	{#/if#}
+	<!-- 准点秒杀 e-->
+
+	<!-- 积分商城 s-->
+	{#if in_array("integral", $installModuleArr)#}
+	<div class="public jfen">
+		<a href="{#getUrlPath service='integral' template='index'#}">
+			<div class="msbg">
+				<div class="boxTitle fn-clear"><i class="jf"></i><img src="{#$templets_skin#}images/jfsc.png" alt=""> <span>|&nbsp;&nbsp;超低价格 只拼手速</span>
+				</div>
+			</div>
+			<div class="puBox fn-clear">
+			    {#integral action="slist" flat="0" pageSize=3 return=list#}
+			    {#if count($list)<3#}
+					<style>.jfen{display:none;}</style>
+			    {#/if#}
+				<div class="goodbox">
+					<i class="zero"></i>
+					<div class="boxImg">
+						<img src="{#$list.litpic#}" alt="">
+					</div>
+				</div>
+				{#/integral#}
+			</div>
+		</a>
+	</div>
+	{#/if#}
+	<!-- 积分商城 e-->
+
+	<!-- 购物直播 s-->
+	<!--<div class="c_live">
+		<div class="ltbg">购物直播</div>
+		<div class="liveBox">
+			<div class="fbox">
+				<div class="fcon fcon1" style="background-image: url({#$templets_skin#}upfile/lpicture01.png);">
+					<a href="javascript:;">
+						<p class="live_num"><span class="smark">LIVE</span> 2033观看</p>
+						<div class="fbottom">
+							<h4>主播优选</h4>
+							<p>主播优选</p>
+						</div>
+					</a>
+				</div>
+				<div class="fcon fcon2" style="background-image: url({#$templets_skin#}upfile/lpicture02.png);">
+					<a href="javascript:;">
+						<p class="live_num"><span class="smark">LIVE</span> 1053观看</p>
+						<div class="fbottom">
+							<h4>主播优选</h4>
+							<p>主播优选</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="fbox">
+				<div class="fcon fcon3" style="background-image: url({#$templets_skin#}upfile/lpicture03.png);">
+					<a href="javascript:;">
+						<span class="smark">LIVE</span>
+					</a>
+				</div>
+				<div class="fcon fcon4" style="background-image: url({#$templets_skin#}upfile/lpicture04.png);">
+					<a href="javascript:;">
+						<span class="smark">LIVE</span>
+					</a>
+				</div>
+				<div class="fcon fcon5" style="background-image: url({#$templets_skin#}upfile/lpicture05.png);">
+					<a href="javascript:;">
+						<span class="smark">LIVE</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>-->
+	<!-- 购物直播 e-->
+
+	<!-- 推荐商家 s-->
+	<div class="c_shop">
+		<div class="ltbg">推荐商家</div>
+		{#shop action="store" return="list" rec="1" pageSize="2"#}
+		<div class="shopBox toptag">
+			<div class="sbotop fn-clear">
+				<div class="sbleft">
+					<img src="{#if !empty($list['logo'])#}{#changeFileSize url="{#$list['logo']#}" type="large"#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" alt="">
+				</div>
+				<div class="sbright">
+					<h3>{#$list['title']#}</h3>
+					<p class="fn-clear"><span class="rzcon"><i></i>实名认证</span><span class="bzjcon"><i></i>保证金</span><span class="wepay"><i></i>微信支付</span></p>
+				</div>
+			</div>
+			<div class="sbomain">
+				{#shop action="slist" return="row" store={#$list.id#} pageSize="3"#}
+				<div class="goBox">
+					<a href="{#$row.url#}">
+						<div class="good_box">
+							<img src="{#if !empty($row['litpic'])#}{#changeFileSize url="{#$row['litpic']#}" type="o_large"#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" alt="">
+							<div class="fcover"><p>{#$row.title#}</p></div>
+						</div>
+						<div class="good_txt">{#echoCurrency type='symbol'#}{#$row.price#}</div>
+					</a>
+				</div>
+				{#/shop#}
+			</div>
+			<div class="sbofoot">
+				<div class="sbf"><a href="tel:{#$list['tel']#}"><i class="contact"></i>联系商家</a></div>
+				<div class="sbf"><a href="{#$list['url']#}">进店逛逛 <i class="go"></i></a></div>
+			</div>
+		</div>
+		{#/shop#}
+		<div class="morebox"><a href="{#getUrlPath service='shop' template='store'#}">查看更多</a></div>
+	</div>
+	<!-- 推荐商家 e-->
+
+	<!-- 精选好物 s-->
+	<div class="c_shop">
+		<div class="ltbg">精选好物</div>
+		<ul class="goodlist fn-clear">
+		</ul>
+		<div class="morebox"><a href="{#getUrlPath service='shop' template='list'#}">查看更多</a></div>
+
+	</div>
+	<!-- 精选好物 e-->
+
+	<!-- 底部悬浮 s -->
+	<div class="wechat">
+	  <a href="javaScript:;"><i></i></a>
+	</div>
+	<div class="gocart topcart">
+	  <a class="cart-btn" href="{#$shop_channelDomain#}/cart.html"><i></i><em class="cart num">0</em></a>
+	</div>
+	<div class="my">
+	  <a href="{#$member_userDomain#}"><i></i></a>
+	</div>
+	<div class="gotop">
+	  <a href="javaScript:;"><i></i></a>
+	</div>
+	<!-- 底部悬浮 e-->
+
+	<!-- 加入购物车 -->
+	<div class="size-box">
+		<div class="size-selected">
+			<div class="size-img"><img src="{#$templets_skin#}upfile/shImg03.png"></div>
+			<div class="size-txt">
+				<p class="price"><em>{#echoCurrency type='symbol'#}</em> <b></b></p>
+				<p class="count">{#$langData['siteConfig'][19][525]#} <b></b> 件</p>
+				<p class="guige">{#$langData['siteConfig'][6][21]#}：<em></em></p>
+			</div>
+			<a href="javascript:;" class="closed"></a>
+		</div>
+		<p class="guige-tips">{#$langData['shop'][0][6]#}</p>
+		<div class="scrollbox" id="scrollbox">
+			<div class="scroll" >
+				<div class="size-html">
+					<dl class="sys_item"></dl>
+					<dl class="sys_item"></dl>
+				</div>
+				<div class="size-count fn-clear">
+					<span class="size-count-tit">{#$langData['shop'][0][7]#}<em></em></span><p class="sizeBtn"><a href="javascript:;" class="numbtn reduce">－</a><input type="number" class="shop-count" value="1"><a href="javascript:;" class="numbtn add">＋</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="size-confirm"><a href="javascript:;">{#$langData['siteConfig'][6][1]#}</a></div>
+	</div>
+
+	<div class="mask"></div>
+
+
+<div class="wechat-popup">
+	<div class="con">
+		<a href="javascript:;" class="close">×</a>
+		{#if $cfg_weixinQr#}
+		<dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>
+		{#/if#}
+		{#if $cfg_miniProgramQr#}
+		<dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>
+		{#/if#}
+	</div>
+</div>
+<div class="topcart" style="display:none;"><div class="cart-con"><div class="cartlist"><ul></ul></div></div></div>
+<script>
+	var atpage = 1,
+		pageSize = 6,
+		keywords = '{#$keywords#}';
+	var prourl   = '{#getUrlPath service='shop' template='list'#}';
+	var storeurl = '{#getUrlPath service='shop' template='store'#}';
+</script>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script type='text/javascript' src='{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '{#$shop_title#}',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#$shop_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
