@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}" />
+<meta name="description" content="{#$cfg_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = 0;
+</script>
+</head>
+
+<body>
+	<!-- 顶部信息 s -->
+	<div class="topInfo">
+		<div class="wrap fn-clear">
+			<ul class="links fn-clear">
+				<li><a href="#">设为首页</a></li>
+				<li><a href="#">广告合作</a></li>
+				<li><a href="#">商家加盟</a></li>
+				<li>
+					<a href="javascript:;">官方微信</a>
+					<div class="ewmbox">
+						<img src="{#$cfg_attachment#}{#$cfg_weixinQr#}" alt="">
+						<em></em>
+					</div>
+				</li>
+				<li><a href="#">官方微博</a></li>
+				<li><a href="#">手机客户端</a></li>
+			</ul>
+			<div class="loginbox">
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+				<div class="loginafter">
+					<a href="{#$userDomain#}">{#$userinfo.nickname#}</a>，欢迎您！<a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a>
+				</div>
+				{#else#}
+				<div class="loginbefore">
+					<a href="{#$cfg_basehost#}/login.html" class="login">登录</a><a href="{#$cfg_basehost#}/register.html">注册</a>
+				</div>
+				{#/if#}
+			</div>
+		</div>
+	</div>
+	<!-- 顶部信息 e -->
+	<!-- 头部logo 搜索 s -->
+	<div class="header wrap fn-clear">
+		<div class="logo">
+			<h1><a href="{#$cfg_basehost#}"><img src="{#$cfg_weblogo#}" alt="火鸟门户"></a></h1>
+		</div>
+		<div class="ad">{#myad title="首页_模板四_电脑端_广告一"#}</div>
+		<div class="serach">
+			<div class="hotkey">
+				<span>热搜：</span>
+				{#siteConfig module="index" action="hotkeywords" return="hotkeywords"#}
+				{#if $_bindex.hotkeywords <= 3#}
+				<a href="{#$hotkeywords.href#}" target="_blank">{#$hotkeywords.keyword#}</a>
+				{#/if#}
+				{#/siteConfig#}
+			</div>
+			<div class="formbox">
+				<form action="">
+					<div class="inputbox">
+						<input type="text" placeholder="请输入关键词" class="serachkeyword" />
+					</div>
+					<input type="submit" value="搜索" class="searchsubmit">
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 头部logo 搜索 e -->
+	<!-- 导航 s -->
+	<div class="nav wrap fn-clear">
+		<div class="nav-1 nav-type">
+			<dl class="fn-clear">
+				<dt><a href="{#$article_channelDomain#}">资讯</a></dt>
+				<dd>
+					<ul>
+						{#article action="type" return="atype" pageSize="6"#}
+						<li><a href="{#$atype.url#}">{#$atype.typename#}</a></li>
+						{#/article#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="nav-2 nav-type">
+			<dl class="fn-clear">
+				<dt><a href="{#$info_channelDomain#}">分类</a></dt>
+				<dd>
+					<ul>
+						{#info action="type" return='type' pageSize="10"#}
+						<li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a></li>
+						{#/info#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="nav-3 nav-type">
+			<dl class="fn-clear">
+				<dt><a href="javascript:;">频道</a></dt>
+				<dd>
+					<ul>
+						{#if in_array("shop", $installModuleArr)#}<li><a href="{#$shop_channelDomain#}" target="_blank">商城</a></li>{#/if#}
+						{#if in_array("build", $installModuleArr)#}<li><a href="{#$build_channelDomain#}" target="_blank">建材</a></li>{#/if#}
+						{#if in_array("furniture", $installModuleArr)#}<li><a href="{#$furniture_channelDomain#}" target="_blank">家具</a></li>{#/if#}
+						{#if in_array("home", $installModuleArr)#}<li><a href="{#$home_channelDomain#}" target="_blank">家居</a></li>{#/if#}
+						{#if in_array("renovation", $installModuleArr)#}<li><a href="{#$renovation_channelDomain#}" target="_blank">装修</a></li>{#/if#}
+						{#if in_array("dating", $installModuleArr)#}<li><a href="{#$dating_channelDomain#}" target="_blank">交友</a></li>{#/if#}
+						{#if in_array("marry", $installModuleArr)#}<li><a href="{#$marry_channelDomain#}" target="_blank">婚嫁</a></li>{#/if#}
+						{#if in_array("house", $installModuleArr)#}<li class="hot"><a href="{#$house_channelDomain#}" target="_blank"><span>房产</span></a></li>{#/if#}
+						{#if in_array("waimai", $installModuleArr)#}<li><a href="{#$waimai_channelDomain#}" target="_blank">外卖</a></li>{#/if#}
+						{#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}" target="_blank">团购</a></li>{#/if#}
+						{#if in_array("special", $installModuleArr)#}<li><a href="{#$special_channelDomain#}" target="_blank">专题</a></li>{#/if#}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div class="nav-4 nav-type">
+			<dl class="fn-clear">
+				<dt><a href="{#$job_channelDomain#}">工作</a></dt>
+				<dd>
+					<ul>
+						<li><a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">找工作</a></li>
+						<li><a href="{#getUrlPath service='job' template='resume'#}" target="_blank">找人才</a></li>
+						<li><a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">填简历</a></li>
+						<li><a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank">发职位</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<!-- 导航 e -->
+	<!-- 广告位 -->
+	<div class="adv wrap">
+		{#myad title="首页_模板四_电脑端_广告二"#}
+	</div>
+	<!-- 资讯 s -->
+	<div class="wrap newswrap fn-clear">
+		<div class="m-left">
+			<div id="slideBox1" class="slideBox slideBox1">
+				<div class="bd">
+					<ul>
+						{#myad title="首页_模板四_电脑端_广告三" type="slide"#}
+					</ul>
+				</div>
+				<div class="hd"><ul></ul></div>
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev btn" href="javascript:void(0)"><i></i></a>
+				<a class="next btn" href="javascript:void(0)"><i></i></a>
+			</div>
+			<div class="module module-weekhot mgt10">
+				<div class="mtitle">
+					<h2><a href="javascript:;" target="_blank">一周热帖</a></h2>
+				</div>
+				<div class="mbox">
+					<div class="txtScroll-top">
+						<div class="bd">
+							<ul class="infoList">
+								{#article action="alist" return="alist" orderby="2.3" pageSize="7"#}
+								<li><a href="{#$alist.url#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+								{#/article#}
+							</ul>
+						</div>
+					</div>
+					<div class="ad">
+						{#myad title="首页_模板四_电脑端_广告四"#}
+					</div>
+				</div>
+			</div>
+			<div class="module module-life mgt10">
+				<div class="mtitle">
+					<h2><a href="javascript:;" target="_blank">生活热点</a></h2>
+				</div>
+				<div class="mbox">
+					<div class="txtScroll-top">
+						<div class="bd">
+							<ul class="infoList">
+								{#article action="alist" return="alist" typeid="104" pageSize="20"#}
+								<li><a href="{#$alist.url#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+								{#/article#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="m-center">
+			<div class="module2 module-today">
+				<div class="mtitle">
+					<h2>今日聚焦</h2><span class="time">{#getMyTime format="%m"#}月{#getMyTime format="%d"#}日 {#getMyWeek prefix="星期"#}</span>
+				</div>
+				<div class="mbox">
+				  {#article action="alist" return="alist" flag="h,r" page="1" pageSize="1"#}
+					<p class="toutiao"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title#}</a></p>
+					{#/article#}
+					<ul class="list list-5">
+					  {#article action="alist" return="alist" page="1" pageSize="10"#}
+						<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+					<div class="dotted"></div>
+				  {#article action="alist" return="alist" flag="h,r" page="2" pageSize="1"#}
+					<p class="toutiao"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title#}</a></p>
+					{#/article#}
+					<ul class="list list-5">
+					  {#article action="alist" return="alist" page="2" pageSize="10"#}
+						<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+					<div class="ad"><a href="###"><img src="{#$templets_skin#}upfile/ad/3.jpg" alt=""></a></div>
+					{#article action="alist" return="alist" flag="h,r" page="3" pageSize="1"#}
+					<p class="toutiao"><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" target="_blank">{#$alist.title#}</a></p>
+					{#/article#}
+					<ul class="list list-5">
+						{#article action="alist" return="alist" page="3" pageSize="10"#}
+						<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+					<div class="dotted"></div>
+					<ul class="list list-6">
+						{#article action="alist" return="alist" page="4" pageSize="12"#}
+						<li><a href="{#$alist.url#}" title="{#$alist.title|strip_tags#}" class="column" target="_blank">【{#$alist.typeName[0]#}】</a><a href="{#$alist.url#}" class="title" target="_blank">{#$alist.title#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="m-right">
+			<div class="module module-bianmin">
+				<div class="mtitle">
+					<h2><a href="" target="_blank">便民生活</a></h2>
+				</div>
+				<div class="mbox">
+					<div class="box1">
+						<ul class="life fn-clear">
+							<li><a href="" class="life1">话费充值</a></li>
+							<li><a href="" class="life2">清单查询</a></li>
+							<li><a href="" class="life3">业务办理</a></li>
+							<li><a href="" class="life4">优惠信息</a></li>
+							<li><a href="" class="life5">电影排期</a></li>
+							<li><a href="" class="life6">违章查询</a></li>
+							<li><a href="" class="life7">民生新房</a></li>
+							<li><a href="" class="life8">股票市场</a></li>
+						</ul>
+						<ul class="life_query fn-clear">
+							<li><a href="" target="_blank">火车时刻</a></li>
+							<li><a href="" target="_blank">梅州公交</a></li>
+							<li><a href="" target="_blank">长途客车</a></li>
+							<li><a href="" target="_blank">航班查询</a></li>
+							<li><a href="" target="_blank">购车意向</a></li>
+							<li><a href="" target="_blank">购房意向</a></li>
+							<li><a href="" target="_blank">装修咨询</a></li>
+							<li><a href="" target="_blank">婚嫁咨询</a></li>
+						</ul>
+					</div>
+					<div class="dotted"></div>
+					<div class="appdown">
+						<a href="" target="_blank"><img src="{#$templets_skin#}images/app.gif" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="module module-recommended mgt10">
+				<div class="mtitle">
+					<h2><a href="javascript:;" target="_blank">推荐资讯</a></h2>
+				</div>
+				<div class="mbox">
+					<div class="ad">
+						{#myad title="首页_模板四_电脑端_广告五"#}
+					</div>
+					<div class="slidebox2" id="slidebox2">
+						<div class="bd">
+							<ul>
+								{#house action="loupanList" return="loupan" filter="hot" pageSize="6" thumb="1"#}
+								<li><a href="{#$loupan.url#}" target="_blank"><img src="{#$loupan.litpic#}" alt=""><p>{#$loupan.title#}</p></a></li>
+								{#/house#}
+							</ul>
+						</div>
+					</div>
+					<ul class="list">
+						{#info action="ilist" return="ilist" pageSize="5"#}
+						<li><a href="{#$ilist.url#}" class="column" target="_blank">【{#$ilist.typename#}】</a><a href="{#$ilist.url#}" class="title" target="_blank" title="{#$ilist.title#}">{#$ilist.title#}</a></li>
+						{#/info#}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 资讯 e -->
+	<!-- 广告位 s -->
+	<div class="wrap fn-clear">
+		{#myad title="首页_模板四_电脑端_广告六"#}
+	</div>
+	<!-- 广告位 e -->
+	<!-- 消费生活 s -->
+	<div class="wrap oh">
+		<div class="module module-consumerlife">
+			<div class="mtitle fn-clear">
+				<em class="corner"></em>
+				<h2 class="fn-left"><a href="">消费生活</a></h2>
+				<ul class="aboutlink fn-clear">
+					<li><a href="" target="_blank">餐饮美食</a>┆</li>
+					<li><a href="" target="_blank">休闲娱乐</a>┆</li>
+					<li><a href="" target="_blank">生活服务</a>┆</li>
+					<li><a href="" target="_blank">精选商品</a>┆</li>
+					<li><a href="" target="_blank">品牌旗舰店</a></li>
+				</ul>
+			</div>
+			<div class="mbox">
+				<ul class="list fn-clear">
+					<li>
+						<a href="" target="_blank">
+							<img src="{#$templets_skin#}upfile/xflife-1.jpg" alt="">
+							<p>中国国旅新县城营业部</p>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<img src="{#$templets_skin#}upfile/xflife-2.jpg" alt="">
+							<p>东方星艺术婚纱影楼</p>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<img src="{#$templets_skin#}upfile/xflife-3.jpg" alt="">
+							<p>思埠，女性一站式购物平台</p>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<img src="{#$templets_skin#}upfile/xflife-4.jpg" alt="">
+							<p>横店电影院贵宾券</p>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<img src="{#$templets_skin#}upfile/xflife-5.jpg" alt="">
+							<p>超值价20{#echoCurrency type='short'#}起</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 消费生活 e -->
+	<!-- 美食 信息 s -->
+	<div class="wrap">
+		<div class="width-extend">
+			<div class="width-half oh">
+				<div class="module module-meishi">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">美食</a></h2>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="pic">
+								{#waimai action="store" return="store" thumb="1" pageSize="1"#}
+								<a href="{#$store.url#}" target="_blank">
+									<img src="{#$store.logo#}" alt="{#$store.title#}">
+									<p>{#$store.title#}</p>
+									<div class="bg"></div>
+								</a>
+								{#/waimai#}
+							</div>
+							<div class="list">
+								<ul>
+									{#waimai action="store" return="store1" pageSize="6"#}
+									<li{#if $_bindex.store1 == 1#} class="first"{#/if#}><a href="{#$store1.url#}" target="_blank">{#$store1.title#}{#if $_bindex.store1 != 1#}&nbsp;&nbsp;&nbsp;{#$store1.times#}分钟送达&nbsp;&nbsp;&nbsp;{#$store1.price#}{#echoCurrency type='short'#}起送{#/if#}</a></li>
+									{#/waimai#}
+								</ul>
+							</div>
+						</div>
+						<div class="youhui">
+							<div class="slideBox3" id="slideBox3">
+								<div class="hd">
+									<ul></ul>
+									<h2><i class="righticon"></i><a href="">优惠信息</a><i class="hoticon"></i></h2>
+								</div>
+								<div class="bd">
+									<ul>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-1.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">皇家名典自助午餐</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-2.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">锦发影城2D/3D通兑票</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-3.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">金满园158{#echoCurrency type='short'#}套餐</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-4.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">梅州市国兴茶业有限公司</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-5.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">野生即食海参1条</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-3.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">金满园158{#echoCurrency type='short'#}套餐</a></p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-half oh">
+				<div class="module module-info">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">信息</a></h2>
+					</div>
+					<div class="mbox">
+						<div class="inBox">
+							<div class="inHd">
+								<ul class="fn-clear"><li class="on">人才招聘</li><li>房屋租售</li><li>跳蚤市场</li></ul>
+							</div>
+							<div class="inBd">
+								<ul style="display:block;">
+									{#info action="ilist" return="ilist" typeid="255" pageSize="18"#}
+									<li><span class="time">{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+									{#/info#}
+								</ul>
+								<ul>
+									{#info action="ilist" return="ilist" typeid="243" pageSize="18"#}
+									<li><span class="time">{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+									{#/info#}
+								</ul>
+								<ul>
+									{#info action="ilist" return="ilist" typeid="197" pageSize="18"#}
+									<li><span class="time">{#$ilist.pubdate|date_format:"%Y-%m-%d"#}</span><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a></li>
+									{#/info#}
+								</ul>
+							</div>
+						</div>
+						<div class="ad">
+							{#myad title="首页_模板四_电脑端_广告七"#}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 美食 信息 e -->
+	<!-- 广告位 s -->
+	<div class="adv wrap">
+		{#myad title="首页_模板四_电脑端_广告八"#}
+	</div>
+	<!-- 广告位 e -->
+	<!-- 汽车 房产 s -->
+	<div class="wrap">
+		<div class="width-extend">
+			<div class="width-half oh">
+				<div class="module module-car">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">汽车</a></h2>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="pic">
+								<a href="" target="_blank">
+									<img src="{#$templets_skin#}upfile/car-1.jpg" alt="">
+									<p>领动欧洲杯豪礼狂欢季</p>
+									<div class="bg"></div>
+								</a>
+							</div>
+							<div class="list">
+								<ul>
+									<li class="first"><a href="" target="_blank">小车销量王瑞纳即将换代！</a></li>
+									<li><a href="" target="_blank">车里太脏，清洗太贵？自己动手简单又省</a></li>
+									<li><a href="" target="_blank">这9项交通违章不再受罚啦，你知道吗？</a></li>
+									<li><a href="" target="_blank">这些坏习惯分分钟出人命 你犯了几个？</a></li>
+									<li><a href="" target="_blank">93号和97号汽油到底可不可以混用？</a></li>
+									<li><a href="" target="_blank">听声音就能够知道车的故障？不会是逗我</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="youhui">
+							<div class="youhuibox">
+								<div class="hd">
+									<ul></ul>
+									<h2><i class="righticon"></i><a href="">帮鱼港价图团</a><i class="hoticon"></i></h2>
+								</div>
+								<div class="bd">
+									<ul class="fn-clear">
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-1.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">皇家名典自助午餐</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-2.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">锦发影城2D/3D通兑票</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-3.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">金满园158{#echoCurrency type='short'#}套餐</a></p>
+										</li>
+										<li>
+											<div>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/youhui-4.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">梅州市国兴茶业有限公司</a></p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-half oh">
+				<div class="module module-house">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="{#$house_channelDomain#}">房产</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">新楼盘</a>┆</li>
+							<li><a href="{#getUrlPath service='house' template='sale'#}" target="_blank">二手房</a>┆</li>
+							<li><a href="{#getUrlPath service='house' template='zu'#}" target="_blank">出租房</a>┆</li>
+							<li><a href="{#getUrlPath service='house' template='broker'#}" target="_blank">找中介</a>┆</li>
+							<li><a href="{#getUrlPath service='house' template='news'#}" target="_blank">资讯</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="mboxinner fn-clear">
+							<div class="build">
+								<div class="slideBox4" id="slideBox4">
+									<div class="hd">
+										<ul></ul>
+										<h2><i class="righticon"></i><a href="javascript:;">推荐楼盘</a></h2>
+									</div>
+									<div class="bd">
+										<div class="ulWrap">
+											<ul>
+												{#house action="loupanList" return="loupan" filter="rec" page="1" pageSize="4"#}
+												<li>
+													<div>
+														<a href="{#$loupan.url#}" target="_blank"><img src="{#$loupan.litpic#}" /></a>
+													</div>
+													<p class="title"><a href="{#$loupan.url#}" target="_blank">{#$loupan.title#}</a></p>
+												</li>
+												{#/house#}
+											</ul>
+											<ul>
+												{#house action="loupanList" return="loupan" filter="rec" page="2" pageSize="4"#}
+												<li>
+													<div>
+														<a href="{#$loupan.url#}" target="_blank"><img src="{#$loupan.litpic#}" /></a>
+													</div>
+													<p class="title"><a href="{#$loupan.url#}" target="_blank">{#$loupan.title#}</a></p>
+												</li>
+												{#/house#}
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul class="newslist">
+								{#house action="news" return="news" pageSize="10"#}
+								<li{#if $_bindex.news == 1 || $_bindex.news == 6#} class="first"{#/if#}><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></li>
+								{#/house#}
+							</ul>
+						</div>
+						<div class="ad">
+							{#myad title="首页_模板四_电脑端_广告九"#}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 汽车 房产 e -->
+	<!-- 广告位 s -->
+	<div class="adv wrap">
+		{#myad title="首页_模板四_电脑端_广告十"#}
+	</div>
+	<!-- 广告位 e -->
+	<!-- 亲子 文化 s -->
+	<div class="wrap">
+		<div class="width-extend">
+			<div class="width-half oh">
+				<div class="module module-qinzi">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">亲子</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="" target="_blank">育儿交流</a>┆</li>
+							<li><a href="" target="_blank">宝宝秀场</a>┆</li>
+							<li><a href="" target="_blank">家有学童</a>┆</li>
+							<li><a href="" target="_blank">巧手DIY</a>┆</li>
+							<li><a href="" target="_blank">活动看点</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="pic">
+								<a href="" target="_blank">
+									<img src="{#$templets_skin#}upfile/qinzi.jpg" alt="">
+									<p>领动欧洲杯豪礼狂欢季</p>
+									<div class="bg"></div>
+								</a>
+							</div>
+							<div class="list">
+								<ul>
+									<li><a href="" target="_blank">寒假与众不同，孩子爹妈不愁！</a></li>
+									<li><a href="" target="_blank">教您学会和孩子做朋友</a></li>
+									<li><a href="" target="_blank">妈妈换一个态度，孩子换一个未来</a></li>
+									<li><a href="" target="_blank">月子里不能做的这些事儿你真信了？</a></li>
+									<li><a href="" target="_blank">我们谁想到过这样奖励孩子？</a></li>
+									<li><a href="" target="_blank">家有儿童欢乐多</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-half oh">
+				<div class="module module-culture">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">文化</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="" target="_blank">时事</a>┆</li>
+							<li><a href="" target="_blank">文化</a>┆</li>
+							<li><a href="" target="_blank">情感</a>┆</li>
+							<li><a href="" target="_blank">生活</a>┆</li>
+							<li><a href="" target="_blank">娱乐</a>┆</li>
+							<li><a href="" target="_blank">健康</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="mboxinner fn-clear">
+							<div class="figure">
+								<div class="slideBox5" id="slideBox5">
+									<div class="bd">
+										<div class="ulWrap">
+											<ul>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-1.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">林文英</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-3.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">东方佳俊</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-5.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">邱峰</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-3.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">朱迪</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-5.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">陈平</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-4.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">华山</a></p>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-2.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">秋哥</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-4.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">羊咩咩</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-5.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">梦游中国</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-1.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">人间天上</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-3.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">客家</a></p>
+												</li>
+												<li>
+													<div>
+														<a href="" target="_blank"><img src="{#$templets_skin#}upfile/figure-2.jpg" /></a>
+													</div>
+													<p class="title"><a href="" target="_blank">咚咚山水</a></p>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul class="newslist">
+								<li><span>梦游中国</span><a href="" target="_blank">拜水都江堰，问道青城山</a></li>
+								<li><span>梦游中国</span><a href="" target="_blank">桃花源里的冰雪</a></li>
+								<li><span>咚咚山水</span><a href="" target="_blank">云端天路72拐</a></li>
+								<li><span>梦游中国</span><a href="" target="_blank">迷失在“巴塘.左贡”的路上</a></li>
+								<li><span>咚咚山水</span><a href="" target="_blank">同学相约赴京城</a></li>
+								<li><span>梦游中国</span><a href="" target="_blank">看望初中同学钟小瑛简记— 离</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 亲子 文化 e -->
+	<!-- 旅游 婚嫁 s -->
+	<div class="wrap">
+		<div class="width-extend">
+			<div class="width-half oh">
+				<div class="module module-tourism">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">旅游</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="" target="_blank">旅游分享</a>┆</li>
+							<li><a href="" target="_blank">户外旅行</a>┆</li>
+							<li><a href="" target="_blank">骑行</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="pic">
+								<a href="" target="_blank">
+									<img src="{#$templets_skin#}upfile/tourism.jpg" alt="">
+									<p>领动欧洲杯豪礼狂欢季</p>
+									<div class="bg"></div>
+								</a>
+							</div>
+							<div class="list">
+								<ul>
+									<li><a href="" target="_blank">人为什么要旅行？最美的答案</a></li>
+									<li><a href="" target="_blank">网友游归读花园</a></li>
+									<li><a href="" target="_blank">爬行项山甑</a></li>
+									<li><a href="" target="_blank">中外选手对决遇险 武隆天坑生死救援</a></li>
+									<li><a href="" target="_blank">结伴川藏南线 行走在路上</a></li>
+									<li><a href="" target="_blank">泮坑——春</a></li>
+								</ul>
+							</div>
+						</div>
+						<ul class="tj">
+							<li>
+								<div class="img"><a href="" target="_blank"><img src="{#$templets_skin#}upfile/tourism-s1.jpg" alt=""></a></div>
+								<div class="txt">
+									<p class="title"><a href="" target="_blank">国旅北京5天游</a></p>
+									<p class="des">国旅北京5天游</p>
+								</div>
+							</li>
+							<li>
+								<div class="img"><a href="" target="_blank"><img src="{#$templets_skin#}upfile/tourism-s2.jpg" alt=""></a></div>
+								<div class="txt">
+									<p class="title"><a href="" target="_blank">国旅北京5天游</a></p>
+									<p class="des">国旅北京5天游</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="width-half oh">
+				<div class="module module-marry">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="{#$marry_channelDomain#}">婚嫁</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="" target="_blank">情感婚姻</a>┆</li>
+							<li><a href="" target="_blank">时尚潮流</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="pic">
+								<a href="" target="_blank">
+									<img src="{#$templets_skin#}upfile/marry.jpg" alt="">
+									<p>写出你的爱 齐齐来拿奖</p>
+									<div class="bg"></div>
+								</a>
+							</div>
+							<div class="list">
+								<ul>
+									{#marry action="news" return="mnews" pageSize="6"#}
+									<li><a href="{#$mnews.url#}" target="_blank">{#$mnews.title#}</a></li>
+									{#/marry#}
+								</ul>
+							</div>
+						</div>
+						<ul class="tj">
+							<li>
+								<div class="img"><a href="" target="_blank"><img src="{#$templets_skin#}upfile/marry-s1.jpg" alt=""></a></div>
+								<div class="txt">
+									<p class="title"><a href="" target="_blank">国旅北京5天游</a></p>
+									<p class="des">国旅北京5天游</p>
+								</div>
+							</li>
+							<li>
+								<div class="img"><a href="" target="_blank"><img src="{#$templets_skin#}upfile/marry-s2.jpg" alt=""></a></div>
+								<div class="txt">
+									<p class="title"><a href="" target="_blank">国旅北京5天游</a></p>
+									<p class="des">国旅北京5天游</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 旅游 婚嫁 e -->
+	<!-- 影音 活动 s -->
+	<div class="wrap">
+		<div class="width-extend">
+			<div class="width-half oh">
+				<div class="module module-video">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="">影音</a></h2>
+						<ul class="aboutlink fn-clear">
+							<li><a href="" target="_blank">视频中心</a>┆</li>
+							<li><a href="" target="_blank">客家音乐</a>┆</li>
+							<li><a href="" target="_blank">电影排期</a>┆</li>
+							<li><a href="" target="_blank">影视介绍</a></li>
+						</ul>
+					</div>
+					<div class="mbox fn-clear">
+						<div class="fn-clear">
+							<div class="videolist">
+								<div class="inner">
+									<div class="slideBox6" id="slideBox6">
+										<div class="bd">
+											<ul>
+												<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-1.jpg" alt=""></a></li>
+												<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-2.jpg" alt=""></a></li>
+												<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-3.jpg" alt=""></a></li>
+												<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-4.jpg" alt=""></a></li>
+												<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-5.jpg" alt=""></a></li>
+											</ul>
+										</div>
+										<div class="hd">
+											<ul>
+												<li class="no1 on"><span>1</span><a href="" target="_blank">六弄咖啡馆</a></li>
+												<li class="no2"><span>2</span><a href="" target="_blank">红色警戒999</a></li>
+												<li class="no3"><span>3</span><a href="" target="_blank">少年师爷之大禹宝藏</a></li>
+												<li class="no4"><span>4</span><a href="" target="_blank">魔都凶音</a></li>
+												<li class="no5"><span>5</span><a href="" target="_blank">恐怖爱情故事之死亡</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cinema">
+								<ul>
+									<li><a href="" target="_blank">横店影院城</a></li>
+									<li><a href="" target="_blank">锦发影院</a></li>
+									<li><a href="" target="_blank">梅州开心影城</a></li>
+									<li><a href="" target="_blank">亮胜客家艺术中心剧院</a></li>
+									<li><a href="" target="_blank">客天下3D电影院</a></li>
+									<li><a href="" target="_blank">兴宁汇丰年3D电影城</a></li>
+									<li><a href="" target="_blank">蕉岭客都影院</a></li>
+									<li><a href="" target="_blank">平远五指石电影院</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="videoshow">
+							<div class="slideBox7" id="slideBox7">
+								<div class="hd">
+									<ul></ul>
+									<h2><i class="righticon"></i><a href="">视频展示</a></h2>
+								</div>
+								<div class="bd">
+									<ul>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-1.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">《一念之差》前传之《因人而异》</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-2.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">（变态大叔）晴枫岚女生日记第一期</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-3.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">2016年梅州信息港拜年视频</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-4.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">梅州首部禁毒公益微电影《一念之差》概念片</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-5.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">叔叔救我</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-6.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">美食客家行——梅州石坑镇</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-7.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">梦回松口——童养媳</a></p>
+										</li>
+										<li>
+											<div>
+												<i class="icon-video"></i>
+												<a href="" target="_blank"><img src="{#$templets_skin#}upfile/video-show-8.jpg" /></a>
+											</div>
+											<p class="title"><a href="" target="_blank">我是客家人，我为梦想代言</a></p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-half oh">
+				<div class="module module-activity">
+					<div class="mtitle pdl20 fn-clear">
+						<em class="corner"></em>
+						<h2 class="fn-left"><a href="{#$huodong_channelDomain#}">活动</a></h2>
+						<ul class="aboutlink fn-clear">
+							{#huodong action='type' return='htype' pageSize="5"#}
+							<li><a href="{#$htype.url#}" target="_blank">{#$htype.typename#}</a>{#if $_bindex.htype < 5#}┆{#/if#}</li>
+							{#/huodong#}
+						</ul>
+					</div>
+					<div class="mbox">
+						<div class="fn-clear">
+							<div class="picScroll">
+								<div class="slideBox8" id="slideBox8">
+									<div class="bd">
+										<ul>
+											{#huodong action='hlist' return="huodong" orderby='reg' pageSize='3'#}
+											<li>
+												<a href="{#$huodong.url#}" target="_blank">
+													<img src="{#$huodong.litpic#}" alt="">
+													<p>{#$huodong.title#}</p>
+													<div class="bg"></div>
+												</a>
+											</li>
+											{#/huodong#}
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="txtbox">
+								{#huodong service='huodong' action='organizer' page='1' pageSize='2'#}
+								<dl>
+									<dt><a href="{#$row.url#}" target="_blank">{#$row.nickname#}</a></dt>
+									<dd>{#$row.count#}场活动&nbsp;&nbsp;&nbsp;&nbsp;{#$row.reg#}人参与  </dd>
+								</dl>
+								{#/huodong#}
+							</div>
+						</div>
+						<div class="latest">
+							<div class="hd">
+								<ul></ul>
+								<h2><i class="righticon"></i><a href="javascript:;">最新活动</a><i class="hoticon"></i></h2>
+							</div>
+							<div class="bd">
+								<ul>
+									{#huodong action='hlist' orderby='reply' pageSize='50'#}
+									<li>
+										<span>结束时间：{#$row.end|date_format:"%Y-%m-%d"#}</span>
+										<em>回顾</em>
+										<a href="{#$row.url#}" target="_blank">{#$row.title#}</a>
+									</li>
+									{#/huodong#}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 影音 活动 e -->
+	<!-- 图文社区 s -->
+	<div class="wrap">
+		<div class="module module-picture">
+			<div class="mtitle pdl20 fn-clear">
+				<h2 class="fn-left"><a href="{#$image_channelDomain#}">图文社区</a></h2>
+				<ul class="aboutlink fn-clear">
+					{#image action='type' return='type' pageSize='6'#}
+					<li><a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>┆</li>
+					{#/image#}
+				</ul>
+			</div>
+			<div class="mbox">
+				<ul class="list">
+					{#image action='alist' return='imglist' flag='r' pageSize='7'#}
+					<li class="no{#$_bindex.imglist#}"><a href="{#$imglist.url#}" target="_blank"><img src="{#changeFileSize url="{#$imglist.litpic#}" type="middle"#}" alt="{#$imglist.title#}"><div class="title"><p>{#$imglist.title#}</p></div></a></li>
+					{#/image#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 图文社区 e -->
+	<!-- 版块列表 s -->
+	<div class="wrap">
+		<div class="collection">
+			<ul class="fn-clear">
+				<li class="no1">
+					<span class="no">01</span>
+					<h3><a href="{#$info_channelDomain#}" target="_blank">分类信息</a></h3>
+					<div class="link">
+						{#info action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/info#}
+					</div>
+				</li>
+				<li class="no2">
+					<span class="no">02</span>
+					<h3><a href="{#$article_channelDomain#}" target="_blank">新闻频道</a></h3>
+					<div class="link">
+						{#article action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/article#}
+					</div>
+				</li>
+				<li class="no3">
+					<span class="no">03</span>
+					<h3><a href="{#$job_channelDomain#}" target="_blank">招聘频道</a></h3>
+					<div class="link">
+						<a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">找工作</a>
+						<a href="{#getUrlPath service='job' template='resume'#}" target="_blank">找人才</a>
+						<a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">填简历</a>
+						<a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_blank">发职位</a>
+					</div>
+				</li>
+				<li class="">
+					<div class="pic">
+						<a href="" target="_blank"><img src="{#$templets_skin#}upfile/collection_1.jpg" alt=""></a>
+					</div>
+				</li>
+				<li class="no4">
+					<span class="no">04</span>
+					<h3><a href="{#$house_channelDomain#}" target="_blank">房产频道</a></h3>
+					<div class="link">
+						<a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">新楼盘</a>
+						<a href="{#getUrlPath service='house' template='sale'#}" target="_blank">二手房</a>
+						<a href="{#getUrlPath service='house' template='zu'#}" target="_blank">出租房</a>
+						<a href="{#getUrlPath service='house' template='broker'#}" target="_blank">找中介</a>
+					</div>
+				</li>
+
+				<li class="no5">
+					<span class="no">05</span>
+					<h3><a href="{#$tuan_channelDomain#}" target="_blank">团购频道</a></h3>
+					<div class="link">
+						{#tuan action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/tuan#}
+					</div>
+				</li>
+				<li class="">
+					<div class="pic">
+						<a href="" target="_blank"><img src="{#$templets_skin#}upfile/collection_2.jpg" alt=""></a>
+					</div>
+				</li>
+				<li class="no6">
+					<span class="no">06</span>
+					<h3><a href="{#$build_channelDomain#}" target="_blank">建材</a></h3>
+					<div class="link">
+						{#build action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/build#}
+					</div>
+				</li>
+				<li class="no7">
+					<span class="no">07</span>
+					<h3><a href="{#$shop_channelDomain#}" target="_blank">商城频道</a></h3>
+					<div class="link">
+						{#shop action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/shop#}
+					</div>
+				</li>
+				<li class="no8">
+					<span class="no">08</span>
+					<h3><a href="{#$renovation_channelDomain#}" target="_blank">装修频道</a></h3>
+					<div class="link">
+						{#renovation action='type' return='type' pageSize='5'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/renovation#}
+					</div>
+				</li>
+
+
+				<li class="no9">
+					<span class="no">09</span>
+					<h3><a href="{#$furniture_channelDomain#}" target="_blank">家具</a></h3>
+					<div class="link">
+						{#furniture action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/furniture#}
+					</div>
+				</li>
+				<li class="no10">
+					<span class="no">10</span>
+					<h3><a href="{#$home_channelDomain#}" target="_blank">家居</a></h3>
+					<div class="link">
+						{#home action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/home#}
+					</div>
+				</li>
+				<li class="no11">
+					<span class="no">11</span>
+					<h3><a href="{#$huodong_channelDomain#}" target="_blank">活动</a></h3>
+					<div class="link">
+						{#huodong action='type' return='type' pageSize='4'#}
+						<a href="{#$type.url#}" target="_blank">{#$type.typename#}</a>
+						{#/huodong#}
+					</div>
+				</li>
+				<li class="">
+					<div class="pic">
+						<a href="" target="_blank"><img src="{#$templets_skin#}upfile/collection_3.jpg" alt=""></a>
+					</div>
+				</li>
+				<li class="no12">
+					<span class="no">12</span>
+					<h3><a href="{#$marry_channelDomain#}" target="_blank">婚嫁</a></h3>
+					<div class="link">
+						<a href="{#getUrlPath service='marry' template='hotel'#}">婚宴酒店</a>
+						<a href="{#getUrlPath service='marry' template='wedding'#}">婚纱摄影</a>
+						<a href="{#getUrlPath service='marry' template='ritual'#}">婚庆礼仪</a>
+						<a href="{#getUrlPath service='marry' template='news'#}">婚尚资讯</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 版块列表 e -->
+	<!-- 品牌联盟 s -->
+	<div class="wrap">
+		<div class="module module-company" id="slideBox9">
+			<div class="mtitle pdl20 fn-clear">
+				<h2 class="fn-left"><a href="">品牌联盟</a></h2>
+				<ul class="pages"></ul>
+				<ul class="aboutlink fn-clear">
+					<li><a href="" target="_blank">电影</a>┆</li>
+					<li><a href="" target="_blank">茶烟酒</a>┆</li>
+					<li><a href="" target="_blank">家居</a>┆</li>
+					<li><a href="" target="_blank">装饰</a>┆</li>
+					<li><a href="" target="_blank">美容</a>┆</li>
+					<li><a href="" target="_blank">婚纱</a>┆</li>
+					<li><a href="" target="_blank">珠宝</a>┆</li>
+					<li><a href="" target="_blank">餐饮</a></li>
+				</ul>
+			</div>
+			<div class="mbox">
+				<div class="listbox">
+					<ul class="list fn-clear">
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-1.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-2.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-3.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-4.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-5.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-6.jpg"></a></li>
+					</ul>
+					<ul class="list fn-clear">
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-7.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-8.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-9.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-10.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-11.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-12.jpg"></a></li>
+					</ul>
+					<ul class="list fn-clear">
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-13.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-14.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-15.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-16.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-17.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-18.jpg"></a></li>
+					</ul>
+					<ul class="list fn-clear">
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-19.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-20.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-21.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-22.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-23.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-24.jpg"></a></li>
+					</ul>
+					<ul class="list fn-clear">
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-4.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-5.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-9.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-10.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-5.jpg"></a></li>
+						<li><a href="" target="_blank"><img src="{#$templets_skin#}upfile/comlogo-6.jpg"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 品牌联盟 e -->
+
+
+	<div class="wrap">
+		<div class="module module-friendlink inBox">
+			<a href="" class="apply" target="_blank">申请友情链接</a>
+			<ul class="mtitle inHd fn-clear">
+				<li>友情链接</li>
+				{#*
+				<li>政府上网</li>
+				<li>学校上网</li>
+				<li>企业上网</li>
+				*#}
+			</ul>
+			<div class="inBd">
+				<ul>
+					<li>
+						{#siteConfig action='friendLink' return='friendLink' module='siteConfig'#}
+						<a href="{#$friendLink.sitelink#}" target="_blank">{#$friendLink.sitename#}</a>
+						{#/siteConfig#}
+					</li>
+				</ul>
+				{#*
+				<ul>
+					<li>
+						<a href="" target="_blank">形象网</a>
+						<a href="" target="_blank">唐山论坛</a>
+						<a href="" target="_blank">晋江便民网</a>
+						<a href="" target="_blank">大客家网</a>
+						<a href="" target="_blank">六安论坛</a>
+						<a href="" target="_blank">雁鸣湖旅游度假村</a>
+						<a href="" target="_blank">惠东论坛</a>
+						<a href="" target="_blank">深圳论坛</a>
+						<a href="" target="_blank">许昌论坛</a>
+						<a href="" target="_blank">长春论坛</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="" target="_blank">深港在线</a>
+						<a href="" target="_blank">海峡网</a>
+						<a href="" target="_blank">114电话查询</a>
+						<a href="" target="_blank">邯郸之窗</a>
+						<a href="" target="_blank">广州天气</a>
+						<a href="" target="_blank">乐考网</a>
+						<a href="" target="_blank">途牛旅游网</a>
+						<a href="" target="_blank">荆门网</a>
+						<a href="" target="_blank">洪湖新闻网</a>
+						<a href="" target="_blank">文玩世家</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="" target="_blank">seo培训</a>
+						<a href="" target="_blank">常熟零距离</a>
+						<a href="" target="_blank">安溪网</a>
+						<a href="" target="_blank">客家房产网</a>
+						<a href="" target="_blank">饶平客家论坛</a>
+						<a href="" target="_blank">深圳网</a>
+						<a href="" target="_blank">竹山网赣州信息港</a>
+						<a href="" target="_blank">健康论坛</a>
+						<a href="" target="_blank">清远信息港</a>
+						<a href="" target="_blank">客都网</a>
+					</li>
+				</ul>
+				*#}
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部 s -->
+	<div id="footer">
+		<div class="footer">
+			<div class="f_t">
+				<p>
+					<a href="" target="_blank">公司简介</a><em>┆</em>
+					<a href="" target="_blank">广告合作</a><em>┆</em>
+					<a href="" target="_blank">诚聘英才</a><em>┆</em>
+					<a href="" target="_blank">免责声明</a><em>┆</em>
+					<a href="" target="_blank">服务条款</a><em>┆</em>
+					<a href="" target="_blank">联系我们</a><em>┆</em>
+					<a href="" target="_blank">问卷调查</a><em>┆</em>
+					<a href="" target="_blank">网站地图</a>
+				</p>
+			</div>
+		</div>
+		<div class="footer_d">
+			<p>Copyright © 2016<a class="c_blue" href="">www.ikuman.cn</a>All Rights Reserved 苏ICP备13047463号</p>
+			<p>苏州酷曼 版权所有 未经授权请勿转载 广告热线：0753-2626000 &nbsp;&nbsp;&nbsp;&nbsp;客服QQ：<a target="_blank" href=""><img src="{#$templets_skin#}images/button_121.gif" alt="联系客服" title="联系客服"></a>&nbsp;广告合作：<a target="_blank" href=""><img src="{#$templets_skin#}images/button_121.gif" alt="联系客服" title="联系客服"></a>&nbsp;团购客服：<a target="_blank" href=""><img src="{#$templets_skin#}images/button_121.gif" alt="联系客服" title="联系客服"></a></p>
+			<p><a href="" target="_blank" rel="nofollow"><img src="{#$templets_skin#}images/gaba.png">公安部备案：32059002001108号</a></p>
+			<p class="query">
+				<a href="" rel="nofollow" target="_blank"><img src="{#$templets_skin#}images/wljc.jpg"></a>
+				<a href="" target="_blank"><img src="{#$templets_skin#}images/blxx.gif"></a>
+				<a href="" rel="nofollow" target="_blank"><img src="{#$templets_skin#}images/ggxxaq.gif"></a>
+				<a href="" rel="nofollow" target="_blank"><img src="{#$templets_skin#}images/jin05.gif"></a>
+				<a href="" target="_blank" rel="nofollow"><img src="{#$templets_skin#}images/360.png"></a>
+			</p>
+		</div>
+	</div>
+	<!-- 底部 e -->
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
