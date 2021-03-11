@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>【工资待遇查询】查工资、晒工资、工资标准、薪酬报告-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="工资,工资待遇,工资查询,工资标准,晒工资,查工资,薪酬报告" />
+<meta name="description" content="{#$cfg_shortname#}★工资待遇★频道，提供各行业、职位、公司工资待遇及工资标准查询，独家个人薪酬报告，全面了解自己工资水平，查工资、晒工资，就来{#$cfg_shortname#}！" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/wage.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageMark = "payroll"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear">
+	<div class="screening">
+		<div class="hd">
+			<i></i><p>筛选条件</p>
+		</div>
+		<div class="bd">
+			<dl class="open">
+				<dt><a href="javascript:;">所属行业<i></i></a></dt>
+				<dd>
+					{#job action="industry" return="industry"#}
+					<a href="{#getUrlPath service='job' template='payroll-list' param="industry={#$industry.id#}"#}">{#$industry.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="box box1">
+			<div class="shearWage">
+				<a href="#box2"><img src="{#$templets_skin#}images/u.png">我要匿名晒工资</a>
+			</div>
+			<div class="tabhead">
+				<ul class="fn-clear">
+					<li data-type="industry" class="curr"><a href="javascript:;">热门行业工资</a></li>
+					<li data-type="company"><a href="javascript:;">热门公司工资</a></li>
+					<li data-type="area"><a href="javascript:;">热门区域工资</a></li>
+				</ul>
+			</div>
+			<div class="tabbody">
+				<div class="tbbox"><div class="chart" id="chart"></div></div>
+			</div>
+		</div>
+		<div class="box box2" id="box2">
+			<p class="t"><span>我要匿名晒工资</span>友情提醒：登陆后才能成功分享工资,且全部匿名显示,请放心分享</p>
+			<div class="shearWageForm">
+				<form action="{#$cfg_basehost#}/include/ajax.php?service=job&action=addsalary">
+					<input type="hidden" name="cid" id="cid" />
+					<input type="hidden" name="addr" id="addrid" />
+					<div class="form-row fn-clear">
+						<span class="type"><s>*</s>所在公司：</span>
+						<div class="in"><input type="text" class="int companyname" name="company" placeholder="例如 : 百度"></div>
+					</div>
+					<div class="form-row fn-clear">
+						<div class="area">
+							<span class="type"><s>*</s>工作地点：</span>
+							<div class="in"><a href="javascript:;" class="addr"><span id="addr">选择区域</span><span class="caret"></span></a></div>
+						</div>
+					</div>
+					<div class="form-row fn-clear">
+						<div class="job">
+							<span class="type"><s>*</s>担任职位：</span>
+							<div class="in"><input type="text" class="int jobname" name="work" id="zn" placeholder="例如 : 销售顾问"></div>
+						</div>
+					</div>
+					<div class="form-row fn-clear">
+						<div class="wage">
+							<span class="type"><s>*</s>每月工资：</span>
+							<div class="in ftrp"><span class="ftr">{#echoCurrency type='short'#}</span><input type="text" class="int wagenum" name="wage" onkeyup="value=value.replace(/\D+/ig,'')" maxlength="8"></div>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type"></span>
+						<div class="btn">
+							<input type="submit" class="submit" value="发布工资" />
+							<span class="error"></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery-ui-autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/highcharts.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/highcharts-exporting.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/wage.js"></script>
+</body>
+</html>

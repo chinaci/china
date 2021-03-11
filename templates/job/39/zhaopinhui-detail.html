@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-招聘会-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="招聘会,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="招聘会,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/recruitd.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var pointLon = {#$detail_fairs['lnglat'][0]#}, pointLat = {#$detail_fairs['lnglat'][1]#}, title = '{#$detail_fairs['title']#}', pointAddr = '{#$detail_fairs['addr'][0]#} {#$detail_fairs['addr'][1]#} {#$detail_fairs['address']#}';
+	var site_map = '{#$site_map#}';
+</script>
+</head>
+
+<body>
+{#$pageMark = "zhaopinhui"#}
+{#include file="top.html"#}
+
+<!-- 导航条 -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$job_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='job' template='zhaopinhui'#}" target="_blank">招聘会</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='job' template='zhaopinhui' id={#$detail_id#}#}">{#$detail_title#}</a></li>
+	</ul>
+</div>
+
+<!-- 正文 -->
+<div class="wrap">
+	<div class="box">
+		<div class="title">
+			<h2 class="bt">{#$detail_title#}</h2>
+			<div class="more fn-clear">
+				<div class="info">{#$detail_pubdate|date_format:"%Y-%m-%d"#}&nbsp;{#$detail_pubdate|date_format:"%H:%M"#}&nbsp;&nbsp;{#$detail_click#}次浏览</div>
+				<div class="shear"><div class="bdsharebuttonbox bdshare-button-style1-16"><a href="#" class="bds_more" data-cmd="more"></a></div></div>
+			</div>
+		</div>
+		<div class="base fn-clear">
+			<div class="pic">
+				<div class="img">
+					<img src="{#$detail_fairs['pics'][0]['pic']#}" alt="{#$detail_fairs['title']#}" title="{#$detail_fairs['title']#}" />
+				</div>
+			</div>
+			<div class="txt">
+				<p><span class="t">场馆：</span>{#$detail_fairs['title']#}</p>
+				<p><span class="t">时间：</span><span class="red">{#$detail_date|date_format:"%Y-%m-%d"#} {#$detail_began#}-{#$detail_end#}</span></p>
+				<p><span class="t">地址：</span><span class="adr">{#$detail_fairs['addr'][0]#} {#$detail_fairs['addr'][1]#} {#$detail_fairs['address']#}</span> <a href="#xl" class="do">地图</a> <a href="#xl" class="do">公交线路</a></p>
+				{#if $detail_fairs['tel'] != ""#}<p><span class="t">电话：</span>{#$detail_fairs['tel']#}</p>{#/if#}
+				<p>{#if $detail_fairs['fax'] != ""#}<span class="t">传真：</span><span class="v">{#$detail_fairs['fax']#}&nbsp;&nbsp;</span>{#/if#}{#if $detail_fairs['email'] != ""#}<span class="t">邮箱：</span><span class="v">{#$detail_fairs['email']#}</span>{#/if#}{#if $detail_fairs['qq'] != ""#}<span class="t">QQ：</span>{#$detail_fairs['qq']#}{#/if#}</p>
+			</div>
+		</div>
+		<div class="mkh">
+			<div class="sck">
+				<ul class="tabnav fn-clear">
+					<li class="curr">详细内容</li>
+					<li>场馆介绍</li>
+					<li>交通线路</li>
+					<li>场馆环境<span class="red">{#$detail_fairs['pics']|@count#}图</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mkb detail" id="detail">
+			{#$detail_note#}
+		</div>
+		<div class="mkb">
+			<h3 class="h">场馆介绍</h3>
+			{#$detail_fairs['note']#}
+		</div>
+		<div class="mkb">
+			<h3 class="h" id="xl">线路</h3>
+			<div class="fn-clear">
+				<div class="map">
+					<!--百度地图容器-->
+					<div style="width:450px;height:320px;" id="dituContent"></div>
+				</div>
+				<dl class="lx">
+					<dt class="t">乘车路线 :</dt>
+					<dd>{#$detail_fairs['traffic']#}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="mkb">
+			<h3 class="h" id="hj">场馆环境</h3>
+			<div class="hjpic">
+				{#foreach from=$detail_fairs['pics'] item=pics#}
+				<p><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$pics['pic']#}" alt="{#$pics['title']#}" /><center>{#$pics['title']#}</center></p>
+				{#/foreach#}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/recruitd.js"></script>
+</body>
+</html>

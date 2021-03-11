@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>招聘会-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="招聘会,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="招聘会,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/recruit.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var addr = {#$addr|string_format:"%d"#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='zhaopinhui'#}#}
+
+<body>
+{#$pageMark = "zhaopinhui"#}
+{#include file="top.html"#}
+
+<!-- 筛选 -->
+<div class="wrap box">
+	<div class="boxb fn-clear">
+		<div class="sx">
+			<div class="t">根据要求检索：</div>
+			<div class="sxlist">
+				{#if !$centerName#}
+				<dl id="addrObj">
+					<dt><a href="javascript:;" id="addr" title="{#$addrName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addr='%addr%'#}#J_crumbs">{#if $addrName#}{#$addrName#}{#else#}按区域{#/if#}<i></i></a></dt>
+					<dd class="area area1"></dd>
+				</dl>
+				{#/if#}
+				<dl id="fairsObj">
+					<dt><a href="javascript:;" id="fairs" title="{#$centerName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} center='%center%'#}#J_crumbs">{#if $centerName#}{#$centerName#}{#else#}按场馆{#/if#}<i></i></a></dt>
+					<dd class="fairs"></dd>
+				</dl>
+				<dl><dt><a href="javascript:;" id="dateObj" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} date='%date%'#}#J_crumbs"><label id="date">{#if $date#}{#$date#}{#else#}按举办时间{#/if#}</label><i></i></a></dt></dl>
+			</div>
+		</div>
+		<div class="ss fn-clear">
+			<form action="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} title='%title%'#}#J_crumbs">
+				<input type="search" placeholder="请输入关键词" class="inp" value="{#$title#}" />
+				<input type="submit" value="搜索" class="submit" />
+			</form>
+		</div>
+	</div>
+</div>
+<!-- 列表 -->
+<div class="wrap">
+	<ul class="list">
+
+		{#job action="fairs" return="fairs" addr={#$addr#} center={#$center#} date={#$date#} title={#$title#} page={#$page#} pageSize="20"#}
+		<li>
+			<div class="pic">
+				<div class="img"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$fairs.fairs['pics'][0]['pic']#}" alt="{#$fairs['title']#}"></div>
+				<div class="btn">
+					<div class="a">
+						<a href="{#$fairs.url#}#detail" target="_blank">[详细内容]</a> <a href="{#$fairs.url#}#xl" target="_blank">[交通线路]</a> <a href="{#$fairs.url#}#hj" target="_blank">[场馆环境]</a>
+					</div>
+					<div class="bg"></div>
+				</div>
+				<div class="ewm" data-url="{#$fairs.url#}"><div class="k"></div></div>
+			</div>
+			<div class="txt">
+				<a href="{#$fairs.url#}" class="title" target="_blank"><span class="bt">{#$fairs.title#}</span><span class="tn">[{#$fairs.fairs['pics']|@count#}图]</span></a>
+				<p><span class="t">场馆：</span><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} center={#$fairs.fairs['id']#}#}#J_crumbs">{#$fairs.fairs['title']#}</a></p>
+				<p><span class="t">时间：</span><span class="red">{#$fairs.date#} {#$fairs.began#}-{#$fairs.end#} </span></p>
+				<p><span class="t">地址：</span><span class="adr">{#$fairs.fairs.addr[0]#} {#$fairs.fairs.addr[1]#} {#$fairs.fairs.address#}</span><a href="{#$fairs.url#}#xl" class="do" target="_blank">地图</a><a href="{#$fairs.url#}#xl" class="do" target="_blank">公交线路</a></p>
+				<p>{#if $fairs.fairs.tel != ""#}<span class="t">电话：</span>{#$fairs.fairs.tel#}&nbsp;&nbsp;{#/if#}{#if $fairs.fairs.fax != ""#}传真：{#$fairs.fairs.fax#}&nbsp;&nbsp;{#/if#}{#if $fairs.fairs.email != ""#}邮箱：{#$fairs.fairs.email#}{#/if#}</p>
+				<p class="detail fn-clear">
+					<a href="{#$fairs.url#}" class="d" target="_blank">详细介绍</a>
+					{#if $fairs.fairs.qq != ""#}<a class="ctag ctag-qq"></a><span>QQ：{#$fairs.fairs.qq#}</span>{#/if#}
+				</p>
+			</div>
+		</li>
+		{#/job#}
+		{#if $pageInfo.totalCount == 0#}
+		<li class="empty">抱歉！ 暂无相关招聘会！</li>
+		{#/if#}
+	</ul>
+
+	<!-- 分页 -->
+	{#getPageList service='job' template='zhaopinhui' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v=2"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/recruit.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+html {background-color: #f4f4f4;}
+
+/* 全选 搜索 */
+.topDo {font-size: 14px;clear: both;}
+.checkAll {float: left;height: 36px;line-height: 36px;margin-top: 20px;}
+.checkAll .cklab {position: relative;margin-right: 20px;margin-left: 26px;cursor: pointer;}
+.checkAll .cklab i {top: 2px;}
+.cklab i {position: absolute;left:0;top:4px;display: block;width: 17px;height: 17px;background-position: -192px -250px;z-index: 1;transition:all .05s;cursor: pointer;}
+.cklab.selected i {background-position: -192px -305px;}
+.checkAll .cklab span {margin-left: 4px;}
+.job-check {position: relative;top:3px;width: 17px;height: 17px;opacity:0;filter:alpha(opacity=0);z-index: 2;cursor: pointer;}
+.checkAll a , .job-item.curr .btn a {padding:5px 12px;color: #fff;border-radius:3px;}
+.checkAll a.yp ,.job-item.curr .btn a.yp {background: #1ab394;}
+.checkAll a.sc ,.job-item.curr .btn a.sc {background: #f8ac59;}
+.checkAll a.yp:hover ,.job-item.curr .btn a.yp:hover {background: #0C9478;}
+.checkAll a.sc:hover ,.job-item.curr .btn a.sc:hover {background: #DE8B31;}
+
+.topDo .search {float: right;margin-top: 20px;}
+.topDo .search .inp {width: 265px;padding:4px 10px;color: #666;border:1px solid #ededed;}
+.topDo .search .inp:focus {border-color: #ccc;}
+.topDo .search .submit {height: 31px;padding:4px 10px;background:#5cb85c;border:0;border-radius:3px;color: #fff;cursor: pointer;}
+.topDo .search .submit:hover {background:#44A744;}
+
+.autocomplete-suggestions {margin: -1px 0 0 0;}
+
+
+/* 职位列表 */
+.job-list {margin: 10px 0;font-size: 14px;}
+.job-item {position: relative;margin-top: 15px;border: 1px solid #e8e8e8;box-shadow: 0 0 10px rgba(0,0,0,.05);cursor: pointer;background: #fff;}
+.job-item .hd {height: 24px;margin:20px 25px 2px;overflow: hidden;}
+.job-item .cklab {margin-right: 12px;}
+.job-item .cklab , .job-item .name ,.job-tag {display: inline-block;float: left;}
+.job-item .cklab {position: relative;}
+
+.job-item .name {max-width:70%;font-size: 16px;color: #1155cc;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.job-item .bd {margin:0 33px 20px;padding-left: 20px;border-left: 2px solid #fff;}
+.job-item.curr .bd {border-left-color: #f39a3a;}
+.job-item .base {padding:5px 0 0;line-height: 25px;}
+.job-item .cname ,.job-item .ctaglist ,.job-item .j {float: left;}
+.job-item .cname {margin-right: 10px;}
+.job-item .cname a {color: #555;}
+.job-item .ctaglist {height: 25px;margin-right: 10px;}
+.job-item .ctaglist .ctag {display: inline-block;width: 25px;height: 25px;margin:0 2px;}
+.job-item .j {color: #666;}
+.job-item .j span {margin:0 10px 0 6px;}
+.job-item .j em {color: #dedede;}
+.job-item .des {height: 42px;color: #999;transition:height .3s;overflow: hidden;}
+.job-item.curr .duties {height: 30px;overflow: hidden;}
+.job-item.curr .des {height: auto;}
+.job-item.curr .duties span {display: block;line-height: 30px;}
+.job-item.curr .duties span.txt {line-height: 20px;}
+.job-item .btn {height: 30px;line-height: 30px;margin-top: 5px;}
+.job-item.curr .btn {margin-top: 15px;}
+.job-item .btn a {color: #739fec;}
+.job-item a:hover {text-decoration: underline;}
+.job-item .red {color: #fd5f39;}
+.state {position: absolute;right:10px;top:10px;}
+
+.job-item .nature {float: left; font-size: 12px; font-style: normal; cursor: default; margin: 4px 0 0 10px; background-color: #f60; padding: 0 3px; color: #fff;}
+.job-item .n1 {background-color: #f8ac59;}
+.job-item .n2 {background-color: #5cb85c;}
+.job-item .n3 {background-color: #1ab394;}
+.empty {height: 300px; line-height: 300px; text-align: center; background-color: #fff;}
+
+
+/* 背景图 */
+.job-tag , .sort i ,.job-item .state , .layer_box .hd .close ,.iconk i {background-image:url(../images/jobicons.png);background-repeat: no-repeat;}
+
+
+.ui_state_tips .ui_icon_bg {margin: 5px 0 2px 9px;}
+.ui_state_tips .ui_content {margin-top: 9px;}
+
+.state-tuiguang {width: 32px;height: 32px;background-position: -245px -23px;}
+.state-jipin {top:0;right:0;width: 45px;height: 45px;background-position: -83px -130px;}
+.state-tuijian {width: 32px;height: 32px;background-position: -245px -203px;}

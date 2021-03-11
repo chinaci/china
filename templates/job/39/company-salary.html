@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="{#$detail_title#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_title#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company_zp.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var pageUrl = '{#$detail_domain#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageMark = "company"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="box box1 fn-clear">
+		<div class="logo"><i></i><img src="{#$detail_logo#}" alt="{#$detail_title#}" /></div>
+		<div class="txt">
+			<div class="title fn-clear">
+				<div class="cname">{#$detail_title#}</div>
+				<div class="ctaglist">
+					{#if $detail_license#}<a class="ctag ctag-renzhen" title="认证企业" style="cursor:default;"></a>{#/if#}
+					<a class="ctag ctag-pic"></a>
+					<!-- <a class="ctag ctag-shipin"></a>
+					<a class="ctag ctag-weixin"></a>
+					<a class="ctag ctag-qq"></a>
+					<a class="ctag ctag-ewm"></a> -->
+				</div>
+			</div>
+			<p><span>行业：{#$detail_industry[1]#}</span><span>规模：{#$detail_scale#}</span><span>性质：{#$detail_nature#}</span><span>主页：<a href="http://{#$detail_site#}" target="_blank">{#$detail_site#}</a></span></p>
+			<p>地址：{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</p>
+			<div class="link">
+				<a href="{#$detail_domain#}">企业首页</a>
+				{#if $detail_pics|@count > 0#}<a href="{#getUrlPath service='job' template='company-album' id={#$detail_id#}#}">企业相册({#$detail_pics|@count#})</a>{#/if#}
+				{#if $detail_pcount > 0#}<a href="{#getUrlPath service='job' template='company-job' id={#$detail_id#}#}">招聘职位({#$detail_pcount#})</a>{#/if#}
+				<a href="{#getUrlPath service='job' template='company-salary' id={#$detail_id#}#}" class="curr">工资({#$detail_wcount#})</a>
+			</div>
+		</div>
+		<div class="ewm"></div>
+	</div>
+
+	<div class="pt ptzw boxlist">
+
+		<div class="th">
+			<table>
+				<thead>
+					<tr>
+						<th>职位</th>
+						<th class="w">平均工资/月</th>
+						<th class="digit"><em>最低</em><s></s><em>最高</em></th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+		{#job action="wage" return="wage" company={#$detail_id#} page=1 pageSize=1#}
+		<div class="clist">
+			<table>
+				<tbody>
+					{#foreach from=$wage.wage item=w#}
+					<tr class="tw" data-avg="{#$w.avg|string_format:"%.0f"#}" data-min="{#$w.min#}" data-max="{#$w.max#}">
+						<td>{#$w.work#}（{#$w.count#}条）</td>
+						<td class="w">{#echoCurrency type='symbol'#}{#$w.avg|string_format:"%.0f"#}</td>
+						<td class="digit"><em>{#echoCurrency type='symbol'#}{#$w.min#}</em><s><i title="平均工资：{#echoCurrency type='symbol'#}{#$w.avg|string_format:"%.0f"#}" style="left: {#($w.avg/{#$w.max#}*100)|string_format:"%.0f"#}%"></i></s><em>{#echoCurrency type='symbol'#}{#$w.max#}</em></td>
+					</tr>
+					{#/foreach#}
+				</tbody>
+			</table>
+		</div>
+		{#/job#}
+
+		{#if $pageInfo.totalCount == 0#}
+		<div class="empty">抱歉！ 该公司暂无相关信息！</div>
+		{#/if#}
+
+		<div class="tl">
+			<p>图例： <span class="s-c-flag"></span>工资范围 <span class="s-c-flag s-c-flag2"></span>平均工资</p>
+			<p>说明： <span class="grey">所有工资数据来自用户匿名分享。工资水平受地域、工作年限等多种因素影响，仅供参考。</span></p>
+		</div>
+	</div>
+
+	<div class="box box2" id="box2">
+		<p class="t"><span>我要匿名晒工资</span>友情提醒：登陆后才能成功分享工资,且全部匿名显示,请放心分享</p>
+		<div class="shearWageForm">
+			<form action="{#$cfg_basehost#}/include/ajax.php?service=job&action=addsalary">
+				<input type="hidden" name="cid" id="cid" value="{#$detail_id#}" />
+				<input type="hidden" name="addr" id="addrid" />
+				<div class="form-row fn-clear">
+					<div class="area">
+						<span class="type"><s>*</s>工作地点：</span>
+						<div class="in"><a href="javascript:;" class="addr"><span id="addr">选择区域</span><span class="caret"></span></a></div>
+					</div>
+				</div>
+				<div class="form-row fn-clear">
+					<div class="job">
+						<span class="type"><s>*</s>担任职位：</span>
+						<div class="in"><input type="text" class="int jobname" name="work" id="zn" placeholder="例如 : 销售顾问"></div>
+					</div>
+				</div>
+				<div class="form-row fn-clear">
+					<div class="wage">
+						<span class="type"><s>*</s>每月工资：</span>
+						<div class="in ftrp"><span class="ftr">{#echoCurrency type='short'#}</span><input type="text" class="int wagenum" name="wage" onkeyup="value=value.replace(/\D+/ig,'')" maxlength="8"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<span class="type"></span>
+					<div class="btn">
+						<input type="submit" class="submit" value="发布工资" />
+						<span class="error"></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery-ui-autocomplete.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/companyh.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/payroll.js"></script>
+</body>
+</html>
