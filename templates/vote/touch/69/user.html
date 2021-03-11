@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_name#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$vote_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/user.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var user = {
+	'id' : {#$detail_id#},
+	'name' : '{#$detail_name#}'
+}
+var vote = {
+	'id' : {#$detail_vote.id#},
+	'title' : '{#$detail_vote.title#}',
+	'voteuser' : {#$detail_vote.voteuser#},
+	'state' : {#$detail_vote.state#}
+}
+</script>
+</head>
+
+<body>
+{#$pageTitle = $detail_name#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<!-- 相册 -->
+<div class="slideBox">
+  	<div class="pic swiper-wrapper">
+  		{#if $detail_imglist#}
+  		{#foreach from=$detail_imglist key=n item=i#}
+	    <div class="swiper-slide">
+	         <img src="{#changeFileSize url="{#getFilePath($i)#}" type="large"#}" alt="{#$detail_vote.title#}选手-{#$detail_name#}">
+	    </div>
+	    {#/foreach#}
+	    {#else#}
+	    <div class="swiper-slide">
+	         <a href="#" target="_blank"><img src="{#changeFileSize url="{#getFilePath($detail_litpic)#}" type="large"#}" alt=""></a>
+	    </div>
+	    {#/if#}
+   	</div>
+    <div class="swiper-pagination"></div>
+</div>
+<!-- 相册 -->
+<div class="vote_me">
+	<p class="fn-clear zi_yang"><span>{#$detail_name#}</span><a href="javascript:;" class="vote">投我一票</a></p>
+	<p class="ticket_num"><span>编号：{#$detail_number#}</span> <span>人气：{#$detail_click#}</span> <span>票数：<i class="votecount">{#$detail_votecount#}</i></span></p>
+</div>
+<div class="fn-clear basic_info">
+	<ul class="fris_t">
+		<li class="ag_e">年龄</li>
+		<li class="weigh_t">{#if $detail_age#}{#$detail_age#}岁{#else#}未知{#/if#}</li>
+	</ul>
+	<ul class="fris_t">
+		<li class="ag_e">身高</li>
+		<li class="weigh_t">{#if $detail_uheight#}{#$detail_uheight#}cm{#else#}未知{#/if#}</li>
+	</ul>
+	<ul>
+		<li class="ag_e">体重</li>
+		<li class="weigh_t">{#if $detail_uweight#}{#$detail_uweight#}kg{#else#}未知{#/if#}</li>
+	</ul>
+</div>
+<div class="inters_t">
+	<p><span class="where_from">来自：</span><span>{#if $detail_from#}{#$detail_from#}{#else#}未知{#/if#}</span></p>
+	<p><span class="where_from">兴趣：</span><span>{#if $detail_hobby#}{#$detail_hobby#}{#else#}未知{#/if#}</span></p>
+	<p class="visit_or"><span>参赛文选</span></p>
+	<div class="good_body">
+		{#if $detail_mbody#}{#$detail_mbody#}{#else#}{#$detail_body#}{#/if#}
+	</div>
+</div>
+<div class="more">
+	<a href="javascript:;" class="more_display">显示更多<i></i></a>
+	<a href="javascript:;" class="more_hidden d">收起更多<i></i></a>
+</div>
+<div class="discuss" id="replyList" data-url="{#getUrlPath service='huodong' template='business' id='%id'#}">
+	<div class="comments-lead">
+	 	<span>网友评论</span>
+	 	<p class="commcount">0</p>
+	 	<a href="javascript:;" class="reply">发表评论</a>
+	 </div>
+	<ul></ul>
+	<div class="loading" data-img="{#$cfg_staticPath#}/images/ui/loading.gif"><img src="{#$cfg_staticPath#}/images/ui/loading.gif" alt=""></div>
+	<div class="fanye">
+		<div class="fan-l"><span>&lt;</span></div>
+		<div class="page">1/1</div>
+		<div class="fan-r"><span>&gt;</span></div>
+	</div>
+</div>
+<div href="javascript:;" class="share_friends HN_PublicShare"></div>
+
+<div class="boot_vote fn-clear">
+	<ul class="fn-clear">
+		<li class="kl"><a href="javascript:;" class="replybtm"><i></i>我要评论</a></li>
+		{#*<li class="me_vote"><a href="javascript:;" class="baoming"><i></i>报名参加</a></li>*#}
+	</ul>
+</div>
+
+<!-- 评论框 -->
+<div class="layer">
+	<div class="top fn-clear">
+	<div class="top-l fn-left"><a href="javascript:;">返回</a></div>
+	<div class="top-r fn-right">发表</div>
+	</div>
+	<div class="txt">
+		<div class="textarea" contenteditable="true"></div>
+	</div>
+	<div class="editor">
+		<input class="item emotion" type="button" />
+	</div>
+	<div class="emotion-box">
+		<ul>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+			<li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="tymodal fn-hide">
+	<a href="javascript:;" class="close">×</a>
+	<div class="title"></div>
+	<div class="text"></div>
+</div>
+<div class="disk"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$vote_description#}',
+		"title": '{#$detail_name#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='vote' template='user' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/user.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

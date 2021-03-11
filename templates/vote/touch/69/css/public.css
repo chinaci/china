@@ -1,0 +1,36 @@
+html{background-color: rgb(238, 238, 238);}
+
+/*底部*/
+.fee_t{background-color: #f4f4f4; color: #aaa; font-size: 0.22rem; border-top: 1px solid #e6e6e6; text-align: center; margin: 0 0; padding: 0.23rem 0;margin-top: 10px;margin-bottom: 70px;}
+.fee_t ul{color: #ccc; font-size: 0.25rem;}
+.fee_t ul li{list-style: none;padding: 0 0.17rem; display: inline-block; line-height: 0.3rem; vertical-align: middle; border-right: 1px solid #ccc;color: #666;}
+.fee_t ul li:last-child {border-right: none;}
+.fee_t ul li a{color: #666; font-size: 0.26rem;}
+.fee_t p{margin-top: 0.15rem;}
+
+
+/*翻页 s*/
+.fanye{border-top: none;display: none;}
+.fanye{border-top: 0.02rem solid #eeeeee; background: #ffffff; text-align: center; position: relative; padding:0.3rem 0; font-size: 0.28rem; color: #aaa;}
+.fanye .fan-l{display: block; position: absolute; left:0.2rem; top: 0.26rem;}
+.fanye  span{cursor: default; color: #aaa; border: 0.02rem solid #ebebeb; background-color: #f0f0f0; background-image: -webkit-gradient(linear,left top,left bottom,from(#fafafa),to(#f0f0f0)); padding: 0 1rem; border-radius: 0.06rem; vertical-align: middle; display: inline-block;}
+.fanye .fan-r{display: block; position: absolute; top: 0.26rem; left: auto; right: 0.2rem;}
+/*翻页 e*/
+
+
+/*弹出层*/
+.tymodal {position: fixed; top: 50%; left: 0.6rem; right: 0.6rem; -moz-transform: translate(0,-50%); -webkit-transform: translate(0,-50%); transform: translate(0,-50%); z-index: 9999991; padding: 0.2rem; background-color: #fff; border-radius: 0.08rem; text-align: center; font-size: 0.32rem; }
+.tymodal .title {padding-bottom: .2rem;margin-bottom: .2rem;border-bottom: 1px solid #ccc;font-size: .34rem;}
+.tymodal .close {position: absolute;right:.2rem;top:.2rem;display: block;width: 0.46rem; height: 0.46rem;font-family: tahoma,arial,\5b8b\4f53,sans-serif;font-size: .4rem;line-height: .4rem;}
+.disk {background-color: #000; opacity: .7!important; top: 0; left: 0; bottom: 0; width: 100%; z-index: 999999; position: fixed; display: none; }
+
+.toupiao label {display: block;margin:.2rem 0;}
+.toupiao label input {width: 60%;padding:.1rem;border-radius:3px;}
+.toupiao label input, .toupiao label input:focus, .toupiao label input:active {border:1px solid #ccc;outline:none;}
+.toupiao label input.error {border-color: #f60;}
+.toupiao label input.mtel.error {color: #f60;}
+input.error::-webkit-input-placeholder {color: #f60;}
+input.error::input-placeholder {color: #f60;}
+.toupiao .votesubmit {display: block;width: 65%;height: .6rem;line-height: .6rem;margin:0 auto;background:#fb9032;color: #fff;text-align: center;border-radius:3px;transition:background .3s;}
+.toupiao .votesubmit.disabled {background: #ccc;}
+.toupiao .errorinfo {font-size: .3rem;color: #f60;}

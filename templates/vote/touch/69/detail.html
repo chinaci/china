@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$vote_keywords#}" />
+<meta name="description" content="{#$vote_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var cookiePre = '{#$cfg_cookiePre#}';
+var detail = {
+	'id' : {#$detail_id#},
+	'title' : '{#$detail_title#}',
+	'state' : {#$detail_state#}
+}
+</script>
+</head>
+
+<body>
+{#$pageTitle = $detail_title#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="votetitle">
+	<p>{#$detail_description#}</p>
+</div>
+{#*投票前*#}
+{#if !$detail_has_vote#}
+<div class="container vote_before">
+	<div class="groupList" id="groupList">
+		{#foreach from=$detail_body key=k item=q_cfg#}
+		{#$xuan_count = 0#}
+		<div class="item" data-type="{#if $q_cfg.q_type#}1{#else#}0{#/if#}">
+			<div class="result">
+				<div class="title"><span class="px">{#$k+1#}</span>.<span class="tit">{#$q_cfg.title#}</span><span class="type fn-hide">[{#if $q_cfg.q_type#}多选题{#else#}单选题{#/if#}]</span></div>
+				<div class="body fn-clear">
+					<div class="xuan_row fn-clear">
+						{#foreach from=$q_cfg.xuan key=x_k item=x_cfg#}
+						<div class="xuan" data-index="{#$x_k#}">
+							<div class="txt">
+								<span class="count">{#if $q_cfg.s_count#}{#$x_cfg.count#}票 {#/if#}{#if $q_cfg.s_ratio#}({#$x_cfg.ratio#}){#/if#}</span>
+								<label for="" class="choose" title="{#$x_cfg.txt#}"><i class="icon icon_{#if $q_cfg.q_type#}check{#else#}radio{#/if#}"></i>{#$x_cfg.txt#}</label>
+							</div>
+							<div class="pic">{#if $x_cfg.imgturl#}<img src="{#$x_cfg.imgturl#}" alt="">{#/if#}</div>
+						</div>
+						{#$xuan_count = $xuan_count + 1#}
+
+						{#if $q_cfg.s_dire && (($x_k+1) % $q_cfg.s_dire) == 0#}
+						</div>
+						<div class="xuan_row fn-clear">
+						{#/if#}
+						{#/foreach#}
+					</div>
+				</div>
+			</div>
+		</div>
+		{#/foreach#}
+	</div>
+	{#if $detail_state == 2#}
+	<a href="javascript:;" class="submit{#if $detail_state == 2#} disabled{#/if#}">已结束</a>
+	{#else#}
+	<p class="has_vote"><span>投票成功！</span></p>
+	<a href="javascript:;" class="submit">提交</a>
+	{#/if#}
+</div>
+{#*投票后*#}
+{#else#}
+<div class="container vote_after">
+	<div class="groupList" id="groupList">
+		{#foreach from=$detail_body key=k item=q_cfg#}
+		{#$xuan_count = 0#}
+		<div class="item" data-type="{#if $q_cfg.q_type#}1{#else#}0{#/if#}">
+			<div class="result">
+				<div class="title"><span class="px">{#$k+1#}</span>.<span class="tit">{#$q_cfg.title#}</span> <span class="type fn-hide">[{#if $q_cfg.q_type#}多选题{#else#}单选题{#/if#}]</span></div>
+				<div class="body fn-clear">
+					{#foreach from=$q_cfg.xuan key=x_k item=x_cfg#}
+					<div class="xuan fn-clear">
+						<div class="txt">
+							<label for="" class="choose{#if $x_cfg.active#} active{#/if#}" title="{#$x_cfg.txt#}"><i class="icon icon_{#if $q_cfg.q_type#}check{#else#}radio{#/if#}"></i>{#$x_cfg.txt#}</label>
+						</div>
+						<div class="tj fn-clear">
+							<div class="progress"><b style="width:{#$x_cfg.ratio#}"></b></div>
+							<div class="count">{#$x_cfg.count#}票 ({#$x_cfg.ratio#})</div>
+						</div>
+					</div>
+					{#/foreach#}
+				</div>
+			</div>
+		</div>
+		{#/foreach#}
+	</div>
+</div>
+{#/if#}
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$vote_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='vote' template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

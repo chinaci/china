@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$vote_title#}</title>
+<meta name="keywords" content="{#$vote_keywords#}" />
+<meta name="description" content="{#$vote_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = $vote_channelName#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="banner"><script src="/include/json.php?action=adjs&title=投票_模板一_移动端_广告一" language="javascript"></script></div>
+<div class="vote-list" id="listCon"></div>
+<div class="load">正在加载请稍后...</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$vote_description#}',
+		"title": '{#$vote_title#}',
+		"imgUrl": '{#$vote_logoUrl#}',
+		"link": '{#$vote_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

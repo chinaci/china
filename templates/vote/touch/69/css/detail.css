@@ -1,0 +1,47 @@
+html,body {background: #fff;}
+/*标题*/
+.votetitle {padding:.35rem .2rem;background:-webkit-linear-gradient(#59A0F9, #9d96fa);-o-linear-gradient(#59A0F9, #9d96fa);-moz-linear-gradient(#59A0F9, #9d96fa);linear-gradient(#59A0F9 , #9d96fa);color: #fff;}
+.votetitle h2 {margin-bottom: .3rem;text-align: center;font-size: .3rem;}
+.votetitle p {line-height: .4rem;font-size: .22rem;text-indent:2em;}
+
+/*选项列表*/
+.container {background: #fff;}
+.item .icon {display: inline-block;width:.3rem;height:.3rem;background-repeat:no-repeat;background-size:contain;vertical-align: middle;}
+
+.item {margin:.3rem 0;padding:.3rem .23rem;background: #f8f8f8;}
+/*.item:hover, .item.editing {background: #f8f8f8;border-bottom-color: transparent;}*/
+.item:last-child {border-bottom: none;}
+/*.item .result {padding:15px 35px 10px 35px;}*/
+.item .result .title {font-size: .28rem;color: #333333;margin-bottom: .4rem;}
+.item .result .type {font-size: .28rem;color: #477eee;}
+.item .result .body {font-size: .22rem;}
+.item .result .body .xuan {line-height: .4rem;margin-bottom: .3rem;}
+.item.horizontal .result .body .xuan {float:left;width:33%;}
+.item.vertical .result .body .xuan {width:80%;white-space: nowrap;}
+.item.vertical .result .body .xuan .txt {margin-bottom: .2rem;text-overflow:ellipsis;overflow: hidden;}
+.item.vertical .result .body .xuan .pic img {display: block;max-width:90%;margin-bottom: .3rem;}
+.item .result .body .xuan .choose {display: block;/*white-space: nowrap;text-overflow:ellipsis;overflow: hidden;*/}
+.item .result .body .xuan .txt {margin-bottom: .2rem;}
+.item .result .body .xuan .icon {margin:-.02rem .2rem 0 0;vertical-align: middle;}
+.item .result .body .xuan .count {float: right;margin-left: .3rem;}
+.item .result .body .xuan .pic img {width:100%;}
+  
+.icon_radio {background-image:url('../images/radio.png');}
+.icon_radioed, .active .icon_radio {background-image:url('../images/radioed.png');}
+.icon_check {background-image:url('../images/check.png');}
+.icon_checked, .active .icon_check {background-image:url('../images/checked.png');}
+
+.container .submit {display: block;margin:.66rem .23rem .54rem;height: .9rem;line-height: .9rem;text-align: center;font-size: .28rem;color: #fff;border:0;outline:none;background: #337df5;border-radius:.05rem;cursor: pointer;}
+.container .submit:hover {background: #246ee6;}
+.container .submit.disabled, .container .submit[disabled] {background: #ccc;cursor: no-drop;}
+.has_vote {position: relative;display: none;}
+.has_vote span {position: absolute;left:50%;bottom:0;margin-left: -.76rem;display: block;width: 1.52rem;height: .52rem;line-height: .52rem;text-align: center;background: #ebf2fe;border:1px solid #c3d4ff;color: #424345;border-radius:.05rem;}
+
+.vote_after .groupList {padding:.3rem 0;}
+.vote_after .item {background: #fff;padding: .1rem .23rem;margin:.2rem 0;}
+.vote_after .item .result .body .xuan {line-height: .6rem;margin-bottom: .3rem;}
+.vote_after .item .txt {}
+.vote_after .item .tj {position: relative;padding-left: .5rem;}
+.vote_after .item .tj .progress {display: block;float: left;margin-right:.2rem;width:5rem;height: 0.16rem;border-radius:.1rem;background: #f8f8f8;border:1px solid #f9f9f9;overflow: hidden;}
+.vote_after .item .tj .progress b {display: block;height:100%;background: #337df6;border-radius:.1rem;}
+.vote_after .result .body .xuan .count {float: left;margin:0;line-height: 1;}
