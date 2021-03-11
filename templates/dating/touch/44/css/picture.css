@@ -1,0 +1,31 @@
+html, body {height:100%;overflow: hidden;}
+
+body{background: #fff;}
+.huoniao_iOS .header {display: -webkit-box!important;}
+.huoniao_iOS .header-l {display: none;}
+
+
+/*picture-slide*/
+.photoBox{background:#202020;width: 100%;height: 100%;}
+
+.header {position: fixed;left:0;top:0;right:0;background: none !important;border-bottom: none;}
+.header:before {content:"";position: absolute;left:0;top:-.4rem;right:0;box-shadow: 0 0.5rem 4rem 0.2rem #000;}
+.header .header-l a, .open.header .header-l a {background-image: url(../images/back_left2.png);}
+/*.header-search {visibility: hidden;}*/
+.header .header-search a, .open.header .header-search a {background-image:url('../images/del_white.png');background-size: .4rem;}
+
+.swiper-container {height: 100%;color: #fff;text-align: center;}
+
+.swiper-wrapper {height:100%;}
+.swiper-slide {-webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0; width: 100%; height: 100%; position: relative;background: url(../images/loader.gif) no-repeat center center;}
+.swiper-slide:before {content:"";display: inline-block;height:100%;vertical-align: middle;}
+.swiper-slide img {display: inline;width:100%;vertical-align: middle;}
+
+.photoBox .pic-int {position: fixed;bottom: 0;left: 0;width: 100%;height: 1.4rem;line-height: 1.4rem;padding:0 .25rem;color: #ffffff;font-size: .2rem;background: rgba(0,0,0,.4);overflow: hidden;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;z-index: 2;}
+.photoBox .pic-int .count {float: right;font-size: .26rem;}
+
+.photoBox .pic-int .zan {font-size: .26rem;display: inline-block;;height: .52rem;line-height: .56rem;padding:0 .48rem 0 .72rem;border:1px solid #fff;border-radius:.26rem;background: url('../images/zan_2.png') .3rem center no-repeat;background-size: .3rem;}
+.photoBox .pic-int .zan.active {background: url('../images/zan_height.png') .3rem center no-repeat;background-size: .3rem;color: #ff255a;border-color: #ff255a;}
+
+.photoBox .pic-int .midbtn {position: absolute;left:50%;top:0;}
+.photoBox .pic-int .midbtn span {display: inline-block;height: .52rem;line-height: .52rem;padding:0 .48rem;border:1px solid #fff;border-radius:.26rem;font-size: .26rem;transform: translateX(-50%);}

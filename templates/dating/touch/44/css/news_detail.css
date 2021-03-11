@@ -1,0 +1,29 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;min-height: 100%;}
+.hide {display: none !important;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+
+.content {clear: both; text-align: justify; margin: .12rem 0; font-size: .36rem; padding: 0 .4rem .4rem; line-height: .54rem; background: #fff; overflow: hidden;}
+/* 标题 */
+.art_title {padding:.4rem 0;font-size: .42rem;clear: both;}
+.art_title h2 {line-height: .5rem; font-weight: bold; padding-bottom: .24rem;}
+.art_title_more {clear: both; height: .32rem; line-height: .32rem; font-size: .28rem; color: #888;}
+.art_title time {float: left; max-width: 4rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.art_title .do {float: right; font-size: .24rem; color: #3990e6; line-height: .3rem;}
+.art_title .do a {display: inline-block; color: #3990e6; margin-left: .12rem; height: .3rem; line-height: .3rem;}
+.art_title .do a i , .art_title .do a span {float: left;}
+.art_title .do a i {display: inline-block;width: .3rem;height: .3rem;margin-right: .1rem;background-size:.3rem auto;vertical-align: middle;}
+.icon-pl ,.f_cmnt_num .num {background-image:url(../images/msg.png);background-repeat:no-repeat;background-size:.3rem .3rem;}
+.icon-sc {background-image:url(../images/collect.png);background-repeat:no-repeat;background-size:.3rem .3rem;}
+
+
+.art_card {margin-bottom: .4rem;}
+.figimg {text-align: center;overflow: hidden;}
+.img_box {max-width: 100%;vertical-align: top;overflow: hidden;}
+.img_box img {display: block;max-width: 100%;min-width: 4rem;}
+.figimg .intro {font-size: .28rem; line-height: .36rem; color: #888; padding-top: .16rem;}
+.content p {margin-bottom: .4rem; text-align: justify; font-size: .3rem;}
+.content img {max-width: 100%;}

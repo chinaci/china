@@ -1,0 +1,151 @@
+@charset "utf8";
+
+
+html,body {background: #f5f5f5;}
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+
+.main_info{background: #fff;padding: .3rem 0.24rem;margin: .13rem 0;}
+.item .img {position: relative;float: left;width: 1.34rem;height: 1.34rem;margin-right: .32rem;
+}
+.item .img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.item .img .user_video {
+    position: absolute;
+    right: .2rem;
+    bottom: 0;
+    display: block;
+    width: .5rem;
+    height: .5rem;
+    background: url(../images/player_2.png) center no-repeat;
+    background-size: .5rem;
+}
+.item .img img {
+    width: 100%;
+    min-height: 1.34rem;
+}
+.item .info {
+    overflow: hidden;
+    font-size: .26rem;
+}
+.item .info .base {
+    position: relative;
+    margin-bottom: .1rem;
+}
+.item .name {
+    font-size: .28rem;
+    color: #252424;
+}
+.item .info .base em.u_level {
+    margin-left: .2rem;
+    background: #fff;
+    text-align: center;
+}
+.item .info .base em.u_level img {
+	max-height: .4rem;
+}
+.item .info .base em {
+    display: inline-block;
+    width: .4rem;
+    height: .4rem;
+    margin-left: .1rem;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: .25rem;
+    vertical-align: top;
+}
+.item .info .base em.phone {
+    background-image: url(../images/phone_blue.png);
+    background-size: .2rem;
+}
+.item .base .online.active {
+    background: #ffab08;
+}
+.item .base .online {
+    margin-left: .1rem;
+    display: inline-block;
+    height: .28rem;
+    line-height: .28rem;
+    padding: 0 .12rem;
+    font-size: .2rem;
+    color: #fff;
+    background: #c4c4c4;
+    border-radius: 2px;
+}
+.item .more {
+    margin-bottom: .1rem;
+    font-size: .26rem;
+    color: #6d6d6d;
+}
+.item .more span {
+    margin-right: .25rem;
+    padding-left: .32rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+.item .more span.age {
+    background-image: url(../images/age.png);
+}
+.item .more span.height {
+    background-image: url(../images/height.png);
+}
+.item .more span.distance {
+    background-image: url(../images/location_black.png);
+}
+.item .hn {
+    color: #434343;
+}
+.item .info p:last-child {
+    margin-bottom: 0;
+}
+.item .hn em{
+    color: #ff295b;
+    padding-right: .3rem;
+}
+.item .info .base .picnum {
+    float: right;
+    font-size: .26rem;
+    color: #ababab;
+}
+
+.frequency{
+    background: #fff;
+        padding: 0 .24rem;
+}
+.frequency .frequency_txt{
+    font-size: .26rem;
+    color: #434343;
+    padding: 0.24rem 0;
+}
+.frequency .frequency_item{
+    padding: .24rem 0;
+    border-bottom: 1px solid #e9e9e9;
+}
+.frequency_item .hn_yes{
+    color: #ff295b;
+}
+.frequency_item .hn_no{
+    color: #7b7b7b;
+}
+
+
+.tofoot {
+    height: .6rem;
+    line-height: .6rem;
+    background: #f6f6f6;
+    color: #949393;
+    font-size: .2rem;
+    text-align: center;
+}
+

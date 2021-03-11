@@ -1,0 +1,20 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;height: 100%;}
+body {padding-bottom: 1.39rem;}
+.hide {display: none !important;}
+.huoniao_iOS body {padding-bottom: 1rem; padding-bottom: calc(1rem + constant(safe-area-inset-bottom));}
+
+.header {position: fixed;left:0;right:0;top:0;}
+.header .header-search a, .open.header .header-search a {background-image: none;}
+
+.content {padding-top: .9rem;}
+.huoniao_iOS .content {padding-top: 0;}
+
+/*编辑*/
+.content textarea {border:none;outline:0;display: block;width:100%;resize:none;font-size: .28rem;line-height: .4rem;font-family: inherit;padding:.6rem .2rem .2rem;}
+.content .txtlength {padding:0 .35rem .3rem;background: #fff;}
+.content .txtlength span {float: right;}
+.content .tsinfo {padding:.25rem .35rem;color: #666;font-size: .24rem;}
+
+.save {position: fixed; left: 0; bottom: 0; width: 100%; height: 1rem; line-height: 1rem; font-size: .3rem; color: #fff; text-align: center; background: #ff296d;}

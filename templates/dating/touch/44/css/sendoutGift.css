@@ -1,0 +1,46 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;}
+body {padding-bottom: 1.24rem;}
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+.scrollerWrap {background: #f5f5f5;z-index: 2;overflow-y: auto;}
+.scroller {position: absolute;width: 100%;}
+.scroller .bar {height: .12rem;}
+.scroller + div {width:5px !important;right:-1px !important;}
+.scroller + div > div {background: #ccc !important;}
+
+.container {position: relative;padding:0 .07rem;z-index: 2;background: #fff;}
+.item {padding: .38rem 0 .22rem;border-bottom: 1px solid #eee;background: #fff;}
+.item:last-child {border-bottom: none;}
+.item a {display: block;}
+.item .img {position: relative;float: left;width:.74rem;height:.74rem;margin-right: .17rem;margin-left: .2rem;}
+.item .img a {display: block;width: 100%;height: 100%;border-radius:50%;overflow: hidden;}
+.item .img img {width:100%;min-height: .74rem;}
+.item .img .user_video {position: absolute;right:0;bottom:0;display: block;width: .3rem;height: .3rem;background: url('../images/player_2.png') center no-repeat;background-size: .3rem;}
+
+
+.item .info {overflow: hidden;    margin-right: .2rem;}
+.item .info p:last-child {margin-bottom: 0;}
+.item .info .base {position: relative;margin-bottom: .1rem;}
+.item .name {font-size: .3rem;color: #262626;}
+.item .info .base em {display: inline-block;width:.4rem;height:.4rem;margin-left: .1rem;border-radius:50%;background-position: center;background-repeat:no-repeat;background-size:.25rem;vertical-align: top;}
+.item .info .base em.u_level {margin-left: .2rem;background: #fff;text-align: center;}
+.item .info .base em.u_level img {vertical-align: middle;width:.3rem;}
+.item .info .base em.phone {background-image:url('../images/phone_blue.png');background-size: .2rem;}
+.item .more {margin-bottom: .1rem;font-size: .26rem;color: #6d6d6d;}
+.item .more span {margin-right: .25rem;padding-left: .32rem;background-position: left center;background-repeat:no-repeat;background-size:.25rem;vertical-align: middle;}
+.item .more span.age {background-image:url('../images/age.png');}
+.item .more span.height {background-image:url('../images/height.png');}
+.item .more span.distance {background-image:url('../images/location_black.png');}
+.item .content{margin: .3rem 0;}
+.item .content ul li{float: left;width: 1.6rem;margin: 0 .12rem;}
+.item .content ul li img{width: 1.6rem;}
+.item .content ul li .gift_name{color: #fd7400;font-size: 0.22rem;padding: 0.1rem 0;}
+.item .content ul li p{text-align: center;overflow: hidden;}   
+
+
+.tofoot {display: none;}

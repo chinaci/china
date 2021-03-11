@@ -1,0 +1,36 @@
+@charset "utf8";
+
+html,body {background: #fff;}
+.hide {display: none !important;}
+
+.header-search {visibility: hidden;}
+
+.bar {height: .15rem;background: #f6f6f6;}
+.container {font-size: .28rem;color: #1b1b1b;background: #fff;}
+.container font {color: #ff295b;}
+.container .mycount {padding:.25rem .2rem;border-bottom: 1px solid #eee;}
+.container .mycount p span {float: right;color: #979696;}
+.container .mycount p font {margin:0 .1rem;}
+.container .upvip {padding:.5rem .2rem .4rem;border-bottom: 1px solid #eee;}
+.container .upvip .buybtn {display: block;width:5.94rem;height: .76rem;line-height: .76rem;border:1px solid #e9e9e9;border-radius:.38rem;font-size: .28rem;color: #1b1b1b;margin:.4rem auto;text-align: center;}
+
+.container .buykey {padding:.3rem .2rem .4rem;}
+.container .buykey .buycount {text-align: center;}
+.container .buykey .number {display: inline-block;width:.6rem;height: .8rem;line-height: .8rem;padding:0 .1rem;border:1px solid #bfbfbf;text-align: center;margin:0 .2rem;border-radius:3px;}
+.container .buykey .submit {display: block;width:6.84rem;height: .9rem;line-height: .9rem;text-align: center;background: #ff295b;color: #fff;font-size: .34rem;border-radius:.45rem;margin:1.94rem auto .5rem;}
+
+
+/*选择控件*/
+.mobileSelect .content .btnBar {border-top: 1px solid #DCDCDC;}
+/*.mobileSelect .grayLayer {display: none;}*/
+.mobileSelect .content .fixWidth {width: 100%;}
+.mobileSelect.skin_fix_option .content .panel .wheel .selectContainer li {padding:0 20px;}
+
+.mobileSelect.skin_fix_option .content .panel .wheel .selectContainer li {position: relative;text-align: left;border-bottom: 1px solid #ececee;}
+.mobileSelect.skin_fix_option .content .panel .wheel .selectContainer li .check {position: absolute;left:0;right:0;top:0;bottom:0;display: block;width: 100%;height:100%;opacity: 0;}
+.mobileSelect.skin_fix_option .content .panel .wheel .selectContainer li:after {position: absolute;right:20px;top:10px;content:"";display: block;width: 20px;height:20px;border:1px solid #ededed;background-color: #fff;border-radius:50%;}
+.mobileSelect.skin_fix_option .content .panel .wheel .selectContainer li.active:after {background-image:url('../images/ok.png');background-position: center;background-repeat: no-repeat;background-size: 15px;background-color:#ff295b;border-color: #ff295b;}
+.mobileSelect.skin_fix_option .content .panel .selectLine, .mobileSelect.skin_fix_option .content .panel .shadowMask {display: none;}
+.mobileSelect.skin_fix_option .content .panel .wheels, .mobileSelect.skin_fix_option .content .panel .wheel {height: auto;min-height: 200px;}
+.mobileSelect.skin_fix_option .content .btnBar {background: #f6f6f6;}
+.mobileSelect .content .btnBar .ensure {color: #ff295b;}

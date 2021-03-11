@@ -1,0 +1,79 @@
+@charset "utf8";
+
+/*头部*/
+.header-search{visibility:visible!important;}
+.header-search a {display: table-cell;height: .9rem;width: 1.3rem;vertical-align: middle;float: right;background:none; background-image: none!important;background-size: auto .5rem;text-align: center;font-size: .24rem;color: #797979;padding-right: 0.24rem;}
+.header-address {padding-left: .54rem;}
+.huoniao_iOS body {padding-bottom: 1rem; padding-bottom: calc(1rem + constant(safe-area-inset-bottom));}
+
+html,body {background: #f5f5f5;}
+body {padding-bottom: 1.24rem;}
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+.scrollerWrap {background: #f5f5f5;z-index: 2;overflow-y: auto;}
+.scroller {position: absolute;width: 100%;}
+.scroller .bar {height: .12rem;}
+.scroller + div {width:5px !important;right:-1px !important;}
+.scroller + div > div {background: #ccc !important;}
+
+.container {position: relative;padding:0 .07rem;z-index: 2;background: #fff;}
+.item {padding: .38rem 0 .22rem;border-bottom: 1px solid #eee;background: #fff;}
+.item:last-child {border-bottom: none;}
+.item a {display: block;}
+.item .img {position: relative;float: left;width:.74rem;height:.74rem;margin-right: .17rem;margin-left: .2rem;}
+.item .img a {display: block;width: 100%;height: 100%;border-radius:50%;overflow: hidden;}
+.item .img img {width:100%;min-height: .74rem;}
+.item .img .user_video {position: absolute;right:0;bottom:0;display: block;width: .3rem;height: .3rem;background: url('../images/player_2.png') center no-repeat;background-size: .3rem;}
+
+.money{background: #fff;margin-top: .12rem;}
+.money>div{margin: 0 .22rem;height: 1.4rem;line-height: 1.4rem;}
+.money .yuebi_m{border-bottom: 1px solid #e9e9e9;}
+.money .yuebi_m em{font-size: .6rem;color: #ff295b;margin-left: 0.33rem;float: right;}
+.money .jinbi_m em{font-size: .6rem;color: #fccf38;margin-left: 0.33rem;float: right;}
+.money .m_left{font-size: .34rem;color: #343434;display: inline-block;}
+.money .m_right{float: right;width: 1.87rem;height: 0.52rem;line-height: 0.52rem;text-align: center;background: #ff295b;color: #fff;font-size: .28rem;border-radius: .26rem;margin-top: 0.44rem;}
+.money .m_right.disabled {background: #ccc;}
+
+.item .info {overflow: hidden;    margin-right: .2rem;}
+.item .info p:last-child {margin-bottom: 0;}
+.item .info .base {position: relative;margin-bottom: .1rem;}
+.item .name {font-size: .3rem;color: #262626;}
+.item .info .base em {display: inline-block;width:.4rem;height:.4rem;margin-left: .1rem;border-radius:50%;background-position: center;background-repeat:no-repeat;background-size:.25rem;vertical-align: top;}
+.item .info .base em.u_level {margin-left: .2rem;background: #fff;text-align: center;}
+.item .info .base em.u_level img {vertical-align: middle;width:.3rem;}
+.item .info .base em.phone {background-image:url('../images/phone_blue.png');background-size: .2rem;}
+.item .more {margin-bottom: .1rem;font-size: .26rem;color: #6d6d6d;}
+.item .more span {margin-right: .25rem;padding-left: .32rem;background-position: left center;background-repeat:no-repeat;background-size:.25rem;vertical-align: middle;}
+.item .more span.age {background-image:url('../images/age.png');}
+.item .more span.height {background-image:url('../images/height.png');}
+.item .more span.distance {background-image:url('../images/location_black.png');}
+.item .content{margin: .3rem 0;}
+.item .content ul li{float: left;width: 1.6rem;margin: 0 .12rem;}
+.item .content ul li img{width: 1.6rem;}
+.item .content ul li .gift_name{color: #fd7400;font-size: 0.22rem;padding: 0.1rem 0;}
+.item .content ul li p{text-align: center;overflow: hidden;}   
+
+
+/*提现弹出框*/
+.withdrawWrap {display: none;position: fixed;left:0;top:50%;right:0;transform:translateY(-50%);z-index: 100002;background: #fff;}
+.withdrawWrap.show {display: block;}
+.withdrawWrap .title {padding:0 .24rem;height: .8rem;line-height: .8rem;}
+.withdrawWrap .title .close {float: right;font-size: .28rem;color: #404040;}
+.withdrawWrap .item {position: relative;padding:.3rem .24rem;border-bottom: 1px solid #f5f5f5;}
+.withdrawWrap .item:last-child {border-bottom: none;}
+.withdrawWrap .item .txt {padding-left: .9rem;width:4rem;}
+.withdrawWrap .item.alipay .txt {background: url('../images/alipay.png') left center no-repeat;background-size: .6rem;}
+.withdrawWrap .item.wxpay .txt {background: url('../images/wx.png') left center no-repeat;background-size: .6rem;}
+.withdrawWrap .item .name {font-size: .28rem;color: #404040;margin-bottom: .12rem;}
+.withdrawWrap .item .des {font-size: .24rem;color: #a3a3a3;}
+.withdrawWrap .item .state {position: absolute;right:.24rem;top:50%;margin-top: -.2rem;height: .4rem;line-height: .4rem;padding-right: .3rem;background: url(../images/box_r.png) right center no-repeat;background-size: auto .4rem;font-size: .24rem;color: #a3a3a3;}
+ .withdrawWrap .item .state0 {color: #fd7400;}
+
+
+.tofoot {display: none;}
+
+
+.dropnav {position: fixed; left: 0; bottom: 0; width: 100%; height: 1rem; line-height: 1rem; font-size: .3rem; color: #fff; text-align: center; background: #ff296d;}

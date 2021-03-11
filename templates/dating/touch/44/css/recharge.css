@@ -1,0 +1,85 @@
+@charset "utf8";
+
+
+html,body {background: #f5f5f5;}
+body {padding-bottom: 1.24rem;}
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+
+
+/*头像*/
+.bg{padding: 0.3rem 0.24rem;background: #fff;}
+.bg .bg_img{
+	width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+}
+.bg .bg_img img{
+	width: 1rem;
+    height: 1rem;
+}
+.bg .bg_money{
+	    float: left;
+    line-height: 1rem;
+    height: 1rem;
+    margin-left: .28rem;
+    font-size: .34rem;
+    color: #232323;
+}
+
+.m_txt{
+	height: 1rem;
+	font-size: .28rem;
+	color: #616162;
+	line-height: 1rem;
+	margin-left:.24rem;
+}
+
+
+.moneyList .item .money_time{
+margin-left: .76rem;
+    font-size: .36rem;
+    color: #303030;
+}
+.item{
+    height: 1.2rem;
+    line-height: 1.2rem;
+    background-position: 0.24rem center;
+    background-repeat: no-repeat;
+    background-size: .58rem;
+    background-image: url(../images/money_01.png);
+        padding: 0 .24rem;
+        border-bottom: 1px solid #ebebeb;
+}
+.moneyList{
+	    background: #fff;
+}
+.moneyList .item .money_m{
+    float: right;
+    background: #ff295b;
+    color: #fff;
+    font-size: .36rem;
+    width: 1.56rem;
+    height: .64rem;
+    line-height: .64rem;
+    text-align: center;
+    border-radius: .4rem;
+    margin-top: .27rem;
+    border: 1px solid #ff295b;
+}
+
+/*点击选中*/
+.active{
+	    background-color: #f8f8f8;
+}
+.active .money_m{
+	background: #f8f8f8!important;
+	color:#ff295b!important;
+}
+

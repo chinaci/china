@@ -1,0 +1,31 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;}
+body {padding-bottom: 1.8rem;}
+
+/*banner*/
+.banner {position: relative;margin-top: .13rem;overflow: hidden;}
+.banner:before, .banner:after {position: absolute;content:"";display: block;left:0;right:0;width:100%;z-index: 2;}
+.banner:before {top:0;box-shadow: 0 0.2rem 0.5rem 0.05rem rgba(0,0,0,.4);}
+.banner:after {bottom:0;box-shadow: 0 -0.2rem 0.5rem 0.05rem rgba(0,0,0,.4);}
+.banner img {display: block;}
+
+/*红娘*/
+.item {position: relative;padding:.24rem .2rem;background: #fff;}
+.item:after {content:"";position: absolute;left:.2rem;bottom:0;right:.2rem;height:1px;background: #e1e1e1;}
+.item:last-child:after {display: none;}
+.item .img {float: left;margin-right: .2rem;width:1.2rem;height:1.2rem;border-radius:3px;overflow: hidden;}
+.item .img img {display: block;width:100%;min-height: 1.2rem;}
+.item .info {overflow: hidden;}
+.item .name {font-size: .28rem;color: #171717;margin-bottom: .05rem;}
+.item .name span {margin-left: .25rem;font-size: .22rem;color: #ff295b;}
+.item .des {margin-bottom: .1.8rem;color: #3e3e3e;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;line-height: .45rem;}
+.item .des span {float: right;margin-left: .4rem;display: block;padding:0 .12rem;height: .45rem;line-height: .45rem;background: #ff295b;color: #fff;border-radius:3px;font-size: .24rem;}
+.item .case {color: #ababab;}
+
+/*入驻按钮*/
+.fixedBtm {position: fixed;left:0;right:0;bottom:0;height: 1rem;line-height: 1rem;font-size: .3rem;color: #fff;text-align: center;background: #b9b9b9;}
+.fixedBtm a {display: block;background: #ff295b;color: #fff;}
+.fixedBtm a.state_0, .fixedBtm a.state_2 {background: #b9b9b9;}
+
+.tofoot {height: .86rem;line-height: .86rem;font-size: .22rem;}

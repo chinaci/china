@@ -1,0 +1,49 @@
+@charset "utf8";
+
+html,body {background: #fff;}
+body {padding-bottom: 1.8rem;}
+.header-search {visibility: hidden;}
+
+.bar {height: .12rem;background: #f5f5f5;}
+/*头像*/
+.imgbox{padding: .48rem 0; position: relative; background: #fff;}
+.imgbox h3{}
+.imgbox .btn{position: absolute; left: 50%; margin-left: -0.8rem; top: -1.4rem; width: 1.6rem; height: 1.6rem; border: 0; outline: 0; opacity: 0;}
+.addimg {position: relative;}
+.addimg p {position: absolute;position: absolute;left:0;right:0;bottom:-.18rem;text-align: center;}
+.addimg p span {display: inline-block;background: #ff295b;color: #fff;font-size: .24rem;height: .36rem;line-height: .36rem;padding:0 .2rem;border-radius:.18rem;}
+.addimg ul {padding:0;}
+.addimg li {display: block;width: 1.36rem;height: 1.36rem; float: none;margin: 0 auto;border-radius:50%;overflow: hidden;}
+.addimg li img{display: block;width: 100%;min-height: 1.36rem;border-radius: .1rem;}
+.noimg li {background: url(../images/photo_girl.png) center no-repeat;background-size: contain;}
+#item_0 {position: relative;overflow: hidden;}
+#item_0 input {opacity: 0;}
+
+/*表单*/
+.regbox {padding:.4rem .24rem;background: #fff;}
+.regbox-username {margin-bottom: .5rem;}
+.regbox dl {position: relative;margin-bottom: .3rem;line-height: .8rem;font-size: .28rem;color: #a0a0a0;}
+.regbox dt {position: absolute;left: 0;top: 0;}
+.regbox .inp {padding:.2rem .2rem .2rem 1.04rem;border:0;outline:none;border-bottom: 1px solid #eee;width:100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;transition: border .3s;}
+.regbox textarea {resize:none;font-family: inherit;display: block;width:100%;border:none;outline:0;}
+.regbox .f-mobile .inp {padding-left: 2.5rem;}
+.regbox .f-mobile label {margin: .2rem;}
+.regbox .f-mobile label span {display: inline-block;width:.4rem;height:.4rem;margin-left: .2rem;vertical-align: middle;background-image: url('../images/arrow_bottom.png');background-position: center;background-repeat: no-repeat;background-size: contain;opacity: .4;}
+.regbox dt i {display: inline-block;width:.4rem;height:.4rem;margin:.2rem;float: left;background-size:contain;background-repeat: no-repeat;background-position: center;}
+.regbox dt .icon_mobile {background-image: url('../images/mobile.png');}
+.regbox dt .icon_yzm {background-image: url('../images/yzm.png');}
+.regbox dt .icon_user {background-image: url('../images/user.png');}
+.regbox dt .icon_email {background-image: url('../images/email.png');}
+.regbox dt .icon_tel {background-image: url('../images/tel.png');}
+.regbox dt .icon_profile {background-image: url('../images/profile.png');}
+
+.info {padding:.2rem .48rem;color: #f60;font-size: .3rem;}
+
+/*入驻按钮*/
+.fixedBtm {position: fixed;left:0;right:0;bottom:0;height: 1rem;line-height: 1rem;font-size: .3rem;color: #fff;text-align: center;background: #ff295b;}
+.fixedBtm a {display: block;color: #fff;}
+.fixedBtm.disabled {background: #b9b9b9;color: #fff;}
+
+.regbox dl.code_dl{border-bottom: 1px solid #eee;}
+.regbox dl .areacode_span{text-indent: 1.04rem}
+.regbox .inp#phone{    width: 67%;padding-left: 0;border-bottom: none;}

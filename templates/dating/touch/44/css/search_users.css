@@ -1,0 +1,46 @@
+@charset "utf8";
+
+html,body {background: #fff;}
+/*body {padding-bottom: 1.24rem;}*/
+html.md_fixed, html.md_fixed body {overflow: hidden;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header .header-search a, .open.header .header-search a {background-image: url(../images/user_7.png?v=1);}
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+.header-address {padding: .1rem 0;}
+.header .header-search{width: 1.08rem;text-align: center;font-size: .3rem;color: #868585;}
+
+.huoniao_iOS .header {display: -webkit-box!important;}
+.huoniao_iOS .header .header-l {display: none;}
+
+input::-webkit-input-placeholder{color:#888888;}
+input::-moz-placeholder{color:#888888;}
+input:-moz-placeholder{color:#888888;}
+input:-ms-input-placeholder{color:#888888;}
+
+
+.withdraw {position: relative;padding:.24rem .45rem;margin-top: .12rem;background:#fff;}
+.withdraw span {font-size: .34rem;color: #343434;}
+.withdraw span font {margin-left: .18rem;font-size: .6rem;color: #ff295b;vertical-align: middle;}
+.withdraw a {position: absolute;right:.24rem;top:50%;margin-top: -.26rem;display: block;height: .52rem;line-height: .52rem;background: #ff295b;color: #fff;font-size: .28rem;text-align: center;padding:0 .6rem;border-radius:.26rem;}
+
+
+/*搜索框*/
+.inp {position: relative;width: 100%;float: left;overflow: hidden;background: #f5f5f5;height: .7rem;border-radius: 4px;}
+.inp input {position: relative;width: 100%;top: -.12rem;padding: .1rem .1rem .1rem .6rem;background: none;border: none;outline: 0;z-index: 1;transition: all .2s;color: #929292;font-size: .3rem;height: 100%;}
+.inp em {position: absolute;top:.15rem;display: block;height:.4rem;padding-left:.4rem;margin-left: .2rem;background: url('../images/search.png') left center no-repeat;background-size: .3rem;color: #929292;z-index: 0;transition:left .1s;}
+
+.splitBar{height: .12rem;background: #f5f5f5;}
+
+/*列表部分*/
+.info ul li {background: #fff;border-bottom: 1px solid #eeeeee;padding: .28rem 0;margin: 0 .22rem;}
+.info ul li .fans_img {float: left;height: 1rem;width: 1rem;overflow: hidden;border-radius: 50%;}
+.info ul li .fans_img img {width: 1rem;height: 1rem;}
+.info ul li .fans_txt {float: left;height: 1rem;margin-left: .3rem;}
+.info ul li .fans_txt p:first-child {color: #232323;font-size: .34rem;}
+.info ul li .fans_txt p:last-child {font-size: .24rem;color: #a0a0a0;max-width:4rem;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.info ul li .fans_txt p {margin: .06rem 0;}
+.info ul li .follow_yes {background: url(../images/dui_1.png) .26rem no-repeat;}
+.info ul li .follow_all {background: url(../images/all.png) .26rem no-repeat;}
+.info ul li .follow_no {background: #ff295b url(../images/jia.png) .26rem no-repeat;color: #fff!important;}
+.info ul li .btns {float: right;padding: .08rem .22rem .08rem .6rem;color: #ff295b;border-radius: .5rem;background-size: .26rem;font-size: .22rem;margin-top: .26rem;border: 1px solid #ff295b;}
+

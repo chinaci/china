@@ -1,0 +1,73 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;}
+/*body {padding-bottom: 1.24rem;}*/
+html.md_fixed, html.md_fixed body {overflow: hidden;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+/*.header .header-search a, .open.header .header-search a {background-image: url(../images/user_7.png?v=1);}*/
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+.huoniao_iOS body {padding-bottom: 1rem; padding-bottom: calc(1rem + constant(safe-area-inset-bottom));}
+
+input::-webkit-input-placeholder{color:transparent;}
+input::-moz-placeholder{color:transparent;}
+input:-moz-placeholder{color:transparent;}
+input:-ms-input-placeholder{color:transparent;}
+
+.withdraw {position: relative;padding:.24rem .45rem;margin-top: .12rem;background:#fff;}
+.withdraw span {font-size: .34rem;color: #343434;}
+.withdraw span font {margin-left: .18rem;font-size: .6rem;color: #ff295b;vertical-align: middle;}
+.withdraw a {position: absolute;right:.24rem;top:50%;margin-top: -.26rem;display: block;height: .52rem;line-height: .52rem;background: #ff295b;color: #fff;font-size: .28rem;text-align: center;padding:0 .6rem;border-radius:.26rem;}
+
+/*导航*/
+.navigation{width: 100%;height: 0.72rem;background: #fff;}
+.navigation span{width: 1.16rem;display: inline-block;height: 0.68rem;text-align: center;line-height: 0.68rem;font-size: 0.34rem;color: #171717;}
+.navigation span:first-child{margin-left: 1.33rem;}
+.navigation span:nth-child(2){margin: 0 0.6rem;}
+.navigation span.active{border-bottom: 2px solid #F44336;color: #F44336;}
+
+
+/*好友列表*/
+.areaitem .f_title{height: 0.38rem;width: 100%;color: #5aae5b;font-weight: bold;line-height: 0.38rem;padding-left: .16rem;}
+.friend_list .img{width: .67rem;height: .67rem;display: inline-block;float: left;}
+.friend_list .img img{width: .67rem;height: .67rem;}
+.friend_list{background: #fff;}
+.friend_list li{margin-left: .16rem;padding: .16rem 0;border-bottom: 1px solid #ededed;}
+.friend_list li .name{float: left;height: .67rem;line-height: .67rem;margin-left: .2rem;font-size: .28rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 5rem;}
+.in_total{height: 1rem;text-align: center;line-height: 1rem;font-size: .26rem;color: #717171;}
+
+/*右边字母导航*/
+.aside-shortcut {display: -webkit-flex;display: flex;-webkit-flex-direction: column;position: fixed;z-index: 9;right: 0;top: 58%;width: 0.4rem;-webkit-transform: translate(0,-50%);color: #000;font-size: .16rem;font-weight: bold;text-align: center;}
+.aside-shortcut a {padding: 0.04rem 0;color: #666;text-decoration: none;outline: none;}
+.aside-shortcut a img{width: .2rem;height: .2rem;}
+.letter {width: 1.8rem;height: 1.8rem;position: fixed;top: 50%;left: 50%;margin-left: -.9rem;margin-top: -.9rem;text-align: center;background: #717171;color: #fff;line-height: 1.8rem;font-size: .6rem;border-radius: .08rem;display: none;text-transform: uppercase;}
+
+
+
+
+
+/*关注*/
+.scroller ul li{height: 1.56rem;background: #fff;border-bottom: 1px solid #eeeeee;}
+.scroller .fans_img{float: left;height: 1rem;width: 1rem;overflow: hidden;border-radius: 50%;margin-top: .28rem;margin-left: 0.22rem;}
+.scroller .fans_img img{width: 1rem;height: 1rem;}
+.scroller .fans_txt{float: left;height: 1rem;margin-top: .28rem;margin-left: .3rem;}
+.scroller .fans_txt p:first-child{color: #232323;font-size: .34rem;}
+.scroller .fans_txt p:last-child{font-size: .24rem;color: #a0a0a0;}
+.scroller .fans_txt p{margin: .06rem 0;}
+.scroller .follow_yes {background: url(../images/dui_1.png) .26rem no-repeat;}
+.scroller .follow_no {background: #ff295b url(../images/jia.png) .26rem no-repeat;color: #fff!important;}
+.scroller .follow_all {background:url(../images/all.png) .26rem no-repeat;}
+.scroller .btns {float: right;padding: .08rem .22rem .08rem .6rem;color: #ff295b;border-radius: .5rem;margin-right: .29rem;background-size: .26rem;font-size: .22rem;margin-top: .54rem;border: 1px solid #ff295b;}
+.guanzhu{display: none;}
+.fensi{display: none;}
+/*关注 end*/
+
+
+.tofoot {display: none;}
+
+/*搜索框*/
+.searchWrap {margin: .12rem .24rem;    height: .8rem;}
+.searchBox {position: relative;background: #fff;font-size: .3rem;border-radius:5px;overflow: hidden;    height: .8rem;}
+.searchBox em {position: absolute;left:50%;top:.2rem;display: block;height:.4rem;padding-left:.4rem;background: url('../images/search.png') left center no-repeat;background-size: .3rem;color: #929292;transform:translate(-50%);z-index: 0;transition:left .1s;}
+
+.addNew {position: fixed; left: 0; bottom: 0; width: 100%; height: 1rem; line-height: 1rem; font-size: .3rem; color: #fff; text-align: center; background: #ff296d;}
+

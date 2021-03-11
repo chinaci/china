@@ -1,0 +1,30 @@
+@charset "utf8";
+
+html,body {background: #f5f5f5;}
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+
+.pair_img{height: 3rem;background: #fff;position: relative;margin: 0.12rem 0;}
+.pair_img p{width:1.5rem;text-align: center;font-size: 0.28rem;color: #171717;font-weight: bold;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;padding:0 .1rem;}
+.girl,.man{position: absolute;display: inline-block;}
+.girl{left: 2rem;}
+.man{left: 3.66rem;}
+.img_girl,.img_man{width: 1.7rem;height: 1.7rem;overflow: hidden;border-radius: 50%;display: inline-block;margin-top: 0.24rem;}
+.img_girl img,.img_man img{width: 1.7rem;height: 1.7rem;  }
+.img_girl{box-shadow: 0 0 5px 2px #dedede;}
+.img_man{box-shadow: 0 0 5px 2px #dedede;}
+
+
+.info{padding:.2rem;background: #fff;}
+.info .name{margin-bottom: .3rem;}
+.info .name .name_txt{margin-bottom: .12rem;}
+.info .name .name_txt .naneTxt_01{font-size: .28rem;color: #282828;font-weight: bold;}
+.info .name .name_txt .naneTxt_02{font-size: .22rem;color: #ff295b;margin-left: 0.22rem;}
+.info .name .name_txt .naneTxt_03{float: right;font-size: .24rem;color: #b1b1b1;}
+.info .name .name_time{font-size: 0.22rem;color: #b1b1b1;}
+.info .detaile_text{font-size: .22rem;color: #636363;}
+.info .detaile_text {line-height: .38rem;padding-bottom: .2rem;}
+.info .detaile_text img{max-width: 100%;margin: .1rem 0;}

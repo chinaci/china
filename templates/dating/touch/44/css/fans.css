@@ -1,0 +1,33 @@
+@charset "utf8";
+
+html,body {background: #fff;}
+
+/*头部*/
+.headerFa{background: #fff;height: .9rem;display: -webkit-box;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: relative;z-index: 100000;border-bottom: 1px solid #e9e9e9;}
+.headerFa-l a {display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;background: url(../images/fan.png) center center no-repeat;background-size: auto .48rem;}
+.headerFa-address {-webkit-box-flex: 1;text-align: center;font-size: .36rem;line-height: .9rem;margin: 0;font-weight: 400;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #343434;}
+.headerFa-address span{display: inline-block;width: 1.85rem;height: .86rem;}
+.headerFa-address span:first-child{margin-right: 0.9rem;}
+.headerFa-search{width: 1rem;}
+.headerFa .active{color: #ff295b;border-bottom: 3px solid #ff295b;}
+
+
+
+
+
+.hide {display: none !important;}
+.header, .open.header, .open.transparent.header {border-bottom: none;}
+.header-search {visibility: hidden; }
+.pdc {padding-left:.16rem;padding-right: .16rem;}
+
+.scroller ul li{height: 1.56rem;background: #fff;border-bottom: 1px solid #eeeeee;}
+.scroller .fans_img{float: left;height: 1rem;width: 1rem;overflow: hidden;border-radius: 50%;margin-top: .28rem;margin-left: 0.22rem;}
+.scroller .fans_img img{width: 1rem;height: 1rem;}
+.scroller .fans_txt{float: left;height: 1rem;margin-top: .28rem;margin-left: .3rem;}
+.scroller .fans_txt p:first-child{color: #232323;font-size: .34rem;}
+.scroller .fans_txt p:last-child{font-size: .24rem;color: #a0a0a0;}
+.scroller .fans_txt p{margin: .06rem 0;}
+.scroller .follow_yes {background: url(../images/dui_1.png) .26rem no-repeat;}
+.scroller .follow_no {background: #ff295b url(../images/jia.png) .26rem no-repeat;color: #fff!important;}
+.scroller .follow_all {background:url(../images/all.png) .26rem no-repeat;}
+.scroller .btns {float: right;padding: .08rem .22rem .08rem .6rem;color: #ff295b;border-radius: .5rem;margin-right: .29rem;background-size: .26rem;font-size: .22rem;margin-top: .54rem;border: 1px solid #ff295b;}
