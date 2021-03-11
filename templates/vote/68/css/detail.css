@@ -1,0 +1,54 @@
+html,body {background: #f8f8f8;}
+.vh {visibility: hidden;}
+.crumb {margin: -10px auto 15px;}
+.container {padding:45px 50px;background: #fff;}
+.has_vote {position: relative;display: none;}
+.container .has_vote span {position: absolute;left:50%;bottom:0;margin-left: -38px;display: block;width: 76px;height: 26px;line-height: 26px;text-align: center;background: #ebf2fe;border:1px solid #c3d4ff;color: #424345;border-radius:2px;}
+.container .title h2 {text-align: center;font-size: 18px;line-height: 30px;padding:12px 0 25px;}
+.container .title p {font-size: 14px;color: #999;line-height: 24px; padding-bottom: 20px;}
+
+/*选项列表*/
+.item .icon {display: inline-block;background-image: url('../images/join_vote.png');background-repeat:no-repeat;vertical-align: middle;}
+
+.item {margin:20px 0;border-bottom: 1px solid #eee;}
+/*.item:hover, .item.editing {background: #f8f8f8;border-bottom-color: transparent;}*/
+.item:last-child {border-bottom: none;}
+/*.item .result {padding:15px 35px 10px 35px;}*/
+.item .result .title {font-size: 16px;color: #333;margin-bottom: 20px;}
+.item .result .type {font-size: 14px;color: #477eee;}
+.item .result .body {font-size: 14px;}
+.item .result .body {font-size: 14px;}
+.item .result .body .xuan {line-height: 36px;margin-bottom: 15px;}
+.item.horizontal .result .body .xuan {float:left;width:33%;}
+.item.vertical .result .body .xuan {width:80%;white-space: nowrap;}
+.item.vertical .result .body .xuan .txt {margin-bottom: 10px;text-overflow:ellipsis;overflow: hidden;}
+.item.vertical .result .body .xuan .pic img {display: block;max-width:90%;margin-bottom: 15px;}
+.item .result .body .xuan .choose {display: block;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.item .result .body .xuan .icon {margin:-4px 5px 0 0;vertical-align: middle;}
+.item .result .body .xuan .count {float: right;margin: 0 50px 0 20px;}
+.item .result .body .xuan .pic {margin-right: 50px;}
+.item .result .body .xuan .pic img {width:100%;}
+
+.icon_radio, .icon_radioed {width:20px;height:20px;}
+.icon_radio {background-position: 0 -0;}
+.icon_radioed, .vote_before .xuan:hover .icon_radio, .active .icon_radio {background-position: -20px -0;}
+.icon_check {width:15px;height:15px;background-position: -0 -20px;}
+.icon_checked, .icon_check {width:15px;height:15px;}
+.icon_checked, .vote_before .xuan:hover .icon_check, .active .icon_check {background-position: -15px -20px;}
+.vote_before .xuan:hover .icon {opacity: .3;}
+.xuan:hover .choose.active .icon {opacity: 1;}
+
+.container .submit {display: block;width: 130px;height: 40px;margin:45px auto 150px;float: none;line-height: 40px;text-align: center;font-size: 14px;color: #fff;border:0;outline:none;background: #337df5;border-radius:2px;cursor: pointer;}
+.container .submit:hover {background: #246ee6;}
+.container .submit.disabled, .container .submit[disabled] {background: #ccc;cursor: no-drop;}
+
+.vote_after {padding: 45px 50px 236px;}
+.vote_after .item {margin: 25px 0;padding-bottom: 16px;}
+.vote_after .item .result .body .xuan {line-height: 30px;margin-bottom: 10px;}
+.vote_after .item .txt {float: left;width:50%;}
+.vote_after .item .tj {float: left;width:50%;}
+.vote_after .item .tj .progress {display: block;float: left;margin-top:10px;width:406px;height: 8px;border-radius:4px;background: #f8f8f8;border:1px solid #f9f9f9;overflow: hidden;}
+.vote_after .item .tj .progress b {display: block;height:100%;background: #337df6;border-radius:4px;}
+.vote_after .result .body .xuan .count {margin:0 0 0 20px;float: left;}
+
+.footer.gray {background: #fff;}

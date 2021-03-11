@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" >
+<title>{#$detail_name#} - {#$detail_vote.title#} - {#$vote_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$video_keywords#}" />
+<meta name="description" content="{#$video_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/user.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+var user = {
+	'id' : {#$detail_id#},
+	'name' : '{#$detail_name#}'
+}
+var vote = {
+	'id' : {#$detail_vote.id#},
+	'title' : '{#$detail_vote.title#}',
+	'voteuser' : {#$detail_vote.voteuser#},
+	'state' : {#$detail_vote.state#}
+}
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="vote"#}
+<!-- 广告位 -->
+<div class="wrap adv fn-hide"><script src="/include/json.php?action=adjs&id=155" language="javascript"></script></div>
+
+<div class="head">
+	<p>当前位置：</p>
+	<a href="{#$cfg_basehost#}">首页 &gt;</a>
+	<a href="{#$vote_channelDomain#}">投票活动 &gt;</a>
+	<a href="{#$detail_vote['url']#}">{#$detail_vote['title']#} &gt;</a>
+	<span>{#$detail_name#}</span>
+</div>
+<!-- 自我介绍 -->
+<div class="show fn-clear">
+	<img src="{#changeFileSize url="{#getFilePath($detail_litpic)#}" type="large"#}" alt="{#$detail_type#}">
+	<div class="show-r">
+		<ul>
+			<li class="name">
+				<span class="t">姓名：</span>
+				<span class="uname">{#$detail_name#}</span>
+				<span class="number">编号：{#$detail_number#}</span>
+			</li>
+			<li class="age">
+			    <b>年龄：</b>
+			    <p>{#if $detail_age#}{#$detail_age#}岁{#else#}未知{#/if#}</p>
+			    <b>身高：</b>
+			    <p>{#if $detail_uheight#}{#$detail_uheight#}cm{#else#}未知{#/if#}</p>
+			    <b>体重：</b>
+			    <p>{#if $detail_uweight#}{#$detail_uweight#}kg{#else#}未知{#/if#}</p>
+			    <b>来自：</b>
+			    <p class="wei">{#if $detail_from#}{#$detail_from#}{#else#}未知{#/if#}</p>
+			</li>
+
+			<li class="age-1">
+				<b>兴趣爱好：</b>
+				<p>{#if $detail_hobby#}{#$detail_hobby#}{#else#}未知{#/if#}</p>
+			</li>
+			<li class="votes">
+				<span>当前网络票数：</span>
+				<font class="n1">{#$detail_votecount#}</font>
+				<span class="v-1">人气：</span>
+				<font class="n2">{#$detail_click#}</font>
+				<span class="v-1">评论：</span>
+				<font class="n3">{#$detail_common#}</font>
+			</li>
+			<li class="choose">
+				<a href="javascript:;" class="c-1 openvote"></a>
+				<a href="#commont" class="c-2" id="gocommont"></a>
+				<a href="{#$detail_vote.url#}" class="other">其他选手</a>
+				{#*<a href="javascript:;" class="other baoming">我要报名</a>*#}
+			</li>
+
+			<div class="bdsharebuttonbox pass">
+				<b>转帖到：</b>
+				<a href="#" class="bds_tsina weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+				<a href="#" class="bds_qzone kongjian" data-cmd="qzone" title="分享到QQ空间"></a>
+				<a href="#" class="bds_tqq tengxun" data-cmd="tqq" title="分享到腾讯微博"></a>
+				<a href="#" class="bds_weixin weixin" data-cmd="weixin" title="分享到微信"></a>
+			</div>
+		</ul>
+	</div>
+</div>
+<div class="rewardS-mask"></div>
+<!-- 自我介绍 -->
+<!-- 参赛文选 -->
+<div class="cansai">
+	<div class="can-l">
+		<p>参赛文选</p>
+		<span></span>
+	</div>
+	<div class="can-n">
+		{#$detail_body#}
+	</div>
+</div>
+<!-- 参赛文选 -->
+<!-- 风采展示 -->
+<div class="fengcai">
+	<div class="can-l">
+		<p>风采展示</p>
+		<span></span>
+	</div>
+	<div class="can-n">
+		{#if $detail_imglist#}
+		{#foreach from=$detail_imglist key=n item=i#}
+		<img src="{#changeFileSize url="{#getFilePath($i)#}" type="large"#}" alt="">
+		{#/foreach#}
+		{#/if#}
+	</div>
+</div>
+<!-- 风采展示 -->
+<!-- 网友评论 -->
+<div class="wangyou fn-clear" id="commont">
+	<div class="can-l">
+		<p>网友评论</p><b class="totalCount">{#$detail_common#}</b><em>条评论</em><span></span>
+	</div>
+	<div class="comment">
+		<div class="c-area">
+			<div class="textarea" contenteditable="true" data-type="parent"></div>
+			<div class="c-sub fn-clear">
+				{#*
+				{#if $userinfo#}{#else#}<a href="javascript:;" class="subtn login">登录</a>{#/if#}
+				*#}
+				{#*
+				<div class="np-login">
+					<a href="{#$cfg_basehost#}/account" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+					<a href="{#$cfg_basehost#}/logout.html" class="o">安全退出</a>
+				</div>
+				*#}
+				<a href="javascript:;" class="subtn">发表</a>
+			</div>
+		</div>
+		<div class="c-content">
+			<ul class="c-nav fn-clear">
+				<li>全部评论</li>
+				<li class="c-orderby fn-clear"><a href="javascript:;" class="chot" data-id="hot">热度</a><a href="javascript:;" class="ctime active" data-id="time">时间</a></li>
+			</ul>
+			<ul class="c-list" id="commentList" data-page="1">
+				<div class="loading"></div>
+			</ul>
+			<div id="loadMore" class="loading">加载更多</div>
+		</div>
+	</div>
+</div>
+
+<!-- 投票层 -->
+<div class="opdv">
+	<ul>
+		<li class="op-1">
+			<p>我要投票</p>
+			<a href="javascript:;" class="close">关闭</a>
+		</li>
+		<li class="op-2">参与投票，即可参与抽奖活动哦（需要填写姓名和手机号）</li>
+		<li class="op-3">
+			<span>姓名：</span>
+			<input type="text" name="mname" class="mname">
+			<span>手机：</span>
+			<input type="text" name="mtel" class="mtel">
+		</li>
+
+		<li class="op-4">
+			<p>激活：</p>
+			<input type="text" class="inp vdimgckinp" placeholder="请输入验证码">
+			<img src="{#$cfg_basehost#}/include/vdimgck.php" class="vdimgck">
+			<a href="javascript:;" class="change jk">看不清？换一张</a>
+			<span class="error error1"></span>
+		</li>
+		<li class="op-5">
+			<span><a href="javascript:;" class="votesubmit">我要投票</a></span>
+		</li>
+	</ul>
+</div>
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			<a href="javascript:;" class="subtn">回复</a>
+		</div>
+	</div>
+</script>
+
+<script type="text/template" id="tp">
+	<li data-x="{{point.lng}}" data-y="{{point.lat}}">
+       	<dl>
+            <dt class="s_title">{{title}}</dt>
+            <dd classs="s_distance">{{distance}}</dd>
+        </dl>
+        <p class="s_address">{{address}}</p>
+	</li>
+</script>
+
+{#include file="_footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/user.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

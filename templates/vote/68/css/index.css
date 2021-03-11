@@ -1,0 +1,144 @@
+@charset "utf-8";
+/* CSS Document */
+.head {width: 1200px;
+	margin:15px auto;
+}
+img{
+	border: none;
+}
+
+.head a.home{
+  display: block;
+  float: left;
+  width: 18px;height: 18px;
+	color: #848484;
+	background:url(../images/home.png) no-repeat;
+}
+.head a{
+	color: #848484;
+}
+.head span{
+	color: #f78115;
+}
+.border{
+	width: 1200px;
+	min-height: 400px;
+	margin: 0 auto;
+}
+.border .lead{
+    /*padding: 0 10px;*/
+    border-bottom: 0 none;
+    height: 40px;
+    background-color: #f8f8f8;
+}
+.border .lead  li span{
+    font-size: 12px;
+    line-height: 40px;
+    color: #666;
+}
+.l-1{
+	float: left;
+	width: 750px;
+}
+.l-2{
+	float: left;
+	width: 220px;
+  text-align: center;
+}
+.l-3{
+	float: left;
+	width: 180px;
+  text-align: center;
+}
+.l-4{
+	float: left;
+	width: 180px;
+}
+.border .lead .l-1 {
+  text-indent: 6em;
+}
+.text{
+	/*padding: 0 10px;*/
+}
+.text li {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 2px solid #fafafa;
+}
+.text li span{
+    color: #333;
+    font-size: 14px;
+}
+.text li span font {margin:0 4px;color: #f60;}
+.text li span.state_0 {color: #ccc;}
+.text li span.state_1 {color: #346eeb;}
+.text li span.state_2 {color: #acacac;}
+.text li span a{
+	display: block;
+	margin-right: 50px;
+	font-size: 14px;
+    color: #36c;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    color: #333;
+}
+.text li span a:hover{
+    color: #d00
+}
+.border .empty {padding:100px 0;text-align: center;}
+.next li{
+	text-align: center;
+    padding: 50px 0;
+}
+.up{
+	color: #e4e4e4;
+	font-size: 14px;
+	border: 1px solid #e4e4e4;
+	padding: 8px 13px;
+	margin-right: 10px;
+}
+.up:hover{
+	background-color: #f78115;
+}
+.down{
+	color: #e4e4e4;
+	font-size: 14px;
+	border: 1px solid #e4e4e4;
+	padding: 8px 13px;
+	margin-left: 10px;
+}
+.down:hover{
+	background-color: #f78115;
+}
+.numb{
+    border: 1px solid #f78115;
+    background-color: #f78115;
+    color: #fff;
+    cursor: default;
+    padding: 8px 13px;
+}
+.nn{
+    border: 1px solid #e4e4e4;
+    color: #666;
+    padding: 8px 13px;
+}
+.nn:hover{
+    border: 1px solid #f78115;
+    background-color: #f78115;
+    color: #fff;
+}
+
+
+/* 分页 */
+.pagination {padding: 10px 0 30px; text-align: center; line-height: 36px; font-size: 14px; color: #333; margin-top: 30px;}
+.pagination li {display: inline-block; margin-right: 5px; border: 1px solid #eee;}
+.pagination li.page_current {border-color: #f78115;}
+.pagination li.page_disabled {display: none;}
+.pagination li a, .pagination li span {display: block; padding: 0 13px;font-family: "arial";color: #999;}
+.pagination li a:hover ,.pagination li.page_current span {background: #f78115; color: #fff; border-color: #f78115;}
+.pagination li.page_more span {background: #fff;color: #333; cursor: default;}
+.pagination .page_info {display: none;}
+
+
+.adv img {margin-bottom: 22px;}

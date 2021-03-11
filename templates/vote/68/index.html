@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" >
+<title>{#$vote_title#}</title>
+<meta name="keywords" content="{#$vote_keywords#}" />
+<meta name="description" content="{#$vote_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$vote_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="vote"#}
+
+<!--列表 -->
+<div class="head">
+	<a href="{#$cfg_currentHost#}" class="home"></a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{#$vote_channelDomain#}">{#$vote_channelName#}</a>
+</div>
+<!-- 广告位 -->
+<div class="wrap adv"><script src="/include/json.php?action=adjs&title=投票_模板一_电脑端_广告一" language="javascript"></script></div>
+<div class="border">
+	<ul class="lead">
+		<li class="fn-clear">
+			<span class="l-1">主题</span>
+			<span class="l-2">参与人数</span>
+			<span class="l-3">状态</span>
+		</li>
+	</ul>
+	<ul class="text">
+		{#vote return="list" action="vlist" page={#$page#} pageSize="20"#}
+		{#if $list.state == 0#}
+		{#$state = "未开始"#}
+		{#elseif ($list.state == 1)#}
+		{#$state = "投票中"#}
+		{#elseif $list.state == 2#}
+		{#$state = "已结束"#}
+		{#/if#}
+		<li class="fn-clear">
+			<span class="l-1"><a href="{#$list.url#}"{#if $list.color#} style="color:{#$list.color#};"{#/if#} title="{#$list.title#}" target="_blank">{#$list.title#}</a></span>
+			<span class="l-2">{#$list.join#}</span>
+			<span class="l-3 state_{#$list.state#}">{#$state#}</span>
+		</li>
+		{#/vote#}
+	</ul>
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty">暂无相关信息！</div>
+	{#/if#}
+	{#getPageList service='vote' template='index' pageType='dynamic' param="page=#page#"#}
+</div>
+<!--列表 -->
+{#include file="_footer.html"#}
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}" charset="utf-8"></script>
+</body>
+</html>
