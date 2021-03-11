@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_name#}的个人简历-找简历-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/resume-detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var id = {#$detail_id#};
+	var	JubaoConfig = {
+		"module" : 'job',
+		"action" : 'resume',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="简历详情"#}
+
+  <div class="main">
+    <div class="wrapper">
+      <div class="brief fn-clear">
+        <div class="brief-txt fn-left">
+          <h3>{#$detail_name#}<em>{#$detail_startworkname#}</em></h3>
+          <div class="pin-lable">
+            <span class="icon-1">{#$detail_address#}</span>
+            <span class="icon-2">{#$detail_workyear#} 年</span>
+            <span class="icon-3">{#$detail_educationalname#}</span>
+          </div>
+        </div>
+        <div class="brief-img fn-right">
+          <img src="{#$detail_photo#}" alt="">
+        </div>
+      </div>
+      <div class="job-name">
+        <h3>{#$detail_typename#}<span class="fn-right wage"><em>{#$detail_salary#} {#echoCurrency type='short'#}/月</em></span></h3>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="item advantage">
+        <h3>我的优势<em class="fn-right"></em></h3>
+        <p>{#$detail_evaluation|nl2br#}</p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="item experience">
+        <h3>工作经历<em class="fn-right"></em></h3>
+        <div class="experience-info">
+          {#foreach from=$detail_experience item=experience#}
+          <div class="info-top info-line">
+            <p class="info-top-name"><span>{#$experience[0]#}</span><em class="line">|</em><span>{#$experience[3]#}</span></p>
+            <h2><span>{#$experience[4]#}</span></h2>
+            <p class="info-tag"><span>{#$experience[5]|nl2br#}</span></p>
+            <p class="info-msg"><i></i><span>{#$experience[1]#} 至 {#$experience[2]#}</span></p>
+          </div>
+          {#/foreach#}
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="item educate">
+        <h3>教育经历<em class="fn-right"></em></h3>
+        <div class="experience-info">
+          <div class="info-top">
+            <p class="info-top-name"><span>{#$detail_educationalname#}</span><em class="fn-right time">{#$detail_graduation|date_format:"%Y-%m-%d"#}</em></p>
+            <h2><span>毕业学院：{#$detail_college#}</span></h2>
+            <h2><span>毕业时间：{#$detail_graduation|date_format:"%Y-%m-%d"#}</span></h2>
+            <h2><span>所学专业：{#$detail_professional#}</span></h2>
+            <h2><span>外语水平：{#$detail_language#}</span></h2>
+            <h2><span>计算机水平：{#$detail_computer#}</span></h2>
+            <h2><span>其他教育：{#$detail_education|nl2br#}</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="item educate">
+        <h3>联系方式</h3>
+        <div class="experience-info">
+          <div class="info-top">
+            {#if $detail_phone#}
+            <h2><span>联系电话：{#$detail_phone#}</span></h2>
+            <h2><span>电子邮箱：{#$detail_email#}</span></h2>
+  					{#else#}
+  					{#if !$userinfo#}
+            <h2><span>对不起，简历的联系方式仅限企业会员查看,请 <a href="{#$cfg_basehost#}/login.html" class="lg">登陆</a> 或 <a href="{#$cfg_basehost#}/register.html">注册</a></span></h2>
+  					{#else#}
+  					{#if $userinfo.userType == 1#}
+            <h2><span>对不起，简历的联系方式仅限企业会员查看！</span></h2>
+  					{#else#}
+  					<h2>查看该简历的联系方式需要扣除 {#$job_resume_point#} 积分，是否查看？ <a href="javascript:;" class="ck">点击查看</a></h2>
+  					{#/if#}
+  					{#/if#}
+  					{#/if#}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {#if $userinfo.userType == 2#}
+  <div class="footer">
+    <div class="footer-box mail">
+      <a href="javascript:;" class="yqms"><span>面试邀请</span></a>
+
+      {#$postList = ""#}
+      {#job action="post" return="post" com="1"#}
+      {#if $post.id#}
+        {#$postList = $postList|cat:'<option value="'|cat:$post.id|cat:'">'|cat:$post.title|cat:'</option>'#}
+      {#/if#}
+      {#/job#}
+
+      {#if $postList#}
+      <select id="postlist">
+        <option value="">请选择面试职位</option>
+        {#$postList#}
+      </select>
+      {#/if#}
+    </div>
+    {#if $detail_collect == 1#}
+    <div class="footer-box heart has" id="sc">
+      <a href="javascript:;" class="like" style="display:none;"><span>收藏简历</span></a>
+      <a href="javascript:;" class="liked" style="display:block;"><span>已收藏</span></a>
+    </div>
+    {#else#}
+    <div class="footer-box heart" id="sc">
+      <a href="javascript:;" class="like"><span>收藏简历</span></a>
+      <a href="javascript:;" class="liked"><span>已收藏</span></a>
+    </div>
+    {#/if#}
+  </div>
+  {#/if#}
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_name#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#getUrlPath service='job' template='resume' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/resume-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

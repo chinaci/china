@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="{#$detail_title#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_title#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gs-detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var pageData = {
+    title: '{#$detail_community#}',
+    address: '{#$detail_address#}',
+    lat: '{#$detail_lnglat[1]#}',
+    lng: '{#$detail_lnglat[0]#}',
+    mapType: '{#$site_map#}',
+    cityName: '{#$siteCityInfo['name']#}',
+    mapKey: '{#$site_map_key#}'
+  };
+
+  var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';
+  var	JubaoConfig = {
+    "module" : 'job',
+    "action" : 'company',
+    "id" : '{#$detail_id#}'
+  };
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="公司详情"#}
+
+  <div class="gs-tit fn-clear">
+    <div class="tit-img">
+      <img src="{#$detail_logo#}">
+    </div>
+    <div class="tit-txt">
+      <h3>{#$detail_title#}</h3>
+      <p>{#$detail_addr[0]#} {#$detail_addr[1]#}</p>
+      <p class="tit-info"><span>{#$detail_nature#}</span><em>|</em><span>{#$detail_scale#}</span><em>|</em><span>{#$detail_industry[1]#}</span></p>
+    </div>
+  </div>
+
+  <div class="choose-tab">
+    <div class="tab-box">
+      <span class="active">公司主页</span>
+      <span>招聘职位</span>
+    </div>
+  </div>
+
+<div class="choose-box">
+  <div class="wrapper">
+    <div class="info">
+      <div class="info-tit">
+        <h3>公司介绍</h3>
+      </div>
+      <div class="info-con">
+        {#$detail_body#}
+      </div>
+    </div>
+    <div class="pin-address">
+      <h3>公司地址</h3>
+      <a href="javascript:;" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+    </div>
+  </div>
+  <div class="wrapper dn">
+    <div class="job-list">
+      <ul>
+				{#job action="post" return="post" company={#$detail_id#}#}
+        <li>
+          <a href="{#$post.url#}">
+            <div class="job-tit">
+              <span class="name">{#$post.title#}</span><em class="fn-right">{#$post.timeUpdate#}</em>
+            </div>
+            <div class="job-info">
+              <span>{#$detail_addr[0]#}/{#$post.experience#}/{#$post.educational#}</span><em class="fn-right price">{#$post.salary#}</em>
+            </div>
+          </a>
+        </li>
+				{#/job#}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='job' template='company' id={#$detail_id#}#}',
+	};
+</script>
+
+<!-- 底部 -->
+{#include file="footer.html"#}
+<!-- 底部 end-->
+
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/gs-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

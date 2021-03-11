@@ -1,0 +1,50 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;}
+html{background: #ebebeb;}
+em,i{font-style: normal;}
+
+/*公司简介*/
+.gs-tit{background: #fff;padding: .3rem;}
+.gs-tit .tit-img{width: 1.2rem;height: 1.2rem;float: left;margin-left: .2rem;}
+.gs-tit .tit-img img{display: block;width: 100%;height: 100%;}
+.gs-tit .tit-txt{margin-left: 1.6rem;}
+.gs-tit .tit-txt h3{font-size: .32rem;}
+.gs-tit .tit-txt p{color: #999;}
+.gs-tit .tit-txt .tit-info em{margin: 0 .1rem;}
+
+/*切换*/
+.choose-tab{background: #fff;height: .6rem;margin-top: .2rem;padding: .2rem .3rem;}
+.tab-box{display: -webkit-box;border: 1px solid #fe8b3f;border-radius: .1rem;line-height: .6rem;}
+.choose-tab span{display: block;-webkit-box-flex: 1;text-align: center;height: .6rem;border-right: 1px solid #fe8b3f;color: #fe8b3f;}
+.choose-tab span:last-child{border-right: none;}
+.choose-tab span.active{background: #fe8b3f;color: #fff;}
+
+/*公司主页*/
+.info{padding: 0 .3rem;background: #fff;margin-top: .2rem;font-size: .26rem;color: #999;line-height: .6rem;}
+.info .info-tit h3{font-size: .32rem;line-height: .8rem;color: #333;border-bottom: 1px solid #f7f7f7;}
+.info .info-con p{text-indent: 2em;margin-top: .3rem;}
+.pin-address{background: #fff;margin: .2rem 0 1rem 0;}
+.pin-address h3{border-bottom: 1px solid #f7f7f7;font-size: .3rem;line-height: .8rem;padding: 0 .3rem;color: #333;}
+.pin-address a.address-info{line-height: 1rem;height: 1rem;font-size: .28rem;color: #999;background: url(../images/right.png) right center no-repeat;background-size: .3rem auto;display: block;padding: 0 .3rem;margin-right: .2rem;}
+
+/*招聘职位*/
+.job-list{background: #fff;margin: .2rem 0 1rem 0;}
+.job-list li{border-bottom: 1px solid #f1f1f1;}
+.job-list li a{display: block;padding: .3rem;}
+.job-list li .job-tit{font-size: .32rem;}
+.job-list li .job-tit em{color: #999;}
+.job-list li .job-tit .name{display: inline-block;max-width: 60%;line-height: .6rem;height: .6rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.job-list li .job-info{font-size: .26rem;color: #666;}
+.job-list li .job-info .price{color: #fe8b3f;}
+
+
+
+/*底部*/
+.footer{height: 1rem;border-top: 1px solid #ddd;background: #fff;position: fixed;left: 0;right: 0;bottom: 0;}
+.footer ul{display: -webkit-box;}
+.footer li{-webkit-box-flex: 1;text-align: center;}
+.footer li i{display: block;width: .5rem;height: .5rem;margin: .1rem auto 0;}
+.footer .index i{background: url(../images/index.png) no-repeat;background-size: .5rem .5rem;}
+.footer .zixun i{background: url(../images/xun.png) no-repeat;background-size: .5rem .5rem;}
+.footer .wo i{background: url(../images/wo.png) no-repeat;background-size: .5rem .5rem;}
+.dn{display: none;}

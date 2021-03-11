@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>一句话{#if $type#}求职{#else#}招聘{#/if#}-{#$job_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/fabu-info.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sentence.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var type = {#$type#};
+</script>
+</head>
+
+<body>
+<div class="container sentence">
+	<div id="scroller">
+		{#$typename = '招聘'#}
+		{#if $type#}
+		{#$typename = '求职'#}
+		{#/if#}
+		{#$pageTitle = $siteCityInfo['name']|cat:"一句话"|cat:$typename#}
+		{#$pageRight = "<a href='javascript:;' class='fabusentence'>发布</a>"#}
+		{#include file="../../../siteConfig/touch_top.html"#}
+
+		<div class="job-list"></div>
+	</div>
+</div>
+
+<div class="gz-address">
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+		<div class="popup-fabu">
+			<div class="tit">发布一句话{#if $type#}求职{#else#}招聘{#/if#}<s></s></div>
+			<div class="con">
+				<div class="inptitbox">
+	        <p>职位名称</p>
+	        <div class="inptitle">
+	          <input type="text" placeholder="请输入职位名称" id="title" autocomplete="off" maxlength="100" id="title" value="">
+	        </div>
+	      </div>
+				<div class="mulinpbox mb4r">
+          <p class="multit">需求描述</p>
+          <div class="mulcon">
+            <textarea placeholder="请输入需求描述" id="note" class="textarea"></textarea>
+          </div>
+        </div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>联系人</span></dt>
+						<dd><input type="text" placeholder="请输入联系人" id="people" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>联系电话</span></dt>
+						<dd><input type="text" placeholder="请输入联系电话" id="contact" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r">
+					<dl class="inpbox">
+						<dt><span>管理密码</span></dt>
+						<dd><input type="text" placeholder="请输入管理密码" id="password" value="" /></dd>
+					</dl>
+				</div>
+				<div class="ml4r checkbox fn-hide edit radio">
+					<p>管理</p>
+					<div class="facility" data-type="manage">
+						<ul class="fn-clear">
+							<li data-id="1">修改</li>
+							<li data-id="2">删除</li>
+						</ul>
+					</div>
+				</div>
+				<div class="submit">
+			  	<a href="javascript:;" id="submit">立即发布</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 10;
+</script>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/sentence.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$siteCityInfo['name']#}一句话{#if $type#}求职{#else#}招聘{#/if#}{#$actname#}信息',
+		"imgUrl": '{#$job_logoUrl#}',
+		"link": '{#getUrlPath service='job' template='sentence'#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

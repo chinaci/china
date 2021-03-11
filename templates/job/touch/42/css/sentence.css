@@ -1,0 +1,27 @@
+.container {background: #fff;}
+.loading {height: 1rem; line-height: 1rem; text-align: center; background-color: #fff;}
+
+/* 求租、求购 */
+.header .header-search a.fabusentence, .open.header .header-search a.fabusentence {background: none; color: #f60; font-size: .3rem;}
+.disabled {background-color: #f5f5f5;}
+.sentence .dlist {margin: 0 .24rem; padding: .24rem 0; border-bottom: 1px solid #ededed;}
+.sentence .dlist .tit {font-size: .3rem; padding-bottom: .1rem;}
+.sentence .dlist .t0 i {color: #6d56f7;}
+.sentence .dlist .t1 i {color: #fe325d;}
+.sentence .dlist .t1 i:after {background-position: -.42rem 0;}
+.sentence .dlist p {color: #5e5e5e; padding-bottom: .1rem;}
+.sentence .dlist .b {color: #5e5e5e; line-height: .5rem;}
+.sentence .dlist .b p {padding-bottom: 0;}
+.sentence .dlist .b .tel {float: right; position: relative; border-radius: 3px; background-color: #ff7902; color: #fff; height: .5rem; padding: 0 .27rem 0 .5rem;}
+.sentence .dlist .b .tel:after {position: absolute; content: ''; left: .13rem; top: .04rem; width: .4rem; height: .4rem; background: url('../images/sentence_icon.png') no-repeat -.84rem 0; background-size: 1.24rem .4rem;}
+
+/* 发布 */
+.gz-address {display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 999999;}
+.popup-fabu .tit {position: relative; text-align: center; height: .9rem; background: #fff; border-bottom: 1px solid #f2f2f2; font-size: .32rem; line-height: .9rem;}
+.huoniao_iOS .popup-fabu .tit {padding-top: 20px;}
+.popup-fabu .tit s {position: absolute; left: 0; top: 0; width: 1rem; height: .9rem; background: url(/static/images/header_back.png) center center no-repeat; background-size: auto .48rem;}
+.huoniao_iOS .popup-fabu .tit s {top: 20px;}
+.ml4r {overflow: hidden;}
+
+
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$job_title#}</title>
+<meta name="keywords" content="{#$job_keywords#}" />
+<meta name="description" content="{#$job_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute" pageTitle="{#$job_channelName#}"#}
+
+	<!-- 头部幻灯片 -->
+  <div class="wrapper">
+  	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+				{#myad title="招聘求职_模板一_移动端_广告一" type="slide"#}
+	    </div>
+    	<div class="pagination"></div>
+  	</div>
+  </div>
+  <!-- 头部幻灯片 end -->
+
+  <!-- 导航 -->
+  <div class="nav">
+    <ul class="fn-clear">
+      <li>
+        <a href="{#getUrlPath service='job' template='zhaopin'#}">
+          <img src="{#$templets_skin#}images/img1.png?v=1" alt="">
+          <div class="nav-txt"><p>职位</p></div>
+        </a>
+      </li>
+      <li>
+        <a href="{#getUrlPath service='job' template='resume'#}">
+          <img src="{#$templets_skin#}images/img2.png?v=1" alt="">
+          <div class="nav-txt"><p>简历</p></div>
+        </a>
+      </li>
+      <li>
+        <a href="{#getUrlPath service='job' template='zhaopinhui'#}">
+          <img src="{#$templets_skin#}images/img3.png?v=1" alt="">
+          <div class="nav-txt"><p>招聘会</p></div>
+        </a>
+      </li>
+      <li>
+        <a href="{#getUrlPath service='job' template='company'#}">
+          <img src="{#$templets_skin#}images/img4.png?v=1" alt="">
+          <div class="nav-txt"><p>公司</p></div>
+        </a>
+      </li>
+			<li>
+        <a href="{#getUrlPath service='job' template='news'#}">
+          <img src="{#$templets_skin#}images/img5.png?v=1" alt="">
+          <div class="nav-txt"><p>资讯</p></div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- 导航 end-->
+
+  <!-- 一句话 -->
+  <div class="sentence">
+    <ul class="fn-clear">
+      <li class="z"><a href="{#getUrlPath service='job' template='sentence' param='type=1'#}"><span><i>一句话求职</i></span></a></li>
+      <li class="g"><a href="{#getUrlPath service='job' template='sentence' param='type=0'#}"><span><i>一句话招聘</i></span></a></li>
+    </ul>
+  </div>
+
+  <!-- 列表 -->
+  <div class="list">
+    <div class="list-tit"><span>最新职位</span></div>
+    <div class="list-box">
+      <ul>
+        {#job action="post" return="post" pageSize="50" company="{#$company.id#}"#}
+        <li>
+          <a href="{#$post.url#}" class="fn-clear">
+            <div class="img-box fn-left">
+              <img src="{#$post.company['logo']#}" alt="">
+            </div>
+            <div class="img-txt fn-left">
+              <h3>{#$post.title#}<em class="fn-right">{#$post.salary#}</em></h3>
+              <p>{#$post.company['title']#}</p>
+              <p class="grey area"><span>{#$post.addr[0]#}</span><span>{#$post.addr[1]#}</span><span>{#$post.experience#}</span><span>{#$post.educational#}</span><em class="fn-right time">{#$post.timeUpdate#}</em></p>
+              <p class="grey info"><span>{#$post.company.industry[1]#}</span><em>|</em><span>{#$post.company.nature#}</span></p>
+            </div>
+          </a>
+        </li>
+				{#/job#}
+      </ul>
+    </div>
+  </div>
+  <!-- 列表 end -->
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$job_title#}',
+		"imgUrl": '{#$job_logoUrl#}',
+		"link": '{#$job_channelDomain#}',
+	};
+</script>
+
+<!-- 底部 s -->
+{#include file="footer.html"#}
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

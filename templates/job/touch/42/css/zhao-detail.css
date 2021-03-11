@@ -1,0 +1,21 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;}
+html{background: #ebebeb;}
+em,i{font-style: normal;}
+
+
+/*基本信息*/
+.wrapper{background: #fff;padding: .2rem;margin-bottom: .2rem;}
+.wrapper h1{font-size: .32rem;}
+.wrapper .time{color: #999;}
+.wrapper h3{font-size: .32rem;color: #777;margin-bottom: .2rem;	}
+.wrapper h3 span{padding-left: .2rem;border-left: .08rem solid #00b5ca;display: block;line-height: .35rem;}
+.wrapper li{font-size: .26rem;line-height: .6rem;}
+.wrapper li span{display: inline-block;}
+.wrapper li .info-tit{width: 1.5rem;text-align: right;}
+.wrapper li .info-txt{display: inline-block;width: 75%;}
+.wrapper .wrapper-txt{font-size: .26rem;line-height: .5rem;}
+.swiper-slide img{display: block;width: 100%;}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{width: 100%;}
+.swiper-pagination-bullet{background: #000 !important;opacity: .5 !important;}
+.swiper-pagination-bullet-active{opacity: 1 !important;background: #fff !important;}

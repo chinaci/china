@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>找公司-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="找公司,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找公司,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gs-list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cityid = {#$siteCityInfo['cityid']#};
+	var cookiePre = '{#$cfg_cookiePre#}', detailListId = 'maincontent';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute" pageTitle="公司列表"#}
+
+<!-- 筛选框 -->
+<div class="choose">
+  <div class="choose-tab">
+    <ul>
+      <li class="tab-area"><a href="javascript:;"><i><span>工作地点</span></i></a></li>
+      <li class="tab-industry"><a href="javascript:;"><i><span>行业领域</span></i></a></li>
+      <li class="tab-nature"><a href="javascript:;"><i><span>公司性质</span></i></a></li>
+      <li class="tab-scale"><a href="javascript:;"><i><span>公司规模</span></i></a></li>
+    </ul>
+  </div>
+  <div class="choose-box">
+    <div class="choose-local dn" id="area-box">
+      <div class="choose-stage-l">
+        <div id="choose-area">
+          <div class="load">获取中...</div>
+        </div>
+      </div>
+      <div class="choose-stage-r">
+        <div id="choose-area-second">
+          <div class="load">获取中...</div>
+        </div>
+      </div>
+    </div>
+    <div class="choose-local dn" id="info-box">
+      <div class="choose-stage-l">
+        <div id="choose-info">
+          <div class="load">获取中...</div>
+        </div>
+      </div>
+      <div class="choose-stage-r">
+        <div id="choose-info-second">
+          <div class="load">获取中...</div>
+        </div>
+      </div>
+    </div>
+    <div class="choose-local dn" id="sort-box">
+      <div id="choose-sort" data-type="data-nature">
+        <ul>
+          <li>不限</li>
+					{#job action="item" return="type" type="5"#}
+          <li data-id="{#$type.id#}">{#$type.typename#}</li>
+					{#/job#}
+        </ul>
+      </div>
+    </div>
+    <div class="choose-local dn">
+      <div class="choose-more">
+        <div id="choose-more" data-type="data-scale">
+          <ul>
+            <li>不限</li>
+						{#job action="item" return="type" type="6"#}
+            <li data-id="{#$type.id#}">{#$type.typename#}</li>
+						{#/job#}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 筛选框 end-->
+
+<!-- 列表 -->
+<div class="list"><div class="list-box"><ul id="maincontent"></ul></div></div>
+<!-- 列表 end -->
+
+<div class="mask"></div>
+
+<script>
+var atpage = '{#$page#}',
+		totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+		totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+		pageSize = 10;
+</script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '公司列表',
+		"imgUrl": '{#$job_logoUrl#}',
+		"link": '{#getUrlPath service='job' template='company'#}',
+	};
+</script>
+
+<!-- 底部 -->
+{#include file="footer.html"#}
+
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/gs-list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

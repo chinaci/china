@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-招聘会-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="招聘会,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="招聘会,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zhao-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var	JubaoConfig = {
+		"module" : 'job',
+		"action" : 'zhaopinhui',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="招聘会"#}
+
+  <div class="info">
+    <div class="wrapper">
+      <h1>{#$detail_title#}</h1>
+      <p class="time">阅读次数：{#$detail_click#}</p>
+    </div>
+    <div class="wrapper">
+      <h3><span>基本信息</span></h3>
+      <ul>
+        <li>
+          <span class="info-tit">举办场馆：</span>
+          <span class="info-txt">{#$detail_fairs['title']#} <em>查看地图</em></span>
+        </li>
+        <li>
+          <span class="info-tit">具体地点：</span>
+          <span class="info-txt">{#$detail_fairs['addr'][0]#} {#$detail_fairs['addr'][1]#} {#$detail_fairs['address']#}</span>
+        </li>
+        <li>
+          <span class="info-tit">举办时间：</span>
+          <span class="info-txt">{#$detail_date|date_format:"%Y-%m-%d"#}<span>&nbsp&nbsp{#$detail_began#}-{#$detail_end#}</span></span>
+        </li>
+				{#if $detail_fairs['tel'] != ""#}
+        <li>
+          <span class="info-tit">固定电话：</span>
+          <span class="info-txt">{#$detail_fairs['tel']#}<a href="#"></a></span>
+        </li>
+				{#/if#}
+				{#if $detail_fairs['fax'] != ""#}
+        <li>
+          <span class="info-tit">传真：</span>
+          <span class="info-txt">{#$detail_fairs['fax']#}</span>
+        </li>
+				{#/if#}
+				{#if $detail_fairs['email'] != ""#}
+        <li>
+          <span class="info-tit">联系邮箱：</span>
+          <span class="info-txt">{#$detail_fairs['email']#}</span>
+        </li>
+				{#/if#}
+				{#if $detail_fairs['qq'] != ""#}
+        <li>
+          <span class="info-tit">联系QQ：</span>
+          <span class="info-txt">{#$detail_fairs['qq']#}</span>
+        </li>
+				{#/if#}
+      </ul>
+    </div>
+    <div class="wrapper">
+      <h3><span>交通路线</span></h3>
+      <div class="wrapper-txt">{#$detail_fairs['traffic']#}</div>
+    </div>
+    <div class="wrapper">
+      <h3><span>场馆环境照片</span></h3>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+					{#foreach from=$detail_fairs['pics'] item=pics#}
+          <div class="swiper-slide">
+            <img src="{#$pics['pic']#}">
+          </div>
+					{#/foreach#}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <h3><span>招聘会详情</span></h3>
+      <div class="wrapper-txt">{#$detail_note#}</div>
+	  </div>
+		<div class="wrapper">
+      <h3><span>场馆介绍</span></h3>
+      <div class="wrapper-txt">{#$detail_fairs['note']#}</div>
+	  </div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_fairs['pics'][0]['pic']#}',
+		"link": '{#getUrlPath service='job' template='zhaopinhui' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/zhao-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
