@@ -1,0 +1,58 @@
+  <!--右侧购物车 s-->
+  <div class="cart-wrap fn-clear">
+    <div class="left-side">
+      <div class="hun_con">
+        <div class="order-icon"><a href="{#getUrlPath service='member' type='user' template='order' module='waimai'#}"><i></i></a></div>
+        <div class="cart">
+          <div class="cart_style">
+            <span class="cartNum">0</span>
+            <i class="cart-icon"></i>
+            <span class="cart-txt">{#$langData['waimai'][7][77]#}</span> {#* 购物车 *#}
+          </div>          
+        </div>
+      </div>
+      
+      <div class="erwei">
+        <i class="erwei-icon"></i>
+        <div class="hide_code">
+
+          <img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='siteConfig' template='mobile'#}" alt="" class="code">
+          <p>{#$langData['waimai'][8][61]#}</p> {#* 手机扫描二维码访问 *#}
+        </div>
+      </div>
+      <div class="go-top"></div>
+    </div>
+    <div class="right-side cart-box">
+      <h1 class="car-h1">{#$langData['waimai'][7][77]#}<span class="fn-right close-cart"></span></h1> {#* 购物车 *#}
+      <div class="con shop">
+        <!--下面应该为多个shop-->
+        <!-- <div class="shop">          
+        </div> -->
+      </div>
+
+      
+    </div>
+    
+  </div>
+  <!--右侧购物车 e-->
+
+  <!--库存不足弹窗-->
+<div class="stockPop"></div>
+<div class="stock_alert">
+  <h2 class="alert_title">{#$langData['waimai'][8][59]#}</h2> {#* 该商品库存不足啦！ *#}
+  <ul> 
+    <li class="see_out"><a href="javascript:;">{#$langData['waimai'][8][60]#}</a></li> {#* 知道了 *#}
+  </ul>
+</div>
+
+<!--超出配送范围弹窗-->
+<!-- <div class="deliveryPop"></div>
+<div class="delivery_alert">
+  <s class="cha"></s>
+  <h2 class="alert_title">本店超出配送范围</h2>
+  <p class="alert_tip">建议你更换收货地址后再下单</p>
+  <ul>
+    <li class="see_out"><a href="javascript:;">我先看看</a></li>
+    <li class="change_address"><a href="{#getUrlPath service="waimai" template="index"#}">更换地址</a></li>
+  </ul>
+</div> -->
