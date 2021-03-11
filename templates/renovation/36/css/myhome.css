@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/* 列表页 */
+#search .search {float: left;margin-top: 15px;}
+#search .ad {float: right;margin-top: 15px;}
+#search .ad img {margin-left: 0;}
+.search .box {position: relative;width: 510px;height: 40px;border:1px solid #e2e2e2;}
+.search input {border:0;outline:none;font-size: 14px;}
+.search input.inp {margin:0 120px 0 40px;width: 340px;height: 40px;line-height: 40px;color: #999;}
+.search .submit {position: absolute;right:-1px;top:-1px;display: block;width: 100px;height: 42px;line-height: 42px;color: #fff;background:#fe7f21;text-align: center;font-size: 16px;letter-spacing: 4px;cursor: pointer;}
+.search .submit:hover {background: #E67D2F;}
+.search .box i {position: absolute;left:8px;top: 10px;display: block;width: 25px;height: 25px;background-position: -13px -10px;}
+
+
+/* 详情页 */
+.total , .pages-f {margin:15px 0 0;}
+.total {float: left;width: 400px;padding-left: 20px;font-size: 14px;color: #999;}
+.total span {color: #000;}
+.pages-f {float: right;}
+.pages-f a {color: #c2c2c2;}
+.pages-f span {color: #333;}
+.pages-f i {font-family: "SimSun";font-style: normal;font-weight: bold;color: #c3c3c3;}
+.pages-f i , .pages-f a , .pages-f span {padding:4px;cursor: pointer;font-size: 14px;}
+.pages-f i:hover , .pages-f a:hover {color: #333;}
+.pages-f i.disabled ,.pages-f i.disabled:hover {color:#ccc;}
+.pages-f span:hover , .pages-f .disabled:hover {cursor: default;}
+
+.search .box i {background-image:url(../images/myhome/mh_icons.png);background-repeat:no-repeat;}

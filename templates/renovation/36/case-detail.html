@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/caselistD.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var id = {#$detail_id#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'case'#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='renovation' template='case' param="type={#$detail_type#}"#}" target="_blank">装修案例</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='case-detail' id={#$detail_id#}#}">{#$detail_title#}</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<!-- 主体部分 s -->
+<div class="wrap main fn-clear">
+	<div class="main-right fn-right">
+		<div class="designerinfo">
+			<dl class="dl1 fn-clear">
+				<dt><a href="{#$detail_designer['company']['domain']#}" target="_blank"><img src="{#$detail_designer['company']['logo']#}" alt="{#$detail_designer['company']['company']#}"></a></dt>
+				<dd>
+					<p class="name"><a href="{#$detail_designer['company']['domain']#}" target="_blank">{#$detail_designer['company']['company']#}</a></p>
+					<p class="tel">TEL：{#$detail_designer['company']['contact']#}</p>
+					<p class="nub">Addr：{#$detail_designer['company']['addr'][count($detail_designer['company']['addr'])-2]#} {#$detail_designer['company']['addr'][count($detail_designer['company']['addr'])-1]#}</p>
+				</dd>
+			</dl>
+			<dl class="dl2">
+				<p><span class="ubg">设计师</span><a href="{#getUrlPath service='renovation' template='designer-detail' id={#$detail_designer['id']#}#}" target="_blank">{#$detail_designer['name']#}</a></p>
+				<p class="years">从业年限：{#$detail_designer['works']#}年</p>
+				<p class="nub">案例数量：{#$detail_designer['case']#}个</p>
+				<span class="icon icon-down"></span>
+			</dl>
+		</div>
+		<div class="morecase">
+			<h3><a href="{#$detail_designer['company']['domain']#}" target="_blank" class="icon icon-more" title="更多"></a>该公司其他案例</h3>
+			<ul>
+				{#renovation action="diary" return='diary' designer={#$detail_designer['id']#} page=1 pageSize='5'#}
+				<li class="fn-clear">
+					<div class="pic">
+						<a href="{#$diary.url#}" target="_blank"><img src="{#changeFileSize url={#$diary.litpic#} type='small'#}" alt="{#$diary.title#}"></a>
+					</div>
+					<div class="txt">
+						<p class="name"><a href="{#$diary.url#}" target="_blank">{#$diary.title#}</a></p>
+						<p class="money"><span>造价：</span>{#$diary.price#}万/{#$diary.btype#}</p>
+						<p class="tag">
+							<span>{#$diary.btype#}</span>
+							{#if $diary.type == 0#}
+							<span>{#$diary.style#}</span>
+							<span>{#$diary.units#}</span>
+							{#else#}
+							<span>{#$diary.comstyle#}</span>
+							{#/if#}
+						</p>
+					</div>
+				</li>
+				{#/renovation#}
+			</ul>
+		</div>
+	</div>
+	<div class="main-left">
+		<div class="title">
+			<div class="do">
+				<div class="icon icon-collect collect{#if $detail_collect#} icon-collect-sel{#/if#}">{#if $detail_collect#}已{#/if#}收藏</div>
+				<div class="icon icon-shear newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_liptic#}">分享</div>
+			</div>
+			<h2>{#$detail_title#}</h2>
+		</div>
+		<ul class="baseinfo">
+			<li>类型：{#if $detail_type == 0#}家装{#else#}公装{#/if#}</li>
+			<li>方式：{#$detail_btype#}</li>
+			<li>装修风格：{#$detail_style#}</li>
+			<li>户型：{#$detail_units#}</li>
+			<li>面积：{#$detail_area#}平</li>
+			<li>费用：{#$detail_price#}万{#echoCurrency type='short'#}</li>
+			<li>开工：{#$detail_began|date_format:"%Y-%m-%d"#}</li>
+			<li>竣工：{#$detail_end#}</li>
+		</ul>
+		<div class="context">
+			{#if $detail_unitspic != ""#}
+			<br /><br /><h3>户型图</h3>
+			<div class="img"><img src="{#$detail_unitspic#}" /></div>
+			{#/if#}
+			<br /><br /><h3>施工现场</h3>
+			{#foreach from=$detail_pics item="pics"#}
+			<div class="img"><img src="{#$pics['path']#}" /><p>{#$pics['note']#}</p></div>
+			{#/foreach#}
+		</div>
+	</div>
+</div>
+<!-- 主体部分 e -->
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/caselistd.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/designpicd.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'albums'#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='renovation' template='albums' param="type={#$detail_type#}"#}" target="_blank">装修效果图</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='albums-detail' id={#$detail_id#}#}">{#$detail_title#}</a></li>
+	</ul>
+</div>
+
+<!-- 导航条 e -->
+<div class="wrap title">
+	<div class="newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_pics[0].path#}">分享</div>
+	<h2>{#$detail_title#}</h2>
+</div>
+
+<!-- 轮播图 s -->
+<div class="wrap">
+	<div class="slide">
+		<div id="slide_big">
+		</div>
+		<a href="javascript:;" class="prev" id="slidebtn_prev"><s></s></a>
+		<a href="javascript:;" class="next" id="slidebtn_next"><s></s></a>
+		<div class="slidebtn">
+			<div><span class="atpage" id="atpage">1</span>/<span class="tpage" id="tpage">{#$detail_pics|@count#}</span></div>
+		</div>
+		<div id="slide_small">
+			<div class="spbox">
+				<div class="picsmall fn-clear">
+					{#foreach from=$detail_pics item="pics"#}
+					<a href="javascript:;" data-bigpic="{#$pics.path#}" data-title="{#$detail_title#}">
+						<img src="{#changeFileSize url={#$pics.path#} type='small'#}" alt="{#$detail_title#}"></a>
+					{#/foreach#}
+				</div>
+			</div>
+			<a href="javascript:;" class="prev disabled" id="slidebtn2_prev"><s></s></a>
+			<a href="javascript:;" class="next" id="slidebtn2_next"><s></s></a>
+		</div>
+	</div>
+</div>
+<!-- 轮播图 e -->
+
+<!-- 热门标签 s -->
+<div class="wrap">
+	<div class="title">
+		<h2>风格标签</h2>
+	</div>
+	<div class="tj-tag">
+		<dl>
+			<dt><a href="{#getUrlPath service='renovation' template='albums' param="type={#$detail_type#}"#}" class="more" target="_blank">更多风格 &gt;&gt;</a></dt>
+			<dd class="fn-clear">
+				{#if $detail_type == 0#}
+				{#renovation action="type" return='type' type='4' page="1" pageSize="9"#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="style={#$type.id#}"#}" class="tag-{#$_bindex.type#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+				{#elseif $detail_type == 1#}
+				{#renovation action="type" return='type' type='3' page="1" pageSize="9"#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle={#$type.id#}"#}" class="tag-{#$_bindex.type#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+				{#/if#}
+			</dd>
+		</dl>
+	</div>
+</div>
+<!-- 热门标签 e -->
+
+<!-- 大家都在看 s -->
+<div class="wrap">
+	<div class="title">
+		<h2>大家都在看</h2>
+	</div>
+	<div class="slide2">
+		{#$style = {#$detail_styleid#}#}
+		{#if $detail_type == 1#}
+		{#$style = {#$detail_comstyleid#}#}
+		{#/if#}
+		<div class="lookbox" id="gl">
+			<ul class="looklist">
+				{#renovation action="rcase" type={#$detail_type#} style={#$style#} page=1 pageSize='5'#}
+				<li class="p{#$_bindex.row#}">
+					<a href="">
+						<img src="{#$row.litpic#}" alt="{#$row.title#}">
+						<div class="info">
+							<h3>{#$row.title#}</h3>
+							<div class="bg"></div>
+						</div>
+					</a>
+				</li>
+				{#/renovation#}
+			</ul>
+		</div>
+		<a href="javascript:;" id="glprev"></a>
+		<a href="javascript:;" id="glnext"></a>
+	</div>
+</div>
+<!-- 大家都在看 e -->
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/designpicd.js"></script>
+</body>
+</html>

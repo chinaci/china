@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=1" media="all" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "index"#}
+{#include file="top.html"#}
+
+<div class="wrap wpre fn-clear">
+	<div class="sb-type">
+		<dl>
+			<dt>装修空间</dt>
+			<dd>
+				{#renovation action="type" return='type' type='533' pageSize='10'#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="kongjian={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+			</dd>
+		</dl>
+		<dl>
+			<dt>设计风格</dt>
+			<dd>
+				{#renovation action="type" return='type' type='4' pageSize='10'#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="style={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+			</dd>
+		</dl>
+		<dl>
+			<dt>户型空间</dt>
+			<dd>
+				{#renovation action="type" return='type' type='8' pageSize='10'#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="units={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+			</dd>
+		</dl>
+		<dl>
+			<dt>装修价位</dt>
+			<dd>
+				{#renovation action="type" return='type' type='6' pageSize='10'#}
+				<a href="{#getUrlPath service='renovation' template='albums' param="apartment={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+				{#/renovation#}
+			</dd>
+		</dl>
+	</div>
+
+	<div class="slideshow_710_400">
+		<div id="slideshow710400">
+			{#myad title="装修_模板一_电脑端_广告二" type="slide"#}
+		</div>
+		<div id="slidebtn710400" class="slidebtn"></div>
+		<a href="javascript:;" class="prev" id="slidebtn710400_prev"><s></s></a>
+		<a href="javascript:;" class="next" id="slidebtn710400_next"><s></s></a>
+	</div>
+
+	<div class="service">
+		<ul>
+			<li class="s1">
+				<a href="{#getUrlPath service="renovation" template="entrust"#}" target="_blank">
+					<h5>获取靠谱装修报价</h5>
+					<p>3套报价PK彻底挤干水分</p>
+					<s></s>
+				</a>
+			</li>
+			<li class="s2">
+				<a href="{#getUrlPath service="renovation" template="company"#}" target="_blank">
+					<h5>免费第三方监理</h5>
+					<p>严查施工细节保质量</p>
+					<s></s>
+				</a>
+			</li>
+			<li class="s3">
+				<a href="{#getUrlPath service="renovation" template="case"#}" target="_blank">
+					<h5>业主装修日记</h5>
+					<p>迄今为止最真实记录</p>
+					<s></s>
+				</a>
+			</li>
+			<li class="s4">
+				<a href="{#getUrlPath service="renovation" template="raiders"#}" target="_blank">
+					<h5>菜鸟装修手册</h5>
+					<p>3分钟让你省万{#echoCurrency type='short'#}</p>
+					<s></s>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="wt">
+		<h3>装修效果图</h3>
+		<span class="rec"><s></s>火热推荐</span>
+		<a href="{#getUrlPath service='renovation' template='albums'#}" target="_blank" class="more">更多效果图</a>
+		<a href="javascript:;" class="change fn-hide" id="zxPicsBtn"><s></s>换下一组</a>
+	</div>
+	<div class="wc">
+		<ul class="pics" id="zxPics">
+			<div class="loading">加载中，请稍候...</div>
+		</ul>
+		<ul class="project">
+			<li class="p1"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=24"#}" target="_blank"><img src="{#$templets_skin#}images/bgl.jpg" /><p>美容院装修</p></a></li>
+			<li class="p2"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=25"#}" target="_blank"><img src="{#$templets_skin#}images/jb.jpg" /><p>酒店装修</p></a></li>
+			<li class="p3"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=26"#}" target="_blank"><img src="{#$templets_skin#}images/bs.jpg" /><p>ktv<br />装修</p></a></li>
+			<li class="p4"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=27"#}" target="_blank"><img src="{#$templets_skin#}images/sc.jpg" /><p>酒吧<br />装修</p></a></li>
+			<li class="p5"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=28"#}" target="_blank"><img src="{#$templets_skin#}images/dp.jpg" /><p>美发店</p></a></li>
+			<li class="p6"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=29"#}" target="_blank"><img src="{#$templets_skin#}images/yl.jpg" /><p>写字楼装修</p></a></li>
+			<li class="p7"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=30"#}" target="_blank"><img src="{#$templets_skin#}images/yy.jpg" /><p>办公室<br />装修</p></a></li>
+			<li class="p8"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=31"#}" target="_blank"><img src="{#$templets_skin#}images/xx.jpg" /><p>宾馆装修</p></a></li>
+			<li class="p9"><a href="{#getUrlPath service='renovation' template='albums' param="type=1&comstyle=32"#}" target="_blank"><img src="{#$templets_skin#}images/jd.jpg" /><p>会所装修</p></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="wt">
+		<h3>装修案例</h3>
+		<span class="tip">以有限空间，创造无限可能 </span>
+		<a href="{#getUrlPath service='renovation' template='case'#}" target="_blank" class="more">更多</a>
+		<a href="javascript:;" class="change fn-hide" id="casePicsBtn"><s></s>换下一组</a>
+	</div>
+	<div class="wc fn-clear">
+		<div class="filter">
+			<dl>
+				<dt>您希望的装修模式</dt>
+				<dd>
+					{#renovation action="type" return='type' type='7'#}
+					<a href="{#getUrlPath service='renovation' template='case' param="btype={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+					{#/renovation#}
+				</dd>
+			</dl>
+			<dl>
+				<dt>您家的户型</dt>
+				<dd>
+					{#renovation action="type" return='type' type='8' pageSize='10'#}
+					<a href="{#getUrlPath service='renovation' template='case' param="type=0&units={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+					{#/renovation#}
+				</dd>
+			</dl>
+			<dl>
+				<dt>您希望的风格</dt>
+				<dd>
+					{#renovation action="type" return='type' type='4' pageSize='5'#}
+					<a href="{#getUrlPath service='renovation' template='case' param="style={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+					{#/renovation#}
+				</dd>
+			</dl>
+		</div>
+		<div class="case">
+			<ul class="pics" id="casePics">
+				<div class="loading">加载中，请稍候...</div>
+			</ul>
+		</div>
+		<div class="article">
+			<ul>
+				{#renovation action="news" pageSize="10" return="list"#}
+				<li><em>{#$_bindex.list#}</em><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+				{#/renovation#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="wrap designer">
+	<div class="wt">
+		<h3>设计精英</h3>
+		<span class="tip">专业设计帮您规划最合理的采光和空间布局 </span>
+		<a href="{#getUrlPath service='renovation' template='designer'#}" target="_blank" class="more">找设计师</a>
+	</div>
+	<div class="wc fn-clear">
+		<div class="filter">
+			<dl>
+				<dt>设计专长</dt>
+				<dd>
+					{#renovation action="type" return='type' type='5' pageSize='5'#}
+					<a href="{#getUrlPath service='renovation' template='designer' param="special={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+					{#/renovation#}
+				</dd>
+			</dl>
+			<dl>
+				<dt>擅长风格</dt>
+				<dd>
+					{#renovation action="type" return='type' type='4' pageSize='7'#}
+					<a href="{#getUrlPath service='renovation' template='designer' param="style={#$type.id#}"#}" target="_blank">{#$type.typename#}</a>
+					{#/renovation#}
+				</dd>
+			</dl>
+			<dl>
+				<dt>职业年限</dt>
+				<dd>
+					<a href="{#getUrlPath service='renovation' template='designer' param="works=1,3"#}" target="_blank">1-3年</a>
+					<a href="{#getUrlPath service='renovation' template='designer' param="works=4,7"#}" target="_blank">4-7年</a>
+					<a href="{#getUrlPath service='renovation' template='designer' param="works=8,10"#}" target="_blank">8-10年</a>
+				</dd>
+			</dl>
+		</div>
+		<div class="dlist" id="designer">
+			<div class="plist">
+			  {#renovation action="team" return="team" pageSize="15"#}
+				<li>
+					<a href="{#$team.url#}" target="_blank">
+						<img src="{#$team.photo#}" />
+						<div class="info">
+							<h3>{#$team.name#}-{#$team.post#}</h3>
+							<p>经验：{#$team.works#}年</p>
+							<span class="btn">进入店铺</span>
+						</div>
+					</a>
+				</li>
+				{#/renovation#}
+			</div>
+			<span class="prev"><s></s></span>
+			<span class="next"><s></s></span>
+		</div>
+	</div>
+</div>
+
+<div class="wrap comlist">
+	<ul class="fn-clear">
+		{#renovation action="store" return="store" pageSize="16"#}
+		<li>
+			<img class="logo" src="{#$store.logo#}" />
+			<div class="popup fn-clear">
+				<a href="{#$store.url#}" target="_blank" class="title">
+					<h3 title="{#$store.company#}">{#$store.company#}</h3>
+					<span class="btn">在线预约</span>
+					<div class="bg"></div>
+				</a>
+				<div class="info">
+					<div class="flag">
+					  {#if $store.license == 1#}
+						<span class="yyzz" title="该公司营业执照已认证">营</span>
+						{#else#}
+						<span class="yyzz no">营</span>
+						{#/if#}
+
+						{#if $store.certi == 1#}
+						<span class="rz" title="认证公司">认</span>
+						{#else#}
+						<span class="rz no">认</span>
+						{#/if#}
+
+						{#if $store.saleCount > 0#}
+						<a href="#" target="_blank"><span class="yh" title="该公司有装修优惠,点击查看">惠</span></a>
+						{#else#}
+						<span class="yh no">惠</span>
+						{#/if#}
+
+						{#if $store.safeguard > 0#}
+						<span class="bzj" title="该公司已交{#$store.safeguard#}{#echoCurrency type='short'#}保障金">金</span>
+						<em>{#$store.safeguard#}{#echoCurrency type='short'#}</em>
+						{#else#}
+						<span class="bzj no">金</span>
+						{#/if#}
+
+						{#if $store.caseCount > 0#}
+						<a href="#" target="_blank"><span class="sj" title="设计方案">设</span></a>
+						<em>{#$store.caseCount#}套</em>
+						{#else#}
+						<span class="sj no">设</span>
+						{#/if#}
+
+						{#if $store.diaryCount > 0#}
+						<a href="#" target="_blank"><span class="sg" title="施工案例">工</span></a>
+						<em>{#$store.diaryCount#}个</em>
+						{#else#}
+						<span class="sg no">工</span>
+						{#/if#}
+
+						{#if $store.guestCount > 0#}
+						<a href="#" target="_blank"><span class="sg" title="公司评价">评</span></a>
+						<em>{#$store.guestCount#}次</em>
+						{#else#}
+						<span class="sg no">评</span>
+						{#/if#}
+					</div>
+					<p class="addr">地址：{#$store.addr#} {#$store.address#}</p>
+
+					{#renovation action="diary" return="diary" company="{#$store.id#}" pageSize="5"#}
+					<div class="caseitem">
+						<a href="{#$diary.url#}" target="_blank">
+							<img src="{#changeFileSize url="{#$diary.litpic#}" type="small"#}">
+							<p>{#$diary.title#}</p>
+							<div class="bg"></div>
+						</a>
+					</div>
+					{#/renovation#}
+
+				</div>
+			</div>
+		</li>
+		{#/renovation#}
+	</ul>
+</div>
+
+<div class="wrap ad">
+	<ul class="fn-clear">{#myad title="装修_模板一_电脑端_广告三"#}</ul>
+</div>
+
+<div class="wrap">
+	<div class="wt">
+		<h3>找我家设计方案</h3>
+		<span class="tip">足不出户，在线参观邻居的装修效果，找到您的装修灵感。</span>
+		<a href="{#getUrlPath service='renovation' template='zwj'#}" target="_blank" class="more">更多方案</a>
+	</div>
+	<div class="wc">
+		<ul class="pics">
+			{#renovation action="community" return="community" pageSize="6"#}
+			<li class="p{#$_bindex.community#}">
+				<a href="{#$community.url#}" target="_blank">
+					<img src="{#changeFileSize url="{#$community.litpic#}" type="middle"#}" />
+					<p>{#$community.title#}</p>
+					<div class="bg"></div>
+				</a>
+			</li>
+			{#/renovation#}
+		</ul>
+	</div>
+</div>
+
+<div class="wrap">
+	<div class="wt">
+		<h3>装修攻略</h3>
+		<span class="tip">轻轻松松装修，教你精打细算选材料</span>
+		<a href="{#getUrlPath service='renovation' template='raiders'#}" target="_blank" class="more">更多</a>
+	</div>
+	<div class="wc fn-clear">
+		<div class="recimg">
+			{#myad title="装修_模板一_电脑端_广告四"#}
+		</div>
+		<div class="case gl">
+			<div id="gl">
+				<div class="loading">加载中，请稍候...</div>
+			</div>
+			<span class="prev" id="glprev"><s></s></span>
+			<span class="next" id="glnext"><s></s></span>
+		</div>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.easing.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

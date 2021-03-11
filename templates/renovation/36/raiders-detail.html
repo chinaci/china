@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/strategyd.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'raiders'#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='renovation' template='raiders'#}" target="_blank">装修攻略</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='raiders' id={#$detail_typeid#}#}">{#$detail_typename#}</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<div class="wrap main fn-clear">
+	<div class="main-right fn-left">
+
+		<div class="list-box">
+			{#renovation action='newsType'#}
+		  <div class="level1">{#$row.typename#}</div>
+			<div class="sub">
+				{#renovation action='newsType' return='type1' type={#$row.id#}#}
+			  <div class="level2{#if $detail_typeid == $type1.id#} curr{#/if#}"><i><s></s></i><a href="{#getUrlPath service='renovation' template='raiders' id={#$type1.id#}#}">{#$type1.typename#}</a></div>
+				<div class="level3-box">
+					{#renovation action='newsType' return='type2' type={#$type1.id#}#}
+			    <div class="level3{#if $detail_typeid == $type2.id#} curr{#/if#}"><a href="{#getUrlPath service='renovation' template='raiders' id={#$type2.id#}#}">{#$type2.typename#}</a></div>
+					{#/renovation#}
+			  </div>
+				{#/renovation#}
+			</div>
+			{#/renovation#}
+		</div>
+
+		<div class="phb">
+			<h3>装修公司排行榜</h3>
+			<ul>
+				{#renovation action='store' return='store' page='1' pageSize='8'#}
+				<li><i{#if $_bindex.store < 4#} class="height"{#/if#}>{#$_bindex.store#}</i><a href="{#$store.url#}" target="_blank" title="{#$store.company#}">{#$store.company#}</a></li>
+				{#/renovation#}
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="main-left">
+		<div class="title">
+			<p class="bt">{#$detail_title#}</p>
+			<p class="about">
+				<span class="t">{#$detail_pubdate|date_format:"%Y/%m/%d %H:%M"#}</span>
+				<span class="f">来源：{#$detail_source#}</span>
+				<span class="autor">作者：{#$detail_writer#}</span>
+				<span class="view">浏览量：{#$detail_click#}</span>
+			</p>
+		</div>
+		<div class="content">
+			{#$detail_body#}
+		</div>
+		<div class="shear">
+			<div class="newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_liptic#}">分享</div>
+		</div>
+
+		<div class="list xgtj">
+			<p>相关推荐</p>
+			<ul class="fn-clear">
+				{#renovation action='news' return='news' typeid={#$detail_typeid#} page='1' pageSize='10'#}
+				<li>
+					<span class="t">{#$news.pubdate|date_format:"%Y-%m-%d"#}</span><a href="{#$news.url#}" title="{#$news.title#}" target="_blank"><em>·</em>{#$news.title#}</a>
+				</li>
+				{#/renovation#}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/strategy-list.js"></script>
+</body>
+</html>

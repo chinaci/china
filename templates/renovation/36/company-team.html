@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_company#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$detail_company#},装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$detail_company#}作为专业的装修设计公司，提供专业的装修设计报价、室内装修效果图、免费装修咨询预约。{#$detail_company#}有着一批工作严谨、深受业主好评的装修施工队，为业主提供最优质的服务。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/companyd.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_id#}, designer = 0;
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'company'#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='renovation' template='company'#}" target="_blank">装修公司</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#$pageUrl#}">{#$detail_company#}</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<div class="wrap baseinfo">
+	<div class="inner fn-clear">
+		<div class="pic"><img src="{#$detail_logo#}" alt="{#$detail_company#}"></div>
+		<div class="txt">
+			<p class="name">{#$detail_company#}</p>
+			<p class="prove">
+				<em>认证：</em>
+				{#if $detail_license == 1#}
+				<span class="yyzz" title="该公司营业执照已认证">营</span>
+				{#else#}
+				<span class="yyzz no">营</span>
+				{#/if#}
+
+				{#if $detail_certi == 1#}
+				<span class="rz" title="认证公司">认</span>
+				{#else#}
+				<span class="rz no">认</span>
+				{#/if#}
+
+				{#if $detail_saleCount > 0#}
+				<a href="#" target="_blank"><span class="yh" title="该公司有装修优惠,点击查看">惠</span></a>
+				{#else#}
+				<span class="yh no">惠</span>
+				{#/if#}
+
+				{#if $detail_safeguard > 0#}
+				<span class="bzj" title="该公司已交{#$detail_safeguard#}{#echoCurrency type='short'#}保障金">金</span>
+				<em>{#$detail_safeguard#}{#echoCurrency type='short'#}</em>
+				{#else#}
+				<span class="bzj no">金</span>
+				{#/if#}
+
+				{#if $detail_guestCount > 0#}
+				<a href="#" target="_blank"><span class="sg" title="施工案例">评</span></a>
+				<em>{#$detail_guestCount#}次</em>
+				{#else#}
+				<span class="sg no">评</span>
+				{#/if#}
+			</p>
+			<p class="num">拥有设计师：<span class="red">{#$detail_teamCount#}</span>位&nbsp;&nbsp;案例：<sapn class="red">{#$detail_diaryCount#}</sapn>套&nbsp;&nbsp;效果图：<sapn class="red">{#$detail_caseCount#}</sapn>套</p>
+			<!-- <p class="business">承接业务 : <span>新房装修</span><span>二手房装修</span><span>新房装修</span><span>二手房装修</span></p> -->
+			<p class="address">公司地址： {#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</p>
+		</div>
+		<div class="connect">
+			<em></em>
+			<div class="do">
+				<div class="icon icon-collect collect{#if $detail_collect#} icon-collect-sel{#/if#}">{#if $detail_collect#}已{#/if#}收藏</div>
+				<div class="icon icon-shear newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_logo#}">分享</div>
+			</div>
+			<div class="tel">{#$detail_contact#}</div>
+			<div class="sub"><a href="javascript:;">立即预约</a></div>
+		</div>
+	</div>
+</div>
+<div class="boxtitle" id="J_crumbs">
+	<div class="wrap">
+		<ul>
+			<li><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}" class="link">案例</a><span>|</span></li>
+			<li><a href="{#getUrlPath service='renovation' template='company-albums' id={#$detail_id#}#}" class="link">效果图</a><span>|</span></li>
+			<li class="curr"><a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}" class="link">设计师</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="wrap mgt30 fn-clear" id="comDesigenr">
+	{#renovation action="team" return="team" company={#$detail_id#} page={#$page#} pageSize="20"#}
+	<div class="designer-item fn-clear">
+		<div class="inner">
+			<div class="pic">
+				<a href="{#$team.url#}" target="_blank"><img src="{#$team.photo#}" alt="{#$team.name#}"></a>
+			</div>
+			<div class="txt">
+				<div class="name">
+					<span class="n"><a href="{#$team.url#}" target="_blank">{#$team.name#}</a></span>
+					<span class="w">{#$team.post#}</span>
+				</div>
+				<p><span class="t">擅长户型 : </span><span class="v">{#$team.special#}</span></p>
+				<p><span class="t">擅长风格 : </span><span class="v">{#$team.style#}</span></p>
+				<p><span class="t">从业经验 : </span><span class="v">{#$team.works#}年</span></p>
+				<p><span class="t">案例数量 : </span><span class="v">{#$team.diary#}套</span></p>
+			</div>
+			<a href="{#$team.url#}" target="_blank" class="btn">预约此设计师</a>
+		</div>
+	</div>
+	{#/renovation#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+<div class="empty">抱歉！ 暂无设计师！</div>
+{#/if#}
+
+<!-- 分页 -->
+{#getPageList service='renovation' template='company-team' id={#$detail_id#} pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+<!-- 分页 e -->
+
+{#include file="_rightLeaveMsg.html"#}
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/companyd3.js"></script>
+</body>
+</html>

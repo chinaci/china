@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+.main-right {width: 300px;}
+.main-left {padding-right: 320px;}
+
+/*装修公司列表*/
+.list li {position: relative;height: 140px;padding:20px;}
+.list li.empty{height: auto;}
+.list li:hover {background:#f8f8f8;}
+.list li .pic {float: left;margin-right: 20px;}
+.list li .pic img {display: block;width: 138px;height: 138px;border: 1px solid #eaeaea;}
+.list li .txt {font-size: 14px;color: #666;overflow: hidden;}
+.w1200 .list li .txt {float: left;width: 390px;}
+.list li .txt p {margin-top: 4px;}
+.list li .business , .list li .address {height: 21px;overflow: hidden;}
+.list li .name a {display: block;width: 80%;text-overflow:ellipsis;white-space:nowrap;overflow: hidden;}
+.list li .name {font-size: 18px;color: #333; padding: 5px 0 10px; margin-top: 0;}
+.list li .name a:hover {color: #ff6d01;}
+/*.prove .icon {position: relative;display: inline-block;width: 20px;height: 20px;vertical-align: middle;}
+.prove span {display: none;position: absolute;bottom:105%;left:-10px;width: 64px;height: 28px;line-height: 22px;text-align: center;font-size: 12px;color: #fff;background-position: 0 0;}
+.prove span {background-image: url(../images/caselistd/bgs.png);background-repeat: no-repeat;}
+.prove a:hover span {display: block;}*/
+.business span {padding-left: 25px; background-position: -6px -384px; margin-right: 10px;}
+.list li .red {font-size: 18px;color: #f00;}
+.w1200 .list li .txt {width: 370px;padding-right: 20px;}
+.list li .tel {float: right;height: 140px;border-left: 1px solid #eaeaea;text-align: center;background:#fff;display: none;}
+.w1200 .list li .tel {position: relative;width: 288px;display: block;}
+.list li .tel em {position: absolute; left: -1px; top: 50%; display: block; width: 7px; height: 15px; background-position: -13px -250px; background-color: #fff;}
+.list li .go {display: block;width: 69px;height: 69px;margin:15px auto 12px;background:#bbb;border-radius:50%;text-align: center;color: #fff;font-size: 16px;}
+.list li .go span {display: block;width: 34px;padding: 11px 18px;margin:0 auto;}
+.list li .go:hover {background: #ff6c00;}
+.list li .phone {margin: 0 10px;padding-left: 38px;font-size: 24px;color: #ff6d01;background-position: -2px 0;white-space: nowrap;}
+.w1200 .list li .phone {margin:0 35px;padding-left: 20px;}
+
+
+.prove {height: 16px; margin-top: 14px; line-height: 15px; overflow: hidden;}
+.prove span, .prove em {float: left; margin-right: 5px; font-size: 12px;}
+.prove span {width: 16px; height: 16px; text-align: center; color: #fff;}
+.prove .yyzz {background: #74ccd4;}
+.prove .rz {background: #ffad77;}
+.prove .yh {background: #ee8e75;}
+.prove .bzj {background: #ddbe72;}
+.prove .sj {background: #7ad7a1;}
+.prove .sg {background: #cfab8d;}
+.prove .pj {background: #8db5cf;}
+.prove .no {background: #ccc;}
+
+
+.list li.hover {height: 140px;}
+.list li.hover .tel {position: absolute;right:0;top:20px;display: block;width: 237px;height: 140px;-webkit-animation: rightFadeIn .3s ease-out; -moz-animation: rightFadeIn .3s ease-out; animation: rightFadeIn .3s ease-out;z-index: 2;}
+
+
+.list li .phone ,.list li .tel em ,.business span {
+    background-image: url(../images/designer/icons.png);
+    background-repeat: no-repeat;
+}
+.prove .icon {
+    background-image: url(../images/caselistd/icons.png);
+    background-repeat: no-repeat;
+}
+
+.icon-phone {background-position:-2px -108px;}
+.icon-wb {background-position:-2px -151px;}
+.icon-name {background-position:-2px -191px;}
+.icon-phone:hover {background-position:-2px -131px;}
+.icon-name:hover {background-position:-2px -211px;}
+.icon-wb:hover {background-position:-2px -171px;}
+
+
+/* 右侧 */
+.phb {margin-bottom: 20px;}
+.phb h3 {margin-bottom: 8px;font-size: 18px;color: #333;}
+.phb ul {padding:10px 15px 15px;border:1px solid #eaeaea;}
+.phb li {position: relative;height: 34px;line-height: 34px;font-size: 14px;color: #333;}
+.phb li i {position: absolute;left:0;top:8px;width: 18px;height: 20px;line-height: 20px;padding:0 2px 0 0;text-align: center;background:#bbb;color: #fff;}
+.phb li i.height {background:#45c8a5;}
+.phb li a {display: block;width: 245px;padding-left: 25px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.phb li a:hover {color: #ff6d01;}
+
+.adv {margin-bottom: 20px;}
+.adv img {display: block;}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_name#}-{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/designerd.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_company['id']#}, designer = {#$detail_id#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'designer'#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#getUrlPath service='renovation' template='designer'#}" target="_blank">设计师列表</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='designer-detail' id={#$detail_id#}#}">{#$detail_name#}</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<div class="wrap baseinfo">
+	<div class="designer-item fn-clear">
+		<div class="pic"><img src="{#$detail_photo#}" alt="{#$detail_name#}" /></div>
+		<div class="txt">
+			<div class="long">
+				<p class="name">{#$detail_name#}</p>
+				<p class="prove rz">职位：{#$detail_post#}</p>
+				<div class="num">
+					<span class="years">工作经验<br><b>{#$detail_works#}年</b></span>
+					<span class="views bor">案例数量<br><b>{#$detail_diary#}</b></span>
+					<span class="views">浏览人数<br><b>{#$detail_click#}</b></span>
+				</div>
+				<p class="company">所属公司：<a href="{#$detail_company['domain']#}" target="_blank">{#$detail_company['company']#}</a></p>
+				<p class="style">设计理念：{#$detail_idea#}</p>
+			</div>
+		</div>
+		<div class="connect">
+			<em></em>
+			<div class="do">
+				<div class="icon icon-collect collect{#if $detail_collect#} icon-collect-sel{#/if#}">{#if $detail_collect#}已{#/if#}收藏</div>
+				<div class="icon icon-shear newBtn_share" data-title="{#$detail_title#}" data-pic="{#$detail_photo#}">分享</div>
+			</div>
+			<div class="tel"> {#$detail_company['contact']#} </div>
+			<div class="sub"><a href="javascript:;">立即预约</a></div>
+		</div>
+	</div>
+</div>
+
+<div class="boxtitle">
+	<div class="wrap"><h2>TA 的案例</h2></div>
+</div>
+
+<!-- 风格大图 列表 s -->
+<div id="container" class="wrap container">
+	{#renovation action="diary" return='diary' designer={#$detail_id#} page={#$page#} pageSize='100'#}
+	<div class="item">
+		<div class="inner">
+			<div class="pic">
+				{#$src = {#changeFileSize url={#$diary.litpic#} type='o_large'#}#}
+				<a href="{#$diary.url#}" target="_blank"><img width="290" height="{#resizeImageSize pic_width={#$diary.picwidth#} pic_height={#$diary.picheight#} maxwidth="290" maxheight={#$diary.picheight#} return="height"#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$src#}" alt="{#$diary.title#}"></a>
+			</div>
+			<div class="info">
+				<p class="name">
+					<a href="{#$diary.url#}" target="_blank" class="tit">{#$diary.title#}</a>
+			</div>
+		</div>
+	</div>
+	{#/renovation#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+<div class="empty">抱歉！ 该设计师暂未上传TA的案例！</div>
+{#/if#}
+<!-- 风格大图 列表 e -->
+
+<!-- 分页 -->
+{#getPageList service='renovation' template='designer-detail' id={#$detail_id#}#}
+
+
+{#include file="_rightLeaveMsg.html"#}
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.waterfall.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/designerd.js"></script>
+</body>
+</html>

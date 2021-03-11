@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+/* 基本信息 */
+/*左侧*/
+.designer-item {padding:20px;}
+.designer-item:hover {background:#f8f8f8;}
+.designer-item .pic , .designer-item .txt {position: relative;float: left;}
+
+.designer-item .pic ,.designer-item .pic img {display: block;width: 160px;height: 200px;}
+.designer-item .pic {margin-right: 20px;}
+.designer-item .long {width: 384px;}
+.w1200 .designer-item .long {width: 600px;}
+.designer-item .txt {font-size: 14px;color: #666;}
+.long p {height: 22px;overflow: hidden;}
+.txt .name {height: 27px;margin:10px 0 5px;font-size: 18px;color: #333;}
+.long .rz ,.long .company {margin-bottom: 10px;}
+.long .num {margin-bottom: 15px;}
+.long .prove {overflow:inherit;}
+.prove .icon {position: relative;display: inline-block;width: 20px;height: 20px;vertical-align: middle;}
+.prove span {display: none;position: absolute;bottom:105%;left:-10px;width: 64px;height: 28px;line-height: 22px;text-align: center;font-size: 12px;color: #fff;background-position: 0 0;}
+.prove a:hover span {display: block;}
+.prove span {background-image: url(../images/caselistd/bgs.png); background-repeat: no-repeat; }
+.icon-wb {
+    background-position: -2px -151px;
+}
+.icon-wb:hover {
+    background-position: -2px -171px;
+}
+.long .num span {display: inline-block;text-align: center;}
+.long .bor {border-right: 1px solid #ececec; border-left: 1px solid #ececec; padding: 0 10px; margin: 0 10px;}
+.hover .long .style {height: auto;}
+.long .style span {display: inline-block;margin-right: 5px;margin-bottom: 4px;padding:0 4px 1px;background: #bbb;color: #fff;border-radius:4px;cursor: default;}
+.long .style span:hover {background:#45c8a5;}
+
+/*右侧联系方式*/
+.baseinfo .connect {position: relative;float: right;width: 350px;    height: 200px;text-align: center;border-left: 1px solid #ececec;}
+.baseinfo .connect em {position: absolute;left:-1px;top:50%;display: block;width: 7px;height: 15px;background-position: -13px -250px;background-color: #fff;}
+.connect .do {margin-top: 30px;}
+.connect .do div.icon {display: inline-block;*display:inline;*margin:0 2px;padding:2px 6px 2px 26px;font-size: 14px;color: #666;border:1px solid #ececec;transition: all .1s;-webkit-transition: all .1s;-moz-transition: all .1s;cursor: pointer;}
+.icon-collect {background-position:2px 2px;}
+.icon-shear {background-position:2px -78px;}
+.do .icon-collect-sel {background-position:2px -18px;}
+.icon-like-sel {background-position:2px -57px;}
+.connect .tel {margin:10px 64px;padding-left: 30px;font-size: 24px;color: #ff6d01;background-position: -2px 0;}
+.connect .sub a {display: block;width: 248px;height: 40px;margin:0 auto;line-height: 40px;text-align: center;font-size: 16px;color: #fff;background:#ff7611;border-radius:4px;}
+.connect .sub a:hover {background: #EF7C27;}
+/*分享*/
+.connect .do .shear {position: relative;}
+#bdsharebuttonbox {display: none;position: absolute;left:50%;top:26px;margin-left: -21px;padding-top: 9px;border-bottom: none;background: #fff;z-index: 100;}
+#bdsharebuttonbox .inner {position: relative;border:1px solid #ececec;box-shadow: 0 3px 15px rgba(0,0,0,.15);}
+#bdsharebuttonbox span {display: block;width: 40px;height: 28px;border-bottom:1px solid #ececec;text-align: center;padding: 0;background-image: none;margin:0;}
+#bdsharebuttonbox span:last-child {border-bottom: none;}
+.baseinfo .do a.icon {display: block;width: 100%;height: 100%;margin:0;padding: 0;float: none;}
+#bdsharebuttonbox .icon-s-wb {background-position: 9px -308px;}
+#bdsharebuttonbox .icon-s-qz {background-position: 7px -356px;}
+#bdsharebuttonbox .icon-s-sina {background-position: 9px -404px;}
+#bdsharebuttonbox .icon-s-kx {background-position: 9px -450px;}
+#bdsharebuttonbox .icon-s-wb:hover  {background-position: 9px -332px;}
+#bdsharebuttonbox .icon-s-qz:hover {background-position: 7px -379px;}
+#bdsharebuttonbox .icon-s-sina:hover {background-position: 8px -428px;}
+#bdsharebuttonbox .icon-s-kx:hover {background-position: 9px -476px;}
+#bdsharebuttonbox .icon-up {position: absolute; left: 15px; top: -6px; width: 13px; height: 6px; margin:0;background-position: -5px -297px; background-color: #fff;}
+
+.shear:hover #bdsharebuttonbox {display: block;}
+
+
+
+/* 瀑布流标题 */
+.boxtitle {width: 100%;height: 46px;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+.boxtitle h2 {width: 113px;height: 51px;line-height: 48px;text-align: center;font-size: 16px;color: #fff;background-position: -197px 0;}
+
+
+
+.icon-phone {background-position:-2px -108px;}
+.icon-name {background-position:-2px -191px;}
+.icon-phone:hover {background-position:-2px -131px;}
+.icon-name:hover {background-position:-2px -211px;}
+.long .icon {background-image: url(../images/caselistd/icons.png);background-repeat:no-repeat;}
+
+
+
+.baseinfo .icon , #bdsharebuttonbox .icon {background-image: url(../images/caselistd/icons.png);background-repeat:no-repeat;}
+
+.connect .tel  ,.baseinfo .connect em ,.leaveMsg .pen i ,.leaveMsg .k2 .close {background-image: url(../images/designer/icons.png);background-repeat: no-repeat;}
+.boxtitle h2 ,.leaveMsg .user ,.leaveMsg .btm ,.leaveMsg .k2 {background-image: url(../images/designer/bigbg.png);background-repeat: no-repeat;}

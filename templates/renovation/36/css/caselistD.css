@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+.main {margin-top: 25px;}
+.main-right {width: 300px;}
+.designerinfo {padding:15px;}
+.dl1 dt ,.dl1 dt img {display: block;width: 100px;height: 100px;float: left;}
+.dl1 dd {padding-left: 115px;}
+.dl1 p {margin-bottom: 3px;}
+.dl1 .name {font-size: 16px;color: #333;}
+.dl1 .tel {font-size: 16px;color: #ff0000;}
+.dl1 .nub ,.dl1 .prove {font-size: 14px;color: #666;}
+.dl1 .prove .icon {position: relative;display: inline-block;width: 20px;height: 20px;vertical-align: middle;}
+.dl1 .prove span {display: none;position: absolute;bottom:105%;left:-10px;width: 64px;height: 28px;line-height: 22px;text-align: center;font-size: 12px;color: #fff;background-position: 0 0;}
+.dl1 .prove span ,.dl2 .ubg {background-image: url(../images/caselistd/bgs.png);background-repeat: no-repeat;}
+.dl1 .prove a:hover span {display: block;}
+
+.icon ,#bdsharebuttonbox .icon {background-image: url(../images/caselistd/icons.png);background-repeat:no-repeat;}
+.icon-phone {background-position:-2px -108px;}
+.icon-wb {background-position:-2px -151px;}
+.icon-name {background-position:-2px -191px;}
+.icon-phone:hover {background-position:-2px -131px;}
+.icon-name:hover {background-position:-2px -211px;}
+.icon-wb:hover {background-position:-2px -171px;}
+
+.dl2 {position: relative;margin-top: 18px;padding:15px 10px;border-top:1px solid #ececec;}
+.dl2 p {position: relative;font-size: 14px;height: 24px;line-height: 24px;color: #333;}
+.dl2 .ubg {position: absolute;left:50px;top:0;display: inline-block;width: 46px;height: 16px;line-height: 17px;font-size: 12px;padding-left: 8px;margin:4px 0 0 0;background-position: -8px -47px;color: #fff;}
+.dl2 .icon {position: absolute;left:45px;top:-1px;width: 13px;height: 6px;background-position: -5px -278px;background-color: #fff;}
+
+/*更多案例*/
+.morecase {}
+.morecase h3 {margin-bottom: 10px;font-size: 18px;color: #333;}
+.morecase .icon-more {margin-top: 4px;padding: 4px;float: right;display: inline-block;width: 13px;height: 13px;background-position: -1px -230px;}
+.morecase .icon-more:hover {background-position: -1px -250px;}
+.morecase .pic {float: left;}
+.morecase .pic,.morecase .pic img {display: block;width: 90px;height: 90px;}
+.morecase .txt {padding-left: 100px;}
+.morecase .name {font-size: 16px;}
+.morecase .name a {display: block;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.morecase .money {margin-bottom: 6px;font-size: 14px;color: #666;}
+.morecase .money span {color: #999;}
+.morecase .tag {height: 22px;line-height: 22px;}
+.morecase .tag span {padding:2px 4px;border-radius:3px;background:#bbb;color: #fff;}
+.morecase ul {padding:0 15px;border: 1px solid #ececec;}
+.morecase li {padding:15px 0;border-bottom: 1px solid #ececec;}
+.morecase li:last-child {border-bottom: none;}
+.morecase li:hover .name a {color: #45c8a5;}
+.morecase li:hover .tag span {background: #45c8a5;}
+
+/*左侧*/
+.main-left {margin-top: 4px;padding-right: 320px;}
+.title .do {float: right;margin-top: 5px;}
+.title .do div.icon {position: relative;display: inline-block;*display: inline;*margin:0 2px;padding:2px 6px 2px 26px;font-size: 14px;color: #666;border:1px solid #ececec;transition: all .1s;-webkit-transition: all .1s;-moz-transition: all .1s;cursor: pointer;}
+.title h2 {margin-bottom: 10px;font-size: 24px;color: #000;}
+.icon-collect {background-position:2px 2px;}
+.icon-like {background-position:2px -37px;}
+.icon-shear {background-position:2px -78px;}
+.do .icon-collect-sel {background-position:2px -18px;}
+.icon-like-sel {background-position:2px -57px;}
+
+.title .do .shear {position: relative;}
+#bdsharebuttonbox {display: none;position: absolute;left:50%;top:26px;margin-left: -21px;padding-top: 9px;border-bottom: none;background: #fff;z-index: 100;}
+#bdsharebuttonbox .inner {position: relative;border:1px solid #ececec;box-shadow: 0 3px 15px rgba(0,0,0,.15);}
+#bdsharebuttonbox span {display: block;width: 40px;height: 28px;border-bottom:1px solid #ececec;text-align: center;padding: 0;background-image: none;margin:0;}
+#bdsharebuttonbox span:last-child {border-bottom: none;}
+.title .do a.icon {display: block;width: 100%;height: 100%;margin:0;padding: 0;float: none;}
+#bdsharebuttonbox .icon-s-wb {background-position: 9px -308px;}
+#bdsharebuttonbox .icon-s-qz {background-position: 7px -356px;}
+#bdsharebuttonbox .icon-s-sina {background-position: 9px -404px;}
+#bdsharebuttonbox .icon-s-kx {background-position: 9px -450px;}
+
+#bdsharebuttonbox .icon-s-wb:hover  {background-position: 9px -332px;}
+#bdsharebuttonbox .icon-s-qz:hover {background-position: 7px -379px;}
+#bdsharebuttonbox .icon-s-sina:hover {background-position: 8px -428px;}
+#bdsharebuttonbox .icon-s-kx:hover {background-position: 9px -476px;}
+#bdsharebuttonbox .icon-up {position: absolute; left: 15px; top: -6px; width: 13px; height: 6px; margin:0;background-position: -5px -297px; background-color: #fff;}
+
+.shear:hover #bdsharebuttonbox {display: block;}
+
+/* 基本信息 */
+.baseinfo {padding-left: 15px;border-left: 4px solid #00ba88;background:#f8f8f8;overflow: hidden;}
+.baseinfo li {float: left;margin-right: 70px;height: 35px;line-height: 35px;font-size: 14px;color: #333;}
+
+/*正文*/
+.context {margin-top: 25px;overflow: hidden;}
+.context h3 {margin-bottom: 5px;font-size: 18px;color: #000;line-height: 24px;}
+.context p {font-size: 14px;color: #333;line-height: 24px;}
+.context img {display: block;max-width: 100%;margin:25px auto;}
+
+/* .imghoverbtn {display: none;position: absolute;padding:15px 12px;}
+.imghoverbtn a {padding:4px 10px;background-color: #3E3936;color: #fff;}
+.imghoverbtn a:hover {background-color: #29221e;}
+.imghoverbtn a.xgt {cursor: text;}
+.imghoverbtn a.collect {position: relative;padding-left: 26px;}
+.imghoverbtn a.collect .icon {position: absolute;left:6px;top:5px;width: 14px;height: 14px;background-position: -4px -504px;}
+.imghoverbtn a.collect.icon-collect-sel .icon {background-position: -4px -523px;} */
