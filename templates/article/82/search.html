@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>搜索：{#$keywords#} - {#$article_title#}</title>
+<meta name="keywords" content="{#$article_keywords#}" />
+<meta name="description" content="{#$article_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<!-- LOGO s -->
+<div class="wrap fn-clear mt20">
+	<h1 class="logo"><a href="{#$article_channelDomain#}" title="{#$article_channelName#}"><img src="{#$article_logoUrl#}" alt="{#$article_channelName#}" /></a></h1>
+	<div class="tsearch fn-clear">
+		<form action="{#getUrlPath service='article' template='search'#}" method="post">
+			<input type="text" name="keywords" class="skeyword" placeholder="请输入关键字" value="{#$keywords#}" onFocus="if(value=='请输入关键字') {value='';this.style.color='#333'}" onBlur="if (value=='') {value='请输入关键字';this.style.color='#888'}" />
+			<input type="submit" id="sBtn" value="搜&nbsp;索" />
+		</form>
+	</div>
+</div>
+<!-- LOGO e -->
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li><a href="{#$article_channelDomain#}">首页</a></li>
+		{#getChannel service="article" tab="articletype"#}
+	</ul>
+</div>
+<!-- 导航 e -->
+
+<!-- 内容 s -->
+<div class="content wrap">
+  <div class="bread">
+    <a href="{#$cfg_basehost#}" target="_blank">网站首页</a>&nbsp;>
+    <a href="{#$article_channelDomain#}">{#$article_channelName#}</a>&nbsp;>
+    <span>搜索关键字：{#$keywords#}</span>
+  </div>
+  <div class="slide-box">
+	{#article action="alist" return="alist" group_img="1" title={#$keywords#} page={#$page#} pageSize="10"#}
+	{#if $alist.group_img#}
+    <div class="picture-box">
+      <div class="pic-tit">
+        <h3><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h3>
+      </div>
+      <div class="pic-list">
+		{#foreach from=$alist.group_img item="img" name="group"#}
+		{#if $smarty.foreach.group.index < 4#}
+		{#if $img.path#}<a href="{#$alist.url#}" target="_blank"><span><img src="{#$img.path#}"></span></a>{#/if#}
+		{#/if#}
+		{#/foreach#}
+      </div>
+      <div class="txt-box fn-clear">
+        <div class="news-keywords fn-left">
+          <div class="txt-tag fn-left"><a href="{#getUrlPath service='article' template='list' typeid={#$alist.typeid#}#}" target="_blank">{#$alist.typeName[$alist.typeName|@count-1]#}</a></div>
+          <span class="time">{#$alist.pubdate|date_format:"%Y-%m-%d"#}</span>
+        </div>
+        <div class="share-box fn-right">
+          <a href="javascript:;" class="share" data-title="{#$alist.title#}" data-url="{#$alist.url#}" data-pic="{#$alist.litpic#}"></a>
+          <a href="{#$alist.url#}#comment" target="_blank" class="post-box fn-right" title="评论数"><div class="post-wrap"><span class="icon-post">{#$alist.common#}</span><span class="red">评论{#$alist.common#}</span></div></a>
+        </div>
+      </div>
+    </div>
+	{#else#}
+	<div class="list-box fn-clear">
+	  {#if $alist.litpic#}
+      <div class="list-img fn-left">
+        <a href="{#$alist.url#}" target="_blank"><img src="{#$alist.litpic#}" alt="{#$alist.title#}"></a>
+      </div>
+	  {#/if#}
+      <div class="list-txt">
+        <h3><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h3>
+        <div class="txt-box fn-clear">
+          <div class="news-keywords fn-left">
+            <div class="txt-tag fn-left"><a href="{#getUrlPath service='article' template='list' typeid={#$alist.typeid#}#}" target="_blank">{#$alist.typeName[$alist.typeName|@count-1]#}</a></div>
+			{#if $alist.keywords#}
+            <div class="txt-label fn-left">
+              <a href="{#$alist.url#}" target="_blank">{#$alist.keywords#}</a>
+            </div>
+			{#/if#}
+            <span class="time">{#$alist.pubdate|date_format:"%Y-%m-%d"#}</span>
+          </div>
+          <div class="share-box fn-right">
+            <a href="javascript:;" class="share" data-title="{#$alist.title#}" data-url="{#$alist.url#}" data-pic="{#$alist.litpic#}"></a>
+            <a href="{#$alist.url#}#comment" target="_blank" class="post-box fn-right" title="评论数">
+              <div class="post-wrap"><span class="icon-post">{#$alist.common#}</span><span class="red">评论{#$alist.common#}</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+	{#/if#}
+	{#/article#}
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty" style="height: 200px; line-height: 200px; text-align: center; font-size: 14px;">暂无相关信息！</div>
+	{#/if#}
+  </div>
+
+  <!-- 分页 s -->
+  {#getPageList service='article' template='search' pageType='dynamic' param="keywords={#$keywords#}&page=#page#"#}
+  <!-- 分页 e -->
+
+</div>
+<!-- 内容 e -->
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/search.js"></script>
+</body>
+</html>

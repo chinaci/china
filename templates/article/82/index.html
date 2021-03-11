@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$cfg_webname#}</title>
+	<meta name="keywords" content="{#$cfg_keywords#}" />
+	<meta name="description" content="{#$cfg_description#}" />
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/article.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	<script>
+		var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', templatePath = '{#$templets_skin#}';
+		var hideFileUrl = {#$cfg_hideUrl#};
+	</script>
+</head>
+
+<body  class='w1200'>
+{#$channel = 'cbf'#}
+{#$hotline = $cfg_hotline#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+	<!-- 中间咨询详情部分 s-->
+		<div class="news">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+        <div class="bd">
+					{#myad title="新闻资讯_模板五_电脑端_广告一" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+      </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					{#article action="type" return='bjtype' page="1" pageSize="8"#}
+					<li{#if $_bindex.bjtype == 1#} class="NewsNav_bc on"{#/if#} ><a href="javascript:;" data-id="{#$bjtype.id#}">{#$bjtype.typename#}</a></li>
+					{#/article#}
+				</ul>
+				<span><a href="javascript:;">更多<i></i></a>
+					<div class="more_list">
+						<ul>
+							{#article action="type" return='cjtype' page="1"#}
+							{#if $_bindex.cjtype >8#}
+							<li><a href="javascript:;" data-id="{#$cjtype.id#}">{#$cjtype.typename#}</a></li>
+							{#/if#}
+							{#/article#}
+						</ul>
+					</div>
+				</span>
+			</div>
+			<!-- 导航栏 e-->
+			<!-- 咨询详情 s-->
+			<div class="NewList" id="NewList"></div>
+			<!-- 咨询详情 e-->
+			</div>
+	<!-- 中间咨询详情部分 e-->
+	<!-- 右侧咨询信息汇总 s-->
+		<div class="information">
+			<div class="statistics fn-clear">
+				<div class="sta_txt"><a href="javascript:;">
+					<i class="down"></i><p>已入驻</p><span>{#$businessSettledCount#}</span>
+				</a></div>
+				<div class="sta_line"></div>
+				<div class="sta_txt"><a href="javascript:;">
+					<i class="view_num"></i><p>会员</p><span>{#$memberStatistics['total']#}</span>
+				</a></div>
+				<div class="sta_line"></div>
+				<div class="sta_txt"><a href="javascript:;">
+					<i class="fa_num"></i><p>在线</p><span>{#$memberStatistics['online']#}</span>
+				</a></div>
+			</div>
+			<div class="issue fn-clear">
+				<div href="#" class="is_btn fabu">
+					发布信息<i></i>
+					<div class="issue_list">
+						<ul>
+							{#if in_array("info", $installModuleArr)#}
+							<li class="iss_1"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-info'#}#Stype"><s></s>二手信息</a></li>
+							{#/if#}
+							{#if in_array("job", $installModuleArr)#}
+							<li class="iss_2"><a target="_blank" href="{#getUrlPath service='member' type='user' template='job-resume'#}"><s></s>简历</a></li>
+							{#/if#}
+							{#if in_array("tieba", $installModuleArr)#}
+							<li class="iss_3"><a target="_blank" href="{#getUrlPath service='tieba' template='index'#}#publish"><s></s>帖子</a></li>
+							{#/if#}
+							{#if in_array("article", $installModuleArr)#}
+							<li class="iss_4"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-article'#}"><s></s>新闻投稿</a></li>
+							{#/if#}
+							{#if in_array("house", $installModuleArr)#}
+							<li class="iss_5"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-cf'#}"><s></s>厂房</a></li>
+							<li class="iss_6"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-sp'#}"><s></s>商铺</a></li>
+							<li class="iss_7 bb_none"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-xzl'#}"><s></s>写字楼</a></li>
+							<li class="iss_8 bb_none"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-zu'#}"><s></s>租房</a></li>
+							<li class="iss_9 bb_none"><a target="_blank" href="{#getUrlPath service='member' type='user' template='fabu-house-sale'#}"><s></s>二手房</a></li>
+							{#/if#}
+						</ul>
+					</div>
+				</div>
+				<a href="{#$member_busiDomain#}" class="is_btn">店铺入驻</a>
+			</div>
+			<div class="infor_list">
+				<div class="infor_lead fn-clear">
+					<em>便民工具</em>
+				</div>
+				<div class="tool_bc"></div>
+				<div class="Tool">
+					<div class="Tool_up fn-clear">
+						<ul>
+							<li class="huafei"><a target="_blank" href="#"><i></i><p>话费充值</p></a></li>
+							<li class="liuliang"><a target="_blank" href="#"><i></i><p>流量充值</p></a></li>
+							<li class="shuidian"><a target="_blank" href="#"><i></i><p>水电煤</p></a></li>
+							<li class="gongjiao"><a target="_blank" href="#"><i></i><p>公交查询</p></a></li>
+						</ul>
+					</div>
+					<div class="Tool_down fn-clear">
+						<ul>
+							<li class="yiyuan"><a target="_blank" href="#"><i></i><p>医院挂号</p></a></li>
+							<li class="dache"><a target="_blank" href="#"><i></i><p>便民打车</p></a></li>
+							<li class="weizhang"><a target="_blank" href="#"><i></i><p>违章缴费</p></a></li>
+							<li class="zhushou"><a target="_blank" href="#"><i></i><p>快递助手</p></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="voice">
+				<div class="Infor_Title fn-clear">
+					<em>群众呼声</em><span><a target="_blank" href="{#getUrlPath service='article' typeid='10' template='list'#}">更多<i></i></a></span>
+				</div>
+				<div class="Vocie_List">
+					{#article action="alist" return="alist" typeid="10" flag="r" pageSize="1"#}
+					<div class="Vocie_Pic"><a target="_blank" href="{#$alist.url#}">
+						<img src="{#changeFileSize url="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" type="middle"#}">
+						<div class="VP_Tips">{#$alist.title#}</div>
+					</a></div>
+					{#/article#}
+					<div class="Vocie_com">
+						<ul>
+						{#article action="alist" return="alist" typeid="10" flag="r" pageSize="4"#}
+								<li><a href="{#$alist.url#}">{#$alist.title#}</a></li>
+						{#/article#}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="voice">
+				<div class="Infor_Title fn-clear">
+					<em>活动</em><span><a href="{#$huodong_channelDomain#}">更多<i></i></a></span>
+				</div>
+				<div class="active">
+				{#huodong action='hlist' orderby='reg' pageSize='2'#}
+					<div class="active_detail fn-clear"><a href="{#$row.url#}" target="_blank">
+						<div class="act_pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.litpic#}" alt=""></div>
+						<h1>{#$row.title#}</h1>
+						<ul>
+							<li><em>活动时间</em>{#$row.began|date_format:"%Y-%m-%d %H:%m"#}</li>
+							<li><em>活动地点</em>{#$row.addrname[0]#} {#$row.addrname[1]#}</li>
+							<li><em>费用</em>{#if $row.feetype == 1#}<p>{#$row.mprice#}</p><b>起</b>{#else#}<p>免费</p>{#/if#}</li>
+							<li><em>参与人数</em>{#$row.reg#}</li>
+						</ul>
+					</a></div>
+				{#/huodong#}
+				</div>
+			</div>
+			<div class="notice">
+				<div class="notice_lead"><em>公告</em></div>
+				<div class="fast">
+					<ul>
+					{#siteConfig action="notice" return="notice"  pageSize="8"#}
+						<li><i></i><a href="{#$notice.url#}" target="_blank">{#$notice.title#}</a></li>
+					{#/siteConfig#}
+					</ul>
+				</div>
+			</div>
+			<div class="infor_list">
+				<div class="infor_lead fn-clear"><em>热门话题</em></div>
+				<div class="Rank fn-clear">
+					<ul>
+					{#tieba action='tlist' return='hot' orderby='reply' page='1' pageSize='10'#}
+						<li {#if $_bindex.hot < 4#} class="rank_top"{#/if#}><em>{#$_bindex.hot#}</em><a target="_blank" href="{#$hot.url#}">{#$hot.title#}</a><span>{#$hot.reply#}</span></li>
+					{#/tieba#}
+					</ul>
+				</div>
+			</div>
+			<div class="infor_list">
+				<div class="infor_lead fn-clear"><em>最新注册会员</em></div>
+				<div class="vip_club fn-clear">
+					<ul>
+					{#dating action='memberList' return='memberList'  page='1' pageSize='8'#}
+						<li><a target="_blank" href="{#$memberList.url#}"><div class="vip_pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$memberList.photo#}" alt=""></div><h1><em>{#$memberList.nickname#}</em><i></i></h1></a><p>关注</p></li>
+					{#/dating#}
+					</ul>
+				</div>
+			</div>
+			<div class="infor_list">
+				<div class="infor_lead fn-clear"><em>友情链接</em></div>
+				<div class="friend fn-clear">
+					<ul>
+						{#siteConfig action="friendLink" return="flink" module="siteConfig"#}
+						<li><a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a></li>
+						{#/siteConfig#}
+					</ul>
+				</div>
+			</div>
+
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧咨询信息汇总 e-->
+	</div>
+<!-- 主干部分 e-->
+</div>
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
