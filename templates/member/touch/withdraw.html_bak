@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>申请提现 </title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v=100" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=100" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/money.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/withdraw.css?v=2" media="all" />
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=100"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=100"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var money = {#$userinfo.money#}, withdrawLog = '{#getUrlPath service="member" type="user" template="withdraw_log_detail" id="%id%"#}';
+</script>
+</head>
+<body>
+
+{#include file="_top.html"#}
+
+	<div class="tab">
+		<ul>
+			<li class="tbank curr" data-id="1"><a href="javascript:;">提到银行卡</a></li>
+			<li class="talipay" data-id="2"><a href="javascript:;">提到支付宝</a></li>
+		</ul>
+	</div>
+
+	<div class="price">
+		<span>可提现金额：</span><strong>{#$userinfo.money#}</strong>
+	</div>
+
+	<div class="bankbox">
+		<dl class="inpbox">
+			<dt><span>开户行</span></dt>
+			<dd><input type="text" placeholder="请输入开户行信息" id="bank" maxlength="30"></dd>
+		</dl>
+
+		<dl class="inpbox">
+			<dt><span>银行卡号</span></dt>
+			<dd><input type="text" placeholder="请输入银行卡号" id="cardnum" maxlength="23" onkeyup="value=value.replace(/[^\d]/g,'');"></dd>
+		</dl>
+
+		<dl class="inpbox">
+			<dt><span>开户人姓名</span></dt>
+			<dd><input type="text" placeholder="请输入开户人姓名" id="cardname" maxlength="10"></dd>
+		</dl>
+	</div>
+
+	<div class="alipay fn-hide">
+		<dl class="inpbox">
+			<dt><span>收款人帐号</span></dt>
+			<dd><input type="text" placeholder="请输入收款人帐号" id="alipaynum" maxlength="30"></dd>
+		</dl>
+
+		<dl class="inpbox">
+			<dt><span>收款人姓名</span></dt>
+			<dd><input type="text" placeholder="请输入收款人姓名" id="alipayname" maxlength="10"></dd>
+		</dl>
+	</div>
+
+	<dl class="inpbox">
+		<dt><span>提现金额</span></dt>
+		<dd><input type="text" placeholder="请输入提现金额" id="amount" maxlength="10" onkeyup="this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]"></dd>
+	</dl>
+
+	<a href="javascript:;" id="tj">申请提现</a>
+
+	<div class="error"><p></p></div>
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/order.js?v=9"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/withdraw.js?v=4"></script>
+</body>
+</html>
