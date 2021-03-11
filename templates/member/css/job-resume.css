@@ -1,0 +1,82 @@
+.preview {position: absolute; right: 0px; top: 5px; line-height: 30px; background-color: #5bb75b; color: #fff; padding: 0 22px;}
+a:hover.preview {background-color: #51a351; color: #fff;}
+
+.state {padding-bottom: 10px; text-align: center; color: #f00;}
+
+.thead {margin: 20px 0; padding-left: 10px; height: 40px; line-height: 40px; border-bottom: 1px solid #d9d9d9; background: #f7f7f7; font-size: 16px; list-style: none;}
+.thead em {float: right; margin-right: 10px; font-size: 14px;}
+
+.jtop .photo {float: left; position: relative; width: 150px; height: 200px; margin: 0 10px 0 20px; background: #F3F4F3 url('/static/images/default_user.jpg') no-repeat center center;}
+.jtop .photo img {display: block; width: 150px; height: 200px; -webkit-transition: border linear .2s,box-shadow linear .2s; -moz-transition: border linear .2s,box-shadow linear .2s; -o-transition: border linear .2s,box-shadow linear .2s; transition: border linear .2s,box-shadow linear .2s;}
+.jtop .photo .ubtn {display: none; position: absolute; z-index: 1; width: 70px; height: 70px; left: 50%; top: 50%; margin: -35px 0 0 -35px; overflow: hidden;}
+.jtop .photo .ubtn .holder {position: relative; z-index: 1; left: 0; top: 0; background: #00b7ee; padding: 10px 15px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; vertical-align: middle; line-height: 25px;}
+.jtop .photo .ubtn .Filedata {position: absolute; left: -10px; top: -10px; right: 0; bottom: -10px; z-index: 2; cursor: pointer; opacity: 0; filter: alpha(opacity=0); direction: ltr;}
+.jtop .photo.hover img {filter: alpha(opacity=60); -moz-opacity: 0.6; -khtml-opacity: 0.6; opacity: 0.6;}
+.jtop .photo.hover .ubtn {display: block;}
+.jtop .photo .loading {display: none; position: absolute; z-index: 2; left: 0; top: 0; right: 0; bottom: 0; background: rgba(255,255,255,.5) url('/static/images/ui/loading.gif') no-repeat center center;}
+.jtop .jcon {position: relative; float: left;width: 785px;}
+.jtop .jcon dl {float: none;}
+.w1200 .jtop .jcon dl {float: left;}
+
+.jcon dl {float: left; width: 50%;}
+.jcon dl.single {float: none; width: 100%;}
+.w-form .jcon dt {width: 100px; font-size: 14px;}
+.w-form .jcon dd {margin-left: 105px;}
+
+.w-form .jcon textarea {width: 526px; height: 100px; resize: vertical;}
+.w1200 .w-form .jcon textarea {width: 626px;}
+
+#salary, #workyear {width: 80px;}
+.date1, .date2 {width: 90px;}
+
+/* 工作经历 */
+.drag-item {margin-top: 10px; padding: 5px 0 15px;}
+#experience .item {position: relative; padding: 5px 0 15px; margin-top: 10px; background: #f5f5f5;}
+#experience .item .col {position: absolute; z-index: 1; right: 0; top: 0; bottom: 0; width: 44px; background-color: #f2f2f2;}
+#experience .item .btn {position: absolute; z-index: 2; right: 10px; width: 20px; height: 20px; margin: 15px auto 0; cursor: pointer;}
+#experience .item .btn i {float: left; margin: 0 auto; background: url('../images/editbtn.png') no-repeat;}
+#experience .item .move {cursor: move; top: 10px;}
+#experience .item .btn.move i {width: 17px; height: 17px; margin: 1px 0 0 1px;}
+#experience .item .btn.move:hover i {background-position: -18px 0;}
+#experience .item .del {top: 45px;}
+#experience .item .btn.del i {width: 9px; height: 9px; margin: 5px 0 0 5px; background-position: -4px -36px;}
+#experience .item .btn.del:hover i {background-position: -22px -36px;}
+#experience .item .add {top: 80px;}
+#experience .item .btn.add i {width: 13px; height: 13px; margin: 3px 0 0 3px; background-position: -2px -66px;}
+#experience .item .btn.add:hover i {background-position: -20px -66px;}
+.newbtn {display: block; height: 30px; width: 120px; line-height: 30px; margin-top: 10px; background-color: #f1f1f1; color: #333; border: 1px solid #dadada; text-align: center;}
+
+
+/* 选择招聘行业、职能 */
+.loadzhineng {line-height: 450px;}
+.selectType .c-data {border-bottom: 1px solid #e7eaee;}
+.selectType {padding: 0; margin: 0; height: 450px; overflow-y: auto; position: relative;}
+.selectType dl {margin: 15px 0 20px;}
+.selectType dt {position: relative; width: 95%; font-size: 12px; color: #000;}
+.selectType dt span {position: relative; z-index: 2; padding-right: 10px; background: #fff; font-weight: 700;}
+.selectType dt s {position: absolute; z-index: 1; left: 0; top: 9px; width: 100%; height: 1px; overflow: hidden; border-bottom: 1px dotted #e7eaee;}
+.selectType dd {padding: 0; margin: 0;}
+.selectType ul {padding: 0; margin: 10px 0 0; list-style: none;}
+.selectType li {float: left; width: 31%; height: 30px; line-height: 30px; padding-left: 2%;}
+.selectType li a {color: #888;}
+
+.selectType .sub-data {float: left; width: 31%; height: 33px; position: relative; padding-left: 2%; border-top: 2px solid #fff;}
+.selectType .sub-data.curr {border-color: #25af60; background: #eee;}
+.selectType .sub-data a {color: #666; font-size: 14px; display: block; background: none; margin: 0; padding: 0; line-height: 33px;}
+.selectType .sub-data a:hover {text-decoration: underline;}
+.selectType .sub-data i {position: absolute; right: 30px; top: 13px; width: 0; height: 0; font-size: 0; line-height: 0; border-color: #ccc transparent transparent transparent; _border-color: #ccc #fff #fff #fff; border-style: solid; border-width: 6px; cursor: pointer;}
+.selectType .curr i {top: 7px; border-color: transparent transparent #6ed373 transparent; _border-color: #eee #eee #6ed373 #eee;}
+.selectType dd {padding-top: 5px;}
+.selectType ul {display: none; float: left; width: 100%; padding: 10px 0; margin: 0; background: #eee;}
+.selectType ul a:hover {text-decoration: underline;}
+
+
+
+.ui_state_tips .ui_icon_bg {margin: 5px 0 2px 9px;}
+.ui_state_tips .ui_content {margin-top: 9px;}
+
+/*国际手机号样式*/
+
+#fabuForm dd .areaCode{border-right:1px solid #d8d8d8 ;left: 13px;top: 9px;bottom: 15px;width: 60px;font-size: 14px;}
+.w-form .inp#phone{padding-left: 70px;width: 115px;}
+#fabuForm .jcon .areaCode_wrap{left: 10px;width: 195px;}
