@@ -1,0 +1,451 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;padding-bottom: 1rem;}
+html{background: #f7f7f7;    margin-bottom: 4.4rem;}
+em,i{font-style: normal;}
+
+.recommend .list ul li a:active{background-color: #f2f2f2;}
+
+/*内容*/
+.header_txt {
+    padding: .4rem;
+    background: #fff;
+}
+.header_txt .txt {
+     font-size: .4rem;
+    font-weight: bold;
+    height: 0.6rem;
+    line-height: .6rem;
+}
+.header_txt .txt span:first-child{
+float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 5rem;
+}
+.header_txt .txt span:last-child{
+    float: right;
+    font-size: .28rem;
+    color: #ff2d5e;
+}
+.header_txt .time{
+	margin:.2rem 0;
+}
+.header_txt .time span {
+    padding-left: .3rem;
+    margin-right: .2rem;
+        font-size: .26rem;
+}
+
+.header_txt .time .icon_01 {
+    background: url(../images/con_01.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.header_txt .time .icon_02 {
+    background: url(../images/con_02.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.header_txt .time .icon_03 {
+    background: url(../images/con_03.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.header_txt .time .icon_04 {
+    background: url(../images/con_04.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.header_txt .read span{
+    display: inline-block;
+    font-size: .24rem;
+    padding: .1rem .3rem;
+    background: #f2f7fa;
+    color: #999999;
+    margin: 0 .2rem .15rem 0;
+    border-radius: .1rem;
+}
+
+/*在招职位*/
+.contact {
+    background: #fff;
+    padding: .4rem 0;
+    margin: 0.2rem;
+    border-radius: .2rem;
+}
+.contact .con_info{
+	padding: 0 .44rem;
+}
+.contact .con_info span:first-child{
+	display: inline-block;
+    font-size: .32rem;
+    font-weight: bold;
+    max-width: 5rem;
+    overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.contact .con_info span:last-child{
+    font-size: .24rem;
+    color: #808080;
+    margin-left: .3rem;
+}
+.contact .con_txt{
+	font-size: .24rem;
+    color: #808080;
+    padding: .1rem .44rem .2rem .44rem;
+    border-bottom: 1px solid #f7f7f7;
+}
+.contact .con_txt em{
+	margin:.1rem;
+}
+.contact .con_tiao{
+	padding: .2rem .44rem 0 .44rem;
+    font-size: .26rem;
+}
+.contact .con_tiao span:last-child{
+    background: url(../images/h_right.png) center no-repeat;
+    background-size: .16rem .25rem;
+    height: .3rem;
+    width: .2rem;
+    display: inline-block;
+    float: right;
+    margin-top: .05rem;
+}
+.contact .con_tiao a{
+    display: block;
+}
+
+.contact_f {
+    background: #fff;
+    padding: .4rem .44rem;
+    margin: 0.2rem;
+    border-radius: .2rem;
+}
+.contact_f .contact_txt {
+    font-size: .32rem;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+
+.contact_f .dec-info-ze, .contact_f .dec-info-ge{
+    font-size: .28rem;
+        line-height: .5rem;
+}
+.contact_f .dec-info-ze h3, .contact_f .dec-info-ge h3{
+	    margin-bottom: .2rem;
+	        font-size: .29rem;
+}
+.contact_f .dec-info-ze {
+	margin-bottom: .2rem;
+}
+.contact_f .contact_info {
+    margin-top: .1rem;
+    font-size: .28rem;
+}
+.contact_f .contact_info span:last-child {
+    color: #00c192;
+    font-weight: bold;
+    margin-left: .2rem;
+}
+
+/*地图*/
+.map{
+	height: 2.16rem;
+    width: 100%;
+}
+.map a{
+	display: inline-block;
+}
+.address{
+    background: #fff;
+    margin: 0.2rem;
+    border-radius: .2rem;
+    overflow: hidden;
+}
+.address .address_txt{
+	    font-size: .32rem;
+	    padding: .4rem .44rem;
+    font-weight: bold;
+}
+.address_map{
+    position: relative;
+}
+.map_address{
+    position: absolute;
+    top: 1.6rem;
+    background: #fff;
+    padding: .26rem .26rem;
+    border-radius: .2rem;
+    left: .7rem;
+}
+.map_address .map_img{
+    background: url(../images/map.png) 0 center no-repeat;
+    background-size: .36rem .4rem;
+    width: .36rem;
+    height: .8rem;
+    display: inline-block;
+    float: left;
+}
+.map_address .map_txt{
+    width: 3.5rem;
+    display: inline-block;
+    float: left;
+    height: .8rem;
+    line-height: .4rem;
+    font-size: .24rem;
+    color: #404040;
+        margin: 0 .26rem;
+}
+.map_address .map_distance{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    background: #f5f5f5;
+    padding: .1rem;
+    border-radius: .1rem;
+}
+.map_address .map_distance span{
+        background: url(../images/map_j.png) 0 center no-repeat;
+    background-size: .2rem .2rem;
+    width: .2rem;
+    height: .2rem;
+    display: inline-block;
+}
+
+
+
+/*相似职位*/
+.recommend .title {
+    text-align: center;
+        margin: .4rem 0;
+}
+.recommend .title em {
+    display: inline-block;
+    width: .6rem;
+    border-bottom: 1px solid #999999;
+    margin-bottom: .08rem;
+}
+.recommend .title span {
+    font-size: .24rem;
+    color: #999999;
+    margin: 0 0.1rem;
+}
+.recommend .list ul li{
+	background: #fff;
+	margin-bottom: .2rem;
+	    position: relative;
+}
+.recommend .list ul li i{
+    position: absolute;
+    background: url(../images/top02.png) no-repeat right top;
+    width: .6rem;
+    top: 0;
+    height: .6rem;
+    right: 0;
+    background-size: .6rem;
+}
+.recommend .list ul li a{
+    display: inline-block;
+        width: 100%;
+}
+.recommend .list ul li .zhiwei_title{
+    padding: 0.4rem .2rem .1rem .2rem;
+    border-bottom: 1px solid #f7f7f7;
+}
+.recommend .list ul li .title_01{
+    font-size: .32rem;
+    font-weight: bold;
+        overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend .list ul li .title_02{
+	margin: .2rem 0;
+	font-size: .24rem;
+	color: #808080;
+}
+.recommend .list ul li .title_02 span{
+	float: left;
+	    margin-right: .45rem;
+}
+.recommend .list ul li .title_02 p{
+    display: inline-block;
+    float: right;
+    font-size: .28rem;
+    color: #ff2d5e;
+    font-weight: bold;
+}
+.recommend .list ul li .title_03 span{
+	float: left;
+    font-size: .22rem;
+    color: #999999;
+    background: #f2f7fa;
+    margin-right: .2rem;
+    padding: .06rem .18rem;
+    border-radius: .1rem;}
+.recommend .list ul li .title_03 em{
+	float: right;
+	    font-size: .23rem;
+    color: #cccccc;
+}
+.recommend .list ul li .title_04{
+	    padding: .24rem .2rem;
+}
+.recommend .list ul li .title_04 .img_left{
+    position: relative;
+	width: .76rem;
+    height: .76rem;
+    overflow: hidden;
+    border-radius: .1rem;
+    float: left;
+    margin-right:.2rem;
+    background-color: #f5f5f5;
+}
+.recommend .list ul li .title_04 .img_left img{
+	position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+}
+.recommend .list ul li .title_04 .txt_right{
+	position: relative;overflow: hidden;
+}
+.recommend .list ul li .title_04 .txt_right p{
+    font-size: .26rem;
+    margin-bottom: .1rem;
+    max-width: 6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend .list ul li .title_04 .txt_right>div{
+	font-size: .24rem;
+    color: #999999;
+    max-width: 6rem;
+    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+.recommend .list ul li .title_04 .txt_right>div em{
+	margin: 0 .2rem;
+}
+
+
+/*底部*/
+.footer{
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    width: 100%;
+    background: #fff;
+    padding: .2rem;
+}
+.footer{padding-bottom: constant(safe-area-inset-bottom);padding-bottom: env(safe-area-inset-bottom);}
+.footer>div{
+	display: inline-block;
+}
+.footer .shoucang .like span{
+    background: url(../images/xinxin.png) 0 center no-repeat;
+    background-size: .5rem .5rem;
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+        margin-bottom: .06rem;
+}
+.footer .shoucang .liked span{
+    background: url(../images/coll.png) 0 center no-repeat;
+    background-size: .5rem .5rem;
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+        margin-bottom: .06rem;
+}
+.footer .shoucang{
+    float: left;
+    width: 16%;
+    text-align: center;
+}
+.footer .toudi{
+	    margin-left: .3rem;
+    margin-top: .08rem;
+}
+.footer .toudi button{
+	background: #00c192;
+    border: none;
+    font-size: .32rem;
+    color: #fff;
+    width: 5.3rem;
+    height: .78rem;
+    border-radius: .1rem;
+}
+
+
+/*遮罩层*/
+.mask {
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000000;
+    display: none;
+    bottom: 0;
+}
+/*投递简历成功*/
+.t_yes{
+	position: fixed;
+    z-index: 10000000;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 1.5rem;
+    margin-left: -1rem;
+    margin-top: -.8rem;
+    text-align: center;
+    font-size: .28rem;
+    color: #00c192;
+    border-radius: .1rem;
+    display: none;
+}
+.t_yes span{
+    background: url(../images/hh.png) 0 center no-repeat;
+    background-size: .7rem;
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+        margin-top: .16rem;
+}
+/*投递简历失败*/
+.t_no{
+	position: fixed;
+    z-index: 10000000;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 1.5rem;
+    margin-left: -1rem;
+    margin-top: -.8rem;
+    text-align: center;
+    font-size: .28rem;
+    color: #ff526a;
+    border-radius: .1rem;
+    display: none;
+}
+.t_no span{
+    background: url(../images/no.png) 0 center no-repeat;
+    background-size: .7rem;
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    margin-top: .16rem;
+}
+
+/*20190201新增  生成微海报*/
+.Microposter{margin-left: .22rem; margin-right: .22rem; background-color: #fff; border-radius: .14rem; line-height: .9rem; text-align: center; margin-top: .2rem;}
+.Microposter h2{font-size: .3rem; color: #333; font-weight: bold; vertical-align: middle; display: inline;}
+.Microposter a{display: block;}
+.Microposter a:before{content: ''; margin-right: .24rem; display: inline-block; width: .4rem; height: .4rem; background-image: url(../images/icon-img.png); background-size: cover; vertical-align: middle;}
+
+.contact_f .contact_info a.tel span{margin-left: .13rem;}

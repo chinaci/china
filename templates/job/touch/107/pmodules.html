@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>企业微海报下载</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/Pmodules.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			 var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+		</script>
+	</head>
+	<body>
+		
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="企业微海报下载"#}
+		
+		<div class="headerText">
+			<dl>
+				<dt>选择模板，一键生成招聘海报</dt>
+				<dd>移动招聘首选，让招聘更有效</dd>
+				<dd class="tip">★转发朋友圈、员工内推、打印张贴★</dd>
+			</dl>
+		</div>
+		<div class="moduleBox">
+			<ul>
+				<li class="module_01">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=1">
+						<img src="{#$templets_skin#}upfiles/1.jpg" />
+						<h2>模板一</h2>
+					</a>
+				</li>
+				<li class="module_02">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=2">
+						<img src="{#$templets_skin#}upfiles/2.jpg" />
+						<h2>模板二</h2>
+					</a>
+				</li>
+				<li class="module_03">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=3">
+						<img src="{#$templets_skin#}upfiles/3.jpg" />
+						<h2>模板三</h2>
+					</a>
+				</li>
+				
+				<li class="module_04">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=4">
+						<img src="{#$templets_skin#}upfiles/4.jpg" />
+						<h2>模板四</h2>
+					</a>
+				</li>
+				<li class="module_05">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=5">
+						<img src="{#$templets_skin#}upfiles/5.jpg" />
+						<h2>模板五</h2>
+					</a>
+				</li>
+				<li class="module_06">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=6">
+						<img src="{#$templets_skin#}upfiles/6.jpg" />
+						<h2>模板六</h2>
+					</a>
+				</li>
+				<li class="module_07">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=7">
+						<img src="{#$templets_skin#}upfiles/7.jpg" />
+						<h2>模板七</h2>
+					</a>
+				</li>
+				<li class="module_08">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=8">
+						<img src="{#$templets_skin#}upfiles/8.jpg" />
+						<h2>模板八</h2>
+					</a>
+				</li>
+				<li class="module_09">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=9">
+						<img src="{#$templets_skin#}upfiles/9.jpg" />
+						<h2>模板九</h2>
+					</a>
+				</li>
+				<li class="module_10">
+					<a href="{#getUrlPath service='job' template='jobposter' id={#$detail_id#}#}?posterid=10">
+						<img src="{#$templets_skin#}upfiles/10.jpg" />
+						<h2>模板十</h2>
+					</a>
+				</li>
+			</ul>
+		</div>
+        <script type="text/javascript">
+            var wxconfig = {
+                "appId": '{#$wxjssdk_appId#}',
+                "timestamp": '{#$wxjssdk_timestamp#}',
+                "nonceStr": '{#$wxjssdk_nonceStr#}',
+                "signature": '{#$wxjssdk_signature#}',
+                "description": '企业微海报下载',
+                "title": '{#$detail_title#}',
+                "imgUrl": '{#$detail_logo#}',
+                "link": '{#getUrlPath service='job' template='pmodules' id={#$detail_id#}#}',
+            };
+            document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+        </script>
+	</body>
+</html>

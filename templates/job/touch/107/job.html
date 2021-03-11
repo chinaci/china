@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$detail_title#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_title#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}',job_addr = '{#$job_addr[1]#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var pageUrl = '{#$detail_domain#}';
+	var id = {#$job_id#};
+
+  var lng = '{#$detail_lnglat[0]#}',lat = '{#$detail_lnglat[1]#}';
+
+	var pageData = {
+    title: '{#$detail_title#}',
+    address: '{#$detail_address#}',
+    lat: '{#$detail_lnglat[1]#}',
+    lng: '{#$detail_lnglat[0]#}',
+    mapType: '{#$site_map#}',
+    cityName: '{#$siteCityInfo['name']#}',
+    mapKey: '{#$site_map_key#}'
+  };
+
+  var JubaoConfig = {
+		"module" : 'job',
+		"action" : 'job',
+		"id" : '{#$detail_id#}'
+	};
+
+
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="职位详情"#}
+
+<div class="header_txt">
+  <div class="txt fn-clear"><span>{#$job_title#}</span><span>{#$job_salary#}</span></div>
+  <div class="time"><span class="icon_01">{#$job_addr[$job_addr|count-2]#}&nbsp;&nbsp;{#$job_addr[$job_addr|count-1]#}</span><span class="icon_02">{#$job_experience#}</span><span class="icon_03">{#$job_educational#}</span><span class="icon_04">{#if $job_nature == 0#}全职{#elseif $job_nature == 1#}兼职{#elseif $job_nature == 2#}临时{#elseif $job_nature == 3#}实习{#/if#}</span></div>
+    {#if $is_welfares#}
+  <div class="read">
+    {#foreach from=$welfare item=welfares#}
+    <span>{#$welfares#}</span>
+    {#/foreach#}
+  </div>
+    {#else#}
+    {#/if#}
+</div>
+
+<!--生成微海报s-->
+<div class="Microposter">
+    <a href="{#getUrlPath service='job' template='pmodules' id={#$job_company['id']#}#}"><h2>生成微海报</h2></a>
+  </div>
+  <!--生成微海报e-->
+
+<div class="contact">
+  <div class="con_info fn-clear"><span>{#$detail_title#}</span><span>{#$detail_addr[0]#} {#$detail_addr[1]#}</span></div>
+  <div class="con_txt"><span>{#$detail_scale#}</span><em>|</em><span>{#$detail_nature#}</span><em>|</em><span>{#$detail_industry[1]#}</span></div>
+  <div class="con_tiao fn-clear"><a href="{#$detail_domain#}"><span>该公司所有职位</span><span></span></a></div>
+</div>
+
+<div class="contact_f">
+  <div class="contact_txt">职位详情</div>
+  <div class="dec-info-ze">
+    <h3>职位描述：</h3>
+    {#$job_note#}
+  </div>
+  <div class="dec-info-ge">
+    <h3>任职资格：</h3>
+    {#$job_claim#}
+  </div>
+</div>
+
+<div class="contact_f">
+  <div class="contact_txt">联系方式</div>
+  {#if $userinfo#}
+  <div class="contact_info"><span>电话</span>
+    {#foreach from=$job_contactArr item=val#}
+    <a class="tel" href="tel:{#$val#}"><span>{#$val#}</span></a>
+    {#/foreach#}
+  </div>
+  <div class="contact_info"><span>邮箱</span><span>{#$email#}</span></div>
+  {#else#}
+  <div class="contact_info">
+    <a class="tel" href="{#$cfg_basehost#}/login.html"><span style="margin-left: 0;">登录后显示</span></a>
+  </div>
+  {#/if#}
+
+</div>
+
+<div class="address address_map">
+  <div class="address_txt">企业地址</div>
+  <div class="map" id="map"></div>
+  <div class="map_address fn-clear">
+    <a href="javascript:;" class="address-info appMapBtn" target="_blank">
+      <span class="map_img"></span>
+      <span class="map_txt">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</span>
+      <div class="map_distance"><span></span><p></p></div>
+    </a>
+  </div>
+</div>
+<input type="hidden" value="{#$job_type#}" id="job_type">
+<div class="recommend">
+  <div class="title"><em></em><span>相似职位</span><em></em></div>
+  <div class="list">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer fn-clear">
+  <div class="shoucang">
+    <a href="javascript:;" class="like" style="display:{#if $job_collect == 0#}block{#else#}none;{#/if#}">
+      <span></span>
+      <p>收藏</p>
+    </a>
+    <a href="javascript:;" class="liked" style="display:{#if $job_collect == 0#}none{#else#}block;{#/if#};">
+      <span></span>
+      <p>已收藏</p>
+    </a>
+  </div>
+  <div class="toudi">
+    <button id="yp">投递简历</button>
+  </div>
+</div>
+
+
+<!-- 投递简历成功 -->
+<div class="t_yes">
+  <span></span>
+  <p>投递成功</p>
+</div>
+<div class="t_no">
+  <span></span>
+  <p>投递失败</p>
+</div>
+<div class="mask"></div>
+
+
+ <!--  <div class="pin-tit">
+    <h3><span>{#$job_title#}</span><em>{#$job_salary#}</em></h3>
+    <div class="pin-lable">
+      <span class="icon-1">{#$job_addr[0]#} {#$job_addr[1]#}</span>
+      <span class="icon-2">{#$job_experience#}</span>
+      <span class="icon-3">{#$job_educational#}</span>
+      <span class="icon-4">{#if $job_nature == 0#}全职{#elseif $job_nature == 1#}兼职{#elseif $job_nature == 2#}临时{#elseif $job_nature == 3#}实习{#/if#}</span>
+    </div>
+    <div class="pin-dd">
+      <dl>
+        <dt>职位：</dt>
+        <dd>{#$job_type#}</dd>
+      </dl>
+      <dl>
+        <dt>要求：</dt>
+        <dd>{#if $job_sex == 0#}不限{#elseif $job_sex == 1#}限男士{#elseif $job_sex == 2#}限女士{#/if#}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="pin-dec">
+    <div class="dec-tit">
+      <h3>职位详情</h3>
+    </div>
+    <div class="dec-info">
+      <div class="dec-info-ze">
+				<p>职位描述：</p>
+        {#$job_note#}
+      </div>
+      <div class="dec-info-ge">
+        <p>任职资格：</p>
+        {#$job_claim#}
+      </div>
+    </div>
+  </div>
+
+  <div class="pin-address">
+    <h3><span>工作地址</span></h3>
+		<a href="javascript:;" class="address-info appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a>
+  </div>
+
+  <div class="pin-gs">
+    <h3>公司信息</h3>
+    <div class="gs-info">
+      <a href="{#$detail_domain#}">
+        <h4>{#$detail_title#} <span></span></h4>
+        <dl>
+          <dt>规模：</dt>
+          <dd>{#$detail_scale#}</dd>
+        </dl>
+        <dl>
+          <dt>性质：</dt>
+          <dd>{#$detail_nature#}</dd>
+        </dl>
+        <dl>
+          <dt>行业：</dt>
+          <dd>{#$detail_industry[1]#}</dd>
+        </dl>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-box mail">
+      <a href="javascript:;" id="yp"><span>立即投递</span></a>
+    </div>
+    {#if $job_collect == 1#}
+    <div class="footer-box heart has" id="sc">
+      <a href="javascript:;" class="like" style="display:none;"><span>感兴趣</span></a>
+      <a href="javascript:;" class="liked" style="display:block;"><span>已标为感兴趣</span></a>
+    </div>
+    {#else#}
+    <div class="footer-box heart" id="sc">
+      <a href="javascript:;" class="like"><span>感兴趣</span></a>
+      <a href="javascript:;" class="liked"><span>已标为感兴趣</span></a>
+    </div>
+    {#/if#}
+  </div> -->
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_type#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='job' template='job' id={#$job_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+<script>
+$(function(){
+    HN_Location.init(function(data){
+        if (data == undefined || data.address == "" || data.name == "" || data.lat == "" || data.lng == "") {
+
+        }else{
+            lng2 = data.lng;
+            lat2 = data.lat;
+
+            var radLat1 = lat * Math.PI / 180.0;
+            var radLat2 = lat2 * Math.PI / 180.0;
+            var a = radLat1 - radLat2;
+            var b = lng * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+            var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+            s = s * 6378.137;
+            s = Math.round(s * 10000) / 10000;
+
+            $(".map_distance p").html(s.toFixed(1) +'km');
+        }
+    })
+})
+</script>
+</body>
+</html>

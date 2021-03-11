@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$detail_title#},招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_title#},招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gs-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}">  <!-- 图片放大 -->
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/photoswipe.css?v={#$cfg_staticVersion#}">  <!-- 图片点击放大 -->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var pageData = {
+    title: '{#$detail_title#}',
+    address: '{#$detail_address#}',
+    lat: '{#$detail_lnglat[1]#}',
+    lng: '{#$detail_lnglat[0]#}',
+    mapType: '{#$site_map#}',
+    cityName: '{#$siteCityInfo['name']#}',
+    mapKey: '{#$site_map_key#}'
+  };
+  var lat='{#$detail_lnglat[1]#}',lng= '{#$detail_lnglat[0]#}';
+
+  var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+  var	JubaoConfig = {
+    "module" : 'job',
+    "action" : 'company',
+    "id" : '{#$detail_id#}'
+  };
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="公司详情"#}
+
+<div class="gs-tit">
+  <div class="gsTit_img"><img src="{#$detail_pics[0].pic#}"></div>
+  <div class="gsTit_title">
+    <span class="txt">{#$detail_title#}</span>
+    <span class="city">{#$detail_addr[1]#}</span>
+    <p class="information"><span>{#$detail_scale#}</span><em>|</em><span>{#$detail_nature#}</span><em>|</em><span>{#$detail_industry[1]#}</span></p>
+    <div class="head_portrait"><img src="{#$detail_logo#}"></div>
+  </div>
+</div>
+<!--生成微海报s-->
+<div class="Microposter">
+	<a href="{#getUrlPath service='job' template='pmodules' id={#$detail_id#}#}"><h2>生成微海报</h2></a>
+</div>
+<!--生成微海报e-->
+<!-- 联系方式 -->
+<div class="contact">
+  <div class="contact_txt">联系方式</div>
+  {#if $userinfo#}
+  <div class="contact_info"><span>电话</span>
+    {#foreach from=$detail_contacts item=val#}
+    <a class="tel" href="tel:{#$val#}"><span>{#$val#}</span></a>
+    {#/foreach#}
+  </div>
+  <div class="contact_info"><span>邮箱</span><span>{#$detail_email#}</span></div>
+  {#else#}
+  <div class="contact_info">
+    <a class="tel" href="{#$cfg_basehost#}/login.html"><span style="margin-left: 0;">登录后显示</span></a>
+  </div>
+  {#/if#}
+
+</div>
+
+<!-- 企业地址 -->
+<div class="address address_map">
+  <div class="address_txt">企业地址</div>
+  <div class="map" id="map"></div>
+  <div class="map_address fn-clear">
+    <a href="javascript:;" class="address-info appMapBtn" target="_blank">
+      <span class="map_img"></span>
+      <span class="map_txt">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</span>
+      <div class="map_distance"><span></span><p></p></div>
+    </a>
+  </div>
+</div>
+
+<div class="choose-tab">
+  <div class="tab-box">
+    <span  class="active">在招职位</span>
+    <span>企业主页</span>
+
+  </div>
+</div>
+
+<!-- 企业主页 在招职位 -->
+<div class="choose-box">
+   <div class="wrapper">
+    <div class="job-list">
+      <ul>
+          {#if $detail_pcount#}
+        {#job action="post" return="post" company={#$detail_id#} pageSize="1000"#}
+        <li>
+          <a href="{#$post.url#}">
+            <div class="job-tit">
+              <span class="name">{#$post.title#}</span><em class="fn-right">{#$post.salary#}</em>
+            </div>
+            <div class="job-info fn-clear">
+              <div class="information"><span class="icon_01">{#$detail_addr[0]#}</span><span class="icon_02">{#$post.experience#}</span><span class="icon_03">{#$post.educational#}</span><span class="icon_04">全职</span></div>
+              <em class="fn-right price">{#$post.timeUpdate#}</em>
+            </div>
+          </a>
+        </li>
+        {#/job#}
+          {#else#}
+          <p class="nojob">暂无招聘职位</p>
+          <style>.Microposter{display: none;}</style>
+          {#/if#}
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrapper dn">
+    <div class="q_homepage">
+      <div class="homepage_txt">企业简介</div>
+      <div class="info-con content">{#$detail_body#}</div>
+
+      <div class="homepage_txt">企业相册</div>
+      <div class="my-gallery comment-pic-slide de-pic" itemscope itemtype="">
+        <div class="swiper-wrapper pic">
+          {#foreach from=$detail_pics item=pic#}
+          <figure itemprop="associatedMedia" itemscope="" itemtype="" class="swiper-slide">
+            <a href="{#$pic['pic']#}" itemprop="contentUrl" data-size="400x300">
+              <img src="{#$pic['pic']#}" itemprop="thumbnail" alt="{#$pic['title']#}">
+            </a>
+          </figure>
+          {#/foreach#}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+<!-- 推荐企业 -->
+<div class="recommend">
+  <div class="title"><em></em><span>推荐企业</span><em></em></div>
+  <div class="list">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+
+<script>
+  var g_conf = {
+    // "cityName": "{#$siteCityInfo['name']#}",   //当前城市
+    "mapWrapper": "map",  //地图区块
+    "minZoom": 11,        //地图最大zoom
+  };
+</script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_title#}招聘',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='job' template='company' id={#$detail_id#}#}',
+	};
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+
+
+<script src='{#$cfg_staticPath#}js/ui/photoswipe.min.js?v={#$cfg_staticVersion#}'></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/gs-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

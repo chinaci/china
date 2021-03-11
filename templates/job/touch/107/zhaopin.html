@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>招聘职位</title>
+<meta name="keywords" content="找工作,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找工作,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/position.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+var hideFileUrl = {#$cfg_hideUrl#}, cityid = {#$siteCityInfo['cityid']#};
+var cookiePre = '{#$cfg_cookiePre#}', detailListId = 'maincontent';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute" pageTitle="职位列表"#}
+
+  <!-- 筛选框 -->
+  <div class="choose">
+      <div class="choose-tab">
+        <ul>
+          <li data-type="addr" class="tab-addrid"><a href="javascript:;"><i><span>工作地点</span></i></a></li>
+          <li data-type="industry" class="tab-industry"><a href="javascript:;"><i><span>行业领域</span></i></a></li>
+          <li data-type="jtype" class="tab-jtype"><a href="javascript:;"><i><span>职位类型</span></i></a></li>
+          <li><a href="javascript:;" ><i><span>更多</span></i></a></li>
+        </ul>
+      </div>
+      <div class="choose-box">
+        <div class="choose-local dn" id="area-box">
+          <div class="choose-stage-l">
+            <div id="choose-area">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+          <div class="choose-stage-r">
+            <div id="choose-area-second">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+        </div>
+        <!--行业类型-->
+        <div class="choose-local dn" id="info-box">
+          <div class="choose-stage-l">
+            <div id="choose-info">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+          <div class="choose-stage-r">
+            <div id="choose-info-second">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+        </div>
+        <!--职位类型-->
+        <div class="choose-local dn" id="sort-box">
+          <div class="choose-stage-l">
+            <div id="choose-sort">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+          <div class="choose-stage-c">
+            <div id="choose-sort-second">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+          <div class="choose-stage-th" id="choose-stage-th">
+            <div id="choose-sort-third">
+              <div class="load">获取中...</div>
+            </div>
+          </div>
+        </div>
+        <div class="choose-local dn" id="choose-more-second">
+          <div class="choose-more">
+            <div id="choose-more" class="gd">
+              <div class="mainList">
+                <p>职位性质</p>
+                <div class="gdList"  data-type="nature">
+                  <span data-id="-1">不限</span>
+                  <span data-id="0">全职</span>
+                  <span data-id="1">兼职</span>
+                  <span data-id="2">实习</span>
+                  <span data-id="3">临时</span>
+                </div>
+              </div>
+              <div class="mainList">
+                <p>公司性质</p>
+                <div class="gdList"  data-type="gnature">
+                  <span data-id="-1">不限</span>
+                  {#job action="item" return="type" type="5"#}
+                  <span data-id="{#$type.id#}">{#$type.typename#}</span>
+                  {#/job#}
+                </div>
+              </div>
+              <div class="mainList">
+                <p>公司规模</p>
+                <div class="gdList" data-type="scale">
+                  <span data-id="-1">不限</span>
+                  {#job action="item" return="type" type="6"#}
+                  <span data-id="{#$type.id#}">{#$type.typename#}</span>
+                  {#/job#}
+                </div>
+              </div>
+              <div class="mainList">
+                <p>薪资待遇</p>
+                <div class="gdList" data-type="salary">
+                  <span data-id="-1">不限</span>
+                  {#job action="item" return="type" type="3"#}
+                  <span data-id="{#$type.id#}">{#$type.typename#}</span>
+                  {#/job#}
+                </div>
+              </div>
+              <div class="mainList">
+                <p>工作经验</p>
+                <div class="gdList" data-type="experience">
+                  <span data-id="-1">不限</span>
+                  {#job action="item" return="type" type="1"#}
+                  <span data-id="{#$type.id#}">{#$type.typename#}</span>
+                  {#/job#}
+                </div>
+              </div>
+              <div class="mainList">
+                <p>学历要求</p>
+                <div class="gdList"  data-type="educational">
+                  <span data-id="-1">不限</span>
+                  {#job action="item" return="type" type="2"#}
+                  <span data-id="{#$type.id#}">{#$type.typename#}</span>
+                  {#/job#}
+                </div>
+              </div>
+              <div class="conClick">
+                <div class="rest"><a href="javascript:;">重置</a></div>
+                <div class="confirm"><a href="javascript:;">确定</a></div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="more-box dn">
+            <div id="choose-more-second">
+              <div class="h100">
+                <ul>
+                  <li data-id="-1">不限</li>
+                  <li data-id="0">全职</li>
+                  <li data-id="1">兼职</li>
+                  <li data-id="2">临时</li>
+                  <li data-id="3">实习</li>
+                </ul>
+                
+                <ul>
+                  <li data-id="-1">不限</li>
+                  {#job action="item" return="type" type="1"#}
+                  <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                  {#/job#}
+                </ul>
+                
+                <ul>
+                  <li data-id="-1">不限</li>
+                  {#job action="item" return="type" type="2"#}
+                  <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                  {#/job#}
+                </ul>
+                
+                <ul>
+                  <li data-id="-1">不限</li>
+                  {#job action="item" return="type" type="3"#}
+                  <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                  {#/job#}
+                </ul>
+                
+                <ul>
+                  <li data-id="-1">不限</li>
+                  {#job action="item" return="type" type="5"#}
+                  <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                  {#/job#}
+                </ul>
+                
+                <ul>
+                  <li data-id="-1">不限</li>
+                  {#job action="item" return="type" type="6"#}
+                  <li data-id="{#$type.id#}">{#$type.typename#}</li>
+                  {#/job#}
+                </ul>
+              </div>
+            </div>
+            <div class="back">
+              <a href="javascript:;">返回</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  <!-- 筛选框 end-->
+
+  <!-- 搜索框 -->
+<div class="search-box fn-clear">
+  <div class="search">
+    <i></i>
+    <input type="text" id="search_keyword" class="txt_search" value="" autocomplete="off" placeholder="请输入您要搜索的职位关键词">
+  </div>
+  <div class="search-btn"><a href="javaScript:;">搜索</a></div>
+</div>
+
+<!-- 列表 -->
+<div class="positionList">
+  <ul></ul>
+</div>
+
+
+
+    <div class="mask"></div>
+
+
+
+<script>
+var atpage = '{#$page#}',
+    totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+    totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+    pageSize = 20;
+</script>
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$job_description#}',
+    "title": '职位列表',
+    "imgUrl": '{#$job_logoUrl#}',
+    "link": '{#getUrlPath service='job' template='zhaopin'#}',
+  };
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<script src="{#$templets_skin#}js/position.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

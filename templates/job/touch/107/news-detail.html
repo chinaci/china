@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}</title>
+<meta name="keywords" content="{#$detail_keyword#}" />
+<meta name="description" content="{#$detail_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+	<div class="container">
+		{#include file="../../../siteConfig/touch_top.html" pageTitle={#$detail_typename#}#}
+
+		<div class="news-tit">
+			<h1>{#$detail_title#}</h1>
+			<p><span class="degree">浏览{#$detail_click#}</span><span class="time">{#if $detail_sourceUrl#}{#$detail_source#}{#else#}{#$detail_source#}{#/if#}</span></p>
+		</div>
+		<div class="news-con">
+			{#$detail_body#}
+		</div>
+
+	</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='job' template='news-detail' id={#$detail_id#}#}',
+	};
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<!-- 底部 -->
+
+<!-- 底部 end-->
+
+	<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+	<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+	<script src="{#$templets_skin#}js/news-detail.js?v={#$cfg_staticVersion#}" charset="utf-8"></script>
+</body>
+</html>
