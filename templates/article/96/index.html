@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$article_title#}</title>
+	<meta name="keywords" content="{#$article_keywords#}" />
+	<meta name="description" content="{#$article_description#}" />
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=2" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}';
+		var hideFileUrl = {#$cfg_hideUrl#};
+		var templets_skin = '{#$cfg_staticPath#}';
+	</script>
+</head>
+
+
+<body class="w1200">
+	<!-- 头部 -->
+	{#include file="../../siteConfig/public_top_v1.html" channel="article"#}
+	<!-- 头部结束 -->
+
+	<!--content内容 begin-->
+	<div class="content">
+		<!--page_navigate页面所在位置 begin-->
+		<div class="page_navigate">
+			<img src="{#$templets_skin#}images/nav_pic_home.png" width="15" height="14">
+			<a href="#">新闻资讯</a>
+		</div>
+		<!--page_navigate页面所在位置 end-->
+		<!--newsContent资讯 begin-->
+		<div class="newsContent fn-clear">
+			<!--左侧资讯-->
+			<div class="lf_content">
+				<!--top-多级菜单及轮播图 begin-->
+				<div class="con-top">
+					<!--左侧导航栏 begin-->
+					<div class="NavList">
+						<ul>
+							<div class="new_loading" style="display: none">
+								<img src="{#$cfg_staticPath#}images/loading_h8.gif" alt="加载中">
+							</div>
+
+
+
+						</ul>
+		<div class="more" style="display: block;"><i></i></div>
+</div>
+	<!--左侧导航栏 end->
+
+		<!--资讯轮播图 begin-->
+		<div class="PicFocus">
+			<div class="slideBox slideBox1">
+				<div class="slidewrap">
+					<div class="slide">
+						<div class="bd">
+							<div class="tempWrap">
+								<div class="slideobj">
+									{#myad title="新闻资讯_模板六_电脑端_广告一" type="slide"#}
+								</div>
+							</div>
+						</div>
+						<div class="hd"><ul><li class="on"></li><li class=""></li></ul></div>
+					</div>
+					<a href="javascript:;" class="prev"></a>
+					<a href="javascript:;" class="next"></a>
+				</div>
+			</div>
+		</div>
+		<!--资讯轮播图 end-->
+	</div>
+	<!--top-多级菜单及轮播图 end-->
+
+	<!--news_list新闻列表 begin-->
+	<div class="news_list" id="ajaxnews">
+		<ul class="nhc" id="newsList">
+
+		</ul>
+
+		<!--鼠标滚动到底部自动加载更多-->
+		<div style="font-size:14px;color:#bfbfbf;text-align:center;line-height:168px;" class="loa">加载中...</div>
+
+	</div>
+	<!--news_list新闻列表 end-->
+</div>
+<!--左侧资讯 end-->
+
+<!--news_right资讯右侧信息栏 begin-->
+<div class="news_right">
+	<h4><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank" class="online">在线投稿</a></h4>
+	<ul class="right_first">
+		<strong>24小时热闻</strong>
+
+		{#article action='alist' return='host' orderby='2' page='2' pageSize='5'#}
+
+		<li>
+			<a href="{#$host.url#}" class="anim_sma" target="_blank">
+				<img src="{#$host.litpic#}" alt="{#$host.title|strip_tags #}">
+				<h6> {#$host.title|strip_tags #}</h6>
+			</a>
+		</li>
+
+		{#/article#}
+	</ul>
+	<ul class="right_detailed">
+		<strong>精彩图片</strong>
+		{#article action='alist' return='datas' orderby='2' page='1' pageSize='8'#}
+
+		<li>
+			<a href="{#$datas.url#}" target="_blank">
+				<span  class="anim_sm">
+				<img src="{#$datas.litpic#}" alt="{#$datas.title|strip_tags#}">
+				</span>
+				<p>{#$datas.title|strip_tags#}</p>
+				<em>{#$datas.group_img|@count+1#}图</em>
+			</a>
+		</li>
+		{#/article#}
+	</ul>
+	<ul class="news_express">
+		<strong>新帖速递</strong>
+		{#article action="alist" return="hlist" orderby="1" pageSize="8"#}
+		<li>
+			<a href="{#$hlist.url#}" target="_blank" title="{#$hlist.title|strip_tags#}">
+				<label>{#$_bindex.hlist#}</label>
+				<p>{#$hlist.title|strip_tags#}</p>
+			</a>
+		</li>
+		{#/article#}
+
+	</ul>
+	<ul class="news_list_switch">
+		<li class="switchTit">
+			<ul>
+				{#article action='type' pageSize='3' return='data'#}
+				<li {#if $_bindex.data == 1#} class="focus" {#/if#}> {#$data.typename#}</li>
+				{#/article#}
+			</ul>
+		</li>
+		<li class="switchList">
+			<ul class="active">
+				{#article action='alist' return='data' orederby='2' pageSize='4' #}
+				<li>
+					<a href="{#$data.url#}" target="_blank">
+						<div class="news_rank_pic">
+
+								<img src="{#$data.litpic#}" alt="{#$data.title|strip_tags#}">
+
+
+						</div>
+					</a>
+					<h6><a href="{#$data.url#}" target="_blank" title='{#$data.title|strip_tags#}'>{#$data.title|strip_tags#}</a></h6>
+				</li>
+				{#/article#}
+
+			</ul>
+			<ul>
+				{#article action='alist' return='data' orederby='2' page='20' pageSize='4' #}
+				<li>
+					<a href="{#$data.url#}" target="_blank">
+						<div class="news_rank_pic">
+							<img src="{#$data.litpic#}" alt="{#$data.title|strip_tags#}">
+
+						</div>
+					</a>
+					<h6><a href="{#$data.url#}" target="_blank" title='{#$data.title|strip_tags#}'>{#$data.title|strip_tags#}</a></h6>
+				</li>
+				{#/article#}
+			</ul>
+			<ul>
+				{#article action='alist' return='data' orederby='2' page='10' pageSize='4' #}
+				<li>
+					<a href="{#$data.url#}" target="_blank">
+						<div class="news_rank_pic">
+
+							<img src="{#$data.litpic#}" alt="{#$data.title|strip_tags#}">
+
+						</div>
+					</a>
+					<h6><a href="{#$data.url#}" target="_blank" title='{#$data.title|strip_tags#}'>{#$data.title|strip_tags#}</a></h6>
+				</li>
+				{#/article#}
+			</ul>
+		</li>
+	</ul>
+	<ul class="rg_pic">
+		{#myad title="新闻资讯_模板六_电脑端_广告二"#}
+	</ul>
+	<ul class="rg_pic">
+		{#myad title="新闻资讯_模板六_电脑端_广告三"#}
+	</ul>
+</div>
+<!--news_right资讯右侧信息栏 end-->
+</div>
+<!--newsContent资讯 end-->
+</div>
+</div>
+
+
+{#include file="footer.html"#}
+
+<script src="{#$templets_skin#}js/jquery.getAjax.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

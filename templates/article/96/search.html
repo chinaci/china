@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$article_title#}</title>
+	<meta name="keywords" content="{#$article_keywords#}" />
+	<meta name="description" content="{#$article_description#}" />
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+
+	
+	<script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}';
+		var hideFileUrl = {#$cfg_hideUrl#};
+		var templets_skin = '{#$cfg_staticPath#}';
+	</script>
+
+</head>
+
+<body class="w1200">
+	<script type="text/javascript">var cookiePre = 'HN_';</script>
+	{#include file="../../siteConfig/public_top_v1.html" channel="article"#}
+	<!-- 导航 e -->
+	<!-- <script type="text/javascript" src="https://ihuoniao.cn/static/js/index_public.js?v=1519627334"></script> -->
+
+	<!--content内容 begin-->
+	<div class="content">
+		<!--page_navigate页面所在位置 begin-->
+		<div class="page_navigate">
+			<img src="{#$templets_skin#}images/nav_pic_home.png" width="15" height="14">
+			<a href="{#$article_channelDomain#}">{#$article_channelName#}</a>
+			<a>搜索关键词：<label class="keyWords">{#$keywords#}</label></a>
+		</div>
+
+		<!--page_navigate页面所在位置 end-->
+		<!--newsContent资讯 begin-->
+		<div class="newsContent">
+			<!--左侧资讯-->
+			<div class="lf_content">
+				<!--news_list新闻列表 begin-->
+				<div class="news_list">
+					<ul id="hidePageLoadId" class="nhc">
+
+					</ul>
+					<div style="font-size:14px;color:#bfbfbf;text-align:center;line-height:168px;" class="loa">加载中...</div>
+				</div>
+				<!--news_list新闻列表 end-->
+			</div>
+			<!--左侧资讯 end-->
+
+			<!--news_right资讯右侧信息栏 begin-->
+			<div class="news_right">
+				<ul class="news_express">
+					<strong>热门搜索排行</strong>
+					{#$i=1#}
+					{#article action='alist' return='data' oederby='2' pageSize='8'#}
+					<li>
+						<a href="{#$data.url#}" target="_blank" title="{#$data.title|strip_tags#}">
+							<label>{#$i++#}</label>
+							<p>{#$data.title|strip_tags#}</p>
+						</a>
+					</li>
+					{#/article#}
+				</ul>
+			</div>
+			<!--news_right资讯右侧信息栏 end-->
+		</div>
+		<!--newsContent资讯 end-->
+	</div>
+	<div style="clear: both;"></div>
+	<!--content内容 end-->
+	{#include file="footer.html"#}
+
+	<script src="{#$templets_skin#}js/jquery.getAjax.js?v={#$cfg_staticVersion#}"></script>
+	<script src="{#$templets_skin#}js/search.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+	</html>
