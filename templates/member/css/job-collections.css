@@ -1,0 +1,9 @@
+/* 列表 */
+.list tbody td a.del {margin: 0;}
+
+.opera {display: none; height: 28px; line-height: 28px; margin: 20px 0 0 11px;}
+.opera label {float: left; margin: 0 0 0 10px; cursor: pointer;}
+.opera label input {vertical-align: middle;}
+.opera a {float: left; margin-left: 15px;}
+
+.pagination {margin-top: -28px;}
