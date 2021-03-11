@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta name="description" content="{#$waimai_description#}" />
+	<title>{#$waimai_title#}</title>
+    <meta name="apptitle" content="{#$waimai_channelName#}">
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/ion.rangeSlider.min.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript">
+	  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$waimai_channelDomain#}', modelType = 'waimai', staticPath = '{#$cfg_staticPath#}';
+	  var userdomain = '{#getUrlPath service="member" type="user"#}', staticPath = '{#$cfg_staticPath#}' ,templatePath = '{#$templets_skin#}';
+	  var cookiePre = '{#$cfg_cookiePre#}';
+	  var local = '{#$local#}';
+	</script>
+	</head>
+	<body>
+		{#$search = {#getUrlPath service='waimai' template='search'#}#}
+  		{#$local = {#getUrlPath service='waimai' template='local'#}#}
+  		{#$pagePosition = '<em>'|cat:$langData['siteConfig'][7][4]|cat:'..</em>'#}
+		{#$pageTitle = {#$waimai_channelName#}#}
+		{#include file="../../../siteConfig/touch_top.html" headTheme="absolute transparent"#}
+		
+		<!--广告位s-->
+		<div class="bannerBox">
+			<div class="swiper-container swiper-container1">
+		      <div class="swiper-wrapper">
+		        {#{#myad title="美食外卖_模板二_移动端_广告一" type="slide"#}|replace:'slideshow-item':'swiper-slide'#}
+		      </div>
+		      <div class="pagination"></div>
+		    </div>
+		    <!--搜索框s-->
+			<div class="search_box">
+				<a class="posi" href="{#$local#}">
+					<i></i><span> {#$pagePosition#}</span>
+				</a>
+				<a class="search" href="{#$waimai_channelDomain#}/search_wm.html" style="display: block;">
+					<input readonly="" type="search" placeholder="{#$langData['waimai'][7][0]#}" name="keywords" />{#*请输入搜索关键字*#}
+					<input type="hidden" name="type" value="1" />
+					<i class="search_icon"></i>
+				</a>
+			</div>
+		<!--搜索框e-->
+		</div>
+		<!--广告位e-->
+		<!-- 滑动导航 -->
+		  <div class="nav">
+		    <div class="swiper-wrapper">
+				<div class="swiper-slide">
+		        	<ul>
+						{#waimai action="shopType" nav="1" return='type'#}
+		          		<li>
+				            <a href="{#$type.url#}">
+				              <span class="icon-img"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"></span>
+				              <span class="icon-txt">{#$type.title#}</span>
+				            </a>
+				          </li>
+						{#/waimai#}
+					</ul>
+				</div>
+		    </div>
+		    <div class="nav-pagination"></div>
+		  </div>
+		<!-- 滑动导航 end-->
+
+		<!--优惠专区s-->
+		<div class="preferential_box">
+			<h2>{#$langData['waimai'][7][1]#}</h2>{#* 优惠专区 *#}
+			<div class="preferential_content">
+				<div class="tab_box1 fn-clear">
+					<!--限时秒杀-->
+					<div class="limit_time box1">
+						{#myad title="美食外卖_模板二_移动端_广告二"#}
+					</div>
+					<div class="taocan box1">
+						{#myad title="美食外卖_模板二_移动端_广告三"#}
+					</div>
+				</div>
+				<ul class="tap_box fn-clear">
+					<li>{#myad title="美食外卖_模板二_移动端_广告四"#}</li>
+					<li>{#myad title="美食外卖_模板二_移动端_广告五"#}</li>
+					<li>{#myad title="美食外卖_模板二_移动端_广告六"#}</li>
+					<li>{#myad title="美食外卖_模板二_移动端_广告七"#}</li>
+
+				</ul>
+			</div>
+		</div>
+		<!--优惠专区e-->
+
+		<!--精选品牌s-->
+		<div class="jingxuan_box">
+			<h2>{#$langData['waimai'][7][2]#}</h2>{#* 精选品牌 *#}
+			<div class="con_box">
+				<ul class="tab_con fn-clear">
+				{#*	<li class="show">
+						<div class="left_logo">
+							<img src="{#$templets_skin#}upfile/7.png" />
+						</div>
+						<div class="right_info">
+							<h3>达美乐比萨</h3>
+							<p>店铺距您<em>5.6</em>公里</p>
+							<div class="price"><em>9.9</em>元起</div>
+							<a href="javascript:;" class="btn_buy">立即订餐</a>
+						</div>
+						<!--三角-->
+						<i class="jiao"></i><em class="zhe"></em>
+					</li>*#}
+				</ul>
+			</div>
+			<ul class="tab_btn">
+
+			</ul>
+		</div>
+		<!--精选品牌e-->
+
+		<!--推荐商家s-->
+		<div class="rec_shop">
+			<h2>{#$langData['waimai'][7][3]#}</h2>{#* 推荐商家 *#}
+			<!--商家列表s-->
+			<dl class="shopList">
+				<dt class="shopList_head">
+					<!--表头s-->
+					<div class="order_box">
+						<input type="hidden" id="orderby" name="orderby" value="1" />
+						<input type="hidden" id="typeid" name="typeid" value="0" />
+						<div class="dt_box fn-clear">
+							<ul class="left_tab">
+								<li class="composite px_li" ><a href="javascript:;">{#$langData['waimai'][7][4]#}</a></li>{#* 综合排序 *#}
+								<li class="saleCount  px_li" data-id="2"><a href="javascript:;">{#$langData['waimai'][7][5]#}</a></li>{#* 销量 *#}
+								<li class="distance  px_li" data-id="1"><a href="javascript:;">{#$langData['waimai'][7][6]#}</a></li>{#* 距离 *#}
+							</ul>
+							<div class="right_btn"><a href="javascript:;">{#$langData['waimai'][7][7]#}</a></div>{#* 筛选 *#}
+						</div>
+
+						<!--各种排序选择-->
+						<div class="px_box">
+							<ul>
+								<li data-id="1" class="nav_bc"><a href="javascript:;"><b></b>{#$langData['waimai'][2][60]#}<i></i></a></li>{#* 距离最近 *#}
+								<li data-id="2"><a href="javascript:;"><b></b>{#$langData['waimai'][2][61]#}<i></i></a></li>{#* 销量最高 *#}
+								<li data-id="3"><a href="javascript:;"><b></b>{#$langData['waimai'][2][62]#}<i></i></a></li>{#* 起送价最低 *#}
+								<li data-id="4"><a href="javascript:;"><b></b>{#$langData['waimai'][2][63]#}<i></i></a></li>{#* 评论最多 *#}
+							</ul>
+						</div>
+						<!--div筛选-->
+						<div class="right_saixuan">
+							<dl class="">
+								<dt>优惠活动</dt>
+								<dd data-type="first_promotion">{#$langData['waimai'][7][8]#}</dd>{#* 首单立减 *#}
+								<dd data-type="new_promotion">{#$langData['waimai'][7][9]#}</dd>{#* 门店新客立减 *#}
+								<dd data-type="promotion">{#$langData['waimai'][7][10]#}</dd>{#* 满减优惠 *#}
+								<dd data-type="return_hb">{#$langData['waimai'][7][11]#}</dd>{#* 下单返红包 *#}
+								<dd data-type="delivery_promotion">{#$langData['waimai'][7][12]#}</dd>{#* 配送费优惠 *#}
+								<dd data-type="discount">{#$langData['waimai'][7][13]#}</dd>{#* 特价商品 *#}
+							</dl>
+							<dl class="">
+								<dt data-type="shop_service">{#$langData['waimai'][7][14]#}</dt>{#* 商家服务 *#}
+								<dd data-type="delivery_way">{#$langData['waimai'][7][15]#}</dd>{#* 火鸟专送 *#}
+								<dd data-type="get_toshop">{#$langData['waimai'][7][16]#}</dd>{#* 到店自取 *#}
+								<dd data-type="ontime">{#$langData['waimai'][7][17]#}</dd>{#* 准时达 *#}
+								<dd data-type="good_shop">{#$langData['waimai'][7][18]#}</dd>{#* 品牌商家 *#}
+								<dd data-type="new_shop">{#$langData['waimai'][7][19]#}</dd>{#* 新店 *#}
+							</dl>
+							<div class="price_range">
+								<h3>{#$langData['waimai'][7][20]#}</h3>{#* 人均价格 *#}
+								<input type="hidden" id="pricetemp" name="pricetemp" />
+								<div class="choose-price-user">
+									<div class="price_u" id="price_u"></div>
+								</div>
+							</div>
+
+							<div class="btn_group fn-clear"><a href="javascript:;" class="reset_btn">重置</a><a href="javascript:;" class="sure_btn">确定</a></div>
+						</div>
+					</div>
+					<!--表头e-->
+
+					<!-- <div class="shaixuan">
+						<ul class="fast_screen">
+							<li data-type="promotion"><a href="javascript:;">{#$langData['waimai'][7][10]#}</a></li>{#* 满减优惠 *#}
+							<li data-type="delivery_fee"><a href="javascript:;">{#$langData['waimai'][7][21]#}</a></li>{#* 免配送费 *#}
+							<li data-type="first_promotion"><a href="javascript:;">{#$langData['waimai'][7][8]#}</a></li>{#* 首单立减 *#}
+							<li data-type="is_discount"><a href="javascript:;">{#$langData['waimai'][7][22]#}</a></li>{#* 限时折扣 *#}
+						</ul>
+					</div> -->
+
+					<!--列表s-->
+				</dt>
+
+				{#*
+				<dd class="li_box fn-clear">
+					<div class="left_logo">
+						<img src="{#$templets_skin#}upfile/logo.png" />
+					</div>
+					<div class="right_detail">
+						<h3>汉堡王(苏州合景领汇店22007)</h3>
+						<div class="shop_info fn-clear">
+							<p class="left_info "><span class="fen"><em>4.6</em></span><span class="shop_sale">月售 <em> 656</em></span></p>
+							<p class="right_info"><span class="time">30分钟</span><span class="shop_distance">1.2km</span></p>
+						</div>
+						<div class="ps_info fn-clear">
+							<p class="left_ps"><span class="start_ps">起送 <em>{#echoCurrency type='symbol'#}15</em></span><span class="start_ps">配送 <em>{#echoCurrency type='symbol'#}4.5</em></span></p>
+							<p class="ps_name">火鸟专送</p>
+						</div>
+						<p class="hui_info"><span>30减15</span><span>30减15</span><span>30减15</span></p>
+						<p class="first_tip">新用户下单立减15元（不与其他活动同享）</p>
+						<p class="discount_tip">全店享8.8折</p>
+					</div>
+				</dd>
+				<dd class="li_box fn-clear brand_shop">
+					<div class="left_logo">
+						<img src="{#$templets_skin#}upfile/logo2.png" />
+					</div>
+					<div class="right_detail">
+						<h3>汉堡王(苏州合景领汇店22007)</h3>
+						<div class="shop_info fn-clear">
+							<p class="left_info "><span class="fen"><em>4.6</em></span><span class="shop_sale">月售 <em> 656</em></span></p>
+							<p class="right_info"><span class="time">30分钟</span><span class="shop_distance">1.2km</span></p>
+						</div>
+						<div class="ps_info fn-clear">
+							<p class="left_ps"><span class="start_ps">起送<em>{#echoCurrency type='symbol'#}15</em></span><span class="start_ps">配送<em>{#echoCurrency type='symbol'#}4.5</em></span></p>
+							<p class="ps_name">火鸟专送</p>
+						</div>
+						<p class="hui_info"><span>30减15</span><span>99减50</span><span>188减50</span><span>188减50</span><span>30减15</span><i class="open_hui"></i></p>
+						<p class="first_tip">新用户下单立减15元（不与其他活动同享）</p>
+						<p class="discount_tip">全店享8.8折</p>
+					</div>
+				</dd>
+				*#}
+				<!--列表e-->
+			</dl>
+			<!--商家列表e-->
+
+		</div>
+		<!--推荐商家e-->
+		<div class="mask"></div>
+		{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="waimai"#}
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+      <script type="text/javascript">
+        var wxconfig = {
+          "appId": '{#$wxjssdk_appId#}',
+          "timestamp": '{#$wxjssdk_timestamp#}',
+          "nonceStr": '{#$wxjssdk_nonceStr#}',
+          "signature": '{#$wxjssdk_signature#}',
+          "description": '{#$waimai_description#}',
+          "title": '{#$waimai_title#}',
+          "imgUrl": '{#$waimai_logoUrl#}',
+          "link": '{#$waimai_channelDomain#}',
+        };
+        var typeid = '', orderby = '', yingye = '', lng = '', lat = '', page = 1, pageSize = 10;
+
+        document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+      </script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/ion.rangeSlider.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

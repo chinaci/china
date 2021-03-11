@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="description" content="{#$waimai_description#}" />
+<title>{#$langData['waimai'][2][75]#}</title>   {#* 定位 *#}
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/loca_ing.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+<body>
+	
+	{#$pageTitle = "搜索地址"#}
+	{#include file="../../../siteConfig/touch_top.html" headTheme=" "#}
+<div class="location_input">
+	<a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=waimai" class="currCity"><em>{#$siteCityInfo['name']#}</em></a>
+	<div class="inpbox"><input type="text" id="keywords" name="keywords" placeholder="{#$langData['siteConfig'][20][333]#}"></div>
+	
+</div>
+
+<div class="wordsBox">
+	<p class="title">{#$langData['waimai'][2][76]#}</p>  {#* 当前地址 *#}
+	<p class="relocal fn-clear"><a href="javascript:;" data-href="index.html?local=manual&currentPageOpen=1" data-lng="" data-lat="">&nbsp;</a><span class="click">{#$langData['waimai'][2][77]#}</span></p>
+</div>{#* 重新定位 *#}
+
+<div class="history wordsBox">
+	<p class="title">{#$langData['siteConfig'][19][303]#} <span class="all_shan"></span></p>   {#* 历史记录 *#}
+	<ul></ul>
+</div>
+
+<div id="container"></div>
+<div id="map"></div>
+<script type="text/javascript">
+	var mapCity = '{#$cfg_mapCity#}';
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$waimai_description#}#}
+{#$Share_title = {#$waimai_title#}#}
+{#$Share_img = {#$waimai_logoUrl#}#}
+{#$Share_url = {#$waimai_channelDomain#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/local.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
