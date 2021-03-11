@@ -1,0 +1,9 @@
+html{background: #f0f0f2;}
+.container{padding-top: .2rem;}
+
+.carlist{background: #fff;padding: 0 .28rem;}
+.carlist li{border-bottom: 1px solid #d8d9e3;padding: .35rem 0 .35rem .86rem;position: relative;}
+.carlist li i{display: inline-block;width: .6rem;height: .6rem;position: absolute;top: .26rem;left: .12rem;}
+.carlist li i img{width: 100%;}
+.carlist li p{color: #45464f;font-size: .3rem;}
+.carlist li span{display: inline-block;width: .14rem;height: .24rem;background: url("../images/car/icon_next.png") no-repeat;background-size: contain;margin-left: .2rem;}
