@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>装修攻略</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/raiders.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = "装修攻略"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="swiper-container" id="swiper-container1">
+    <div class="swiper-wrapper stra_lead">
+			{#renovation action="newsType" return="type" type="1" pageSize="3"#}
+      <div class="swiper-slide{#if $_bindex.type == 1#} active-nav{#/if#}">{#$type.typename#}</div>
+			{#/renovation#}
+    </div>
+</div>
+<div class="swiper-container" id="swiper-container2">
+    <div class="swiper-wrapper ">
+			{#$index = 1#}
+			{#renovation action="newsType" return="type" type="1" pageSize="3"#}
+    	<div class="swiper-slide stra_list1">
+				{#renovation action="newsType" return="type1" type={#$type.id#} pageSize="4"#}
+      	<a href="{#getUrlPath service='renovation' template='raiders' id={#$type1.id#}#}"><img src="{#$templets_skin#}images/gl_{#$index#}.png?v={#$cfg_staticVersion#}"><p>{#$type1.typename#}</p></a>
+				{#$index = $index + 1#}
+				{#/renovation#}
+    	</div>
+			{#/renovation#}
+    </div>
+</div>
+<div class="manual">
+	<h1>选材手册</h1>
+	<ul>
+		{#renovation action='news' typeid='20' ispic='1' pageSize='4' return="news"#}
+		<li>
+			<a href="{#$news.url#}">
+				<div class="manual_pic"><img src="{#$news.litpic#}" alt="{#$news.title#}"></div>
+				<div class="manual_txt">
+					<h2>{#$news.title#}</h2>
+					<p>{#$news.description#}</p>
+				</div>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+	<span><a href="{#getUrlPath service='renovation' template='raiders' id=20#}">进入选材手册</a></span>
+</div>
+<div class="manual">
+	<h1>装修风水</h1>
+	<ul>
+		{#renovation action='news' typeid='51' ispic='1' pageSize='4' return="news"#}
+		<li>
+			<a href="{#$news.url#}">
+				<div class="manual_pic"><img src="{#$news.litpic#}" alt="{#$news.title#}"></div>
+				<div class="manual_txt">
+					<h2>{#$news.title#}</h2>
+					<p>{#$news.description#}</p>
+				</div>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+	<span><a href="{#getUrlPath service='renovation' template='raiders' id=51#}">进入装修风水</a></span>
+</div>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/raiders.js"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$renovation_title#}',
+		"imgUrl": '{#$renovation_logoUrl#}',
+		"link": '{#getUrlPath service='renovation' template='raiders'#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

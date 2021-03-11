@@ -1,0 +1,360 @@
+body{
+	/*background: #efefef;*/
+  overflow: hidden;
+}
+body.by{
+	position: fixed;
+	left: 0;
+	right: 0;
+}
+.huoniao_iOS .com_screen_top{
+	padding-top: 20px;
+	top: 0;
+}
+.huoniao_iOS .pic_lead_list ul{
+	top: 0;
+}
+.huoniao_iOS .disk{
+	top: 20px;
+}
+.com_lead{
+    height: .9rem;
+    background: #FE5400 !important;
+    color: #fff;
+    display: -webkit-box;
+    font-size: .32rem;
+    line-height: .9rem;
+    max-width: 1080px;
+    position: relative;
+    z-index: 99;
+    text-align: center;
+}
+.com_lead a{
+	/*display: block;
+	width: .9rem;
+	height: .9rem;*/
+}
+.com_lead span{
+    background: url(../images/toleft.png);
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-size: 100%;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+}
+.com_lead p{
+	    -webkit-box-flex: 1;
+    text-align: center;
+    font-size: .36rem;
+}
+.com_search{
+    width: 100%;
+    padding: .2rem .3rem;
+    background: #fff;
+		display: none;
+}
+.com_search form{
+	position: relative;
+}
+.com_search form input{
+    width: 83%;
+    background: #f6f6f6;
+    border-radius: .1rem;
+    font-size: .27rem;
+    padding: 0.1rem 0.01rem 0.1rem 0.7rem;
+    border: none;
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+.com_search form:after{
+    content: '';
+    display: inline-block;
+    width: .3rem;
+    height: .3rem;
+    background: url(../images/win-port-search.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    left: .2rem;
+}
+.com_search form span{
+    display: inline-block;
+    width: .3rem;
+    height: .4rem;
+    background: url(../images/write-close.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 58%;
+    right: .9rem;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+.com_choic{
+	background: #fff;
+	padding: 0.3rem 0;
+	border-bottom: 1px solid #dedede;
+	display: none;
+}
+.com_list{padding-bottom: 1.2rem;}
+.com_choic ul li{
+	    float: left;
+    width: 20%;
+    text-align: center;
+}
+.com_choic ul li a{
+	display: block;
+}
+.com_choic ul li a p{
+
+	width: 0.8rem;
+	height: 0.8rem;
+	margin: 0 auto;
+}
+.com_choic ul li a span{
+	margin-top: 0.1rem;
+	display: inline-block;
+}
+.com_choic ul li a p.com-1{
+	background: url(../images/com-1.png) no-repeat center;
+	background-size: 0.8rem;
+}
+.com_choic ul li a p.com-2{
+	background: url(../images/com-2.png) no-repeat center;
+	background-size: 0.8rem;
+}
+.com_choic ul li a p.com-3{
+	background: url(../images/com-3.png) no-repeat center;
+	background-size: 0.8rem;
+}
+.com_choic ul li a p.com-4{
+	background: url(../images/com-4.png) no-repeat center;
+	background-size: 0.8rem;
+}
+.com_choic ul li a p.com-5{
+	background: url(../images/com-5.png) no-repeat center;
+	background-size: 0.8rem;
+}
+.blank_screen{
+	height: .8rem;
+	border-bottom: 1px solid #dedede;
+}
+.com_screen{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background: #fff;
+	border-bottom: 1px solid #dedede;
+}
+.com_screen ul li{
+    width: 25%;
+    float: left;
+    font-size: 0.25rem;
+    position: relative;
+    text-indent: 0.3rem;
+}
+.com_screen ul li i{
+    height: 0.3rem;
+    width: 0.02rem;
+    background: #e5e5e5;
+    position: absolute;
+    top: 0.26rem;
+    left: 1.9rem;
+}
+.com_screen ul li b{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: .08rem solid #333;
+    border-left: .08rem solid transparent;
+    border-right: .08rem solid transparent;
+    vertical-align: middle;
+    margin-left: .03rem;
+    position: absolute;
+    top: 0.35rem;
+    right: 0.3rem;
+}
+.com_infor a{
+	padding: 0.2rem 0.3rem 0.2rem 0.2rem;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+    display: block;
+}
+.com_infor a img{
+    float: left;
+    width: 1.65rem;
+    height: 1.65rem;
+    margin-left: 0.2rem;
+}
+.com_infor a .information{
+	margin-left: 2.3rem;
+	line-height: .5rem;
+}
+.com_infor a .information h1{
+	font-size: 0.32rem;
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: block;
+}
+.com_infor a .information span{
+	font-size: 0.24rem;
+	color: #bbb;
+}
+.com_infor a .information span i{
+    width: 0.35rem;
+    height: 0.35rem;
+    text-align: center;
+    color: #fff;
+    font-style: normal;
+    line-height: 0.35rem;
+    display: inline-block;
+		margin: 0 .04rem;
+}
+.com_infor a .information span .ying{
+	background: #74ccd4;
+}
+.com_infor a .information span .ren{
+	background: #ffad77;
+}
+.com_infor a .information span .hui{
+	background: #ee8e75;
+}
+.com_infor a .information span .hui.no{
+	background: #ccc;
+}
+.com_infor a .information span .jin{
+    background: #ddbe72;
+}
+.com_infor a .information span .ping{
+    background: #cfab8d;
+}
+.com_infor a .information span .ping.no{
+    background: #ccc;
+}
+.com_infor a .information .have{
+	line-height: 0.35rem;
+}
+.com_infor a .information .have b{
+	width: 50%;
+	display: inline-block;
+	float: left;
+	font-weight: normal;
+}
+.com_infor a .information .have b em{
+    color: #f00;
+      margin-right: 0.1rem;
+}
+.com_infor a .information .have s{
+	text-decoration: none;
+}
+.com_infor a .information .have s em{
+    color: #f00;
+    margin-right: 0.1rem;
+}
+.com_infor_l{
+	margin-bottom: 0.2rem;
+}
+.com_infor_l ul li{
+	width: 33.33%;
+	float: left;
+	text-align: center;
+	background: #fff;
+	border-bottom: 1px solid #dedede;
+	position: relative;
+}
+.com_infor_l ul li a{
+	padding: 0 0.2rem;
+	margin: 0.2rem 0;
+	border-bottom: none;
+}
+.com_infor_l ul .mid a{
+	border-left: 1px solid #dedede;
+	border-right: 1px solid #dedede;
+}
+.com_infor_l ul .first a {
+    background: url(../images/host.png) no-repeat 0.7rem;
+    background-size: 0.3rem;
+    text-indent: 0.5rem;
+}
+.com_infor_l ul .mid a {
+    background: url(../images/yuyue.png) no-repeat 0.5rem;
+    background-size: 0.33rem;
+    text-indent: 0.5rem;
+}
+.com_infor_l ul .last a {
+    background: url(../images/anli.png) no-repeat 0.6rem;
+    background-size: 0.33rem;
+    text-indent: 0.5rem;
+}
+.coms_l ul{
+    padding-left: 0.1rem;
+    padding-bottom: 0.2rem;
+    z-index: 100;
+    background: #fff;
+    min-height: 2rem;
+    width: 100%;
+    position: fixed;
+    top: .8rem;
+		border-top: 1px solid #e5e5e5;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.coms_l ul li{
+    float: left;
+    width: 25%;
+}
+.coms_l ul li a{
+    display: block;
+    margin-right: 0.2rem;
+    margin-top: 0.2rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #666;
+    border: 1px solid #dedede;
+    border-radius: 0.15rem;
+    height: .6rem;
+    line-height: .6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.leib a{
+    color: #d00!important;
+    border-color: #d00!important;
+}
+.disk{
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    bottom: 0;
+    display: none;
+}
+.cur{
+    color: #FE5400!important;
+}
+.cur b{
+    border-top: .08rem solid #FE5400!important;
+}
+.com_screen_top{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid #f4f4f4;
+    background: #fff;
+    z-index: 100;
+    width: 100%;
+}
+.loading{
+	line-height: 1rem;
+	font-size: .3rem;
+	text-align: center;
+}

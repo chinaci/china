@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>设计师</title>
+<meta name="keywords" content="设计师家园" />
+<meta name="description" content="设计师家园" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/designer.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_id#}, designer = 0;
+</script>
+</head>
+
+<body>
+<!-- 头部导航栏 s-->
+{#$pageTitle = "装修设计师"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="com_infor fn-clear">
+	<a href="#" class="fn-clear">
+		<img src="{#$detail_logo#}" alt="">
+		<div class="information">
+			<h1>{#$detail_company#}</h1>
+			<span>
+				认证：
+				{#if $detail_license == 1#}
+				<i class='ying'>营</i>
+				{#else#}
+				<i class='ying no'>营</i>
+				{#/if#}
+
+				{#if $detail_certi == 1#}
+				<i class='ren'>认</i>
+				{#else#}
+				<i class='ren no'>认</i>
+				{#/if#}
+
+				{#if $detail_saleCount > 0#}
+				<i class='hui'>惠</i>
+				{#else#}
+				<i class='hui no'>惠</i>
+				{#/if#}
+
+				{#if $detail_safeguard > 0#}
+				<i class='jin'>金</i>{#$detail_safeguard#}{#echoCurrency type='short'#}
+				{#else#}
+				<i class='jin no'>金</i>
+				{#/if#}
+
+				{#if $detail_guestCount > 0#}
+				<i class='ping'>评</i>{#$detail_guestCount#}次
+				{#else#}
+				<i class='ping no'>评</i>
+				{#/if#}
+
+			</span>
+			<div class="have">
+				<b>案例：<em>{#$detail_diaryCount#}</em>套</b>
+				<b>效果图：<em>{#$detail_caseCount#}</em>套</b>
+				<s>拥有设计师：<em>{#$detail_teamCount#}</em>位</s>
+			</div>
+		</div>
+	</a>
+</div>
+<div class="comde_head fn-clear">
+	<ul>
+		<li><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}">首页</a></li>
+		<li><a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">案例</a></li>
+		<li><a href="{#getUrlPath service='renovation' template='company-albums' id={#$detail_id#}#}">效果图</a></li>
+		<li class="com_bc"><a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}">设计师</a></li>
+	</ul>
+</div>
+<!-- 头部导航栏 e-->
+
+<!-- 设计师列表 s-->
+<div class="stylist-list" id="list"></div>
+<!-- 设计师列表 e-->
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 20;
+</script>
+
+<script src="{#$templets_skin#}js/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/company-team.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$detail_company#}',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

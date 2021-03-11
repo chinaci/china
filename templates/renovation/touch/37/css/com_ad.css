@@ -1,0 +1,61 @@
+body{
+	background: #fff;
+}
+.comde_head ul li a{
+	width: 25%;
+	float: left;
+	text-align: center;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background:#000;
+	border-bottom: 1px solid #dedede;
+	color: #fff;
+	font-size: 0.28rem;
+}
+.com_bc a{
+	background: #333!important;
+}
+.ad_list{
+	margin-top: 8px;
+}
+.ad_list ul li{
+    position: relative;
+    margin: 15px 15px 0;
+}
+.ad_list ul li a {
+	display: block;
+}
+.ad_list ul li a img{
+    max-width: 100%;
+    min-height: 150px;
+    width: 100%;
+    display: block;
+}
+.ad_list ul li a span{
+	    height: 50px;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    color: #fff;
+    font-size: 14px;
+    padding: 0 12px;
+}
+.ad_list ul li a span h1{
+	    margin-top: 9px;
+    font-size: 14px;
+    line-height: 1;
+    color: #fff;
+}
+.ad_list ul li a span p{
+	    overflow: hidden;
+    margin-top: 3px;
+}
+.ad_list ul li a span p em{
+	    display: inline;
+    margin-right: 1.5em;
+    font-size: 12px;
+    color: #ccc;
+}

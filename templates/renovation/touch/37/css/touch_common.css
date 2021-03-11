@@ -1,0 +1,51 @@
+
+body{width: 7.5rem;}
+body.fixed{position: fixed;}
+
+/* 头部 */
+.header{height: .9rem;background: #FE5400 !important;color: #fff;display: -webkit-box;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: relative;z-index: 999991;}
+.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;}
+.header-l img{display: block;height: .8rem;margin: 0 auto;}
+.header-address{-webkit-box-flex: 1;text-align: center; font-size: .36rem;}
+.header-address a{padding: .1rem; font-size: .26rem; position: relative;}
+.header-address .downArea{position: absolute; width: .4rem; height: .4rem; right: -0.3rem; top: 0.05rem; background: url(../images/la.png) center center no-repeat; background-size: .4rem;}
+.header a{color: #fff;	}
+.header-search a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;float: right;}
+.header-search img{display: block;width: .45rem;height: .45rem;margin: .2rem auto;}
+
+
+/*导航*/
+.navHeight{height: .8rem;}
+#navlist{height: 100%;}
+#navBox{position: fixed;top: -200%; width: 7.5rem; margin: 0 auto; text-align: center; -webkit-transition: top .3s; transition: top .3s; z-index: 99999;}
+#navBox .navlist{z-index: 2; position: relative; background: #fff;}
+#navBox .navlist ul{min-height: 100%; padding: .2rem .2rem .4rem;}
+#navBox li{ width: 25%; text-align: center; font-size: .28rem; color: #ababab; float: left; margin-bottom: .25rem;}
+#navBox li span{width: 1rem; height: 1rem !important; border: 1px solid #f1f1f1; box-sizing: border-box; border-radius: 100%; line-height: 1 !important; padding: 0 !important; margin: 0 auto .1rem;display: block;}
+#navBox li span.nav_1{background: url(../images/navicon1.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_2{background: url(../images/navicon2.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_3{background: url(../images/navicon3.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_4{background: url(../images/navicon4.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_5{background: url(../images/navicon5.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_6{background: url(../images/navicon6.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_7{background: url(../images/navicon7.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_8{background: url(../images/navicon8.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_9{background: url(../images/navicon9.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_10{background: url(../images/navicon10.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_11{background: url(../images/navicon11.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_12{background: url(../images/navicon12.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_13{background: url(../images/navicon13.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_14{background: url(../images/navicon14.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_15{background: url(../images/navicon15.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_16{background: url(../images/navicon16.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_17{background: url(../images/navicon17.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_18{background: url(../images/navicon18.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_19{background: url(../images/navicon19.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_20{background: url(../images/navicon20.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_21{background: url(../images/navicon21.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_22{background: url(../images/navicon22.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_23{background: url(../images/navicon23.png) center center no-repeat; background-size: .8rem auto;}
+#navBox li span.nav_24{background: url(../images/navicon24.png) center center no-repeat; background-size: .8rem auto;}
+
+#navBox .bg {position: fixed;top:0;width: 7.5rem;height: 0;opacity:0;background:rgba(0,0,0,0.5);-webkit-transition:opacity .5s;transition:opacity .5s;z-index: 1;left: 0; right: 0;}
+#cancelNav{ padding: .15rem 0; background: #F2F7FC; border-bottom: 1px solid #f0f5f9; margin: .1rem 0 0;}

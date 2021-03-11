@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$typename#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/raiders-list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = $typename#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="stra_ll">
+	<h2><span>{#$typename#}</span></h2>
+	<p><a href="javascript:;">选装修阶段</a></p>
+</div>
+
+<div class="choice" id="tab-typeid">
+	<div class="empty">
+		{#renovation action='newsType'#}
+		{#renovation action='newsType' return='type1' type={#$row.id#}#}
+		<div class="ch_list{#if $id == $type1.id#} curr{#/if#}">
+			<h1{#if $id == $type1.id#} class="arrow"{#/if#}>{#$type1.typename#}</h1>
+			<ul>
+				{#renovation action='newsType' return='type2' type={#$type1.id#}#}
+				<li data-id="{#$type2.id#}"{#if $id == $type2.id#} class="curr"{#/if#}><a href="{#getUrlPath service='renovation' template='raiders' id={#$type2.id#}#}"><p>{#$type2.typename#}</p></a></li>
+				{#/renovation#}
+			</ul>
+		</div>
+		{#/renovation#}
+		{#/renovation#}
+	</div>
+</div>
+
+
+<div class="st_ll" id="list">
+	<ul>
+		{#renovation action="news" return="news" typeid={#$id#} page={#$page#} pageSize="20"#}
+		<li>
+			<a href="{#$news.url#}">
+				{#if $news.litpic#}
+				<div class="manual_pic"><img src="{#changeFileSize url={#$news.litpic#} type='middle'#}"></div>
+				{#/if#}
+				<div class="manual_txt">
+					<h2>{#$news.title#}</h2>
+					<p>{#$news.description#}</p>
+				</div>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+</div>
+
+{#getPageList service='renovation' template='raiders' id={#$id#}#}
+
+<div class="disk"></div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 10;
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/raiders-list.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$typename#}',
+		"imgUrl": '{#$renovation_logoUrl#}',
+		"link": '{#getUrlPath service='renovation' template='raiders-list' typeid={#$id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

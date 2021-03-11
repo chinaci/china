@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>公司案例</title>
+<meta name="keywords" content="{#$detail_company#},装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$detail_company#}作为专业的装修设计公司，提供专业的装修设计报价、室内装修效果图、免费装修咨询预约。{#$detail_company#}有着一批工作严谨、深受业主好评的装修施工队，为业主提供最优质的服务。" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com_ad.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_id#}, designer = 0;
+</script>
+</head>
+
+<body>
+{#$pageTitle = "公司案例"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="com_infor fn-clear">
+	<a href="#" class="fn-clear">
+		<img src="{#$detail_logo#}" alt="">
+		<div class="information">
+			<h1>{#$detail_company#}</h1>
+			<span>
+				认证：
+				{#if $detail_license == 1#}
+				<i class='ying'>营</i>
+				{#else#}
+				<i class='ying no'>营</i>
+				{#/if#}
+
+				{#if $detail_certi == 1#}
+				<i class='ren'>认</i>
+				{#else#}
+				<i class='ren no'>认</i>
+				{#/if#}
+
+				{#if $detail_saleCount > 0#}
+				<i class='hui'>惠</i>
+				{#else#}
+				<i class='hui no'>惠</i>
+				{#/if#}
+
+				{#if $detail_safeguard > 0#}
+				<i class='jin'>金</i>{#$detail_safeguard#}{#echoCurrency type='short'#}
+				{#else#}
+				<i class='jin no'>金</i>
+				{#/if#}
+
+				{#if $detail_guestCount > 0#}
+				<i class='ping'>评</i>{#$detail_guestCount#}次
+				{#else#}
+				<i class='ping no'>评</i>
+				{#/if#}
+
+			</span>
+			<div class="have">
+				<b>案例：<em>{#$detail_diaryCount#}</em>套</b>
+				<b>效果图：<em>{#$detail_caseCount#}</em>套</b>
+				<s>拥有设计师：<em>{#$detail_teamCount#}</em>位</s>
+			</div>
+		</div>
+	</a>
+</div>
+<div class="comde_head fn-clear">
+	<ul>
+		<li><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}">首页</a></li>
+		<li class="com_bc"><a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">案例</a></li>
+		<li><a href="{#getUrlPath service='renovation' template='company-albums' id={#$detail_id#}#}">效果图</a></li>
+		<li><a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}">设计师</a></li>
+	</ul>
+</div>
+
+<div class="ad_list" id="list"></div>
+
+<script>
+	var atpage = '{#$page#}',
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 10;
+</script>
+
+<script src="{#$templets_skin#}js/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/company-case.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$detail_company#}案例',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

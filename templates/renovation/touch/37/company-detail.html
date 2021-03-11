@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>公司详情</title>
+<meta name="keywords" content="{#$detail_company#},装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$detail_company#}作为专业的装修设计公司，提供专业的装修设计报价、室内装修效果图、免费装修咨询预约。{#$detail_company#}有着一批工作严谨、深受业主好评的装修施工队，为业主提供最优质的服务。" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/getCity.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/com-detail.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+
+	<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_id#}, designer = 0;
+
+	var pageData = {
+    title: '{#$detail_company#}',
+    address: '{#$detail_address#}',
+		lnglat: '{#$detail_lnglat#}',
+    mapType: '{#$site_map#}',
+    cityName: '{#$siteCityInfo['name']#}',
+    mapKey: '{#$site_map_key#}'
+  };
+  var touch_poster = 1;
+
+  var JubaoConfig = {
+	  "module" : 'renovation',
+	  "action" : 'company',
+	  "id" : '{#$detail_id#}'
+  };
+</script>
+</head>
+<style>
+	.html2Wrap .html2Con .com_intr div{max-height: 1.8rem; overflow: hidden; padding-bottom: .2rem; text-align: left; text-align: justify;}
+	.html2Wrap .html2Con  .introduce{margin-bottom: 0;}
+</style>
+<body>
+
+	{#$pageTitle = "公司详情"#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+
+	<!-- 海报s -->
+	<div class="html2Wrap">
+		<div class="html2_node" id="html2_node">
+			<div class="html2Con">
+				<div class="com_infor fn-clear">
+					<a href="javascript:;" class="fn-clear">
+						<img src="{#$detail_logo#}" alt="">
+						<div class="information">
+							<h1>{#$detail_company#}</h1>
+							<span>
+								认证：
+								{#if $detail_license == 1#}
+								<i class='ying'>营</i>
+								{#else#}
+								<i class='ying no'>营</i>
+								{#/if#}
+
+								{#if $detail_certi == 1#}
+								<i class='ren'>认</i>
+								{#else#}
+								<i class='ren no'>认</i>
+								{#/if#}
+
+								{#if $detail_saleCount > 0#}
+								<i class='hui'>惠</i>
+								{#else#}
+								<i class='hui no'>惠</i>
+								{#/if#}
+
+								{#if $detail_safeguard > 0#}
+								<i class='jin'>金</i>{#$detail_safeguard#}{#echoCurrency type='short'#}
+								{#else#}
+								<i class='jin no'>金</i>
+								{#/if#}
+
+								{#if $detail_guestCount > 0#}
+								<i class='ping'>评</i>{#$detail_guestCount#}次
+								{#else#}
+								<i class='ping no'>评</i>
+								{#/if#}
+
+							</span>
+							<div class="have">
+								<b>案例：<em>{#$detail_diaryCount#}</em>套</b>
+								<b>效果图：<em>{#$detail_caseCount#}</em>套</b>
+								<s>拥有设计师：<em>{#$detail_teamCount#}</em>位</s>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="introduce fn-clear">
+					<a href="tel:{#$detail_contact#}">
+						<div class="com_tel">
+							<span>{#$detail_contact#}&nbsp;</span>
+							<i>></i>
+							<em>装修前先预约</em>
+						</div>
+					</a>
+					<div class="com_pl">
+						<span><a href="javascript:;" class="appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a></span>
+					</div>
+					<div class="com_intr">
+						<h1>公司简介</h1>
+						<div>{#$detail_body#}</div>
+					</div>
+
+
+				</div>
+				<div class="himgGroup">
+					{#renovation action="rcase" return='rcase' company={#$detail_id#} type={#$typeid#} pageSize='3'#}
+					<div class="himg_box1"><img src="{#$rcase.litpic#}"></div>
+					{#/renovation#}
+				</div>
+			</div>
+			<div class="html2_pub">
+				<h2 class="h_title">{#$cfg_shareTitle#}</h2>
+				<p>{#$cfg_shareDesc#}</p>
+				<div class="html2_qrcode"><img src="/include/qrcode.php?data={#getUrlPath service='renovation' template='company-detail'  id={#$detail_id#} #}"></div>
+				<h3><span>长按识别二维码看详情</span></h3>
+			</div>
+
+		</div>
+	</div>
+	{#include file="../../../siteConfig/touch_poster.html"#}
+	<!-- 海报 -->
+
+		<div class="com_infor fn-clear">
+			<a href="javascript:;" class="fn-clear">
+				<img src="{#$detail_logo#}" alt="">
+				<div class="information">
+					<h1>{#$detail_company#}</h1>
+					<span>
+						认证：
+						{#if $detail_license == 1#}
+						<i class='ying'>营</i>
+						{#else#}
+						<i class='ying no'>营</i>
+						{#/if#}
+
+						{#if $detail_certi == 1#}
+						<i class='ren'>认</i>
+						{#else#}
+						<i class='ren no'>认</i>
+						{#/if#}
+
+						{#if $detail_saleCount > 0#}
+						<i class='hui'>惠</i>
+						{#else#}
+						<i class='hui no'>惠</i>
+						{#/if#}
+
+						{#if $detail_safeguard > 0#}
+						<i class='jin'>金</i>{#$detail_safeguard#}{#echoCurrency type='short'#}
+						{#else#}
+						<i class='jin no'>金</i>
+						{#/if#}
+
+						{#if $detail_guestCount > 0#}
+						<i class='ping'>评</i>{#$detail_guestCount#}次
+						{#else#}
+						<i class='ping no'>评</i>
+						{#/if#}
+
+					</span>
+					<div class="have">
+						<b>案例：<em>{#$detail_diaryCount#}</em>套</b>
+						<b>效果图：<em>{#$detail_caseCount#}</em>套</b>
+						<s>拥有设计师：<em>{#$detail_teamCount#}</em>位</s>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="comde_head fn-clear">
+			<ul>
+				<li class="com_bc"><a href="{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}">首页</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">案例</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-albums' id={#$detail_id#}#}">效果图</a></li>
+				<li><a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}">设计师</a></li>
+			</ul>
+		</div>
+		<div class="comde_list">
+			<div class="comde_flash">
+				<div class="swiper-container bd domde" id="fitment-pic">
+				    <ul class="swiper-wrapper">
+							{#renovation action="rcase" return='rcase' company={#$detail_id#} type={#$typeid#} pageSize='10'#}
+				      <li class="swiper-slide">
+				      	<a href="javascript:;">
+				      	<img src="{#$rcase.litpic#}">
+				      	<p>{#$rcase.title#}</p>
+				      	</a>
+				      </li>
+							{#/renovation#}
+				    </ul>
+				</div>
+			</div>
+		</div>
+		<div class="introduce fn-clear">
+			<a href="tel:{#$detail_contact#}">
+				<div class="com_tel">
+					<span>{#$detail_contact#}&nbsp;</span>
+					<i>></i>
+					<em>装修前先预约</em>
+				</div>
+			</a>
+			<div class="com_pl">
+				<span><a href="javascript:;" class="appMapBtn" target="_blank">{#$detail_addr[0]#} {#$detail_addr[1]#} {#$detail_address#}</a></span>
+			</div>
+			<div class="com_intr">
+				<h1>公司简介</h1>
+				<div>{#$detail_body#}</div>
+			</div>
+			<div class="certificate">
+				<a href="{#getUrlPath service='renovation' template='company-case' id={#$detail_id#}#}">
+					<h1>案例<span>></span></h1>
+					<div>
+						{#renovation action="diary" return='diary' company={#$detail_id#} pageSize='3'#}
+						<img src="{#$diary.litpic#}" alt="">
+						{#/renovation#}
+					</div>
+				</a>
+			</div>
+			<div class="com_cer fn-clear">
+				<a href="{#getUrlPath service='renovation' template='company-team' id={#$detail_id#}#}"><h1>设计师<span>></span></h1></a>
+				<ul>
+					{#renovation action="team" return="team" company={#$detail_id#} page={#$page#} pageSize="20"#}
+					<li>
+						<a href="{#$team.url#}">
+						<img src="{#$team.photo#}" alt="">
+						<p>{#$team.name#}</p>
+						</a>
+					</li>
+					{#/renovation#}
+				</ul>
+			</div>
+		</div>
+
+		<div class="disk"></div>
+
+		<div class="yuyue_list sj_list">
+		<p></p><h1>免费帮我做设计</h1>
+		<div class="yu_name">
+			<input type="text" placeholder="姓名" class="name">
+		</div>
+		<div class="yu_tel">
+			<span class="areacode_span"><label for="">+{#$internationalPhoneSection[0]['code']#}</label></span>
+			<input type="tel" placeholder="请输入手机号码" class="phone">
+			<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+		</div>
+		<div class="yu_place gz-addr-seladdr">
+			<input placeholder="请填写小区" class="city">
+		</div>
+		<input type="submit" class="submit" value="立即申请">
+		<div class="name-1">请填写您的名称</div>
+		<div class="phone-1">请填写您的手机号</div>
+		<div class="city-1">请填写小区</div>
+	</div>
+
+
+<div class="free">
+	<ul>
+		{#if $detail_collect == 1#}<li class="collect has"><i></i>已收藏</li>{#else#}<li class="collect"><i></i>收藏</li>{#/if#}
+		<li class="sj">免费帮我出报价</li>
+	</ul>
+</div>
+<!-- 区号弹出层 s -->
+  <div class="layer_code">
+    {#* 国籍/地区  *#}
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div>
+    <div class="layer_list" id="layer_list">
+      <ul>
+      </ul>
+    </div>
+  </div>
+<!-- 区号弹出层 e -->
+<div class="mask-code" id="maskReg"></div>
+
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage_1.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/com-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$detail_company#}',
+		"imgUrl": '{#$detail_logo#}',
+		"link": '{#getUrlPath service='renovation' template='company-detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

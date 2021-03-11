@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>设计师详情</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/architect-infor.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var company = {#$detail_company['id']#}, designer = {#$detail_id#};
+	var touch_poster = 1;
+	var JubaoConfig = {
+		"module" : 'renovation',
+		"action" : 'designer',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+<style>
+	.html2Wrap .html2Con{background: #F6F5F5;}
+</style>
+<body>
+{#$pageTitle = "设计师详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<!-- 海报s -->
+	<div class="html2Wrap">
+		<div class="html2_node" id="html2_node">
+			<div class="html2Con">
+				<div class="ar_infor">
+					<img src="{#$detail_photo#}" alt="">
+					<h1>{#$detail_name#}</h1>
+					<p class="idea">{#$detail_idea#}</p>
+					<ul>
+						<li>
+							<h2>{#$detail_works#}年</h2>
+							<span>工作经验</span>
+						</li>
+						<li>
+							<h2>{#$detail_diary#}</h2>
+							<span>提供案例数</span>
+						</li>
+						<li>
+							<h2>{#$detail_click#}</h2>
+							<span>浏览人数</span>
+						</li>
+					</ul>
+					<p class="mf_yu"><i>免费预约</i></p>
+				</div>
+				<div class="himgGroup">
+					{#renovation action="diary" return='diary' designer={#$detail_id#} pageSize='3'#}
+					<div class="himg_box1"><img src="{#$diary.litpic#}"></div>
+					{#/renovation#}
+				</div>
+			</div>
+			<div class="html2_pub">
+				<h2 class="h_title">{#$cfg_shareTitle#}</h2>
+				<p>{#$cfg_shareDesc#}</p>
+				<div class="html2_qrcode"><img src="/include/qrcode.php?data={#getUrlPath service='renovation' template='designer-detail'  id={#$detail_id#} #}"></div>
+				<h3><span>长按识别二维码看详情</span></h3>
+			</div>
+
+		</div>
+	</div>
+	{#include file="../../../siteConfig/touch_poster.html"#}
+	<!-- 海报 -->
+
+<div class="ar_infor">
+	<img src="{#$detail_photo#}" alt="">
+	<h1>{#$detail_name#}</h1>
+	<p class="idea">{#$detail_idea#}</p>
+	<ul>
+		<li>
+			<h2>{#$detail_works#}年</h2>
+			<span>工作经验</span>
+		</li>
+		<li>
+			<h2>{#$detail_diary#}</h2>
+			<span>提供案例数</span>
+		</li>
+		<li>
+			<h2>{#$detail_click#}</h2>
+			<span>浏览人数</span>
+		</li>
+	</ul>
+	<p class="mf_yu"><i>免费预约</i></p>
+</div>
+<div class="case fn-clear">
+	<h3></h3>
+	<ul>
+		{#renovation action="diary" return='diary' designer={#$detail_id#} pageSize='4'#}
+		<li>
+			<a href="{#$diary.url#}">
+				<div class="imgbox"><img src="{#$diary.litpic#}" alt=""></div>
+				<p>{#$diary.title#}</p>
+				<span>{#$diary.style#}&nbsp;&nbsp;{#$diary.units#}&nbsp;&nbsp;{#$diary.btype#}</span>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+</div>
+<div class="disk"></div>
+
+
+<div class="yuyue_list">
+	<p></p><h1>免费预约设计师</h1>
+	<div class="yu_name"><input type="text" placeholder="姓名" class="name"></div>
+	<div class="yu_tel">
+		<span class="areacode_span"><label for="">+{#$internationalPhoneSection[0]['code']#}</label></span>
+		<input type="tel" placeholder="请输入手机号码" class="phone">
+		<input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+	</div>
+	<div class="yu_place"><input type="text" placeholder="您的小区" class="city"></div>
+	<input type="submit" class="submit" value="提交">
+</div>
+
+<div class="name-1">请填写您的名称</div>
+<div class="phone-1">请填写您的手机号</div>
+<div class="city-1">请填写您所在小区</div>
+
+<!-- 区号弹出层 s -->
+  <div class="layer_code">
+    {#* 国籍/地区  *#}
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div>
+    <div class="layer_list" id="layer_list">
+      <ul>
+      </ul>
+    </div>
+  </div>
+<!-- 区号弹出层 e -->
+<div class="mask-code" id="maskReg"></div>
+<script src="{#$templets_skin#}js/architect-infor.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$detail_name#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#getUrlPath service='renovation' template='designer-detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>攻略详情</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/raiders-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageTitle = "攻略详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<div class="std_list">
+	<h1>{#$detail_title#}</h1>
+	<span class='time'><time>{#$detail_pubdate|date_format:"%Y/%m/%d %H:%M"#}</time></span>
+	<div class="std_lc">
+		<a href="{#$renovation_channelDomain#}">首页</a>>
+		<a href="{#getUrlPath service='renovation' template='raiders'#}">装修攻略</a>>
+		<a href="{#getUrlPath service='renovation' template='raiders' id={#$detail_typeid#}#}">{#$detail_typename#}</a>
+	</div>
+	<div class="std_txt">
+	  {#$detail_body#}
+	</div>
+</div>
+
+<div class="like">
+	<h1>猜您喜欢</h1>
+	<ul>
+		{#renovation action='news' return='news' typeid={#$detail_typeid#} page='1' pageSize='4'#}
+		<li>
+			<a href="{#$news.url#}">
+				{#if $news.litpic#}
+				<div class="like_img"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='middle'#}"></div>
+				{#/if#}
+				<div class="like_txt">
+					<h2>{#$news.title#}</h2>
+					<p>{#$news.pubdate|date_format:"%Y-%m-%d"#}</p>
+				</div>
+			</a>
+		</li>
+		{#/renovation#}
+	</ul>
+</div>
+
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$templets_skin#}js/raiders-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$renovation_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$renovation_logoUrl#}',
+		"link": '{#getUrlPath service='renovation' template='raiders-detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

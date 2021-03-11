@@ -1,0 +1,144 @@
+.std_list{
+	    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    word-break: break-all;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 15px;
+    background: #fff;
+    margin-bottom: 0.2rem;
+}
+.std_list h1{
+    font-size: 20px;
+    color: #000;
+    line-height: 26px;
+    padding: 10px 0 5px;
+}
+.std_lc{
+	font-size: 0.28rem;
+	padding: .2rem 0;
+}
+.std_list .time{
+    margin: 0;
+    font-size: 14px;
+    line-height: 26px;
+    color: #999;
+    padding: 0 0 3px;
+    display: block;
+        border-bottom: #ececec solid 1px;
+}
+.std_txt{
+	padding: 5px 0;
+	    overflow: hidden;
+    padding-bottom: 25px;
+    background: #fff;
+    font-size: 0.3rem;
+}
+.std_txt p{color: #000;margin: 9px 0;text-indent: 0!important;padding-bottom: 15px;}
+.std_txt img{
+	    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    vertical-align: middle;
+        max-width: 100%;
+}
+.share{
+    padding-bottom: 0.4rem;
+}
+.share p{
+    float: left;
+    height: .64rem;
+    line-height: .68rem;
+    font-size: .28rem;
+    color: #666;
+}
+.share img{
+    width: .7rem;
+    height: .7rem;
+    float: right;
+}
+.like{
+    padding: 10px;
+    background: #fff;
+}
+.like h1{
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 12px;
+}
+.like ul li{
+    border-bottom: solid 1px #e3e3e3;
+    padding: 10px 0;
+}
+.like ul li a .like_img{
+		position: relative;
+		overflow: hidden;
+    width: 1.8rem;
+		height: 1.35rem;
+		margin-right: .3rem;
+		float: left;
+}
+.like ul li a .like_img img{
+    width: 100%;
+		height: 100%;
+}
+.like ul li a .like_txt{
+    font-size: .24rem;
+}
+.like ul li a  .like_txt h2{
+    margin-top: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    height: 44px;
+    line-height: 22px;
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.like ul li a  .like_txt p{
+        color: #888;
+    position: relative;
+    font-size: 14px;
+    top: -3px;
+}
+
+
+/* 分享 */
+.shearBox {position: fixed;bottom:-100%;width: 7.5rem;margin:0 auto;text-align: center;-webkit-transition: bottom .3s;transition: bottom .3s;z-index: 99999;}
+.shearBox .bg {position: fixed;top:0;width: 7.5rem;height: 0;opacity:0;background:rgba(0,0,0,0.5);-webkit-transition:opacity .5s;transition:opacity .5s;z-index: 1;}
+.sheark1 {position: relative;height: 50%;background:#fff;border-bottom: solid 1px #dcdcdc;z-index: 2; padding: .4rem;}
+#shearBox a {display: block; height: 1.1rem;}
+#shearBox li{width: 25%; text-align: center; font-size: .24rem; color: #ababab; float: left; margin-bottom: .4rem;}
+#shearBox li span{float: none;}
+#shearBox a:after {display: inline-block;width: 1rem;height: 1rem;content:"";}
+#shearBox .jiathis_button_qzone .jtico_qzone{background:url(../images/share1.png) center center no-repeat;background-size: .6rem auto; display: block; width: .7rem; height: .7rem;}
+#shearBox .jiathis_button_tsina .jtico_tsina{background:url(../images/share2.png) center center no-repeat;background-size: .6rem auto; display: block; width: .7rem; height: .7rem;}
+#shearBox .jiathis_button_comment, #shearBox .jiathis_button_code, #shearBox .jiathis_button_tweixin, #shearBox .jiathis_button_ttqq{display: block; width: 1rem; height: 1rem !important; border: 1px solid #F2F7FC; box-sizing: border-box; border-radius: 100%; line-height: 1 !important; padding: 0 !important; margin: 0 auto .11rem;}
+#shearBox .jiathis_button_comment:after{background:url(../images/share5.png) center center no-repeat;background-size: .6rem auto; display: block; width: 1rem; height: 1rem;}
+#shearBox .jiathis_button_code:after{background:url(../images/share6.png) center center no-repeat;background-size: .6rem auto; display: block; width: 1rem; height: 1rem;}
+#shearBox .jiathis_button_tweixin:after{background:url(../images/share3.png) center center no-repeat;background-size: .6rem auto; display: block; width: 1rem; height: 1rem;}
+#shearBox .jiathis_button_ttqq:after{background:url(../images/share4.png) center center no-repeat;background-size: .6rem auto; display: block; width: 1rem; height: 1rem;}
+#shearBox .shearBox .cancel {position: absolute;bottom:0;width: 7.5rem;height: .96rem;line-height: .96rem;font-size: .32rem;color: #000;background:#fff;z-index: 2;}
+#shearBox .jiathis_style_32x32  .jtico{width: 1rem; height: 1rem !important; border: 1px solid #F2F7FC; box-sizing: border-box; border-radius: 100%; line-height: 1 !important; padding: 0 !important; margin: 0 auto;}
+#cancelShear, #cancelcode{padding: .15rem 0; background: #F2F7FC; border-bottom: 1px solid #f0f5f9; margin: .1rem 0 0;}
+.codeBox {position: fixed;bottom:-100%;width: 7.5rem;margin:0 auto;text-align: center;-webkit-transition: bottom .3s;transition: bottom .3s;z-index: 99999;background: #fff;}
+.codeBox p{color: #999; font-size: .24rem; margin-bottom: .5rem;}
+
+/*分享指引*/
+.zhiyin{position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 10011; text-align: right; display: none;}
+.zhiyin .bg{position: fixed;top:0;width: 7.5rem;height: 0;opacity:0;background:rgba(0,0,0,0.7);-webkit-transition:opacity .3s;transition:opacity .3s;z-index: 1;}
+.zhiyin .zhibox{position: fixed; top: 0; right: 0; z-index: 2;}
+.zhiyin .zhibox img{width: 1rem;}
+.zhiyin .zhibox p{font-size: .3rem; padding-right: .2rem; color: #fff;}
+
+/* 分享 */
+.art_shear .t {width: 20%; float: left; height: .64rem; line-height: .68rem; font-size: .28rem; color: #666;}
+.art_shear .jiathis_style_32x32 {float: left;width: 66%;height: .64rem;line-height: .68rem;margin-left: 0.8rem;}
+.art_shear .jiathis_style_32x32 .jtico {display: inline-block !important;float: none; height: .7rem !important; width: .7rem !important; padding: 0 !important; margin-right: 0.4rem;}
+.art_shear .jiathis_style_32x32 .jtico.jtico_qzone{background: url(../images/icons5.png) center center no-repeat; background-size: cover;}
+.art_shear .jiathis_style_32x32 .jtico.jtico_tsina{background: url(../images/icons3.png) center center no-repeat; background-size: cover;}
+.art_shear .jiathis_style_32x32 .jtico.jtico_weixin{background: url(../images/icons1.png) center center no-repeat; background-size: cover;}
+.art_shear .jiathis_style_32x32 .jtico.jtico_qq{background: url(../images/icons4.png) center center no-repeat; background-size: cover;}
+.art_shear .jiathis_button_more{display: block; width: 9%; height: .7rem; float: left;}
+.art_shear .jtico.jtico_more{background: url(../images/mshare.png) center center no-repeat; background-size: cover; display: block; width: .7rem; height: .7rem;}

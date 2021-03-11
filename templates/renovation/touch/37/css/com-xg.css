@@ -1,0 +1,50 @@
+.ll_list{
+    padding: 0 0 .2rem 0;
+    position: relative;
+}
+.ll_list img{
+	width: 100%;
+	display: block;
+}
+.ll_infor{
+    position: relative;
+    width: 100%;
+    height: 1.3rem;
+    background: #fff;
+}
+.ll_img{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: -28px;
+    left: 24px;
+}
+.ll_img p{
+	text-align: center;
+	margin-top: 0.1rem;
+}
+.ll_img img{
+	width: 1rem;
+	height: 1rem;
+	border-radius: 0.5rem;
+}
+.ll_title{
+    padding-left: .3rem;
+    line-height: 0.5rem;
+    padding-top: 0.15rem;
+}
+.ll_title h1{
+	font-size: 0.32rem;
+}
+.ll_title p{
+	background: url(../images/sq.png) no-repeat left;
+	background-size: 0.3rem;
+	padding-left: 0.4rem;
+	font-size: 0.26rem;
+	color: #999;
+}
+.loading{
+  line-height: 1rem;
+  font-size: .3rem;
+  text-align: center;
+}

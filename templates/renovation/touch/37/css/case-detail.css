@@ -1,0 +1,62 @@
+body{
+    background-color: #f5f5f5;
+}
+.case_lead{
+    line-height: 1.04rem;
+    height: 1.04rem;
+    font-size: 0.34rem;
+    color: #000;
+    padding: 0 0.3rem;
+    border-bottom: 1px solid #ececec;
+}
+.case_list ul{
+    margin: 0 0.3rem;
+    overflow: hidden;
+    padding-top: 0.06rem;
+    padding-bottom: 0.22rem;
+}
+.case_list ul li{
+	    float: left;
+    font-size: 0.3rem;
+    line-height: .4rem;
+    color: #666;
+    margin-top: 0.3rem;
+        width: 50%;
+            text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.case_list ul li em{
+	    color: #000;
+}
+.case_list span{
+	margin: 0 0.3rem;
+	display: block;
+	font-size: 0.3rem;
+	color: #666;
+}
+.case_list span i{
+	font-style: normal;
+    color: #000;
+    display: block;
+    width: 100%;
+}
+.case_list span p{
+	text-indent: 0.4rem;
+	margin-top: 0.1rem;
+}
+.case_pic{
+	margin: 0 0.3rem;
+}
+.case_pic h1{
+	font-size: 0.34rem;
+	color: #000;
+	margin: 0.2rem 0;
+}
+.case_pic img{
+	width: 100%;
+}
+
+.case_pic {padding-bottom: 1.2rem;}
+.free.one ul li {width: 100%;}
+.free ul li.collect {border:none;border-top:1px solid #dfdfdf;color: #333;border-bottom:1px solid #dfdfdf;}

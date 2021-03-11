@@ -1,0 +1,67 @@
+.arch_list{padding-bottom: 1.2rem !important;}
+.free_pic img {width:100%;display:block;}
+.free_flow {background:#fff;padding:0.2rem 0;position:relative;}
+.free_flow .line-1 {position:absolute;height:0;width:1.7rem;left:33%;top:0.65rem;transform:translateX(-50%);-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%);border-bottom:1px dashed #a15a1c;}
+.free_flow .line-2 {position:absolute;height:0;width:1.7rem;left:67%;top:0.65rem;transform:translateX(-50%);-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%);border-bottom:1px dashed #a15a1c;}
+.free_flow ul li {float:left;width:33.333%;text-align:center;}
+.free_flow ul .f-1 i {background:url(../images/f-1.png) no-repeat center;width:0.8rem;height:0.9rem;background-size:0.8rem;display:inline-block;}
+.free_flow ul .f-2 i {background:url(../images/f-2.png) no-repeat center;width:0.8rem;height:0.9rem;background-size:0.8rem;display:inline-block;}
+.free_flow ul .f-3 i {background:url(../images/f-3.png) no-repeat center;width:0.8rem;height:0.9rem;background-size:0.8rem;display:inline-block;}
+.free_lead {padding:0.3rem 0;}
+.free_lead h1 {width:100%;text-align:center;font-size:0.35rem;}
+.free_lead h2 {width:100%;text-align:center;font-size:0.28rem;color:#999;}
+.free_lead h2 em {color:#ff4d4d;font-weight:600;}
+.free_list {padding:.2rem .18rem;background:#fff;border-bottom:1px solid #e6e6e6;border-top:1px solid #e6e6e6;position:relative;}
+.free_list .free_in {padding-bottom:0.2rem;position:relative;}
+.free_list .free_in input {background:#fff;padding:.25rem .15rem;border-radius:0.08rem;font-size:.28rem;width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;color:#333;border:1px solid #ddd;}
+.free_list .free_in span {background:#fff;padding:.2rem .15rem;border-radius:0.08rem;font-size:.28rem;width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;color:#333;border:1px solid #ddd;-webkit-appearance:none;outline:none;display:inline-block;color:#b3adad;}
+.free_list .free_in span.curr {color:#333;}
+.free_list .free_in i {display:block;position:absolute;right:.23rem;top:.35rem;width:.3rem;height:.3rem;background:url(../images/arrowDown.png) no-repeat;background-size:100%;}
+.free_list .free_in .submit {display:block;width:100%;height:.9rem;line-height:.9rem;background:#dd0000;border-radius:4px;text-align:center;color:#fff;font-size:.35rem;margin-top:.147rem;}
+.free_list .free_in .tel_yu {display:block;text-align:center;border-radius:4px;background:#fff;border:none;color:#dd0000;border:1px solid #dd0000;margin-top:.1rem;height:.9rem;line-height:.9rem;font-size:0.35rem;text-indent:0.7rem;}
+.free_list .free_in .tel_yu:before {content:'';display:inline-block;width:.4rem;height:.4rem;background:url(../images/telPhone-icon.png) no-repeat;background-size:100%;position:absolute;left:22%;top:60%;}
+.fw_lead {padding:0.3rem 0;}
+.fw_lead h1 {width:100%;text-align:center;font-size:0.35rem;}
+.fw-list ul li {float:left;width:50%;background:#fff;text-align:center;padding:0.3rem 0rem;border-bottom:1px solid #dedede;border-right:1px solid #dedede;box-sizing:border-box;}
+.fw-list ul li img {width:1rem;height:1rem;}
+.fw-list ul li h1 {font-size:0.3rem;}
+.fw-list ul li span {font-size:0.24rem;color:#666}
+.sp_lead {padding:0.3rem 0;}
+.sp_lead h1 {width:100%;text-align:center;font-size:0.35rem;}
+.space {background:#fff;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+.space_l {box-sizing:border-box;padding:0.2rem 0 0.1rem;text-align:center;}
+.space_l h2 {font-size:0.35rem;color:#333;}
+.space_l span {font-size:0.24rem;color:#888787;}
+.space ul {padding-bottom:0.2rem;padding-left:0.15rem;}
+.space ul li {float:left;width:24%;margin-right:0.05rem;position:relative;}
+.space ul li:last-child {margin-right:0;}
+.space ul li img {width:100%;display:block;}
+.space ul li span {position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:0.28rem;color:#071c2c;background:rgba(255,255,255,0.85);}
+.sj_lead {padding:0.3rem 0;}
+.sj_lead h1 {width:100%;text-align:center;font-size:0.35rem;}
+.arch_list {background:#fff;}
+.arch_list ul {padding:0.4rem 0.3rem;}
+.arch_list ul li {float:left;width:50%;text-align:center;padding-bottom:0.5rem;height:3.4rem;}
+.arch_list ul li img {width:2rem;height:2rem;border-radius:50%;}
+.arch_list ul li h1 {font-size:0.36rem;}
+.arch_list ul li  span {font-size:0.24rem;color:#666;width:84%;display:inline-block;line-height:0.4rem;}
+.arch_list ul .nth {padding-bottom:0;}
+.place {width:78.5%;background-color:#f8f8f8;position:fixed;top:0;left:7.54rem;z-index:99999999;bottom:0;}
+.province {width:50%;background-color:#fff;display:inline-block;float:left;height:100%;position:relative;}
+.province ul {position:absolute;top:0;left:0;right:0;bottom:0;overflow:auto;}
+.province ul li {background:white;border-right:1px solid #eee;padding-left:20px;padding-top:14px;padding-bottom:14px;border-bottom:1px solid #eee;font-size:0.24rem;}
+.pro-list {width:50%;float:left;height:100%;position:relative;}
+.pro-list ul {overflow:auto;position:absolute;top:0;bottom:0;left:0;right:0;}
+.pro-list ul li {border-right:1px solid #eee;padding-left:20px;padding-top:14px;padding-bottom:14px;border-bottom:1px solid #eee;font-size:0.24rem;}
+.pr-bc {color:#FE5400!important;background:#f8f8f8!important;}
+.disk {background-color:rgba(0,0,0,.7);opacity:.7!important;top:0;left:0;bottom:0;width:100%;z-index:999999;position:fixed;display:none;}
+.by {position:fixed;top:0;left:0;right:0;bottom:0;}
+.pl-3 {display:none;}
+.name-1 {background:#efefef;width:2.1rem;height:0.5rem;line-height:0.5rem;text-align:center;position:absolute;top:-6%;font-size:0.24rem;border-radius:0.1rem;border:0.02rem solid #bfbfbf;opacity:0.8;left:17%;display:none;margin-left:-0.9rem;}
+.phone-1 {background:#efefef;width:2.5rem;height:0.5rem;line-height:0.5rem;text-align:center;position:absolute;top:14%;font-size:0.24rem;border-radius:0.1rem;border:0.02rem solid #bfbfbf;opacity:0.8;left:17%;margin-left:-0.9rem;display:none;}
+.city-1 {background:#fff;width:2rem;height:0.5rem;line-height:0.5rem;text-align:center;position:absolute;top:34%;font-size:0.24rem;border-radius:0.1rem;border:0.02rem solid #bfbfbf;opacity:0.8;left:17%;display:none;margin-left:-0.9rem;}
+
+/*国籍地区*/
+.free_list .free_in.code_freeIn{border: 1px solid #ddd;padding-bottom: 0;margin-bottom: .2rem;    border-radius: 0.08rem;}
+.free_list .free_in input.phone{border: none;width: 78%;padding-left: .05rem}
+.free_list .free_in.code_freeIn .areacode_span{text-indent: .25rem}

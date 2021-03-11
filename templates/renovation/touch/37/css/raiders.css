@@ -1,0 +1,137 @@
+body{
+	    background-color: #e7e7e7;
+}
+.stra_lead .swiper-slide{
+	    width: 33.333%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.32rem;
+    text-align: center;
+    color: #666;
+    border-bottom: 2px solid #ececec;
+    float: left;
+    background: #fff;
+}
+.active-nav{
+	color: #FE5400!important;
+    border-bottom: 2px solid #FE5400!important;
+}
+.swiper-container{
+	background: #fff
+}
+.stra_list1 a {
+	float: left;
+	width: 25%;
+	text-align: center;
+	padding-top: 0.4rem;
+}
+.stra_list1 a img{
+	width: 0.8rem;
+	height: 0.8rem;
+}
+.stra_list1 a p{
+	margin-top: 0.2rem;
+}
+.stra_list2 a {
+	float: left;
+	width: 50%;
+	text-align: center;
+	padding-top: 0.4rem;
+}
+.stra_list2 a img{
+	width: 0.8rem;
+	height: 0.8rem;
+}
+.stra_list2 a p{
+	margin-top: 0.2rem;
+}
+#swiper-container2{
+	margin-bottom: 0.2rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid #ccc;
+}
+.manual{
+    background: #fff;
+    padding-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.35rem
+}
+.manual h1{
+	    height: 0.48rem;
+    line-height: 0.48rem;
+    font-size: 0.29rem;
+    font-weight: 700;
+    color: #333;
+    background-color: #fff;
+    padding: 0 0.2rem 0 0.14rem;
+    border-left: 3px solid #ffd24d;
+}
+.manual ul{
+    padding: 0 0.2rem;
+    width: 100%;
+    margin: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.manual ul li{
+    padding: 0 0 0 1.6rem;
+    position: relative;
+    height: 1.6rem;
+    margin:0.4rem 0 0 0 ;
+}
+.manual ul li a{
+	display: block;
+}
+.manual ul li a .manual_pic{
+	width: 1.6rem;
+    height: 1.6rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.manual ul li a .manual_pic img{
+    width: 100%;
+    height: 100%;
+}
+.manual ul li a .manual_txt{
+    position: absolute;
+    top: 0;
+    right: 0.4rem;
+    height: 1.6rem;
+    width: 69%;
+}
+.manual ul li a .manual_txt h2{
+	    font-size: 0.28rem;
+    line-height: 0.32rem;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0.16rem 0;
+}
+.manual ul li a .manual_txt p{
+	font-size: 0.24rem;
+    line-height: 0.44rem;
+    color: #999;
+    height: auto;
+    max-height: 0.88rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: -o-ellipsis-lastline;
+}
+.manual span{
+	display: block;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    text-align: center;
+    border: 1px solid #cfcfcf;
+    background-color: #f1f6f7;
+    color: #333;
+    margin: 0.4rem 0.2rem 0;
+    font-size: 0.29rem;
+}
+.manual span a{
+	display: block;
+}
