@@ -1,0 +1,98 @@
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap header fn-clear">
+	<h1 class="logo"><a href="{#$renovation_channelDomain#}" title="{#$renovation_channelName#}"><img src="{#$renovation_logoUrl#}" alt="{#$renovation_channelName#}" /></a></h1>
+	<div class="wapAd"><script src="/include/json.php?action=adjs&title=装修_模板一_电脑端_广告一" language="javascript"></script></div>
+	<div class="entry">
+		<a href="javascript:;" class="link">免费设计<s></s></a>
+		<div class="dropdown-menu">
+			<div class="m-title">
+				<h3>免费获取 3 份设计方案</h3>
+				<p>三家正规装修公司，专业设计师为您免费服务</p>
+			</div>
+			<div class="m-form">
+				<dl>
+					<dt>您的称呼</dt>
+					<dd><input type="text" name="name" /></dd>
+				</dl>
+				<dl>
+
+					<dd>
+						<div class="inpbdr">
+							<span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+							<input type="text" name="phone" class="reno_phone" placeholder="您的手机号码" />
+						</div>	
+						<!--国际区号弹窗-->
+						<div class="areaCode_wrap areaCode_wrap2">
+							<ul>
+								
+							</ul>
+						</div>						
+					</dd>
+				</dl>
+				<div class="fn-clear">
+					<select id="province" class="select_l" name="province">
+						<option value="">区域</option>
+						{#renovation action="addr" return="addr" son="0"#}
+						<option value="{#$addr.id#}">{#$addr.typename#}</option>
+						{#/renovation#}
+					</select>
+					<select id="city" class="select_r" name="city">
+						<option value="">街道</option>
+					</select>
+				</div>
+				<input type="button" class="form_btn" value="立即申请" />
+			</div>
+			<div class="m-list">
+				<ul class="fn-clear">
+					<li class="m1"><a href="#" target="_blank"><s></s><span>免费验房</span></a></li>
+					<li class="m2"><a href="#" target="_blank"><s></s><span>免费量房</span></a></li>
+					<li class="m3"><a href="#" target="_blank"><s></s><span>免费设计</span></a></li>
+					<li class="m4"><a href="#" target="_blank"><s></s><span>免费报价</span></a></li>
+					<li class="m5"><a href="#" target="_blank"><s></s><span>免费监理</span></a></li>
+					<li class="m6"><a href="#" target="_blank"><s></s><span>装修保险</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="delimiter">或者</div>
+	<div class="search">
+		<form name="search" method="post" action="{#if $pageCurr == "albums"#}{#getUrlPath service='renovation' template='albums'#}{#else#}{#getUrlPath service='renovation' template='company'#}{#/if#}" data-action1="{#getUrlPath service='renovation' template='company'#}" data-action2="{#getUrlPath service='renovation' template='albums'#}">
+			<div class="s-type">
+				<span class="arrow"><s></s></span>
+				<ul>
+					{#if $pageCurr != "albums"#}
+					<li class="active" data-type="1">装修公司</li>
+					<li data-type="2">效果图</li>
+					{#else#}
+					<li class="active" data-type="2">效果图</li>
+					<li data-type="1">装修公司</li>
+					{#/if#}
+				</ul>
+			</div>
+			<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="挑选您心仪的装修公司" data-role="input" />
+			<button name="search" id="search_button" type="submit" class="btn-s"><s></s>搜索</button>
+		</form>
+		<p class="hot-s">
+			<span>热门搜索：</span>
+			{#siteConfig module="renovation" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="wrap">
+		<ul class="fn-clear">
+			<li><a href="{#$renovation_channelDomain#}"{#if $pageCurr == "index"#} class="curr"{#/if#}>首页</a></li>
+			<li><a href="{#getUrlPath service='renovation' template='albums'#}"{#if $pageCurr == "albums"#} class="curr"{#/if#}>装修效果图</a></li>
+			<li><a href="{#getUrlPath service='renovation' template='case'#}"{#if $pageCurr == "case"#} class="curr"{#/if#}>装修案例</a></li>
+			<li><a href="{#getUrlPath service='renovation' template='company'#}"{#if $pageCurr == "company"#} class="curr"{#/if#}>找专家<span class="g">公司</span></a></li>
+			<li><a href="{#getUrlPath service='renovation' template='zwj'#}"{#if $pageCurr == "zwj"#} class="curr"{#/if#}>找我家</a></li>
+			<li><a href="{#getUrlPath service='renovation' template='designer'#}"{#if $pageCurr == "designer"#} class="curr"{#/if#}>设计家园<span class="b">设计师</span></a></li>
+			<li><a href="{#getUrlPath service='renovation' template='entrust'#}"{#if $pageCurr == "entrust"#} class="curr"{#/if#}>设计与估价<span class="r">免费</span></a></li>
+			<li><a href="{#getUrlPath service='renovation' template='raiders'#}"{#if $pageCurr == "raiders"#} class="curr"{#/if#}>装修攻略</a></li>
+		</ul>
+	</div>
+</div>

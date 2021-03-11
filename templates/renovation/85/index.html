@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$renovation_title#}</title>
+<meta name="keywords" content="{#$renovation_keywords#}" />
+<meta name="description" content="{#$renovation_description#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/renovation.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+
+<body class="w1200">
+	{#$channel = 'renovation'#}
+	{#$hotline = $renovation_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+	<!-- 中间装修信息部分 s -->
+		<div class="renovation">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+		        <div class="bd">
+					{#myad title="装修_模板二_电脑端_广告二" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					<li class="NewsNav_bc"><a href="javascript:;">装修公司</a></li>
+					<li><a target="_blank" href="{#getUrlPath service='renovation' template='albums'#}">效果图</a></li>
+					<li><a target="_blank" href="{#getUrlPath service='renovation' template='case'#}">装修日记</a></li>
+				</ul>
+			</div>
+			<!-- 导航栏 e-->
+			<!-- 装修信息列表 s-->
+			<div class="Renovation_list">
+				{#renovation action="store" return='store' page="1"  pageSize='5'#}
+				<div class="Renovation_detail fn-clear">
+					<div class="Ren_pic"><a target="_blank" href="{#$store.url#}"><img src="{#$store.logo#}" alt=""></a></div>
+					<div class="Ren_title">
+						<a href="{#$store.url#}" target="_blank">{#$store.company#}</a>
+					</div>
+					<div class="Ren_amount">
+						 <span>{#$store.teamCount#}</span> 位设计师<em>|</em>
+						 <span>{#$store.caseCount#}</span> 套案例<em>|</em>
+						 <span>{#$store.reseCount#}</span> 位预约<em>|</em>
+						 <span>{#$store.guestCount#}</span> 条评论
+					</div>
+					<div class="Ren_tel">
+						{#if $store.contact != ""#}
+						<i></i>{#$store.contact#}
+						{#else#}
+						<i></i>暂无联系方式！
+						{#/if#}
+					</div>
+					<div class="Ren_location"><i></i>{#$store.address#}</div>
+					<div class="log_in"><a href="{#$store.url#}" target="_blank">进入店铺</a></div>
+				</div>
+				{#/renovation#}
+				<div class="load-more"><div class="load-add"><i></i><span>加载更多</span></div></div>
+			</div>
+			<!-- 装修信息列表 e-->
+		</div>
+	<!-- 中间装修信息部分 e -->
+	<!-- 右侧装修信息汇总 s -->
+		<div class="Information">
+			<div class="issue"><a href="{#$member_busiDomain#}" target="_blank">入驻商家</a></div>
+			<div class="Infor_list">
+				<div class="infor_lead"><em>免费设计</em></div>
+				<div class="design">
+					<h1>今日已有<em>2341</em>业主申请，本月申请人数已达<em>82981</em></h1>
+					<form action="" class="sqfwForm">
+						<div class="Design_input"><input type="text" class="username" placeholder="您的称呼"></div>
+						<div class="Design_input"><input type="text" class="userphone" placeholder="手机号码"></div>
+						<div class="choice_place fn-clear">
+							<select name="" id="addr1">
+								{#renovation action="addr" return="addr" son="0"#}
+								<option value="{#$addr.id#}">{#$addr.typename#}</option>
+								{#/renovation#}
+							</select>
+							<select name="" id="addr2">
+								<option value="">街道</option>
+							</select>
+						</div>
+						<textarea name="" id="note" cols="30" rows="10" placeholder="您可以在这里详细描述您想要的设计风格..."></textarea>
+						<div class="btn"><button>免费申请</button></div>
+					</form>
+				</div>
+			</div>
+			<div class="Infor_box">
+				<div class="IB_lead"><em>装修攻略</em></div>
+				<div class="strategy">
+
+				{#renovation action="news" return='news'  pageSize='3'#}
+					<div class="strategy_detail fn-clear">
+						<div class="stra_pic"><a href="{#$news.url#}" target="_blank"><img src="{#$news.litpic#}" alt=""></a></div>
+						<div class="stra_title"><a href="{#$news.url#}" target="_blank"><h1>{#$news.title#}</h1></a></div>
+						<!-- <div class="stra_txt"><span>关于工价这个问题，触及到装饰行业的最底层，没有行业人士愿意拿在桌面上说 小编今天就给大家简单的聊聊这个问题。 我们掌握一</span></div> -->
+					</div>
+				{#/renovation#}
+
+				</div>
+			</div>
+			<div class="Infor_box">
+				<div class="IB_lead"><em>找我家</em></div>
+				<div class="find">
+					<div class="find_lead fn-clear">
+						<ul>
+							<li class="FD_bc">不限</li>
+							<li>高新区</li>
+							<li>相城区</li>
+							<li>平江区</li>
+							<li><a href="{#getUrlPath service='renovation' template='zwj'#}#Stype" style="display:block">更多</a></li>
+						</ul>
+					</div>
+					<div class="find_list">
+						<div class="find_con">
+							{#renovation action="community" return="community" addrid="0" pageSize="6"#}
+							<div class="find_detail fn-clear">
+								<div class="find_pic"><a href="{#$community.url#}" target="_blank"><img src="{#$community.litpic#}" alt=""></a></div>
+								<h1><a href="{#$community.url#}" target="_blank">{#$community.title#}</a></h1>
+								<div class="view"><em>5873</em>人查看了该楼盘</div>
+								<div class="find_location"><span>吴江吴江经济开发区运东大道与淞兴路交汇处</span></div>
+							</div>
+							{#/renovation#}
+						</div>
+						<div class="find_con fn-hide">
+							{#renovation action="community" return="community" addrid="188" pageSize="6"#}
+							<div class="find_detail fn-clear">
+								<div class="find_pic"><a href="{#$community.url#}" target="_blank"><img src="{#$community.litpic#}" alt=""></a></div>
+								<h1><a href="{#$community.url#}" target="_blank">{#$community.title#}</a></h1>
+								<div class="view"><em>5873</em>人查看了该楼盘</div>
+								<div class="find_location"><span>吴江吴江经济开发区运东大道与淞兴路交汇处</span></div>
+							</div>
+							{#/renovation#}
+						</div>
+						<div class="find_con fn-hide">
+							{#renovation action="community" return="community" addrid="186" pageSize="6"#}
+							<div class="find_detail fn-clear">
+								<div class="find_pic"><a href="{#$community.url#}" target="_blank"><img src="{#$community.litpic#}" alt=""></a></div>
+								<h1><a href="{#$community.url#}" target="_blank">{#$community.title#}</a></h1>
+								<div class="view"><em>5873</em>人查看了该楼盘</div>
+								<div class="find_location"><span>吴江吴江经济开发区运东大道与淞兴路交汇处</span></div>
+							</div>
+							{#/renovation#}
+						</div>
+						<div class="find_con fn-hide">
+							{#renovation action="community" return="community" addrid="182" pageSize="6"#}
+							<div class="find_detail fn-clear">
+								<div class="find_pic"><a href="{#$community.url#}" target="_blank"><img src="{#$community.litpic#}" alt=""></a></div>
+								<h1><a href="{#$community.url#}" target="_blank">{#$community.title#}</a></h1>
+								<div class="view"><em>5873</em>人查看了该楼盘</div>
+								<div class="find_location"><span>吴江吴江经济开发区运东大道与淞兴路交汇处</span></div>
+							</div>
+							{#/renovation#}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧装修信息汇总 e -->
+
+	</div>
+<!-- 主干部分 e-->
+
+
+<!-- 底部 s-->
+{#include file="../../siteConfig/public_foot_v3.html" module='renovation' theme='gray'#}
+<!-- 底部 e-->
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/layer.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}_装修报价_装修招标-{#$renovation_title#}</title>
+<meta name="keywords" content="装修报价,装修招标" />
+<meta name="description" content="装修报价,装修招标" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/tender.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='zb'#}" target="_blank">装修招标</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='zb-detail' id={#$detail_id#}#}">{#$detail_title#}</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<div class="wrap main mgt20 fn-clear">
+	<div class="main-right fn-right">
+		<div class="inner">
+			<div class="title"><img src="{#$templets_skin#}images/tender/fbzb.png" alt=""></div>
+
+			<!-- 表单 s -->
+			<div class="form">
+				<form action="" class="sqfwForm">
+					<div class="form-row">
+						<span class="type">称呼：</span>
+						<div class="in"><input type="text" class="int username"> <span class="bt">*</span></div>
+					</div>
+					<div class="form-row">
+						<span class="type">手机：</span>
+						<div class="in"><input type="text" class="int userphone"> <span class="bt">*</span></div>
+					</div>
+					<div class="form-row">
+						<span class="type">区域：</span>
+						<div class="in fn-clear" id="addrlist">
+							<select id="addr1" class="select_l" name="addr1">
+								<option value="">区域</option>
+								{#renovation action="addr" return="addr" son="0"#}
+								<option value="{#$addr.id#}">{#$addr.typename#}</option>
+								{#/renovation#}
+							</select>
+							<select id="addr2" class="select_r" name="addr2">
+								<option value="">街道</option>
+							</select>
+							<span class="bt">*</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">面积：</span>
+						<div class="in"><input type="text" id="area" class="int"> <em>㎡</em></div>
+					</div>
+					<div class="form-row">
+						<span class="type">预算：</span>
+						<div class="in fn-clear">
+							<select name="budget" id="budget">
+								<option value="0">请选择</option>
+								{#renovation action="type" return='type' type='6'#}
+								<option value="{#$type.id#}">{#$type.typename#}</option>
+								{#/renovation#}
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">类型：</span>
+						<div class="in fn-clear">
+							<select name="nature" id="nature">
+								<option value="0">请选择</option>
+								{#renovation action="type" return='type' type='1'#}
+								<option value="{#$type.id#}">{#$type.typename#}</option>
+								{#/renovation#}
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">其他：</span>
+						<div class="in">
+							<textarea name="note" id="note" class="int message"></textarea>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="in fn-clear">
+							<input type="submit" class="submit" value="立即申请"></div>
+					</div>
+				</form>
+			</div>
+			<!-- 表单 e -->
+
+		</div>
+	</div>
+
+	<div class="main-left">
+		<div class="title">
+			<h2>{#$detail_title#}</h2>
+			<span class="type">招标中</span>
+		</div>
+		<div class="baseinfo">
+			<table class="mtab">
+				<tbody>
+					<tr>
+						<td><div><span class="name">招标类型：</span><span class="t">{#$detail_btype#}</span></div></td>
+						<td><div><span class="name">房屋性质：</span><span class="t">{#$detail_nature#}</span></div></td>
+						<td title="{#$detail_community#}"><div><span class="name">所在小区：</span><span class="t">{#$detail_community#}</span></div></td>
+					</tr>
+					<tr>
+						<td><div><span class="name">所在区域：</span><span class="t">{#$detail_addr|replace:" > ":" "#}</span></div></td>
+						<td title="{#$detail_address#}"><div><span class="name">详细地址：</span><span class="t">{#$detail_address#}</span></div></td>
+						<td><div><span class="name">建筑面积：</span><span class="t">{#$detail_area#}㎡</span></div></td>
+					</tr>
+					<tr>
+						<td><div><span class="name">开工时间：</span><span class="t">{#$detail_start|date_format:"%Y-%m-%d"#}</span></div></td>
+						<td><div><span class="name">结束时间：</span><span class="t">{#$detail_end|date_format:"%Y-%m-%d"#}</span></div></td>
+						<td><div><span class="name">装修预算：</span><span class="t">{#$detail_budget#}</span></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="zxinfo">
+			<h3>装修要求：</h3>
+			<p>{#$detail_note#}</p>
+		</div>
+		<div class="zxinfo">
+			<h3>联系方式：</h3>
+			{#if $userinfo#}
+			<p>联系人：{#$detail_people#}</p>
+			<p>联系方式：{#$detail_contact#}</p>
+			{#else#}
+			<p>请<a href="javascript:;" class="login">登陆</a>后查看</p>
+			{#/if#}
+		</div>
+	</div>
+</div>
+
+
+
+
+{#include file="bottom.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/tender.js"></script>
+</body>
+</html>

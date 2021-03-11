@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+.baseinfo .inner {position: relative;height: 140px;padding:20px;}
+.baseinfo .inner:hover {background:#f8f8f8;}
+.baseinfo .inner .pic {float: left;margin-right: 20px;}
+.baseinfo .inner .pic img {display: block;width: 138px;height: 138px;border: 1px solid #eaeaea;}
+.baseinfo .inner .txt {float: left;width: 384px;font-size: 14px;color: #666;overflow: hidden;}
+.w1200 .baseinfo .inner .txt {float: left;width: 600px;}
+.baseinfo .inner .txt p {margin-top: 4px;}
+.baseinfo .inner .business , .baseinfo .inner .address {height: 21px;overflow: hidden;}
+.baseinfo .inner .name a {display: block;width: 80%;text-overflow:ellipsis;white-space:nowrap;overflow: hidden;}
+.baseinfo .inner .name {font-size: 18px;color: #333; padding: 5px 0 10px; margin-top: 0;}
+.baseinfo .inner .name a:hover {color: #ff6d01;}
+/*.prove .icon {position: relative;display: inline-block;width: 20px;height: 20px;vertical-align: middle;}
+.prove span {display: none;position: absolute;bottom:105%;left:-10px;width: 64px;height: 28px;line-height: 22px;text-align: center;font-size: 12px;color: #fff;background-position: 0 0;}
+.prove span {background-image: url(../images/caselistd/bgs.png);background-repeat: no-repeat;}
+.prove a:hover span {display: block;}*/
+.business span {padding-left: 25px; background-position: -6px -384px; margin-right: 10px;}
+.baseinfo .inner .red {font-size: 18px;color: #f00;}
+
+
+.prove {height: 16px; margin-top: 14px; line-height: 15px; overflow: hidden;}
+.prove span, .prove em {float: left; margin-right: 5px; font-size: 12px;}
+.prove span {width: 16px; height: 16px; text-align: center; color: #fff;}
+.prove .yyzz {background: #74ccd4;}
+.prove .rz {background: #ffad77;}
+.prove .yh {background: #ee8e75;}
+.prove .bzj {background: #ddbe72;}
+.prove .sj {background: #7ad7a1;}
+.prove .sg {background: #cfab8d;}
+.prove .pj {background: #8db5cf;}
+.prove .no {background: #ccc;}
+
+
+
+.baseinfo .inner .phone {margin: 0 10px;padding-left: 38px;font-size: 24px;color: #ff6d01;background-position: -2px 0;}
+.w1200 .baseinfo .inner .phone {margin:0 35px;padding-left: 20px;}
+
+.baseinfo .inner .phone ,.baseinfo .connect em ,.business span {
+    background-image: url(../images/designer/icons.png);
+    background-repeat: no-repeat;
+}
+
+/*右侧联系方式*/
+.baseinfo .connect {position: relative;float: right;width: 350px;height: 140px;text-align: center;border-left: 1px solid #ececec;}
+.baseinfo .connect em {position: absolute;left:-1px;top:50%;display: block;width: 7px;height: 15px;background-position: -13px -250px;background-color: #fff;}
+.connect .do {margin-top: 10px;}
+.connect .do div.icon {display: inline-block;*display: inline;*margin:0 2px;padding:2px 6px 2px 26px;font-size: 14px;color: #666;border:1px solid #ececec;transition: all .1s;-webkit-transition: all .1s;-moz-transition: all .1s;cursor: pointer;}
+.icon-collect {background-position:2px 2px;}
+.icon-shear {background-position:2px -78px;}
+.do .icon-collect-sel {background-position:2px -18px;}
+.icon-like-sel {background-position:2px -57px;}
+.connect .tel {margin:10px 64px;padding-left: 30px;font-size: 24px;color: #ff6d01;background-position: -2px 0;}
+.connect .sub a {display: block;width: 248px;height: 40px;margin:0 auto;line-height: 40px;text-align: center;font-size: 16px;color: #fff;background:#ff7611;border-radius:4px;}
+.connect .sub a:hover {background: #EF7C27;}
+
+.baseinfo .icon, #bdsharebuttonbox .icon {
+    background-image: url(../images/caselistd/icons.png);
+    background-repeat: no-repeat;
+}
+
+/*分享*/
+.connect .do .shear {position: relative;}
+#bdsharebuttonbox {display: none;position: absolute;left:50%;top:26px;margin-left: -21px;padding-top: 9px;border-bottom: none;background: #fff;z-index: 100;}
+#bdsharebuttonbox .inner {position: relative;border:1px solid #ececec;box-shadow: 0 3px 15px rgba(0,0,0,.15);height: auto;padding:0;}
+#bdsharebuttonbox span {display: block;width: 40px;height: 28px;border-bottom:1px solid #ececec;text-align: center;padding: 0;background-image: none;margin:0;}
+#bdsharebuttonbox span:last-child {border-bottom: none;}
+.baseinfo .do a.icon {display: block;width: 100%;height: 100%;margin:0;padding: 0;float: none;}
+#bdsharebuttonbox .icon-s-wb {background-position: 9px -308px;}
+#bdsharebuttonbox .icon-s-qz {background-position: 7px -356px;}
+#bdsharebuttonbox .icon-s-sina {background-position: 9px -404px;}
+#bdsharebuttonbox .icon-s-kx {background-position: 9px -450px;}
+#bdsharebuttonbox .icon-s-wb:hover  {background-position: 9px -332px;}
+#bdsharebuttonbox .icon-s-qz:hover {background-position: 7px -379px;}
+#bdsharebuttonbox .icon-s-sina:hover {background-position: 8px -428px;}
+#bdsharebuttonbox .icon-s-kx:hover {background-position: 9px -476px;}
+#bdsharebuttonbox .icon-up {position: absolute; left: 15px; top: -6px; width: 13px; height: 6px; margin:0;background-position: -5px -297px; background-color: #fff;}
+
+.shear:hover #bdsharebuttonbox {display: block;}
+
+
+.icon-phone {background-position:-2px -108px;}
+.icon-wb {background-position:-2px -151px;}
+.icon-name {background-position:-2px -191px;}
+.icon-phone:hover {background-position:-2px -131px;}
+.icon-name:hover {background-position:-2px -211px;}
+.icon-wb:hover {background-position:-2px -171px;}
+
+
+/* 菜单 */
+.boxtitle {width: 100%;height: 46px;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+.boxtitle li {position: relative;float: left;display: inline-block;width: 113px;height: 51px;line-height: 48px;text-align: center;font-size: 16px;color: #fff;background-position: -197px 0;}
+.boxtitle li span {position: absolute;right:0;top:0;color: #ececec;}
+.boxtitle li.curr a {color: #fff;}
+.boxtitle li.curr span {display: none;}
+
+.boxtitle li.curr {
+    background-image: url(../images/designer/bigbg.png);
+    background-repeat: no-repeat;
+}
+
+
+/* 设计师 - tab */
+.mgt30 {margin-top: 30px;}
+#comDesigenr {position: relative;}
+.designer-item {position: relative;padding-bottom: 30px;margin-bottom: 30px;float: none;width: 100%;border-bottom: 1px solid #e6e6e6;}
+.designer-item .inner {position: relative;height: 250px;}
+#comDesigenr .line {display: none;}
+.w1200 #comDesigenr .line {display: block;position:absolute;left:50%;top:0;width:1px;height:0;background:#e6e6e6;}
+.w1200 .designer-item.fromL .line {height: 100%;}
+.w1200 .designer-item.fromR .inner {margin-left: 50px;}
+.w1200 .designer-item {width: 50%;float: left;}
+.designer-item .pic {position: absolute;left:0;top:0;}
+.designer-item .pic img {display: block;width: 185px;height: 250px;}
+.designer-item .txt {padding:0 20px 0 205px;}
+.designer-item .n {margin-right: 5px;font-size: 24px;color: #000;}
+.designer-item .w {padding:0 34px;font-size: 12px;color: #010101;background:url(../images/company/undeline.png) center center no-repeat;}
+.designer-item p {position: relative;margin-bottom: 2px;max-height:52px;line-height: 26px;font-size: 14px;color: #333;overflow: hidden;}
+.designer-item p .t {position: absolute;left:0;top:0;color: #666;}
+.designer-item p .v {display: block;padding-left: 68px;}
+.designer-item .btn {position: absolute;left:205px;bottom:5px;width: 195px;height: 40px;line-height: 40px;font-size: 14px;text-align: center;color: #fff;background:#ff7814;border-radius:5px;}
+.designer-item .btn:hover {background: #F78836;}
+
+.designer-item.fromL {-webkit-animation: leftIn .7s ease-out; -moz-animation: leftIn .7s ease-out; animation: leftIn .7s ease-out;}
+.designer-item.fromR {-webkit-animation: rightIn .7s ease-out; -moz-animation: rightIn .7s ease-out; animation: rightIn .7s ease-out;}
+.designer-item .inner {opacity: 0;filter:alpha(opacity=0);}
+.fromL .inner , .fromR .inner {opacity: 1;}
+
+
+/* 从左往右缓冲显示 */
+@-webkit-keyframes leftIn{
+	0%{opacity:0;	-webkit-transform:translateX(-100%);}
+	100%{opacity:1;	-webkit-transform:translateY(0);}
+}
+
+@-moz-keyframes leftIn{
+	0%{opacity:0;	-moz-transform:translateX(-100%);}
+	100%{opacity:1; -moz-transform:translateY(0);}
+}
+
+@keyframes leftIn{
+	0%{opacity:0;	transform:translateX(-100%);}
+	100%{opacity:1; transform:translateY(0);}
+}
+
+/* 从右往左缓冲显示 */
+@-webkit-keyframes rightIn{
+	0%{opacity:0;	-webkit-transform:translateX(100%);}
+	100%{opacity:1;	-webkit-transform:translateY(0);}
+}
+
+@-moz-keyframes rightIn{
+	0%{opacity:0;	-moz-transform:translateX(100%);}
+	100%{opacity:1; -moz-transform:translateY(0);}
+}
+
+@keyframes rightIn{
+	0%{opacity:0;	transform:translateX(100%);}
+	100%{opacity:1; transform:translateY(0);}
+}
+

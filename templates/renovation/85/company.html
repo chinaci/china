@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>装修公司排名_装修公司大全-{#$renovation_title#}</title>
+<meta name="keywords" content="装修公司,装修公司排名,装修公司大全" />
+<meta name="description" content="{#$cfg_shortname#}装修网汇集了装修公司排名大全,免费提供装修公司设计与报价，以及装修知识。免费拨打电话将直接转接到装修公司，无额外收费！" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='renovation' template='company'#}#}
+
+<body>
+{#$pageCurr = 'company'#}
+{#include file="top.html"#}
+
+<!-- 条件筛选 s -->
+<div class="wrap screen" id="J_crumbs">
+	<dl>
+		<dt>家装类型：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} jiastyle=''#}#J_crumbs" class="first{#if $jiastyle == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='2'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} jiastyle={#$type.id#}#}#J_crumbs"{#if $jiastyle == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	<dl>
+		<dt>公装类型：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} comstyle=''#}#J_crumbs" class="first{#if $comstyle == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='3'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} comstyle={#$type.id#}#}#J_crumbs"{#if $comstyle == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	<dl>
+		<dt>服务区域：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} range=''#}#J_crumbs" class="first{#if $range == 0#} curr{#/if#}">不限</a>
+			{#renovation action="addr" return='addr'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} range={#$addr.id#}#}#J_crumbs"{#if $range == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	<dl>
+		<dt>专长风格：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} style=''#}#J_crumbs" class="first{#if $style == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='4'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} style={#$type.id#}#}#J_crumbs"{#if $style == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+</div>
+<!-- 条件筛选 e -->
+
+	<div class="wrap main fn-clear">
+		<div class="main-right fn-right">
+			<div class="phb">
+				<h3>装修公司排行榜</h3>
+				<ul>
+					{#renovation action="store" return="store" property="r" page=1 pageSize="8"#}
+					<li><i{#if $_bindex.store < 4#} class="height"{#/if#}>{#$_bindex.store#}</i><a href="{#$store.url#}" target="_blank" title="{#$store.company#}">{#$store.company#}</a></li>
+					{#/renovation#}
+				</ul>
+			</div>
+		</div>
+		<div class="main-left">
+			<!--  排序 s  -->
+			<div class="sort">
+				<ul class="fn-clear">
+					<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == "" || $orderby == 0#} class="curr"{#/if#}>综合排序</a></li>
+					<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=1#}#J_crumbs" class="time{#if $orderby == 1#} curr{#/if#}">热门排序<i class="icon icon-down"></i></a></li>
+				</ul>
+				<div class="info">
+					<p>共搜索到 <span class="red" id="totalCount">0</span> 家装修公司</p>
+				</div>
+			</div>
+			<!--  排序 e  -->
+
+			<!-- 招标列表 s -->
+			<div class="company">
+				<ul class="list">
+					{#renovation action="store" jiastyle={#$jiastyle#} comstyle={#$comstyle#} range={#$range#} style={#$style#} title={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+					<li class="fn-clear">
+						<div class="pic">
+							<a href="{#$row.url#}" target="_blank" title="{#$row.company#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.logo#}" alt="{#$row.company#}"></a>
+						</div>
+						<div class="txt">
+							<p class="name"><a href="{#$row.url#}" target="_blank" title="{#$row.company#}">{#$row.company#}</a></p>
+							<p class="prove"><em>认证：</em>
+								{#if $row.license == 1#}
+								<span class="yyzz" title="该公司营业执照已认证">营</span>
+								{#else#}
+								<span class="yyzz no">营</span>
+								{#/if#}
+
+								{#if $row.certi == 1#}
+								<span class="rz" title="认证公司">认</span>
+								{#else#}
+								<span class="rz no">认</span>
+								{#/if#}
+
+								{#if $row.saleCount > 0#}
+								<a href="#" target="_blank"><span class="yh" title="该公司有装修优惠,点击查看">惠</span></a>
+								{#else#}
+								<span class="yh no">惠</span>
+								{#/if#}
+
+								{#if $row.safeguard > 0#}
+								<span class="bzj" title="该公司已交{#$row.safeguard#}{#echoCurrency type='short'#}保障金">金</span>
+								<em>{#$row.safeguard#}{#echoCurrency type='short'#}</em>
+								{#else#}
+								<span class="bzj no">金</span>
+								{#/if#}
+
+								{#if $row.guestCount > 0#}
+								<a href="#" target="_blank"><span class="sg" title="施工案例">评</span></a>
+								<em>{#$row.guestCount#}次</em>
+								{#else#}
+								<span class="sg no">评</span>
+								{#/if#}
+							</p>
+							<p class="num">拥有设计师：<span class="red">{#$row.teamCount#}</span>位&nbsp;&nbsp;案例：<sapn class="red">{#$row.diaryCount#}</sapn>套&nbsp;&nbsp;效果图：<sapn class="red">{#$row.caseCount#}</sapn>套</p>
+							<!-- <p class="business">承接业务：<span>新房装修</span><span>二手房装修</span><span>新房装修</span><span>二手房装修</span></p> -->
+							<p class="address">公司地址：{#$row.addr#} {#$row.address#}</p>
+						</div>
+						<div class="tel">
+							<em></em>
+							<a href="{#$row.url#}" class="go" target="_blank"><span>进入店铺</span></a>
+							<p class="phone">{#$row.contact#}</p>
+						</div>
+					</li>
+					{#/renovation#}
+					{#if $pageInfo.totalCount == 0#}
+					<li class="empty">抱歉！ 暂无相关装修公司！</li>
+					{#/if#}
+				</ul>
+			</div>
+			<!-- 招标列表 e -->
+
+			<!-- 分页 -->
+			{#getPageList service='renovation' template='company' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+		</div>
+	</div>
+
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};
+</script>
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/companylist.js"></script>
+</body>
+</html>

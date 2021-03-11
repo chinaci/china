@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找我家-{#$renovation_title#}</title>
+<meta name="keywords" content="找我家装修效果图设计,同小区装修" />
+<meta name="description" content="{#$cfg_shortname#}提供楼盘各户型装修设计方案及户型图大全。可在线查看各楼盘业主最新装修日记，体验3D互动样板间，亲手打造自家装修风格。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/myhome.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<style>
+	.wrap {width: 1200px;}
+</style>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='renovation' template='zwj'#}#}
+
+<body>
+{#$pageCurr = "zwj"#}
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li><a href="{#$pageUrl#}">找我家</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<div class="wrap fn-clear" id="search">
+	<form class="search" method="post" action="{#$pageUrl#}">
+		<div class="box">
+			<i></i>
+			<input type="search" name="keywords" placeholder="输入小区/楼盘名称" class="inp" value="{#$keywords#}" />
+			<input type="submit" value="搜索" class="submit" />
+		</div>
+	</form>
+</div>
+
+<!-- 条件筛选 s -->
+<div class="wrap screen">
+	<dl>
+		<dt>区域 : </dt>
+		<dd>
+			<a class="first{#if $addrid == 0#}  curr{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' business='' keywords={#$keywords#}#}#J_crumbs">不限</a>
+			{#renovation action="addr" return='addr'#}
+			<a{#if $addrid == {#$addr.id#}#} class="curr"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#} business='' keywords={#$keywords#}#}#J_crumbs">{#$addr.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	{#if $addrid != 0#}
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd>
+			<a class="first{#if $business == 0#}  curr{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business='' keywords={#$keywords#}#}#J_crumbs">不限</a>
+			{#renovation action="addr" return='addr' type={#$addrid#}#}
+			<a{#if $business == {#$addr.id#}#} class="curr"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business={#$addr.id#} keywords={#$keywords#}#}#J_crumbs">{#$addr.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	{#/if#}
+</div>
+<!-- 条件筛选 e -->
+
+<!-- 风格大图 列表 s -->
+<div id="container" class="wrap container">
+	{#$addr = $addrid#}
+	{#if $business#}
+	{#$addr = $business#}
+	{#/if#}
+	{#renovation action="community" return='community' addrid={#$addr#} keywords={#$keywords#} page={#$page#} pageSize='100'#}
+	<div class="item">
+		<div class="inner">
+			<div class="pic">
+				{#$src = {#changeFileSize url={#$community.litpic#} type='o_large'#}#}
+				<a href="{#$community.url#}" target="_blank"><img width="290" height="{#resizeImageSize pic_width={#$community.picwidth#} pic_height={#$community.picheight#} maxwidth="290" maxheight={#$community.picheight#} return="height"#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$src#}" alt="{#$community.title#}"></a>
+			</div>
+			<div class="info">
+				<p class="name">
+					<a href="{#$community.url#}" target="_blank" class="tit">{#$community.title#}</a>
+			</div>
+		</div>
+	</div>
+	{#/renovation#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+<div class="empty">抱歉！ 暂无相关小区信息！</div>
+{#/if#}
+<!-- 风格大图 列表 e -->
+
+<!-- 分页 -->
+{#getPageList service='renovation' template='zwj' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.waterfall.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/designpiclist.js"></script>
+</body>
+</html>

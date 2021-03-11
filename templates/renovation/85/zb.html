@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>装修报价_装修招标-{#$renovation_title#}</title>
+<meta name="keywords" content="装修报价,装修招标" />
+<meta name="description" content="装修报价,装修招标" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/tender.css?v=2" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$renovation_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='renovation' template='zb'#}#}
+
+<body>
+{#include file="top.html"#}
+
+<!-- 导航条 s -->
+<div class="wrap">
+	<ul class="breadcrumb">
+		<li><a href="{#$renovation_channelDomain#}" target="_blank">首页</a><span>&gt;</span></li>
+		<li class="thispg"><a href="{#getUrlPath service='renovation' template='zb'#}">装修招标</a></li>
+	</ul>
+</div>
+<!-- 导航条 e -->
+
+<!-- 条件筛选 s -->
+<div class="wrap screen" id="J_crumbs">
+	<dl>
+		<dt>招标类型：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype=''#}#J_crumbs" class="first{#if $btype == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='7'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} btype={#$type.id#}#}#J_crumbs"{#if $btype == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	<dl>
+		<dt>房屋性质：</dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=''#}#J_crumbs" class="first{#if $nature == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='1'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature={#$type.id#}#}#J_crumbs"{#if $nature == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	<dl>
+		<dt>招标区域 : </dt>
+		<dd>
+			<a class="first{#if $addrid == 0#}  curr{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='' business=''#}#J_crumbs">不限</a>
+			{#renovation action="addr" return='addr'#}
+			<a{#if $addrid == {#$addr.id#}#} class="curr"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addr.id#} business=''#}#J_crumbs">{#$addr.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	{#if $addrid != 0#}
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd>
+			<a class="first{#if $business == 0#}  curr{#/if#}" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business=''#}#J_crumbs">不限</a>
+			{#renovation action="addr" return='addr' type={#$addrid#}#}
+			<a{#if $business == {#$addr.id#}#} class="curr"{#/if#} href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid={#$addrid#} business={#$addr.id#}#}#J_crumbs">{#$addr.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+	{#/if#}
+	<dl>
+		<dt>承接价位 : </dt>
+		<dd>
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} budget=''#}#J_crumbs" class="first{#if $budget == 0#} curr{#/if#}">不限</a>
+			{#renovation action="type" return='type' type='6'#}
+			<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} budget={#$type.id#}#}#J_crumbs"{#if $budget == $type.id#} class="curr"{#/if#}>{#$type.typename#}</a>
+			{#/renovation#}
+		</dd>
+	</dl>
+</div>
+<!-- 条件筛选 e -->
+
+<div class="wrap main fn-clear">
+	<div class="main-right fn-right">
+		<div class="inner">
+			<div class="title"><img src="{#$templets_skin#}images/tender/fbzb.png" alt=""></div>
+
+			<!-- 表单 s -->
+			<div class="form">
+				<form action="" class="sqfwForm">
+					<div class="form-row">
+						<span class="type">称呼：</span>
+						<div class="in"><input type="text" class="int username"> <span class="bt">*</span></div>
+					</div>
+					<div class="form-row">
+						<span class="type">手机：</span>
+						<div class="in"><input type="text" class="int userphone"> <span class="bt">*</span></div>
+					</div>
+					<div class="form-row">
+						<span class="type">区域：</span>
+						<div class="in fn-clear" id="addrlist">
+							<select id="addr1" class="select_l" name="addr1">
+								<option value="">区域</option>
+								{#renovation action="addr" return="addr" son="0"#}
+								<option value="{#$addr.id#}">{#$addr.typename#}</option>
+								{#/renovation#}
+							</select>
+							<select id="addr2" class="select_r" name="addr2">
+								<option value="">街道</option>
+							</select>
+							<span class="bt">*</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">面积：</span>
+						<div class="in"><input type="text" id="area" class="int"> <em>㎡</em></div>
+					</div>
+					<div class="form-row">
+						<span class="type">预算：</span>
+						<div class="in fn-clear">
+							<select name="budget" id="budget">
+								<option value="0">请选择</option>
+								{#renovation action="type" return='type' type='6'#}
+								<option value="{#$type.id#}">{#$type.typename#}</option>
+								{#/renovation#}
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">类型：</span>
+						<div class="in fn-clear">
+							<select name="nature" id="nature">
+								<option value="0">请选择</option>
+								{#renovation action="type" return='type' type='1'#}
+								<option value="{#$type.id#}">{#$type.typename#}</option>
+								{#/renovation#}
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<span class="type">其他：</span>
+						<div class="in">
+							<textarea name="note" id="note" class="int message"></textarea>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="in fn-clear">
+							<input type="submit" class="submit" value="立即申请"></div>
+					</div>
+				</form>
+			</div>
+			<!-- 表单 e -->
+
+		</div>
+	</div>
+
+	<div class="main-left">
+
+		<!--  排序 s  -->
+		<div class="sort">
+			<ul class="fn-clear">
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == "" || $orderby == 0#} class="curr"{#/if#}>默认排序</a></li>
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='3'#}#J_crumbs" class="time{#if $orderby == 3#} curr{#/if#}">按照发布时间<i class="icon icon-down"></i></a></li>
+				<li><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='5'#}#J_crumbs" class="budget{#if $orderby == 5#} curr{#/if#}">按面积<i class="icon icon-down"></i></a></li>
+			</ul>
+			<div class="info"><p>共搜索到 <span class="red" id="totalCount">0</span> 条信息</p></div>
+		</div>
+		<!--  排序 e  -->
+
+		<!-- 招标列表 s -->
+		<div class="tender">
+			<ul class="list">
+				{#$addr = $addrid#}
+				{#if $business#}
+				{#$addr = $business#}
+				{#/if#}
+				{#renovation action="zhaobiao" return="zb" type={#$btype#} nature={#$nature#} addrid={#$addr#} price={#$budget#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+				<li>
+					<dl>
+						<dt>
+							<div><i></i></div>
+							<p class="p1">{#$zb.pubdate|date_format:"%Y-%m-%d"#}</p>
+							<p class="p2">{#$zb.budget#}</p>
+						</dt>
+						<dd class="d1"><a href="{#$zb.url#}" target="_blank">{#$zb.title#}</a></dd>
+						<dd class="d2">
+							<p><span class="sp1">装修类型：{#$zb.btype#}</span><span class="sp2">项目类型：{#$zb.nature#}</span></p>
+							<p><span class="sp1">装修时间：{#$zb.start|date_format:"%Y-%m-%d"#}</span><span class="sp2">建筑面积：{#$zb.area#}㎡</span></p>
+						</dd>
+					</dl>
+				</li>
+				{#/renovation#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">抱歉！ 暂无相关招标信息！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<!-- 招标列表 e -->
+
+		<!-- 分页 -->
+		{#getPageList service='renovation' template='zb' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/tender.js"></script>
+</body>
+</html>
