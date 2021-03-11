@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+	var templets = '{#$templets_skin#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = $tieba_channelName#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<!-- banner s -->
+<div class="banner"><script src="/include/json.php?action=adjs&title=贴吧社区_模板一_移动端_广告一" language="javascript"></script>{#if $cfg_qiandao_state#}<a href="{#getUrlPath service='member' type='user' template='qiandao'#}" class="sign_btn">签到</a>{#/if#}</div>
+<!-- banner e -->
+
+<!-- 总数 s -->
+<div class="account">
+  <ul class="fn-clear">
+    <li><a href="javascript:;"><div class="line"><p class="gray">今日发帖</p><p class="blue">{#$tiziTodayTotal|number_format#}</p></div></a></li>
+    <li><a href="javascript:;"><div class="line"><p class="gray">帖子总数</p><p class="blue">{#$tiziTotal|number_format#}</p></div></a></li>
+    <li><a href="javascript:;"><div class="line"><p class="gray">注册会员</p><p class="blue">{#$memberStatistics['total']|number_format#}</p></div></a></li>
+  </ul>
+</div>
+<!-- 总数 e -->
+
+<div class="typebox"></div>
+<div class="mode-type">
+  <ul class="fn-clear">
+    {#tieba action="type" return="type"#}
+    <li data-id="{#$type.id#}">{#$type.typename#}</li>
+    {#/tieba#}
+  </ul>
+</div>
+
+<div class="list"></div>
+<a href="{#getUrlPath service='tieba' template='fabu'#}" class="fabu-btn"></a>
+
+<div class="mask"></div>
+
+<!-- 打赏 s -->
+<div class="reward">
+  <a href="javascript:;" class="close"></a>
+  <div class="reward-a">
+    <div class="reward-box fn-clear">
+      <a href="javascript:;" class="active">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>1.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>5.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>0.50</em></a>
+    </div>
+    <a href="javascript:;" class="reword-other">其他金额</a>
+  </div>
+  <div class="reward-b">
+    <div class="reward-inp fn-hide">
+      <label class="inp-tag">金额</label>
+      <input type="number" name="" value="" min="0.50" maxlength="8" placeholder="输入打赏金额" id="reward">
+    </div>
+    <a href="javascript:;" class="reword-sure">确定</a>
+  </div>
+</div>
+<!-- 打赏 e -->
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+  <div class="tit">选择支付方式</div>
+  <ul>
+    {#siteConfig action="payment"#}
+    {#if $row.pay_code == "wxpay"#}
+    <li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "globalalipay"#}
+    <li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "alipay"#}
+    <li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "paypal"#}
+    <li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+    {#/if#}
+    {#/siteConfig#}
+  </ul>
+  <a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tieba_description#}',
+		"title": '{#$tieba_title#}',
+		"imgUrl": '{#$tieba_logoUrl#}',
+		"link": '{#$tieba_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body, html{font-size: .3rem;}
+.header-m{display: block !important;}
+.header-r{display: none;}
+.blue{color: #13beef;}
+
+.header-search{visibility: hidden;}
+
+
+/*列表*/
+.list{padding: .2rem .2rem 0; background: #f5f5f5; margin-bottom: 1.1rem;}
+.item{border-bottom: 1px solid #eee; padding: .3rem 0;}
+.item:last-child{border-bottom: none;}
+.item dt{float: left; width: 1rem; margin-right: .3rem; position: relative; overflow: hidden;}
+.item dt img{width: 1rem; height: 1rem; border-radius: 100%; display: block;}
+.item dd{margin-left: 1.3rem;}
+.item dd p{line-height: .4rem; height: .4rem;}
+.item dd p.txt{margin-top: .1rem;}
+.item dd p.content{margin-top: .1rem;}
+.item .name{float: left; padding-right: .35rem; background: url(../images/gold.png) right center no-repeat; background-size: .26rem auto;}
+.item .comment{float: right; font-size: .24rem; text-indent: -9999em; background: url(../images/comment_icon.png) center center no-repeat; background-size: .33rem auto; display: block; width: .4rem;}
+.item .time{color: #adadad; font-size: .28rem;}
+.userbox{padding: .3rem .2rem; border-bottom: 0;}
+
+/*底部回复评论*/
+.reply-box{position: fixed; left: 0; bottom: 0; right: 0; padding: .2rem .3rem; background: #f5f5f5; box-shadow: 0px 0 7px -1px #bbbbbb;}
+.reply-box input{background: #fff; padding: .1rem .4rem; border-radius: 1rem; border: 0; outline: 0; font-size: .28rem; width: 100%; box-sizing: border-box;}
+
+/*回复弹出层*/
+.layer{position: fixed; top: 0; bottom: 0; left: 100%; right: 0; z-index: 100001; background: #fff;}
+.layer.show{display: block;}
+.layer .header-search{visibility: visible;}
+.layer .header-search a{background: none;}
+.layer .discuss{padding: .2rem .2rem 0; height: 100%;}
+.layer .discuss .textarea{border: none; font-size: .3rem; overflow: auto; position: absolute; top: 1rem; left: .2rem; right: .2rem; bottom: 1rem; padding-bottom: 1rem;}
+.layer .discuss .textarea img {width: 30px; height: 30px; display: inline-block; vertical-align: middle;}
+.layer .editor{position: absolute; bottom: 0; left: 0; right: 0; background: #f9f9f9; height: 1rem; padding: 0 .2rem; z-index: 99; border-top: 1px solid #eee;}
+.layer .editor.emotion{bottom: 4.2rem; border-top: 1px solid #f2f2f2;}
+.layer .editor .item{position: relative; float: left; height: 1rem; display: table-cell; vertical-align: middle; width: 1rem; text-align: center; line-height: 1rem; padding: 0;}
+.layer .editor .emotion{background: url(../images/emotion1.png?v=2) center center no-repeat; background-size: .4rem auto; border: 0; outline: 0;}
+.layer .editor .emotion.on{background: url(../images/emotion2.png) center center no-repeat; background-size: .4rem auto;}
+.layer .editor .img{background: url(../images/img1.png) center center no-repeat; background-size: .4rem auto; text-indent: -999rem;}
+.layer .editor .img.on{background: url(../images/img2.png) center center no-repeat; background-size: .4rem auto;}
+.layer .editor .img input, .layer .editor .video input{position: absolute; width: 1rem; height: 1rem; left: 0; opacity: 0; top: 0;}
+
+/*表情盒子*/
+.emotion-box{padding: .2rem 0; position: fixed; bottom: 0; display: none; background: #fff;}
+.emotion-box li{float: left; width: 10%; text-align: center; margin-bottom: .2rem;}
+.emotion-box li img{width: 70%;}
+
+.layer .discuss .textarea .thumbnail img{width: 100%; height: 100%;}
+
+/* 上传按钮 */
+.img-box li.uploadbtn {box-shadow: none; width: 70px; height: 70px; border: 2px dashed #e5e5e5;}
+.webuploader-pick {line-height: 55px; text-align: center; font-size: 90px; color: #e5e5e5;}
+.webuploader-element-invisible {position: absolute !important; clip: rect(1px,1px,1px,1px);}
+.webuploader-container div {width: 70px; height: 70px;}
+
+/* 图片队列 */
+.placeholder{padding: .2rem 0;}
+.thumbnail{width: 6.5rem; position: relative; margin: .2rem auto 0;}
+.thumbnail img {width: 100%; height: 100%; display: block; background-repeat: no-repeat; background-size: cover; background-position: center 20%;}
+
+.thumbnail .file-panel {position: absolute; width: 30px; height: 30px; top: 6px; right: -10px; margin-top: -18px;}
+.thumbnail .file-panel .cancel {position: absolute; top: 50%; left: 50%; margin: -12px 0 0 -12px; -webkit-transform: rotate(45deg); width: 27px; height: 27px; -webkit-border-radius: 13px; background-color: rgba(0,0,0,.7);}
+.thumbnail .file-panel .cancel:before, .thumbnail .file-panel .cancel:after {content: ''; position: absolute; background: #d5d6d8; left: 50%; top: 50%;}
+.thumbnail .file-panel .cancel:before {height: 16px; width: 2px; margin: -8px 0 0 -1px;}
+.thumbnail .file-panel .cancel:after {height: 2px; width: 16px; margin: -1px 0 0 -8px;}
+
+
+.thumbnail .progress {position: absolute; right: 4px; bottom: 4px; height: 3px; left: 4px; height: 4px; overflow: hidden; z-index: 15; margin:0; padding: 0; border-radius: 0; background: transparent;}
+.thumbnail .progress span {display: block; overflow: hidden; width: 0; height: 100%; background: #499c00 url('/static/js/webuploader/progress.png') repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0);}
+@-webkit-keyframes progressmove {
+    0% {background-position: 0 0;}
+    100% {background-position: 17px 0;}
+}
+@-moz-keyframes progressmove {
+    0% {background-position: 0 0;}
+    100% {background-position: 17px 0;}
+}
+@keyframes progressmove {
+    0% {background-position: 0 0;}
+    100% {background-position: 17px 0;}
+}

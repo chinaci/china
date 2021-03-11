@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}{#if $seoTitle != ""#} - {#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}', modelType = 'tieba';
+  var id = {#$detail_id#}, cookiePre = '{#$cfg_cookiePre#}', commentPage = 1, commentPageSize = 6;
+  var rewardUrl = '{#getUrlPath service="tieba" template="reward" id=$detail_id#}';
+  var	JubaoConfig = {
+		"module" : 'tieba',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+{#$pageTitle = '帖子正文'#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+  <div class="container">
+
+    <dl class="fn-clear userbox">
+      <dt class="fn-left"><a href="{#$cfg_basehost#}/user/{#$louzu.uid#}#tieba"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $louzu.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$louzu.photo#}" type="middle"#}{#/if#}" /></a></dt>
+      <dd>
+        <p class="name fn-clear"><a href="{#$cfg_basehost#}/user/{#$louzu.uid#}#tieba"><em>{#$louzu.nickname#}</em></a><span class="biaoqian">{#$detail_typename#}</span></p>
+        <p class="addr"><em class="ipaddr">{#$detail_ipAddress#}</em><span class="fn-right time">{#$detail_pubdate|date_format:"%m-%d %H:%M:%S"#}</span></p>
+      </dd>
+    </dl>
+
+    <div class="main">
+      <p class="title">{#$detail_title#}</p>
+      <div class="content">
+        {#$detail_content#}
+      </div>
+
+      {#if 'reward'|in_array:$cfg_ucenterLinks#}
+      <div class="reward">
+        <a href="javascript:;" class="reward_btn"></a>
+        <p class="blue">打赏</p>
+        <p class="amount"><em class="blue">0</em>人参与</p>
+      </div>
+      {#/if#}
+
+      <p class="comment-count vh">共有<em class="totalCount">0</em>条评论</p>
+      <div class="list"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <input type="text" name="" value="" placeholder="我来说两句..." class="comment-btn" readonly="readonly">
+    <a href="javascript:;" class="collect">收藏</a>
+    <a href="javascript:;" class="share HN_PublicShare">分享</a>
+  </div>
+
+  <div class="mask"></div>
+
+  <!-- 打赏 s -->
+  <div class="rewardBox">
+    <a href="javascript:;" class="close"></a>
+    <div class="reward-a">
+      <div class="reward-box fn-clear">
+        <a href="javascript:;" class="active">{#echoCurrency type='symbol'#}<em>1.00</em></a>
+        <a href="javascript:;">{#echoCurrency type='symbol'#}<em>2.00</em></a>
+        <a href="javascript:;">{#echoCurrency type='symbol'#}<em>5.00</em></a>
+        <a href="javascript:;">{#echoCurrency type='symbol'#}<em>10.00</em></a>
+        <a href="javascript:;">{#echoCurrency type='symbol'#}<em>20.00</em></a>
+        <a href="javascript:;">{#echoCurrency type='symbol'#}<em>50.00</em></a>
+      </div>
+      <a href="javascript:;" class="reword-other">其他金额</a>
+    </div>
+    <div class="reward-b">
+      <div class="reward-inp fn-hide">
+        <label class="inp-tag">金额</label>
+        <input type="number" name="" value="" min="0.50" maxlength="8" placeholder="输入打赏金额" id="reward">
+      </div>
+      <a href="javascript:;" class="reword-sure">确定</a>
+    </div>
+  </div>
+  <!-- 打赏 e -->
+
+  <div class="layer">
+    <div class="header">
+    	<div class="header-l"><a href="javascript:;"></a></div>
+    	<div class="header-address">
+    		<span>发表评论</span>
+    	</div>
+      <div class="header-search replyBtn"><a href="javascript:;">发表</a></div>
+    </div>
+    <div class="discuss">
+      <div class="txt" id="content">
+        <div class="textarea placeholder" contenteditable="true"><font class="txt-gray">帖子内容</font></div>
+      </div>
+    </div>
+    <div class="editor">
+      <input class="item emotion" type="button" />
+      <div class="item img uploadbtn" style="display: none;"><div id="filePicker" class="filePicker" data-id="1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">图片</div></div>
+    </div>
+    <div class="emotion-box">
+      <ul class="fn-clear">
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+      </ul>
+    </div>
+
+  </div>
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+  <div class="tit">选择支付方式</div>
+  <ul>
+    {#siteConfig action="payment"#}
+    {#if $row.pay_code == "wxpay"#}
+    <li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "globalalipay"#}
+    <li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "alipay"#}
+    <li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "paypal"#}
+    <li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+    {#/if#}
+    {#/siteConfig#}
+  </ul>
+  <a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+<!-- 遮罩层 s -->
+<div class="mask"></div>
+<!-- 遮罩层 e -->
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tieba_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#if $detail_imgGroup[0]#}{#$detail_imgGroup[0]#}{#else#}{#$tieba_logoUrl#}{#/if#}',
+		"link": '{#getUrlPath service='tieba'  template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/audio.min.js"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

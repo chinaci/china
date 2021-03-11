@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/reward.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 s -->
+{#$pageTitle = "打赏榜"#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute"#}
+<!-- 头部 e -->
+
+<div class="userbox">
+  <div class="userphoto"><a href="javascript:;"><img src="{#if $photo#}{#$photo#}{#else#}{#$templets_skin#}images/noavatar_middle.gif{#/if#}" alt=""></a></div>
+  <p class="name"><span>{#$nickname#}</span></p>
+  <p class="money">共收赏金<em class="blue">{#$amount|string_format:"%.2f"#}</em>元</p>
+</div>
+
+<div class="list">
+  {#$count = 0#}
+  {#tieba action="rewardList" aid=$id return=user#}
+  <dl class="item fn-clear">
+    <dt><img src="{#if $user.photo#}{#$user.photo#}{#else#}{#$templets_skin#}images/aficon5.png{#/if#}" alt=""></dt>
+    <dd>
+      <p class="txt fn-clear"><span class="name">{#$user.username#}</span><span class="price blue">&yen;<em>{#$user.amount#}</em></span></p>
+      <p class="time">{#$user.date#}</p>
+    </dd>
+  </dl>
+  {#$count = $count+1#}
+  {#/tieba#}
+  {#if $count == 0#}
+  <div class="empty">暂时没有用户打赏该帖</div>
+  {#/if#}
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tieba_description#}',
+		"title": '{#$tieba_title#}',
+		"imgUrl": '{#$tieba_logoUrl#}',
+		"link": '{#$tieba_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/reward.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

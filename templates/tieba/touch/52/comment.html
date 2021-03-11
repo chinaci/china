@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/comment.css?v=30">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+	var templets = '{#$templets_skin#}';
+</script>
+</head>
+<body>
+  <!-- 头部 s -->
+  {#$pageTitle = "10条回复"#}
+	{#include file="../../../siteConfig/touch_top.html"#}
+  <!-- 头部 e -->
+
+  <dl class="fn-clear item userbox">
+    <dt><img src="{#$templets_skin#}images/aficon5.png" alt=""></dt>
+    <dd>
+      <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+      <p class="time">07-20  17:30</p>
+      <p class="content">想问一下去哪能签到啊？我也想要</p>
+    </dd>
+  </dl>
+
+  <div class="list">
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/quan.png" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">棒棒哒～</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/noavatar_middle.gif" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">听着就好激动呢</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/share1.jpg" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">回复@张晓凡还有吗？</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/share3.jpg" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">谁那还有多余的，给我一张啊...谢谢啦！</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/noavatar_middle.gif" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">听着就好激动呢</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/share1.jpg" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">回复@张晓凡还有吗？</p>
+      </dd>
+    </dl>
+    <dl class="item fn-clear">
+      <dt><img src="{#$templets_skin#}images/share3.jpg" alt=""></dt>
+      <dd>
+        <p class="txt fn-clear"><span class="name">张晓凡</span><span class="comment">评论</span></p>
+        <p class="time">07-20  17:30</p>
+        <p class="content">谁那还有多余的，给我一张啊...谢谢啦！</p>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="reply-box">
+    <input type="text" name="" value="" placeholder="回复评论" class="com" readonly>
+  </div>
+
+
+  <div class="layer">
+    <div class="header">
+      <div class="header-l"><a href="javascript:;"></a></div>
+      <div class="header-address">
+        <span>发表评论</span>
+      </div>
+      <div class="header-search"><a href="javascript:;">发表</a></div>
+    </div>
+    <div class="discuss">
+      <div class="textarea" contenteditable="true"></div>
+    </div>
+    <div class="editor">
+      <input class="item emotion" type="button" />
+      <div class="item img uploadbtn"><div id="filePicker" class="filePicker" data-id="1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">图片</div></div>
+    </div>
+    <div class="emotion-box">
+      <ul class="fn-clear">
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/comment.js?v=4"></script>
+</body>
+</html>
