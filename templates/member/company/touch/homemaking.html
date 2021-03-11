@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$langData['homemaking'][1][27]#}</title>   {#* 家政服务 *#}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/homemaking.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var module = 'homemaking';
+</script>
+</head>
+<body>
+{#* 家政服务 *#}
+  {#$pageTitle = {#$langData['homemaking'][1][27]#}#}
+  {#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+  {#include file="top.html"#}
+
+<ul class="link">
+  {#* 店铺配置 *#}
+  <li><a href="{#getUrlPath service='member'  template='config-homemaking'#}"><i class="icon-config-house"></i>{#$langData['homemaking'][0][28]#}</a></li>
+  {#* 家政服务管理 *#}
+  <li><a href="{#getUrlPath service='member'  template='manage' action='homemaking'#}"><i class="icon-house_yuyue"></i>{#$langData['homemaking'][0][29]#}</a></li>
+  {#* 发布服务 *#}
+  <li><a href="{#getUrlPath service='member'  template='fabu' action='homemaking'#}"><i class="icon-house_entrust"></i>{#$langData['homemaking'][0][30]#}</a></li>
+  {#* 订单管理 *#}
+  <li><a href="{#getUrlPath service='member' template='order-homemaking'#}"><i class="icon-house_meallist"></i>{#$langData['homemaking'][0][31]#}</a></li>
+  {#* 服务人员管理 *#}
+  <li><a href="{#getUrlPath service='member' template='homemaking-personal'#}"><i class="icon-house_manage"></i>{#$langData['homemaking'][0][33]#}</a></li>
+  {#* 保姆/月嫂管理 *#}
+  <li><a href="{#getUrlPath service='member' template='homemaking-nanny'#}"><i class="icon-house_put"></i>{#$langData['homemaking'][0][37]#}</a></li>
+</ul>
+</body>
+</html>

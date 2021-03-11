@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>会员中心 - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v=5">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=100"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+
+<div class="user">
+  <div class="user-box fn-clear">
+  	{#if $userinfo#}
+    <div class="user-img fn-left"><a href="{#getUrlPath service='member' template='profile'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}{#/if#}" /></a></div>
+    <div class="user-info fn-left">
+      <h3>{#$userinfo.nickname#}</h3>
+      {#if $userinfo.certifyState == 1#}<span class="zheng"><i></i>实名认证</span>{#/if#}
+    </div>
+    {#else#}
+    <div class="user-img fn-left"><a href="{#$cfg_basehost#}/login.html"><img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" /></a></div>
+    <div class="user-info fn-left">
+      <h3><a href="{#$cfg_basehost#}/login.html">登录/注册</a></h3>
+    </div>
+    {#/if#}
+  </div>
+  <div class="user-tip fn-right"><a href="{#getUrlPath service='member' template='zhaoshang'#}"><span>入驻商家</span></a></div>
+</div>
+{#if $userinfo#}
+<div class="info-box fn-clear">
+  <a href="{#getUrlPath service='member' template='balance'#}" class="remain"><i><strong>{#$userinfo.money + $userinfo.freeze#}</strong></i>余额</a><em class="line"></em>
+  <a href="#" class="hui"><i><strong>1</strong>张</i>优惠券</a><em class="line"></em>
+  <a href="{#getUrlPath service='member' template='integral'#}" class="point"><i><strong>{#$userinfo.point#}</strong>分</i>{#$cfg_pointName#}</a>
+</div>
+{#else#}
+<div class="info-box fn-clear">
+  <a href="{#getUrlPath service='member' template='balance'#}" class="remain"><i><strong>--</strong></i>余额</a><em class="line"></em>
+  <a href="#" class="hui"><i><strong>--</strong>张</i>优惠券</a><em class="line"></em>
+  <a href="{#getUrlPath service='member' template='integral'#}" class="point"><i><strong>--</strong>分</i>{#$cfg_pointName#}</a>
+</div>
+{#/if#}
+
+<!-- 我的消息 -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' template='message'#}">我的消息<span>查看全部消息</span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="#"><i class="info-1"></i>评论</a>
+    <a href="#"><i class="info-2"></i>私信</a>
+    <a href="#"><i class="info-3"></i><em class="tznum">8</em>通知</a>
+    <a href="#"><i class="info-4"></i>赞</a>
+  </div>
+</div>
+<!-- 我的消息 end -->
+
+
+<!-- 我的口袋 -->
+<div class="pocket">
+  <div class="pocket-tit">
+    <a href="{#getUrlPath service='member' template='pocket'#}">我的口袋<span>查看我的口袋</span></a>
+  </div>
+  <div class="pocket-box fn-clear">
+    <a href="{#getUrlPath service='member' template='deposit'#}"><i class="pocket-1"></i>充值</a>
+    <a href="{#getUrlPath service='member' template='convert'#}"><i class="pocket-3"></i>现金与积分互换</a>
+    <a href="{#getUrlPath service='member' template='withdraw'#}"><i class="pocket-2"></i>提现</a>
+    <a href="{#getUrlPath service='member' template='transfer'#}"><i class="pocket-4"></i>积分转赠</a>
+  </div>
+</div>
+<!-- 我的口袋 end -->
+
+
+<!-- 必备工具 -->
+<div class="tool">
+  <div class="tool-tit">
+    <h3>必备工具</h3>
+  </div>
+  <div class="tool-box">
+    <ul class="fn-clear">
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img1.png" alt=""></span>
+          <span class="tool-txt">我的收藏</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img3.png" alt=""></span>
+          <span class="tool-txt">收到赏金</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img4.png" alt=""></span>
+          <span class="tool-txt">我的圈子</span>
+        </a>
+      </li>
+      {#if in_array("shop", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='shop'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img5.png" alt=""></span>
+          <span class="tool-txt">商城订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("tuan", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='tuan'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img6.png" alt=""></span>
+          <span class="tool-txt">团购订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("tuan", $installModuleArr) && $userinfo.userType == 2#}
+      <li>
+        <a href="{#getUrlPath service='member' template='verify' action='tuan'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img20.png" alt=""></span>
+          <span class="tool-txt">团购券核销</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("waimai", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='waimai'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img7.png" alt=""></span>
+          <span class="tool-txt">外卖订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("home", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='home'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img8.png" alt=""></span>
+          <span class="tool-txt">家居订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("furniture", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='furniture'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img9.png" alt=""></span>
+          <span class="tool-txt">家具订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("build", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='order' module='build'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img10.png" alt=""></span>
+          <span class="tool-txt">建材订单</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("marry", $installModuleArr)#}
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img11.png" alt=""></span>
+          <span class="tool-txt">婚嫁订单</span>
+        </a>
+      </li>
+      {#/if#}
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img12.png" alt=""></span>
+          <span class="tool-txt">酒店订单</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 必备工具 end-->
+
+<!-- 常用频道 -->
+<div class="tool">
+  <div class="tool-tit">
+    <h3>常用频道</h3>
+  </div>
+  <div class="tool-box">
+    <ul class="fn-clear">
+      {#if in_array("tieba", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='tieba'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img21.png" alt=""></span>
+          <span class="tool-txt">发布帖子</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("article", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='article'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img13.png" alt=""></span>
+          <span class="tool-txt">新闻投稿</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("info", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='info'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img14.png" alt=""></span>
+          <span class="tool-txt">发布二手</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("house", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='house'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img15.png" alt=""></span>
+          <span class="tool-txt">发布房源</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("job", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='job'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img16.png" alt=""></span>
+          <span class="tool-txt">找工作</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("marry", $installModuleArr)#}
+      <li>
+        <a href="#">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img17.png" alt=""></span>
+          <span class="tool-txt">婚宴预订</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("dating", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='dating'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img18.png" alt=""></span>
+          <span class="tool-txt">异性交友</span>
+        </a>
+      </li>
+      {#/if#}
+      {#if in_array("huodong", $installModuleArr)#}
+      <li>
+        <a href="{#getUrlPath service='member' template='huodong'#}">
+          <span class="tool-img"><img src="{#$templets_skin#}images/img19.png" alt=""></span>
+          <span class="tool-txt">管理活动</span>
+        </a>
+      </li>
+      {#/if#}
+    </ul>
+  </div>
+</div>
+<!-- 常用频道 end-->
+
+<!-- 帮助 -->
+<div class="help">
+  <a href="{#getUrlPath service='member' template='service'#}" class="help-box">
+    <div class="service">
+      <i class="icon-1"></i>
+      <span>客服/帮助</span>
+      <span class="grey">在线客服、帮助中心</span>
+    </div>
+  </a>
+  <a href="{#getUrlPath service='member' template='security'#}" class="help-box">
+    <div class="service center">
+      <i class="icon-2"></i>
+      <span>安全中心</span>
+      <span class="grey">手机绑定、修改密码</span>
+    </div>
+  </a>
+  <a href="{#getUrlPath service='member' template='setting'#}" class="help-box" id="appSetting">
+    <div class="service center">
+      <i class="icon-3"></i>
+      <span>系统设置</span>
+      <span class="grey">推送、缓存、版本</span>
+    </div>
+  </a>
+</div>
+<!-- 帮助 end-->
+
+{#include file="../../siteConfig/touch_bottom.html"#}
+
+<script src="{#$templets_skin#}js/index.js?v=2"></script>
+</body>
+</html>

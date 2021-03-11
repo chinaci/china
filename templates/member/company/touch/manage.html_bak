@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>管理我发布的信息 - {#$cfg_webname#}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage{#if $module != ''#}-{#$module#}{#/if#}.css?v=2">
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#};
+var module = '{#$module#}', atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+var editUrl = '{#getUrlPath service="member" template="fabu" action="$module"#}';
+//竞价默认价格，此值可在后台分类信息设置中修改
+var bidDefault = 5;
+//竞价默认增加预算价格，此值可在后台分类信息设置中修改
+var bidDefaultAdd = 2;
+</script>
+</head>
+<body>
+
+	{#if $module == 'house'#}
+		{#if $type == 'sale'#}
+			{#$tit = '二手房'#}
+		{#elseif $type == 'sp'#}
+			{#$tit = '商铺'#}
+			{#$sx = '<div class="sel"> <select class="" name=""> <option value="0">出租</option> <option value="1">出售</option> <option value="2">转让</option> </select> </div>'#}
+		{#elseif $type == 'xzl'#}
+			{#$tit = '写字楼'#}
+			{#$sx = '<div class="sel"> <select class="" name=""> <option value="0">出租</option> <option value="1">出售</option> </select> </div>'#}
+		{#elseif $type == 'zu'#}
+			{#$tit = '租房'#}
+			{#$sx = '<div class="sel"> <select class="" name=""> <option value="0">全部</option> <option value="1">整租</option> <option value="2">合租</option> </select> </div>'#}
+		{#elseif $type == 'cf'#}
+			{#$tit = '厂房'#}
+			{#$sx = '<div class="sel"> <select class="" name=""> <option value="0">出租</option> <option value="2">出售</option> <option value="1">转让</option> </select> </div>'#}
+		{#/if#}
+		{#$pageTitle = '管理'|cat:$tit#}
+	{#elseif $module == 'info'#}
+		{#$pageTitle = '管理信息'#}
+	{#elseif $module == 'article'#}
+		{#$pageTitle = '管理投稿'#}
+	{#elseif $module == 'tieba'#}
+		{#$pageTitle = '全部帖子'#}
+	{#elseif $module == 'huodong'#}
+		{#$pageTitle = '我的活动'#}
+	{#/if#}
+	{#include file="top.html"#}
+
+	<div class="tab">
+			{#$sx#}
+    	<ul{#if $module == 'huodong'#} data-url="{#getUrlPath service='huodong' template='fabu' param='id=%id'#}" data-reg="{#getUrlPath service='member' template='huodong-reg' id="%id"#}"{#/if#}>
+	    	<li data-id="" class="type curr"><a href="javascript:;">全部信息</a></li>
+	    	<li class="type" data-id="1"><a href="javascript:;">已审核</a></li>
+	    	<li class="type" data-id="0"><a href="javascript:;">未审核</a></li>
+	    	<li class="type" data-id="2"><a href="javascript:;">审核拒绝</a></li>
+    	</ul>
+  	</div>
+	<div class="count">
+		<ul>
+			<li>共有<span id="total">0</span>{#if $module == 'house'#}套房源{#elseif $module == 'info'#}条信息{#elseif $module == 'article'#}条投稿{#elseif $module == 'tieba'#}条帖子{#elseif $module == 'huodong'#}个活动{#/if#}</li>
+			<li>共有<span id="audit">0</span>{#if $module == 'house'#}套房源{#elseif $module == 'info'#}条信息{#elseif $module == 'article'#}条投稿{#elseif $module == 'tieba'#}条帖子{#elseif $module == 'huodong'#}个活动{#/if#}</li>
+			<li>共有<span id="gray">0</span>{#if $module == 'house'#}套房源{#elseif $module == 'info'#}条信息{#elseif $module == 'article'#}条投稿{#elseif $module == 'tieba'#}条帖子{#elseif $module == 'huodong'#}个活动{#/if#}</li>
+			<li>共有<span id="refuse">0</span>{#if $module == 'house'#}套房源{#elseif $module == 'info'#}条信息{#elseif $module == 'article'#}条投稿{#elseif $module == 'tieba'#}条帖子{#elseif $module == 'huodong'#}个活动{#/if#}</li>
+		</ul>
+	</div>
+	<!-- 列表 s -->
+	<div class="house-list esf-list" id="list"></div>
+	<!-- 列表 s -->
+
+	<div class="bidJ-pay">
+		<div class="fn-clear"><a href="javascript:;" class="close fn-right"></a></div>
+		<div class="state1">
+			<p class="tit">竞价时长</p>
+			<ul class="day">
+				<li>1天</li><li class="on">3天</li><li>7天</li><li>15天</li><li>30天</li><li>90天</li>
+			</ul>
+			<div class="inpbox">
+				<span>自定义时长</span>
+				<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" id="dayCount">天
+			</div>
+			<div class="inpbox">
+				<span>每日预算</span>
+				<input type="text" onkeyup="value=value.replace(/[^\d.]/g,'')" id="dayprice">元
+			</div>
+			<div class="inpbox">
+				<span>总计价格</span>
+				<span class="total" id="totalPrice">{#echoCurrency type='symbol'#}<em></em></span>
+			</div>
+		</div>
+		<div class="state2 fn-hide">
+			<div class="inpbox">
+				<span>当前每日预算</span>
+				<font class="des" id="currPrice"></font>元
+			</div>
+			<div class="inpbox">
+				<span>竞价结束时间</span>
+				<font class="des" id="bidEnd"></font>
+			</div>
+			<div class="inpbox">
+				<span>每日增加预算</span>
+				<input type="text" onkeyup="value=value.replace(/[^\d.]/g,'')" class="bid-inp">元
+			</div>
+			<div class="inpbox">
+				<span>需要支付</span>
+				<font class="des total-price"></font>元
+			</div>
+		</div>
+		<div class="bidbtn"><a href="javascript:;">马上竞价</a></div>
+	</div>
+
+
+	<!-- 选择支付方式 s -->
+	<div class="paybox">
+		<div class="tit">选择支付方式</div>
+		<ul>
+			<li class="pay1 on" data-type="wxpay">微信支付<i class="radio"></i></li>
+			<li class="pay2" data-type="alipay">支付宝支付<i class="radio"></i></li>
+			<li class="pay3" data-type="unionpay">银联卡支付<i class="radio"></i></li>
+			<li class="pay4" data-type="paypal">PayPal支付<i class="radio"></i></li>
+			<li class="pay5" data-type="tenpay">财付通支付<i class="radio"></i></li>
+		</ul>
+		<a href="javascript:;" class="paybtn" data-url="{#$cfg_basehost#}/include/ajax.php?service={#$module#}&action=bid&aid=$aid&type={#$type#}&day=$day&price=$price&paytype=$paytype" data-url1="{#$cfg_basehost#}/include/ajax.php?service={#$module#}&action=bidIncrease&aid=$aid&type={#$type#}&price=$price&paytype=$paytype">马上竞价</a>
+	</div>
+	<!-- 选择支付方式 e -->
+
+	<div class="mask"></div>
+
+</body>
+
+<script src="{#$templets_skin#}js/public.js?v=100"></script>
+<script src="{#$templets_skin#}js/manage-{#$module#}.js?v=8"></script>
+</body>
+</html>

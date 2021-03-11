@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>用户登录</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/login.css?v=2">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v=100"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+</script>
+</head>
+
+<body>
+<div class="container">
+	<!-- 头部 -->
+	<div class="header">
+		<div class="header-l"><a href="javascript:history.go(-1)"><img src="{#$templets_skin#}images/arrow.png" alt=""></a></div>
+		<div class="header-c">登录</div>
+		<div class="header-r"><a href="{#$cfg_basehost#}/register.html">注册</a></div>
+	</div>
+	<!-- 头部 end -->
+	<div class="logo"><a href="{#$cfg_basehost#}"><img src="{#$cfg_weblogo#}" alt=""></a></div>
+	<div class="form-box">
+		<form id="loginForm" action="">
+			<div class="inpbox">
+				<i class="icon icon1"></i>
+				<input type="text" name="" placeholder="用户名/邮箱/手机号" class="phone">
+			</div>
+			<div class="form-newpw inpbox{#if $loginCode#} bb{#/if#}">
+				<i class="icon icon2"></i>
+				<input type="password" name="" placeholder="密码" class="password">
+				<a href="javascript:;" class="psw_img"></a>
+			</div>
+			{#if $loginCode == 1#}
+			<div class="form-newpw inpbox">
+				<i class="icon icon3"></i>
+				<input type="text" name="" placeholder="验证码" class="vericode">
+				<span class="code-box"><img src="{#$cfg_basehost#}/include/vdimgck.php" title="看不清？点击换一张" id="verifycode"></span>
+			</div>
+			{#/if#}
+			<div class="login-btn"><input type="submit" value="登录"></div>
+			<div class="find-btn"><a href="{#$cfg_basehost#}/fpwd.html">找回密码</a></div>
+		</form>
+	</div>
+	<div class="other-login">
+		<div class="other-login-tit">
+			<span>其他方式登录</span>
+		</div>
+		<div class="other-login-img">
+			{#siteConfig action="getLoginConnect" return="login"#}
+			{#if $login.code == "wechat"#}
+			<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" class="wechat"><img src="{#$templets_skin#}images/weixin.png"></a>
+			{#elseif $login.code == "qq"#}
+			<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}"><img src="{#$templets_skin#}images/qq.png"></a>
+			{#elseif $login.code == "sina"#}
+			<a href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}"><img src="{#$templets_skin#}images/weibo.png"></a>
+			{#/if#}
+			{#/siteConfig#}
+		</div>
+	</div>
+</div>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<!-- <script src="{#$templets_skin#}js/public.js?v=100"></script> -->
+<script src="{#$templets_skin#}js/login.js?v=24"></script>
+</body>
+</html>
