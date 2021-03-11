@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>{#$shop_title#}</title>
+    <meta name="keywords" content="{#$shop_keywords#}" />
+    <meta name="description" content="{#$shop_description#}" />
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}';
+
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+    </script>
+</head>
+<body class="w1200">
+<!--头部 s-->
+{#$pageCurr = 'index'#}
+{#include file="top.html"#}
+<!--头部 e-->
+<div class="bg_box">
+    <div class="wrap fn-clear">
+
+        <!--广告轮播 s-->
+        <div class="adbox" id="adbox">
+            <div class=" slideBox" id="slideBox">
+                <div class="wrap">
+                    <div class="hd">
+                        <ul></ul>
+                        <a class="prev" href="javascript:void(0)"></a>
+                        <a class="next" href="javascript:void(0)"></a>
+                    </div>
+                </div>
+                <div class="bd">
+                    <ul>
+                        {#myad title="商城_模板二_电脑端_广告二" type="slide"#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--广告轮播 e-->
+
+        <!--商家入驻 s-->
+        <div class="setted">
+            <div class="info">
+                <div class="tit">
+                    <a target="_blank" href="{#getUrlPath service='member' type='user' template='enter'#}"><img src="{#$templets_skin#}images/ru.png"></a>
+                    <a target="_blank" href="{#getUrlPath service='member' template='config-shop'#}"><img src="{#$templets_skin#}images/gua.png"></a>
+                </div>
+                <h3>快讯 <a href="{#getUrlPath service="shop" template="news"#}"> 更多 ></a></h3>
+                {#shop action="news" return="nlist" pageSize="7"#}
+                <p><a target="_blank" {#if $_bindex.nlist%2==0#}class="cut"{#/if#} href="{#$nlist.url#}"><span>【{#$nlist.typename#}】</span>{#$nlist.title#}</a></p>
+                {#/shop#}
+                <div class="qr_box"><img src="{#$cfg_weixinQr#}"></div>
+            </div>
+            <div class="bg"></div>
+        </div>
+        <!--商家入驻 e-->
+    </div>
+</div>
+
+
+<div class="contain">
+    <div class="wrap">
+        <!--限时抢购 s-->
+        <div class="fn-clear secskill qianggou bottom30">
+            <div class="left">
+                <p class="tit">限时抢购</p>
+                <p class="en">LAST MINUTE</p>
+                <p class="dec">距离本场结束还剩</p>
+                <img src="{#$templets_skin#}images/bg_qiang.png" alt="">
+                <div class="djs">
+                    <div class="line"></div>
+                    <div class="daojishibox"><span></span><span></span><span></span><span></span></div>
+                    <div class="daojishi"><span class="h">00</span><span class="m">00</span><span class="s">00</span><span class="hm">00</span></div>
+                </div>
+            </div>
+            <ul class="mid fn-clear" id="qgou">
+            </ul>
+            <div class="right">
+                    <div class="slideBox slideBox1">
+                        <div class="bd">
+                            <ul class="fn-clear">
+                                {#myad title="商城_模板二_电脑端_广告三" type="slide"#}
+                            </ul>
+                        </div>
+                        <div class="hd"><ul class="fn-clear"></ul></div>
+                    </div>
+            </div>
+        </div>
+        <!--限时抢购 e-->
+
+        <!--领券中心 热销榜单  商城资讯 s-->
+        <div class="fn-clear part2 bottom30">
+            <!-- <div class="lquan">
+                <h2><a href="{#getUrlPath service="shop" template="quan"#}">领券中心 <span>优惠不可错过 GO></span></a></h2>
+                <div class="slideBox slideBox2">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            <li class="item"><a href="#" class="fn-clear">
+                                <div class="img">
+                                    <p class="price"><e>¥</e>300 </p>
+                                    <p class="contact">满4999可用</p>
+                                </div>
+                                <div class="info">
+                                    <p class="name">格力空调店铺满减优惠券</p>
+                                    <p class="zhu">仅购买指定型号空调</p>
+                                    <div class="count">已抢 60%</div>
+                                    <div class="progress">
+                                        <b style="width:60%"></b>
+                                    </div>
+                                    <span class="btn curr">已领取</span>
+                                </div>
+                            </a></li>
+
+                            <li class="item"><a href="#" class="fn-clear">
+                                <div class="img">
+                                    <p class="price"><e>¥</e>300 </p>
+                                    <p class="contact">满4999可用</p>
+                                </div>
+                                <div class="info">
+                                    <p class="name">格力空调店铺满减优惠券</p>
+                                    <p class="zhu">仅购买指定型号空调</p>
+                                    <div class="count">已抢 60%</div>
+                                    <div class="progress">
+                                        <b style="width:60%"></b>
+                                    </div>
+                                    <span class="btn">立即领取</span>
+                                </div>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+            </div> -->
+            <!--每日推荐s-->
+            <div class="hotsale rec">
+                <h2><a target="_blank" href="{#getUrlPath service="shop" template="list"#}?flag=0"><p class="c">每日推荐 <span>优惠不可错过 GO></span></p></a></h2>
+                <div class="slideBox slideBox2">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#shop action="slist" return="Flist" flag="0" orderby="1" pageSize="9"#}
+                            <li class="item"><a target="_blank" href="{#$Flist.url#}" class="fn-clear">
+                                <div class="hot-item fn-clear">
+                                    <img src="{#if $Flist.litpic#}{#changeFileSize url={#$Flist.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                    <div class="info">
+                                        <p class="name">{#$Flist.title#}</p>
+                                        <p class="pc"><span class="price"><e>{#echoCurrency type='symbol'#}</e>{#$Flist.price#}</span> <span class="count">销量 : {#$Flist.sales#}笔</span></p>
+                                    </div>
+                                </div>
+                                <i class="num">{#$_bindex.Flist#}</i>
+                                {#if $_bindex.Flist==1#}
+                                <span class="fir"></span>
+                                {#/if#}
+                            </a></li>
+                            {#/shop#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+            </div>
+            <!--每日推荐d-->
+            <!--热销榜单-->
+            <div class="hotsale">
+                <h2><a target="_blank" href="{#getUrlPath service="shop" template="list"#}"><p class="c">热销榜单 <span>大家都在买</span></p></a></h2>
+                <div class="slideBox slideBox3">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#shop action="slist" return="slist" orderby="1" pageSize="9"#}
+                            <li class="item"><a target="_blank" href="{#$slist.url#}" class="fn-clear">
+                                <div class="hot-item fn-clear">
+                                    <img src="{#if $slist.litpic#}{#changeFileSize url={#$slist.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                    <div class="info">
+                                        <p class="name">{#$slist.title#}</p>
+                                        <p class="pc"><span class="price"><e>{#echoCurrency type='symbol'#}</e>{#$slist.price#}</span> <span class="count">销量 : {#$slist.sales#}笔</span></p>
+                                    </div>
+                                </div>
+                                <i class="num">{#$_bindex.slist#}</i>
+                                {#if $_bindex.slist==1#}
+                                <span class="fir"></span>
+                                {#/if#}
+                            </a></li>
+                            {#/shop#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+            </div>
+
+            <!--商城资讯-->
+            <div class="shanginfo">
+                <h2><a target="_blank" href="{#getUrlPath service="shop" template="news"#}">商城资讯 <span>多方资讯紧随潮流 GO></span></a> </h2>
+                <div class="slideBox slideBox4">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#shop action="news" return="newslist" orderby="1" pageSize="3"#}
+                            <li class="item"><a target="_blank" href="{#$newslist.url#}" class="fn-clear">
+                                <img src="{#if $newslist.litpic#}{#changeFileSize url={#$newslist.litpic#} type='large'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                <P class="name">{#$newslist.title#}</P>
+                                <p class="content">{#$newslist.note#}</p>
+                            </a></li>
+                            {#/shop#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+
+            </div>
+        </div>
+        <!--领券中心 热销榜单  商城资讯 e-->
+
+        <!--准点秒杀 s-->
+        <div class="fn-clear secskill punctuality bottom30">
+            <div class="left">
+                <p class="tit">准点秒杀</p>
+                <p class="en">FLASH DEALS</p>
+                <p class="dec">1{#echoCurrency type='short'#}秒杀 数量有限 <br>
+                    只拼手速</p>
+                <img src="{#$templets_skin#}images/bg_seckill.png" alt="">
+            </div>
+            <ul class="mid fn-clear">
+                {#shop action="slist" limited="5" pageSize=4 return=list#}
+                <li><a target="_blank" href="{#$list.url#}">
+                    <img src="{#if !empty($list.litpic)#}{#changeFileSize url={#$list.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                    <p class="name">{#$list.title#}</p>
+                    <p class="price"><s> {#echoCurrency type='symbol'#}{#$list.mprice#}</s> <span><i>{#echoCurrency type='symbol'#}</i>{#$list.price#} </span></p>
+                </a></li>
+                {#/shop#}
+                {#if $pageInfo.totalCount < 1#}
+                <div class="loading">暂无抢购活动</div>
+                {#/if#}
+
+            </ul>
+            <div class="right">
+                <div class="slideBox slideBox1">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#myad title="商城_模板二_电脑端_广告四" type="slide"#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--准点秒杀 e-->
+        {#if in_array("integral", $installModuleArr)#}
+        <!--积分换购 s-->
+        <div class="fn-clear secskill jifen bottom30">
+            <div class="left">
+                <p class="tit">积分换购</p>
+                <p class="en">POINTS<br>
+                    REDEMPTION</p>
+                <p class="dec">0{#echoCurrency type='short'#}换购 积分抵现<br>
+                    积分不再闲置</p>
+                <img src="{#$templets_skin#}images/bg_jifen.png" alt="">
+            </div>
+            <ul class="mid fn-clear">
+                {#integral action="slist" flat="0" pageSize=4 return=list#}
+                <li><a target="_blank" href="{#$list.url#}">
+                    <img src="{#if !empty($list.litpic)#}{#$list.litpic#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                    <p class="name">{#$list.title#}</p>
+                    <p class="integral "><e>{#echoCurrency type='symbol'#} </e>{#$list.price#} + {#$list.point#}<span>积分</span> </p>
+                </a></li>
+                {#/integral#}
+            </ul>
+            <div class="right">
+                <div class="slideBox slideBox1">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#myad title="商城_模板二_电脑端_广告五" type="slide"#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+            </div>
+        </div>
+        <!--积分换购 e-->
+        {#/if#}
+
+        <!--推荐商家 s-->
+        <div class="recommoend bottom30">
+                <h2>推荐商家 <a href="#">所有商家 ></a></h2>
+                <div class="slideBox slideBox5">
+                    <div class="bd">
+                        <ul class="fn-clear">
+                            {#shop action="store" return="list" rec="1" pageSize="9"#}
+                            <li class="item"><a target="_blank" href="{#$list['url']#}" class="fn-clear">
+                              <div class="tit fn-clear">
+                                  <img src="{#if !empty($list['logo'])#}{#changeFileSize url="{#$list['logo']#}" type="large"#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                  <div class="info">
+                                      <p class="name">{#$list['title']#}</p>
+                                      <p class="tel">{#if $list.tel#}电话 : {#$list['tel']#}{#/if#} {#if $list.wechatcode#}<span class="wx">微信 : {#$list.wechatcode#}</span>{#/if#}</p>
+                                      <p class="sure">{#if $list['userinfo']['certifyState']==1#}<span class="sm"><i></i>实名认证</span>{#/if#} <span class="bz"><i></i>保证金</span><span class="wx"><i></i>微信支付</span><span class="zf"><i></i>支付宝</span></p>
+                                  </div>
+                              </div>
+                                {#shop action="slist" return="row" store={#$list.id#} pageSize="1"#}
+                                <div class="img_big">
+                                    <img src="{#if !empty($row['litpic'])#}{#changeFileSize url={#$row.litpic#} type='large'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                    <div class="msg">
+                                        <div class="info">
+                                            <p class="name">{#$row.title#}</p>
+                                            <p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$row.price#}</p>
+                                        </div>
+                                        <div class="bg"></div>
+                                    </div>
+                                </div>
+                                {#$noid=$row.id#}
+                                {#/shop#}
+                                <div class="img_small fn-clear">
+                                    {#shop action="slist" return="row" store={#$list.id#} pageSize="4"#}
+                                    {#if $row.id!=$noid#}
+                                    <div class="s_item">
+                                        <div class="imgbox">
+                                            <img  src="{#if !empty($row['litpic'])#}{#changeFileSize url={#$row.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt="">
+                                            <div class="s_msg">
+                                                <span class="name">{#$row.title#}</span>
+                                                <div class="bg"></div>
+                                            </div>
+
+                                        </div>
+                                        <p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$row.price#}</p>
+                                    </div>
+                                    {#/if#}
+                                    {#/shop#}
+                                </div>
+                                <div class="qr_box">
+                                    <e class="qr_bg"></e>
+                                    <i class="qr_icon"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$list['url']#}" alt=""></i>
+                                </div>
+                            </a></li>
+                            {#/shop#}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul class="fn-clear"></ul></div>
+                </div>
+        </div>
+        <!--推荐商家 e-->
+        {#shop action="type" son="1" return="type" pageSize="4" #}
+        <!--1F 百货食品 s-->
+        {#if $_bindex.type==3#}
+        <div class="ad bottom30 fn-clear">
+            {#myad title="商城_模板二_电脑端_广告六" type="slide"#}
+        </div>
+        {#/if#}
+        <div class="general {#if $_bindex.type==1#}Baihuo{#elseif $_bindex.type==2#}Digital{#elseif $_bindex.type==3#}Muyin{#elseif $_bindex.type==4#}Meizhuang{#/if#} bottom30">
+            <h2 class="title"><strong>{#$_bindex.type#}F</strong>{#$type.typename#} <a target="_blank" href="{#getUrlPath service='shop' template='list'#}?typeid={#$type.id#}">查看更多 ></a>
+                <p class="gen_tit">
+                    <span class="active">热卖推荐</span>
+                    {#$m=1#}
+                    {#shop action="type" return="type1" type=$type.id pageSize="2"#}
+                    <span>{#$type1.typename#}</span>
+                    {#if $m==1#}
+                    {#$tid=$type1.id#}
+                    {#elseif $m==2#}
+                    {#$tid1=$type1.id#}
+                    {#/if#}
+                    {#$m=$m+1#}
+                    {#/shop#}
+                </p>
+            </h2>
+            <div class="content">
+                <div class="g_item fn-clear show">
+                    <div class="left">{#myad title="商城_模板二_电脑端_楼层{#$_bindex.type#}广告"#}
+                    <div class="fl">
+                        {#shop action="type" return="type1" type=$type.id#}
+                        <a target="_blank" href="{#getUrlPath service='shop' template='list'#}?typeid={#$type1.id#}">{#$type1.typename#}</a>
+                        {#/shop#}
+                    </div>
+                    </div>
+
+                    <div class="mid">
+                        <div class="slideBox {#if $_bindex.type==1#}slideBox6{#elseif $_bindex.type==2#}slideBox7{#elseif $_bindex.type==3#}slideBox8{#elseif $_bindex.type==4#}slideBox9{#/if#}">
+                            <div class="bd">
+                                <ul class="fn-clear">
+                                    {#myad title="商城_模板二_电脑端_楼层{#$_bindex.type#}幻灯片广告"#}
+                                </ul>
+                            </div>
+                            <div class="hd"><ul class="fn-clear"></ul></div>
+                            <div class="pp fn-clear">
+                                {#shop action="brand" return="category" category=$type.id pageSize="6"#}
+                                <span><a target="_blank" href="{#getUrlPath service='shop' template='list'#}?brand={#$category.id#}"><img src="{#$category.logo#}" alt=""></a></span>
+                                {#/shop#}
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="right fn-clear">
+                        {#shop action="slist" return="row" typeid={#$type.id#} pageSize="6"#}
+                        <li><a target="_blank" href="{#$row.url#}"><img src="{#if !empty($row['litpic'])#}{#changeFileSize url={#$row.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt=""><p class="name">{#$row.title#}</p><p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$row.price#}</p></a></li>
+                        {#/shop#}
+                    </ul>
+                </div>
+
+                <div class="g_item chaoliu">
+                    <ul class="fn-clear">
+                        {#shop action="slist" return="row" typeid={#$tid#} pageSize="12"#}
+                        <li><a target="_blank" href="{#$row.url#}"><img src="{#if !empty($row['litpic'])#}{#changeFileSize url={#$row.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt=""><p class="name">{#$row.title#}</p><p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$row.price#}</p></a></li>
+                        {#/shop#}
+                    </ul>
+                </div>
+                <div class="g_item chaoliu">
+                    <ul class="fn-clear">
+                        {#shop action="slist" return="row" typeid={#$tid1#} pageSize="12"#}
+                        <li><a target="_blank" href="{#$row.url#}"><img src="{#if !empty($row['litpic'])#}{#changeFileSize url={#$row.litpic#} type='middle'#}{#else#}{#$cfg_basehost#}static/images/404.jpg{#/if#}" alt=""><p class="name">{#$row.title#}</p><p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$row.price#}</p></a></li>
+                        {#/shop#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--1F 百货食品 e-->
+        {#/shop#}
+
+    </div>
+
+</div>
+
+<!--底部 s-->
+{#include file="bottom.html"#}
+<!--底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+  <script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

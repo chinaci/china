@@ -1,0 +1,139 @@
+{#include file="../../siteConfig/top1.html"#}
+<script>
+	var productUrl = '{#getUrlPath service="shop" template="list"#}', storeUrl = '{#getUrlPath service="shop" template="store"#}';
+</script>
+<div class="topad wrap">{#myad title="商城_模板二_电脑端_广告一"#}</div>
+
+<div class="header wrap fn-clear">
+	<h1 class="logo"><a href="{#$shop_channelDomain#}" title="{#$shop_channelName#}"><img src="{#$shop_logoUrl#}" alt="{#$shop_channelName#}" /></a></h1>
+
+	<div class="search">
+		<div class="type">
+			<span {#if $searchCurr=="" || $keywords==""#}class="curr"{#/if#}>商品</span>
+			<span {#if $searchCurr=="store" && $keywords!=""#}class="curr"{#/if#}>店铺</span>
+		</div>
+		<div class="formbox">
+			<s></s>
+			{#if $searchCurr=="store" && $keywords!=""#}
+			<form id="sform" name="search" method="post" action="{#getUrlPath service='shop' template='store'#}">
+			{#else#}
+			<form id="sform" name="search" method="post" action="{#getUrlPath service='shop' template='list'#}">
+			{#/if#}
+				<input name="token" id="token" value="{#$token#}" type="hidden" />
+				<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="输入你要搜索的关键词" data-role="input" />
+				<button id="search_button" type="submit" class="btn-s">搜索</button>
+			</form>
+
+			{#if $imagesearch#}
+			<div class="imgsearch">
+				<span class="imgsearch-btn"></span>
+				<input type="file" name="Filedata" class="fn-hide" id="Filedata_imgsearch">
+			</div>
+			{#if $image#}
+			<div class="imgsearch-holder">
+				<div class="img-box">
+					<div class="img-container"><img class="img" src="{#$image#}"></div>
+				</div>
+				<div class="x-btn">
+                  <span class="icon-btn-x">&times;</span>
+                </div>
+			</div>
+			{#/if#}
+			{#/if#}
+
+		</div>
+		<p class="hot-s">
+			{#siteConfig module="shop" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	{#if $cfg_qiandao_state#}<div class="qiandao"><a target="_blank" href="{#getUrlPath service='member' type='user' template='qiandao'#}">签到</a></div>{#/if#}
+
+	<div class="kefu">
+		<s><img src="{#$templets_skin#}images/tell.png" alt=""></s>
+		<p>客服热线</p>
+		{#if $shop_hotline#}{#$shop_hotline#}{#else#}{#$cfg_hotline#}{#/if#}
+	</div>
+</div>
+
+<div class="nav-box">
+	<div class="wrap fn-clear">
+		<div class="lnav">
+			<div class="t-category"><a href="{#getUrlPath service="shop" template="list"#}">所有商品分类</a></div>
+
+			<div class="category-popup">
+				<ul class="fn-clear">
+					{#shop action="type" return="type"#}
+					{#if $_bindex.type > 14#}
+					<li class="fn-hide">
+					{#else#}
+					<li class="fn-clear">
+					{#/if#}
+					<!--<li class="fn-clear">-->
+						<div class="fix">
+								<a href="{#getUrlPath service='shop' template='list'#}?typeid={#$type.id#}" class="name">
+									<!--<s class="iIcon{#$_bindex.type#}"> </s>-->
+									<s class="iIcon{#$_bindex.type#}">
+                                      <img class="img" src="{#$type.iconturl|default: '/static/images/type_default.png'#}" />
+										<!-- <img class="imgh" src="{#$templets_skin#}images/icon{#$_bindex.type#}_h.png"> -->
+									</s>{#$type.typename#}</a>
+								<span>
+									{#$n=1#}
+									{#shop action="type" return="type1" type=$type.id pageSize="2"#}
+									<a href="{#getUrlPath service='shop' template='list'#}?typeid={#$type1.id#}" class="item">{#$type1.typename#}</a>{#if $n==1#}/{#/if#}
+									{#$n=$n+1#}
+									{#/shop#}
+									{#$n=null#}
+								</span>
+						</div>
+						<div class="sub-category fn-clear">
+							<div class="sub">
+							<dl>
+								<dd class="fn-clear">
+									{#shop action="type" return="type1" type=$type.id#}
+									<a href="{#getUrlPath service='shop' template='list'#}?typeid={#$type1.id#}">{#$type1.typename#}</a>
+									{#/shop#}
+								</dd>
+							</dl>
+							</div>
+
+							<div class="brand">
+								<dl>
+									<dt><h2 class="title"><a href="#">推荐品牌</a></h2></dt>
+									<dd class="fn-clear">
+										{#shop action="brand" return="category" category=$type.id pageSize="4"#}
+										<a href="{#getUrlPath service='shop' template='list'#}?brand={#$category.id#}"><img src="{#$category.logo#}" alt=""></a>
+										{#/shop#}
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</li>
+					{#/shop#}
+
+					<li class="fn-clear">
+						<div class="fix">
+							<a class="name" href="{#getUrlPath service="shop" template="list"#}"><s class="iIcon15"><img class="img" src="{#$templets_skin#}images/icon20.png" /><img class="imgh" src="{#$templets_skin#}images/icon20_h.png" /></s> 更多分类</a>
+						</div>
+					</li>
+				</ul>
+
+				<div class="bg"></div>
+			</div>
+		</div>
+
+		<ul class="nav fn-clear">
+			<li {#if $pageCurr == "index"#} class="currpage"{#/if#}><a href="{#$shop_channelDomain#}">{#$shop_channelName#}</a></li>
+			<li {#if $pageCurr == "qianggou"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="qianggou"#}">限时抢购</a></li>
+			<li {#if $pageCurr == "secKill"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="secKill"#}">准点秒杀</a></li>
+			<!-- <li {#if $pageCurr == "quan"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="quan"#}">领券中心</a></li> -->
+			<li {#if $pageCurr == "store"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="store"#}">推荐商家</a></li>
+			<li {#if $pageCurr == "brand"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="brand"#}">品牌库</a></li>
+			<li {#if $pageCurr == "news"#} class="currpage"{#/if#}><a href="{#getUrlPath service="shop" template="news"#}">商城资讯</a></li>
+			{#if in_array("integral", $installModuleArr)#}
+			<li><a href="{#getUrlPath service='integral' template='index'#}">积分商城</a></li>
+			{#/if#}
+		</ul>
+	</div>
+</div>

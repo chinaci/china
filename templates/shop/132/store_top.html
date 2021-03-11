@@ -1,0 +1,107 @@
+{#include file="../../siteConfig/top1.html"#}
+<script>
+	var productUrl = '{#getUrlPath service="shop" template="list"#}', storeUrl = '{#getUrlPath service="shop" template="store"#}';
+</script>
+<div class="topad wrap">{#myad title="商城_模板二_电脑端_广告一"#}</div>
+
+<div class="header wrap fn-clear">
+	<h1 class="logo"><a href="{#$shop_channelDomain#}" title="{#$shop_channelName#}"><img src="{#$shop_logoUrl#}" alt="{#$shop_channelName#}" /></a></h1>
+
+	<div class="search">
+		<div class="type">
+			<span {#if $searchCurr=="" || $keywords==""#}class="curr"{#/if#}>商品</span>
+			<span {#if $searchCurr=="store" && $keywords!=""#}class="curr"{#/if#}>店铺</span>
+		</div>
+		<div class="formbox">
+			<s></s>
+			{#if $searchCurr=="store" && $keywords!=""#}
+			<form id="sform" name="search" method="get" action="{#getUrlPath service='shop' template='store'#}">
+			{#else#}
+			<form id="sform" name="search" method="get" action="{#getUrlPath service='shop' template='list'#}">
+			{#/if#}
+				<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="输入你要搜索的关键词" data-role="input" />
+				<button id="search_button" type="submit" class="btn-s">搜索</button>
+			</form>
+
+			{#if $imagesearch#}
+			<div class="imgsearch">
+				<span class="imgsearch-btn"></span>
+				<input type="file" name="Filedata" class="fn-hide" id="Filedata_imgsearch">
+			</div>
+			{#if $image#}
+			<div class="imgsearch-holder">
+				<div class="img-box">
+					<div class="img-container"><img class="img" src="{#$image#}"></div>
+				</div>
+				<div class="x-btn">
+                  <span class="icon-btn-x">&times;</span>
+                </div>
+			</div>
+			{#/if#}
+			{#/if#}
+
+		</div>
+		<p class="hot-s">
+			{#siteConfig module="shop" action="hotkeywords" return="hotkeywords"#}
+			<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+			{#/siteConfig#}
+		</p>
+	</div>
+	{#if $cfg_qiandao_state#}<div class="qiandao"><a target="_blank" href="{#getUrlPath service='member' type='user' template='qiandao'#}">签到</a></div>{#/if#}
+
+	<div class="kefu">
+		<s><img src="{#$templets_skin#}images/tell.png" alt=""></s>
+		<p>客服热线</p>
+		{#if $shop_hotline#}{#$shop_hotline#}{#else#}{#$cfg_hotline#}{#/if#}
+	</div>
+</div>
+
+<div class="nav-box">
+    <div class="wrap fn-clear">
+        <div class="lnav">
+        <div class="all-category"><a  href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#}#}">全部分类</a></div>
+        <div class="category-popup wrap">
+            <ul class="fn-clear">
+                {#shop action="category" store={#$detail_id#}#}
+                <li><a href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$row.id#}#}" class="ycate">{#$row.typename#}</a>
+                    <div class="sub-category fn-clear">
+                        <em></em>
+                        <dl>
+                            {#$j=1#}
+                            {#shop action="category" store={#$detail_id#} type={#$row.id#} return="childlist"#}
+                            <dd><a href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$childlist.id#}#}">{#$childlist.typename#}</a></dd>
+                            {#if $j%5==0#}
+                            </dl>
+                            <dl>
+                            {#/if#}
+                            {#$j=$j+1#}
+                            {#/shop#}
+                    </div>
+                </li>
+                {#/shop#}
+            </ul>
+        </div>
+        </div>
+
+        <ul class="nav fn-clear">
+            <li class="sypagebtn"><a href="{#$shop_channelDomain#}">首页</a></li>
+            <li><a href="#"></a></li>
+            {#shop action="category" store={#$detail_id#} pageSize="4"#}
+            <li><a href="{#getUrlPath service='shop' template='store-detail' id={#$detail_id#} typeid={#$row.id#}#}">{#$row.typename#}</a></li>
+            {#/shop#}
+            {#if $detail_qq#}
+            <li class="qqkfu"><a >QQ客服</a>
+                <div class="qqkfu_box"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$detail_qq#}" alt=""><div class="bg"></div></div>
+           </li>
+            {#/if#}
+
+            {#if $detail_wechatqrSource#}
+            <li class="wxkfu"><a >微信客服</a>
+                <div class="wxkfu_box"><img src="{#$detail_wechatqr#}" alt=""><div class="bg"></div></div>
+          	</li>
+            {#/if#}
+        </ul>
+
+
+    </div>
+</div>

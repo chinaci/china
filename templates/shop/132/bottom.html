@@ -1,0 +1,73 @@
+<div class="ensure wrap">
+  <ul class="fn-clear">
+    <li class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}images/icon_01.png" alt=""></div>
+      <h2>官方自营</h2>
+      <p>商城全场商品均为自营</p>
+    </li>
+    <li class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}images/icon_02.png" alt=""></div>
+      <h2>正品承诺</h2>
+      <p>厂家直供，保证质量</p>
+    </li>
+    <li class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}images/icon_03.png" alt=""></div>
+      <h2>极速物流</h2>
+      <p>顺丰速运，次日即可送达</p>
+    </li>
+    <li class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}images/icon_04.png" alt=""></div>
+      <h2>全国联保</h2>
+      <p>国税发票，质保无忧</p>
+    </li>
+    <li class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}images/icon_05.png" alt=""></div>
+      <h2>门店保障</h2>
+      <p>50家实体门店遍布全国</p>
+    </li>
+  </ul>
+</div>
+{#include file='../../siteConfig/public_foot_v3.html' module='shop' theme='gray'#}
+
+<div class="floatnav">
+  <div class="topcart">
+    <a href="{#getUrlPath service='shop' template='cart'#}" class="cart-btn"><span class="icon"></span><i>0</i>购物车
+      <!--<s><em></em></s>-->
+    </a>
+    <div class="cart-con">
+      <!--<div class="spacer"></div>-->
+      <p class="empty">{#$langData['shop'][5][64]#}</p>
+      <div class="cartlist"><ul></ul><div class="cartft fn-clear">{#$langData['siteConfig'][19][689]|replace:'1':'<em></em>'#} {#$langData['siteConfig'][19][664]#}：<span class="pric">{#echoCurrency type='symbol'#}<strong>0.00</strong></span> <small>({#$langData['shop'][0][11]#})</small><a href="{#getUrlPath service='shop' template='cart'#}" class="cartbtn">{#$langData['shop'][5][65]#}</a></div></div>
+    </div>
+  </div>
+
+  <div class="sc"><a target="_blank" href="{#getUrlPath service="member" type="user" template="collect-shop"#}"></a><div class="scdex">我的收藏</div></div>
+
+
+  <div class="code">
+    <i></i>
+    <p>手机购物</p>
+  </div>
+  <div class="qrcode" id="qrcode">
+      <s></s>
+      <p><a href="{#getUrlPath service="siteConfig" template="mobile"#}" target="_blank"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150" /></a></p>
+  </div>
+
+<div class="gotop">
+  <a href="#top"><i></i></a>
+</div>
+
+</div>
+
+
+
+<!--<div class="btntop">-->
+  <!--<a href="javascript:;" class="top" title="{#$langData['shop'][5][0]#}">{#$langData['shop'][5][0]#}</a>-->
+  <!--<a href="javascript:;" class="close" title="{#$langData['siteConfig'][6][15]#}">{#$langData['siteConfig'][6][15]#}</a>-->
+<!--</div>-->
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type='text/javascript' src='{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js?v={#$cfg_staticVersion#}'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>

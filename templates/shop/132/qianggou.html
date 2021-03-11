@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>限时抢购-{#$shop_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/qianggou.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	jQuery = $;
+</script>
+</head>
+
+<body class="w1200">
+{#$pageCurr = 'qianggou'#}
+{#include file="top.html"#}
+<div class="bread wrap">
+	<p><a href="{#$shop_channelDomain#}">{#$langData['siteConfig'][0][0]#}</a>><a href="{#getUrlPath service='shop' template='list'#}">{#$langData['shop'][5][47]#}</a>><a href="{#getUrlPath service='shop' template='qianggou'#}">限时抢购</a></p>
+</div>
+
+
+<div class="qb_bg wrap">
+	<div class="djs">
+		<div class="line"></div>
+		<div class="daojishibox"><span></span><span></span><span></span><span></span></div>
+		<div class="daojishi"> <span class="h">00</span><span class="m">00</span><span class="s">00</span><span class="hm">00</span></div>
+		<span class="dec">距离本场结束还剩</span>
+	</div>
+</div>
+
+<div class="contain">
+	<div class="wrap">
+		<div class="txtScroll-left navlist wrap">
+			<div class="hd">
+				<a class="next"><i></i></a>
+				<a class="prev prevStop"><i></i></a>
+			</div>
+			<div class="bd">
+				<div class="tempWrap"><ul class="infoList" id="timelist">
+
+				</ul></div>
+			</div>
+		</div>
+
+		<div class="slide-container gallery-main" id="mod-item">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="qg-slide">
+						<!-- 必抢好货 s-->
+						<div class="qgoubox fn-clear">
+
+						</div>
+					</div>
+					<div class="pagination fn-clear"></div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+	{#include file="bottom.html"#}
+<script>
+	var atpage = 1,
+		keywords = '{#$keywords#}',
+		pageSize = 12;
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/qianggou.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][22][12]#}-{#$shop_title#}</title>
+<meta name="keywords" content="{#$shop_keywords#}"/>
+<meta name="description" content="{#$shop_description#}"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all"/>
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/cart.css?v={#$cfg_staticVersion#}" media="all"/>
+	<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}" target="_blank">{#$langData['siteConfig'][0][0]#}</a>><a href="{#getUrlPath service='shop' template='cart'#}">{#$langData['siteConfig'][22][12]#}</a></p>
+</div>
+
+<!--购物车为空时-->
+<div class="null" style="display:none">
+	<img src="{#$templets_skin#}images/none.png">
+</div>
+
+<!-- 购物车有商品时-->
+<div class="have">
+	<div class="state">
+		<span class="left"><a href="{#getUrlPath service='shop' template='cart'#}">{#$langData['shop'][5][5]#}(<i>0</i>)</a></span>
+		<div class="right">
+			<ul>
+				<li class="one on"><s></s><div><i>1</i><em>{#$langData['siteConfig'][22][12]#}</em></div></li>
+				<li class="two"><s></s><div><i>2</i><em>{#$langData['shop'][5][6]#}</em></div></li>
+				<li class="three"><s></s><div><i>3</i><em>{#$langData['shop'][5][7]#}</em></div></li>
+			</ul>
+		</div>
+	</div>
+	<div class="goods">
+		<form action="{#getUrlPath service='shop' template='confirm-order'#}" data-action="{#$cfg_basehost#}/include/ajax.php?service=shop&action=confirm_order" method="post">
+			<ul class="title clearfix">
+				<li class="t0"><i class="on"></i></li>
+				<li class="t1">{#$langData['siteConfig'][6][28]#}</li>
+				<li class="t2">{#$langData['siteConfig'][16][25]#}</li>
+				<li class="t3"></li>
+				<li class="t4">{#$langData['siteConfig'][19][323]#}</li>
+				<li class="t5">{#$langData['siteConfig'][19][324]#}</li>
+				<li class="t6">{#$langData['siteConfig'][19][549]#}</li>
+				<li class="t7">{#$langData['siteConfig'][6][11]#}</li>
+			</ul>
+
+			{#$totalPrice = 0#}
+			{#$totalCount = 0#}
+
+			{#foreach from=$cartList item="cart"#}
+			<div class="sj">
+				<div class="name">
+					<span class="left"><i class="on"></i><font>{#$langData['siteConfig'][0][3]#}: </font>{#if $cart.domain#}<a href="{#$cart.domain#}" target="_blank" title="{#$cart.store#}">{#$cart.store#}</a>
+					{#if $cart.qq#}<s><a href="http://wpa.qq.com/msgrd?v=3&uin={#$cart.qq#}&Site={#$shop_title#}&Menu=yes" target="_blank" title="{#$langData['shop'][5][8]#}"></a></s>{#/if#}{#else#}{#$cart.store#}{#/if#}
+					</span>
+				</div>
+
+				{#foreach from=$cart.list item="list"#}
+
+				{#$totalPrice = $totalPrice + $list.price * $list.count#}
+				{#if $totalPrice != 0#}
+				{#$totalCount = $totalCount + $list.count#}
+				{#/if#}
+				<ul data-id="{#$list.id#}" data-price="{#$list.price#}" data-specation="{#$list.specation#}" data-limit="{#$list.limit#}" data-inventor="{#$list.inventor#}" data-bearfreight="{#$list.logisticTemp.bearFreight#}" data-valuation="{#$list.logisticTemp.valuation#}" data-express_start="{#$list.logisticTemp.express_start#}" data-express_postage="{#$list.logisticTemp.express_postage#}" data-express_plus="{#$list.logisticTemp.express_plus#}" data-express_postageplus="{#$list.logisticTemp.express_postageplus#}" data-preferentialstandard="{#$list.logisticTemp.preferentialStandard#}" data-preferentialmoney="{#$list.logisticTemp.preferentialMoney#}" data-weight="{#$list.weight#}" data-volume="{#$list.volume#}" class="sp clearfix">
+					<li class="t0"><i class="on"></i></li>
+					<li class="t1"><a href="{#$list.url#}" target="_blank"><img src="{#$list.thumb#}"></a></li>
+					<li class="t2"><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+					<li class="t3"><label>{#$list.speInfo|replace:"；":"<br />"#}&nbsp;</label></li>
+					<li class="t4"><span>{#$list.price#}</span></li>
+					<li class="t5"><div><a class="minus" href="javascript:;"></a><input type="text" value="{#$list.count#}" onkeyup="value=value.replace(/\D+/ig,'')" /><a class="plus" href="javascript:;"></a></div></li>
+					<li class="t6"><span>{#($list.count * $list.price)|string_format:"%.2f"#}</span></li>
+					<li class="t7"><a href="javaScript:;">{#$langData['siteConfig'][6][8]#}</a></li>
+				</ul>
+				{#/foreach#}
+
+			</div>
+			{#/foreach#}
+
+			<div class="sum">
+				<div class="left"><i class="on"></i>{#$langData['siteConfig'][6][28]#}<span><a href="javascript:;" id="deleteAll">{#$langData['siteConfig'][6][8]#}</a></span></div>
+				<div class="right"><span>{#$langData['siteConfig'][6][21]#}{#$langData['shop'][5][10]|replace:'1':'<em>'|cat:$totalCount|cat:'</em>'#}，{#$langData['siteConfig'][19][664]#}：<font>{#echoCurrency type='symbol'#}{#$totalPrice|string_format:"%.2f"#}</font></span><a href="javascript:;" id="js">{#$langData['shop'][1][6]#}</a></div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{#include file="bottom.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/cart.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

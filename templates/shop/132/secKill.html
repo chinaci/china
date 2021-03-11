@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>准点秒杀-{#$shop_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/secKill.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	jQuery = $;
+	var now = {#$smarty.now#};
+</script>
+</head>
+
+<body class="w1200">
+{#$pageCurr = 'secKill'#}
+{#include file="top.html"#}
+
+<div class="bread">
+	<p><a href="{#$shop_channelDomain#}">{#$langData['siteConfig'][0][0]#}</a>><a href="{#getUrlPath service='shop' template='list'#}">{#$langData['shop'][5][47]#}</a>><a href="{#getUrlPath service='shop' template='secKill'#}">准点秒杀</a></p>
+</div>
+<div class="contain">
+	<div class="wrap" id="mod-item">
+		<div class="miaoshabox fn-clear" >
+			<div class="loading"><span></span><span></span><span></span><span></span><span></span></div>
+		</div>
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+{#include file="bottom.html"#}
+<script>
+	var atpage = 1,
+		pageSize = 12,
+		keywords = '{#$keywords#}';
+</script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/secKill.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

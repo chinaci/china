@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="UTF-8">
+    <title>{#$detail_title#}-{#$shop_title#}</title>
+    <meta name="keywords" content="{#$shop_keywords#}"/>
+    <meta name="description" content="{#$shop_description#}"/>
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store_top.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/storeD.css?v={#$cfg_staticVersion#}" media="all" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}';
+        var storeid = {#$detail_id#};
+        var id = {#$detail_id#};
+        var imconfig = {
+        	chatid :'{#$detail_userid#}',
+        }
+    </script>
+</head>
+
+<body class="w1200">
+<!--头部 s-->
+{#include file="store_top.html"#}
+<!--头部 e-->
+
+<!--广告轮播 s-->
+{#if $detail_pics#}
+<div class="adbox" id="adbox">
+    <div class="wrap">
+    <div class=" slideBox" id="slideBox">
+        <div class="wrap">
+            <div class="hd">
+                <ul></ul>
+            </div>
+        </div>
+        <div class="bd">
+            <ul>
+                {#foreach from=$detail_pics key=k item=i#}
+                <li class="fn-clear">
+                    <div class="item">
+                        <a href="#"><img src="{#$i.path#}"></a>
+                    </div>
+                </li>
+                {#/foreach#}
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+{#/if#}
+<!--广告轮播 e-->
+
+<div class="contain" id="contain">
+    <div class="wrap fn-clear">
+        <div class="left">
+            <h2>商家基本信息</h2>
+            <div class="storeInfo">
+                <img src="{#$detail_logo#}" alt="{#$detail_title#}" title="{#$detail_title#}" >
+                <p class="name">{#$detail_title#}</p>
+                <p class="sure fn-clear">{#if $detail_certifyState#}<span class="sm"></span>{#/if#} <span class="bz"></span><span class="wx"></span><span class="zf"></span></p>
+                <p>
+                    {#if $detail_collect == 1#}
+                    <a href="javascript:;" class="collect has"><s></s>已收藏</a>
+                    {#else#}
+                    <a href="javascript:;" class="collect"><s></s>收藏</a>
+                    {#/if#}
+                    {#if $detail_userid#}<a href="javascript:;" data-type="user" class="chat_to-Link">联系</a>{#/if#}
+                </p>
+                <div class="bInfo">
+                    <p><span>联系人 : </span>{#$detail_people#}</p>
+                    {#if $detail_tel#}<p><span>电&nbsp;&nbsp;&nbsp;话 : </span>{#$detail_tel#}</p>{#/if#}
+                    {#if $detail_wechatcode#}<p><span>微&nbsp;&nbsp;&nbsp;信 : </span>{#$detail_wechatcode#}</p>{#/if#}
+                    {#if $detail_qq#}<p><span>Q&nbsp;&nbsp;&nbsp;&nbsp;Q : </span>{#$detail_qq#}</p>{#/if#}
+                </div>
+                <div class="bproduct">
+                    <span>经营产品:</span>
+                    {#$detail_project#}
+                </div>
+            </div>
+            <h2 class="sectit">本店搜索</h2>
+            <div class="storeSeaarch">
+                <p>关键字:
+                    <input class="search" id="keywords" type="text" placeholder="{#$langData['shop'][2][10]#}" value="{#if $keywords != ""#}{#$keywords#}{#else#}{#/if#}" />
+                </p>
+                <p class="price_box">价&nbsp;&nbsp;&nbsp;格: <input class="price" type="text" id="price1" value="{#$price[0]#}" /> <em>-</em> <input class="price" type="text" id="price2" value="{#$price[1]#}" /></p>
+                <a href="javascript:;" id="search">{#$langData['siteConfig'][6][109]#}</a>
+
+            </div>
+            <h2>店内商品分类</h2>
+            <div class="storeCategory">
+                <p><a class="all">查看所有商品 ></a></p>
+                <ul>
+                    {#shop action="category" store={#$detail_id#}#}
+                    <li><i class="icon_category {#if $pid == $row.id#} on{#/if#}"></i><a class="partype {#if $pid == $row.id#} on{#/if#}" data-id="{#$row.id#}" href="javascript:;">{#$row.typename#}</a>
+                        <div class="sub_category" {#if $pid == $row.id#}style="display:block;"{#else#}style="display:none;"{#/if#}>
+							{#shop action="category" type=$row.id store={#$detail_id#} return=row2#}
+                            <a data-id="{#$row2.id#}" href="javascript:;">{#$row2.typename#}</a>
+							{#/shop#}
+                        </div>
+                    </li>
+                    {#/shop#}
+                </ul>
+            </div>
+        </div>
+
+        <div class="right">
+			<!--shoyPage-->
+            <div class="shouypage show">
+                <h3><em></em>限量特价</h3>
+                <ul class="list fn-clear" id="limitbuy">
+                </ul>
+
+                <h3><em></em>店铺爆款</h3>
+                <ul class="list fn-clear" id="hotbuy">
+                </ul>
+
+                <h3><em></em>店长推荐</h3>
+                <ul class="list fn-clear" id="recbuy">
+                </ul>
+            </div>
+
+			<div class="shopcon allgoods">
+                <h3><em></em>
+                    <ul class="choose-tab">
+                        <li data-type="orderbyType" class="orderby active" data-id="1"><a href="javascript:;"><i><span>销量</span></i></a></li>
+                        <li data-type="orderbyType" class="orderby" data-id="3"><a href="javascript:;"><i><span>价格</span></i></a></li>
+                        <li class="style1" data-id="5"><a href="javascript:;"><i><span>新品</span></i></a></li>
+                    </ul>
+
+                    <div class="codi">
+                        <!--<input class="left search" id="keywords" type="text" onblur="if(value==''){value='{#$langData['shop'][2][10]#}'}" onfocus="if(value=='{#$langData['shop'][2][10]#}'){value=''}" value="{#if $keywords != ""#}{#$keywords#}{#else#}{#$langData['shop'][2][10]#}{#/if#}" />-->
+                        <div>{#echoCurrency type='symbol'#}<input type="text" id="price3" value="{#$price[0]#}" /></div><div class="line"></div><div>{#echoCurrency type='symbol'#}<input type="text" id="price4" value="{#$price[1]#}" /></div>
+                        <a href="javascript:;" id="searchbtn">确定</a>
+                    </div>
+
+                    <div class="r" id="bar-area">
+                        <div class="pagination">
+                        </div>
+                    </div>
+
+                </h3>
+				<div class="list-box" id="mod-item">
+					<ul class="list fn-clear" id="maincontent">
+					</ul>
+                    <div class="pagination fn-clear"></div>
+				</div>
+
+			</div>
+        </div>
+
+    </div>
+</div>
+
+<!--底部 s-->
+{#include file='../../siteConfig/public_foot_v3.html' module='shop' theme='gray'#}
+<!--底部 e-->
+<!--{#getUrlPath service='shop' template='store-category' id={#$detail_id#}#}-->
+<script>
+    var pageUrl = '{#getUrlPath service="shop" template="store-detail" id={#$detail_id#} typeid={#$typeid#}#}';
+    var atpage = 1,
+        pageSize = 20,
+        typeid = "{#$pid#}",
+        keywords = '{#$keywords#}';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/storeD.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
