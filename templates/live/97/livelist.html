@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $keywords#}搜索：{#$keywords#}{#else#}{#$live_typename#}{#/if#}-{#$live_title#}</title>
+<meta name="keywords" content="{#$live_keywords#}" />
+<meta name="description" content="{#$live_description#}" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$cfg_currentHost#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var templets_skin = '{#$cfg_staticPath#}';
+</script>
+</head>
+<body class="w1200">
+{#include file="public_top_v3.html" channel="live"#}
+<div class="lContainer wrap">
+    <div class="conBox">
+        <div class="floor">
+            <span>{#if $keywords#}搜索：{#$keywords#}{#else#}{#$live_typename#}{#/if#}</span>
+        </div>
+        <div class="lContent">
+            <ul class="contentBox">
+            	{#live action="alive" return="row" type="1" typeid="{#$typeid#}" title="{#$keywords#}" page="{#$page#}" pageSize="20"#}
+                <li>
+                    <a href="{#$row.url#}" target="_blank" title="{#$row.title#}">
+                        <div class="box_img">
+														<div class="playback state{#$row.state#}">{#if $row.state == 1#}直播中{#elseif $row.state == 2#}精彩回放{#/if#}</div>
+                            <img src="{#$row.litpic#}" alt="">
+                            <div class="box_cover"><img src="{#$templets_skin#}images/play.png" ></div>
+                        </div>
+
+                        <div class="live_intro">
+                            <div class="intro-left"><img src="{#$row.photo#}" alt=""></div>
+                            <div class="intro_right">
+                                <p class="p_font1">{#$row.title#}</p>
+                                <p class="p_font2">
+                                    <span class="sp_name">{#$row.nickname#}</span>
+                                    <span class="img_icon"><img src="{#$templets_skin#}images/live_people.png"><span>{#$row.click#}</span></span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {#/live#}
+            </ul>
+            <!-- 分页 -->
+						{#getPageList service='live' template='livelist' pageType='dynamic' typeid={#$typeid#} param="keywords={#$keywords#}&page=#page#"#}
+        </div>
+    </div>
+</div>
+{#include file="../../siteConfig/public_foot_v3.html" module='siteConfig' theme='gray'#}
+</body>
+</html>

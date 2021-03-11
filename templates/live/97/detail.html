@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$livedetail_title#}-直播详情</title>
+<meta name="keywords" content="{#$live_keywords#}" />
+<meta name="description" content="{#$live_description#}" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" media="all" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="//g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}',channelDomain = '{#$cfg_currentHost#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var templets_skin = '{#$cfg_staticPath#}';
+	var id = {#$livedetail_id#};
+
+</script>
+</head>
+{#include file="public_top_v3.html" channel="live"#}
+<body class="w1200">
+<div class="lContainer wrap">
+    <div class="detailCon">
+        <div class="content_left">
+            <div class="content_top">
+                <div class="head_left">
+                    <div class="head_box">
+                        <a href="{#$livedetail_userurl#}" target="_blank">
+                            <img src="{#$livedetail_photo#}" alt="{#$livedetail_nickname#}">
+                        </a>
+                    </div>
+                    <div class="head_info">
+                        <p class="anchor_name">{#$livedetail_title#}
+                        	{#if $fid != $userid#}
+                        		{#if $userid && $isfollow#}
+                        		<button data-id="{#$fid#}" class="follow btn_care1">已关注</button>
+                        		{#else#}
+                        		<button data-id="{#$fid#}" class="follow btn_care">关注</button>
+                        		{#/if#}
+                        	{#else#}
+                        	{#/if#}
+                        </p>
+                        <p><span><a href="{#$livedetail_userurl#}" target="_blank" style="color:#fff;">{#$livedetail_nickname#}</a></span> <span>浏览次数： {#$livedetail_click#}</span></p>
+                    </div>
+                </div>
+                <div class="head_right">
+                    <div class="smobile">
+                        <img src="{#$templets_skin#}images/phone.png" > <span>手机观看</span>
+                        <div class="qrcode"><i></i><span id="qrcode"></span></div>
+                    </div>
+                    <div class="share bdsharebuttonbox bds_more" data-cmd="more">
+                        <img src="{#$templets_skin#}images/share.png" ><span>分享</span>
+                        <div class="lshare bdsharebuttonbox">
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+                            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a>
+                        </div>
+                    </div>
+
+                    <div class="report"><img src="{#$templets_skin#}images/report.png" > <span>举报</span></div>
+                </div>
+            </div>
+
+
+            {#if $liveUserAuth eq 1#}
+            <div class="content_main">
+
+								{#if $livedetail_state == 2 && $detail_mp4url == ''#}
+								<div class="empty"><img src="{#$templets_skin#}images/huifang.png"><p>视频回放正在制作中，请稍后访问...</p></div>
+								{#/if#}
+
+                <!--<video id="lVideo"></video>-->
+                <div id="J_prismPlayer"></div>
+                <!--<img src="{#$templets_skin#}images/big_play.png" >-->
+            </div>
+            {#else#}
+                {#if $liveType eq 1#}
+                <!-- 加密 -->
+                <div class="liveType1">
+                    <form action="{#$check_pass_url#}" method="post">
+                        该直播需要输入密码才能播放，请输入密码: <input type="text" value="" name="password">
+
+                        <input type="submit" value="提交">
+                    </form>
+
+                </div>
+                <!-- 加密 end-->
+                {#else#}
+                <!-- 收费 -->
+            <!-- 打赏浮动层 s -->
+            <div class="rewardS-mask"></div>
+            <div class="rewardS-pay">
+                <div class="rewardS-pay-tit">
+                    <a href="javascript:;" class="close fn-right">×</a><h3>付费支持</h3>
+                </div>
+                <div class="rewardS-pay-box">
+                    <div class="rewardS-pay-money">
+                        <span>金额 </span><strong class="icon">{#echoCurrency type="symbol"#}</strong>
+                        <input type="text" name="" value="{#$livemoney#}" readonly unselectable="on" class="inp" />
+                        <ul class="rewardS-pay-select">
+                            <li>{#$livemoney#}{#echoCurrency type="short"#}</li>
+                        </ul>
+                    </div>
+                    <div class="rewardS-pay-way">
+                        <h3>选择支付方式：</h3>
+                        <ul class="fn-clear">
+                            {#siteConfig action="payment"#}
+                            <li{#if $_bindex.row == 1#} class="on"{#/if#} data-type="{#$row.pay_code#}"><a href="javascript:;" class="{#$row.pay_code#}" title="{#$row.pay_name#}"></a><em></em></li>
+                            {#/siteConfig#}
+                        </ul>
+                    </div>
+                </div>
+                <div class="rewardS-sumbit">
+                    <a href="javascript:;" target="_blank" data-url="{#$cfg_basehost#}/include/ajax.php?service=live&action=livePay&liveid={#$livedetail_id#}&amount=$amount&paytype=$paytype">确认支付</a>
+                </div>
+            </div>
+            <!-- 打赏浮动层 e -->
+
+
+                <div class="liveType2">
+                        <span>该视频需要付钱才能观看</span>
+                        <button class="start_pay">付钱</button>
+
+                </div>
+                {#/if#}
+                <!-- 收费 end-->
+            {#/if#}
+        </div>
+        <div class="content_right">
+            <div class="right_title">聊天</div>
+            <div class="right_main">
+                <ul class="main_info" id="main_info">
+                </ul>
+                <div class="box_bottom input_box">
+                    <input id="rc-chatroom-input" type="text" placeholder="说点什么吧...">
+                    <button class="btn_send" id="rc-chatroom-button">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--热门直播-->
+    <div class="conBox">
+        <div class="floor"><span>热门直播</span></div>
+        <div class="lContent">
+            <ul class="contentBox">
+            	{#live action="alive" return="row" type="1" orderby="click" pageSize="8"#}
+                <li>
+                    <a href="{#$row.url#}">
+                        <div class="box_img">
+														<div class="playback state{#$row.state#}">{#if $row.state == 1#}直播中{#elseif $row.state == 2#}精彩回放{#/if#}</div>
+                            <img src="{#$row.litpic#}">
+                            <div class="box_cover"><img src="{#$templets_skin#}images/play.png" ></div>
+                        </div>
+
+                        <div class="live_intro">
+                            <div class="intro-left"><img src="{#$row.photo#}"></div>
+                            <div class="intro_right">
+                                <p class="p_font1">{#$row.title#}</p>
+                                <p class="p_font2">
+                                    <span class="sp_name">{#$row.nickname#}</span>
+                                    <span class="img_icon"><img src="{#$templets_skin#}images/live_people.png"><span>{#$row.click#}</span></span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {#/live#}
+            </ul>
+        </div>
+    </div>
+    <!--结束-->
+
+</div>
+<script type="text/javascript">
+var username='{#$livedetail_username#}';
+var userphoto='{#$livedetail_userphoto#}';
+var appKey = "{#$livedetail_appKey#}";
+var token  = "{#$livedetail_token#}";
+var config = {
+    protobuf : "{#$cfg_staticPath#}js/rong/protobuf-2.2.8.min.js"
+};
+var count = 0;// 拉取最近聊天最多 50 条。
+var chatRoomId = "{#$detail_chatRoomId#}"; // 聊天室 Id。
+var isfalse ={#if $livedetail_state==2#}false{#else#}true{#/if#};
+var source = {#if $livedetail_state==2#}'{#$detail_mp4url#}'{#else#}'{#$detail_url#}'{#/if#};
+var player = new Aliplayer({
+		 id: "J_prismPlayer",
+     autoplay: true,
+     isLive: isfalse,
+     playsinline: true,
+     width:"100%",
+     height:"540px",
+     useH5Prism:true,
+     useFlashPrism:false,
+     source:source,
+     cover:"{#$livedetail_litpic#}"
+     }
+);
+var h_detail = '{#getUrlPath service="live" template="h_detail" id={#$livedetail_id#}#}';
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/rong/RongIMLib-2.2.9.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/chatroom.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js?v={#$cfg_staticVersion#}"></script>
+{#include file="../../siteConfig/public_foot_v3.html" module='siteConfig' theme='gray'#}
+</body>
+</html>
