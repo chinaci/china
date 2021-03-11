@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#$cfg_webname#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" >
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" >
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body>
+
+<!-- 顶部 s -->
+  <div class="topNav">
+    <div class="wrap fn-clear">
+      <div class="topNav-l fn-left">
+				{#if $userinfo#}
+				{#$userDomain = $member_userDomain#}
+				{#if $userinfo.userType == 2#}
+				{#$userDomain = $member_busiDomain#}
+				{#/if#}
+				<div class="loginBar-a fn-clear">
+					<span class="fn-left nickname">欢迎回来！{#$userinfo.nickname#}</span>
+					<a href="{#$cfg_basehost#}/logout.html" class="logout" class="login-exit fn-right">退出登录</a>
+					<a href="{#$userDomain#}" class="login-my fn-right">我的账号</a>
+        </div>
+				{#else#}
+				<div class="loginBar-b">
+          <span>您好，欢迎您来到火鸟门户！</span>
+          <a href="{#$cfg_basehost#}/login.html" class="login">登录</a>
+          <a href="{#$cfg_basehost#}/api/login.php?type=qq" class="loginconnect login-qq">QQ号登录</a>
+          <a href="{#$cfg_basehost#}/api/login.php?type=wechat" class="loginconnect login-wx">微信登录</a>
+          <a href="{#$cfg_basehost#}/register.html" class="register">免费注册</a>
+        </div>
+				{#/if#}
+      </div>
+      <div class="topNav-r fn-right">
+        <ul class="fn-clear">
+          <li class="topNav-r-li">
+            <a href="javascript:;">会员中心</a>
+            <ul class="dropdown">
+              <s></s>
+							<li><a href="{#getUrlPath service='member' type='user' template='profile'#}" target="_blank">基本资料</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='collect'#}" target="_blank">我的收藏</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='order'#}" target="_blank">订单中心</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='message'#}" target="_blank">我的消息</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security-chpassword'#}" target="_blank">修改密码</a></li>
+            </ul>
+          </li>
+          <li class="topNav-r-li">
+            <a href="javascript:;">快速发布</a>
+            <ul class="dropdown">
+              <s></s>
+							{#if in_array("article", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">新闻投稿</a></li>{#/if#}
+							{#if in_array("info", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">二手信息</a></li>{#/if#}
+							{#if in_array("house", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-demand'#}">求租、求购</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sale'#}">二手房</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-zu'#}">租房</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-xzl'#}">写字楼</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-sp'#}">商铺</a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-cf'#}">厂房、仓库</a></li>{#/if#}
+            </ul>
+          </li>
+        </ul>
+        <a href="javascript:;" class="mobile">手机版
+					<div class="pop" style="display: none;">
+						<s></s>
+						<p>扫码访问<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150"></p>
+					</div>
+				</a>
+      </div>
+    </div>
+  </div>
+<!-- 顶部 e -->
+
+<!-- 头部 s -->
+  <div class="header">
+    <div class="wrap fn-clear">
+      <div class="logo">
+				<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}"><img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}"></a>
+      </div>
+      <div class="search-box">
+        <div class="search-info">
+          <form action="" method="get">
+            <div class="search-nav">
+              <span>全部</span>
+              <ul>
+                <li>全部</li>
+                {#if in_array("house", $installModuleArr)#}<li>房源</li>{#/if#}
+                {#if in_array("info", $installModuleArr)#}<li>信息</li>{#/if#}
+                {#if in_array("job", $installModuleArr)#}<li>招聘</li>{#/if#}
+                {#if in_array("article", $installModuleArr)#}<li>资讯</li>{#/if#}
+              </ul>
+            </div>
+            <input type="text" name="" placeholder="请输入关键字" class="search-txt">
+            <input type="button" name="" value="搜索" class="search-btn">
+          </form>
+        </div>
+        <div class="hot-words">
+          <span>热门搜索：</span>
+					{#siteConfig module="index" action="hotkeywords" return="hotkeywords"#}
+					{#if $_bindex.hotkeywords <= 3#}
+					<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+					{#/if#}
+					{#/siteConfig#}
+        </div>
+      </div>
+      <div class="nav-tag fn-right">
+        <ul>
+          {#if in_array("shop", $installModuleArr)#}<li><a href="{#$shop_channelDomain#}" class="nav-img"><img src="{#$templets_skin#}images/icon1.png" alt=""></a><a href="{#$shop_channelDomain#}" class="nav-txt">商城频道</a></li>{#/if#}
+          {#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}" class="nav-img"><img src="{#$templets_skin#}images/icon2.png" alt=""></a><a href="{#$info_channelDomain#}" class="nav-txt">分类信息</a></li>{#/if#}
+          {#if in_array("house", $installModuleArr)#}<li><a href="{#$house_channelDomain#}" class="nav-img"><img src="{#$templets_skin#}images/icon3.png" alt=""></a><a href="{#$house_channelDomain#}" class="nav-txt">房产频道</a></li>{#/if#}
+          {#if in_array("job", $installModuleArr)#}<li><a href="{#$job_channelDomain#}" class="nav-img"><img src="{#$templets_skin#}images/icon4.png" alt=""></a><a href="{#$job_channelDomain#}" class="nav-txt">招聘频道</a></li>{#/if#}
+        </ul>
+      </div>
+    </div>
+  </div>
+<!-- 头部 e -->
+
+<!-- 广告位 s -->
+  <div class="adv-1">
+    <div class="wrap">
+      {#myad title="首页_模板七_电脑端_广告一"#}
+    </div>
+  </div>
+<!-- 广告位 e -->
+
+<!-- 快速导航 s -->
+  <div class="nav">
+    <div class="wrap fn-clear" id="nav-wrap">
+      <div class="nav-l fn-left">
+        <div class="nav-tit"><em></em><a href="javascript:;">快速导航</a></div>
+        <div class="nav-list">
+          <ul>
+            {#if in_array("info", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-1"></em><a href="{#$info_channelDomain#}">分类信息</a><i></i></li>{#/if#}
+            {#if in_array("article", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-2"></em><a href="{#$article_channelDomain#}">新闻频道</a><i></i></li>{#/if#}
+            {#if in_array("job", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-3"></em><a href="{#$job_channelDomain#}">招聘频道</a><i></i></li>{#/if#}
+            {#if in_array("house", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-4"></em><a href="{#$house_channelDomain#}">房产频道</a><i></i></li>{#/if#}
+            {#if in_array("tuan", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-5"></em><a href="{#$tuan_channelDomain#}">团购频道</a><i></i></li>{#/if#}
+            {#if in_array("business", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-6"></em><a href="{#$business_channelDomain#}">商家频道</a><i></i></li>{#/if#}
+            {#if in_array("shop", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-7"></em><a href="{#$shop_channelDomain#}">商城频道</a><i></i></li>{#/if#}
+            {#if in_array("renovation", $installModuleArr)#}<li class="fn-clear nav-tab-li"><em class="icon icon-8"></em><a href="{#$renovation_channelDomain#}">装修频道</a><i></i></li>{#/if#}
+            {#if in_array("video", $installModuleArr)#}<li class="fn-clear"><em class="icon icon-9"></em><a href="{#$video_channelDomain#}">视频逛街</a></li>{#/if#}
+            {#if in_array("image", $installModuleArr)#}<li class="fn-clear"><em class="icon icon-10"></em><a href="{#$image_channelDomain#}">图片频道</a></li>{#/if#}
+            {#if in_array("waimai", $installModuleArr)#}<li class="fn-clear"><em class="icon icon-11"></em><a href="{#$waimai_channelDomain#}">外卖频道</a></li>{#/if#}
+          </ul>
+        </div>
+      </div>
+      <div class="nav-c">
+			{#if in_array("info", $installModuleArr)#}
+      <!-- 导航 分类信息 s -->
+        <div class="nav-box nav-1">
+					{#info action="type" return='type'#}
+          <div class="n1-list">
+            <h3><a href="{#$type.url#}">{#$type.typename#}</a></h3>
+            <ul class="fn-clear">
+							{#info action="type" return='subtype1' type="{#$type.id#}" pageSize="10"#}
+              <li><a href="{#$subtype1.url#}">{#$subtype1.typename#}</a></li>
+							{#/info#}
+            </ul>
+          </div>
+					{#$i = 1#}
+					{#$i = $i + 1#}
+					{#if $i / 3 == 0#}
+					{#/if#}
+					{#/info#}
+					<div class="clear"></div>
+          <div class="more">
+            <a href="{#$info_channelDomain#}">进入分类信息>></a>
+          </div>
+        </div>
+      <!-- 导航 分类信息 e -->
+			{#/if#}
+
+			{#if in_array("article", $installModuleArr)#}
+      <!-- 导航 新闻频道 s -->
+        <div class="nav-box nav-2">
+          <div class="n2-tit">
+						{#article action="type" return="atype"#}
+            <a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a>
+						{#/article#}
+          </div>
+          <div class="n2-box fn-clear">
+            <div class="n2-left fn-left">
+              <div class="n2l-info">
+								{#article action="alist" return="blist" flag="h,r" pageSize="1" page="1"#}
+                <h3><a href="{#$blist.url#}" target="_blank" title="{#$blist.title|strip_tags#}">{#$blist.title#}</a></h3>
+                <p>{#$blist.description|strip_tags|truncate:30#}</p>
+								{#/article#}
+              </div>
+              <h1>
+								{#article action="alist" return="blist" flag="h,r" pageSize="1" page="2"#}
+								<a href="{#$blist.url#}" target="_blank" title="{#$blist.title|strip_tags#}">{#$blist.title#}</a>
+								{#/article#}
+							</h1>
+              <ul>
+								{#article action="alist" return="clist" flag="r" pageSize="6"#}
+                <li>
+                  <a href="{#$clist.url#}" target="_blank" class="n2l-tag">[{#$clist.typeName[0]#}]</a>
+                  <a href="{#$clist.url#}" target="_blank" class="n2l-txt">{#$clist.title#}</a>
+                </li>
+								{#/article#}
+              </ul>
+            </div>
+            <div class="n2-right fn-right">
+              <ul>
+								{#article action="alist" return="dlist" thumb="1" pageSize="3"#}
+                <li class="fn-clear">
+                  <a href="{#$dlist.url#}" class="n2r-img fn-left" target="_blank"><img src="{#changeFileSize url="{#$dlist.litpic#}" type="middle"#}" alt="{#$dlist.title|strip_tags#}" /></a>
+                  <div class="n2r-txt fn-right">
+                    <a href="{#$dlist.url#}" target="_blank">{#$dlist.title#}</a>
+                    <p>{#$dlist.description#}</p>
+                  </div>
+                </li>
+								{#/article#}
+              </ul>
+            </div>
+          </div>
+          <div class="more">
+            <a href="{#$article_channelDomain#}">进入新闻频道>></a>
+          </div>
+        </div>
+      <!-- 导航 新闻频道 e -->
+			{#/if#}
+
+			{#if in_array("job", $installModuleArr)#}
+      <!-- 导航 招聘频道 s -->
+        <div class="nav-box nav-3">
+          <div class="n2-tit">
+            <a href="{#getUrlPath service='job' template='zhaopin'#}">找工作</a>
+            <a href="{#getUrlPath service='job' template='resume'#}">找人才</a>
+            <a href="{#getUrlPath service='job' template='news'#}">行业动态</a>
+            <a href="{#getUrlPath service='job' template='doc'#}">文档下载</a>
+            <a href="{#getUrlPath service='job' template='company'#}">公司</a>
+            <a href="{#getUrlPath service='job' template='zhaopinhui'#}">招聘会</a>
+						<a href="{#getUrlPath service='job' template='payroll'#}">工资统计</a>
+          </div>
+          <div class="n3-box fn-clear">
+            <div class="n3-left fn-left">
+              <ul>
+								{#job action="post" return="post" pageSize="6" page="1"#}
+                <li>
+                  <h3>
+										<a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}">{#$post.title#}</a>
+									</h3>
+                  <p><a href="{#$post.company['domain']#}" target="_blank">{#$post.company['title']#}</a></p>
+                </li>
+								{#/job#}
+              </ul>
+              <ul>
+								{#job action="company" return="company" pageSize="6" page="2"#}
+                <li>
+                  <h3>
+										<a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}">{#$post.title#}</a>
+									</h3>
+                  <p><a href="{#$post.company['domain']#}" target="_blank">{#$post.company['title']#}</a></p>
+                </li>
+								{#/job#}
+              </ul>
+            </div>
+            <div class="n3-right fn-right">
+              <ul>
+								{#job action="resume" return="resume" pageSize="4"#}
+                <li class="fn-clear">
+                  <a href="{#$resume.url#}" target="_blank" class="n3r-img"><img src="{#$resume.photo#}"></a>
+                  <div class="n3r-txt">
+                    <p><strong>{#$resume.name#}</strong>({#if $resume.sex == 0#}男{#else#}女{#/if#})</p>
+                    <p>学历：{#$resume.educational#}</p>
+                    <p>职位：{#$resume.professional#}</p>
+                  </div>
+                </li>
+								{#/job#}
+              </ul>
+            </div>
+          </div>
+          <div class="more">
+            <a href="{#$job_channelDomain#}">进入招聘频道>></a>
+          </div>
+        </div>
+      <!-- 导航 招聘频道 e -->
+			{#/if#}
+
+			{#if in_array("house", $installModuleArr)#}
+      <!-- 导航 房产频道 s -->
+        <div class="nav-box nav-4">
+          <div class="n2-tit">
+						<a href="{#getUrlPath service='house' template='loupan'#}">新房</a>
+						<a href="{#getUrlPath service='house' template='community'#}">小区</a>
+						<a href="{#getUrlPath service='house' template='sale'#}">二手房</a>
+						<a href="{#getUrlPath service='house' template='zu'#}">租房</a>
+						<a href="{#getUrlPath service='house' template='xzl'#}">写字楼</a>
+						<a href="{#getUrlPath service='house' template='sp'#}">商铺</a>
+						<a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库</a>
+						<a href="{#getUrlPath service='house' template='broker'#}">经纪人</a>
+						<a href="{#getUrlPath service='house' template='news'#}">资讯</a>
+						<a href="{#getUrlPath service='house' template='kan'#}">看房团</a>
+						<a href="{#getUrlPath service='house' template='faq'#}">房产问答</a>
+          </div>
+          <div class="n4-box fn-clear">
+            <div class="n4-left fn-left">
+              <div class="n4l-info">
+								{#house action="news" return="news" orderby="click" pageSize="1"#}
+                <h3><a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a></h3>
+								{#/house#}
+              </div>
+              <ul>
+								{#house action="news" return="news1" pageSize="7"#}
+                <li>
+                  <i>·</i>
+                  <a href="{#$news1.title#}" class="n4l-txt" target="_blank">{#$news1.title#}</a>
+                </li>
+								{#/house#}
+              </ul>
+            </div>
+            <div class="n4-right fn-right">
+              <ul>
+								{#house action="loupanList" return="loupan" filter="hot" pageSize="4"#}
+                <li>
+                  <a href="{#$loupan.url#}" target="_blank" class="n4r-img"><img src="{#$loupan.litpic#}" alt=""></a>
+                  <a href="{#$loupan.url#}" target="_blank" class="n4r-txt">{#$loupan.addr[1]#}</a>
+                  <p class="price">价格:{#if $loupan.price != 0#}<strong>{#$loupan.price#}</strong>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<strong>待定</strong>{#/if#}</p>
+                </li>
+								{#/house#}
+              </ul>
+            </div>
+          </div>
+          <div class="more">
+            <a href="{#$house_channelDomain#}">进入房产频道>></a>
+          </div>
+        </div>
+      <!-- 导航 房产频道 e -->
+			{#/if#}
+
+			{#if in_array("tuan", $installModuleArr)#}
+			<!-- 导航 团购频道 s -->
+				<div class="nav-box nav-5">
+          <div class="n2-tit">
+						{#tuan action="type" return='type'#}
+            <a href="{#$type.url#}">{#$type.typename#}</a>
+						{#/tuan#}
+          </div>
+					<div class="n5-box">
+						<ul class="fn-clear">
+							{#tuan action="tlist" return="list" pageSize="3"#}
+							<li>
+	              <a href="{#$list.url#}" target="_blank" class="n5-img"><img src="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}"></a>
+	              <span class="n5-txt"><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></span>
+	              <div class="n5-cart fn-clear">
+	                <p class="cart-l fn-left"><span class="price">{#echoCurrency type='symbol'#}{#$list.price#}</span></p>
+	                <p class="cart-r fn-right"><span></span><a href="{#$list.url#}" target="_blank">立即参团</a></p>
+	              </div>
+	              <div class="n5-num">
+	                <span class="n5-num-l fn-left"><em class="mprice">原价：{#echoCurrency type='symbol'#}{#$list.market#}</em><span class="save">节省：<strong>{#$list.market - $list.price#}</strong></span></span>
+	              </div>
+	            </li>
+							{#/tuan#}
+						</ul>
+					</div>
+          <div class="more">
+            <a href="{#$tuan_channelDomain#}">进入团购频道>></a>
+          </div>
+				</div>
+			<!-- 导航 团购频道 e -->
+			{#/if#}
+
+			{#if in_array("business", $installModuleArr)#}
+			<!-- 导航 商家频道 s -->
+				<div class="nav-box nav-6">
+          <div class="n2-tit">
+            <a href="#">商家</a>
+            <a href="#">关注有礼</a>
+            <a href="#">打折促销</a>
+            <a href="#">打折卡</a>
+            <a href="#">优惠券</a>
+            <a href="#">好评店</a>
+            <a href="#">地图搜索商家</a>
+            <a href="#">全景地图</a>
+          </div>
+					<div class="n6-box fn-clear">
+						<div class="n6-left fn-left">
+							<ul class="fn-clear">
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic1.jpg" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic2.png" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic3.gif" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic4.jpg" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic5.jpg" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic6.gif" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic7.gif" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic8.jpg" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+								<li>
+									<a href="#" class="n6l-img"><img src="{#$templets_skin#}upfile/pic9.gif" alt="" /></a>
+									<a href="#" class="n6l-txt">微同城</a>
+								</li>
+							</ul>
+						</div>
+						<div class="n6-right fn-right">
+							<ul>
+								<li class="n6r-hot"><span class="n6r-num">1</span><a href="#">斗牛士牛排馆-精品牛排套餐原价118现价78{#echoCurrency type='short'#}</a></li>
+								<li class="n6r-hot"><span class="n6r-num">2</span><a href="#">杭州JW万豪酒店-国际顶级奢华自助晚餐仅228{#echoCurrency type='short'#}</a></li>
+								<li class="n6r-hot"><span class="n6r-num">3</span><a href="#">MOCA(魔卡)映像摄影工作室-2{#echoCurrency type='short'#}拍完美个人形象证件照</a></li>
+								<li><span class="n6r-num">4</span><a href="#">首尔火炉韩国料理香积寺店-韩国料理自助餐 晚上只需59{#echoCurrency type='short'#}</a></li>
+								<li><span class="n6r-num">5</span><a href="#">拾年(十年)主题庭院餐厅-景区推荐茶饮+点心只要9块钱，一人一券</a></li>
+								<li><span class="n6r-num">6</span><a href="#">半亩地文二路店-99{#echoCurrency type='short'#}畅享原价237{#echoCurrency type='short'#}2-4人招牌套餐</a></li>
+								<li><span class="n6r-num">7</span><a href="#">杭州海底捞餐饮-原价359{#echoCurrency type='short'#}现价128{#echoCurrency type='short'#}超值四人套餐</a></li>
+								<li><span class="n6r-num">8</span><a href="#">杭州好家快捷酒店天目山路店-口碑专享100{#echoCurrency type='short'#}抵价券,仅需1{#echoCurrency type='short'#}购买</a></li>
+								<li><span class="n6r-num">9</span><a href="#">中影国际影城-“红色礼献”35{#echoCurrency type='short'#}全场通兑</a></li>
+							</ul>
+						</div>
+					</div>
+          <div class="more">
+            <a href="#">进入商家频道>></a>
+          </div>
+				</div>
+			<!-- 导航 商家频道 e -->
+			{#/if#}
+
+			{#if in_array("shop", $installModuleArr)#}
+			<!-- 导航 商城频道 s -->
+				<div class="nav-box nav-7">
+          <div class="n2-tit">
+						{#shop action="type" return="type" pageSize="8"#}
+            <a href="{#getUrlPath service='shop' template='list' param="typeid={#$type.id#}"#}" target="_blank" class="t{#$type.id#}" title="{#$type.typename#}">{#$type.typename#}</a>
+						{#/shop#}
+          </div>
+					<div class="n7-box">
+						<ul class="fn-clear">
+							{#shop action="slist" return="list" pageSize="3"#}
+							<li>
+								<a href="{#$list.url#}" target="_blank" title="{#$list.title#}" class="n7-img"><img src="{#changeFileSize url="{#$list['litpic']#}" type="o_large"#}" alt="{#$list.title#}"></a>
+								<a href="{#$list.url#}" target="_blank" class="n7-txt"><span>{#$list.title#}</span></a>
+								<p class="n7-price"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">加入购物车</a></p>
+							</li>
+							{#/shop#}
+						</ul>
+					</div>
+          <div class="more">
+            <a href="{#$shop_channelDomain#}">进入商城频道>></a>
+          </div>
+				</div>
+			<!-- 导航 商城频道 e -->
+			{#/if#}
+
+			{#if in_array("renovation", $installModuleArr)#}
+			<!-- 导航 装修建材 s -->
+				<div class="nav-box nav-8">
+          <div class="n2-tit">
+						<a href="{#getUrlPath service='renovation' template='albums'#}">装修效果图</a>
+						<a href="{#getUrlPath service='renovation' template='case'#}">装修案例</a>
+						<a href="{#getUrlPath service='renovation' template='company'#}">找专家</a>
+						<a href="{#getUrlPath service='renovation' template='zwj'#}">找我家</a>
+						<a href="{#getUrlPath service='renovation' template='designer'#}">设计家园</a></li>
+						<a href="{#getUrlPath service='renovation' template='entrust'#}">设计与估价</a></li>
+						<a href="{#getUrlPath service='renovation' template='raiders'#}">装修攻略</a>
+          </div>
+					<ul class="fn-clear">
+						{#renovation action="rcase" return='rcase' pageSize='4'#}
+						<li>
+							<a href="{#$rcase.url#}" class="n8-img" target="_blank"><img src="{#$rcase.litpic#}" alt="{#$rcase.title#}" /></a>
+							<a href="{#$rcase.url#}" class="n8-tit" target="_blank">{#$rcase.title#}</a>
+							<p>浏览量：<strong>{#$rcase.click#}</strong></p>
+						</li>
+						{#/renovation#}
+					</ul>
+          <div class="more">
+            <a href="{#$renovation_channelDomain#}">进入装修频道>></a>
+          </div>
+				</div>
+			<!-- 导航 装修建材 e -->
+			{#/if#}
+
+      <div class="nav-r fn-right">
+        <ul>
+          <li class="on"><a href="{#$cfg_basehost#}">首页</a></li>
+          {#if in_array("huodong", $installModuleArr)#}<li><a href="{#$huodong_channelDomain#}">活动</a></li>{#/if#}
+          {#if in_array("build", $installModuleArr)#}<li><a href="{#$build_channelDomain#}">建材</a></li>{#/if#}
+          {#if in_array("furniture", $installModuleArr)#}<li><a href="{#$furniture_channelDomain#}">家具</a></li>{#/if#}
+          {#if in_array("home", $installModuleArr)#}<li><a href="{#$home_channelDomain#}">家居</a></li>{#/if#}
+          {#if in_array("marry", $installModuleArr)#}<li><a href="{#$marry_channelDomain#}">婚嫁</a></li>{#/if#}
+          {#if in_array("zhuanti", $installModuleArr)#}<li><a href="{#$zhuanti_channelDomain#}">专题</a></li>{#/if#}
+          {#if in_array("papper", $installModuleArr)#}<li><a href="{#$papper_channelDomain#}">报刊</a></li>{#/if#}
+        </ul>
+        <a href="#" class="mobile fn-right">手机版
+					<div class="pop" style="display: none;">
+					<s></s>
+					<p>扫码访问<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150"></p>
+					</div>
+				</a>
+      </div>
+    </div>
+  </div>
+<!-- 快速导航 e -->
+
+<!-- 内容部分 s -->
+  <div class="main">
+    <div class="wrap fn-clear">
+    <!-- 幻灯片 视频逛街 s -->
+      <div class="module module-1 fn-clear">
+        <div class="slideBox fn-left">
+          <div class="slide-1">
+            <a href="javascript:;" class="prev"></a>
+            <a href="javascript:;" class="next"></a>
+            <div class="bd">
+              <div class="slideul">
+                {#myad title="首页_模板七_电脑端_广告二" type="slide"#}
+              </div>
+            </div>
+          </div>
+          <div class="slideBox-list">
+            <p class="slideBox-tit">
+							{#article action="alist" return="alist1" flag="h,r" pageSize="1"#}
+							<a href="{#$alist1.url#}" target="_blank">{#$alist1.title#}</a>
+							<span>{#$alist1.description#}</span>
+							{#/article#}
+						</p>
+            <ul>
+							{#article action="alist" return="alist1" flag="r" pageSize="6"#}
+              <li><a href="{#$alist1.url#}" target="_blank">{#$alist1.title#}</a></li>
+							{#/article#}
+            </ul>
+          </div>
+        </div>
+        <div class="video fn-right">
+          <div class="video-tit">
+            <a href="{#getUrlPath service='article' template='list' typeid="2"#}" class="more fn-right">+更多</a><h3>视频逛街</h3>
+          </div>
+          <ul>
+						{#article action="alist" return="alist" typeid="2" flag="h" thumb="1" pageSize="3"#}
+            <li>
+              <span></span>
+              <a href="{#$alist.url#}" target="_blank" class="video-img"><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="{#$alist.title|strip_tags#}"></a>
+              <a href="{#$alist.url#}" target="_blank" class="txt-box">{#$alist.title#}</a>
+            </li>
+						{#/article#}
+          </ul>
+          <div class="video-tit">
+            <a href="{#getUrlPath service='article' template='list' typeid="10"#}" class="more fn-right">+更多</a><h3>图说资讯</h3>
+          </div>
+          <ul>
+						{#article action="alist" return="alist" typeid="10" flag="h" thumb="1" pageSize="3"#}
+            <li>
+              <a href="{#$alist.url#}" target="_blank" class="pic-box"><img src="{#changeFileSize url="{#$alist.litpic#}" type="small"#}" alt="{#$alist.title|strip_tags#}"></a>
+              <a href="{#$alist.url#}" target="_blank" class="txt-box">{#$alist.title#}</a>
+            </li>
+						{#/article#}
+          </ul>
+        </div>
+      </div>
+    <!-- 幻灯片 视频逛街 e -->
+		<div class="clear"></div>
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告三"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 分类信息 s -->
+      <div class="module module-2 fn-clear">
+        <div class="m2-left fn-left">
+          <div class="module-tit">
+            <h3>分类信息</h3>
+            <a href="{#$info_channelDomain#}" class="fn-right more">+更多</a>
+            <a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="fn-right announce">发布分类信息</a>
+          </div>
+          <div class="m2l-box fn-clear">
+            <div class="m2l-tab">
+              <ul>
+								{#info action="type" return='itype' pageSize="9"#}
+                <li{#if $_bindex.itype == 1#} class="on"{#/if#}><a href="{#$itype.url#}">{#$itype.typename#}</a></li>
+								{#/info#}
+              </ul>
+            </div>
+            <div class="m2l-con">
+							{#info action="type" return="itypelist" pageSize="9"#}
+              <div class="m2l-ul"{#if $_bindex.itypelist == 1#} style="display: block;"{#/if#}>
+                <ul class="fn-clear">
+									{#info action="ilist" return="type1" thumb="1" typeid={#$itypelist.id#} pageSize="8"#}
+                  <li>
+                    <a href="{#$type1.url#}" target="_blank" class="imgbox"><img src="{#changeFileSize url="{#$type1.litpic#}" type="small"#}"></a>
+                    <a href="{#$type1.url#}" target="_blank">{#$type1.title#}</a>
+                  </li>
+									{#/info#}
+                </ul>
+              </div>
+							{#/info#}
+            </div>
+          </div>
+        </div>
+        <div class="m2-right fn-right">
+          <div class="m2r-tit">
+            <a href="javascript:;">推荐竞价消息</a>
+          </div>
+          <div class="m2r-box">
+            <ul>
+							{#info action="ilist" return="ilist" orderby="1" rec="1" thumb="1" pageSize="10"#}
+              <li{#if $_bindex.ilist == 1#} class="on"{#/if#}>
+                <a href="{#$ilist.url#}" class="m2r-news-tit" target="_blank"><span>{#$ilist.title#}</span><em>{#$ilist.pubdate|date_format:"%m/%d"#}</em></a>
+                <div class="m2r-news-box">
+                  <a href="{#$ilist.url#}" class="m2r-news-img" target="_blank"><img src="{#changeFileSize url="{#$ilist.litpic#}" type="small"#}"></a>
+                  <p class="m2r-news-txt"><a href="{#$ilist.url#}" target="_blank">{#$ilist.title#}</a><span>{#$ilist.desc#}</span></p>
+                </div>
+              </li>
+							{#/info#}
+            </ul>
+          </div>
+        </div>
+      </div>
+    <!-- 分类信息 e -->
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告四"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 商家频道 打折优惠 s -->
+      <div class="module module-3 fn-clear">
+        <div class="m3-left fn-left">
+          <div class="module-tit">
+            <h3>商家频道</h3><a href="#" class="more fn-right">+更多</a>
+          </div>
+          <ul class="fn-clear">
+            <li>
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller1.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">休闲娱乐</a>
+                <span>本类共有商家<em>4</em></span>
+              </div>
+            </li>
+            <li class="bn">
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller2.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">餐饮美食</a>
+                <span>本类共有商家<em>6</em></span>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller3.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">旅游酒店</a>
+                <span>本类共有商家<em>2</em></span>
+              </div>
+            </li>
+            <li class="bn">
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller4.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">便民服务</a>
+                <span>本类共有商家<em>5</em></span>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller5.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">美容保健</a>
+                <span>本类共有商家<em>5</em></span>
+              </div>
+            </li>
+            <li class="bn">
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller6.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">企业</a>
+                <span>本类共有商家<em>4</em></span>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller3.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">购物服务</a>
+                <span>本类共有商家<em>5</em></span>
+              </div>
+            </li>
+            <li class="bn">
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller4.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">教育培训</a>
+                <span>本类共有商家<em>0</em></span>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller5.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">房产家居</a>
+                <span>本类共有商家<em>1</em></span>
+              </div>
+            </li>
+            <li class="bn">
+              <a href="#" class="m3l-img"><img src="{#$templets_skin#}images/seller6.png" alt=""></a>
+              <div class="m3l-txt">
+                <a href="#">车辆服务</a>
+                <span>本类共有商家<em>0</em></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="m3-middle fn-left">
+          <div class="module-tit">
+            <h3>打折优惠</h3><a href="#" class="more fn-right">+更多</a>
+          </div>
+          <ul>
+            <li class="m3m-hot"><span class="m3m-num">1</span><a href="#">斗牛士牛排馆-精品牛排套餐原价118现价78{#echoCurrency type='short'#}</a><em>07-11</em></li>
+            <li class="m3m-hot"><span class="m3m-num">2</span><a href="#">杭州JW万豪酒店-国际顶级奢华自助晚餐仅228{#echoCurrency type='short'#}</a><em>07-11</em></li>
+            <li class="m3m-hot"><span class="m3m-num">3</span><a href="#">MOCA(魔卡)映像摄影工作室-2{#echoCurrency type='short'#}拍完美个人形象证件照</a><em>07-11</em></li>
+            <li><span class="m3m-num">4</span><a href="#">首尔火炉韩国料理香积寺店-韩国料理自助餐 晚上只需59{#echoCurrency type='short'#}</a><em>07-11</em></li>
+            <li><span class="m3m-num">5</span><a href="#">拾年(十年)主题庭院餐厅-景区推荐茶饮+点心只要9块钱，一人一券</a><em>07-11</em></li>
+            <li><span class="m3m-num">6</span><a href="#">半亩地文二路店-99{#echoCurrency type='short'#}畅享原价237{#echoCurrency type='short'#}2-4人招牌套餐</a><em>07-11</em></li>
+            <li><span class="m3m-num">7</span><a href="#">杭州海底捞餐饮-原价359{#echoCurrency type='short'#}现价128{#echoCurrency type='short'#}超值四人套餐</a><em>07-11</em></li>
+            <li><span class="m3m-num">8</span><a href="#">杭州好家快捷酒店天目山路店-口碑专享100{#echoCurrency type='short'#}抵价券,仅需1{#echoCurrency type='short'#}购买</a><em>07-11</em></li>
+            <li><span class="m3m-num">9</span><a href="#">中影国际影城-“红色礼献”35{#echoCurrency type='short'#}全场通兑</a><em>07-11</em></li>
+            <li><span class="m3m-num">10</span><a href="#">东方唛霸风尚KTV-免费欢唱6小时还送果盘和爆米花仅18{#echoCurrency type='short'#}.</a><em>07-11</em></li>
+            <li><span class="m3m-num">11</span><a href="#">有缘花店-广州99朵玫瑰预订99枝99朵玫瑰预订</a><em>07-11</em></li>
+            <li><span class="m3m-num">12</span><a href="#">仙踪林银座店-招行信用卡专享优惠</a><em>07-11</em></li>
+            <li><span class="m3m-num">13</span><a href="#">蜀风流火锅店棠下店-招行信用卡专享优惠</a><em>07-11</em></li>
+            <li><span class="m3m-num">14</span><a href="#">食赣佳江西味道餐厅-招行信用卡专享优惠</a><em>07-11</em></li>
+          </ul>
+        </div>
+        <div class="m3-right fn-right">
+          <div class="m3r-tit"></div>
+          <ul>
+            <li>
+              <a href="#" class="m3r-adv"><img src="{#$templets_skin#}upfile/co1.jpg" alt=""><span>购买服务送汽车模型</span></a>
+              <p class="m3r-txt"><a href="#"></a></p>
+            </li>
+            <li>
+              <a href="#" class="m3r-adv"><img src="{#$templets_skin#}upfile/co2.jpg" alt=""><span>-80后我们的爱，情侣写真</span></a>
+              <p class="m3r-txt"><a href="#"></a></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <!-- 商家频道 打折优惠 e -->
+
+    <!-- 滚动广告 s -->
+      <div class="advScroll">
+        <div class="bd">
+          <ul>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic1.jpg"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic2.png"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic3.gif"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic4.jpg"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic5.jpg"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic6.gif"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic7.gif"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic8.jpg"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic9.gif"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic10.gif"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic11.jpg"></a></li>
+            <li><a href="#"><img src="{#$templets_skin#}upfile/pic12.jpg"></a></li>
+          </ul>
+        </div>
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+      </div>
+    <!-- 滚动广告 e -->
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告五"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 今日团购 s -->
+      <div class="module module-4">
+        <div class="module-tit">
+          <h3>今日团购</h3><a href="{#$tuan_channelDomain#}" class="more fn-right" target="_blank">+更多</a>
+        </div>
+        <div class="m4">
+          <ul class="fn-clear">
+						{#tuan action="tlist" return="tlist" pageSize="4"#}
+            <li>
+              <a href="{#$tlist.url#}" class="m4-img" target="_blank"><img src="{#changeFileSize url="{#$tlist.litpic#}" type="middle"#}" alt="{#$tlist.title#}"></a>
+              <span class="m4-txt"><a href="{#$tlist.url#}" target="_blank">{#$tlist.title#}</a></span>
+              <div class="m4-cart fn-clear">
+                <p class="cart-l fn-left"><span class="price">{#echoCurrency type='symbol'#}{#$tlist.price#}</span></p>
+                <p class="cart-r fn-right"><span></span><a href="{#$tlist.url#}" target="_blank">立即参团</a></p>
+              </div>
+              <div class="m4-num">
+                <span class="m4-num-l fn-left"><em class="mprice">原价：{#echoCurrency type='symbol'#}{#$tlist.market#}</em><span class="save">节省：<strong>{#$tlist.market - $tlist.price#}</strong></span></span><span class="m4-num-r fn-right"><strong>{#$tlist.sale#}</strong>人已买</span>
+              </div>
+            </li>
+						{#/tuan#}
+          </ul>
+        </div>
+      </div>
+    <!-- 今日团购 e -->
+
+    <!-- 商城频道 s -->
+      <div class="module module-5">
+        <div class="module-tit">
+          <h3>商城频道</h3><a href="{#$shop_channelDomain#}" class="more fn-right">+更多</a>
+        </div>
+        <div class="m5 fn-clear">
+          <div class="m5-tab fn-left">
+            <ul>
+              <li class="on"><a href="javascript:;">推荐商品</a></li>
+              <li><a href="javascript:;">特价促销</a></li>
+              <li><a href="javascript:;">热卖商品</a></li>
+            </ul>
+          </div>
+          <div class="m5-box fn-left">
+            <div class="m5-ul">
+              <ul class="fn-clear">
+								{#shop action="slist" return="list" flag="0" pageSize="5"#}
+                <li>
+                  <a href="{#$list.url#}" target="_blank" title="{#$list.title#}" class="m5-img"><img src="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}"></a>
+                  <a href="{#$list.url#}" target="_blank" class="m5-txt"><span>{#$list.title#}</span></a>
+                  <p class="m5-price"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">加入购物车</a></p>
+                </li>
+								{#/shop#}
+              </ul>
+            </div>
+            <div class="m5-ul">
+              <ul class="fn-clear">
+								{#shop action="slist" return="list" flag="1" pageSize="5"#}
+                <li>
+                  <a href="{#$list.url#}" target="_blank" title="{#$list.title#}" class="m5-img"><img src="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}"></a>
+                  <a href="{#$list.url#}" target="_blank" class="m5-txt"><span>{#$list.title#}</span></a>
+                  <p class="m5-price"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">加入购物车</a></p>
+                </li>
+								{#/shop#}
+              </ul>
+            </div>
+            <div class="m5-ul">
+              <ul class="fn-clear">
+								{#shop action="slist" return="list" flag="2" pageSize="5"#}
+                <li>
+                  <a href="{#$list.url#}" target="_blank" title="{#$list.title#}" class="m5-img"><img src="{#changeFileSize url="{#$list['litpic']#}" type="middle"#}" alt="{#$list.title#}"></a>
+                  <a href="{#$list.url#}" target="_blank" class="m5-txt"><span>{#$list.title#}</span></a>
+                  <p class="m5-price"><span>{#echoCurrency type='symbol'#}{#$list.price#}</span><a href="{#$list.url#}" target="_blank">加入购物车</a></p>
+                </li>
+								{#/shop#}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- 商城频道 e -->
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告六"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 最新招聘 推荐人才 s -->
+      <div class="module module-6 fn-clear">
+        <div class="m6-left fn-left">
+          <div class="module-tit">
+            <h3>最新招聘</h3><a href="{#getUrlPath service='job' template='zhaopin'#}" class="more fn-right" target="_blank">+更多</a>
+          </div>
+          <ul>
+						{#job action="post" return="post" pageSize="12"#}
+            <li>
+              <a href="{#$post.company['domain']#}" target="_blank" class="m6l-2">{#$post.company['title']#}</a>
+							<a href="{#$post.url#}#jobDetail" target="_blank" title="{#$post.title#}" class="m6l-1">{#$post.title#}</a>
+            </li>
+						{#/job#}
+          </ul>
+        </div>
+        <div class="m6-middle fn-left">
+          <div class="module-tit">
+            <h3>推荐人才</h3><a href="{#getUrlPath service='job' template='resume'#}" class="more fn-right" target="_blank">+更多</a>
+          </div>
+          <ul>
+						{#$i = 0#}
+						{#job action="resume" return="resume_" page="1" pageSize="12"#}
+						{#$cla = ''#}
+						{#if $i % 2 == 1#}
+							{#$cla = ' bg'#}
+						{#/if#}
+            <li class="fn-clear{#$cla#}">
+              <a href="{#$resume_.url#}" target="_blank"><span class="m6m-1">{#$resume_.name#}</span><span class="m6m-2">{#if $resume_.sex == 0#}男{#else#}女{#/if#}</span><span class="m6m-3">{#$resume_.educational#}</span><span class="m6m-4">{#$resume_.professional#}</span></a>
+            </li>
+						{#$i = $i + 1#}
+						{#/job#}
+          </ul>
+        </div>
+        <div class="m6-right fn-right">
+          <div class="m6r-top">
+            <div class="picScroll">
+              <div class="module-tit">
+                <h3>最新照片人才</h3>
+              </div>
+              <div class="bd">
+                <ul>
+                  <li>
+										{#job action="resume" return="resume" page="1" pageSize="2"#}
+                    <div class="talent">
+                      <a href="{#$resume.url#}" class="talent-img" target="_blank"><img src="{#$resume.photo#}" alt=""></a>
+                      <div class="talent-txt">
+                        <p><a href="{#$resume.url#}" class="gray" target="_blank">{#$resume.name#}</a><span>姓名：</span></p>
+                        <p><em class="gray">{#$resume.educational#}</em><span>学历：</span></p>
+                        <p><em class="red">{#if $resume.sex == 0#}男{#else#}女{#/if#}</em><span>性别：</span></p>
+                        <p class="more"><a href="{#$resume.url#}" target="_blank">查看详细>></a></p>
+                      </div>
+                    </div>
+										{#/job#}
+                  </li>
+                  <li>
+										{#job action="resume" return="resume" page="2" pageSize="2"#}
+                    <div class="talent">
+                      <a href="{#$resume.url#}" class="talent-img" target="_blank"><img src="{#$resume.photo#}" alt=""></a>
+                      <div class="talent-txt">
+                        <p><a href="{#$resume.url#}" class="gray" target="_blank">{#$resume.name#}</a><span>姓名：</span></p>
+                        <p><em class="gray">{#$resume.educational#}</em><span>学历：</span></p>
+                        <p><em class="red">{#if $resume.sex == 0#}男{#else#}女{#/if#}</em><span>性别：</span></p>
+                        <p class="more"><a href="{#$resume.url#}" target="_blank">查看详细>></a></p>
+                      </div>
+                    </div>
+										{#/job#}
+                  </li>
+                  <li>
+										{#job action="resume" return="resume" page="3" pageSize="2"#}
+                    <div class="talent">
+                      <a href="{#$resume.url#}" class="talent-img" target="_blank"><img src="{#$resume.photo#}" alt=""></a>
+                      <div class="talent-txt">
+                        <p><a href="{#$resume.url#}" class="gray" target="_blank">{#$resume.name#}</a><span>姓名：</span></p>
+                        <p><em class="gray">{#$resume.educational#}</em><span>学历：</span></p>
+                        <p><em class="red">{#if $resume.sex == 0#}男{#else#}女{#/if#}</em><span>性别：</span></p>
+                        <p class="more"><a href="{#$resume.url#}" target="_blank">查看详细>></a></p>
+                      </div>
+                    </div>
+										{#/job#}
+                  </li>
+                </ul>
+              </div>
+              <a href="javascript:;" class="prev"></a>
+              <a href="javascript:;" class="next"></a>
+            </div>
+          </div>
+          <div class="m6r-bottom">
+            <div class="module-tit">
+              <h3>品牌企业推荐</h3>
+            </div>
+            <ul class="fn-clear">
+							{#job action="company" return="company" property="m" pageSize="4"#}
+              <li><a href="{#$company.url#}#jobDetail" target="_blank" title="{#$company.title#}"><img src="{#$company.logo#}"></a></li>
+							{#/job#}
+            </ul>
+          </div>
+        </div>
+      </div>
+    <!-- 最新招聘 推荐人才 e -->
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告七"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 房产 s -->
+      <div class="module module-7 fn-clear">
+        <div class="m7-left fn-left">
+          <div class="module-tit">
+            <h3>最新楼盘</h3><a href="{#getUrlPath service='house' template='loupan'#}" class="more fn-right">+更多</a>
+          </div>
+          <ul class="fn-clear">
+						{#house action="loupanList" return="loupan" filter="hot" pageSize="6"#}
+            <li>
+              <a href="{#$loupan.url#}" target="_blank" class="m7l-img"><img src="{#$loupan.litpic#}" alt=""></a>
+              <a href="{#$loupan.url#}" target="_blank" class="m7l-tit">{#$loupan.title#}[{#$loupan.addr[1]#}]</a>
+              <span class="m7l-price">价格:{#if $loupan.price != 0#}<strong>{#$loupan.price#}</strong>{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#else#}<strong>待定</strong>{#/if#}</span>
+            </li>
+						{#/house#}
+          </ul>
+        </div>
+        <div class="m7-middle fn-left">
+          <div class="module-tit">
+            <h3><span class="on">出售房源</span><span>出租房源</span></h3><a href="{#getUrlPath service='house' template='zu'#}" class="more fn-right">+更多</a>
+          </div>
+          <div class="m7m-box">
+            <ul>
+              <li class="title">
+                <a href="javascript:;"><span class="m7m-1">小区名称</span><span class="m7m-2">地区</span><span class="m7m-3">面积</span><span class="m7m-4">价格</span></a>
+              </li>
+							{#$j = 0#}
+							{#house action="saleList" return="sale" orderby="1" pageSize="11"#}
+							{#$cla = ''#}
+							{#if $j % 2 == 0#}
+								{#$cla = ' bg'#}
+							{#/if#}
+              <li class="fn-clear{#$cla#}">
+                <a href="{#$sale.url#}" target="_blank"><span class="m7m-1">{#$sale.title#}</span><span class="m7m-2">{#$sale.addr[0]#}</span><span class="m7m-3">{#$sale.area#}㎡</span><span class="m7m-4">{#$sale.price#}万{#echoCurrency type='short'#}</span></a>
+              </li>
+							{#$j = $j + 1#}
+							{#/house#}
+            </ul>
+						<ul class="fn-hide">
+              <li class="title">
+                <a href="javascript:;"><span class="m7m-1">小区名称</span><span class="m7m-2">地区</span><span class="m7m-3">面积</span><span class="m7m-4">价格</span></a>
+              </li>
+							{#$k = 0#}
+							{#house action="zuList" return="zu" orderby="1" pageSize="11"#}
+							{#$cla = ''#}
+							{#if $k % 2 == 0#}
+								{#$cla = ' bg'#}
+							{#/if#}
+              <li class="fn-clear{#$cla#}">
+                <a href="{#$zu.title#}" target="_blank"><span class="m7m-1">{#$zu.title#}</span><span class="m7m-2">{#$zu.addr[0]#}</span><span class="m7m-3">{#$zu.area#}㎡</span><span class="m7m-4">{#$zu.price#}万{#echoCurrency type='short'#}</span></a>
+              </li>
+							{#$k = $k + 1#}
+							{#/house#}
+            </ul>
+          </div>
+        </div>
+        <div class="m7-right fn-right">
+          <div class="m7r-top">
+            <div class="module-tit">
+              <h3>房产资讯</h3>
+            </div>
+            <p class="m7r-top-hot">
+							{#house action="news" return="news" pageSize="1"#}
+              <a href="{#$news.url#}" target="_blank" title="{#$news.title#}">{#$news.title#}</a>
+							{#/house#}
+            </p>
+            <ul>
+							{#house action="news" return="news" pageSize="9"#}
+              <li>
+                <i>·</i><a href="{#$news.url#}" target="_blank" title="{#$news.title#}" class="m7r-hot-info">{#$news.title#}</a>
+              </li>
+							{#/house#}
+            </ul>
+          </div>
+          <div class="m7r-bottom">
+            <div class="agentScroll">
+              <div class="module-tit">
+                <h3>推荐经纪人</h3>
+              </div>
+              <div class="bd">
+                <ul>
+									{#house action="zjUserList" return="broker" orderby="level" pageSize="10"#}
+                  <li>
+                    <a href="{#$broker.url#}" target="_blank" class="agent-img"><img src="{#$broker.photo#}" alt="{#$broker.nickname#}"></a>
+                    <div class="agent-txt">
+                      <p><a href="{#$broker.url#}" target="_blank" class="gray">{#$broker.nickname#}</a></p>
+                      <p><em class="green">已认证</em><span>学历：</span></p>
+                      <p><span>电话：</span></p>
+                      <p class="more"><a href="{#$broker.url#}" target="_blank">{#$broker.phone#}</a></p>
+                    </div>
+                  </li>
+									{#/house#}
+                </ul>
+              </div>
+              <a href="javascript:;" class="prev"></a>
+              <a href="javascript:;" class="next"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- 房产 e -->
+
+    <!-- 广告位 s -->
+      <div class="adv-1">
+        {#myad title="首页_模板七_电脑端_广告八"#}
+      </div>
+    <!-- 广告位 e -->
+
+    <!-- 装修 招标 s -->
+      <div class="module module-8 fn-clear">
+        <div class="m8-left fn-left">
+          <div class="module-tit">
+            <h3>装修案例</h3><a href="{#getUrlPath service='renovation' template='diary'#}" class="more fn-right">+更多</a>
+          </div>
+          <ul class="fn-clear">
+						{#renovation action="diary" return='diary' pageSize='9'#}
+            <li>
+              <a href="{#$diary.url#}" class="m8l-img" target="_blank"><img src="{#$diary.litpic#}" alt="{#$diary.title#}"></a>
+              <p class="m8l-txt"><a href="{#$diary.url#}" target="_blank">{#$diary.title#}</a></p>
+            </li>
+						{#/renovation#}
+          </ul>
+        </div>
+        <div class="m8-right fn-right">
+          <div class="m8r-top">
+            <div class="module-tit">
+              <h3>招标信息</h3>
+            </div>
+            <ul>
+							{#renovation action="zhaobiao" return='zhaobiao' pageSize='9'#}
+              <li class="news-hot">
+                <span class="news-num">{#$_bindex.zhaobiao#}</span>
+                <a href="{#$zhaobiao.url#}" target="_blank">{#$zhaobiao.title#}</a><em>{#$zhaobiao.pubdate|date_format:"%m/%d"#}</em>
+              </li>
+							{#/renovation#}
+            </ul>
+          </div>
+          <div class="m8r-bottom">
+            <div class="module-tit">
+              <h3>推荐装修公司</h3><a href="{#getUrlPath service='renovation' template='store'#}" class="more fn-right">+更多</a>
+            </div>
+            <ul class="fn-clear">
+							{#renovation action="store" return="store" pageSize="4"#}
+              <li><a href="{#$store.url#}" target="_blank"><img src="{#$store.logo#}" alt=""></a></li>
+							{#/renovation#}
+            </ul>
+          </div>
+        </div>
+      </div>
+    <!-- 装修 招标 e -->
+
+    <!-- 友情链接 s -->
+      <div class="frinedlink">
+        <ul class="fn-clear">
+					{#siteConfig action="friendLink" return="flink" module="siteConfig"#}<li><a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a></li>{#/siteConfig#}
+        </ul>
+      </div>
+    <!-- 友情链接 e -->
+
+    </div>
+  </div>
+<!-- 内容部分 e -->
+
+<!-- 浮动导航 s -->
+	<div class="floatNav">
+		<ul>
+			<li><a href="javascript:;" class="top"></a></li>
+			<li>
+				<a href="javascript:;" class="service"></a>
+				<div class="service-box float-box">
+					<h2><a href="#"></a><a href="#"></a></h2>
+					<p>电话：400-025-1158<br>工作时间：8:00-18:00</p>
+				</div>
+			</li>
+			<li>
+				<a href="javascript:;" class="phone"></a>
+				<div class="phone-box float-box">
+					<a href="javascript:;"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt="" /></a>
+					<p>扫一扫访问手机版</p>
+				</div>
+			</li>
+			<li>
+				<a href="javascript:;" class="wx"></a>
+				<div class="wx-box float-box">
+					<p>关注微信 获取最新资讯！</p>
+					<a href="javascript:;"><img src="{#$cfg_attachment#}{#$cfg_weixinQr#}" alt="" /></a>
+				</div>
+			</li>
+		</ul>
+	</div>
+<!-- 浮动导航 e -->
+
+<!-- 底部 s -->
+<div class="footer-login">
+  <p>
+		{#siteConfig action="singel"#}
+		<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}">{#$row.title#}</a><em>|</em>
+		{#/siteConfig#}
+		<a href="{#getUrlPath service='siteConfig' template='help'#}">帮助中心</a>
+  </p>
+  {#$cfg_powerby#}<br />{#$cfg_statisticscode#}
+</div>
+<!-- 底部 e -->
+
+
+<script src="{#$cfg_basehost#}/static/js/common.js" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js" type="text/javascript"></script>
+</body>
+</html>
