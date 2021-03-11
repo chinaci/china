@@ -1,0 +1,44 @@
+.header-search {visibility: hidden;}
+
+/*内容*/
+.order-info{font-size: .34rem;padding-top: .2rem;}
+.order-name,.order-num,.order-price,.order-fare{height: 1rem;border-bottom: 1px solid #ebebeb;line-height: 1rem;background: #fff;padding: 0 .2rem;}
+.name-l{float: left;color: #969696;}
+.name-r{float: right;}
+.order-num .name-r span,.order-num .name-r input{border: 1px solid #969696;display: block;float: left;padding: 0 .2rem;line-height: .6rem;margin-top: .2rem;width: .4rem;outline: 0;text-align: center;}
+.order-num .name-r input.num-account{width: .6rem; border-left: 0;border-right: 0;font-size: .32rem;-webkit-appearance:none;border-radius: 0}
+.order-name .name-l{width: 70%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+/*绑定手机号*/
+.band{background: #fff;margin-top: .2rem;line-height: 1rem;font-size: .34rem;text-align: right;}
+.band em {position: relative; z-index: 1; float: left; margin-left: .2rem;}
+.band a{position: relative; z-index: 2; display: block;padding-right: .2rem;}
+
+/*登录后*/
+.band-tit{height: 1rem;padding: 0 .2rem;}
+.band-change{height: 1rem;padding: 0 0 0 .2rem;background: #fff;border-top: 1px solid #ebebeb;}
+
+/*提交订单*/
+.submit{background: #f90;font-size: .32rem;text-align: center;height: 1rem;line-height: 1rem;width: 100%;max-width: 1080px;margin-top: .3rem;}
+.submit a{display: block;color: #fff;}
+
+/*快递无地址*/
+.order-address{margin-top: .2rem;background: #fff;font-size: .32rem;}
+.order-address .address-tit{height: .8rem;line-height: .8rem;padding-left: .2rem;color: #969696;border-bottom: 1px solid #ebebeb;}
+.address-add,.delivery-day{height: 1rem;line-height: 1rem;border-bottom: 1px solid #ebebeb;padding: 0 .2rem;}
+.address-add a,.delivery-day a{display: block;}
+.remark{margin-top: .2rem;border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb;background: #fff;padding: .2rem 0;}
+.remark input{border: 0;outline: 0;font-size: .3rem;overflow:scroll;width: 90%;padding-left: .2rem;}
+
+/*快递有地址*/
+.address-change{background: #fff;}
+.address-change a{display: block;position: relative;padding: .2rem;}
+.address-change .name-l{width: 90%;}
+.address-change .name-r{position: absolute;right: .2rem;top: 27%;}
+.order-day{background: #fff;margin-top: .2rem;font-size: .32rem;}
+.order-day a{display: block;}
+.order-day .day-tit{height: .8rem;line-height: .8rem;padding-left: .2rem;color: #969696;border-bottom: 1px solid #ebebeb;}
+.order-day .day-change{position: relative; height: 1rem;line-height: 1rem;padding: 0 .2rem;}
+.order-day .day-change .name-l{position: relative; width: 100%; z-index: 2;}
+.order-day .day-change .name-l select{height: .9rem;width: 100%;outline: 0;border: 0;background: transparent;font-size: .32rem;-webkit-appearance:none;}
+.order-day .day-change .day-r{position: absolute;right: .2rem;z-index: 1;}
