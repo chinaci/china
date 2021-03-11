@@ -1,0 +1,21 @@
+body, html{background: #f9f9f9;}
+
+/*回复弹出层*/
+.header{position: fixed; left: 0; right: 0; top: 0; z-index: 999;}
+.layer{position: fixed; top: .9rem; bottom: 0; right: 0; left: 0;}
+.layer.show{display: block;}
+.layer .top-l{position: relative;}
+.layer .top-l a{padding-left: .5rem;}
+.layer .top-l a:before{content: ''; position: absolute; top: 50%; left: 10px; border: 2px solid #666; border-width: 2px 0 0 2px; width: 8px; height: 8px; margin: -5px 0 0 0; -webkit-transform: scale(1) rotate(-50deg) skew(-10deg) translateZ(0); transform: scale(1) rotate(-50deg) skew(-10deg) translateZ(0);}
+.layer .top-r{padding: 0 .2rem;}
+.layer .prev{padding-right: .2rem;}
+.choose{font-size: .3rem; height: 100%;}
+.choose .fn-clear{height: 100%; width: 100%; transition: all .3s;}
+.choose li{line-height: .8rem; padding: 0 .2rem; position: relative; height: .8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.choose li.selected{background: #fdfdfd; color: #fc6c09;}
+.choose li a{display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.choose li.curr:before{content: ''; position: absolute; width: 2px; height: 20px; background: #ff6666; left: 0; top: 50%; margin-top: -10px;}
+.fchoose{width: 100%; height: 100%; overflow: auto; box-sizing: border-box; border-right: 1px solid #eaeaea; transition: all .1s;}
+.fchoose:last-child{border-right: none;}
+
+.huoniao_iOS .layer {top:0;}
