@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{#$detail_ac_name#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="{#$templets_skin#}css/zq_center.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', templets_skin='{#$templets_skin#}';
+			var mediaid = {#$detail_id#};
+		</script>
+	</head>
+	<body>
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$detail_ac_name#}"#}
+		<!--banner s-->
+		<div class="BannerBox" >
+			<div class="banner swiper-container">
+				<ul class="bd swiper-wrapper">
+					{#foreach from=$detail_ac_bannerList item="img"#}
+					<li class="swiper-slide">
+						<a href="{#$img.url|default:"javascript:;"#}">
+							<img src="{#$img.path#}" alt="{#$img.info#}" />
+						</a>
+					</li>
+					{#/foreach#}
+				</ul>
+				<div class="pagenum"></div>
+			</div>
+		</div>
+		<!--banner e-->
+		
+		<!--信息s-->
+		<div class="mediaBox">
+			<div class="art_title_more fn-clear">
+				<div class="_left">
+					<a class="userimgbox" href="{#$detail_url#}">
+						<img src="{#$detail_ac_photo#}" alt="{#$detail_ac_name#}">
+					</a>
+					<h2>
+						<a href="{#$detail_url#}">{#$detail_ac_name#}</a>
+						<p class="media_info">{#$detail_ac_profile#}</p>
+					</h2>
+				</div>
+													
+				<div class="_right">
+					{#if $detail_isfollow == 1#}
+					<a href="javascript:;" data-id="{#$detail_id#}" class="btn_care cared"><s></s>已关注</a>
+					{#else#}
+					<a href="javascript:;" data-id="{#$detail_id#}" class="btn_care "><s></s>关注</a>
+					{#/if#}
+				</div>
+			</div>
+			<!--信息e-->
+			<!--快捷导航 s-->
+			<div class="nav_box">
+				<div class=" swiper-container">
+					<ul class="swiper-wrapper">
+						{#article action='mediaArcType' id=$detail_id return='type'#}
+						<li class="swiper-slide">
+							<a href="{#if $type.jump#}{#$type.jump#}{#else#}javascript:;{#/if#}" data-id="{#$type.id#}">
+								<div class="icon_box"><img src="{#$type.icon#}"/></div>
+								<p>{#$type.typename#}</p>
+							</a>
+						</li>
+						{#/article#}
+						
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!--发布的消息-->
+		<div class="fabu_box recmbox">
+			<ul class=" ulbox">
+				
+			</ul>
+			
+		</div>
+		<!--<div class="loading">
+			<img src="{#$templets_skin#}images/loading.gif">
+			<span>加载中</span>
+		</div>-->
+		<!--快捷导航 e-->
+		<script type="text/javascript">
+			    var wxconfig = {
+			        "appId": '{#$wxjssdk_appId#}',
+			        "timestamp": '{#$wxjssdk_timestamp#}',
+			        "nonceStr": '{#$wxjssdk_nonceStr#}',
+			        "signature": '{#$wxjssdk_signature#}',
+			        "description": '{#$detail_ac_profile#}',
+			        "title": '{#$detail_ac_name#}',
+			        "imgUrl": '{#$detail_ac_photo#}',
+			        "link": '{#getUrlPath service='article' template='mddetail' id={#$detail_id#}#}',
+			    };
+		
+		    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/zq_center.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+html,body{width:100%; height: 100%;}
+.imgsBox{width: 100%; height: 100%; background-color: #000; position: fixed; top: 0;}
+.header.transparent {background-color: rgba(0,0,0,.6) !important;}
+.header.transparent .header-address{color: #fefefe;}
+.replyBox{width:100% ;  position: fixed; bottom: 0;z-index: 9; padding: .32rem 0; border-top: solid .01rem #5e5e5e; background-color: rgba(0,0,0,.5);}
+.replyBox:after{content: ''; clear: both;}
+.replyBox ._left{float: left; margin-left: .34rem;}
+._left a:before{content: '' ; width:.38rem; height: .38rem; margin-right: .2rem; display: inline-block; background-image: url(../images/img_reply.png); background-size: cover; vertical-align: middle;}
+._left a{line-height: .38rem; font-size: .32rem; color: #c4c4c4; display: block; }
+._left a span{vertical-align: middle;}
+.replyBox ._right{float: right; margin-right: .34rem; }
+.replyBox ._right span,.replyBox ._right a{display: inline-block; vertical-align: middle; background-size: cover;margin-top: .06rem;}
+.replyNum{ width: .46rem; height: .42rem;background-image: url(../images/img_reply01.png); margin-right: .4rem; position: relative;}
+.replyNum i{background-color: #fc3a4a; color: #fff; font-size: .22rem; padding:0 .12rem; border-radius: .13rem; line-height: .26rem; position: absolute; top: -.12rem; left: .18rem;}
+.share{width: .38rem; height: .38rem; background-image: url(../images/img_share.png);}
+
+.font_scroll{bottom: 1.1rem !important; font-size: .32rem; color: #dedede;   text-indent: 3em; background: rgba(0,0,0,.5) !important; }
+.font_scroll span{line-height: .54rem !important; height: auto !important;}
+.font_scroll{padding-bottom: 0 !important;}
+
+.float-download{height: .8rem; background: rgba(0,0,0,.5); padding: .2rem;  border-bottom: 1px solid #f5f5f5;  display: none; position: fixed; left: 0; right: 0; bottom: 0;z-index: 9;}
+.float-box{position: relative; left: 0; right: 0; top: 0; z-index: 999;}
+.download-box{float: left; background: #fff; border: 1px solid #ccc; border-radius: .1rem; width: .8rem; height: .8rem; margin-right: .2rem;}
+.download-box img{display: block; width: .6rem; margin: .1rem; height: .6rem;}
+.download-txt{float: left; padding-top: .05rem; color: #fff;}
+.download-txt .gray{color: #fff; font-size: .24rem; overflow: hidden; text-overflow: ellipsis; display: block;}
+.download-btn{float: right; font-size: .26rem; position: absolute; right: 0;}
+.download-btn a{border: 1px solid #23b8f6; color: #23b8f6; border-radius: .5rem; padding: .05rem .2rem; margin: .2rem .5rem 0 0; display: inline-block; background: #fff;}
+.float-download .closesd{position: absolute; display: block; width: .6rem; height: .6rem; background: url(../images/close2.png) center center no-repeat; background-size: .4rem auto; right: -.2rem; top: -.2rem;}

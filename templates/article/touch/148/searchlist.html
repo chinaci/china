@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>搜索列表</title>
+		<meta charset="{#$cfg_soft_lang#}">
+		<meta name="keywords" content="{#$cfg_keywords#}">
+		<meta name="description" content="{#$cfg_description#}">
+		<meta name="wap-font-scale" content="no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" href="{#$templets_skin#}css/searchlist.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var templets_skin = '{#$templets_skin#}';
+		</script>
+	</head>
+	<body>
+		<div class="top_head">
+			<div class="top">
+				<a href="javascript:history.go(-1)" class="back_btn"></a>
+				<input type="search" id="keywords" placeholder="请输入关键字" value="{#$keywords#}" />
+				<button>搜索</button>
+			</div>	
+			<div class="tab">
+				<a href="javascript:;"{#if !$type#} class="onchose"{#/if#} data-page='1'>综合</a>
+				<a href="javascript:;"{#if $type#} class="onchose"{#/if#} data-page='1'>政企号</a>
+			</div>
+		</div>
+		<!--搜索列表s-->
+		<div class="search_list">
+			<ul class="ulbox">
+				<!--<li class="media_box">
+					<a href="#">
+						<div class="left_head"><img src="{#$templets_skin#}upfile/img_1.png"></div>
+						<span class="carebtn">关注</span>
+						<div class="right_info">
+							<h2>华山网讯</h2>
+							<p>没有谁是一座孤岛，在大海… 里独..</p>
+						</div>
+					</a>
+				</li>
+				<li class="media_box">
+					<a href="#">
+						<div class="left_head"><img src="{#$templets_skin#}upfile/img_1.png"></div>
+						<span class="caredbtn carebtn">已关注</span>
+						<div class="right_info">
+							<h2>华山网讯</h2>
+							<p>没有谁是一座孤岛，在大海… 里独..</p>
+						</div>
+					</a>
+				</li>-->
+			</ul>
+		</div>
+		<script src="{#$templets_skin#}js/searchlist.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

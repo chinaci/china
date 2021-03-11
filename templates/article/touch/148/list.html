@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{#$article_title#}</title>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="keywords" content="{#$article_keywords#}">
+<meta name="description" content="{#$article_description#}">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index_1.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/zqlist.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.8.0/skins/default/aliplayer-min.css">
+<script type="text/javascript" charset="utf-8" src="//g.alicdn.com/de/prismplayer/2.8.0/aliplayer-min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin='{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var templets = '{#$templets_skin#}';
+	var detailListId = 'maincontent', mold = '{#$mold#}', hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', listid = {#$list_id|default:0#};
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$article_description#}#}
+{#$Share_title = {#$article_title#}#}
+{#$Share_img = {#$article_logoUrl#}#}
+{#$Share_url = {#$article_channelDomain#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+
+<body>
+	<div class="fixed_box">
+
+		{#$pageCurr = 'index'#}
+		{#include file="../../../siteConfig/touch_top.html" pageTitle={#$article_title#}#}
+		<!--顶部搜索和logo e-->
+		<!--导航s-->
+		<div class="nav_box fn-clear">
+			{#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+			<a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=article" class="areaChose"><span>{#$siteCityInfo['name']#}</span></a>
+			{#/if#}
+			<a href="javascript:;" class="more_nav"></a>
+			<ul class="fn-clear f_nav">
+				<li class="active" data-index="all" data-page='1'><a href="javascript:;" >头条</a></li>
+				<li data-index="video" data-page='1'><a href="javascript:;">视频</a></li>
+				<li data-index="zqnum" data-page='1'><a href="javascript:;">媒体号</a></li>
+				<li data-index="zt" data-page='1'><a href="javascript:;" >专题</a></li>
+				<li data-index="img" data-page='1'  data-mold='1'><a href="javascript:;" >图集</a></li>
+				<li data-index="svideo" data-page='1'  data-mold='3'><a href="javascript:;" >小视频</a></li>
+				{#article action="type" return="type"#}
+				<li data-index="{#$type.id#}" data-page='1'  data-mold='0' data-id="{#$type.id#}"><a href="javascript:;" >{#$type.typename#}</a></li>
+				{#/article#}
+				<li class="last_li" data-index="last" data-page='1'><a href="javascript:;"></a></li>
+			</ul>
+		</div>
+		<!--导航e-->
+	</div>
+
+	<!--所有内容-->
+	<!-- 内容部分 -->
+	<div class="container" >
+		<p class="refreshText"></p>
+		<div class="swiper-container " id="tabs-container">
+		    <div class="swiper-wrapper">
+		       <div class="swiper-slide  con_all channel_0">
+		    		<!--banner s-->
+					<div class="BannerBox adv_banner1" >
+						<div class="swiper-container">
+							<div class="bd swiper-wrapper">
+								{#{#myad title="新闻资讯_模板三_移动端_头条幻灯" type="slide"#}|replace:'slideshow-item':'swiper-slide'#}
+							</div>
+							<div class="pagination"></div>
+						</div>
+					</div>
+					<!--banner e-->
+					<!--搜索框s-->
+					<div class="search_box">
+						<form class="search" action="{#getUrlPath service='article' template='searchlist'#}">
+							<div class="btn_right"><button type="submit"></button></div>
+							<div class="input_box"><input type="text" name="keywords" placeholder="请输入搜索关键字" /></div>
+
+						</form>
+					</div>
+					<!--搜索框e-->
+					<div class="news_box">
+
+					</div>
+		       </div>
+
+						<!-- 视频 box s -->
+   	       <div class="swiper-slide con_video channel_1">
+          			<!--新闻资讯s-->
+     				<div class="news_box">
+     				<!--视频s-->
+     					<ul class="ulbox"></ul>
+     				<!--视频e-->
+     				</div>
+     				<!--新闻资讯e-->
+   	       </div>
+						<!-- 视频 box e -->
+
+		      	<!-- 媒体号 box s -->
+		       <div class="swiper-slide con_zqnum channel_2">
+	       			<div class="listbox">
+						<div class="list_left">
+							<ul >
+								{#article action='selfmedia_field' return='type'#}
+								<li data-id="{#$type.id#}" data-page='1'{#if $_bindex.type == 1#} class="on"{#/if#}><a href="javascript:;" >{#$type.typename#}</a></li>
+								{#/article#}
+							</ul>
+						</div>
+						<div class="list_right">
+							<ul class="ulbox">
+
+							</ul>
+						</div>
+
+					</div>
+		       </div>
+		       <!-- 媒体号 box e -->
+		       <!-- 专题 box s -->
+		       <div class="swiper-slide con_zt channel_3">
+	       			<!--banner s-->
+					<div class="BannerBox adv_banner2" >
+						<div class="swiper-container">
+							<div class="bd swiper-wrapper">
+								{#{#myad title="新闻资讯_移动端_专题幻灯" type="slide"#}|replace:'slideshow-item':'swiper-slide'#}
+							</div>
+						</div>
+					</div>
+					<!--banner e-->
+
+
+
+					<!--新闻资讯s-->
+					<div class="news_box" id="zhuanti_box">
+					<!--专题s-->
+					<!--专题e-->
+					<!--专题列表s-->
+						<div class="tlist_box">
+							<ul class="ulbox"></ul>
+						</div>
+					<!--专题列表e-->
+					</div>
+					<!--新闻资讯e-->
+		       </div>
+		       <!-- 专题 box e -->
+		       <div class="swiper-slide con_img channel_4" ></div>
+		       <div class="swiper-slide con_svideo " >
+		       		<ul class="box1"></ul>
+		       		<ul class="box2"></ul>
+		       </div>
+						{#$s = 4#}
+						{#article action="type" return="type2"#}
+		       <div class="swiper-slide con_{#$type2.id#} channel_{#$_bindex.type2+$s#}" ></div>
+						{#/article#}
+		    </div>
+		</div>
+	</div>
+
+
+	<!--所有导航s-->
+	<div class="nav_all">
+		<h2><span>所有栏目</span><a href="javascript:;" class="close_btn"></a></h2>
+		<ul class="fn-clear nav_now">
+			<li class="active" data-index="all" data-page='1'><a href="javascript:;" >头条</a></li>
+				<li data-index="video" data-page='1'><a href="javascript:;">视频</a></li>
+				<li data-index="zqnum" data-page='1'><a href="javascript:;">媒体号</a></li>
+				<li data-index="zt" data-page='1'><a href="javascript:;" >专题</a></li>
+				<li data-index="img" data-page='1'  data-mold='1'><a href="javascript:;" >图集</a></li>
+				<li data-index="svideo" data-page='1'  data-mold='3'><a href="javascript:;" >小视频</a></li>
+				{#article action="type" return="type"#}
+				<li data-index="{#$type.id#}" data-page='1'  data-mold='0' data-id="{#$type.id#}"><a href="javascript:;" >{#$type.typename#}</a></li>
+				{#/article#}
+		</ul>
+	</div>
+	<!--所有导航e-->
+
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module = 'article'#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index_1.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

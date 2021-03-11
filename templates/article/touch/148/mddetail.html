@@ -1,0 +1,98 @@
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>{#$detail_ac_name#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mddetail.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+			var detailListId = 'mediaBox', id = '{#$detail_id#}', templets_skin = '{#$templets_skin#}', userid = '{#$detail_userid#}';
+		</script>
+		{#* 微信分享 *#}
+		{#$Share_description = {#$detail_ac_profile#}#}
+		{#$Share_title = {#$detail_ac_name#}#}
+		{#$Share_img = {#$detail_ac_photo#}#}
+		{#$Share_url = {#getUrlPath service="article" template="mddetail" id=$detail_id#}#}
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+	</head>
+	<body>
+		{#include file="../../../siteConfig/touch_top.html" pageTitle={#$detail_ac_name#}#}
+
+		<div class="wemeadiaBox">
+			<div class="wemediaInfo" style="background-image:url({#$detail_ac_photo#})">
+				<div class="info">
+					<div class="headImg"><img src="{#$detail_ac_photo#}"></div>
+					<ul class="mediaTotal">
+						<li>
+							<h2>{#$detail_total_article#}</h2>
+							<p>文章数</p>
+						</li>
+						<li>
+							<h2>{#if $detail_click > 10000#}{#($detail_click/10000)|string_format:"%.1f"#}万{#else#}{#$detail_click#}{#/if#}</h2>
+							<p>阅读数</p>
+						</li>
+						<li>
+							<h2>{#if $detail_total_fans > 10000#}{#($detail_total_fans/10000)|string_format:"%.1f"#}万{#else#}{#$detail_total_fans#}{#/if#}</h2>
+							<p>粉丝</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="careBox">
+				<div class="art_title_more fn-clear">
+					<div class="_left">
+							{#$detail_ac_profile#}
+					</div>
+					{#if $detail_isfollow!=2#}
+					<div class="_right">
+						{#if $detail_isfollow==1#}
+						<a href="javascript:;" class="btn_care cared"><s></s>已关注</a>
+						{#else#}
+						<a href="javascript:;" class="btn_care"><s></s>关注</a>
+						{#/if#}
+					</div>
+					{#/if#}
+				</div>
+			</div>
+			<nav class="nav mddetailnav">
+				<ul>
+					<li class="active"><a href="javascript:;" data-id="0">头条</a><s></s></li>
+					<li><a href="javascript:;" data-id="2">视频</a><s></s></li>
+					<li><a href="javascript:;" data-id="1">图集</a><s></s></li>
+				</ul>
+			</nav>
+			<div class="placeholder"></div>
+		</div>
+		<div class="mediaBox ulbox" >
+			<ul>
+				<div class="loading"><img src="{#$templets_skin#}images/loading.gif" alt=""><span>加载中</span></div>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			    var wxconfig = {
+			        "appId": '{#$wxjssdk_appId#}',
+			        "timestamp": '{#$wxjssdk_timestamp#}',
+			        "nonceStr": '{#$wxjssdk_nonceStr#}',
+			        "signature": '{#$wxjssdk_signature#}',
+			        "description": '{#$detail_ac_profile#}',
+			        "title": '{#$detail_ac_name#}',
+			        "imgUrl": '{#$detail_ac_photo#}',
+			        "link": '{#getUrlPath service='article' template='mddetail' id={#$detail_id#}#}',
+			    };
+
+		    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+		<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/mddetail.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

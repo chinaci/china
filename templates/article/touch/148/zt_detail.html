@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{#$detail_typename#}-{#$article_title#}</title>
+		<meta charset="{#$article_soft_lang#}">
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="wap-font-scale" content="no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" href="{#$templets_skin#}css/zt_index.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var templets = '{#$templets_skin#}', masterDomain = '{#$cfg_basehost#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}', cookiePre = '{#$cfg_cookiePre#}';
+			var ztid = {#$detail_id#};
+			var zurl = "{#$detail_url#}";
+		</script>
+	</head>
+	<body>
+		<!--<div class="top_head">
+			<a class="back_btn" href="javascript:history.go(-1)"></a>
+			<a href="javascript:;" class="menu_btn"></a>
+		</div>-->
+		{#include file="../../../siteConfig/touch_top.html" pageTitle=$detail_typename#}
+		<div class="banner">
+			<img src="{#$detail_litpic#}" alt="{#$detail_typename#}" />
+			<div class="bg">
+				<h2>{#$detail_typename#}</h2>
+				<div class="discrption"><p>{#$detail_description#}</p></div>
+			</div>
+			
+		</div>
+		<!--导航s-->
+		<div class="navbox">
+			<ul>
+				{#foreach from=$detail_lower item="type" key="k"#}
+				<li data-id="{#$type.id#}"{#if $k == 0#} class="active"{#/if#}><a href="javascript:;">{#$type.typename#}</a></li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<!--导航e-->
+		
+		<!--内容s-->
+		<div class="con_box">
+			{#foreach from=$detail_lower item="type" key="k"#}
+			<dl class="ulbox">
+				<dt>{#$type.typename#}</dt>
+			</dl>
+			{#/foreach#}
+		</div>
+		
+		<!--描述s-->
+		<div class="fixedWin bodyWin " id="bodyWin">
+    	  <div class="fixedWin-close"></div>
+    	  <div class="fixedWin-content">
+    	    <p>{#$detail_description#}</p>
+    	  </div>
+    	</div>
+		<!--描述s-->
+		<!--内容e-->
+			<script type="text/javascript">
+			    var wxconfig = {
+			        "appId": '{#$wxjssdk_appId#}',
+			        "timestamp": '{#$wxjssdk_timestamp#}',
+			        "nonceStr": '{#$wxjssdk_nonceStr#}',
+			        "signature": '{#$wxjssdk_signature#}',
+			        "description": '{#$detail_description|default:$article_description#}',
+			        "title": '{#$detail_typename#}',
+			        "imgUrl": '{#$detail_litpic|default:$article_logoUrl#}',
+			        "link": '{#getUrlPath service='article' template='zt_detail' id={#$detail_id#}#}',
+			    };
+		
+		    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript" src="{#$templets_skin#}js/zt_index.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>
