@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][49][42]#}</title>   {#* 我的商家服务 *#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/service-meal.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var promotions = [{#if $businessConfig.joinSale#}{#foreach from=$businessConfig.joinSale item=sale key=index#}[{#$sale.price#}, {#$sale.amount#}]{#if $index < $businessConfig.joinSale|@count-1#}, {#/if#}{#/foreach#}{#/if#}];  //满减
+    var integrals = [{#if $businessConfig.joinPoint#}{#foreach from=$businessConfig.joinPoint item=point key=index#}[{#$point.month#}, {#$point.point#}]{#if $index < $businessConfig.joinPoint|@count-1#}, {#/if#}{#/foreach#}{#/if#}];  //积分
+	var packageCurr = {#$memberPackage.package.id|string_format:"%d"#};
+	var packageTitle = '{#$memberPackage.package.title#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][49][42]#}   {#* 我的商家服务 *#}
+{#include file="top.html"#}
+
+<!-- 系统套餐 -->
+{#if $memberPackage.package.id !== ''#}
+<div class="banner">
+  <h1>{#$memberPackage.package.title#}{#if $memberPackage.package.expired#}<span class="over-time"><strong>{#$langData['siteConfig'][19][733]#}</strong><em></em><strong>{#$memberPackage.package.expired|date_format:"%Y-%m-%d"#}</strong></span>{#/if#}</h1>{#* 到期时间 *#}
+  <div class="renewal-div"><a href="javascript:;" class="renewal"  data-aprice="{#$businessConfig.package[$memberPackage.package.id]['price']#}">{#$langData['siteConfig'][49][43]#}</a></div>{#* 续期 *#}
+  <div class="ban-bottom">
+    <a href="{#getUrlPath service='member' template='enter-order'#}" class="ser_open fn-left">{#$langData['siteConfig'][49][45]#} ></a>{#* 开通记录 *#}
+    <a href="{#getUrlPath service='member' type='user' template='enter_contrast'#}" class="ser_open fn-right">{#$langData['siteConfig'][49][63]#} ></a>{#* 更多套餐 *#}
+  </div>
+</div>
+
+<!-- 自选套餐 -->
+{#else#}
+<div class="banner banner-per">
+  <h1>{#$memberPackage.package.title#}</h1>
+  <div class="renewal-div"><a href="javascript:;" class="renewal custom" data-aprice='0'>{#$langData['siteConfig'][49][43]#}</a></div>{#* 续期 *#}
+  <div class="ban-bottom">
+    <a href="{#getUrlPath service='member' template='enter-order'#}" class="ser_open fn-left">{#$langData['siteConfig'][49][45]#} ></a>{#* 开通记录 *#}
+    <a href="{#getUrlPath service='member' type='user' template='enter_contrast'#}" class="ser_open fn-right">{#$langData['siteConfig'][49][63]#} ></a>{#* 更多套餐 *#}
+  </div>
+</div>
+{#/if#}
+
+<!-- 系统套餐 -->
+{#if $memberPackage.package.id !== '' && ($memberPackage.package.listArr.privilege || $memberPackage.package.listArr.store)#}
+<div class="main_con">
+  {#if $memberPackage.package.listArr.privilege#}
+  <div class="det-content">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][46]#}</span></h2>   {#* 商家特权 *#}
+    <p class="text1">
+		{#foreach from=$memberPackage.package.listArr.privilege key=index item=privilege#}{#$privilege.title#}{#if $index < $memberPackage.package.listArr.privilege|count - 1#}、{#/if#}{#/foreach#}
+	</p>
+  </div>
+  {#/if#}
+  {#if $memberPackage.package.listArr.store#}
+  <div class="det-content dianpu">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][47]#}</span></h2>    {#* 行业店铺 *#}
+    <ul class="sp_ul fn-clear">
+	  {#foreach from=$memberPackage.package.listArr.store key=index item=store#}
+      <li><a href="javascript:;">
+        <h3>{#$store.title#}</h3>
+		<p>{#$store.note#}</p>
+      </a></li>
+	  {#/foreach#}
+    </ul>
+  </div>
+  {#/if#}
+</div>
+
+{#if $notOpenModules['privilege'] || $notOpenModules['store'] || $memberPackage.package.item.privilege || $memberPackage.package.item.store#}
+<!-- 套餐外服务 -->
+<div class="con_ban">
+    <h2>{#$langData['siteConfig'][49][48]#}</h2>   {#* 套餐外服务 *#}
+  </div>
+<div class="main-con2">
+  {#if $memberPackage.package.item.privilege || $memberPackage.package.item.store#}
+  <!--已开服务 s-->
+  <div class="det-content has-open">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][49]#}</span></h2>   {#* 已开服务 *#}
+    <ul>
+	  {#foreach from=$memberPackage.package.item.privilege item=item#}
+      <li class="fn-clear" data-price='{#$item.price#}' data-name='{#$item.name#}'>
+        <div class="con-left fn-left">
+          <h3 class="left-title xuqi-tit">{#$item.title#}</h3>
+		  <p class="left-p">{#$item.note#}</p>
+        </div>
+        <div class="con-mid fn-left"><em class="daoqi">{#$item.expired|date_format:"%Y-%m-%d"#}</em><strong>{#$langData['siteConfig'][49][62]#}</strong></div>  {#* 到期 *#}
+        <a href="javascript:;" class="xuqi fn-right">{#$langData['siteConfig'][49][43]#}</a>  {#* 续期 *#}
+      </li>
+	  {#/foreach#}
+	  {#foreach from=$memberPackage.package.item.store item=item#}
+      <li class="fn-clear" data-price='{#$item.price#}' data-name='{#$item.name#}'>
+        <div class="con-left fn-left">
+          <h3 class="left-title xuqi-tit">{#$item.title#}</h3>
+		  <p class="left-p">{#$item.note#}</p>
+        </div>
+        <div class="con-mid fn-left"><em class="daoqi">{#$item.expired|date_format:"%Y-%m-%d"#}</em><strong>{#$langData['siteConfig'][49][62]#}</strong></div>  {#* 到期 *#}
+        <a href="javascript:;" class="xuqi fn-right">{#$langData['siteConfig'][49][43]#}</a>  {#* 续期 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+    <div class="xuqibtn"><a href="javascript:;" data-aprice="0">{#$langData['siteConfig'][49][50]#}</a></div>    {#* 一键续期 *#}
+  </div>
+  <!--已开服务 e-->
+  {#/if#}
+
+  {#if $notOpenModules && ($notOpenModules['privilege'] || $notOpenModules['store'])#}
+  <!--未开服务 s-->
+  <div class="det-content no-open">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][51]#}</span></h2>   {#* 未开服务 *#}
+    <ul>
+	  {#foreach from=$notOpenModules['privilege'] item=privilege#}
+      <li class="fn-clear" data-price='{#$privilege.price#}' data-name='{#$privilege.name#}'>
+        <div class="no-left fn-left">
+          <h3 class="no-title xcx-title"><em>{#$privilege.title#}</em></h3>
+        </div>
+        <a href="javascript:;" class="opening fn-right">{#$langData['siteConfig'][19][656]#}</a>  {#* 开通 *#}
+      </li>
+	  {#/foreach#}
+	  {#foreach from=$notOpenModules['store'] item=store#}
+      <li class="fn-clear" data-price='{#$store.price#}' data-name='{#$store.name#}'>
+        <div class="no-left fn-left">
+          <h3 class="no-title"><em>{#$store.title#}</em><span>{#$store.note#}</span></h3>
+        </div>
+        <a href="javascript:;" class="opening fn-right">{#$langData['siteConfig'][19][656]#}</a>  {#* 开通 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+    <div class="openbtn"><a href="javascript:;" data-aprice="0">{#$langData['siteConfig'][49][38]#}</a></div>    {#* 一键开通 *#}
+  </div>
+  <!--未开服务 e-->
+  {#/if#}
+
+</div>
+{#/if#}
+
+<!-- 自选套餐 -->
+{#else#}
+
+<div class="main_con">
+  {#if $memberPackage.package.item.privilege#}
+  <div class="det-content privilege has-open">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][46]#}</span></h2>   {#* 商家特权 *#}
+    <ul>
+	  {#foreach from=$memberPackage.package.item.privilege key=index item=privilege#}
+	  <li class="fn-clear" data-price='{#$privilege.price#}' data-name='{#$privilege.name#}'>
+        <div class="con-left fn-left">
+          <h3 class="pri-title xuqi-tit">{#$privilege.title#}</h3>
+        </div>
+        <div class="con-mid fn-left"><em class="daoqi">{#$privilege.expired|date_format:"%Y-%m-%d"#}</em><strong>{#$langData['siteConfig'][49][62]#}</strong></div>  {#* 到期 *#}
+        <a href="javascript:;" class="xuqi fn-right">{#$langData['siteConfig'][49][43]#}</a>  {#* 续期 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+  </div>
+  {#/if#}
+  {#if $memberPackage.package.item.store#}
+  <div class="det-content has-open">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][47]#}</span></h2>    {#* 行业店铺 *#}
+    <ul>
+	  {#foreach from=$memberPackage.package.item.store key=index item=store#}
+      <li class="fn-clear" data-price='{#$store.price#}' data-name='{#$store.name#}'>
+        <div class="con-left fn-left">
+          <h3 class="left-title xuqi-tit">{#$store.title#}</h3>
+          <p class="left-p">{#$store.note#}</p>
+        </div>
+        <div class="con-mid fn-left"><em class="daoqi">{#$store.expired|date_format:"%Y-%m-%d"#}</em><strong>{#$langData['siteConfig'][49][62]#}</strong></div>  {#* 到期 *#}
+        <a href="javascript:;" class="xuqi fn-right">{#$langData['siteConfig'][49][43]#}</a>  {#* 续期 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+  </div>
+  {#/if#}
+</div>
+
+{#if $notOpenModules && ($notOpenModules['privilege'] || $notOpenModules['store'])#}
+<div class="con_ban">
+    <h2>{#$langData['siteConfig'][49][51]#}</h2>  {#* 未开服务 *#}
+  </div>
+<div class="main-con3">
+
+  {#if $notOpenModules['privilege']#}
+  <div class="det-content privilege">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][46]#}</span></h2>   {#* 商家特权 *#}
+    <ul>
+	  {#foreach from=$notOpenModules['privilege'] item=privilege#}
+      <li class="fn-clear" data-price='{#$privilege.price#}' data-name='{#$privilege.name#}'>
+        <div class="con-left fn-left">
+          <h3 class="pri-title no-title"><em>{#$privilege.title#}</em></h3>
+        </div>
+        <a href="javascript:;" class="opening fn-right">{#$langData['siteConfig'][19][656]#}</a>  {#* 开通 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+  </div>
+  {#/if#}
+
+  {#if $notOpenModules['store']#}
+  <!--未开服务 s-->
+  <div class="det-content no-open">
+    <h2 class="con-title"><span>{#$langData['siteConfig'][49][47]#}</span></h2>    {#* 行业店铺 *#}
+    <ul>
+	  {#foreach from=$notOpenModules['store'] item=store#}
+      <li class="fn-clear" data-price='{#$store.price#}' data-name='{#$store.name#}'>
+        <div class="no-left fn-left">
+          <h3 class="no-title"><em>{#$store.title#}</em><span>{#$store.note#}</span></h3>
+        </div>
+        <a href="javascript:;" class="opening fn-right">{#$langData['siteConfig'][19][656]#}</a>  {#* 开通 *#}
+      </li>
+	  {#/foreach#}
+    </ul>
+    <div class="openbtn"><a href="javascript:;" data-aprice='0'>{#$langData['siteConfig'][49][38]#}</a></div>    {#* 一键开通 *#}
+  </div>
+  <!--未开服务 e-->
+  {#/if#}
+
+</div>
+{#/if#}
+
+{#/if#}
+
+<!-- 底部 -->
+<div class="bottom_wrap">
+  <div class="hui_box">
+    <i>{#$langData['siteConfig'][49][17]#}</i>  {#* 惠 *#}
+    <div id="scroll_div"><p id="scroll_begin">{#foreach from=$businessConfig.joinSale item=sale#}{#$langData['siteConfig'][21][14]#}{#$sale.price#}-{#$sale.amount#}；{#/foreach#}</p><p id="scroll_end"></p></div>
+    <div class="hui_info"><p class="hui_tip fn-hide">{#$langData['siteConfig'][19][698]#}<em class="num_show">0</em>&nbsp;</p><p class="point_tip fn-hide">{#$langData['siteConfig'][49][18]#}<em class="integrals_show">0</em>{#$langData['siteConfig'][19][727]#}</p><i></i></div> {#* 已优惠----入驻即返----积分 *#}
+  </div>
+  <div class="bottom_box fn-clear">
+    <a href="javascript:;" class="right_btn rz_btn">{#$langData['siteConfig'][6][185]#}</a>  {#* 立即开通 *#}
+    <div class="left_box">
+      <p class="tip_chose fn-hide">{#$langData['siteConfig'][49][19]#}</p>   {#* 请选择模块 *#}
+      <div class="all_info">
+        <div class="price_show" data-price="" data-year="1">
+           {#echoCurrency type='symbol'#}<span class="dot_left">860</span>.<span class="dot_right">06</span> <em>{#$langData['siteConfig'][19][836]#}</em>{#* 起 *#}
+        </div>
+        {#* 请选择时长 *#}
+        <p class="tc_info"><span class="tc_name">--</span>(<span class="tc_time">{#$businessConfig.joinTimes[0].title#}</span>)
+          <input type="hidden" name="time" id="time" value="{#$businessConfig.joinTimes[0].month#}">
+        </p>
+        <i class="t_chose"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 开通弹出层 s-->
+  <div class="mask_pop1"></div>
+  <!-- 选择时长 -->
+    <div class="pop_box tl_box">
+      <h2>{#$langData['siteConfig'][49][20]#}   <a href="javascript:;" class="cancel">{#$langData['siteConfig'][6][12]#}</a></h2>    {#* 选择时长 --- 取消*#}
+      <p class="all-choo">{#$langData['siteConfig'][6][21]#}：<span></span></p><!--一键开通时显示--> {#* 已选 *#}
+      <div class="timeList">
+        <ul>
+		  {#foreach from=$businessConfig.joinTimes item=times#}
+  		  <li data-year="{#$times.month#}">{#$times.title#}</li>
+  		  {#/foreach#}
+        </ul>
+      </div>
+    </div>
+
+    <!-- 优惠详情 -->
+    <div class="pop_box hd_box">
+      <h2>{#$langData['siteConfig'][49][22]#} </h2>     {#* 即刻开通  立享优惠 *#}
+      <div class="hui_con">
+        <!-- 满减优惠详情 -->
+        <div class="mj_detail">
+          <h1>{#$langData['siteConfig'][49][23]#} </h1>   {#* <i>满减</i>限时满减活动 *#}
+          <p>{#foreach from=$businessConfig.joinSale item=sale#}{#$langData['siteConfig'][21][14]#}{#$sale.price#}-{#$sale.amount#}；{#/foreach#}</p>
+        </div>
+        <!-- 积分优惠详情 -->
+        <div class="jf_detail">
+          <h1>{#$langData['siteConfig'][49][24]#} </h1>  {#* <i>送积分</i>限时返积分活动 *#}
+          <p>{#foreach from=$businessConfig.joinPoint item=point#}{#$langData['siteConfig'][21][14]#}{#$point.month#}{#$langData['siteConfig'][13][31]#}{#$langData['siteConfig'][13][60]#}{#$point.point#}{#$cfg_pointName#}；{#/foreach#}</p>
+          <span class="jf_tip">注：1{#echoCurrency type='name'#}={#$cfg_pointRatio#}{#$cfg_pointName#}</span> {#* 注：100积分=1人民币 *#}
+        </div>
+      </div>
+    </div>
+
+<!-- 开通弹出层 e-->
+
+<script type='text/javascript' src='/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/servicemeal.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$langData['siteConfig'][41][50]#}</title>  {#* 养老服务  *#}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/pension.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var module = 'pension';
+</script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['siteConfig'][41][50]#}"#} {#* 养老服务  *#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+<ul class="link">
+
+	{#* 店铺配置  *#}
+  <li><a href="{#getUrlPath service='member'  template='config-pension'#}"><i class="icon-config-house"></i>{#$langData['homemaking'][0][28]#}</a></li>
+
+  {#* 相册管理  *#}
+  <li><a href="{#getUrlPath service='member' template='pension-albums'#}"><i class="icon-house_yuyue"></i>{#$langData['siteConfig'][19][435]#}</a></li>
+
+  {#* 预约管理  *#}
+  <li><a href="{#getUrlPath service='member' template='booking' action='pension'#}"><i class="icon-house_entrust"></i>{#$langData['siteConfig'][19][457]#}</a></li>
+
+  {#* 入驻申请  *#}
+  <li><a href="{#getUrlPath service='member' template='pension-award'#}"><i class="icon-house_meallist"></i>{#$langData['siteConfig'][43][14]#}</a></li>
+
+  {#* 我的邀请  *#}
+  <li><a href="{#getUrlPath service='member' template='pension-invitation'#}"><i class="icon-house_manage"></i>{#$langData['siteConfig'][43][17]#}</a></li>
+</ul>
+</body>
+</html>

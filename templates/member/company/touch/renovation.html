@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{#$renovation_channelName#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    {#if $module == ""#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/renovation.css?v={#$cfg_staticVersion#}">
+    {#else#}
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/renovation-{#$module#}.css?v={#$cfg_staticVersion#}">
+    {#/if#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<script type="text/javascript">
+    var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';templatePath = '{#$templets_skin#}';templateSkin = '{#$templets_skin#}';
+    var hideFileUrl = {#$cfg_hideUrl#};
+
+    var module  = 'renovation';
+    var Identity   = {#json_encode($Identity)#}; /*身份(工长/设计师/公司)*/
+    var state = '';
+</script>
+<body>
+    <!-- 头部 s -->
+
+    {#if $module == ""#}
+    {#$pageTitle = $langData['siteConfig'][19][896]#}
+    {#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+    {#include file="../../../siteConfig/touch_top.html"#}
+
+    <!-- 头部 e -->
+    <div class="list link">
+        <ul>
+
+              <li><a href="{#getUrlPath service='member'  template='config' action='renovation'#}"><i class="icon_art_info"></i>{#$langData['siteConfig'][19][453]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='customer'#}"><i class="icon_art_customer"></i>{#$langData['siteConfig'][50][25]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='zb'#}"><i class="icon_com_invite"></i>{#$langData['siteConfig'][49][64]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='case'#}"><i class="icon_art_anli"></i>{#$langData['siteConfig'][26][22]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='albums' action='renovation'#}"><i class="icon_com_design"></i>{#$langData['siteConfig'][26][0]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='site'#}"><i class="icon_com_build"></i>{#$langData['siteConfig'][25][23]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='team' action='renovation'#}" ><i class="icon_com_team"></i>{#$langData['siteConfig'][19][454]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='dynamic'#}"><i class="icon_art_article"></i>{#$langData['siteConfig'][19][918]#}</a></li>
+              <li><a href="{#getUrlPath service='member' template='renovation' action='honor'#}"><i class="icon_com_honor"></i>{#$langData['siteConfig'][29][18]#}</a></li>
+
+<!--            <li><a href="{#getUrlPath service='member'  template='config-renovation'#}">-->
+<!--                <div class="item fn-clear">-->
+<!--                    <i class="icon"><img src="{#$templets_skin#}images/tuanicon1.png" alt=""></i>-->
+<!--                    <p>{#$langData['siteConfig'][19][453]#}</p><span></span>-->
+<!--                </div>-->
+<!--            </a></li>-->
+<!--            <li><a href="{#getUrlPath service='member' template='team' action='renovation'#}">-->
+<!--                <div class="item fn-clear">-->
+<!--                    <i class="icon"><img src="{#$templets_skin#}images/tuanicon5.png" alt=""></i>-->
+<!--                    <p>{#$langData['siteConfig'][19][454]#}</p><span></span>-->
+<!--                </div>-->
+<!--            </a></li>-->
+<!--            <li><a href="{#getUrlPath service='member' template='albums' action='renovation'#}">-->
+<!--                <div class="item fn-clear">-->
+<!--                    <i class="icon"><img src="{#$templets_skin#}images/photo.png" alt=""></i>-->
+<!--                    <p>{#$langData['siteConfig'][19][455]#}</p><span></span>-->
+<!--                </div>-->
+<!--            </a></li>-->
+<!--            <li><a href="{#getUrlPath service='member' template='case' action='renovation'#}">-->
+<!--                <div class="item fn-clear">-->
+<!--                    <i class="icon"><img src="{#$templets_skin#}images/main_tit.png" alt=""></i>-->
+<!--                    <p>{#$langData['siteConfig'][19][456]#}</p><span></span>-->
+<!--                </div>-->
+<!--            </a></li>-->
+<!--            <li><a href="{#getUrlPath service='member' template='booking' action='renovation'#}">-->
+<!--                <div class="item fn-clear">-->
+<!--                    <i class="icon"><img src="{#$templets_skin#}images/tuanicon2.png" alt=""></i>-->
+<!--                    <p>{#$langData['siteConfig'][19][457]#}</p><span></span>-->
+<!--                </div>-->
+<!--            </a></li>-->
+        </ul>
+    </div>
+    {#else#}
+    {#include file="renovation-$module.html"#}
+    {#/if#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+    {#if $module != ""#}
+
+    <script type="text/javascript" src="{#$templets_skin#}js/renovation-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+    {#/if#}
+</body>
+</html>
