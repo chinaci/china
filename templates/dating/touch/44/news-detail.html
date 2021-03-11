@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news_detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>  
+{#include file="../../../siteConfig/touch_top.html" pageTitle=$detail_title#}
+
+<!-- 正文 s -->
+<div class="content">
+    <section class="art_title">
+        <h2>{#$detail_title#}</h2>
+        <div class="art_title_more">
+            <time>{#$detail_pubdate|date_format:'%y-%m-%d %H:%M'#} {#$detail_source#} {#$detail_writer#}</time>
+            <div class="do">
+                <a href="javascript:"><span class="count">浏览：{#$detail_click#}</span></a>
+            </div>
+        </div>
+    </section>
+    <div class="box">{#$detail_content#}</div>
+</div>
+
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$detail_title#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_fphoto#}',
+        "link": '{#getUrlPath service="dating" template="news-detail" id={#$detail_id#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/success_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

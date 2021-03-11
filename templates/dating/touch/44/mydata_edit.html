@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>编辑资料</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<link href="{#$templets_skin#}css/mobiscroll.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mydata_edit.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+
+  var type = '{#$type#}';
+
+</script>
+</head>
+
+<body>
+<div class="header ">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>编辑资料</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+<div class="gz-address">
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+    <div class="content">
+      <form action="" id="fabuForm">
+        <!-- 基本资料 s -->
+        <div class="choose-box" id="box_basic">
+          <div class="ml4r btop title">
+            <p>基本资料<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>ID</label>
+              <div class="dom_kj">{#$u_numid#}</div>
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>昵称</label>
+              <div class="dom_kj" id="nickname_kj">{#$u_nickname#}</div>
+              <span class="right_icon"></span>
+            </div>
+            <input type="hidden" name="nickname" id="nickname" value="{#$u_nickname#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>性别</label>
+              <div class="dom_kj" id="sex_select" data-field="sex" data-select="{#$u_sex#}">{#if $u_sex == 1#}男{#else#}女{#/if#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                <option value="1">男</option>
+                <option value="0">女</option>
+              </select>
+            </div>
+            <input type="hidden" name="sex" id="sex" value="{#$u_sex#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>生日</label>
+              {#if u_birthday#}
+              <input name="birthday" id="birthday" class="dom_kj demo-test-date" placeholder="请选择日期" value="{#$u_birthday|date_format:'%Y-%m-%d'#}" readonly="" type="text">
+              {#else#}
+              <input name="birthday" id="birthday" class="dom_kj demo-test-date null" placeholder="请选择日期" value="未填写" readonly="" type="text">
+              {#/if#}
+              <span class="right_icon"></span>
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>身高</label>
+              <div class="dom_kj" id="height1_select" data-field="height" data-select="{#$u_height#}">{#$u_heightName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                <option value="-1">145以下</option>
+                {#for $i = 145 to 210#}
+                <option value="{#$i#}">{#$i#}厘米</option>
+                {#/for#}
+                <option value="-2">210以上</option>
+              </select>
+              <input type="hidden" name="height" id="height" value="{#$u_height#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>学历</label>
+              <div class="dom_kj" id="edu1_select" data-field="education" data-select="{#$u_education#}">{#$u_educationName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='7'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="education" id="education" value="{#$u_education#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>月收入</label>
+              <div class="dom_kj" id="money1_select" data-field="income" data-select="{#$u_income#}">{#$u_incomeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='6'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="income" id="income" value="{#$u_income#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <dl class="dom_select inpbox fn-clear gz-addr-seladdr" data-ids="{#getPublicParentInfo tab='site_area' id=$u_addrid split=' '#}" data-id="{#if $u_addrid#}{#$u_addrid#}{#/if#}">
+              <dt><span><label for="addr">居住地</label></span></dt>
+              <dd class="dom_kj selgroup"><p>{#if $u_addrName#}{#getPublicParentInfo tab='site_area' id=$u_addrid type='typename' split=' '#}{#else#}<font style="color: #aaa;"><span class="null">未填写</span></font>{#/if#}</p>
+              <span class="right_icon"></span>
+              </dd>
+              <input type="hidden" name="addrid" id="addrid" value="{#$u_addrid#}">
+            </dl>
+            <input type="hidden" name="cityid" id="cityid" value="{#$u_cityid#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>婚姻状况</label>
+              <div class="dom_kj" id="marriage1_select" data-field="marriage" data-select="{#$u_marriage#}">{#$u_marriageName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='2'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="marriage" id="marriage" value="{#$u_marriage#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>有无子女</label>
+              <div class="dom_kj" id="son1_select" data-field="child" data-select="{#$u_child#}">{#$u_childName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='165'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="child" id="child" value="{#$u_child#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>购房情况</label>
+              <div class="dom_kj" id="house1_select" data-field="housetag" data-select="{#$u_housetag#}">{#$u_housetagName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='4'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="housetag" id="housetag" value="{#$u_housetag#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>购车情况</label>
+              <div class="dom_kj" id="car1_select" data-field="cartag" data-select="{#$u_cartag#}">{#$u_cartagName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='11'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="cartag" id="cartag" value="{#$u_cartag#}">
+            </div>
+          </div>
+        </div>
+        <!-- 基本资料 e -->
+        <!-- 择偶意向 s -->
+        <div class="choose-box" id="box_intention">
+          <div class="ml4r btop title">
+            <p>择偶意向<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>年龄</label>
+              <div class="dom_kj" id="age_select">{#$u_dage|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+            </div>
+            <input type="hidden" name="fromage" id="fromage" value="{#$u_fromage#}">
+            <input type="hidden" name="toage" id="toage" value="{#$u_toage#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>身高</label>
+              <div class="dom_kj" id="height_select">{#$u_dheight|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+            </div>
+            <input type="hidden" name="dfheight" id="dfheight" value="{#$u_dfheight#}">
+            <input type="hidden" name="dtheight" id="dtheight" value="{#$u_dtheight#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>学历</label>
+              <div class="dom_kj" id="edu_select">{#$u_deducation|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+            </div>
+            <input type="hidden" name="dfeducation" id="dfeducation1" value="{#$u_dfeducation#}">
+            <input type="hidden" name="dteducation" id="dteducation2" value="{#$u_dteducation#}">
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>月收入</label>
+              <div class="dom_kj" id="money_select">{#$u_dincome|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+            </div>
+            <input type="hidden" name="dfincome" id="dfincome" value="{#$u_dfincome#}">
+            <input type="hidden" name="dtincome" id="dtincome" value="{#$u_dtincome#}">
+          </div>
+          <div class="ml4r btop">
+            <dl class="dom_select inpbox fn-clear gz-addr-seladdr" data-ids="{#getPublicParentInfo tab='site_area' id=$u_daddr split=' ' action='area'#}" data-id="{#if $u_addrid#}{#$u_addrid#}{#/if#}" data-action="area" data-just="1" data-any="1">
+              <dt><span><label for="daddr">居住地</label></span></dt>
+              <dd class="dom_kj selgroup"><p>{#if $u_daddrName#}{#getPublicParentInfo tab='site_area' id=$u_daddr type='typename' split=' ' action='area'#}{#else#}<font style="color: #aaa;"><span class="null">未填写</span>{#/if#}</font></p>
+              <span class="right_icon"></span>
+              </dd>
+              <input type="hidden" name="daddr" id="daddr" value="{#$u_daddr#}">
+            </dl>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>婚姻状况</label>
+              <div class="dom_kj" id="marriage_select" data-field="dmarriage" data-select="{#$u_dmarriage#}">{#$u_dmarriageName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='2'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="dmarriage" id="dmarriage" value="{#$u_dmarriage#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>购房情况</label>
+              <div class="dom_kj" id="house_select" data-field="dhousetag" data-select="{#$u_dhousetag#}">{#$u_dhousetagName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='4'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="dhousetag" id="dhousetag" value="{#$u_dhousetag#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>有无子女</label>
+              <div class="dom_kj" id="child_select" data-field="dchild" data-select="{#$u_dchild#}">{#$u_dchildName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='165'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="dchild" id="dchild" value="{#$u_dchild#}">
+            </div>
+          </div>
+        </div>
+        <!-- 择偶意向 e -->
+        <!-- 小档案 s -->
+        <div class="choose-box" id="box_tiny_info">
+          <div class="ml4r btop title">
+            <p>个人小档案<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <dl class="dom_select inpbox fn-clear gz-addr-seladdr" data-just="1" data-ids="{#getPublicParentInfo tab='site_area' id=$u_hometown split=' ' action='area'#}" data-id="{#if $u_hometown#}{#$u_hometown#}{#/if#}" data-action="area">
+              <dt><span><label for="hometown">家乡</label></span></dt>
+              <dd class="dom_kj selgroup"><p>{#if $u_hometown#}{#getPublicParentInfo tab='site_area' id=$u_hometown type='typename' split=' ' action='area'#}{#else#}<font style="color: #aaa;"><span class="null">未填写</span></font>{#/if#}</p>
+              <span class="right_icon"></span>
+              </dd>
+              <input type="hidden" name="hometown" id="hometown" value="{#$u_hometown#}">
+            </dl>
+          </div>
+          <div class="ml4r btop">
+            <dl class="dom_select inpbox fn-clear gz-addr-seladdr" data-just="1" data-ids="{#getPublicParentInfo tab='site_area' id=$u_household split=' ' action='area'#}" data-id="{#if $u_household#}{#$u_household#}{#/if#}" data-action="area">
+              <dt><span><label for="household">户口</label></span></dt>
+              <dd class="dom_kj selgroup"><p>{#if $u_household#}{#getPublicParentInfo tab='site_area' id=$u_household type='typename' split=' ' action='area'#}{#else#}<font style="color: #aaa;"><span class="null">未填写</span></font>{#/if#}</p>
+              <span class="right_icon"></span>
+              </dd>
+              <input type="hidden" name="household" id="household" value="{#$u_household#}">
+            </dl>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>民族</label>
+              <div class="dom_kj" id="nation_select" data-field="nation" data-select="{#$u_nation#}">{#$u_nationName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='394'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="nation" id="nation" value="{#$u_nation#}">
+            </div>
+          </div>
+          <div class="ml4r btop fn-hide">
+            <div class="dom_select">
+              <label>属相</label>
+              <div class="dom_kj" id="sx_select">{#$u_zodiacName#}</div>
+            </div>
+          </div>
+          <div class="ml4r btop fn-hide">
+            <div class="dom_select">
+              <label>星座</label>
+              <div class="dom_kj" id="star_select">{#$u_constellationName#}</div>
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>血型</label>
+              <div class="dom_kj" id="bloodtype_select" data-field="bloodtype" data-select="{#$u_bloodtype#}">{#$u_bloodtype|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                <option value="A型">A型</option>
+                <option value="B型">B型</option>
+                <option value="AB型">AB型</option>
+                <option value="O型">O型</option>
+                <option value="其他">其他</option>
+              </select>
+              <input type="hidden" name="bloodtype" id="bloodtype" value="{#$u_bloodtype#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>体型</label>
+              <div class="dom_kj" id="body_select" data-field="bodytype" data-select="{#$u_bodytype#}">{#$u_bodytypeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='143'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="bodytype" id="bodytype" value="{#$u_bodytype#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>体重</label>
+              <div class="dom_kj" id="weight_select" data-field="bodyweight" data-select="{#$u_bodyweight#}">{#$u_bodyweightName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                <option value="-1">40以下</option>
+                {#for $i = 40 to 120#}
+                <option value="{#$i#}">{#$i#}公斤</option>
+                {#/for#}
+                <option value="-2">120以上</option>
+              </select>
+              <input type="hidden" name="bodyweight" id="bodyweight" value="{#$u_bodyweight#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>相貌自评</label>
+              <div class="dom_kj" id="looks_select" data-field="looks" data-select="{#$u_looks#}">{#$u_looksName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#for $i = 1 to 10#}
+                <option value="{#$i#}">{#$i#}</option>
+                {#/for#}
+              </select>
+              <input type="hidden" name="looks" id="looks" value="{#$u_looks#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>宗教信仰</label>
+              <div class="dom_kj" id="religion_select" data-field="religion" data-select="{#$u_religion#}">{#$u_religionName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='170'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="religion" id="religion" value="{#$u_religion#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>是否喝酒</label>
+              <div class="dom_kj" id="drink_select" data-field="drink" data-select="{#$u_drink#}">{#$u_drinkName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='9'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="drink" id="drink" value="{#$u_drink#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>是否吸烟</label>
+              <div class="dom_kj" id="smoke_select" data-field="smoke" data-select="{#$u_smoke#}">{#$u_smokeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='8'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="smoke" id="smoke" value="{#$u_smoke#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>生活作息</label>
+              <div class="dom_kj" id="workandrest_select" data-field="workandrest" data-select="{#$u_workandrest#}">{#$u_workandrestName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='10'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="workandrest" id="workandrest" value="{#$u_workandrest#}">
+            </div>
+          </div>
+        </div>
+        <!-- 小档案 e -->
+        <!-- 教育及工作 s -->
+        <div class="choose-box" id="box_edu_job">
+          <div class="ml4r btop title">
+            <p>教育及工作<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>毕业院校</label>
+              <div class="dom_kj" id="school_select" data-field="school" data-select="{#$u_school#}">{#$u_schoolName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <input type="hidden" name="school" id="school" value="{#$u_school#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>所学专业</label>
+              <div class="dom_kj" id="major_select" data-field="major" data-select="{#$u_major#}">{#$u_majorName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='416'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="major" id="major" value="{#$u_major#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>职业职务</label>
+              <div class="dom_kj" id="duties_select" data-field="duties" data-select="{#$u_duties#}">{#$u_dutiesName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='193'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="duties" id="duties" value="{#$u_duties#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>公司性质</label>
+              <div class="dom_kj" id="nature_select" data-field="nature" data-select="{#$u_nature#}">{#$u_natureName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='407'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="nature" id="nature" value="{#$u_nature#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>公司行业</label>
+              <div class="dom_kj" id="industry_select" data-field="industry" data-select="{#$u_industry#}">{#$u_industryName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='240'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="industry" id="industry" value="{#$u_industry#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>工作状态</label>
+              <div class="dom_kj" id="workstatus_select" data-field="workstatus" data-select="{#$u_workstatus#}">{#$u_workstatusName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='5'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="workstatus" id="workstatus" value="{#$u_workstatus#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>掌握语言</label>
+              <div class="dom_kj" id="language_select" data-field="language" data-select="{#$u_language#}">{#if $u_languageName#}<span>{#$u_languageName#}</span>{#else#}<span class="null">未填写</span>{#/if#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='273'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="language" id="language" value="{#$u_language#}">
+            </div>
+          </div>
+        </div>
+        <!-- 教育及工作 e -->
+        <!-- 家庭状况 s -->
+        <div class="choose-box" id="box_family">
+          <div class="ml4r btop title">
+            <p>家庭状况<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>家庭排行</label>
+              <div class="dom_kj" id="familyrank_select" data-field="familyrank" data-select="{#$u_familyrank#}">{#$u_familyrankName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='446'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="familyrank" id="familyrank" value="{#$u_familyrank#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>父母情况</label>
+              <div class="dom_kj" id="parentstatus_select" data-field="parentstatus">{#$u_parentstatusName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='303'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="parentstatus" id="parentstatus" value="{#$u_parentstatus#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>父亲工作</label>
+              <div class="dom_kj" id="fatherwork_select" data-field="fatherwork" data-select="{#$u_fatherwork#}">{#$u_fatherworkName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='309'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="fatherwork" id="fatherwork" value="{#$u_fatherwork#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>母亲工作</label>
+              <div class="dom_kj" id="motherwork_select" data-field="motherwork" data-select="{#$u_motherwork#}">{#$u_motherworkName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='309'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="motherwork" id="motherwork" value="{#$u_motherwork#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>父母经济</label>
+              <div class="dom_kj" id="parenteconomy_select" data-field="parenteconomy" data-select="{#$u_parenteconomy#}">{#$u_parenteconomyName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='329'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="parenteconomy" id="parenteconomy" value="{#$u_parenteconomy#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>父母医保</label>
+              <div class="dom_kj" id="parentinsurance_select" data-field="parentinsurance" data-select="{#$u_parentinsurance#}">{#$u_parentinsuranceName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='456'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="parentinsurance" id="parentinsurance" value="{#$u_parentinsurance#}">
+            </div>
+          </div>
+        </div>
+        <!-- 家庭状况 e -->
+        <!-- 爱情规划 s -->
+        <div class="choose-box" id="box_love">
+          <div class="ml4r btop title">
+            <p>爱情规划<span></span></p>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>想何时结婚</label>
+              <div class="dom_kj" id="marriagetime_select" data-field="marriagetime" data-select="{#$u_marriagetime#}">{#$u_marriagetimeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='341'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="marriagetime" id="marriagetime" value="{#$u_marriagetime#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>偏爱约会方式</label>
+              <div class="dom_kj" id="datetype_select" data-field="datetype" data-select="{#$u_datetype#}">{#$u_datetypeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='347'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="datetype" id="datetype" value="{#$u_datetype#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>希望对方看重</label>
+              <div class="dom_kj" id="othervalue_select" data-field="othervalue" data-select="{#$u_othervalue#}">{#$u_othervalueName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='353'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="othervalue" id="othervalue" value="{#$u_othervalue#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>期待婚礼形式</label>
+              <div class="dom_kj" id="weddingtype_select" data-field="weddingtype">{#$u_weddingtypeName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='358'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="weddingtype" id="weddingtype" value="{#$u_weddingtype#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>愿与对方父母住否</label>
+              <div class="dom_kj" id="livetogeparent_select" data-field="livetogeparent" data-select="{#$u_livetogeparent#}">{#$u_livetogeparentName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='364'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="livetogeparent" id="livetogeparent" value="{#$u_livetogeparent#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>是否想要孩子</label>
+              <div class="dom_kj" id="givebaby_select" data-field="givebaby" data-select="{#$u_givebaby#}">{#$u_givebabyName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='368'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="givebaby" id="givebaby" value="{#$u_givebaby#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>厨艺状况</label>
+              <div class="dom_kj" id="cooking_select" data-field="cooking" data-select="{#$u_cooking#}">{#$u_cookingName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='373'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="cooking" id="cooking" value="{#$u_cooking#}">
+            </div>
+          </div>
+          <div class="ml4r btop">
+            <div class="dom_select">
+              <label>家务分工</label>
+              <div class="dom_kj" id="housework_select" data-field="housework">{#$u_houseworkName|default:'<span class="null">未填写</span>'#}</div>
+              <span class="right_icon"></span>
+              <select class="dom_kj_data">
+                {#dating action='item' return='item' type='377'#}
+                <option value="{#$item.id#}">{#$item.typename#}</option>
+                {#/dating#}
+              </select>
+              <input type="hidden" name="housework" id="housework" value="{#$u_housework#}">
+            </div>
+          </div>
+        </div>
+        <!-- 爱情规划 s -->
+      </form>
+    </div>
+  </div>
+
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+    <div class="gz-sel-addr-header">
+      <h3>{#$langData['siteConfig'][7][2]#}</h3>
+      <button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+    </div>
+    <ul class="gz-sel-addr-nav"></ul>
+    <div class="gz-sel-addr-list"></div>
+  </div>
+
+  <div class="gz-sel-addr-mask"></div>
+
+</div>
+
+<a href="javascript:;" class="save">保存</a>
+
+<!-- 设置文本项 s -->
+<div class="fixedWin setTxt" id="setTxt">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>修改昵称</span>
+    </div>
+    <div class="header-search">
+      <a href="javascript:;" class="settxt_save">保存</a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <div class="chose-box">
+      <div class="ml4r btop">
+        <div class="dom_select">
+          <label for="">文本</label>
+          <input type="text" class="dom_kj" id="settxt_tmp" value="{#$u_nickname#}" maxlength="10" placeholder="请输入">
+        </div>
+      </div>
+    </div>
+    <p class="tsinfo">为了您的信息安全，请不要在自我介绍内填写微信、QQ、手机号等带有联系方式的个人信息</p>
+  </div>
+  <div class="fixedWin-btn"></div>
+</div>
+<!-- 设置文本项 e -->
+
+<script>
+  var edu_data = {#$edu_data_json#};
+  var money_data = {#$money_data_json#};
+  var moneyLine_data = {#$moneyLine_data_json#};
+  var config = {
+    dx:{
+      fromage: {#$u_fromage|default:0#},
+      toage: {#$u_toage|default:0#},
+      dfheight: {#$u_dfheight|default:0#},
+      dtheight: {#$u_dtheight|default:0#},
+      dfeducation: {#$u_dfeducation|default:0#},
+      dteducation: {#$u_dteducation|default:0#},
+      dfincome: {#$u_dfincome|default:0#},
+      dtincome: {#$u_dtincome|default:0#},
+      dmarriage: {#$u_dmarriage|default:0#},
+      dhousetag: {#$u_dhousetag|default:0#},
+      dchild: {#$u_dchild|default:0#},
+    },
+  }
+</script>
+
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.datetime.js" type="text/javascript"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mydata_edit.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/success_detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>  
+{#include file="../../../siteConfig/touch_top.html" pageTitle="成功故事"#}
+
+<div class="pair_img">
+    <div class="girl">
+        <div class="img_girl">
+          <img src="{#$detail_fphoto#}">
+        </div>
+        <p>{#$detail_fnickname#}</p>
+    </div>
+    <div class="man">
+        <div class="img_man">
+          <img src="{#$detail_tphoto#}">
+        </div>
+        <p>{#$detail_tnickname#}</p>
+    </div>
+</div>
+
+<div class="info">
+    <div class="name fn-clear">
+        <div class="name_txt">
+            <span class="naneTxt_01">{#$detail_title#}</span>
+            <span class="naneTxt_02">{#if $detail_process == 0#}约会中{#elseif $detail_process == 1#}恋爱中{#elseif $detail_process == 2#}结婚啦{#/if#}</span>
+            <span class="naneTxt_03">{#$detail_pubdate|date_format:'%m/%d'#}</span>
+        </div>
+        <p class="name_time">确认关系时间：{#$detail_kdate|date_format:"%Y/%m/%d"#}</p>
+    </div>
+    <div class="detaile_text">
+        {#$detail_content#}
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '交友成功故事',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_fphoto#}',
+        "link": '{#getUrlPath service="dating" template="story" id={#$detail_id#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/success_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no"> 
+<title>门店主页</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+{#if $ismine#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/idangerous.swiper.min.css">
+{#/if#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store_detail.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+
+  var modelType = "dating";
+  var lng = {#$detail_lng#}, lat = {#$detail_lat#};
+  var isManager = {#$ismine#};
+  var storeUid = id = {#$id#};
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var samecityUrl = '{#getUrlPath service='dating' template='samecity'#}';
+  
+  var uid = {#$uid#};
+  var hnUid = {#$hnUid#};
+  var leadCount = {#$u_leadCan|default:0#};
+  var JubaoConfig = {
+    "module" : 'dating',
+    "action" : 'store_detail',
+    "id" : '{#$detail_id#}'
+  };
+  var touch_poster = 1;                   
+</script>
+</head>
+
+<body{#if $ismine#} class="manager"{#/if#}>
+  {#include file="../../../siteConfig/touch_top.html" pageTitle="{#$detail_nickname#}"#}
+<!-- 海报s -->
+{#include file="../../../siteConfig/public_touch_poster.html" posterModule='datingStore'#}
+{#include file="../../../siteConfig/touch_poster_3.7.html" posterType="datingStoreModule"#}
+<!-- 海报 -->
+<!-- 主页背景 -->
+<div class="master_graph">
+  <div class="upbtn"></div>
+  <div class="bg"><img src="{#if $detail_coverturl#}{#$detail_coverturl#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" data-url="{#$detail_cover_#}"></div>
+</div>
+<!-- 主页背景 end -->
+
+<!-- 简介 s -->
+<div class="box profile">
+  <div class="box-title fn-clear"><h2>门店简介</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content"> 
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_profile|replace: "\n" : '<br>'#}</div>
+      <textarea class="edit txt"></textarea>
+    </div>
+  </div>
+</div>
+<!-- 简介 e -->
+<!-- 门店地址 s -->
+<div class="box place">
+  <div class="box-title fn-clear"><h2>门店地址</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content"> 
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_address#}</div>
+      <input type="text" class="edit txt" id="address" value="">
+    </div>
+    <div class="mapwrap fn-hide">
+      <div id="mapdiv"></div>
+      <span class="mapcenter"></span>
+      <span class="changeBtn">确定</span>
+    </div>
+  </div>
+</div>
+<!-- 门店地址 e -->
+<!-- 门店电话 s -->
+<div class="box tel">
+  <div class="box-title fn-clear"><h2>门店电话</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content"> 
+    <div class="txtwrap">
+      <div class="show txt" data-prefix="门店电话：">门店电话：{#$detail_tel#}</div>
+      <input type="text" class="edit txt" value="">
+    </div>
+  </div>
+</div>
+<!-- 门店电话 e -->
+<!-- 途径公交 s -->
+<div class="box bus">
+  <div class="box-title fn-clear"><h2>途径公交</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content"> 
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_bus|replace: "\n" : '<br>'#}</div>
+      <textarea class="edit txt"></textarea>
+    </div>
+  </div>
+</div>
+<!-- 途径公交 e -->
+<!-- 门店标签 s -->
+<div class="box good">
+  <div class="box-title fn-clear"><h2>门店标签</h2><span class="editbtn goodBtn">编辑</span></div>
+  <div class="box-content"> 
+    <div class="txtwrap">
+      <div class="show" id="goodShow">
+        {#if $detail_tagsArr#}
+        {#foreach from=$detail_tagsArr item=tag#}
+        <a href="javascript:;" class="tg">{#$tag#}</a>
+        {#/foreach#}
+        {#/if#}
+      </div>
+      <div class="edit" id="goodEdit">
+        <input type="text" class="addinp tg" maxlength="20">
+        <a href="javascript:;" class="tg" id="addTag">+ 添加标签</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 门店标签 e -->
+<!-- 红娘团队 s -->
+<div class="box hn_team">
+  <div class="box-title fn-clear"><h2>红娘团队</h2></div>
+  <div class="box-content"> 
+    <div class="container">
+      {#dating action='hnList' company=$detail_id return='list'#}
+      <div class="item">
+        <a href="{#$list.url#}" class="fn-clear">
+          <div class="img">
+            <img src="{#$list.phototurl#}" alt=""></div>
+          <div class="info">
+            <h3 class="name">{#$list.nickname#}
+              <span>{#$list.year#}年经验</span></h3>
+            <p class="des">
+              <span>红娘主页</span>{#$list.advice#}</p>
+            <p class="case">{#$list.case#}对成功案例</p></div>
+        </a>
+      </div>
+      {#/dating#}
+      {#if $pageInfo.totalCount == 0#}
+      <div class="empty">暂无红娘</div>
+      {#/if#}
+    </div>
+  </div>
+  <div class="tofoot"><a href="{#getUrlPath service='dating' template='hongniang'#}">查看更多红娘<em></em></a></div>
+</div>
+<!-- 红娘团队 e -->
+<!-- 本店会员 s -->
+<div class="box recommend">
+  <div class="box-title fn-clear"><h2>本店会员</h2></div>
+  <div class="box-content"> 
+    <ul class="container" id="container"></ul>
+  </div>
+  <div class="tofoot tofoot2">查看更多会员<em></em></div>
+</div>
+<!-- 本店会员 e -->
+
+<div class="pageFooter">
+  <a href="{#getUrlPath service='dating' template='applyStore' id=$detail_id#}">申请门店为我牵线</a>
+</div>
+
+<!-- 选择图片 s -->
+<div class="fixedWin setFaceWin" id="setFaceWin">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>上传图片</span>
+    </div>
+    <div class="header-search vh">
+      <a href="javascript:;" class="dropnav"></a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <ul class="piclist fn-clear"></ul>
+  </div>
+  <div class="fixedWin-btn">
+    <div class="submit" id="filePicker1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">自定义封面</div>
+  </div>
+</div>
+<!-- 选择图片 e -->
+
+<!-- 大图展示 s -->
+<div class="fixedWin showBigPic photoBox" id="showBigPic">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span></span>
+    </div>
+    <div class="header-search">
+      <a href="javascript:;" class="del"></a>
+    </div>
+  </div>
+  <div class="swiper-container">
+    <ul id="Gallery" class="swiper-wrapper">
+      <li class="swiper-slide"><img src="" alt="" class="swiper-lazy"></li>
+    </ul>
+  </div>
+  <div class="pic-int">
+    <span class="count"></span>
+    <div class="midbtn"><span class="setface">设为相册封面</span></div>
+  </div>
+</div>
+<!-- 大图展示 e -->
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '{#$detail_nickname#}',
+    "imgUrl": '{#$detail_phototurl#}',
+    "link": '{#getUrlPath service="dating" template="store_detail" id={#$detail_id#}#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/store_detail.js?v={#$cfg_staticVersion#}"></script>
+{#if $ismine#}
+<script src="{#$cfg_staticPath#}js/ui/idangerous.swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/store_detail_mine.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>附近交友</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/nearby.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var leadCount = {#$u_leadCan#};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="附近交友"#}
+
+<div class="mainbox">
+  <div class="bar"></div>
+  <ul class="container" id="container"></ul>
+  <div class="tofoot">下拉加载更多</div>
+</div>
+
+{#include file='_foot.html' pagename='nearby'#}
+
+<!-- 所属红娘个人信息弹出框 -->
+<div class="Matchmaker fn-clear">
+  <div class="mat_whole">
+    <div class="Matchmaker_top">
+      <div class="Matchmaker_img"><img src="{#$templets_skin#}images/user_lead.png"></div>
+      <div class="Matchmaker_page">
+        <p class="list_01"></p>
+        <p class="list_02">电话：<span></span></p>
+        <p class="list_03">所属公司：<span></span></p>
+      </div>
+    </div>
+    <div class="Matchmaker_bot">
+      <p>红娘会员</p>
+      <p><em></em>的所属红娘</p>
+    </div>
+  </div>
+  <div class="Matchmaker_btn fn-clear">
+    <div class="btn cancel">取消</div>
+    <div class="btn thakaway">牵她</div>
+  </div>
+</div>
+<!-- 所属红娘个人信息弹出框 end-->
+<div class="desk"></div>
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '附近交友',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#getUrlPath service="dating" template="nearby"#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/nearby.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

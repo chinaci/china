@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>同城交友</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/samecity.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+
+  var buyMemberUrl = '{#getUrlPath service='dating' template='member_center'#}';
+  var uLevel = {#$u_level#};
+</script>
+</head>
+
+<body>
+
+<div class="gz-address">
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+
+    {#include file="../../../siteConfig/touch_top.html" pageTitle="同城交友"#}
+
+    <!-- 幻灯片 -->
+    <div class="banner pdc">
+      <div class="swiper-container swiper-container-banner">
+          <div class="swiper-wrapper">
+            {#myad title="互动交友_模板一_移动端_头条幻灯" type="slide"#}
+          </div>
+        <div class="pagination"></div>
+      </div>
+    </div>
+    <!-- 幻灯片 end -->
+
+    <div class="choose">
+      <form action="" id="searchFrom">
+        <input type="hidden" name="lng" id="lng" value="">
+        <input type="hidden" name="lat" id="lat" value="">
+        <ul class="choose-ul">
+          <li class="tp sort">
+            <div class="tit">智能排序<em></em></div>
+            <div class="choose-box">
+              <ul>
+                <li data-id="0" class="active">智能排序</li>
+                <li data-id="1">最新加入</li>
+                <li data-id="2">最近登录</li>
+                <li data-id="3">收入排序</li>
+                <li data-id="4">距离排序</li>
+              </ul>
+            </div>
+            <input type="hidden" name="orderby" id="orderby" value="0">
+          </li>
+          <li class="tp">
+            <div class="tit">基本筛选<em></em></div>
+            <div class="choose-box">
+              <div class="choose-box-main">
+                <div class="ml4r btop">
+                  {#*
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>居住地</label>
+                    <div class="dom_kj" id="area_select" data-field="addrid">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                  *#}
+                  <dl class="dom_select inpbox fn-clear gz-addr-seladdr" data-just="1">
+                    <dt><span><label for="addrid">居住地</label></span></dt>
+                    <dd class="dom_kj selgroup"><p></p>
+                    <span class="right_icon"></span>
+                    </dd>
+                    <input type="hidden" name="addrid" id="addrid" value="">
+                  </dl>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>年龄</label>
+                    <div class="dom_kj" id="age_select" data-field="age">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>身高</label>
+                    <div class="dom_kj" id="height_select" data-field="height">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>婚姻状态</label>
+                    <div class="dom_kj" id="marriage_select" data-field="marriage">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>学历</label>
+                    <div class="dom_kj" id="edu_select" data-field="education">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>月收入</label>
+                    <div class="dom_kj" id="money_select" data-field="income">不限</div>
+                    <span class="right_icon"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="choose-box-btn">
+                <a href="javascript:;" class="cancel">取消</a>
+                <a href="javascript:;" class="confirm">确定</a>
+              </div>
+            </div>
+          </li>
+          <li class="tp">
+            <div class="tit">高级筛选<em></em></div>
+            <div class="choose-box">
+              <div class="choose-box-main">
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>购房情况</label>
+                    <div class="dom_kj lock" id="house_select" data-field="housetag"></div>
+                    <span class="right_icon"></span>
+                    <select class="dom_kj_data">
+                      {#dating action='item' return='item' type='4'#}
+                      <option value="{#$item.id#}">{#$item.typename#}</option>
+                      {#/dating#}
+                    </select>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>购车情况</label>
+                    <div class="dom_kj lock" id="car_select" data-field="cartag"></div>
+                    <span class="right_icon"></span>
+                    <select class="dom_kj_data">
+                      {#dating action='item' return='item' type='11'#}
+                      <option value="{#$item.id#}">{#$item.typename#}</option>
+                      {#/dating#}
+                    </select>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  {#*
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>户口</label>
+                    <div class="dom_kj lock" id="household_select" data-field="household"></div>
+                    <span class="right_icon"></span>
+                  </div>
+                  *#}
+                  <dl class="dom_select inpbox fn-clear gz-addr-seladdr disabled" data-ids="{#getPublicParentInfo tab='site_area' id=0 split=' '#}" data-id="">
+                    <dt><span><label for="household">户口</label></span></dt>
+                    <dd class="dom_kj selgroup lock"><p></p>
+                    <span class="right_icon"></span>
+                    </dd>
+                    <input type="hidden" name="household" id="household" value="">
+                  </dl>
+                </div>
+                <div class="ml4r btop">
+                  {#*
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>家乡</label>
+                    <div class="dom_kj lock" id="hometown_select" data-field="hometown"></div>
+                    <span class="right_icon"></span>
+                  </div>
+                  *#}
+                  <dl class="dom_select inpbox fn-clear gz-addr-seladdr disabled" data-ids="{#getPublicParentInfo tab='site_area' id=0 split=' '#}" data-id="">
+                    <dt><span><label for="hometown">家乡</label></span></dt>
+                    <dd class="dom_kj selgroup lock"><p></p>
+                    <span class="right_icon"></span>
+                    </dd>
+                    <input type="hidden" name="hometown" id="hometown" value="">
+                  </dl>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>有无子女</label>
+                    <div class="dom_kj lock" id="son_select" data-field="child"></div>
+                    <span class="right_icon"></span>
+                    <select class="dom_kj_data">
+                      {#dating action='item' return='item' type='165'#}
+                      <option value="{#$item.id#}">{#$item.typename#}</option>
+                      {#/dating#}
+                    </select>
+                  </div>
+                </div>
+                <div class="ml4r btop">
+                  <div data-role="fieldcontain" class="dom_select">
+                    <label>星座</label>
+                    <div class="dom_kj lock" id="star_select" data-field="constellation"></div>
+                    <span class="right_icon"></span>
+                    <select class="dom_kj_data">
+                      <option value="1">白羊座</option>
+                      <option value="2">金牛座</option>
+                      <option value="3">双子座</option>
+                      <option value="4">巨蟹座</option>
+                      <option value="5">狮子座</option>
+                      <option value="6">处女座</option>
+                      <option value="7">天秤座</option>
+                      <option value="8">天蝎座</option>
+                      <option value="9">射手座</option>
+                      <option value="10">魔羯座</option>
+                      <option value="11">水瓶座</option>
+                      <option value="12">双鱼座</option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+              <div class="choose-box-btn">
+                <a href="javascript:;" class="cancel">取消</a>
+                <a href="javascript:;" class="confirm">确定</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+    <!-- 列表 -->
+    <div class="container fn-clear" id="container"></div>
+    <div class="tofoot">下拉加载更多...</div>
+
+    <!-- 遮罩层 -->
+    <div class="desk bsdesk"></div>
+
+
+
+
+  </div>
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+    <div class="gz-sel-addr-header">
+      <h3>{#$langData['siteConfig'][7][2]#}</h3>
+      <button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+    </div>
+    <ul class="gz-sel-addr-nav"></ul>
+    <div class="gz-sel-addr-list"></div>
+  </div>
+
+  <div class="gz-sel-addr-mask"></div>
+
+</div>
+
+{#include file='_foot.html' pagename='samecity'#}
+<script>
+  var area_data = {#$area_data_json#};
+  var marriage_data = {#$marriage_data_json#};
+  var edu_data = {#$edu_data_json#};
+  var money_data = {#$money_data_json#};
+</script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$dating_description#}',
+		"title": '同城交友',
+		"imgUrl": '{#$dating_logoUrl#}',
+		"link": '{#getUrlPath service="dating" template="samecity"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/samecity.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

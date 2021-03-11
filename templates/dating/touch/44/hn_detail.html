@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no">  
+<title>红娘主页</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+{#if $ismine#}
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/idangerous.swiper.min.css">
+{#/if#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hn_detail.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+
+  var modelType = "dating";
+
+  var hnid = id = {#$id#};
+  var ismine = {#$ismine#};
+  var samecityUrl = '{#getUrlPath service='dating' template='samecity'#}';
+
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var leadCount = {#$u_leadCan#};
+
+  var uid = {#$uid#};
+  var hnUid = {#$hnUid#};
+  var JubaoConfig = {
+    "module" : 'dating',
+    "action" : 'hn_detail',
+    "id" : '{#$id#}'
+  };
+  var touch_poster = 1;
+  var p
+
+</script>
+</head>
+
+<body class="{#if $ismine#}manager{#else#}visitor{#/if#}">
+  {#include file="../../../siteConfig/touch_top.html" pageTitle=""#}
+<!-- 海报s -->
+{#include file="../../../siteConfig/public_touch_poster.html" posterModule='datingHn'#}
+{#include file="../../../siteConfig/touch_poster_3.7.html" posterType="datinghnModule"#}
+<!-- 海报 -->
+<!-- 主页背景 -->
+<div class="master_graph">
+  <div class="bg"><img src="{#if $detail_coverturl#}{#$detail_coverturl#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" data-url="{#$detail_cover_#}"></div>
+  <div class="info">
+    <div class="upbtn"></div>
+    <div class="photo" id="filePicker2"><img src="{#if $detail_phototurl#}{#$detail_phototurl#}{#else#}{#$templets_skin#}images/user_lead.png{#/if#}" alt="" data-url="{#$detail_photo_#}"></div>
+    <div class="uinfo name">
+      <div class="editbox">
+        <input type="text" id="nickname" data-upType="30" value="{#$detail_nickname#}" maxlength="10" {#if !$ismine#}readonly{#/if#}>
+        <p class="placehold"><span>{#$detail_nickname#}</span></p>
+      </div>
+    </div>
+    <div class="uinfo count">
+      <div class="case">
+        <div class="editbox">
+          <input type="text" id="case" data-upType="31" value="{#$detail_case#}" min="0" maxlength="4" {#if !$ismine#}readonly{#/if#}><span class="fz">对成功案例</span>
+          <p class="placehold"><span>{#$detail_case#}</span>对成功案例</p>
+        </div>
+      </div>
+      <div class="year">
+        <div class="editbox">
+          <input type="text" id="year" data-upType="32" value="{#$detail_year#}" min="0" maxlength="2" {#if !$ismine#}readonly{#/if#}><span class="fz">年工作经验</span>
+          <p class="placehold"><span>{#$detail_year#}</span>年工作经验</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 主页背景 end -->
+
+<!-- 简介 s -->
+<div class="box profile">
+  <div class="box-title fn-clear"><h2>红娘简介</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content">
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_profile#}</div>
+      <textarea class="edit txt"></textarea>
+    </div>
+    {#if $detail_company#}<p class="hn_store"><a href="{#$detail_store.url#}">{#$detail_nickname#}隶属于{#$detail_store.nickname#}<em></em></a></p>{#/if#}
+  </div>
+</div>
+<!-- 简介 e -->
+<!-- 联系方式 s -->
+<div class="box contact">
+  <div class="box-title fn-clear"><h2>红娘联系方式</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content">
+    <div class="txtwrap">
+      <div class="ml4r">
+        <div class="dom_select fn-clear">
+          <label>电话：</label>
+          <input type="text" class="dom_kj inp" id="telinp" value="{#$detail_tel#}" readonly="">
+        </div>
+      </div>
+      <div class="ml4r">
+        <div class="dom_select fn-clear">
+          <label>QQ：</label>
+          <input type="text" class="dom_kj inp" id="qq" value="{#$detail_qq#}" readonly="">
+        </div>
+      </div>
+      <div class="ml4r">
+        <div class="dom_select fn-clear">
+          <label>微信：</label>
+          <input type="text" class="dom_kj inp" id="wechat" value="{#$detail_wechat#}" readonly="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 联系方式 e -->
+<!-- 荣誉 s -->
+<div class="box honor">
+  <div class="box-title fn-clear"><h2>资深荣誉</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content">
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_honor#}</div>
+      <textarea class="edit txt"></textarea>
+    </div>
+  </div>
+</div>
+<!-- 荣誉 e -->
+<!-- 擅长领域 s -->
+<div class="box good">
+  <div class="box-title fn-clear"><h2>擅长领域</h2><span class="editbtn goodBtn">编辑</span></div>
+  <div class="box-content">
+    <div class="txtwrap">
+      <div class="show" id="goodShow">
+        {#if $detail_tagsArr#}
+        {#foreach from=$detail_tagsArr item=tag#}
+        <a href="javascript:;" class="tg">{#$tag#}</a>
+        {#/foreach#}
+        {#/if#}
+      </div>
+      <div class="edit" id="goodEdit">
+        <input type="text" class="addinp tg" maxlength="20">
+        <a href="javascript:;" class="tg" id="addTag">+ 添加标签</a>
+      </div>
+      <input type="hidden" id="good">
+    </div>
+  </div>
+</div>
+<!-- 擅长领域 e -->
+<!-- 婚恋建议 s -->
+<div class="box advice">
+  <div class="box-title fn-clear"><h2>婚恋建议</h2><span class="editbtn">编辑</span></div>
+  <div class="box-content">
+    <div class="txtwrap">
+      <div class="show txt">{#$detail_advice#}</div>
+      <textarea class="edit txt"></textarea>
+    </div>
+  </div>
+</div>
+<!-- 婚恋建议 e -->
+<!-- 推荐会员 s -->
+<div class="box recommend">
+  <div class="box-title fn-clear"><h2>推荐会员</h2></div>
+  <div class="box-content">
+    <ul class="container" id="container">
+      {#*
+      <li class="item fn-clear">
+        <div class="img">
+          <a href="">
+            <img src="http://wa.215000.com/templates/dating/touch/skin1/upfile/user1.jpg" alt=""></a>
+          <a href="" class="user_video"></a>
+        </div>
+        <div class="info">
+          <a href="">
+            <p class="base fn-clear">
+              <span class="name">迷茫</span>
+              <em class="u_level">
+                <img src="http://wa.215000.com/templates/dating/touch/skin1/upfile/level.png" alt=""></em>
+              <em class="phone"></em>
+              <span class="picnum">6</span></p>
+            <p class="more">
+              <span class="age">30岁</span>
+              <span class="height">165cm</span>
+              <span class="distance">16km</span></p>
+            <p class="tag">
+              <span>颜值自信</span>
+              <span>活泼</span>
+              <span>体贴</span>
+              <span>话唠</span>
+              <span>专一</span></p>
+          </a>
+        </div>
+        <div class="btns">
+          <a href="javascript:;" class="greet active">打招呼</a>
+          <a href="javascript:;" class="follow">关注</a>
+          <a href="javascript:;" class="lead">牵线</a></div>
+      </li>
+      *#}
+    </ul>
+  </div>
+</div>
+<!-- 推荐会员 e -->
+<div class="tofoot">查看更多会员<em></em></div>
+
+{#if $detail_tel || $detail_qq || $detail_wechat#}
+<div class="pageFooter">
+  <ul>
+    <li class="tel{#if !$detail_tel#} fn-hide{#/if#}"><a href="tel:{#$detail_tel#}"><i></i>电话</a></li>
+    <li class="qq{#if !$detail_qq#} fn-hide{#/if#}" data-info="{#$detail_qq#}"><i></i>QQ</li>
+    <li class="wechat{#if !$detail_wechat#} fn-hide{#/if#}" data-info="{#$detail_wechat#}"><i></i>微信</li>
+  </ul>
+</div>
+{#else#}
+<style>body{padding-bottom:0;}</style>
+{#/if#}
+
+<!-- 所属红娘个人信息弹出框 -->
+<div class="Matchmaker fn-clear">
+  <div class="mat_whole">
+    <div class="Matchmaker_top">
+      <div class="Matchmaker_img"><img src="{#$templets_skin#}images/user_lead.png"></div>
+      <div class="Matchmaker_page">
+        <p class="list_01"></p>
+        <p class="list_02">电话：<span></span></p>
+        <p class="list_03">所属公司：<span>北京婚姻介绍所</span></p>
+      </div>
+    </div>
+    <div class="Matchmaker_bot">
+      <p>红娘会员</p>
+      <p><em></em>的所属红娘</p>
+    </div>
+  </div>
+  <div class="Matchmaker_btn fn-clear">
+    <div class="btn cancel">取消</div>
+    <div class="btn thakaway">牵她</div>
+  </div>
+</div>
+<!-- 所属红娘个人信息弹出框 end-->
+<div class="desk"></div>
+
+{#if $ismine#}
+<!-- 选择图片 s -->
+<div class="fixedWin setFaceWin" id="setFaceWin">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>上传图片</span>
+    </div>
+    <div class="header-search vh">
+      <a href="javascript:;" class="dropnav"></a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <ul class="piclist fn-clear"></ul>
+  </div>
+  <div class="fixedWin-btn">
+    <div class="submit" id="filePicker1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">自定义封面</div>
+  </div>
+</div>
+<!-- 选择图片 e -->
+
+<!-- 大图展示 s -->
+<div class="fixedWin showBigPic photoBox" id="showBigPic">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span></span>
+    </div>
+    <div class="header-search">
+      <a href="javascript:;" class="del"></a>
+    </div>
+  </div>
+  <div class="swiper-container">
+    <ul id="Gallery" class="swiper-wrapper">
+      <li class="swiper-slide"><img src="" alt="" class="swiper-lazy"></li>
+    </ul>
+  </div>
+  <div class="pic-int">
+    <span class="count"></span>
+    <div class="midbtn"><span class="setface">设为相册封面</span></div>
+  </div>
+</div>
+<!-- 大图展示 e -->
+{#/if#}
+
+<!-- 联系方式弹出层 -->
+<div class="succeed_box">
+  <p class="succeed_boxtTxt">QQ</p>
+  <p class="succeed_boxNum"></p>
+  <div class="bg_succeed"><img src="{#$templets_skin#}images/hua.png"></div>
+  <div class="bg_dashed"></div>
+  <div class="bg_cuo"></div>
+  <i></i>
+</div>
+<!-- 联系方式弹出层 end-->
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$detail_profile#}',
+    "title": '{#$detail_nickname#}',
+    "imgUrl": '{#$detail_photo#}',
+    "link": '{#$detail_url#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/hn_detail.js?v={#$cfg_staticVersion#}"></script>
+{#if $ismine#}
+<script src="{#$cfg_staticPath#}js/ui/idangerous.swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/hn_detail_mine.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>编辑资料-{#$dating_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mydata_introduce.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+
+</script>
+</head>
+
+<body>
+<div class="header ">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+    <div class="header-address">
+    <span>自我介绍</span>
+  </div>
+  <div class="header-search">
+      <a href="" class="notMenu"></a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="txtwrap"><textarea name="" id="profile" rows="10" class="clearBoxSize">{#$u_profile#}</textarea></div>
+  <div class="txtlength fn-clear"><span></span></div>
+  <p class="tsinfo">为了您的信息安全，请不要在自我介绍内填写微信、QQ、手机号等带有联系方式的个人信息</p>
+</div>
+
+<a href="javascript:;" class="save">保存</a>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mydata_introduce.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

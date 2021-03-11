@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>视频</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/video.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}';
+
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+</script>
+</head>
+<body>
+<div class="photoBox">
+  <div class="header">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+    <div class="header-address">
+      <span></span>
+    </div>
+    <div class="header-search">
+      <a href="javascript:;" class="del"></a>
+    </div>
+  </div>
+
+  <div class="swiper-container">
+    <ul id="Gallery" class="swiper-wrapper">
+      {#if $type == "myVideo"#}
+      <li class="swiper-slide" data-zan="{#$album.zan_has#}">
+        <video src="{#$videoUrl#}" id="video"></video>
+        <div class="player"></div>
+      </li>
+      {#elseif $type == "circle"#}
+      {#dating action=circleFileList id=$aid pageSize=100 return=album#}
+      {#if $album.zan_has#}
+      {#$zan_has = 1#}
+      {#/if#}
+      <li class="swiper-slide" data-zan="{#$album.zan_has#}">
+        <video src="{#$album.path#}" id="video" controls></video>
+        <!--<div class="player"></div>-->
+      </li>
+      {#/dating#}
+      {#/if#}
+    </ul>
+  </div>
+  {#*视频认证信息*#}
+  {#if $type == "myVideo"#}<div class="video-info">已通过视频认证</div>{#/if#}
+</div>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/video.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

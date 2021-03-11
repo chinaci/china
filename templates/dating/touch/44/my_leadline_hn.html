@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的牵线</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_leadline_hn.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var hnUid = {#$hnUid#};  
+
+</script>
+</head>
+
+<body>
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>我的牵线</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+<div class="navWrap">
+  <ul class="navtab">
+    <li class="all active" data-id="0">全部</li>
+    <li class="load" data-id="1">牵线中<em></em></li>
+    <li class="succ" data-id="2">成功<em></em></li>
+    <li class="fail" data-id="3">失败<em></em></li>
+    <li class="zd" data-id="out">主动牵</li>
+    <li class="bd" data-id="in">被动牵<em></em></li>
+  </ul>
+</div>
+<div class="container">
+  <div class="swiper-container tabs-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+        {#*
+          <div class="item zd state1">
+            <div class="btns fn-clear">
+              <span class="time">2018/05/15</span>
+              <span class="state">待牵线···</span>
+              <span class="btn agree">同意牵线</span>
+              <span class="btn cancel">拒绝牵线</span>
+            </div>
+            <div class="base fn-clear">
+              <div class="u_left">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user2.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="u_right">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user3.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="stateinfo">
+                <p>正在牵线中...</p>
+                <img src="{#$templets_skin#}images/lead_ing.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="item bd state2">
+            <div class="btns fn-clear">
+              <span class="time">2018/05/15</span>
+            </div>
+            <div class="base fn-clear">
+              <div class="u_left">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user2.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="u_right">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user3.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="stateinfo">
+                <p>牵线成功</p>
+                <img src="{#$templets_skin#}images/lead_suc.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="item bd state0">
+            <div class="btns fn-clear">
+              <span class="time">2018/05/15</span>
+              <span class="btn agree">同意牵线</span>
+              <span class="btn cancel">拒绝牵线</span>
+            </div>
+            <div class="base fn-clear">
+              <div class="u_left">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user2.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="u_right">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user3.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="stateinfo">
+                <p>待牵线</p>
+                <img src="{#$templets_skin#}images/lead_wait.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="item bd state3">
+            <div class="btns fn-clear">
+              <span class="time">2018/05/15</span>
+            </div>
+            <div class="base fn-clear">
+              <div class="u_left">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user2.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="u_right">
+                <div class="img">
+                  <a href="">
+                    <img src="{#$templets_skin#}upfile/user3.jpg" alt=""></a>
+                </div>
+                <div class="u_name">
+                  <p class="name">刘振峰</p>
+                  <p class="u_type">主动牵线</p>
+                  <span class="speak">对话</span>
+                </div>
+              </div>
+              <div class="stateinfo">
+                <p>牵线失败</p>
+                <img src="{#$templets_skin#}images/lead_fail.png" alt="">
+              </div>
+            </div>
+          </div>
+        *#}
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+      </div>
+      <div class="swiper-slide">
+        <div class="content-slide fn-clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tofoot">上拉加载</div>
+
+<!-- 所属红娘个人信息弹出框 -->
+<div class="Matchmaker fn-clear">
+  <div class="mat_whole">
+    <div class="closebox"><span class="close"></span></div>
+    <div class="Matchmaker_top">
+      <div class="userinfo fn-clear">
+        <div class="Matchmaker_img"><img src="{#$templets_skin#}images/user_8.jpg"></div>
+        <div class="Matchmaker_page">
+          <p class="list_01"></p>
+          <p class="more">
+            <span class="age"></span>
+            <span class="height"></span>
+            <span class="distance fn-hide"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="Matchmaker_bot">
+      <ul class="userinfo fn-clear">
+        <li>
+          <img src="{#$templets_skin#}images/qq.png" alt="">
+          <p class="qq"></p>
+        </li>
+        <li>
+          <img src="{#$templets_skin#}images/wx.png" alt="">
+          <p class="wechat"></p>
+        </li>
+        <li>
+          <img src="{#$templets_skin#}images/sj.png" alt="">
+          <p class="phone"></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="Matchmaker_btn fn-clear">
+    <a href="javascript:;" class="btn speak">与她对话</a>
+    <a href="" class="btn homepage">进入主页</a>
+  </div>
+</div>
+<!-- 所属红娘个人信息弹出框 end-->
+<div class="desk"></div>
+  
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_leadline_hn.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

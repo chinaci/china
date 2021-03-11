@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>相册</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/picture.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/ui/idangerous.swiper.min.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}';
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+var upgradeUrl = '{#getUrlPath service='dating' template='member_center'#}';
+var type = '{#$type#}';
+var aid = {#$aid#};
+var atPage = {#$atpage|default:0#};
+</script>
+</head>
+<body>
+<div class="photoBox">
+  <div class="header">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+    <div class="header-address">
+      <span></span>
+    </div>
+    <div class="header-search">
+      {#if $showDel#}<a href="javascript:;" class="del"></a>{#/if#}
+    </div>
+  </div>
+
+  <div class="swiper-container">
+    <ul id="Gallery" class="swiper-wrapper">
+      {#$zan_has = 0#}
+      {#*相册*#}
+      {#if $type == "photo"#}
+      <li class="swiper-slide"><img src="{#$cfg_staticPath#}images/blank.gif" data-src="{#$img#}" alt="" class="swiper-lazy"></li>
+      {#elseif $type == "album"#}
+        {#dating action=albumList u=$u userid=$id isdating=1 pageSize=100 return=album#}
+        <li class="swiper-slide" data-id="{#$album.id#}" data-zan="{#$album.zan_has#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-src="{#$album.path#}" data-lock="{#$album.limit#}" alt="" class="swiper-lazy"></li>
+        {#/dating#}
+      {#elseif $type == "circle"#}
+        {#dating action=circleFileList id=$aid pageSize=100 return=album#}
+        {#if $album.zan_has#}
+        {#$zan_has = 1#}
+        {#/if#}
+        <li class="swiper-slide" data-zan="{#$album.zan_has#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-src="{#$album.path#}" alt="" class="swiper-lazy"></li>
+        {#/dating#}
+      {#/if#}
+    </ul>
+  </div>
+  {#if $showFoot#}
+  <div class="pic-int">
+    <span class="zan{#if $zan_has#} active{#/if#}">赞</span>
+    <span class="count"></span>
+    {#*<div class="midbtn"><span class="setface">设为相册封面</span></div>*#}
+  </div>
+  {#/if#}
+</div>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/idangerous.swiper.min.js"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/picture.js"></script>
+</body>
+</html>

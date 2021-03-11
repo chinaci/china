@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>会员中心</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/member_center.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+
+  var keyPrice = 200;
+
+</script>
+</head>
+
+<body>
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>会员中心</span>
+  </div>
+  <div class="header-search" style="visibility:hidden;">
+    <a href="" class="save">会员协议</a>
+  </div>
+</div>
+{#if $u_level#}
+<div class="baseinfo vip">
+  <div class="box">
+    <div class="head">
+      <div class="viptxt">VIP</div>
+      <div class="vipname">{#$u_levelName#}</div>
+      <div class="pic"><img src="{#$u_levelIcon#}" alt=""></div>
+    </div>
+    <div class="body">
+      <p class="name">{#$u_levelName#}</p>
+      <p class="have"><span class="tp money">金</span>余额：{#$u_money#}<em>|</em><span class="tp key"></span>钥匙：{#$u_key#}</p>
+      <p class="info">您的VIP将于{#$u_expired|date_format:'%Y-%m-%d'#} 到期</p>
+    </div>
+    <div class="btns">
+      <a href="{#getUrlPath service='dating' template='recharge'#}">充值金币</a><a href="{#getUrlPath service='dating' template='buy_key'#}">获取钥匙</a>
+    </div>
+  </div>
+</div>
+{#else#}
+<div class="baseinfo normal">
+  <div class="box">
+    <div class="head">
+      <div class="viptxt"></div>
+      <div class="vipname">普通会员</div>
+      <div class="pic"></div>
+    </div>
+    <div class="body">
+      <p class="name">{#$u_levelName#}</p>
+      <p class="have"><span class="tp money">金</span>余额：{#$u_money#}<em>|</em><span class="tp key"></span>钥匙：{#$u_key#}</p>
+      <p class="info">&nbsp;</p>
+    </div>
+    <div class="btns">
+      <a href="{#getUrlPath service='dating' template='recharge'#}">充值金币</a><a href="{#getUrlPath service='dating' template='buy_key'#}">获取钥匙</a>
+    </div>
+  </div>
+</div>
+{#/if#}
+<div class="container">
+  <div class="level">
+    <ul>
+      {#dating action="memberLevel" return="level"#}
+      <li class="fn-clear level_{#$_bindex.level#}" data-id="{#$level.id#}">
+        <div class="img"><img src="{#$level.icon#}" alt=""></div>
+        <div class="name">
+          <p class="title">{#$level.name#}{#if $level.tag#}<em>{#$level.tag#}</em>{#/if#}</p>
+          <p class="month">{#$level.month#}个月</p>
+        </div>
+        <div class="price">&yen;{#$level.cost#}</div>
+      </li>
+      {#/dating#}
+    </ul>
+  </div>
+  <div class="main">
+    <ul class="navtab">
+      <li class="active"><span>功能比较</span></li>
+      <li><span>会员比较</span></li>
+    </ul>
+    <div class="content">
+      <div class="item">
+        <ul>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/message.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">聊天互动</p>
+              <p class="p2">不限制聊天形式</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/statistics.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">聊天条数</p>
+              <p class="p2">不限制聊天数量</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/photo.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">照片数量</p>
+              <p class="p2">无限查看相册照片</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/view_log.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">访客记录</p>
+              <p class="p2">查看自己和TA的访客记录</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/key_2.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">聊天钥匙</p>
+              <p class="p2">每天可有10~30把聊天钥匙</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/serach.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">高级搜索</p>
+              <p class="p2">通过年龄、身高、等多个条找到您喜欢的俊男靓女</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/user_4.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">会员数量</p>
+              <p class="p2">不限制查看会员数量</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/user_5.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">活跃时间</p>
+              <p class="p2">查看最后一次登录时间</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/nickname_red.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">昵称红色</p>
+              <p class="p2">会员红色昵称，专属尊贵，与众不同</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/tel.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">联系方式</p>
+              <p class="p2">可查看联系方式（QQ、微信，微博，电话号码）</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/audio.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">语音介绍</p>
+              <p class="p2">可发布最长60秒的语音介绍</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/user_6.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">注册时间</p>
+              <p class="p2">可查看TA的注册时间</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/u_hide.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">定向隐身</p>
+              <p class="p2">悄悄隐藏与TA的距离和登录时间</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/member_tag.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">会员标识</p>
+              <p class="p2">专属身份铭牌，尊贵身份，如影随形</p>
+            </div>
+          </li>
+          <li>
+            <div class="img"><img src="{#$templets_skin#}images/video_red.png" alt=""></div>
+            <div class="txt">
+              <p class="p1">视频头像</p>
+              <p class="p2">无限制看TA人视频，所见即真人，约会更有保障</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="item fn-hide">
+        <div class="tabbox">
+          <table>
+            <thead>
+              <tr>
+                <td></td>
+                <td>普通会员</td>
+                <td><div class="level_vip"><em></em>VIP</div></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>聊天互动</td>
+                <td>不支持语音、表情、图片</td>
+                <td>不限制</td>
+              </tr>
+              <tr>
+                <td>聊天条数</td>
+                <td>每天每人限制5条</td>
+                <td>独立直播间</td>
+              </tr>
+              <tr>
+                <td>照片数量</td>
+                <td>每个会员最多查看5张照片</td>
+                <td>无限查看</td>
+              </tr>
+              <tr>
+                <td>访客记录</td>
+                <td>不能查看</td>
+                <td>查看自己和TA的访客记录</td>
+              </tr>
+              <tr>
+                <td>聊天钥匙</td>
+                <td>每天仅3把</td>
+                <td>每天10~30把</td>
+              </tr>
+              <tr>
+                <td>高级搜索</td>
+                <td>不能搜索</td>
+                <td>可以通过年龄、身高、收入等多个条件来找到您喜欢的俊男靓女</td>
+              </tr>
+              <tr>
+                <td>会员数量</td>
+                <td>每天只限查看10个会员</td>
+                <td>不限制查看会员数量</td>
+              </tr>
+              <tr>
+                <td>活跃时间</td>
+                <td>不能查看</td>
+                <td>查看最后一次登录时间</td>
+              </tr>
+              <tr>
+                <td>昵称红色</td>
+                <td>普通系统默认</td>
+                <td>会员红色昵称，专属尊贵，与众不同</td>
+              </tr>
+              <tr>
+                <td>联系方式</td>
+                <td></td>
+                <td>查看联系方式（QQ、微信、微博、电话号码）</td>
+              </tr>
+              <tr>
+                <td>语音介绍</td>
+                <td>不支持语音介绍</td>
+                <td>可发布最长50秒的语音介绍</td>
+              </tr>
+              <tr>
+                <td>注册时间</td>
+                <td>不能查看</td>
+                <td>查看TA的注册时间</td>
+              </tr>
+              <tr>
+                <td>定向隐身</td>
+                <td>不能设置</td>
+                <td>悄悄隐藏与TA的距离和登录时间</td>
+              </tr>
+              <tr>
+                <td>会员标志</td>
+                <td>普通系统默认</td>
+                <td>专属身份铭牌，尊贵身份，如影随形</td>
+              </tr>
+              <tr>
+                <td>视频头像</td>
+                <td>不能查看</td>
+                <td>无限制看TA人视频，所见即真人，约会更有保障</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/member_center.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

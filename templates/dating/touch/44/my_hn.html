@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的红娘</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_hn.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+  var showPicUrl = '{#getUrlPath service='dating' template='picture'#}';
+  var enter_hnUrl = '{#getUrlPath service='dating' template='enter_hn'#}';
+  var state = {#$hn_state#};
+  var fail_note = '{#$hn_fail_note#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="我的红娘" pageRight="<a href='javascript:;' class='notMenu'></a>"#}
+
+<div class="box list">
+  <ul>
+    <li>
+      <a href="{#$hn_url#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/home.png" alt=""></i><p>我的主页</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_user'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_notline.png" alt=""></i><p>线下会员</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='hn_income'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/money.png" alt=""></i><p>收入明细</p><span>{#if $newIncomeCount1#}<em>{#$newIncomeCount1#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_leadline_hn'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/lead.png" alt=""></i><p>我的牵线</p><span>{#if $newLeadCount#}<em>{#$newLeadCount#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_receiveapply'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/myapply.png" alt=""></i><p>我收到的会员申请</p><span>{#if $newApplyCount1#}<em>{#$newApplyCount1#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+{#include file='_foot.html' pagename='my'#}
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '{#$dating_title#}',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#$dating_channelDomain#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_hn.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

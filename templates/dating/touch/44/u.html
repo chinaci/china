@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no">
+<title>个人主页</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/homepage.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+  var modelType = 'dating';
+  var panel = '{#$panel#}';
+
+  var upgradeUrl = '{#getUrlPath service='dating' template='member_center'#}';
+  var rechargeUrl = '{#getUrlPath service='dating' template='recharge'#}';
+  var buykeyUrl = '{#getUrlPath service='dating' template='buy_key'#}';
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var picPageUrl = '{#getUrlPath service='dating' template='picture' param="type=album&id={#$id#}&atpage=#atpage"#}';
+  var picPageUrl2 = '{#getUrlPath service='dating' template='picture' param="type=circle&aid=#aid&atpage=#atpage"#}';
+  var videoPageUrl = '{#getUrlPath service='dating' template='video' param="type=circle&aid=#aid"#}';
+  var uid = id = {#$id#};
+  var ismine = {#$ismine#};
+  var leadCount = {#$u_leadCan#};
+  var hasChat = {#$hasChat#};
+  var master = {
+  	id: {#$id#},
+  	nickname: '{#$detail_nickname#}',
+  	photo: '{#$detail_phototurl#}',
+  	level: {#$detail_level#},
+  	company: {#$detail_company#}
+  }
+  var visitor = {
+  	id: {#$u_id#},
+  	nickname: '{#$u_nickname#}',
+  	photo: '{#$u_phototurl#}',
+  	level: {#$u_level#},
+  	money: {#$u_money#},
+  	key: {#$u_key#},
+  	level: {#$u_level#},
+  }
+  var hnUid = {#$hnUid#};
+  var JubaoConfig = {
+    "module" : 'dating',
+    "action" : 'u',
+    "id" : '{#$id#}'
+  };
+  var touch_poster = 1;
+
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="个人主页"#}
+<!-- 海报s -->
+{#include file="../../../siteConfig/public_touch_poster.html" posterModule='datingDetail'#}
+{#include file="../../../siteConfig/touch_poster_3.7.html" posterType="datingModule"#}
+<!-- 海报 -->
+{#if $todayVisitToMax#}
+<style>
+	html,body {background: #f5f5f5;}
+	body>.header {background: rgba(0, 0, 0, 0.25) !important;}
+</style>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	showMsg.confirm('您当前的会员等级<br>今日可查看会员数量已达上限',{
+		btn:{
+			ok: '<a href="'+upgradeUrl+'" class="ok">马上升级</a>'
+		},
+		cancel: function(){
+			history.go(-1);
+		}
+	})
+</script>
+{#else#}
+
+<!-- 主页背景 -->
+<div class="master_graph">
+	<img src="{#if $detail_coverturl#}{#$detail_coverturl#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" data-url="{#$detail_cover_#}">
+	{#if $ismine#}<div class="upbtn">上传照片</div>{#/if#}
+</div>
+<!-- 主页背景 end -->
+
+<!-- 个人资料 -->
+<div class="box perData fn-clear">
+	<div class="data_img">
+		<img src="{#$detail_phototurl#}">
+		{#if $detail_my_video_state#}
+		{#if $u_level || $u_id == $detail_id#}
+		<a href="{#getUrlPath service='dating' template='video' param="type=myVideo&id={#$detail_id#}"#}" class="u_video"></a>
+		{#else#}
+		<a href="javascript:;" class="u_video" id="u_video"></a>
+		{#/if#}
+		{#/if#}
+	</div>
+	<div class="data_item">
+		<p class="dataItem_1">
+			<span class="per_name">{#$detail_nickname#}</span>
+			{#if $detail_level#}<em class="u_level"><img src="{#$detail_levelIcon#}" alt=""></em>{#/if#}
+			{#if $detail_phoneCheck#}<em class="phone"></em>{#/if#}
+			{#if $detail_follow#}<span class="follow fol_dui">已关注</span>{#else#}<span class="follow">关注</span>{#/if#}
+		</p>
+		<p class="dataItem_2">
+			<span>{#$detail_age#}岁</span><em></em>
+			<span>{#$detail_heightName#}</span><em></em>
+			{#if $detail_addrName#}<span>{#$detail_addrNameMini#}</span>{#/if#}
+		</p>
+		<p class="dataItem_3">
+			<span>
+				{#if $detail_id == $uid#}
+				<a href="{#getUrlPath service='dating' template='my_visit_record' param='type=2'#}">关注<em>{#$detail_o_follow#}</em></a>
+				<em>|</em>
+				<a href="{#getUrlPath service='dating' template='my_visit_record' param='type=1'#}">粉丝<em>{#$detail_o_followby#}</em></a>
+				{#else#}
+				<a href="{#getUrlPath service='dating' template='fans' id="{#$detail_id#}"#}">关注<em>{#$detail_o_follow#}</em></a>
+				<em>|</em>
+				<a href="{#getUrlPath service='dating' template='fans' id="{#$detail_id#}" param='type=1'#}">粉丝<em>{#$detail_o_followby#}</em></a>
+				{#/if#}
+			</span>
+		</p>
+	</div>
+</div>
+<!-- 个人资料 end-->
+
+<!-- 导航 -->
+<div class="box navbar fn-clear">
+	<ul>
+		<li class="ziliao{#if $panel == ''#} active{#/if#}"><em></em>资料</li>
+		<li class="fangke{#if $panel == 'visit'#} active{#/if#}"><em></em>最近访客</li>
+		<li class="dongtai{#if $panel == 'circle'#} active{#/if#}"><em></em>动态</li>
+		<li class="xiangce{#if $panel == 'album'#} active{#/if#}"><em></em>相册</li>
+	</ul>
+</div>
+<!-- 导航 end-->
+
+<div class="mainbox">
+	<!-- 资料版块 -->
+	<div class="group personalData fn-clear"{#if $panel == ''#} style="display:block;"{#/if#}>
+		<!-- 个人介绍 -->
+		<div class="box introduction">
+			<div class="box_title">
+				<p class="tit">个人介绍<span>最后活跃时间：{#if $u_level || $u_id == $detail_id#}{#$detail_activedate#}{#else#}<span class="see">查看</span>{#/if#}</span></p>
+			</div>
+			<div class="introduction_yy fn-clear">
+				<div class="yuying fn-clear">
+					<div class="yy_img">
+						<img src="{#$detail_phototurl#}">
+					</div>
+					{#if $detail_my_voice_state == 1#}
+					<div class="voice load"><span class="wave"></span></div>
+					<span class="voice_m">″</span>
+					{#/if#}
+				</div>
+				<div class="yuying_txt">
+					<span>{#$detail_profile#}</span>
+					{#if strlen($detail_profile) > 225#}<p>展开<em></em></p>{#/if#}
+				</div>
+			</div>
+		</div>
+		<!-- 个人介绍 end-->
+
+		<!-- 个人相册 -->
+		<div class="box album">
+			<div class="box_title">
+				<a href="{#getUrlPath service='dating' template='picture' param="type=album&id=$detail_id"#}" class="tit">
+					{#if $detail_sex#}他{#else#}她{#/if#}的最新照片
+					<span>更多<i></i></span>
+				</a>
+			</div>
+			<div class="content_img fn-clear">
+				{#dating action=albumList userid=$detail_id isdating=1 pageSize=4 return=album#}
+				<div class="item">
+					<a href="{#getUrlPath service='dating' template='picture' param="type=album&id=$detail_id&atpage={#$_bindex.album#}"#}"><img src="{#$album.path#}"></a>
+				</div>
+				{#/dating#}
+			</div>
+		</div>
+		<!-- 个人相册 end-->
+
+		<!-- 联系方式 -->
+		<div class="contact_info box">
+			<div class="box_title">
+				<p class="tit">联系方式<span>注册时间：{#if $u_level || $u_id == $detail_id#}{#$detail_jointime|date_format: "%Y/%m/%d"#}{#else#}<span class="see">查看</span>{#/if#}</span></p>
+			</div>
+			<div class="information fn-clear">
+				{#*红娘下属会员如果设置委托红娘则不显示联系方式*#}
+				{#if $detail_entrust == 0#}
+				<div class="information_qq">
+					<img src="{#$templets_skin#}images/qq.png">
+					<p>QQ</p>
+				</div>
+				<div class="information_weixin">
+					<img src="{#$templets_skin#}images/wx.png">
+					<p>微信</p>
+				</div>
+				<div  class="information_phone">
+					<img src="{#$templets_skin#}images/sj.png">
+					<p>手机</p>
+				</div>
+				{#/if#}
+				{#if $detail_hn#}
+				<div class="information_qx" data-state="{#$leadState#}">
+					<img src="{#$templets_skin#}images/qx.png">
+					{#if $leadState == 0#}
+					<p>牵线</p>
+					{#elseif $leadState == 1#}
+					<p>牵线中</p>
+					{#elseif $leadState == 2#}
+					<p>牵线成功</p>
+					{#elseif $leadState == 3#}
+					<p>牵线失败</p>
+					{#/if#}
+				</div>
+				{#/if#}
+			</div>
+		</div>
+		<!-- 联系方式 end-->
+
+
+		<!-- 基本资料 -->
+		<div class="basicData box">
+			<div class="box_title">
+				<p class="tit">基本资料</p>
+			</div>
+			<div class="basic_list">
+				<div><p>ID：</p><span>{#$detail_numid#}</span></div>
+				<div><p>性别：</p><span>{#if $detail_sex#}男{#else#}女{#/if#}</span></div>
+				<div><p>年龄：</p><span>{#if $detail_age#}{#$detail_age#}岁{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>身高：</p><span>{#if $detail_height#}{#$detail_heightName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>星座：</p><span>{#if $detail_constellation#}{#$detail_constellation#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>学历：</p><span>{#if $detail_educationName#}{#$detail_educationName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>月收入：</p><span>{#if $detail_incomeName#}{#$detail_incomeName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>居住地：</p><span>{#if $detail_addrName#}{#$detail_addrName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>婚姻状况：</p><span>{#if $detail_marriageName#}{#$detail_marriageName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>子女情况：</p><span>{#if !$lookSpecInfo#}<span class="see">查看</span>{#elseif $detail_childName#}{#$detail_childName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>购房情况：</p><span>{#if $detail_housetagName#}{#$detail_housetagName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+			</div>
+			<div class="btns">
+				<a href="javascript:;" id="seeMore">查看更多资料</a>
+			</div>
+		</div>
+		<!-- 基本资料 end-->
+
+		<!-- 兴趣爱好 -->
+		<div class="basicData box fn-hide interests">
+			<div class="box_title">
+				<p class="tit">兴趣爱好</p>
+			</div>
+			<div class="basic_list">
+				{#if $detail_interestsArr#}
+				{#foreach from=$detail_interestsArr item=item#}
+				<span>{#$item#}</span>
+				{#/foreach#}
+				{#/if#}
+			</div>
+		</div>
+		<!-- 兴趣爱好 end-->
+
+		<!-- 小档案 -->
+		<div class="basicData box fn-hide">
+			<div class="box_title">
+				<p class="tit">小档案</p>
+			</div>
+			<div class="basic_list">
+				<div><p>家乡：</p>{#if $lookSpecInfo#}<span>{#$detail_hometownName#}</span>{#else#}<span class="see">查看</span>{#/if#}</div>
+				<div><p>户口：</p>{#if $lookSpecInfo#}<span>{#$detail_householdName#}</span>{#else#}<span class="see">查看</span>{#/if#}</div>
+				<div><p>民族：</p><span>{#if $detail_nationName#}{#$detail_nationName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>属相：</p><span>{#if $detail_zodiac#}{#$detail_zodiac#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>星座：</p>{#if $lookSpecInfo#}<span>{#$detail_constellation#}</span>{#else#}<span class="see">查看</span>{#/if#}</div>
+				<div><p>血型：</p><span>{#if $detail_bloodtype#}{#$detail_bloodtype#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>体重：</p><span>{#if $detail_bodyweight#}{#$detail_bodyweight#}公斤{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>相貌自评：</p><span>{#if $detail_looks#}{#$detail_looks#}分{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>宗教信仰：</p><span>{#if $detail_religionName#}{#$detail_religionName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>是否喝酒：</p><span>{#if $detail_drinkName#}{#$detail_drinkName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>生活作息：</p><span>{#if $detail_workandrestName#}{#$detail_workandrestName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+			</div>
+		</div>
+		<!-- 小档案 end-->
+
+		<!-- 教育及工作 -->
+		<div class="basicData box fn-hide">
+			<div class="box_title">
+				<p class="tit">教育及工作</p>
+			</div>
+			<div class="basic_list">
+				<div><p>毕业院校：</p><span>{#if $detail_school#}{#$detail_school#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>所学专业：</p><span>{#if $detail_majorName#}{#$detail_majorName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>职业职务：</p><span>{#if $detail_dutiesName#}{#$detail_dutiesName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>公司性质：</p><span>{#if $detail_natureName#}{#$detail_natureName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>公司行业：</p><span>{#if $detail_industryName#}{#$detail_industryName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>工作状态：</p><span>{#if $detail_workstatusName#}{#$detail_workstatusName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+				<div><p>掌握语言：</p><span>{#if $detail_languageName#}{#$detail_languageName#}{#else#}<em>未填写</em>{#/if#}</span></div>
+			</div>
+		</div>
+		<!-- 教育及工作 end-->
+
+		<!-- 家庭状况 -->
+		<div class="basicData box fn-hide">
+			<div class="box_title">
+				<p class="tit">家庭状况</p>
+			</div>
+			<div class="basic_list">
+				<div><p>家中排行：</p><span>{#$detail_familyrankName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>父母情况：</p><span>{#$detail_parentstatusName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>父亲工作：</p><span>{#$detail_fatherworkName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>母亲工作：</p><span>{#$detail_motherworkName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>父母经济：</p><span>{#$detail_parenteconomyName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>父母医保：</p><span>{#$detail_parentinsuranceName|default:'<em>未填写</em>'#}</span></div>
+			</div>
+		</div>
+		<!-- 家庭状况 end-->
+
+		<!-- 爱情规划 -->
+		<div class="basicData box fn-hide">
+			<div class="box_title">
+				<p class="tit">爱情规划</p>
+			</div>
+			<div class="basic_list">
+				<div><p>想何时结婚：</p><span>{#$detail_marriagetimeName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>偏爱约会方式：</p><span>{#$detail_datetypeName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>希望对方看重：</p><span>{#$detail_othervalueName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>期待婚礼形式：</p><span>{#$detail_weddingtypeName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>愿与对方父母住否：</p><span>{#$detail_livetogeparentName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>是否想要孩子：</p><span>{#$detail_givebabyName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>厨艺状况：</p><span>{#$detail_cookingName|default:'<em>未填写</em>'#}</span></div>
+				<div><p>家务分工：</p><span>{#$detail_houseworkName|default:'<em>未填写</em>'#}</span></div>
+			</div>
+		</div>
+		<!-- 爱情规划 end-->
+
+		<!-- 择偶条件 -->
+		<div class="basicData box fn-hide">
+			<div class="box_title">
+				<p class="tit">择偶条件</p>
+			</div>
+			<div class="basic_list">
+				<div><p>年龄：</p><span>{#$detail_dage|default:'<em>未填写</em>'#}</span></div>
+				<div><p>身高：</p><span>{#$detail_dheight|default:'<em>未填写</em>'#}</span></div>
+				<div><p>学历：</p><span>{#$detail_deducation|default:'<em>未填写</em>'#}</span></div>
+				<div><p>地区：</p><span>{#$detail_daddrName|default:'不限'#}</span></div>
+				<div><p>月收入：</p><span>{#$detail_dincome|default:'<em>未填写</em>'#}</span></div>
+				<div><p>婚姻状况：</p><span>{#$detail_dmarriageName|default:'<em>未填写</em>'#}</span></div>
+			</div>
+		</div>
+		<!-- 择偶条件 end-->
+
+		<!-- 收到的礼物 -->
+		<div class="box mygift">
+			<div class="box_title">
+				<a href="{#getUrlPath service='dating' template='getGift' id=$detail_id#}" class="tit">收到的礼物<span>查看更多<i></i></span></a>
+			</div>
+			<div class="gift_list fn-clear">
+				{#dating action='myGift' uid=$detail_id groupby='gid' pageSzie=4 return=item#}
+				<div>
+					<img src="{#$item.litpic#}">
+					<p class="gift_name">{#$item.title#}</p>
+					<p>×{#$item.count#}</p>
+				</div>
+				{#/dating#}
+			</div>
+		</div>
+		<!-- 收到的礼物 end-->
+
+	</div>
+	<!-- 资料版块 end-->
+
+
+	<!-- 最近访客版块 -->
+	<div class="group visitors"{#if $panel == 'visit'#} style="display:block;"{#/if#}>
+		<ul class="container" id="container"></ul>
+		<div class="tofoot">下拉加载更多</div>
+	</div>
+	<!-- 最近访客版块 emd-->
+
+	<!-- 动态 -->
+	<div class="group dynamic"{#if $panel == 'circle'#} style="display:block;"{#/if#}>
+		<ul class="dynamicner" id="dynamicner"></ul>
+		<div class="tofoot">下拉加载更多</div>
+	</div>
+	<!-- 动态 end-->
+
+	<!-- 相册版块 -->
+	<div class="group personal_album"{#if $panel == 'album'#} style="display:block;"{#/if#}>
+		{#if $ismine#}
+		<!-- 可编辑区域 -->
+		<div class="edit_album">
+			<div class="front_item fn-clear">
+				<div class="front_left" id="filePicker2">上传照片</div>
+				<em>|</em>
+				<div class="front_right">编辑</div>
+			</div>
+			<div class="front_choice fn-clear">
+				<div class="front_quxiao">取消</div>
+				<div class="front_quanxuan">全选</div>
+			</div>
+		</div>
+		{#/if#}
+		<!-- 照片区域 -->
+		<div class="albumList">
+			<ul class="albumgroup" id="albumgroup"></ul>
+			<div class="tofoot">下拉加载更多</div>
+		</div>
+	</div>
+	<!-- 相册版块 end-->
+
+</div>
+
+
+
+<!-- 联系方式弹出层 -->
+<div class="succeed_box">
+	<p class="succeed_boxtTxt">QQ</p>
+	<p class="succeed_boxNum"></p>
+	<div class="bg_succeed"><img src="{#$templets_skin#}images/hua.png"></div>
+	<div class="bg_dashed"></div>
+	<div class="bg_cuo"></div>
+	<i></i>
+</div>
+<!-- 联系方式弹出层 end-->
+
+{#if $detail_hn#}
+<!-- 所属红娘个人信息弹出框 -->
+<div class="Matchmaker fn-clear">
+	<div class="mat_whole">
+		<div class="Matchmaker_top">
+			<div class="Matchmaker_img"><img src="{#if $detail_photo#}{#$detail_photo#}{#elseif $detail_sex == 1#}{#$templets_skin#}images/photo_body.png{#else#}{#$templets_skin#}images/photo_girl.png{#/if#}"></div>
+			<div class="Matchmaker_page">
+				<p class="list_01">{#$detail_hn.nickname#}</p>
+				<p class="list_02">电话：{#$detail_hn.tel#}</p>
+				{#if $detail_hn.store#}<p class="list_03">所属公司：{#$detail_hn.store.nickname#}</p>{#/if#}
+			</div>
+		</div>
+		<div class="Matchmaker_bot">
+			<p>红娘会员</p>
+			<p><em>{#$detail_nickname#}</em>的所属红娘</p>
+		</div>
+	</div>
+	<div class="Matchmaker_btn fn-clear">
+		<div class="btn cancel">取消</div>
+		<div class="btn thakaway">牵她</div>
+	</div>
+</div>
+<!-- 所属红娘个人信息弹出框 end-->
+{#/if#}
+
+<!-- 送礼物选择框 -->
+<div class="giving">
+	<div class="giving_top">
+		发送礼物
+		<i></i>
+	</div>
+	<div class="container">
+		<div class="swiper-container tabs-container">
+      		<div class="swiper-wrapper">
+        		<div class="swiper-slide">
+        			<div class="givinggift_list fn-clear">
+        				{#dating action="giftList" return="gift"#}
+        				{#if $_bindex.gift > 1 && ($_bindex.gift - 1) % 8 == 0#}
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="givinggift_list fn-clear">
+                {#/if#}
+								<div data-id="{#$gift.id#}" data-price="{#$gift.price#}">
+									<img src="{#$gift.small#}">
+									<p class="gift_name">{#$gift.title#}</p>
+									<p>{#$gift.price#}{#$datingConfig.goldName#}</p>
+								</div>
+								{#/dating#}
+							</div>
+        		</div>
+        	</div>
+        	<div class="swiper-pagination swiper-pagination-bullets"></div>
+        </div>
+	</div>
+	<div class="giving_tbottom fn-clear">
+		<div class="rec_left"><span>余额：<em>{#$u_money#}</em>{#$datingConfig.goldName#}</span><a href="{#getUrlPath service='dating' template='recharge'#}">充值</a></div>
+		<div class="rec_right disabled">发送</div>
+	</div>
+</div>
+
+
+
+<!-- 底部 -->
+<div class="pageFooter">
+	<ul>
+		<li class="gift"><i></i>送礼物</li>
+		{#if $detail_like#}<li class="liketo"><i class="pitchOn"></i>喜欢</li>{#else#}<li class="liketo"><i></i>喜欢</li>{#/if#}
+		<li class="chatto{#if $id == $u_id#} disabled{#/if#}"><i></i>聊天</li>
+	</ul>
+</div>
+<!-- 底部 end-->
+<!-- 相册版块的删除 -->
+<div class="albumFooter fn-clear">
+	<span class="albumFooter_x">删除</span>
+	<span class="albumFooter_n">已选<em>0</em></span>
+</div>
+<!-- 相册版块的删除 end-->
+
+<!-- 遮罩层 -->
+<div class="desk"></div>
+
+
+<!-- 选择图片 s -->
+<div class="fixedWin setFaceWin" id="setFaceWin">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>上传图片</span>
+    </div>
+    <div class="header-search vh">
+      <a href="javascript:;" class="dropnav"></a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <ul class="piclist fn-clear"></ul>
+  </div>
+  <div class="fixedWin-btn">
+    <div class="submit" id="filePicker1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">自定义封面</div>
+  </div>
+</div>
+<!-- 选择图片 e -->
+
+<!-- 大图展示 s -->
+<div class="fixedWin showBigPic photoBox" id="showBigPic">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span></span>
+    </div>
+    <div class="header-search">
+      <a href="javascript:;" class="del"></a>
+    </div>
+  </div>
+  <div class="swiper-container">
+    <ul id="Gallery" class="swiper-wrapper"></ul>
+  </div>
+  <div class="pic-int">
+    <span class="count"></span>
+    <div class="midbtn"><span class="setface">设为相册封面</span></div>
+  </div>
+</div>
+<!-- 大图展示 e -->
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$dating_description#}',
+		"title": '{#$detail_nickname#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#$detail_url#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#} -->
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/homepage.js?v={#$cfg_staticVersion#}"></script>
+{#if $ismine#}
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/homepage_mine.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+{#/if#}
+</body>
+</html>

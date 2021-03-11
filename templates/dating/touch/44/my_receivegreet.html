@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>收到的招呼</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_sendgreet.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+
+</script>
+</head>
+
+<body>
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>收到的招呼</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+
+<div class="container">
+  <ul>
+    {#*
+    <li class="item is_new">
+      <a href="" class="fn-clear">
+        <div class="visitors_img">
+          <div class="img"><img src="{#$templets_skin#}upfile/user2.jpg"></div>
+        </div>
+        <div class="visitors_txt">
+          <p class="txt_name">
+            <em>我是小鲜肉</em>
+            <em class="shim">实名</em>
+          </p>
+          <p class="txt_time">嗯，行的话明天出来见面吧。</p>
+        </div>
+      </a>
+      <div class="btns">
+        <span class="read">设为已读</span><span class="del">删除</span>
+      </div>
+    </li>
+    *#}
+  </ul>
+</div>
+<div class="tofoot fn-hide">上拉加载</div>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_receivegreet.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

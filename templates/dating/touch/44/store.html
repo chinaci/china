@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>直营门店</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="直营门店"#}
+
+<div class="banner">
+  {#myad title='交友_移动端_直营门店_banner'#}
+</div>
+
+<div class="container" id="container"></div>
+<div class="tofoot fn-hide">正在加载,请稍后</div>
+
+{#if $storeUid#}
+  {#if $store_state == 0#}
+  <div class="fixedBtm"><a href="{#getUrlPath service='dating' template='enter_store'#}" class="state_0">已入驻店铺，等待审核</a></div>
+  {#elseif $store_state == 1#}
+  <div class="fixedBtm"><a href="{#getUrlPath service='dating' template='store_detail' id=$store_id#}" class="state_1">我的门店</a></div>
+  {#elseif $store_state == 2#}
+  <div class="fixedBtm"><a href="{#getUrlPath service='dating' template='enter_store'#}" class="state_2">入驻审核失败，请重新填写资料</a></div>
+  {#/if#}
+{#else#}
+<div class="fixedBtm"><a href="{#getUrlPath service='dating' template='enter_store'#}" class="state">入驻门店</a></div>
+{#/if#}
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '直营门店',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#getUrlPath service="dating" template="store"#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/store.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

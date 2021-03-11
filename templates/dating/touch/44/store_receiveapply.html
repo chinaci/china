@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我收到的申请</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_receiveapply.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var type = 2;
+
+</script>
+</head>
+
+<body>
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>我收到的申请</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+<div class="navWrap">
+  <ul class="navtab">
+    <li class="active"><span>全部</span></li>
+    <li><span>男<em>3</em></span></li>
+    <li><span>女</span></li>
+  </ul>
+</div>
+<div class="container" id="container"></div>
+<div class="tofoot">上拉加载</div>
+
+
+{#*
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '{#$dating_title#}',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#$dating_channelDomain#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+*#}
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_receiveapply.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

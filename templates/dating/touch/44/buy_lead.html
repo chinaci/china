@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>红娘牵线</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/buy_lead.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="红娘牵线" pageRight="<a href='javascript:;' class='notMenu'></a>"#}
+
+<div class="list">
+  <ul>
+    {#if $datingConfig['leadPrice']#}
+    {#foreach from=$datingConfig['leadPrice'] item=list#}
+    <li>
+      <div class="ibox">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_lead.png" alt=""></i>
+          <div class="info">
+            <p class="p1">{#$list.month#}个月<span>&yen;{#$list.price#}</span></p>
+            <p class="p2">包含人工牵线{#$list.count#}次</p>
+          </div>
+          <span class="buy btn">购买</span>
+        </div>
+      </div>
+    </li>
+    {#/foreach#}
+    {#/if#}
+  </ul>
+</div>
+<div class="authbox">
+  <p class="title">求牵特权</p>
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/leadauth_1.png" alt=""></dt>
+    <dd>
+      <p class="p1">红娘人工指导</p>
+      <p class="p2">一对一专属人工红娘为你寻爱之旅保驾护航</p>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/leadauth_2.png" alt=""></dt>
+    <dd>
+      <p class="p1">专属人工牵线</p>
+      <p class="p2">一对一人工服务，为您与心仪对象进行牵线</p>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/leadauth_3.png" alt=""></dt>
+    <dd>
+      <p class="p1">红娘牵线</p>
+      <p class="p2">根据您的择偶要求，为您筛选喜欢的异性</p>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/leadauth_4.png" alt=""></dt>
+    <dd>
+      <p class="p1">全站会员可共享</p>
+      <p class="p2">实名认证优质会员，专业匹配推荐</p>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/leadauth_5.png" alt=""></dt>
+    <dd>
+      <p class="p1">门店相亲保安全</p>
+      <p class="p2">多彩相亲派对，安全约见场所</p>
+    </dd>
+  </dl>
+</div>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/buy_lead.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

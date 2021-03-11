@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的服务</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/service.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+
+</script>
+</head>
+
+<body>
+
+  {#include file="../../../siteConfig/touch_top.html" pageTitle="我的服务" pageRight="<a href='javascript:;' class='notMenu'></a>"#}
+
+  <div class="main_info item fn-clear">
+      <div class="img">   
+        <a href="{#$u_url#}"><img src="{#$u_photo#}" alt=""></a>
+        {#if $u_my_video_state#}<a href="{#getUrlPath service='dating' template='video' param="type=myVideo&id={#$detail_id#}"#}" class="user_video"></a>{#/if#}
+      </div>
+      <div class="info">
+        <p class="base fn-clear">
+          <a href="{#$u_url#}" class="name">{#$u_nickname#}</a>
+          {#if $u_level#}<em class="u_level"><img src="{#$templets_skin#}upfile/level.png" alt=""></em>{#/if#}
+          {#if $u_phoneCheck#}<em class="phone"></em>{#/if#}
+          <span class="online active">在线</span>
+        </p>
+        <p class="more">
+          <span class="age">{#$u_age#}岁</span>
+          <span class="height">{#$u_heightName#}</span>
+          {#*<span class="distance">16km</span>*#}
+        </p>
+        {#dating action='orderList' type=2 pageSize=100 return='order'#}
+        <p class="hn">购买{#$order.param.month#}个月红娘服务，包含人工牵线{#$order.param.count#}次</p>
+        {#/dating#}
+        <p class="hn">牵线次数剩余：<em>{#$u_lead#}</em></p>
+      </div>
+  </div>
+  <div class="frequency">
+    <p class="frequency_txt">已牵线的次数</p>
+  </div>
+
+
+<div class="tofoot">上拉加载</div>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/service.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

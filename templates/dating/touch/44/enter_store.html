@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>入驻门店</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/enter_store.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="入驻门店"#}
+
+<div class="bar"></div>
+{#if $storeUid && ($store_state == 0 || $store_state == 1)#}
+<div class="imgbox">
+  <div class="addimg">
+    <ul id="litpic" class="noimg">
+      <li class="item" id="item_0"><img src="{#$store_phototurl#}" alt=""></li>
+    </ul>
+  </div>
+</div>
+<div class="regbox regbox-mobile">
+  <form action="">
+    <input type="hidden" name="photo" id="photo" value="{#$store_photo#}">
+    <dl>
+      <dt><i class="icon_user"></i></dt>
+      <dd><input type="text" class="inp" id="nickname" name="nickname" value="{#$store_nickname#}" placeholder="编辑门店名称" readonly></dd>
+    </dl>
+    <dl>
+      <dt><i class="icon_tel"></i></dt>
+      <dd>
+        <span class="areacode_span"><label for="">+{#$internationalPhoneSection[0]['code']#}</label></span>
+        <input type="text" class="inp" id="phone" name="phone" value="{#$store_phone#}" placeholder="请输入电话号码" readonly></dd>
+    </dl>
+    <dl>
+      <dt><i class="icon_place"></i></dt>
+      <dd><input type="text" class="inp" id="address" name="address" value="{#$store_address#}" placeholder="请输入门店地址" readonly></dd>
+    </dl>
+    <dl>
+      <dt><i class="icon_profile"></i></dt>
+      <dd>
+        <div class="inp"><textarea name="profile" id="profile" rows="4" placeholder="请输入门店简介" readonly>{#$store_profile#}</textarea></div>
+      </dd>
+    </dl>
+  </form>
+</div>
+{#if $store_state == 0#}
+<div class="fixedBtm disabled">已入驻门店，等待审核···</div>
+{#else#}
+<div class="fixedBtm"><a href="{#getUrlPath service='dating' template='my_store'#}">已通过审核</a></div>
+{#/if#}
+
+{#else#}
+
+<div class="imgbox">
+  <div class="addimg">
+    {#if $store_photo#}
+    <ul id="litpic">
+      <li class="item" id="item_0"><img src="{#$store_photo#}" alt=""></li>
+    </ul>
+    <p class="uploader-btn"><span>重新上传</span></p>
+    {#else#}
+    <ul id="litpic" class="noimg">
+      <li class="item" id="item_0"><img src="{#$cfg_staticPath#}images/blank.gif" alt=""></li>
+    </ul>
+    <p class="uploader-btn"><span>上传头像</span></p>
+    {#/if#}
+  </div>
+</div>
+<div class="regbox regbox-mobile">
+  <form action="">
+    <input type="hidden" name="photo" id="photo" value="{#$store_photo#}">
+    <dl>
+      <dt><i class="icon_user"></i></dt>
+      <dd><input type="text" class="inp" id="nickname" name="nickname" value="{#$store_nickname#}" placeholder="编辑门店名称"></dd>
+    </dl>
+    <dl class="code_dl">
+      <dt><i class="icon_tel"></i></dt>
+      <dd>
+        <span class="areacode_span"><label for="">+{#$internationalPhoneSection[0]['code']#}</label></span>
+        <input type="text" class="inp" id="phone" name="phone" value="{#$store_phone#}" placeholder="请输入电话号码">
+         <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+      </dd>
+    </dl>
+    <dl>
+      <dt><i class="icon_place"></i></dt>
+      <dd><input type="text" class="inp" id="address" name="address" value="{#$store_address#}" placeholder="请输入门店地址"></dd>
+    </dl>
+    <dl>
+      <dt><i class="icon_profile"></i></dt>
+      <dd>
+        <div class="inp"><textarea name="profile" id="profile" rows="4" placeholder="请输入门店简介"></textarea></div>
+      </dd>
+    </dl>
+  </form>
+</div>
+
+{#if $storeUid && $store_state == 2#}<div class="info">审核失败：{#$store_fail_note#}</div>{#/if#}
+
+<div class="fixedBtm" id="tj">提交</div>
+<!-- 区号弹出层 s -->
+  <div class="layer_code">
+    {#* 国籍/地区  *#}
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div> 
+    <div class="layer_list" id="layer_list">
+      <ul>
+      </ul>
+    </div>
+  </div>
+<!-- 区号弹出层 e -->
+<div class="mask-code" id="maskReg"></div>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/enter_store.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+
+</body>
+</html>

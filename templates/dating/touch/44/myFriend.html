@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的好友</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/myFriend.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var templets_skin = '{#$templets_skin#}';
+</script>
+</head>
+
+<body>
+{#*{#include file="../../../siteConfig/touch_top.html" pageTitle="我的好友"#}*#}
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>我的好友</span>
+  </div>
+  <div class="header-search">
+      <a href="" class="notMenu"></a>
+  </div>
+</div>
+
+<!-- 搜索框 -->
+<div class="searchWrap">
+  <a href="{#getUrlPath service='dating' template='myFriend_search'#}">
+    <div class="searchBox">
+      <em>搜索</em>
+    </div>
+  </a>
+</div>
+
+<div class="navigation">
+  <span class="active">好友</span>
+  <span>关注</span>
+  <span>粉丝</span>
+</div>
+
+<div class="mainbox">
+
+  <!-- 好友 -->
+  <div class="group haoyou">
+    <div class="container" id="container"></div>
+    <p class="in_total fn-hide"><span></span>位好友</p>
+
+    <!--<p class="aside-shortcut">-->
+        <!--<a href="#" data-id="anchor-hot"><img src="{#$templets_skin#}images/s_01.png"></a>-->
+    <!--</p>-->
+
+    <div class="letter"></div>
+  </div>
+  <!-- 好友 end-->
+
+
+  <!-- 关注 -->
+  <div class="group guanzhu">
+    <div class="scroller fn-clear">
+      <ul class="container" id="container1"></ul>
+      {#*
+        <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt2.jpg"></div>
+            <div class="fans_txt">
+              <p>美丽的我</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_yes">已关注</span>
+          </li>
+          <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt4.jpg"></div>
+            <div class="fans_txt">
+              <p>美丽的我</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_no">关注</span>
+          </li>
+          <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt1.jpg"></div>
+            <div class="fans_txt">
+              <p>美丽的我</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_all">互相关注</span>
+          </li>
+      *#}
+      <div class="tofoot">下拉加载更多</div>
+    </div>
+  </div>
+  <!-- 关注 end-->
+
+  <!-- 粉丝 -->
+  <div class="group fensi">
+    <div class="scroller fn-clear">
+      <ul class="container" id="container2"></ul>
+      {#*
+        <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt1.jpg"></div>
+            <div class="fans_txt">
+              <p>花朵儿</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_yes">已关注</span>
+          </li>
+          <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt2.jpg"></div>
+            <div class="fans_txt">
+              <p>花朵儿</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_no">关注</span>
+          </li>
+          <li class="fn-clear">
+            <div class="fans_img"><img src="{#$templets_skin#}upfile/dt3.jpg"></div>
+            <div class="fans_txt">
+              <p>花朵儿</p>
+              <p>那是深夜的森林</p>
+            </div>
+            <span class="btns follow_all">互相关注</span>
+          </li>
+      *#}
+      <div class="tofoot">下拉加载更多</div>
+    </div>
+  </div>
+  <!-- 粉丝 end-->
+
+</div>
+
+<a href="{#getUrlPath service='dating' template='search_users'#}" class="addNew">添加好友</a>
+
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/myFriend.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

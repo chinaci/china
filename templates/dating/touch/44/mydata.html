@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>编辑资料</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mydata.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+  var showPicUrl = '{#getUrlPath service='dating' template='picture'#}';
+  var my_voice = '{#$u_my_voice#}', my_voice_state = {#$u_my_voice_state#};
+  var my_video = '{#$u_my_video#}', my_video_state = {#$u_my_video_state#};
+</script>
+</head>
+
+<body>
+<div class="header">
+  <div class="header-l"><a href="{#getUrlPath service='dating' template='my'#}" class="goBack"></a></div>
+  <div class="header-address">
+    <span>我的资料</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+
+<div class="box topbox">
+  <!-- 头像s -->
+  <div class="photo fn-clear">
+    {#if $u_photo#}
+    <div class="addimg has sex{#$u_sex#}">
+      <ul id="litpic" class="myphoto">
+        <li class="item" id="item_0">
+          <a href="javascript:;">
+            <img src="{#$u_phototurl#}" alt="">
+            <p>更换头像</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    {#else#}
+    <!-- 未上传 -->
+    <div class="addimg noimg sex{#$u_sex#}">
+      <ul id="litpic" class="myphoto null">
+        <li class="item" id="item_0"><img src="{#$cfg_staticPath#}images/blank.gif" alt=""></li>
+      </ul>
+      <p class="uploader-btn"><span>上传头像</span></p>
+    </div>
+    {#/if#}
+    <div class="info">
+      <h3 class="name">{#$u_nickname#}</h3>
+      <p class="rtime">注册时间：{#$u_jointime|date_format:"%Y/%m/%d"#}</p>
+      <p class="uid">ID:{#$u_numid#}</p>
+    </div>
+    <div class="switch"><span></span></div>
+  </div>
+</div>
+
+<div class="box datingSwitch">
+  <div class="box-title">
+    <h3 class="box-title-txt">交友开关</h3>
+    <div class="box-title-do">
+      <div class="switch{#if $u_dateswitch#} open{#/if#}"><span></span></div>
+    </div>
+  </div>
+</div>
+
+{#if $u_my_voice#}
+{#if $u_my_voice_state == 0#}
+<div class="box certify"><div class="btn myvoice state0 disabled">语音介绍 认证中</div></div>
+{#elseif $u_my_voice_state == 1#}
+<div class="box certify"><div class="btn myvoice state1">语音介绍 认证成功</div></div>
+{#elseif $u_my_voice_state == 2#}
+<div class="box certify"><div class="btn myvoice state2">语音介绍 认证失败</div></div>
+{#/if#}
+{#else#}
+<div class="box certify"><div class="btn myvoice">语音介绍</div></div>
+{#/if#}
+
+{#if $u_my_myvideo#}
+{#if $u_my_myvideo_state == 0#}
+<div class="box certify"><div class="btn myvideo state0 disabled">视频认证 认证中</div></div>
+{#elseif $u_my_myvideo_state == 1#}
+<div class="box certify"><div class="btn myvideo state1">视频认证 认证成功</div></div>
+{#elseif $u_my_myvideo_state == 2#}
+<div class="box certify"><div class="btn myvideo state2">视频认证 认证失败</div></div>
+{#/if#}
+{#else#}
+<div class="box certify"><div class="btn myvideo">视频认证</div></div>
+{#/if#}
+
+<div class="box contact">
+  <div class="box-title">
+    <h3 class="box-title-txt">联系方式</h3>
+    <div class="box-title-do">
+      <div class="edit">+编辑</div>
+    </div>
+  </div>
+  <div class="box-content">
+    <div class="ml4r">
+      <div class="dom_select fn-clear">
+        <label>手机号：</label>
+        <a href="javascript:;" data-href="{#getUrlPath service='member' type='user' template='security-chphone'#}" class="dom_kj" id="mobile">{#$u_phone#}</a>
+      </div>
+    </div>
+    <div class="ml4r">
+      <div class="dom_select fn-clear">
+        <label>QQ：</label>
+        <input type="text" class="dom_kj inp" id="qq" value="{#$u_qq#}" readonly="">
+      </div>
+    </div>
+    <div class="ml4r">
+      <div class="dom_select fn-clear">
+        <label>微信：</label>
+        <input type="text" class="dom_kj inp" id="wechat" value="{#$u_wechat#}" readonly="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="box profile_introduce">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">自我介绍</h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='my_introduce'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <p>{#$u_profile#}</p>
+  </div>
+</div>
+<div class="box profile profile_intention">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">择偶意向</h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=intention'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>年龄：</dt><dd>{#$u_dage|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>身高：</dt><dd>{#$u_dheight|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>学历：</dt><dd>{#$u_deducation|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>月收入：</dt><dd>{#$u_dincome|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>居住地：</dt><dd>{#$u_daddrName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>婚姻状况：</dt><dd>{#$u_dmarriageName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>购房情况：</dt><dd>{#$u_dhousetagName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>有无子女：</dt><dd>{#$u_dchildName|default: '<span class="null">未填写</span>'#}</dd></dl>
+  </div>
+</div>
+<div class="box profile profile_interests">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">兴趣爱好</h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='my_interests'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <div class="tagbox">
+      {#if $u_interestsArr#}
+      {#foreach from=$u_interestsArr item=item#}
+      <span>{#$item#}</span>
+      {#/foreach#}
+      {#/if#}
+    </div>
+  </div>
+</div>
+<div class="box profile profile_base">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">基本资料（12/12）</h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=basic'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>ID：</dt><dd>{#$u_numid#}</dd></dl>
+    <dl class="op fn-clear"><dt>昵称：</dt><dd>{#$u_nickname#}</dd></dl>
+    <dl class="op fn-clear"><dt>性别：</dt><dd>{#if $u_sex#}男{#else#}女{#/if#}</dd></dl>
+    <dl class="op fn-clear"><dt>生日：</dt><dd>{#if $u_birthday#}{#$u_birthday|date_format:'%Y-%m-%d'#}{#else#}<span class="null">未填写</span>{#/if#}</dd></dl>
+    <dl class="op fn-clear"><dt>身高：</dt><dd>{#if $u_height > 0#}{#$u_height#}厘米{#else#}<span class="null">未填写</span>{#/if#}</dd></dl>
+    <dl class="op fn-clear"><dt>学历：</dt><dd>{#$u_educationName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>月收入：</dt><dd>{#$u_incomeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>居住地：</dt><dd>{#$u_addrName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>婚姻状况：</dt><dd>{#$u_marriageName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>子女情况：</dt><dd>{#$u_childName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>购房情况：</dt><dd>{#$u_housetagName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>购车情况：</dt><dd>{#$u_cartagName|default: '<span class="null">未填写</span>'#}</dd></dl>
+  </div>
+</div>
+<div class="box profile profile_tiny_info">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">小档案<span></span></h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=tiny_info'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>家乡：</dt><dd>{#$u_hometownName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>户口：</dt><dd>{#$u_householdName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>民族：</dt><dd>{#$u_nationName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>属相：</dt><dd>{#$u_zodiacName|default: '<span class="null"></span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>星座：</dt><dd>{#$u_constellation|default: ''#}</dd></dl>
+    <dl class="op fn-clear"><dt>血型：</dt><dd>{#$u_bloodtype|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>体型：</dt><dd>{#$u_bodytypeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>体重：</dt><dd>{#$u_bodyweightName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>相貌自评：</dt><dd>{#$u_looksName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>宗教信仰：</dt><dd>{#$u_religionName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>是否喝酒：</dt><dd>{#$u_drinkName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>是否吸烟：</dt><dd>{#$u_smokeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>生活作息：</dt><dd>{#$u_workandrestName|default: '<span class="null">未填写</span>'#}</dd></dl>
+  </div>
+</div>
+<div class="box profile profile_edu_job">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">教育及工作<span></span></h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=edu_job'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>毕业院校：</dt><dd>{#$u_school|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>所学专业：</dt><dd>{#$u_majorName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>职业职务：</dt><dd>{#$u_dutiesName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>公司性质：</dt><dd>{#$u_natureName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>公司行业：</dt><dd>{#$u_industryName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>工作状态：</dt><dd>{#$u_workstatusName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear">
+      <dt>掌握语言：</dt><dd>
+      {#if $u_languageArr#}
+      {#foreach from=$u_languageArr item=lang#}
+      <p>{#$lang#}</p>
+      {#/foreach#}
+      {#else#}
+      <span class="null">未填写</span>
+      {#/if#}
+    </dd></dl>
+  </div>
+</div>
+<div class="box profile profile_family">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">家庭状况<span></span></h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=family'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>家庭排行：</dt><dd>{#$u_familyrankName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>父母情况：</dt><dd>{#$u_parentstatusName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>父亲工作：</dt><dd>{#$u_fatherworkName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>母亲工作：</dt><dd>{#$u_motherworkName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>父母经济：</dt><dd>{#$u_parenteconomyName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>父母医保：</dt><dd>{#$u_parentinsuranceName|default: '<span class="null">未填写</span>'#}</dd></dl>
+  </div>
+</div>
+
+<div class="box profile profile_love">
+  <div class="box-title">
+    <h3 class="box-title-txt ic">爱情规划<span></span></h3>
+    <div class="box-title-do">
+      <a href="{#getUrlPath service='dating' template='mydata_edit' param='type=family'#}" class="edit">+编辑</a>
+    </div>
+  </div>
+  <div class="box-content mgi">
+    <dl class="op fn-clear"><dt>想何时结婚：</dt><dd>{#$u_marriagetimeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>偏爱约会方式：</dt><dd>{#$u_datetypeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>希望对方看重：</dt><dd>{#$u_othervalueName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>期待婚礼形式：</dt><dd>{#$u_weddingtypeName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>愿与对方父母同住：</dt><dd>{#$u_livetogeparentName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>是否想要孩子：</dt><dd>{#$u_givebabyName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>厨艺状况：</dt><dd>{#$u_cookingName|default: '<span class="null">未填写</span>'#}</dd></dl>
+    <dl class="op fn-clear"><dt>家务分工：</dt><dd>{#$u_houseworkName|default: '<span class="null">未填写</span>'#}</dd></dl>
+  </div>
+</div>
+
+{#include file='_foot.html' pagename='my'#}
+
+<!-- 选择操作 s -->
+<div class="selectBottom">
+  <div class="bg"></div>
+  <div class="content">
+    <ul>
+      <li><div id="filePicker1" class="filePicker uploadbtn" data-id="1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/jpg,image/jpeg,image/png,image/gif">更换头像</div></li>
+      <li>查看大图</li>
+      <li>删除头像</li>
+    </ul>
+    <div class="cancel">取消</div>
+  </div>
+</div>
+<!-- 选择操作 e -->
+
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mydata.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

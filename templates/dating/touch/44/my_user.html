@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>线下会员</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_user.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var templets_skin = '{#$templets_skin#}';
+  var hnUid = id = {#$hnUid#};
+  var searchUId = {#if $id#}{#$id#}{#else#}{#$hnUid#}{#/if#}; 
+</script>
+</head>
+
+<body>
+{#*{#include file="../../../siteConfig/touch_top.html" pageTitle="线下会员"#}*#}
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>线下会员</span>
+  </div>
+  <div class="header-search">
+      <a href='javascript:;' class='notMenu'></a>
+  </div>
+</div>
+
+<!-- 搜索框 -->
+<div class="searchWrap">
+  <div class="searchBox">
+    <div class="inpBox fn-clear">
+      <div class="inp">
+        <input type="text" class="keywords clearBoxSize" placeholder="搜索">
+        <em>搜索</em>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" id="container"></div>
+<div class="tofoot">下拉加载更多</div>
+
+
+
+<div class="desk"></div>
+
+<a href="{#getUrlPath service='dating' template='adduser'#}" class="addNew">添加会员</a>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_user.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

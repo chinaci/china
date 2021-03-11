@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $type == 0#}谁看过我{#elseif $type ==1#}谁喜欢我{#elseif $type == 2#}我喜欢谁{#elseif $type == 3#}互相喜欢{#/if#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_visit_record.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var type = {#$type#};
+</script>
+</head>
+
+<body>
+
+<!-- 头部 -->
+<div class="headerFa header">
+  <div class="headerFa-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="headerFa-address">
+    <span {#if $type == 0#}class="active"{#/if#}>谁看过我</span>
+    <span {#if $type == 1#}class="active"{#/if#}>谁喜欢我</span>
+    <span {#if $type == 2#}class="active"{#/if#}>我喜欢谁</span>
+    <span {#if $type == 3#}class="active"{#/if#}>互相喜欢</span>
+  </div>
+</div>
+
+<div class="scroller fn-clear">
+  <ul class="container" id="container"></ul>
+  <div class="tofoot fn-hide">下拉加载更多</div>
+</div>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_visit_record.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

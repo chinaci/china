@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>获取钥匙</title>
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/buy_key.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+  var price = {#$keyPrice#};
+  var myGold = {#$u_money#};
+  var buyGoldUrl = '{#getUrlPath service='dating' template='recharge'#}';
+</script>
+</head>
+
+<body>
+<div class="header">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>获取钥匙</span>
+  </div>
+  <div class="header-search">
+    <a href=""></a>
+  </div>
+</div>
+<div class="bar"></div>
+<div class="container">
+  <div class="mycount">
+    <p class="info">剩余{#$datingConfig.goldName#}：<font>{#$u_money#}</font></p>
+    <p class="info">剩余钥匙：<font>{#$u_key#}</font>把<span>可解锁聊天权限</span></p>
+    
+  </div>
+  {#if $u_level == 0#}
+  <div class="upvip">
+    <p>免费得钥匙</p>
+    <a href="{#getUrlPath service='dating' template='member_center'#}" class="buybtn">升级VIP，每天送{#$key_count['min']#}~{#$key_count['max']#}把钥匙</a>
+  </div>
+  {#/if#}
+  <div class="buykey">
+    <p>购买</p>
+    <div class="buycount">购买数量：<div class="number" id="number_select">1</div><font>{#$keyPrice#}</font>{#$datingConfig.goldName#}/把</div>
+    <div class="submit">获取钥匙</div>
+  </div>
+</div>
+
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/buy_key.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

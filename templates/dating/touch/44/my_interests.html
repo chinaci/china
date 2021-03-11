@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>兴趣爱好</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link href="{#$templets_skin#}css/mobileSelect.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_interests.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mobileSelect.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var modelType = "dating";
+
+  var maxSelect = {#$graspLength#};
+
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="兴趣爱好" pageRight="<a href='javascript:;' class='notMenu'></a>"#}
+
+<div class="content">
+  {#dating action=skill return=type#}
+  <dl>
+    <dt><img src="{#$templets_skin#}images/profile_hobby_label_{#$_bindex.type#}.png" alt="">{#$type.typename#}</dt>
+    <dd>
+      {#dating action=skill type={#$type.id#} return=stype#}
+      <span {#if in_array($stype.id, $u_interestsIdsArr)#}class="active"{#/if#} data-id="{#$stype.id#}">{#$stype.typename#}</span>
+      {#/dating#}
+    </dd>
+  </dl>
+  {#/dating#}
+</div>
+
+<a href="javascript:;" class="save">保存</a>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_interests.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

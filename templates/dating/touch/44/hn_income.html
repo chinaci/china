@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的收入</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my_income.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var templets_skin = '{#$templets_skin#}';
+</script>
+</head>
+
+<body>
+{#*{#include file="../../../siteConfig/touch_top.html" pageTitle="我的收入"#}*#}
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>我的收入</span>
+  </div>
+  <div class="header-search">
+      <a href='javascript:;' class='notMenu'></a>
+  </div>
+</div>
+
+<div class="withdraw">
+  <span>总收入<font>0</font></span>
+  {#if $hn_company == 0#}<a href="javascript:;" class="withdrawBtn">提现</a>{#/if#}
+</div>
+<div class="container" id="container"></div>
+<div class="tofoot">下拉加载更多</div>
+
+<!-- 搜索框 -->
+<div class="searchWrap">
+  <div class="searchBox">
+    <p class="title">选择筛选类型</p>
+    <div class="inpBox fn-clear">
+      <div class="inp">
+        <input type="text" class="keywords clearBoxSize" placeholder="搜索">
+        <em>搜索</em>
+      </div>
+      <span class="submit">确定</span>
+    </div>
+    <div class="typeBox fn-clear">
+      <span class="active">全部</span><span data-id="vip">充值</span><span data-id="lead">牵线服务</span><span data-id="gift">礼物</span>
+    </div>
+    <div class="cancel">取消</div>
+  </div>
+</div>
+
+{#if $hn_company == 0#}
+<!-- 提现 -->
+<div class="withdrawWrap">
+  <div class="title"><span class="close">取消</span></div>
+  <div class="body">
+    <div class="item alipay">
+      <div class="txt">
+        <p class="name">支付宝提现</p>
+        <p class="des">最低{#$alipayMinAmount#}（48小时到账）</p>
+      </div>
+      {#if $userinfo.alipay_conn#}
+      <a href="{#getUrlPath service='member' type='user' template='put_forward' param='module=dating&utype=1&type=alipay'#}" class="state">下一步</a>
+      {#else#}
+      <a href="{#getUrlPath service='member' type='user' template='connect' param="furl={#getUrlPath service='dating' template='hn_income'#}"#}" class="state state0">去绑定</a>
+      {#/if#}
+    </div>
+    <div class="item wxpay">
+      <div class="txt">
+        <p class="name">微信提现</p>
+        <p class="des">最低{#$wxpayMinAmount#}（48小时到账）</p>
+      </div>
+      {#if $userinfo.wechat_conn#}
+      <a href="{#getUrlPath service='member' type='user' template='put_forward' param='module=dating&utype=1&type=wxpay'#}" class="state">下一步</a>
+      {#else#}
+      <a href="{#getUrlPath service='member' type='user' template='connect' param="furl={#getUrlPath service='dating' template='hn_income'#}"#}" class="state state0">去绑定</a>
+      {#/if#}
+    </div>
+    <div class="item wxpay">
+      <div class="txt">
+        <p class="name">银行卡提现</p>
+        <p class="des">最低{#$alipayMinAmount#}（48小时到账）</p>
+      </div>
+      <a href="{#getUrlPath service='dating' template='withdraw' #}?type=1" class="state">下一步</a>
+    </div>
+  </div>
+</div>
+{#/if#}
+
+<div class="desk"></div>
+
+<a href="javascript:;" class="screen">筛选</a>
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '{#$dating_title#}',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#$dating_channelDomain#}',
+  };
+
+  document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my_income.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

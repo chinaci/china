@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>充值{#$datingConfig.goldName#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/recharge.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+  var modelType = "dating";
+</script>
+</head>
+
+<body>
+
+  {#include file="../../../siteConfig/touch_top.html" pageTitle="充值" pageRight="<a href='javascript:;' class='notMenu'></a>"#}
+
+<div class="bg fn-clear">
+  <div class="bg_img"><img src="{#$u_phototurl#}"></div>
+  <span class="bg_money">余额：{#$u_money#}{#$datingConfig.goldName#}</span>
+</div>
+
+<div class="m_txt">请选择充值金额</div>
+
+<div class="moneyList">
+  <ul>
+    {#foreach from=$goldDeposit item=it#}
+    <li class="item fn-clear">
+      <span class="money_time">{#$it#}</span>
+      <span class="money_m">&yen;&nbsp;{#$it / $goldRatio#}</span>
+    </li>
+    {#/foreach#}
+  </ul>
+</div>
+
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/recharge.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

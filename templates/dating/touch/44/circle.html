@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>圈子动态</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/circle.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+  var modelType = "dating";
+  var putAuth = {#$putAuth|default:0#};
+  var leadPageUrl = '{#getUrlPath service='dating' template='hn_lead' id="#1"#}';
+  var picPageUrl = '{#getUrlPath service='dating' template='picture' param="type=circle&aid=#aid&atpage=#atpage"#}';
+  var videoPageUrl = '{#getUrlPath service='dating' template='video' param="type=circle&aid=#aid"#}';
+  var leadCount = {#$u_leadCan#};
+  var uid = {#$uid#};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="圈子动态"#}
+
+<div class="scrollerWrap" id="scrollerWrap">
+  <div class="scroller" id="scroller">
+    <div class="bar"></div>
+    <ul class="container" id="container"></ul>
+    <div class="tofoot fn-hide">下拉加载更多</div>
+  </div>
+</div>
+
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="secondicon" bottom_module="dating"#}
+<!-- {#include file='_foot.html' pagename='circle'#} -->
+
+{#if $uid#}<a href="javascript:;" class="fabu"></a>{#/if#}
+
+<!-- 发布权限 s -->
+<div class="authority">
+  <div class="bg"></div>
+  <div class="authority-box">
+    <div class="title"></div>
+    <div class="authority-body">
+      <div class="type type1">
+        <a href="{#getUrlPath service='dating' template='member_center'#}">
+          <div class="txt">
+            <p class="p1">购买服务</p>
+            <p class="p2">需购买高级会员及以上服务</p>
+          </div>
+        </a>
+      </div>
+      <div class="type type2">
+        <a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}">
+          <div class="txt">
+            <p class="p1">实名认证</p>
+            <p class="p2">实名认证</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 发布权限 e -->
+{#*
+<!-- 实名认证 s -->
+<div class="fixedWin realnameAuth" id="realnameAuth">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>实名认证</span>
+    </div>
+    <div class="header-search vh">
+      <a href="javascript:;" class="dropnav"></a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <div class="ts">请填写本人实名信息，将依法保护你的个人信息安全</div>
+    <div class="formbox">
+      <div class="f-item">
+        <span>真实姓名</span><input type="text" class="clearBoxSize" placeholder="请输入您的真实姓名">
+      </div>
+      <div class="f-item">
+        <span>身份证号</span><input type="text" class="clearBoxSize" placeholder="请输入您的身份证号">
+      </div>
+    </div>
+    <div class="btns"><div class="submit clearBoxSize">开始认证</div></div>
+  </div>
+</div>
+<!-- 实名认证 e -->
+*#}
+<!-- 选择操作 s -->
+<div class="selectBottom">
+  <div class="bg"></div>
+  <div class="content">
+    <ul>
+      <li id="filePicker1" data-extensions="jpg,jpeg,bmp,png,gif,mp4" data-mimetypes="image/jpg,image/jpeg,image/png,image/gif,video/mp4">拍摄</li>
+      <li class="fabuSay">说说</li>
+    </ul>
+    <div class="cancel">取消</div>
+  </div>
+</div> 
+<!-- 选择操作 e -->
+
+<!-- 发布层 s -->
+<div class="fixedWin fabuWin" id="fabuWin">
+  <div class="header">
+    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    <div class="header-address">
+      <span>发布</span>
+    </div>
+    <div class="header-search vh">
+      <a href="javascript:;" class="dropnav"></a>
+    </div>
+  </div>
+  <div class="fixedWin-content">
+    <div class="txt">
+      <textarea name="des" id="des" cols="30" rows="4" placeholder="请输入内容"></textarea>
+    </div>
+    <div class="content fn-clear" id="content"></div>
+    <div class="fabuUpload uploadbtn">
+      <div id="filePicker2" class="filePicker" data-id="1" data-extensions="jpg,jpeg,bmp,png,gif,mp4" data-mimetypes="image/jpg,image/jpeg,image/png,image/gif,video/mp4"><p class="sign">＋</p></div>
+    </div>
+  </div>
+  <div class="fixedWin-btn">
+    <div class="submit">发布</div>
+  </div>
+</div>
+<!-- 发布层 e -->
+
+<!-- 所属红娘个人信息弹出框 -->
+<div class="Matchmaker fn-clear">
+  <div class="mat_whole">
+    <div class="Matchmaker_top">
+      <div class="Matchmaker_img"><img src="{#$templets_skin#}upfile/hn3.jpg"></div>
+      <div class="Matchmaker_page">
+        <p class="list_01"></p>
+        <p class="list_02">电话：</p>
+        <p class="list_03">所属公司：</p>
+      </div>
+    </div>
+    <div class="Matchmaker_bot">
+      <p>红娘会员</p>
+      <p><em></em>的所属红娘</p>
+    </div>
+  </div>
+  <div class="Matchmaker_btn fn-clear">
+    <div class="btn cancel">取消</div>
+    <div class="btn thakaway">牵她</div>
+  </div>
+</div>
+<!-- 所属红娘个人信息弹出框 end-->
+<div class="desk"></div>
+
+<script type="text/javascript">
+  var wxconfig = {
+    "appId": '{#$wxjssdk_appId#}',
+    "timestamp": '{#$wxjssdk_timestamp#}',
+    "nonceStr": '{#$wxjssdk_nonceStr#}',
+    "signature": '{#$wxjssdk_signature#}',
+    "description": '{#$dating_description#}',
+    "title": '圈子动态',
+    "imgUrl": '{#$dating_logoUrl#}',
+    "link": '{#getUrlPath service="dating" template="circle"#}',
+  };
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/circle.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

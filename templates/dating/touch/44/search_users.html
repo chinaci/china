@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>添加好友</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search_users.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var templets_skin = '{#$templets_skin#}';
+</script>
+</head>
+
+<body>
+{#*{#include file="../../../siteConfig/touch_top.html" pageTitle="添加好友"#}*#}
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+     <div class="inp">
+        <input type="text" class="keywords clearBoxSize"  id="username" placeholder="搜索ID和手机号">
+        <em></em>
+      </div>
+  </div>
+  <div class="header-search">
+    搜索
+  </div>
+</div>
+
+
+<!-- 列表部分 -->
+<div class="splitBar"></div>
+<div class="info">
+  <ul id="container"></ul>
+  {#*
+    <li class="fn-clear">
+      <div class="fans_img"><img src="http://xs.215000.com/templates/dating/touch/skin1/upfile/dt2.jpg"></div>
+      <div class="fans_txt">
+        <p>美丽的我</p>
+        <p>那是深夜的森林</p>
+      </div>
+      <span class="btns follow_yes">已关注</span>
+    </li>
+    <li class="fn-clear">
+      <div class="fans_img"><img src="http://xs.215000.com/templates/dating/touch/skin1/upfile/dt4.jpg"></div>
+      <div class="fans_txt">
+        <p>美丽的我</p>
+        <p>那是深夜的森林</p>
+      </div>
+      <span class="btns follow_all">互相关注</span>
+    </li>
+    <li class="fn-clear">
+      <div class="fans_img"><img src="http://xs.215000.com/templates/dating/touch/skin1/upfile/dt4.jpg"></div>
+      <div class="fans_txt">
+        <p>美丽的我</p>
+        <p>那是深夜的森林</p>
+      </div>
+      <span class="btns follow_no">关注</span>
+    </li>
+  *#}
+</div>
+<div class="tofoot fn-hide">上拉加载更多~</div>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/search_users.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

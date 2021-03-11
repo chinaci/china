@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我收到的礼物</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/myGift.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+
+<div class="header ">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+    <div class="header-address">
+    <span>我收到的礼物</span>
+  </div>
+  <div class="header-search">
+      <a href=""></a>
+  </div>
+</div>
+
+<div class="money">
+  <div class="yuebi_m fn-clear"><span class="m_left">{#$datingConfig.goldName#}余额<em>{#$u_money#}</em></span><a href="{#getUrlPath service='dating' template='recharge'#}" class="m_right">充值</a></div>
+  <div class="jinbi_m fn-clear"><span class=" m_left">可提现金额（元）<em>{#$u_maxPutMoney#}</em></span><a href="javaScript:;" class="putForward m_right{#if $u_maxPutMoney <= 0#} disabled{#/if#}">提现</a></div>
+</div>
+
+<div class="scrollerWrap" id="scrollerWrap">
+  <div class="scroller" id="scroller">
+    <div class="bar"></div>
+    <ul class="container" id="container"></ul>
+    <div class="tofoot">下拉加载更多</div>
+  </div>
+</div>
+
+<!-- 提现弹窗 -->
+<div class="desk"></div>
+
+<div class="withdrawWrap">
+  <div class="title"><span class="close">取消</span></div>
+  <div class="body">
+    <div class="item alipay">
+      <div class="txt">
+        <p class="name">支付宝提现</p>
+        <p class="des">最低{#$alipayMinAmount#}（48小时到账）</p>
+      </div>
+      {#if $userinfo.alipay_conn#}
+      <a href="{#getUrlPath service='member' type='user' template='put_forward' param='module=dating&utype=0&type=alipay'#}" class="state">下一步</a>
+      {#else#}
+      <a href="{#getUrlPath service='member' type='user' template='connect' param="furl={#getUrlPath service='dating' template='hn_income'#}"#}" class="state state0">去绑定</a>
+      {#/if#}
+    </div>
+    <div class="item wxpay">
+      <div class="txt">
+        <p class="name">微信提现</p>
+        <p class="des">最低{#$wxpayMinAmount#}（48小时到账）</p>
+      </div>
+      {#if $userinfo.wechat_conn#}
+      <a href="{#getUrlPath service='member' type='user' template='put_forward' param='module=dating&utype=0&type=wxpay'#}" class="state">下一步</a>
+      {#else#}
+      <a href="{#getUrlPath service='member' type='user' template='connect' param="furl={#getUrlPath service='dating' template='hn_income'#}"#}" class="state state0">去绑定</a>
+      {#/if#}
+    </div>
+    <div class="item wxpay">
+      <div class="txt">
+        <p class="name">银行卡提现</p>
+        <p class="des">最低{#$alipayMinAmount#}（48小时到账）</p>
+      </div>
+      <a href="{#getUrlPath service='dating' template='withdraw' #}?type=0" class="state">下一步</a>
+    </div>
+  </div>
+</div>
+
+<a href="{#getUrlPath service='dating' template='sendoutGift'#}" class="dropnav">送出的礼物</a>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/myGift.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

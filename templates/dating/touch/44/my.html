@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>我的</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/my.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',
+    templets_skin = '{#$templets_skin#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var attachment = '{#$cfg_attachment#}';
+
+  var atlasSize = {#$atlasSize*1024#};
+  var atlasType = '{#$atlasType#}';
+  var atlasMax  = 20;
+
+  var modelType = "dating";
+  var showPicUrl = '{#getUrlPath service='dating' template='picture' param="type=album&id={#$u_id#}&atpage="#}';
+  var showPhotoUrl = '{#getUrlPath service='dating' template='picture' param="type=photo&id={#$u_id#}"#}';
+
+</script>
+</head>
+
+<body>
+<div class="header">
+    <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+    <div class="header-address">
+    <span>我的</span>
+  </div>
+  <div class="header-search">
+    <a href="javascript:;" class=""></a>
+  </div>
+</div>
+
+<div class="box topbox">
+  <!-- 头像s -->
+  <div class="photo fn-clear">
+    {#if $u_photo#}
+    <div class="addimg has sex{#$u_sex#}">
+      <ul id="litpic" class="">
+        <li class="item" id="item_0">
+          <img src="{#$u_photo#}" data-url="{#$u_photo_#}" data-sysUrl="{#$userinfo.photoSource#}" alt="">
+          <p>更换头像</p>
+        </li>
+      </ul>
+    </div>
+    {#else#}
+    <div class="addimg noimg sex{#$u_sex#}">
+      <ul id="litpic" class="">
+        <li class="item" id="item_0"><img src="{#$cfg_staticPath#}images/blank.gif" alt=""></li>
+      </ul>
+      <div class="uploader-btn">上传头像</div>
+    </div>
+    {#/if#}
+    <div class="info">
+      <h3 class="name">{#$u_nickname#}</h3>
+      <p class="uid">ID:{#$u_numid#}</p>
+      <a href="{#getUrlPath service='dating' template='mydata'#}" class="edit">编辑资料</a>
+    </div>
+  </div>
+  <!-- 相册s -->
+  <div class="album">
+    <ul class="fn-clear">
+      <li class="upbtn clearBoxSize" id="filePicker2"></li>
+      {#$count = 1#}
+      {#dating action=albumList pageSize=3 u=1 return=album#}
+      {#$count = $count + 1#}
+      <li class="it has"><a href="{#getUrlPath service='dating' template='picture' param="type=album&id={#$u_id#}&atpage={#$_bindex.album#}"#}"><img src="{#$album.path#}" alt="" data-val="{#$album.turl#}" data-id="{#$album.id#}"></a></li>
+      {#/dating#}
+      {#if $count < 4#}
+      {#for $i = $count to 3#}
+      <li class="it null"></li>
+      {#/for#}
+      {#/if#}
+      <li class="more"><a href="{#getUrlPath service='dating' template='picture' param="type=album&id={#$u_id#}"#}">相册<em></em></a></li>
+    </ul>
+    <!-- <a href="" class="more">相册</a> -->
+  </div>
+</div>
+<div class="box">
+  <ul class="navbar">
+    {#if $lookMe#}
+    <li class="has">
+      <a href="{#getUrlPath service='dating' template='my_visit_record'#}">
+        <div class="pic"><img src="{#$lookMe['list'][0]['member']['phototurl']#}" alt=""><em></em></div>
+        <p>谁看过我</p>
+      </a>
+    </li>
+    {#else#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_visit_record'#}">
+        <div class="pic"><img src="{#$templets_skin#}images/{#if $u_sex == 0#}photo_boy.png{#else#}photo_girl.png{#/if#}" alt=""><em></em></div>
+        <p>谁看过我</p>
+      </a>
+    </li>
+    {#/if#}
+    {#if $followMe#}
+    <li class="has">
+      <a href="{#getUrlPath service='dating' template='my_visit_record' param='type=1'#}">
+        <div class="pic"><img src="{#$followMe['list'][0]['member']['phototurl']#}" alt=""><em></em></div>
+        <p>谁喜欢我</p>
+      </a>
+    </li>
+    {#else#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_visit_record' param='type=1'#}">
+        <div class="pic"><img src="{#$templets_skin#}images/{#if $u_sex == 0#}photo_boy.png{#else#}photo_girl.png{#/if#}" alt=""><em></em></div>
+        <p>谁喜欢我</p>
+      </a>
+    </li>
+    {#/if#}
+    {#if $myFollow#}
+    <li class="has">
+      <a href="{#getUrlPath service='dating' template='my_visit_record' param='type=2'#}">
+        <div class="pic"><img src="{#$myFollow['list'][0]['member']['phototurl']#}" alt=""><em></em></div>
+        <p>我喜欢谁</p>
+      </a>
+    </li>
+    {#else#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_visit_record' param='type=2'#}">
+        <div class="pic"><img src="{#$templets_skin#}images/{#if $u_sex == 0#}photo_boy.png{#else#}photo_girl.png{#/if#}" alt=""><em></em></div>
+        <p>我喜欢谁</p>
+      </a>
+    </li>
+    {#/if#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_visit_record' param='type=3'#}">
+        <div class="pic"><img src="{#$templets_skin#}images/love_3.png" alt=""><em></em></div>
+        <p>相互喜欢</p>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="box list">
+  <ul>
+    <li>
+      <a href="{#getUrlPath service='dating' template='myFriend'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_3.png" alt=""></i><p>我的好友</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='u' id="{#$u_id#}"#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/home.png" alt=""></i><p>我的主页</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='u' id="{#$u_id#}" param="panel=circle"#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/cricle.png" alt=""></i><p>我的动态</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='member_center'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_3.png" alt=""></i><p>会员中心</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_leadline'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/lead.png" alt=""></i><p>我的牵线</p><span>{#if $lead_new#}<em>{#$lead_new#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_sendgreet'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/msg_2.png" alt=""></i><p>发起的招呼</p><span></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_receivegreet'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/greet.png" alt=""></i><p>收到的招呼</p><span>{#if $mout_new#}<em>{#$mout_new#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='dating' template='myGift'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/gift_2.png" alt=""></i><p>我收到的礼物</p><span>{#if $gift_new#}<em>{#$gift_new#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_rz.png" alt=""></i><p>实名认证</p><span></span>
+        </div>
+      </a>
+    </li>
+    {#if $storeUid#}
+    {#$total  = $newApplyCount2 + $newIncomeCount2#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_store'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/store.png" alt=""></i><p>我的门店管理</p><span>{#if $total#}<em>{#$total#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    {#/if#}
+    {#if $hnUid#}
+    {#$total  = $newLeadCount + $newApplyCount1 + $newIncomeCount2#}
+    <li>
+      <a href="{#getUrlPath service='dating' template='my_hn'#}">
+        <div class="item">
+          <i class="icon"><img src="{#$templets_skin#}images/user_girl.png" alt=""></i><p>我的红娘</p><span>{#if $total#}<em>{#$total#}</em>{#/if#}</span>
+        </div>
+      </a>
+    </li>
+    {#/if#}
+  </ul>
+</div>
+
+{#include file='_foot.html' pagename='my'#}
+
+<!-- 选择操作 s -->
+<div class="selectBottom">
+  <div class="bg"></div>
+  <div class="content">
+    <ul>
+      <li><div id="filePicker1" class="filePicker uploadbtn" data-id="1" data-extensions="jpg,jpeg,bmp,png,gif" data-mimeTypes="image/*">更换头像</div></li>
+      <li>查看大图</li>
+      <li>删除头像</li>
+    </ul>
+    <div class="cancel">取消</div>
+  </div>
+</div> 
+<!-- 选择操作 e -->
+  
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/my.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

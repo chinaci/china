@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>红娘的收入</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store_income_hn.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var templets_skin = '{#$templets_skin#}';
+  var id = {#$id#};
+</script>
+</head>
+
+<body>
+{#*{#include file="../../../siteConfig/touch_top.html" pageTitle="红娘的收入"#}*#}
+<div class="header {#$headTheme#}">
+  <div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+  <div class="header-address">
+    <span>红娘的收入</span>
+  </div>
+  <div class="header-search">
+      <a href="" class="notMenu"></a>
+  </div>
+</div>
+
+<div class="hn_total">
+  <div class="item">
+    <a href="{#$user.url#}" class="fn-clear">
+      <div class="img"><img src="{#$templets_skin#}upfile/hn1.jpg" alt=""></div>
+      <div class="info">
+        <h3 class="name">{#$user.nickname#}<span>{#$user.year#}年经验</span></h3>
+        <p class="case">{#$user.case#}对成功案例</p>
+      </div>
+      <span class="money">总收入：<font>0</font></span>
+    </a>
+  </div>
+</div>
+<div class="container" id="container"></div>
+
+<div class="tofoot">下拉加载更多</div>
+
+<!-- 搜索框 -->
+<div class="searchWrap">
+  <div class="searchBox">
+    <p class="title">选择筛选类型</p>
+    <div class="inpBox fn-clear">
+      <div class="inp">
+        <input type="text" class="keywords clearBoxSize" placeholder="搜索">
+        <em>搜索</em>
+      </div>
+      <span class="submit">确定</span>
+    </div>
+    <div class="typeBox fn-clear">
+      <span class="active">全部</span><span data-id="vip">充值</span><span data-id="lead">牵线服务</span><span data-id="gift">礼物</span>
+    </div>
+    <div class="cancel">取消</div>
+  </div>
+</div>
+
+<!-- 提现 -->
+<div class="withdrawWrap">
+  <div class="title"><span class="close">取消</span></div>
+  <div class="body">
+    <div class="item alipay">
+      <div class="txt">
+        <p class="name">支付宝提现</p>
+        <p class="des">最低50，最高5000（48小时到账）</p>
+      </div>
+      <a href="" class="state">下一步</a>
+    </div>
+    <div class="item wxpay">
+      <div class="txt">
+        <p class="name">微信提现</p>
+        <p class="des">最低1，最高200（48小时到账）</p>
+      </div>
+      <a href="" class="state state0">去绑定</a>
+    </div>
+  </div>
+</div>
+
+<div class="desk"></div>
+
+<a href="javascript:;" class="screen">筛选</a>
+
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/store_income_hn.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
