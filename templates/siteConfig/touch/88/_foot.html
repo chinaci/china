@@ -1,0 +1,11 @@
+{#if !$is_app#}
+<div class="fixFooter">
+	<ul>
+		<li class="ficon1{#if $pageTit == "index"#} active{#/if#}"><a href="{#$cfg_basehost#}"><i></i>{#$langData['siteConfig'][0][0]#}</a></li>
+		<li class="ficon2{#if $pageTit == "tcquan"#} active{#/if#}"><a href="{#getUrlPath service='siteConfig' template='tcquan'#}"><i></i>{#$langData['siteConfig'][16][0]#}</a></li>
+		<li class="ficon3{#if $pageTit == "post"#} active{#/if#}"><a href="{#getUrlPath service='siteConfig' template='post'#}"><i></i>{#$langData['siteConfig'][11][0]#}</a></li>
+		<li class="ficon4{#if $pageTit == "business"#} active{#/if#}"><a href="{#$business_channelDomain#}"><i></i>{#$langData['siteConfig'][16][1]#}</a></li>
+		<li class="ficon5{#if $service == "member"#} active{#/if#}"><a href="{#$member_userDomain#}"><i></i>{#$langData['siteConfig'][10][0]#}</a></li>
+	</ul>
+</div>
+{#/if#}

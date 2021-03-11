@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>同城圈</title>
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/tcquan.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, redirectUrl = '{#$redirectUrl#}', site = '{#$site#}', cookiePre = '{#$cfg_cookiePre#}';
+  var geetest = {#$cfg_geetest#};
+	var templets = '{#$templets_skin#}';
+	var infoComUrl = "{#getUrlPath service='info' template='comment' id='%id%'#}",
+			tuanComUrl = "{#getUrlPath service='tuan' template='review' id='%id%'#}";
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = "同城圈-{#$cfg_webname#}"#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#getUrlPath service='siteConfig' template='tcquan'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+
+<body>
+{#$pageTit = 'tcquan'#}
+{#include file='../../touch_top.html' headTheme='transparent absolute' pageTitle='同城圈'#}
+
+<!-- 幻灯片 s -->
+<div class="wrapper">
+	<div class="swiper-container" id="slider">
+    <div class="swiper-wrapper">{#myad id="169" type="slide"#}</div>
+    <div class="pagination"></div>
+	</div>
+</div>
+<!-- 幻灯片 e -->
+
+<div class="navblank">
+  <div class="swiper-container" id="swiper-container1">
+    <div class="swiper-wrapper">
+      {#if in_array("info", $installModuleArr)#}<div class="swiper-slide active-nav" data-page="1" data-totalpage="1" data-action="info"><a href="javascript:;">二手</a></div>{#/if#}
+      {#if in_array("house", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="house"><a href="javascript:;">房产</a></div>{#/if#}
+      {#if in_array("tuan", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="tuan"><a href="javascript:;">团购</a></div>{#/if#}
+      {#if in_array("huodong", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="huodong"><a href="javascript:;">活动</a></div>{#/if#}
+      {#if in_array("tieba", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="tieba"><a href="javascript:;">贴吧</a></div>{#/if#}
+      {#if in_array("dating", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="dating"><a href="javascript:;">交友</a></div>{#/if#}
+      {#if in_array("job", $installModuleArr)#}<div class="swiper-slide" data-page="1" data-totalpage="1" data-action="job"><a href="javascript:;">招聘</a></div>{#/if#}
+    </div>
+  </div>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+  <div class="swiper-container" id="swiper-container2" style="width:100%;">
+    <div class="swiper-wrapper">
+      {#if in_array("info", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide info" data-module="info" data-action="detail"><div class="loading"><i class="icon-loading"></i>加载中...</div></div>
+      </div>
+      {#/if#}
+      {#if in_array("house", $installModuleArr)#}
+			<div class="swiper-slide">
+        <div class="content-slide house" data-module="house" data-action="sale"></div>
+      </div>
+      {#/if#}
+      {#if in_array("tuan", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide tuan"></div>
+      </div>
+      {#/if#}
+      {#if in_array("huodong", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide huodong"></div>
+      </div>
+      {#/if#}
+      {#if in_array("tieba", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide tieba"></div>
+      </div>
+      {#/if#}
+      {#if in_array("dating", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide dating"></div>
+      </div>
+      {#/if#}
+      {#if in_array("job", $installModuleArr)#}
+      <div class="swiper-slide">
+        <div class="content-slide job"></div>
+      </div>
+      {#/if#}
+    </div>
+  </div>
+</div>
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+
+<!-- 打赏 s -->
+<div class="rewardBox">
+	<a href="javascript:;" class="close"></a>
+	<div class="reward-a">
+		<div class="reward-box fn-clear">
+			<a href="javascript:;" class="active">{#echoCurrency type='symbol'#}<em>1.00</em></a>
+			<a href="javascript:;">{#echoCurrency type='symbol'#}<em>2.00</em></a>
+			<a href="javascript:;">{#echoCurrency type='symbol'#}<em>5.00</em></a>
+			<a href="javascript:;">{#echoCurrency type='symbol'#}<em>10.00</em></a>
+			<a href="javascript:;">{#echoCurrency type='symbol'#}<em>20.00</em></a>
+			<a href="javascript:;">{#echoCurrency type='symbol'#}<em>50.00</em></a>
+		</div>
+		<a href="javascript:;" class="reword-other">其他金额</a>
+	</div>
+	<div class="reward-b">
+		<div class="reward-inp fn-hide">
+			<label class="inp-tag">金额</label>
+			<input type="number" name="" value="" min="0.50" maxlength="8" placeholder="输入打赏金额" id="reward">
+		</div>
+		<a href="javascript:;" class="reword-sure">确定</a>
+	</div>
+</div>
+<!-- 打赏 e -->
+
+<!-- 举报 s -->
+<div class="jubao">
+	<a href="javascript:;" class="close"></a>
+	<div class="select">
+		<p>信息虚假违法</p>
+		<ul class="fn-clear">
+			<li>电话虚假(如空号、无人接听)</li>
+			<li>涉黄违法</li>
+			<li>诈骗（如提前收取各类费用）</li>
+			<li>商家冒充个人</li>
+			<li>虚假(如产品、价格等虚假)</li>
+		</ul>
+	</div>
+	<div class="remark">
+		<p class="jubao-tit">备注说明<em>(0-100字)</em></p>
+		<textarea name="" rows="2" placeholder="请简明扼要的阐述您的理由，以便工作人员更好的判断。" maxlength="100"></textarea>
+	</div>
+	<div class="contact">
+		<p class="jubao-tit"><span>*</span>联系方式</p>
+		<dl class="fn-clear">
+			<dt class="fn-left">手机号</dt>
+			<dd class="fn-left"><input type="text" name="" placeholder="请输入手机号" id="jubaoTel"></dd>
+		</dl>
+	</div>
+	<a href="javascript:;" class="submit">提交</a>
+</div>
+<!-- 举报 e -->
+
+<div class="error">请选择举报类型</div>
+
+<div class="mask"></div>
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+  <div class="tit">选择支付方式</div>
+  <ul>
+    {#siteConfig action="payment"#}
+    {#if $row.pay_code == "wxpay"#}
+    <li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "globalalipay"#}
+    <li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "alipay"#}
+    <li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "paypal"#}
+    <li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+    {#/if#}
+    {#/siteConfig#}
+  </ul>
+  <a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+
+{#include file="_foot.html"#}
+
+<script src="{#$templets_skin#}js/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/tcquan.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

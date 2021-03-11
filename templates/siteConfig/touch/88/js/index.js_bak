@@ -1,0 +1,121 @@
+$(function(){
+	// banna轮播图
+    $('.picscroll .count').text($('#picscroll li').length);
+    $('#picscroll').slider({changedFun:function(n){
+        var li = $('#picscroll ul li'), active = li.eq(n);
+        if(n < li.length - 1) {
+            if(!active.hasClass('showed')) {
+                var img =  active.find('img'), src =img.attr('data-src');
+                img.attr('src',src);
+                active.addClass('showed');
+            }
+            var next = li.eq(n+1),
+                nextimg = next.find('img'),
+                nextsrc = nextimg.attr('data-src');
+            nextimg.attr('src',nextsrc);
+            next.addClass('showed');
+        }
+        $('.picscroll .page').text(++n);
+    }})
+
+    // 导航下拉
+    $('.toggleBtn').click(function(){
+        var a = $(this);
+        if(!a.hasClass('ck')) {
+            a.addClass('ck');
+            if((a.siblings().length) % 6 == 0) {
+                a.before('<a href="#" class="hide" style="position: relative;font-size: 0;z-index:-10;">更多</a>');
+            }
+        }
+        var i = a.index(),len = a.siblings().length;
+        $('.nav_list a').slice(11,len).toggleClass('hide');
+        a.toggleClass('open');
+    })
+
+    // 频道导航
+    setScrollPanel('.chanelList','','.item',8);
+
+    var countDown = function(stime, etime, obj, func){
+        sys_second = etime - stime;
+
+        var timer = setInterval(function(){
+            if (sys_second > 0) {
+                sys_second -= 1;
+                var hour = Math.floor((sys_second / 3600) % 24);
+                var minute = Math.floor((sys_second / 60) % 60);
+                var second = Math.floor(sys_second % 60);
+                $(obj).find(".h").text(hour < 10 ? "0" + hour : hour);
+                $(obj).find(".m").text(minute < 10 ? "0" + minute : minute);
+                $(obj).find(".s").text(second < 10 ? "0" + second : second);
+            } else {
+                clearInterval(timer);
+                // clearInterval(mtimer);
+                typeof func === 'function' ? func() : "";
+            }
+        }, 1000);
+    }
+    function getTime(){
+        $.ajax({
+            url:masterDomain + '/include/ajax.php?service=system&action=getSysTime',
+            type:'GET',
+            dataType:'jsonp',
+            success:function(data){
+                if(data){
+                    var now = data.now, nextHour = data.nextHour;
+                    countDown(now, nextHour, '.mdqgdjs', function(){
+
+                    })
+                }
+            }
+        })
+    }
+    getTime();
+
+
+    $('img').scrollLoading();
+
+
+    // 美食外卖 优惠信息条数判断
+    $('#waimaiList dl').each(function(){
+        var d = $(this).find('dd'),
+            yhn = d.children('.youhui').length;
+        if(yhn > 2) {
+            d.addClass('more');
+        }
+    })
+    $('#waimaiList .toggle').click(function(e){
+        e.preventDefault();
+        $(this).closest('dd').toggleClass('open');
+    })
+
+    function setScrollPanel(objid,content,child,num,pages) {
+        var obj = $(objid),
+            content = content ? content : 'ul',
+            item = obj.find(child),
+            itemLen = item.length,
+            pages = pages ? pages : '';
+
+        item.each(function(i){
+            item.slice(i*num,i*num+num).wrapAll('<li></li>');
+            if(i == itemLen - 1) {
+                obj.slider({
+                    content:content,
+                    autoScroll:false,
+                    pagePar:pages
+                })
+            }
+        })
+    }
+
+    var hovertime;
+    $('dl>a , .loadMoreBtn ,.list>.item').on('touchstart',function(){
+        var a = $(this);
+        hovertime = setTimeout(function(){
+            a.addClass('hover');
+        },100)
+    })
+    $('dl>a ,.loadMoreBtn ,.list>.item').on('touchmove touchend touchcancel',function(){
+        clearTimeout(hovertime);
+        $(this).removeClass('hover');
+    })
+})

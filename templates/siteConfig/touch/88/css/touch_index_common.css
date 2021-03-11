@@ -1,0 +1,60 @@
+body{width: 7.5rem;}
+body.fixed{position: fixed;}
+a:hover{text-decoration: none;}
+.padTop20 .header{padding-top: 20px;}
+
+
+/* 头部 */
+.header{height: .9rem;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: absolute;z-index: 100000; left: 0; right: 0;}
+.header-l{float: left;}
+.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle; background: url(../images/header_back_index.png) center center no-repeat; background-size: auto .48rem;}
+.header-m{text-align: center; font-size: .36rem; line-height: .9rem; margin: 0; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #fff; position: absolute; left: 2rem; right: 2rem; display: none;}
+.header-m a{color: #fff;}
+.header-r{float: right;}
+.header-r a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;text-align: center;background: url(../images/header_la_index.png) center center no-repeat; background-size: auto .5rem;}
+.header-r a.header-search{background-image: url(../images/search_icon.png); background-size: .4rem auto;}
+.header.open{background: #fff; border-bottom: 1px solid #f2f2f2;}
+.header.open .header-l a{background-image: url(../images/header_back.png);}
+.header.open .header-r a{background-image: url(../images/header_la.png);}
+.header.open .header-m a{color: #333;}
+
+/*导航*/
+.navHeight{height: .8rem;}
+#navlist{height: 100%;}
+#navBox{position: fixed;top: -200%; width: 7.5rem; margin: 0 auto; text-align: center; -webkit-transition: top .3s; transition: top .3s; z-index: 99999;}
+#navBox .navlist{z-index: 2; position: relative; background: #fff;}
+#navBox .navlist ul{min-height: 100%; border-top: 1px solid #f2f2f2;}
+#navBox li{ width: 25%; text-align: center; font-size: .28rem; color: #ababab; float: left; border-right: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; box-sizing: border-box; padding: .1rem 0 .2rem 0;}
+#navBox li a{display: block;}
+#navBox li span.imgbox{width: 1rem; height: 1rem !important; box-sizing: border-box; border-radius: 100%; line-height: 1 !important; padding: 0 !important; margin: 0 auto; display: block;}
+#navBox li .txtbox{display: block; height: .5rem; line-height: .5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+#navBox li img{width: .7rem;margin-top: .2rem;}
+
+#navBox .bg {position: fixed;top:0;width: 7.5rem;height: 0;opacity:0;background:rgba(0,0,0,0.5);-webkit-transition:opacity .5s;transition:opacity .5s;z-index: 1;left: 0; right: 0;}
+#cancelNav{ padding: .15rem 0; background: #F2F7FC; border-bottom: 1px solid #f0f5f9; margin: .1rem 0 0;}
+
+/*举报*/
+.HN_Jubao{display: none;}
+.JubaoBox{background: #fff;width: 80%;margin: 0 auto;border-radius: .1rem;position: fixed;left: 10%;top: 50%; z-index: 999999; display: none;}
+.JubaoBox .JuClose{position: absolute; right: 0; top: 0; display: block; width: .8rem; height: .8rem; background: url(../images/close.png) center center no-repeat; background-size: .4rem auto;}
+.JubaoBox .JuSelect p{border-bottom: 1px solid #f2f2f2; padding: .2rem;}
+.JubaoBox .JuSelect ul{padding: .2rem; font-size: .24rem; display: none;}
+.JubaoBox .JuSelect li{float: left; padding: .1rem .2rem; border: 1px solid #f2f2f2; margin: 0 .1rem .1rem 0; border-radius: .04rem;}
+.JubaoBox .JuSelect li.active{color: #23b8f6; border-color: #23b8f6;}
+.JubaoBox .JuRemark{padding: .2rem; color: #bbb;}
+.JubaoBox .JubaoBox-tit{color: #bbb; margin-bottom: .1rem;}
+.JubaoBox .JubaoBox-tit em{font-size: .24rem;}
+.JubaoBox .JubaoBox-tit span{color: #f60;}
+.JubaoBox .JuRemark textarea{border: none; outline: none; width: 100%; font-size: .26rem; resize: none;}
+.JubaoBox .JubaoBox-contact{padding: .2rem; margin-bottom: .2rem;}
+.JubaoBox .JubaoBox-contact dl{font-size: .26rem;}
+.JubaoBox .JubaoBox-contact dt{margin-right: .2rem; padding: .1rem 0;}
+.JubaoBox .JubaoBox-contact dd input{border: none; outline: 0; width: 4.5rem; padding: .1rem 0;}
+.JubaoBox .JubaoBox-submit{display: block; background: #23b8f6; color: #fff; text-align: center; padding: .15rem 0; border-bottom-left-radius: .1rem; border-bottom-right-radius: .1rem;}
+
+/*错误信息*/
+.JuError{color: #fff; background: #000; border-radius: .1rem; width: 3rem; display: block; position: fixed; z-index: 1000000; top: 50%; padding: .1rem 0; text-align: center; left: 50%; margin-left: -1.5rem; display: none;}
+
+/*遮罩层*/
+.JuMask{position: fixed;top: 0;position: fixed;background: rgba(0,0,0,.4);top: 0;bottom: 0;left: 0;right: 0;z-index: 100002;display: none;}
+.JuMask.show{display: block;}

@@ -1,0 +1,76 @@
+body.fixed{position: fixed;}
+a:hover{text-decoration: none;}
+
+/* 底部固定导航 */
+.btmMenu {position: fixed;bottom:0;width: 7.5rem;border-top: 1px solid #d3d4ce;background:#fff;z-index: 100;}
+.bnav li {display: table-cell;width: 1%;text-align: center;}
+.bnav li a {display: block;padding:.14rem 0 .06rem 0;color: #999;font-size: .24rem;}
+.bnav li a span {line-height: .44rem;}
+.bnav li.active a {color: #FE5400;}
+.bnav .iconnav {display: block;width: .5rem;height: .42rem;margin:0 auto;}
+.bnav .bicon-1 {background: url(../images/bicon-1.png) center center no-repeat; background-size: contain;}
+.bnav .bicon-2 {position: relative; background: url(../images/bicon-2.png) center center no-repeat; background-size: contain;}
+.bnav .bicon-3 {background: url(../images/bicon-3.png) center center no-repeat; background-size: contain;}
+.bnav .bicon-4 {background: url(../images/bicon-4.png) center center no-repeat; background-size: contain;}
+.bnav .bicon-2 em{ position: absolute; width: .3rem; height: .3rem; display: block; left: .3rem; top: -0.1rem; background: #ff0c0e; color: #fff; border-radius: .3rem; line-height: 1.2; font-style: normal;}
+.bnav .active .bicon-1 {background: url(../images/bicon-1a.png) center center no-repeat; background-size: contain;}
+.bnav .active .bicon-2 {background: url(../images/bicon-2a.png) center center no-repeat; background-size: contain; }
+.bnav .active .bicon-3 {background: url(../images/bicon-3a.png) center center no-repeat; background-size: contain;}
+.bnav .active .bicon-4 {background: url(../images/bicon-4a.png) center center no-repeat; background-size: contain;}
+.bnav #fabubtn{position: relative; bottom: -1px;}
+.bnav .quan1{position: absolute; display: block; width: 1rem; height: 1rem; border-radius: 1rem; background: #fff; bottom: .4rem; left: .2rem;}
+.bnav .quan1 .quan2{display: block; width: .8rem; height: .8rem; border-radius: .8rem; margin: .1rem auto; background: #FE5400 url(../images/fabubtn.png) center center no-repeat; background-size: .6rem;}
+
+
+
+/*发布*/
+.fabuBox{position: fixed; bottom: 300%; left: 0; right: 0; z-index: 999999}
+.fabuBox.open{display: block; bottom: 0;}
+.fabuBox .fabu{position: relative; z-index: 3; bottom: 0}
+.bg_1{background: rgba(248,248,248,0.96); position: fixed; left: 0; right: 0; bottom:0;    z-index: 999981;
+    height: 1000000px;display: none;}
+.fabuBox.open .bg{ top: 0; bottom: 0; z-index: 1;}
+.fabuBox ul{margin-bottom: 2rem;}
+.fabuBox li{width: 33%; text-align: center; font-size: .28rem; margin-bottom: .3rem; color: #666; transition: all 0.5s; transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.2);display: block; position: absolute; top: 0}
+.fabuBox li:nth-child(1){}
+.fabuBox li:nth-child(1) a{background: #52a0f2;}
+.fabuBox li:nth-child(2){left: 33.3%;}
+.fabuBox li:nth-child(2) a{background: #61bc24;}
+.fabuBox li:nth-child(3){left: 66.6%;}
+.fabuBox li:nth-child(3) a{background: #fdae01;}
+.fabuBox li:nth-child(4){top: 2rem;}
+.fabuBox li:nth-child(4) a{ background: #e6507b;}
+.fabuBox li:nth-child(5){top: 2rem; left: 33.3%;}
+.fabuBox li:nth-child(5) a{ background: #f26d5f;}
+.fabuBox li:nth-child(6){top: 2rem; left: 66.6%;}
+.fabuBox li:nth-child(6) a{ background: #ffa200;}
+.fabuBox li:nth-child(7){top: 4rem;}
+.fabuBox li:nth-child(7) a{ background: #35b87f;}
+.fabuBox li:nth-child(8){top: 4rem; left: 33.3%;}
+.fabuBox li:nth-child(8) a{ background: #5bb4da;}
+.fabuBox li:nth-child(9){top: 4rem; left: 66.6%;}
+.fabuBox li:nth-child(9) a{ background: #66cccc;}
+.fabuBox.open li:nth-child(1){ transition-delay: 0s; -webkit-transform: translateY(-9rem); transform: translateY(-9rem);}
+.fabuBox.open li:nth-child(2){ transition-delay: 0.05s; -webkit-transform: translateY(-9rem); transform: translateY(-9rem);}
+.fabuBox.open li:nth-child(3){ transition-delay: 0.1s; -webkit-transform: translateY(-9rem); transform: translateY(-9rem);}
+.fabuBox.open li:nth-child(4){ transition-delay: 0.15s; -webkit-transform: translateY(-8.6rem); transform: translateY(-8.6rem);}
+.fabuBox.open li:nth-child(5){ transition-delay: 0.2s; -webkit-transform: translateY(-8.6rem); transform: translateY(-8.6rem);}
+.fabuBox.open li:nth-child(6){ transition-delay: 0.25s; -webkit-transform: translateY(-8.6rem); transform: translateY(-8.6rem);}
+.fabuBox.open li:nth-child(7){ transition-delay: 0.3s; -webkit-transform: translateY(-8.2rem); transform: translateY(-8.2rem);}
+.fabuBox.open li:nth-child(8){ transition-delay: 0.35s; -webkit-transform: translateY(-8.2rem); transform: translateY(-8.2rem);}
+.fabuBox.open li:nth-child(9){ transition-delay: 0.4s; -webkit-transform: translateY(-8.2rem); transform: translateY(-8.2rem);}
+
+.fabuBox.close li:nth-child(1){ transition-delay: 0.4s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(2){ transition-delay: 0.35s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(3){ transition-delay: 0.3s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(4){ transition-delay: 0.25s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(5){ transition-delay: 0.2s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(6){ transition-delay: 0.15s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(7){ transition-delay: 0.1s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(8){ transition-delay: 0.05s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox.close li:nth-child(9){ transition-delay: 0s; -webkit-transform: translateY(0px); transform: translateY(0px);}
+.fabuBox li a{display: block; overflow: hidden; margin: 0 auto; width: 1.3rem; height: 1.3rem; border-radius: 1.3rem; vertical-align: middle;}
+.fabuBox li img{ height: .6rem; display: block; margin: .3rem auto;}
+.fabuBox li p{margin-top: .1rem;}
+.fabuBox .cancel{text-align: center; position: fixed; left: 0; right: 0; bottom: 0; display: none; background: #fff url(../images/guanbi.png) center center no-repeat; height: 1.2rem; background-size: .7rem;}
+.fabuBox.open .cancel{display: block;}
