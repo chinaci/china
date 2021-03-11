@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$cfg_pointName#}{#$langData['siteConfig'][19][730]#} - {#$cfg_webname#}</title>{#* 转赠 *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/transfer.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var totalPoint = {#$userinfo.point#}, pointFee = {#$cfg_pointFee#}, pointName = '{#$cfg_pointName#}';
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][19][726]|replace:'1':$cfg_pointName#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				{#* 我的积分 *#}
+				<li><a href="{#getUrlPath service='member' type='user' template='point'#}">{#$langData['siteConfig'][16][44]#}</a></li>
+				{#* 兑换 *#}
+				<li><a href="{#getUrlPath service='member' type='user' template='convert'#}">{#$langData['siteConfig'][15][15]#}{#$cfg_pointName#}</a></li>
+				{#* 转赠 *#}
+				<li class="curr"><a href="javascript:;">{#$cfg_pointName#}{#$langData['siteConfig'][19][730]#}</a></li>
+			</ul>
+
+			<div class="transfer">
+
+				<form action="/include/ajax.php?service=member&action=transfer" method="post" target="_blank" id="payform">
+					<dl class="fn-clear txt-inline">
+						<dt>{#$langData['siteConfig'][23][81]#}{#$cfg_pointName#}：</dt>{#* 可转赠 *#}
+						<dd class="fn-clear">
+							<strong>{#$userinfo.point#}</strong>
+							<em>【{#$langData['siteConfig'][19][375]#}：{#$cfg_pointFee#}%】</em>{#* 手续费 *#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt><label for="user">{#$langData['siteConfig'][19][25]#}：</label></dt>{#* 对方用户名 *#}
+						<dd class="fn-clear">
+							<!-- <input type="text" class="inp" name="user" id="user" /> -->
+							<div class="inp inp_clearAutocomplete" id="user" data-cfg="text:user" autocomplete="off"></div>
+							<span class="tip-inline"><s></s>{#$langData['siteConfig'][20][42]#}</span>{#* 请输入要转给的会员用户名 *#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt><label for="amountp">{#$langData['siteConfig'][19][376]#}：</label></dt>{#* 转赠数量 *#}
+						<dd class="fn-clear">
+							<input type="text" class="inp" id="amountp" autocomplete="off" />
+							<span class="tip-inline"><s></s>{#$langData['siteConfig'][20][218]#}</span>{#* 数量必须为整数或小数，小数点后不超过2位。 *#}
+							<p class="fn-left ampo">最多可赠送<em id="canTrans"></em>分</p>
+							<input type="hidden"  name="amount" id="amount">
+						</dd>
+					</dl>
+					<dl class="fn-clear txt-inline">
+						<dt>{#$langData['siteConfig'][19][375]#}：</dt>{#* 手续费 *#}
+						<dd class="fn-clear"><strong id="fee">0</strong></dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt><label for="paypwd">{#$langData['siteConfig'][5][7]#}：</label></dt>{#* 支付密码 *#}
+						<dd class="fn-clear">
+							<!-- <input type="password" class="inp" name="paypwd" id="paypwd" /> -->
+							<div class="inp inp_clearAutocomplete" id="paypwd" data-cfg="password:paypwd" autocomplete="new-password"></div>
+							<span class="tip-inline"><s></s>{#$langData['siteConfig'][20][213]#}，{#if $userinfo.paypwdCheck == 0#}{#$langData['siteConfig'][19][728]#}，<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}">{#$langData['siteConfig'][6][120]#}</a>{#else#}{#$langData['siteConfig'][19][729]#}<a href="{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}">{#$langData['siteConfig'][6][121]#}</a>{#/if#}！</span>{#* 请输入支付密码-您还未设置支付密码-设置支付密码-如您忘记支付密码-重置支付密码 *#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd class="agree">
+							<label><input type="checkbox" name="agree" id="agree" checked />{#$langData['siteConfig'][6][88]#}</label> <a href="{#getUrlPath service='siteConfig' template='protocol' title='积分转赠服务协议'#}" target="_blank">《{#$cfg_pointName#}{#$langData['siteConfig'][23][82]#}》</a><br />{#* 转赠服务协议 *#}
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>&nbsp;</dt>
+						<dd><button type="button" id="tj">{#$langData['siteConfig'][6][46]#}</button></dd>{#* 确认转赠 *#}
+					</dl>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/transfer.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
