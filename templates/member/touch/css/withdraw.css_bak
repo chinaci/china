@@ -1,0 +1,18 @@
+
+body, html{background: #f4f4f4;}
+
+.tab ul{display: -webkit-box; background: #fff;}
+.tab ul li{-webkit-box-flex: 1; padding: .2rem .3rem; font-size: .3rem; text-align: center;}
+.tab ul li.curr{border-bottom: 2px solid #129bf0;}
+
+.price{padding: .2rem; background: #fff; border-top: 1px solid #f1f1f1; font-size: .28rem; border-bottom: 1px solid #f1f1f1; margin-bottom: .2rem;}
+.price strong{font-size: .36rem; color: #ff6800; font-weight: normal;}
+
+
+.inpbox{display: table; font-size: .26rem; border-bottom: 1px solid #f4f4f4; width: 100%; padding: .1rem 0; line-height: .6rem; background: #fff;}
+.inpbox dt{display: table-cell; width: 1.8rem; color: #83868f; vertical-align: top;}
+.inpbox dt span{padding-left: .2rem;}
+.inpbox dd{display: table-cell; padding-right: .4rem; position: relative;}
+.inpbox dd input{width: 100%; border: 0; outline: 0; height: 100%;}
+
+a#tj{display: block; padding: .2rem 0; text-align: center; font-size: .3rem; background: #ff6800; color: #fff; margin: 1rem .2rem 0; border-radius: 0.08rem;}
