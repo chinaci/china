@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['car'][5][37]#}</title>{#*汽车频道 *#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/car.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['car'][5][37]#}"#}{#*汽车频道 *#}
+{#include file="top.html"#}
+<div class="container">
+    <ul class="carlist">
+        {#if $enter_zjcom==1#}
+        <li class="store fn-clear"><a class="fn-clear"  href="{#getUrlPath service='member' type='user' template='config-car'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/car/car_icon1.png" alt=""></i>
+            <p class="fn-left">{#$langData['car'][4][29]#}</p>{#*店铺配置 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        <li class="sourse fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' type='user' template='manage-car'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/car/car_icon2.png" alt=""></i>
+            <p class="fn-left">{#$langData['car'][4][30]#}</p>{#*车源管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        <li class="fabu fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' type='user' template='fabu-car'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/car/car_icon3.png" alt=""></i>
+            <p class="fn-left">{#$langData['car'][4][31]#}</p>{#*发布二手车 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#if $enter_zjcom==1#}
+        <li class="guwen fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' type='user' template='car-broker'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/car/car_icon4.png" alt=""></i>
+            <p class="fn-left">{#$langData['car'][4][32]#}</p>{#*顾问管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        <li class="yuyue fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' type='user' template='carappoint'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/car/car_icon5.png" alt=""></i>
+            <p class="fn-left">{#$langData['car'][4][33]#}</p>{#*预约到店 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+    </ul>
+</div>
+
+</body>
+</html>

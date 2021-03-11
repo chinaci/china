@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$langData['siteConfig'][16][123]#}</title>   {#* 商家入驻基本资料 *#}
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link href="{#$templets_skin#}css/mobiscroll.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/business-config.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+  var hideFileUrl = {#$cfg_hideUrl#}, atlasSize = 5 * 1024 *1024, atlasMax = 2;
+
+  var service = "business";
+  var detail = {
+    cityid: {#$cityid#},
+    addrid: {#$addrid|default:0#},
+    circle: '{#$circle#}'
+  }
+</script>
+</head>
+
+<body>
+<div class="gz-address">
+
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+    <div class="header">
+      <div class="header-l" data-prev="0">
+        <a href="{#if $userinfo.userType == 1#}{#$member_userDomain#}{#else#}{#$member_busiDomain#}{#/if#}"><img src="{#$templets_skin#}images/header_back.png"></a>
+      </div>
+      <div class="header-c">{#$langData['siteConfig'][16][103]#}</div>  {#* 店铺基本信息 *#}
+      <div class="header-r">
+        <a href="javascript:;" class="screen"><img src=""></a>
+      </div>
+    </div>
+    <div class="slideBox slideBox1">
+      <div class="contain">
+        {#if $state == 0 || $state == 3#}<p class="state0">{#$langData['siteConfig'][16][163]#}</p>{#/if#}  {#* 店铺资料正在审核中 *#}
+        {#if $state == 2#}<p class="state0">{#$langData['siteConfig'][16][164]#}</p>{#/if#}  {#* 店铺资料审核失败 *#}
+        <form action="" id="submitForm">
+          <p class="g-title">{#$langData['siteConfig'][19][22]#}</p>   {#* 基本信息 *#}
+          <div class="imgbox">
+            <p class="img-tit">{#$langData['siteConfig'][19][175]#}</p>  {#* 店铺LOGO *#}
+            <dl class="fn-clear">
+              <dt><img src="{#if $logo#}{#$logo#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" alt="" data-url="{#$logoSource#}"></dt>
+              <dd>
+
+                {#* 注：上传的图片大小在1M以内，仅支持JPG、PNG格式 *#}
+                <p class="tips">{#$langData['siteConfig'][20][156]|replace:'1':'5'#}</p>
+                <div class="webuploader">
+
+                  {#* 重新上传 *#}
+                  <a href="javascript:;" class="picker-btn">{#if $logo#}{#$langData['siteConfig'][6][59]#}{#else#}{#$langData['siteConfig'][6][126]#}{#/if#}</a>{#* 上传 *#}
+                  <div class="input-img" id="up_logo"></div>
+                  <input type="hidden" name="logo" value="{#$logoSource#}" id="logo">
+                </div>
+              </dd>
+            </dl>
+          </div>
+          {#* 店铺名称 *#}
+          <dl class="fn-clear inpbox arrow">
+            <dt><label for="">{#$langData['siteConfig'][19][174]#}</label></dt>
+            <dd><a href="{#getUrlPath service='member' type='user' template='business-config_title'#}" class="link">{#$title|default:'必填，输入店铺名称'#}</a></dd>
+          </dl>
+
+          {#* 经营品类 *#}
+          <dl class="fn-clear inpbox arrow">
+            <dt><label for="">{#$langData['siteConfig'][19][177]#}</label></dt>
+            <dd>
+                <select name="typeid" id="typeid" class="link" dir="rtl" style="width: 100%; outline: 0; border: 0; -webkit-appearance: none; background: #fff">
+                    <option value=''>{#$langData['siteConfig'][7][2]#}</option>  {#* 请选择 *#}
+                    {#business action='type' return='type'#}
+                    <optgroup label="{#$type.typename#}">
+                        {#business action='type' return='type1' type=$type.id#}
+                        <option value="{#$type1.id#}"{#if $typeid == $type1.id#} selected{#/if#}>{#$type1.typename#}</option>
+                        {#/business#}
+                    </optgroup>
+                    {#/business#}
+                </select>
+            </dd>
+          </dl>
+
+          {#* 企业地址 *#}
+          <dl class="fn-clear inpbox arrow">
+            <dt><label for="">{#$langData['siteConfig'][19][805]#}</label></dt>
+            <dd>
+              {#* 必填，请定位选择详细地址 *#}
+              <input type="text" name="address" value="{#$address#}" id="address" placeholder="{#$langData['siteConfig'][27][144]#}">
+
+              <a href="{#getUrlPath service='member' type='user' template='choose_address' param='ser=business&act=updateStoreConfig'#}" class="link"></a>
+            </dd>
+          </dl>
+          <dl class="fn-clear inpbox fn-hide">
+            <dt><label>{#$langData['siteConfig'][47][86]#}</label></dt>{#* 国籍地区 *#}
+            <dd>
+              <span class="areacode_span"><em class="code_label">+{#if $areaCode#}{#$areaCode#}{#else#}{#$internationalPhoneSection[0]['code']#}{#/if#}</em></span>
+              <input type="hidden" name="areaCode" id="areaCode" value="{#if $areaCode#}{#$areaCode#}{#else#}{#$internationalPhoneSection[0]['code']#}{#/if#}">
+            </dd>
+          </dl>
+          <dl class="fn-clear inpbox">
+            <dt><label for="tel">{#$langData['siteConfig'][19][56]#}</label></dt>{#* 联系电话 *#}
+            <dd><input type="text" id="tel" name="tel" value="{#$tel#}" placeholder="{#$langData['siteConfig'][20][433]#}"></dd>{#* 请输入联系电话 *#}
+          </dl>
+          <dl class="fn-clear inpbox arrow">
+            <dt><label for="">{#$langData['siteConfig'][18][15]#}</label></dt>{#* 营业时间 *#}
+            <dd><a href="{#getUrlPath service='member' type='user' template='business-config_yingye'#}" class="link">{#$weekDay|default:'必填，选择营业时间'#}</a></dd>
+          </dl>
+          <div class="imgbox mgt0">
+            <p class="img-tit">{#$langData['siteConfig'][19][184]#}</p>   {#* 微信二维码 *#}
+            <dl class="fn-clear">
+              <dt><img src="{#if $wechatqr#}{#$wechatqr#}{#else#}{#$cfg_staticPath#}images/blank.gif{#/if#}" alt="" data-url="{#$wechatqrSource#}"></dt>
+              <dd>
+                <p class="tips">{#$langData['siteConfig'][20][156]|replace:'1':'5'#}</p>   {#* 注：上传的图片大小在1M以内，仅支持JPG、PNG格式 *#}
+                <div class="webuploader">
+
+                  {#* 重新上传 *#}
+                  <a href="javascript:;" class="picker-btn">{#if $wechatqr#}{#$langData['siteConfig'][6][59]#}{#else#}{#$langData['siteConfig'][6][126]#}{#/if#}</a>  {#* 上传 *#}
+                  <div class="input-img" id="up_wechatqr"></div>
+                  <input type="hidden" name="wechatqr" value="{#$wechatqrSource#}" id="wechatqr">
+                </div>
+              </dd>
+            </dl>
+          </div>
+
+          <p class="g-title">{#$langData['siteConfig'][26][36]#}</p> {#* 详细介绍 *#}
+          <dl class="fn-clear inpbox arrow">
+            <dt><label for="">{#$langData['siteConfig'][26][54]#}</label></dt> {#* 店铺介绍 *#}
+            <dd><a href="{#getUrlPath service='member' type='user' template='business-config_profile'#}" class="link">{#if $body#}点击修改{#else#}{#$langData['siteConfig'][26][199]#}{#/if#}</a></dd> {#* 请填写店铺介绍 *#}
+          </dl>
+          <div class="drapdown-box" id="description_text">
+            <div class="txtwrap"><textarea name="description" class="clearBoxSize" id="description" cols="30" rows="10"></textarea></div>
+          </div>
+          <dl class="fn-clear inpbox arrow dropdown" data-drop="slideShow_choose">
+            <dt><label for="">{#$langData['siteConfig'][16][167]#}</label></dt>  {#* 店铺幻灯片 *#}
+            <dd><p class="inp"></p></dd>
+          </dl>
+          <div class="drapdown-box" id="slideShow_choose">
+            <div class="upload-file slideshow">
+              <p class="info">{#$langData['siteConfig'][16][172]#}</p>  {#* 请上传2-5张图片 *#}
+              <ul class="fn-clear">
+                <li class="addbtn" id="up_slideShow" data-extensions="jpg,jpeg,bmp,png,gif" data-mimetypes="image/*"></li>
+                {#if $bannerArr#}
+                {#foreach from=$bannerArr key=k item=pic#}
+                <li id="WU_FILE_has_{#$k#}"><img src="{#$pic.path#}" data-url="{#$pic.source#}" alt=""><a href="javascript:;" class="close">×</a></li>
+                {#/foreach#}
+                {#/if#}
+              </ul>
+            </div>
+          </div>
+          <dl class="fn-clear inpbox arrow dropdown" data-drop="videoShow_choose">
+            <dt><label for="">{#$langData['siteConfig'][16][173]#}</label></dt>  {#* 视频展示 *#}
+            <dd><p class="inp"></p></dd>
+          </dl>
+          <div class="drapdown-box" id="videoShow_choose">
+            <div class="upload-file videoshow video">
+              <ul class="fn-clear">
+                {#* 添加视频 *#}
+                <li class="addbtn" id="up_videoShow" data-extensions="mp4,mov" data-mimetypes="video/*"><p>{#$langData['siteConfig'][6][196]#}</p></li>
+                {#if $videoArr#}
+                {#foreach from=$videoArr key=k item=pic#}
+                <li id="WU_FILE_has_{#$k#}"><video src="{#$pic.path#}" data-url="{#$pic.source#}"></video><a href="javascript:;" class="close">×</a></li>
+                {#/foreach#}
+                {#/if#}
+              </ul>
+            </div>
+            <div class="upload-file videoshow pic">
+              <ul class="fn-clear">
+
+                {#* 添加封面 *#}
+                <li class="addbtn" id="up_videoPicShow" data-extensions="jpg,jpeg,bmp,png,gif" data-mimetypes="image/*"><p>{#$langData['siteConfig'][6][211]#}</p></li>
+                {#if $video_pic#}
+                <li id="WU_FILE_video_pic_{#$k#}"><img src="{#$video_pic#}" data-url="{#$video_picSource#}" /><a href="javascript:;" class="close">×</a></li>
+                {#/if#}
+              </ul>
+            </div>
+          </div>
+          <dl class="fn-clear inpbox arrow dropdown fn-hide" data-drop="qjShow_choose">
+            <dt><label for="">{#$langData['siteConfig'][18][51]#}</label></dt>   {#* 全景展示 *#}
+            <dd></dd>
+          </dl>
+          <div class="drapdown-box fn-hide" id="qjShow_choose">
+            <div class="upload-file qjshow">
+              <div class="tab-nav fn-clear">
+                <label><input type="radio" name="qj_type" value="0"{#if $qj_type == 0#} checked="checked"{#/if#}><span></span>{#$langData['siteConfig'][26][7]#}</label>   {#* 图片 *#}
+                <label><input type="radio" name="qj_type" value="1"{#if $qj_type == 1#} checked="checked"{#/if#}><span></span>url</label>
+              </div>
+              <div class="tab-body">
+                <div class="tab-body-item{#if $qj_type == 0#} curr{#/if#}">
+                  <p class="info">{#$langData['siteConfig'][16][174]#}</p>   {#* 请上传6张图片 *#}
+                  <ul class="fn-clear" id="qjshow_box">
+                    <li>
+                      <div class="addbtn" id="up_qj" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[0].path#}<div class="img" id="WU_FILE_has_0"><img src="{#$qj_fileArr[0].path#}" data-url="{#$qj_fileArr[0].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][55]#}</p>   {#* 前 *#}
+                    </li>
+                    <li>
+                      <div class="addbtn addbtn_more" id="up_qj2" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[1].path#}<div class="img" id="WU_FILE_has_1"><img src="{#$qj_fileArr[1].path#}" data-url="{#$qj_fileArr[1].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][16]#}</p>   {#* 右 *#}
+                    </li>
+                    <li>
+                      <div class="addbtn addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[2].path#}<div class="img" id="WU_FILE_has_2"><img src="{#$qj_fileArr[2].path#}" data-url="{#$qj_fileArr[2].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][56]#}</p>   {#* 后 *#}
+                    </li>
+                    <li>
+                      <div class="addbtn addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[3].path#}<div class="img" id="WU_FILE_has_3"><img src="{#$qj_fileArr[3].path#}" data-url="{#$qj_fileArr[3].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][15]#}</p>   {#* 左 *#}
+                    </li>
+                    <li>
+                      <div class="addbtn addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[4].path#}<div class="img" id="WU_FILE_has_4"><img src="{#$qj_fileArr[4].path#}" data-url="{#$qj_fileArr[4].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][57]#}</p>  {#* 顶 *#}
+                    </li>
+                    <li>
+                      <div class="addbtn addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                      {#if $qj_type == 0 && $qj_fileArr[5].path#}<div class="img" id="WU_FILE_has_5"><img src="{#$qj_fileArr[5].path#}" data-url="{#$qj_fileArr[5].source#}"><a href="javascript:;" class="close">×</a></div>{#/if#}
+                      <p class="txt">{#$langData['siteConfig'][13][58]#}</p>  {#* 底 *#}
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-body-item{#if $qj_type == 1#} curr{#/if#}">
+                  <input type="text" name="qj_file" value="{#if $qj_type == 1#}{#$qj_file#}{#/if#}" id="qj_file" class="qj_file" placeholder="{#$langData['siteConfig'][20][122]#}">  {#* 请输入全景地址 *#}
+                </div>
+              </div>
+            </div>
+          </div>
+          <dl class="fn-clear inpbox arrow">
+
+            {#* 店铺相册 *#}
+            <dt><label for="">{#$langData['siteConfig'][18][88]#}</label></dt>
+            <dd><a href="{#getUrlPath service='member' type='user' template='business-config_album'#}" class="link"></a></dd>
+          </dl>
+
+          {#if 'daohang'|in_array:$memberPackage.package.moduleList || 'caidan'|in_array:$memberPackage.package.moduleList#}
+          <dl class="fn-clear inpbox arrow">
+
+            {#* 自定义菜单 *#}
+            <dt><label for="">{#$langData['siteConfig'][18][89]#}</label></dt>
+            <dd><a href="{#getUrlPath service='member' type='user' template='business-config_custom'#}" class="link"></a></dd>
+          </dl>
+          {#/if#}
+
+          <dl class="fn-clear inpbox arrow fn-hide">
+
+            {#* 背景音乐 *#}
+            <dt><label for="">{#$langData['siteConfig'][18][90]#}</label></dt>
+            <dd></dd>
+          </dl>
+          <dl class="fn-clear inpbox bdn">
+
+            {#* 特色标签 *#}
+            <dt><label for="">{#$langData['siteConfig'][19][901]#}</label></dt>
+            <dd></dd>
+          </dl>
+          <div class="p-tags serverTags fn-clear">
+            {#foreach from=$businessTag_state item=tag#}
+            <span {#if $tag.active#}class="active"{#/if#}><em>{#$tag.name#}</em></span>
+            {#/foreach#}
+          </div>
+          <dl class="fn-clear inpbox bdn">
+
+            {#* 店铺标签 *#}
+            <dt><label for="">{#$langData['siteConfig'][19][902]#}</label></dt>
+            <dd></dd>
+          </dl>
+          <div class="p-tags shopTags fn-clear">
+            {#if $tag_shopArr#}
+            {#foreach from=$tag_shopArr item=tag#}
+            <span class="tg active"><em>{#$tag#}</em><i class="rm">×</i></span>
+            {#/foreach#}
+            {#/if#}
+            <input type="text" class="addinp" maxlength="20">
+            <a href="javascript:;" class="addTag" id="addTag">+{#$langData['siteConfig'][6][18]#}</a>   {#* 添加 *#}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="fabuBtn"><a href="javascript:;">{#$langData['siteConfig'][6][27]#}</a></div>   {#* 保存 *#}
+
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+    <div class="gz-sel-addr-header">
+      <h3>{#$langData['siteConfig'][7][2]#}</h3>
+      <button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+    </div>
+    <ul class="gz-sel-addr-nav"></ul>
+    <div class="gz-sel-addr-list"></div>
+  </div>
+
+  <div class="gz-sel-addr-mask"></div>
+
+</div>
+
+<!-- 自定义导航 s-->
+<div class="modal-public m-server" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+
+    <div class="modal-main">
+      <div class="top">{#$langData['siteConfig'][30][24]#}<span class="bClose"> <i></i></span>   {#* 商家入驻服务协议 *#}
+      </div>
+      <div class="main"><textarea name="" id="" rows="10"></textarea></div>
+
+    </div>
+</div>
+<!-- 自定义导航 e-->
+
+<div class="error"></div>
+<!-- 区号弹出层 s -->
+<div class="layer_code">
+    {#* 国籍/地区  *#}
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div>
+    <div class="layer_list" id="layer_list">
+      <ul>
+      </ul>
+    </div>
+</div>
+<!-- 区号弹出层 e -->
+<div class="mask-code" id="maskReg"></div>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}'></script>
+<!-- <script src="{#$templets_skin#}js/mobiscroll.select.js" type="text/javascript"></script> -->
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/business-config.js?v={#$cfg_staticVersion#}" charset="utf-8"></script>
+</body>
+</html>
