@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+<title>{#$detail_name#}</title>
+<meta name="keywords" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/resume-detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var id = {#$detail_id#};
+	var	JubaoConfig = {
+		"module" : 'job',
+		"action" : 'resume',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="简历详情"#}
+
+<div class="dersonaldata">
+  <div class="info_data fn-clear">
+    <div class="dtta_left">
+      <div class="name">{#$detail_name#}<span></span></div>
+      <div class="city"><span>{#$detail_address#}</span><span>{#$detail_workyear#}年</span><span>{#$detail_educationalname#}</span></div>
+    </div>
+    <div class="data_right"><img src="{#$detail_photo#}"></div>
+  </div>
+  <div class="wages fn-clear"><span class="wages_left">{#$detail_typename#}</span><span class="wages_right">{#if $detail_salary#}{#$detail_salary#} {#echoCurrency type='short'#}/月{#else#}面议{#/if#}</span></div>
+  {#if $phone #}
+  <div class="btn">
+      <div class="lav"><a href="{#getUrlPath service='job' template='anAudition' id=$detail_id#}">邀请面试</a></div>
+      <div class="no">
+          {#if $detail_is_refuse == 1#}
+          <a href="javascript:;" class="no_heshi_remark disabled">已标记为不合适</a>
+          {#else#}
+          <a href="javascript:;" class="no_heshi_remark">不合适</a>
+          {#/if#}
+      </div>
+  </div>
+  {#/if#}
+</div>
+
+<div class="contact">
+  <div class="contact_txt">联系方式</div>
+  <div class="contact_info"><span>电话</span><a href="tel:{#$phone#}"><span>{#$phone#}</span></a></div>
+  <div class="contact_info"><span>邮箱</span><span>{#$email#}</span></div>
+  {#if !$phone #}
+  <div class="jiesuo_max fn-clear"><span></span><span class="jsbtn_max">解锁信息</span></div>
+  {#/if#}
+</div>
+
+<div class="contact yixiang">
+  <div class="contact_txt">求职意向</div>
+  <div class="contact_info"><span>意向地点：</span><span>{#$detail_addrname|replace:">":" "#}</span></a></div>
+  <div class="contact_info"><span>职位性质：</span><span>{#if $detail_nature == 0#}全职{#elseif $detail_nature == 1#}兼职{#elseif $detail_nature == 2#}临时{#elseif $detail_nature == 3#}实习{#/if#}</span></div>
+  <div class="contact_info"><span>到岗时间：</span><span>{#$detail_startworkname#}</span></a></div>
+  <div class="contact_info"><span>目前状况：</span><span>{#$detail_workStateName#}</span></a></div>
+</div>
+
+{#if $detail_experience#}
+<div class="contact">
+  <div class="contact_txt">工作经历</div>
+  <div class="experience">
+    <ul>
+      {#foreach from=$detail_experience item=experience#}
+      <li>
+        <div class="time">{#$experience[1]#} - {#$experience[2]#}</div>
+        <div class="title">
+          <div class="txt"><span>{#$experience[0]#}</span><em>|</em><span>{#$experience[3]#}</span></div>
+          <div class="titleList">
+            {#$experience[5]|nl2br#}
+          </div>
+        </div>
+        <div class="dian"></div>
+        <div class="xian"></div>
+      </li>
+      {#/foreach#}
+    </ul>
+    </ul>
+  </div>
+</div>
+{#/if#}
+
+<div class="contact">
+  <div class="contact_txt">教育背景</div>
+  <div class="experience">
+    <ul>
+      <li>
+        <div class="time">最高学历：{#$detail_educational#}</div>
+		{#if $detail_college#}
+        <div class="title">
+          <div class="txt"><span>毕业院校：{#$detail_college#}</span><em>|</em><span>{#$detail_professional#}</span></div>
+          <div class="txt"><span>毕业时间：{#if $detail_graduation#}{#date('Y-m-d', $detail_graduation)#}{#/if#}</span></div>
+          <div class="txt"><span>外语水平：{#$detail_language#}</span><em>|</em><span>计算机水平：{#$detail_computer#}</span></div>
+          <div class="titleList">
+            {#$detail_education#}
+          </div>
+        </div>
+		{#/if#}
+        <div class="dian"></div>
+        <div class="xian"></div>
+      </li>
+    </ul>
+    </ul>
+  </div>
+</div>
+
+{#if $detail_evaluation#}
+<div class="contact">
+  <div class="contact_txt">自我评价</div>
+  <div class="introduce">{#$detail_evaluation|nl2br#}</div>
+</div>
+{#/if#}
+
+{#if $detail_objective#}
+<div class="contact">
+  <div class="contact_txt">职业目标</div>
+  <div class="introduce">{#$detail_objective|nl2br#}</div>
+</div>
+{#/if#}
+
+<div class="list">
+  <div class="title"><em></em><span>推荐简历</span><em></em></div>
+  <ul id="maincontent"></ul>
+</div>
+
+<!-- 底部 -->
+{#if $like_has#}
+<div class="del_like"><a>取消收藏</a></div>
+{#else#}
+<div class="like"><a>收藏简历</a></div>
+
+{#/if#}
+
+<!-- 弹框（解锁） -->
+<div class="unlock">
+  <div class="lock_01 fn-clear"><span class="item_y">当前账户积分余额</span><span class="item_j">{#$userinfo.point#}积分</span>
+    <!--<span class="item_c">充值</span>-->
+  </div>
+  <div class="lock_01 fn-clear"><span class="item_y">此简历积分值</span><span class="item_j">{#$job_resume_point#}积分</span></div>
+  <div class="onefind_txt fn-clear">
+    <div class="txt_name">{#$detail_name#}</div>
+    <div class="txt_title">{#$detail_typename#}</div>
+    <i></i>
+  </div>
+  <div class="lock_01 fn-clear"><span class="item_y">下载此简历将从您账户扣除积分</span><span class="item_j">{#$job_resume_point#}积分</span></div>
+  <div class="lock_02 fn-clear"><span class="chongzhi">购买简历</span><span class="jinali">
+    <!--<a href="javaScript:;">已购买的简历</a></span>-->
+  </div>
+  <a href="javascript:;" class="close">×</a>
+</div>
+
+<!-- 弹框（不合适） -->
+<div class="inappropriate">
+  <div class="no_title">不合适</div>
+  <div class="no_txt">
+    <ul class="fn-clear">
+      <li class="active"><span>专业不合适</span></li>
+      <li><span>行业差距太大</span></li>
+      <li><span>工作履历不符</span></li>
+      <li><span>项目经验太少</span></li>
+      <li><span>薪资要求太高</span></li>
+      <li>
+        <span>其它</span>
+        <textarea class="Desc1"></textarea>
+      </li>
+    </ul>
+  </div>
+  <div class="no_btn"><span class="no_btn_01"><button class="signout">取消</button></span><span class="no_btn_02"><button class="no_btn_02_btn">不合适</button></span></div>
+  <a href="javascript:;" class="close1 signout">×</a>
+</div>
+
+
+
+
+<div class="mask"></div>
+<div class="mask01"></div>
+
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_name#}',
+		"imgUrl": '{#$detail_photo#}',
+		"link": '{#getUrlPath service='job' template='resume' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/resume-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

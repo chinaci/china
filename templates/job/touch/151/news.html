@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>职场资讯-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="职场资讯,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="职场资讯,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin='{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var detailListId = 'maincontent';
+</script>
+</head>
+
+<body>
+<div class="container">
+	{#include file="../../../siteConfig/touch_top.html" pageTitle="招聘资讯"#}
+
+	<div class="head-tab nav_box">
+		<a href="javascript:;" class="more_nav"></a>
+		<ul class="fn-clear f_nav">
+			{#$i =1#}
+			{#job action="newsType" return="news"#}
+			<li class="item item{#$news.id#} {#if $i ==1#}active{#/if#} "  data-id="{#$news.id#}" data-type='0'><a href="javascript:;">{#$news.typename#}</a></li>
+			{#$i =$i+1#}
+			{#/job#}
+		</ul>
+	</div>
+	<div class="news-list">
+		<div class="swiper-container " id="tabs-container">
+		    <div class="swiper-wrapper">
+				{#job action="newsType" return="type2"#}
+		       	<div class="swiper-slide channel_{#$type2.id#}" >
+		       		<ul>
+						<div class="loading"><img src="{#$templets_skin#}images/loading.png"></div>
+					</ul>
+		       	</div>
+				{#/job#}
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--所有导航s-->
+<div class="nav_all">
+	<h2><span>所有分类</span><a href="javascript:;" class="close_btn"></a></h2>
+	<ul class="fn-clear nav_now">
+		{#job action="newsType" return="news"#}
+		<li data-id="{#$news.id#}"><a href="javascript:;">{#$news.typename#}</a></li>
+		{#/job#}
+	</ul>
+	<div class="cancel">{#$langData['siteConfig'][6][12]#}</div>  {#* 取消 *#}
+</div>
+<div class="mask"></div>
+<!--所有导航e-->
+<script>
+var atpage = '{#$page#}',
+		totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+		totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+		pageSize = 10;
+</script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '招聘资讯',
+		"imgUrl": '{#$job_logoUrl#}',
+		"link": '{#getUrlPath service='job' template='news'#}',
+	};
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/noscroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/news.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

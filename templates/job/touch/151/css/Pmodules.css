@@ -1,0 +1,17 @@
+html,body{background-color: #f8f8f8;}
+
+.headerText{background-color: #fff; padding:.26rem .24rem .36rem .24rem ; overflow: hidden; }
+.headerText dl{float: left; margin-top: .1rem;}
+.headerText dt{font-size: .32rem; color: #333;}
+.headerText dd{font-size: .26rem; color: #8f8f94;line-height: 1em; margin-top: .14rem;}
+.headerText dd.tip{color: #f29a38; font-weight: bold; font-size: .28rem;}
+.headerText:before{content: ' ';float: left;width: 1.4rem;  height: 1.4rem; background-color: #f9f9f9; margin-right: .24rem; border-radius: .12rem; background-image: url(../images/icon2.png); background-size: .98rem .98rem; background-position: center; background-repeat: no-repeat;}
+
+
+/*模板样式*/
+.moduleBox{margin-top: .2rem; padding-bottom: .36rem;}
+.moduleBox ul{margin-left: .14rem; margin-right: .14rem; overflow: hidden;}
+.moduleBox ul li{width: 50%; float: left; margin-bottom: .22rem; }
+.moduleBox ul li a{display: block; margin-left: .09rem; margin-right: .09rem; background-color: #fff; border-radius: .08rem; overflow: hidden; background-color: #fff;  box-shadow: 0 .01rem .1rem  rgba(0,0,0,.08);}
+.moduleBox ul li a img{width: 100%; display: block;}
+.moduleBox ul li a h2{font-size: .3rem; text-align: center; line-height: .8rem; }

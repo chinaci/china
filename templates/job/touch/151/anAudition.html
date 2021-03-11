@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+<title>{#$job_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/anAudition.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+
+	var rid = '{#$rid#}';
+	var day = {#$day#};
+	var month = {#$month#};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="发送面试邀请"#}
+
+<div class="foreword">
+    <p>{#$name#}，您好：</p>
+    <p>经过我司HR的初步筛选，认为你与我们的职位要求很匹配，现诚邀你来我司面谈。请准时出席，如时间上有变化也请尽快与我们联系</p>
+</div>
+
+<div class="list">
+  <div class="item">
+    <label><span>*</span>面试职位：</label>
+    <select name="title" id="title">
+        {#foreach from=$post_title item=title#}
+        <option value="{#$title['id']#}">{#$title['title']#}</option>
+        {#/foreach#}
+    </select>
+  </div>
+  <div class="item">
+    <label><span>*</span>面试时间：</label>
+    <select name="lease_day" id="lease_day">
+
+    </select>
+    <select name="lease_halfa" id="lease_halfa">
+        <option value="1">上午</option>
+        <option value="2">下午</option>
+    </select>
+    <select name="lease_hour" id="lease_hour">
+
+    </select>
+  </div>
+  <div class="item">
+    <label><span>*</span>面试地点：</label>
+    <input type="text" placeholder="请填写面试地点" name="place" id="place" maxlength="30">
+  </div>
+  <div class="item">
+    <label><span>*</span>联系人：</label>
+    <input type="text" placeholder="请填写联系人" name="name" id="name" maxlength="30">
+  </div>
+  <div class="item">
+    <label><span>*</span>联系电话：</label>
+    <input type="tel" placeholder="请填写联系电话" name="phone" id="phone" maxlength="11">
+  </div>
+  <div class="item">
+    <label><span></span>备注：</label>
+    <div class="remarks">
+      <ul class="fn-clear">
+        <li>
+          <input type="text" name="Desc1" id="Desc1">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="btn fn-clear">
+  <button class="cancel">取消</button>
+  <button class="sendout">发送</button>
+</div>
+
+<div class="protips" style="display: none;"></div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$job_title#}',
+		"imgUrl": '{#$job_logoUrl#}',
+		"link": '{#$job_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/anAudition.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+  
+

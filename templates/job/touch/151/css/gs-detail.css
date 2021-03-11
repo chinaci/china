@@ -1,0 +1,411 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;}
+html{background: #f7f7f7;}
+em,i{font-style: normal;}
+
+.job-list li a:active,.recommend .list ul li a:active{background-color: #f2f2f2;}
+
+.gs-tit{
+	background: #fff;
+}
+.gs-tit .gsTit_img{
+    position: relative;
+	width: 100%;
+	height: 3.13rem;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+.gs-tit .gsTit_img img{
+    position: absolute;
+    max-width: 100%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+}
+.gs-tit .gsTit_title{
+	padding: 1.15rem .65rem .5rem .65rem;
+	position: relative;
+}
+.gs-tit .gsTit_title .txt{
+	 font-size: .42rem;
+	     font-weight: bold;
+}
+.gs-tit .gsTit_title .city{
+	font-size: .25rem;
+    color: #808080;
+    background: url(../images/map.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+    padding-left: .3rem;
+    margin-left: .4rem;
+}
+.gs-tit .gsTit_title .information{
+	    font-size: .26rem;
+    color: #404040;
+    margin-top: .2rem;
+}
+.gs-tit .gsTit_title .information em{
+	margin: 0 .1rem;
+}
+.gs-tit .gsTit_title .head_portrait{
+    position: relative;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: .1rem;
+    overflow: hidden;
+    position: absolute;
+    display: inline-block;
+    top: -.6rem;
+    background-color:#f5f5f5;
+}
+.gs-tit .gsTit_title .head_portrait img{
+    position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+}
+
+/*联系方式*/
+.contact{
+    background: #fff;
+    padding: .4rem .44rem;
+    margin: 0.2rem;
+    border-radius: .2rem;
+}
+.contact .contact_txt{
+	    font-size: .32rem;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+.contact .contact_info{
+	margin-top: .1rem;
+	font-size: .28rem;
+}
+.contact .contact_info span:last-child{
+	color: #00c192;
+	font-weight: bold;
+	margin-left: .2rem;
+}
+
+
+/*地图*/
+.map{
+	height: 2.16rem;
+    width: 100%;
+}
+.address{
+    background: #fff;
+    margin: 0.2rem;
+    border-radius: .2rem;
+    overflow: hidden;
+}
+.address .address_txt{
+	    font-size: .32rem;
+	    padding: .4rem .44rem;
+    font-weight: bold;
+}
+.address_map{
+    position: relative;
+}
+.map_address{
+    position: absolute;
+    top: 1.6rem;
+    background: #fff;
+    padding: .26rem .26rem;
+    border-radius: .2rem;
+    left: .7rem;
+}
+.map_address .map_img{
+    background: url(../images/map.png) 0 center no-repeat;
+    background-size: .36rem .4rem;
+    width: .36rem;
+    height: .8rem;
+    display: inline-block;
+    float: left;
+}
+.map_address .map_txt{
+    width: 3.5rem;
+    display: inline-block;
+    float: left;
+    height: .8rem;
+    line-height: .4rem;
+    font-size: .24rem;
+    color: #404040;
+        margin: 0 .26rem;
+}
+.map_address .map_distance{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    background: #f5f5f5;
+    padding: .1rem;
+    border-radius: .1rem;
+}
+.map_address .map_distance span{
+        background: url(../images/map_j.png) 0 center no-repeat;
+    background-size: .2rem .2rem;
+    width: .2rem;
+    height: .2rem;
+    display: inline-block;
+}
+
+
+
+/*切换按钮*/
+.choose-tab{
+	margin:.4rem .3rem; 
+}
+.choose-tab .tab-box{
+	text-align: center;
+}
+.choose-tab .tab-box .active{
+	display: inline-block;
+    padding: .15rem .3rem;
+    background: linear-gradient(to right,#ff4991,#ff6150);
+    font-size: .28rem;
+    color: #fff;
+    border-radius: .6rem;
+    box-shadow: 0.1px 0.1px 7px #f39494;
+}
+.choose-tab .tab-box span:first-child{
+	margin-right: 1.2rem;
+}
+.choose-tab .tab-box span{
+	font-size: .28rem;
+	padding: .15rem .3rem;
+	font-weight: bold;
+}
+
+
+
+/*企业主页 在招职位*/
+.dn {
+    display: none;
+}
+.q_homepage{
+	margin: .2rem;
+	background: #fff;
+	border-radius: .2rem;
+	padding: .4rem .44rem;
+}
+.q_homepage .homepage_txt{
+	font-size: .32rem;
+    font-weight: bold;
+        margin-bottom: .2rem;
+}
+.q_homepage .info-con{
+    font-size: .28rem;
+    color: #404040;
+    line-height: .48rem;
+    margin-bottom: .3rem;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: .3rem;
+}
+.q_homepage .info-con img{width: 100%;}
+
+.job-list {
+    margin: .2rem 0 .4rem 0;
+}
+.job-list li {
+        background: #fff;
+        margin: .2rem;
+        border-radius: .2rem;
+}
+.job-list li a {
+    display: block;
+}
+.job-list li .job-tit {
+    font-size: .32rem;
+    border-bottom: 1px solid #f7f7f7;
+    padding: .3rem;
+}
+.job-list li .job-tit .name {
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+.job-list li .job-tit em {
+    color: #ff2d5e;
+    font-size: .28rem;
+    font-weight: bold;
+}
+.job-list li .job-info {
+    font-size: .26rem;
+    color: #666;
+    padding: .3rem;
+}
+.job-list li .job-info .information{
+	float: left;
+}
+.job-list li .job-info .information span{
+	padding-left: .3rem;
+	margin-right: .2rem;
+}
+
+.job-list li .job-info .information .icon_01{
+	background: url(../images/con_01.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.job-list li .job-info .information .icon_02{
+	background: url(../images/con_02.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.job-list li .job-info .information .icon_03{
+	background: url(../images/con_03.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.job-list li .job-info .information .icon_04{
+	background: url(../images/con_04.png) 0 center no-repeat;
+    background-size: .2rem .25rem;
+}
+.job-list li .job-info .price {
+	color: #cccccc;
+    font-size: .22rem;
+}
+/*相册*/
+.my-gallery figure{
+	display: inline-block;
+    position: relative;
+    width: 3rem;
+    height: 1.9rem;
+    margin-bottom: .14rem;
+    border-radius: .1rem;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+.my-gallery figure:nth-child(1){
+	margin-right: .14rem;
+}
+.my-gallery figure:nth-child(3){
+	margin-right: .14rem;
+}
+.my-gallery figure img{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+    margin:auto;
+}
+
+/*推荐企业*/
+.recommend{
+	padding: .2rem;
+}
+.recommend .title {
+	text-align: center;
+}
+.recommend .title span{
+font-size: .24rem;
+    color: #999999;
+    margin: 0 0.1rem;
+}
+.recommend .title em{
+    display: inline-block;
+    width: .6rem;
+        border-bottom: 1px solid #999999;
+    margin-bottom: .08rem;
+    }
+
+
+.recommend .list ul li{
+	margin: 0 .2rem;
+	background: #fff;
+    border-radius: .2rem;
+    margin-top: 0.18rem;
+    position: relative;
+}
+.recommend .list ul li a{
+	display: inline-block;
+	padding: .46rem .32rem;
+}
+.recommend .list ul li i{
+    position: absolute;
+    background: url(../images/top.png) no-repeat center top;
+    width: .6rem;
+    height: .6rem;
+    background-size: .6rem;
+    top: 0;
+    right: .02rem;
+}
+.recommend .list ul li .img_user{
+    position: relative;
+    width: 1.2rem;
+    height: 1.2rem;
+    overflow: hidden;
+    border-radius: .1rem;
+    float: left;
+    margin-right: .2rem;
+    background-color: #f5f5f5;
+}
+.recommend .list ul li .img_user img{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left:0;
+    margin:auto;
+}
+.recommend .list ul li .txt_user{
+    position: relative;
+    overflow: hidden;
+}
+.recommend .list ul li .txt_user .txt01 span:first-child{
+	float: left;
+    font-size: .32rem;
+    font-weight: bold;
+}
+.recommend .list ul li .txt_user .txt01 span:last-child{
+	float: right;
+    font-size: .24rem;
+    color: #808080;
+}
+.recommend .list ul li .txt_user .txt02{
+    font-size: .24rem;
+    color: #808080;
+    margin: .07rem 0;
+}
+.recommend .list ul li .txt_user .txt02 em{
+	color: #00c192;
+	font-weight: bold;
+    padding: 0 .08rem;
+}
+
+.recommend .list ul li .txt_user .txt03{
+    font-size: .24rem;
+    color: #404040;
+    overflow: hidden;
+    text-overflow: ellipsis;white-space: nowrap;
+}
+.recommend .list ul li .txt_user .txt03 em{
+    padding: 0 .1rem;
+}
+
+
+.nojob{
+    text-align: center;
+    font-size: .26rem;
+    color: #999;
+}
+
+/*20190211新增  生成微海报*/
+.Microposter{margin-left: .22rem; margin-right: .22rem; background-color: #fff; border-radius: .14rem; line-height: .9rem; text-align: center; margin-top: .2rem;}
+.Microposter h2{font-size: .3rem; color: #333; font-weight: bold; vertical-align: middle; display: inline;}
+.Microposter a{display: block;}
+.Microposter a:before{content: ''; margin-right: .24rem; display: inline-block; width: .4rem; height: .4rem; background-image: url(../images/icon-img.png); background-size: cover; vertical-align: middle;}
+
+.contact .contact_info a.tel span{margin-left: .13rem;}
+
+button.pswp__button.pswp__button--fs{display: none!important;}
+button.pswp__button.pswp__button--share{display: none!important;}

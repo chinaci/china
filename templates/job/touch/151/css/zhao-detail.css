@@ -1,0 +1,227 @@
+*{margin: 0;padding: 0;-webkit-tap-highlight-color: rgba(255,0,0,0);}
+body{max-width: 1080px;margin: 0 auto;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;font-size: .24rem;}
+html{background: #ebebeb;}
+em,i{font-style: normal;}
+
+
+/*基本信息*/
+.header_txt{
+	    padding: .4rem;
+    background: #fff;
+}
+.header_txt .txt{
+    font-size: .4rem;
+    font-weight: bold;
+}
+.header_txt .time{
+	color: #00c192;
+	font-size: .32rem;
+	font-weight: bold;
+	margin:.2rem 0;
+}
+.header_txt .time span:last-child{
+	margin-left: .3rem;
+}
+.header_txt .read{
+	color: #808080;
+	font-size: .24rem;
+}
+
+
+
+.contact {
+    background: #fff;
+    padding: .4rem .44rem;
+    margin: 0.2rem;
+    border-radius: .2rem;
+}
+.contact .contact_txt {
+    font-size: .32rem;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+
+.contact .contact_info{
+	    font-size: .28rem;
+    color: #404040;
+    margin-bottom: .1rem;
+}
+
+
+/*地图*/
+.map{
+    height: 2.16rem;
+    width: 100%;
+}
+.map a{
+    display: inline-block;
+}
+.address{
+    background: #fff;
+    margin: 0.2rem;
+    border-radius: .2rem;
+    overflow: hidden;
+}
+.address .address_txt{
+        font-size: .32rem;
+        padding: .4rem .44rem;
+    font-weight: bold;
+}
+.address_map{
+    position: relative;
+}
+.map_address{
+    position: absolute;
+    top: 1.6rem;
+    background: #fff;
+    padding: .26rem .26rem;
+    border-radius: .2rem;
+    left: .7rem;
+}
+.map_address .map_img{
+    background: url(../images/map.png) 0 center no-repeat;
+    background-size: .36rem .4rem;
+    width: .36rem;
+    height: .8rem;
+    display: inline-block;
+    float: left;
+}
+.map_address .map_txt{
+    width: 3.5rem;
+    display: inline-block;
+    float: left;
+    height: .8rem;
+    line-height: .4rem;
+    font-size: .24rem;
+    color: #404040;
+        margin: 0 .26rem;
+}
+.map_address .map_distance{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    background: #f5f5f5;
+    padding: .1rem;
+    border-radius: .1rem;
+}
+.map_address .map_distance span{
+        background: url(../images/map_j.png) 0 center no-repeat;
+    background-size: .2rem .2rem;
+    width: .2rem;
+    height: .2rem;
+    display: inline-block;
+}
+
+
+
+/*切换按钮*/
+.choose-tab{
+	margin:.4rem .3rem; 
+}
+.choose-tab .tab-box{
+	text-align: center;
+}
+.choose-tab .tab-box .active{
+	display: inline-block;
+    padding: .15rem .3rem;
+    background: linear-gradient(to right,#ff4991,#ff6150);
+    font-size: .28rem;
+    color: #fff;
+    border-radius: .6rem;
+    box-shadow: 0.1px 0.1px 7px #f39494;
+}
+.choose-tab .tab-box span:first-child{
+	margin-right: 1.2rem;
+}
+.choose-tab .tab-box span{
+	font-size: .28rem;
+	padding: .15rem .3rem;
+	font-weight: bold;
+}
+
+.q_homepage, .job-list{
+    margin: .2rem;
+    background: #fff;
+    border-radius: .2rem;
+    padding: .4rem .44rem;
+}
+.homepage_txt {
+    font-size: .32rem;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+.info-con {
+    font-size: .28rem;
+    color: #404040;
+    line-height: .48rem;
+    margin-bottom: .3rem;
+    padding-bottom: .3rem;
+}
+.info-con img {
+    max-width: 100%;
+}
+.dn {
+    display: none;
+}
+
+/*.swiper-slide img {
+    display: block;
+    width: 100%;
+}*/
+/*.swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background: #fff !important;
+}
+
+.swiper-pagination-bullet {
+    background: #000 !important;
+    opacity: .5 !important;
+}*/
+
+.de-pic {
+    margin-top: 0.2rem;
+    background-color: #fff;
+    padding: 0.2rem 0;
+    overflow-x: auto;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.pic .swiper-slide {
+    width: 2.5rem;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 0.1rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.swiper-slide{
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.pic .swiper-slide img {
+    width: 100%;
+    height: 1.8rem;
+}

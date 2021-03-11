@@ -1,0 +1,430 @@
+@charset "utf8";
+html{background: #f8f8f8;padding-bottom: constant(safe-area-inset-bottom);padding-bottom: env(safe-area-inset-bottom);}
+
+/*搜索框*/
+.search-box {padding: .2rem;background: #fff;}
+.search-box .search {width: 80%;float: left;background: #f2f2f2;border-radius: .6rem;height: .64rem;line-height: .64rem;    margin-right: .2rem;}
+.search-box .search input {border: none;height: .6rem;width: 70%;outline: 0;padding-left: 12%;background: #f2f2f2 url(../images/input.png) no-repeat 0.3rem 0.18rem;background-size: .26rem;font-size: .25rem;border-radius: .6rem;}
+.search-box .search span{font-size: .3rem;}
+.search-box .search span a{color: #999999;}
+.search-box .search-btn{float: left;font-size: .3rem;height: .64rem;line-height: .64rem;background: #00c192;padding: 0 .26rem;border-radius: .6rem;}
+.search-box .search-btn a{color: #fff;}
+.search-box .search-btn a{color: #fff;}
+.conClick{text-align: center;}
+.conClick .rest{display: inline-block;width: 2rem;height: .6rem;font-size: .28rem;background: #f2f2f2;line-height: .6rem;border-radius: .2rem;margin-right: .8rem;margin-top: .2rem;}
+.conClick .confirm{display: inline-block;width: 2rem;height: .6rem;font-size: .28rem;background: #00c192;line-height: .6rem;border-radius: .2rem;}
+.conClick .confirm a{color: #fff;}
+
+
+/*列表*/
+.list{
+        padding: .1rem .2rem;
+}
+.list ul li{
+    padding: .3rem .2rem;
+    background: #fff;
+        border-radius: .1rem;
+            margin-bottom: .2rem;
+}
+.list ul li .list_txt{
+        font-size: .32rem;
+    color: #333333;
+    font-weight: bold;
+}
+.list ul li .list_txt span:first-child{
+    float: left;
+}
+.list ul li .list_txt span:last-child{
+    float: right;
+    background: url(../images/bi.png) 0 center no-repeat;
+    background-size: .28rem .28rem;
+    display: inline-block;
+    height: .28rem;
+    width: .28rem;
+}
+.list ul li .list_title{
+color: #404040;
+    font-size: .28rem;
+    line-height: .38rem;
+    padding: .3rem 0;
+    border-bottom: 1px solid #f7f7f7;
+}
+.list ul li .list_info{
+    margin:.3rem 0 0 0 ;
+}
+
+.list ul li .list_info .info_name {
+    padding-left: .4rem;
+    margin-right: .3rem;
+    background: url(../images/set_02.png) 0 center no-repeat;
+    background-size: .36rem .36rem;
+    font-size: .28rem;
+}
+.list ul li .list_info .info_phone {
+    padding-left: .4rem;
+    margin-right: .3rem;
+    background: url(../images/set_01.png) 0 center no-repeat;
+    background-size: .36rem .36rem;
+    font-size: .28rem;
+}
+.list ul li .list_info .info_t{
+    float: right;
+    color: #cccccc;
+}
+
+/*分页*/
+.list .paging{
+    margin: .4rem 0;
+    text-align: center;
+    height: .56rem;
+    line-height: .56rem;
+    color: #808080;
+    font-size: .28rem;
+}
+.list .paging .backoff{
+    float: left;
+        width: .8rem;
+    height: .56rem;
+    display: inline-block;
+    border-radius: .2rem;
+
+}
+.list .paging .forward{
+    float: right;
+        width: .8rem;
+    height: .56rem;
+    display: inline-block;
+    border-radius: .2rem;
+
+}
+.list .paging button{
+    display: inline-block;
+    width: .8rem;
+    height: .56rem;
+    border: none;
+    background: #fff;
+    border-radius: .2rem;
+}
+.list .paging .backoff button{
+        background:#fff url(../images/sent_left.png) center no-repeat;
+        background-size: .18rem .3rem;
+}
+.list .paging .forward button{
+        background:#fff url(../images/sent_right.png) center no-repeat;
+        background-size: .18rem .3rem;
+}
+.list .paging .pading_txt em{
+        color: #00c192;
+    margin: 0 .2rem;
+        font-weight: bold;
+}
+
+
+
+
+.loading {
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    background-color: #fff;
+}
+
+
+/*密码弹框*/
+.mask {
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100000;
+    display: none;
+    bottom: 0;
+}
+.password {
+    position: fixed;
+    width: 6rem;
+    background: #fff;
+    top: calc(50% - 3rem);
+    display: none;
+    left: calc(50% - 3.4rem);
+    z-index: 1000000;
+    padding: .5rem .4rem .7rem .4rem;
+    border-radius: .2rem;
+    -webkit-animation: topFadeIn .3s ease-out;
+    -moz-animation: topFadeIn .3s ease-out;
+    animation: topFadeIn .3s ease-out;
+}
+.password input{
+        width: 3.8rem;
+    height: .6rem;
+    background: #f7f7f7;
+    border: 1px solid #00c192;
+    border-radius: .1rem;
+    padding-left: .2rem;
+}
+.password p{
+        margin: .2rem 0;
+    font-size: .26rem;
+    color: #ff526a;
+}
+.password button{
+        width: 1.5rem;
+    height: .6rem;
+    background: #00c192;
+    border-radius: .1rem;
+    border: 1px solid #00c192;
+    margin-left: .4rem;
+    color: #fff;
+    font-size: .28rem;
+}
+.close {
+    position: absolute;
+    top: .05rem;
+    font-size: .5rem;
+    color: #787878;
+    right: .2rem;
+}
+
+/*修改弹框*/
+.modify {
+    position: fixed;
+    width: 6rem;
+    background: #fff;
+    top: calc(50% - 4.4rem);
+    display: none;
+    left: calc(50% - 3.4rem);
+    z-index: 1000000;
+    padding: .5rem .4rem .7rem .4rem;
+    border-radius: .2rem;
+}
+.modify .modify_ing{
+    text-align: center;
+    border-bottom: 1px solid #f7f7f7;
+}
+.modify .modify_ing img{
+    width: .7rem
+}
+.modify .modify_ing p{
+    font-size: .26rem;
+    color: #00c192;
+    padding: .1rem 0 .2rem 0;
+}
+.modify .info .item{
+        font-size: .28rem;
+        margin: .2rem 0;
+}
+.modify .info span{
+        display: inline-block;
+    width: 1.2rem;
+    text-align: right;
+}
+.modify .info .ar_wrap{display: inline-block;border: 1px solid #00c192;
+    height: .6rem;
+    width: 4.2rem;
+    border-radius: .1rem;
+    margin-left: .2rem;
+        padding-left: .1rem;
+        background: #fafafa;}
+.modify .info p.areacode_span{   display: inline-block;text-indent: 0;}
+.modify .info input#spe_input{border: none;margin-left: 0;width: 2.8rem}
+.layer_code{    z-index: 1000001;}
+.mask-code{z-index: 1000000!important;}
+.modify .info input{
+        border: 1px solid #00c192;
+    height: .6rem;
+    width: 4.2rem;
+    border-radius: .1rem;
+    margin-left: .2rem;
+        padding-left: .1rem;
+        background: #fafafa;
+}
+.modify .info textarea{
+    margin-left: .2rem;
+    border: 1px solid #00c192;
+    vertical-align: middle;
+    height: 2.5rem;
+    width: 4.1rem;
+    border-radius: .1rem;
+    padding: .2rem .1rem;
+    background: #fafafa;
+}
+.modify .btn{
+    text-align: center;
+}
+.modify .btn .btn_delete{
+        width: 2.4rem;
+    height: .6rem;
+    background: #ff526a;
+    border: none;
+    color: #fff;
+    font-size: .28rem;
+    border-radius: .1rem;
+        margin-right: .4rem;
+}
+.modify .btn .btn_confirm{
+            width: 2.4rem;
+    height: .6rem;
+    background: #00c192;
+    border: none;
+    color: #fff;
+    font-size: .28rem;
+    border-radius: .1rem;
+}
+
+
+/* 发布 */
+.gz-address {display: none; position: absolute; top: .9rem; left: 0; right: 0; bottom: 0; z-index: 999;}
+.huoniao_iOS .gz-address {top:0;}
+.popup-fabu .tit {position: relative; text-align: center; height: .9rem; background: #fff; border-bottom: 1px solid #f2f2f2; font-size: .32rem; line-height: .9rem;}
+.huoniao_iOS .popup-fabu .tit {padding-top: 20px;}
+.popup-fabu .tit s {position: absolute; left: 0; top: 0; width: 1rem; height: .9rem; background: url(/static/images/header_back.png) center center no-repeat; background-size: auto .48rem;}
+.huoniao_iOS .popup-fabu .tit s {top: 20px;}
+.ml4r {overflow: hidden;}
+.inptitbox p {
+    margin-left: .4rem;
+    padding: .15rem 0;
+    font-size: .28rem;
+    color: #aaa;
+}
+.inptitle input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: .25rem 0;
+    font-size: .28rem;
+    text-indent: 0.4rem;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.mb4r {
+    margin-bottom: .4rem;
+}
+.ml4r {
+    background: #fff;
+    padding-left: .4rem;
+}
+.mulinpbox .multit {
+    margin-left: .4rem;
+    padding: .15rem 0;
+    font-size: .28rem;
+    color: #aaa;
+}
+.mulinpbox .mulcon {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+.mulinpbox .mulcon textarea {
+    display: block;
+    width: 100%;
+    padding: 0.3rem .4rem;
+    box-sizing: border-box;
+    min-height: 2.5rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: .28rem;
+}
+.inpbox {
+    font-size: .3rem;
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    line-height: .65rem;
+    background: #fff;
+}
+.inpbox dt {
+    width: 1.6rem;
+    color: #83868f;
+    float: left;
+}
+.ml4r .inpbox dt span {
+    padding: .2rem 0 .2rem 0;
+}
+
+.inpbox dt span {
+    color: #333;
+    display: block;
+    padding: .2rem 0 .2rem .4rem;
+}
+.inpbox dd {
+    position: relative;
+    padding-right: .4rem;
+    font-size: .26rem;
+    overflow: hidden;
+}
+.inpbox dd input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: .35rem .4rem .3rem 0;
+    text-align: right;
+    display: block;
+    -webkit-appearance: none;
+    background: #fff;
+}
+.inpbox dd .areacode_span{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: .35rem .4rem .3rem 0;
+    text-align: right;
+    display: block;
+    -webkit-appearance: none;
+    background: #fff;
+    line-height: 1em;
+}
+.areacode_span .code_label::after{    margin-top: -.1rem;}
+.checkbox {
+    background: #fff;
+}
+.checkbox p {
+    padding: 0.2rem 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: .3rem;
+}
+.checkbox .facility {
+    padding: .1rem 0 .4rem 0;
+}
+.checkbox .facility {
+    border-bottom: 1px solid #e5e5e5;
+}
+.checkbox .facility li {
+    min-width: 1rem;
+    float: left;
+    text-align: center;
+    font-size: .28rem;
+    background: #f2f2f2;
+    margin-top: .2rem;
+    margin-right: .2rem;
+    padding: .05rem .1rem;
+    color: #666;
+    border-radius: .04rem;
+}
+.fn-clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.submit {
+    padding: 20px 14px;
+    background: #f4f4f4;
+}
+.submit a {
+    display: block;
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background: #129bf0;
+    color: #fff;
+    border-radius: .04rem;
+    text-align: center;
+    font-size: .3rem;
+}
+
+.goPrev a {display: block; text-align: center; line-height: 1rem;}
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>招聘会详情</title>
+<meta name="keywords" content="招聘会,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="招聘会,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zhao-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}">  <!-- 图片放大 -->
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/photoswipe.css?v={#$cfg_staticVersion#}">  <!-- 图片点击放大 -->
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var	JubaoConfig = {
+		"module" : 'job',
+		"action" : 'zhaopinhui',
+		"id" : '{#$detail_id#}'
+	};
+
+    var pageData = {
+        title: '{#$detail_title#}',
+        address: '{#$detail_fairs['addr'][0]#}{#$detail_fairs['addr'][1]#}{#$detail_fairs['address']#}',
+        lat: '{#$detail_fairs['lnglat'][1]#}',
+        lng: '{#$detail_fairs['lnglat'][0]#}',
+        mapType: '{#$site_map#}',
+        cityName: '{#$siteCityInfo['name']#}',
+        mapKey: '{#$site_map_key#}'
+    };
+
+  var lng = '{#$detail_fairs['lnglat'][0]#}',lat = '{#$detail_fairs['lnglat'][1]#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="招聘会"#}
+
+<div class="header_txt">
+  <div class="txt">{#$detail_title#}</div>
+  <div class="time"><span>{#$detail_date|date_format:"%m-%d"#}</span><span>{#$detail_began#}-{#$detail_end#}</span></div>
+  <div class="read">阅读次数 ： {#$detail_click#}</div>
+</div>
+
+<div class="contact">
+  <div class="contact_txt">基本信息</div>
+  <div class="contact_info"><span>场馆：</span><span>{#$detail_fairs['title']#}</span></div>
+  <div class="contact_info"><span>地址：</span><span>{#$detail_fairs['addr'][0]#}{#$detail_fairs['addr'][1]#}{#$detail_fairs['address']#}</span></div>
+  {#if $userinfo#}
+  {#if $detail_fairs['tel'] != ""#}
+  <div class="contact_info"><span>电话：</span><span><a href="tel:{#$detail_fairs['tel']#}">{#$detail_fairs['tel']#}</a></span></div>
+  {#/if#}
+  {#if $detail_fairs['fax'] != ""#}
+  <div class="contact_info"><span>传真：</span><span>{#$detail_fairs['fax']#}</span></div>
+  {#/if#}
+  {#if $detail_fairs['email'] != ""#}
+  <div class="contact_info"><span>邮箱：</span><span>{#$detail_fairs['email']#}</span></div>
+  {#/if#}
+  {#if $detail_fairs['qq'] != ""#}
+  <div class="contact_info"><span>QQ：</span><span>{#$detail_fairs['qq']#}</span></div>
+  {#/if#}
+  {#else#}
+  <div class="contact_info"><span>电话：</span><span><a href="{#$cfg_basehost#}/login.html">登录后显示联系方式</a></span></div>
+  {#/if#}
+</div>
+
+<!-- 企业地址 -->
+<div class="address address_map">
+  <div class="address_txt">企业地址</div>
+  <div class="map" id="map"></div>
+  <div class="map_address fn-clear">
+    <a href="javascript:;" class="address-info fn-clear appMapBtn" style="display: block;" target="_blank">
+    <span class="map_img"></span>
+    <span class="map_txt">{#$detail_fairs['addr'][0]#}{#$detail_fairs['addr'][1]#}{#$detail_fairs['address']#}</span>
+    <div class="map_distance"><span></span><p></p></div>
+    </a>
+  </div>
+</div>
+
+  <div class="choose-tab">
+    <div class="tab-box">
+      <span class="active">招聘详情</span>
+      <span>场馆介绍</span>
+    </div>
+  </div>
+
+  <!-- 企业主页 在招职位 -->
+<div class="choose-box">
+  <div class="wrapper">
+    <div class="q_homepage">
+      <div class="homepage_txt">招聘详情</div>
+      <div class="info-con">{#$detail_note#}</div>
+    </div>  
+  </div>
+  <div class="wrapper dn">
+    <div class="job-list">
+      <div class="homepage_txt">招聘详情</div>
+      <div class="my-gallery comment-pic-slide de-pic" itemscope itemtype="">
+        <div class="swiper-wrapper pic">
+          {#foreach from=$detail_fairs['pics'] item=pics#}
+          <figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+            <a href="{#changeFileSize url="{#$pics['pic']#}" type="large"#}" itemprop="contentUrl" data-size="400x300">
+              <img src="{#changeFileSize url="{#$pics['pic']#}" type="small"#}" itemprop="thumbnail" alt="{#$detail_title#}" />
+            </a>
+          </figure>
+          {#/foreach#}
+        </div>
+      </div>
+      <div class="info-con">{#$detail_fairs['note']#}</div>
+    </div>
+  </div>
+</div>
+
+<!-- 点击照片放大 -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item">
+              <div class="pswp__zoom-wrap">
+              </div>
+            </div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$job_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_fairs['pics'][0]['pic']#}',
+		"link": '{#getUrlPath service='job' template='zhaopinhui' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/photoswipe.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/photoswipe-ui-default.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/zhao-detail.js?v={#$cfg_staticVersion#}"></script>
+<script>
+$(function(){
+    HN_Location.init(function(data){
+        if (data == undefined || data.address == "" || data.name == "" || data.lat == "" || data.lng == "") {
+
+        }else{
+            lng2 = data.lng;
+            lat2 = data.lat;
+
+            var radLat1 = lat * Math.PI / 180.0;
+            var radLat2 = lat2 * Math.PI / 180.0;
+            var a = radLat1 - radLat2;
+            var b = lng * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+            var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+            s = s * 6378.137;
+            s = Math.round(s * 10000) / 10000;
+
+            $(".map_distance p").html(s.toFixed(1) +'km');
+        }
+    })
+})
+</script>
+</body>
+</html>
