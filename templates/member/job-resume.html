@@ -1,0 +1,323 @@
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+var photoSize = {#$photoSize*1024#};
+var photoType = '{#$photoType#}';
+</script>
+
+{#if $detail_name#}
+<a href="{#getUrlPath service='job' template='resume' id={#$detail_id#}#}" target="_blank" class="preview">{#$langData['siteConfig'][10][13]#}</a>
+{#/if#}
+
+{#if $detail_photo == ''#}
+	{#$detail_photo = $userinfo.photo#}
+{#/if#}
+
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=job&action=updateResume">
+		{#if $detail_name#}
+		{#if $detail_state == 0#}<p class="state">{#$langData['siteConfig'][20][495]#}</p>{#/if#}{#* 您的简历正在审核中，审核通过即可投递简历！ *#}
+		{#if $detail_state == 2#}<p class="state">{#$langData['siteConfig'][20][496]#}</p>{#/if#}{#* 您的简历审核失败，请检查您的简历内容！ *#}
+		{#/if#}
+    <div class="thead" style="margin-top: 0;">{#$langData['siteConfig'][19][21]#}{#if $detail_name#}<em>{#$langData['siteConfig'][19][407]#}：{#$detail_pubdate|date_format:"%Y-%m-%d"#}</em>{#/if#}</div>{#* 基本资料-更新时间  *#}
+    <div class="jtop fn-clear">
+      <div class="photo">
+				<div class="loading"></div>
+				<div class="ubtn"><div class="holder"><s></s>{#$langData['siteConfig'][6][110]#}</div><input type="file" name="Filedata" class="Filedata" id="image"></div>
+        <img src="{#if $detail_photo == ""#}{#$cfg_staticPath#}images/blank.gif{#else#}{#$detail_photo#}{#/if#}" />
+				<input type="hidden" name="photo" id="litpic" value="{#$detail_photoSource#}" />
+      </div>
+      <div class="jcon">
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][4]#}：</dt>{#* 姓名  *#}
+            <dd><input type="text" name="name" class="inp" id="name" value="{#$detail_name#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][7]#}：</dt>{#* 性别  *#}
+            <dd>
+              <div class="radio">
+								<span data-id="0"{#if $detail_sex == 0 || $detail_sex == ""#} class="curr"{#/if#}>{#$langData['siteConfig'][13][4]#}</span>{#* 男  *#}
+								<span data-id="1"{#if $detail_sex == 1#} class="curr"{#/if#}>{#$langData['siteConfig'][13][5]#}</span>{#* 女  *#}
+								<input type="hidden" name="sex" id="sex" value="{#$detail_sex#}" />
+						  </div>
+            </dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][26]#}：</dt>{#* 出生日期  *#}
+            <dd><input type="text" name="birth" class="inp" id="birth" readonly value="{#$detail_birth|date_format:"%Y-%m-%d"#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][124]#}：</dt>{#* 户籍地址  *#}
+            <dd><input type="text" name="home" class="inp" id="home" value="{#$detail_home#}" /></dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][125]#}：</dt>{#* 现居地址  *#}
+            <dd><input type="text" name="address" class="inp" id="address" value="{#$detail_address#}" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][19][56]#}：</dt>{#* 联系电话  *#}
+            <dd class="fn-clear">
+              <span class="areaCode"><i>+{#$internationalPhoneSection[0]['code']#}</i><s></s></span>
+              <input type="text" name="phone" class="inp" id="phone" value="{#$detail_phone#}" />
+              <div class="areaCode_wrap areaCode_wrap2">
+                <ul>
+                  
+                </ul>
+              </div>
+              <input type="hidden" name="areaCode" id="areaCode" value="{#$internationalPhoneSection[0]['code']#}">
+
+            </dd>
+          </dl>
+        </div>
+        <div class="fn-clear">
+          <dl class="fn-clear">
+            <dt>{#$langData['siteConfig'][3][0]#}：</dt>{#* 邮箱  *#}
+            <dd><input type="text" name="email" class="inp" id="email" value="{#$detail_email#}" /></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="thead">{#$langData['siteConfig'][19][126]#}</div>{#* 求职意向  *#}
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][127]#}：</dt>{#* 工作地点  *#}
+          <dd id="selAddr">
+            <div class="sel-group">
+							<div class="addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='site_area' id=$detail_addr split=' '#}" data-id="{#$detail_addr#}">{#if $detail_addr != ""#}{#getPublicParentInfo tab='site_area' id=$detail_addr type='typename' split=' '#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>{#* 请选择  *#}
+    				</div>
+    				<input type="hidden" name="addr" id="addr" value="{#$detail_addr#}" />
+          </dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][128]#}：</dt>{#* 职位性质  *#}
+          <dd>
+            <div class="radio">
+              <span data-id="0"{#if $detail_nature == 0 || $detail_nature == ""#} class="curr"{#/if#}>{#$langData['siteConfig'][19][129]#}</span>{#* 全职  *#}
+              <span data-id="1"{#if $detail_nature == 1#} class="curr"{#/if#}>{#$langData['siteConfig'][19][130]#}</span>{#* 兼职  *#}
+              <span data-id="2"{#if $detail_nature == 2#} class="curr"{#/if#}>{#$langData['siteConfig'][19][131]#}</span>{#* 临时  *#}
+<!--    '132' => '实习',-->
+              <span data-id="3"{#if $detail_nature == 3#} class="curr"{#/if#}>{#$langData['siteConfig'][19][132]#}</span>{#* 实习  *#}
+              <input type="hidden" name="nature" id="nature" value="{#$detail_nature#}" />
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][133]#}：</dt>{#* 意向职位  *#}
+          <dd>
+						<div class="sel-group">
+    					<button type="button" class="sel" id="typename">{#if $detail_type#}{#$detail_typename#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>{#* 请选择  *#}
+    				</div>
+    				<input type="hidden" name="type" id="type" value="{#$detail_type#}" />
+					</dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][134]#}：</dt>{#* 期望薪资  *#}
+          <dd><input type="text" name="salary" class="inp" id="salary" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_salary#}" />&nbsp;&nbsp;{#echoCurrency type='short'#}/{#$langData['siteConfig'][13][18]#}</dd>{#* 月 *#}
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][135]#}：</dt>{#* 到岗时间  *#}
+          <dd>
+            <div class="sel-group">
+				<button type="button" class="sel">{#if $detail_startwork#}{#$detail_startworkname#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>{#* 请选择 *#}
+				<ul class="sel-menu">
+					{#job action="item" return="item" type="4"#}
+					<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+					{#/job#}
+				</ul>
+			</div>
+			<input type="hidden" name="startwork" id="startwork" value="{#$detail_startwork#}" />
+          </dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][911]#}：</dt>{#* 目前状况  *#}
+          <dd>
+            <div class="sel-group">
+				<button type="button" class="sel">{#if $detail_workState#}{#$detail_workStateName#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>{#* 请选择 *#}
+				<ul class="sel-menu">
+					<li><a href="javascript:;" data-id="1">{#$langData['siteConfig'][19][912]#}</a></li>  {#* 离职 *#}
+					<li><a href="javascript:;" data-id="2">{#$langData['siteConfig'][19][913]#}</a></li>  {#* 在职考虑换工作 *#}
+					<li><a href="javascript:;" data-id="3">{#$langData['siteConfig'][19][914]#}</a></li>  {#* 在职不想换工作 *#}
+					<li><a href="javascript:;" data-id="4">{#$langData['siteConfig'][19][915]#}</a></li>  {#* 应届毕业生 *#}
+				</ul>
+			</div>
+			<input type="hidden" name="workState" id="workState" value="{#$detail_workState#}" />
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="thead">{#$langData['siteConfig'][19][136]#}</div>{#* 工作经历  *#}
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][137]#}：</dt>{#* 工作年限  *#}
+          <dd><input type="text" name="workyear" class="inp" id="workyear" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_workyear#}" />&nbsp;&nbsp;{#$langData['siteConfig'][13][14]#}</dd>{#* 年 *#}
+        </dl>
+      </div>
+
+			<div id="experience">
+				{#if $detail_experience#}
+				{#foreach from=$detail_experience item=experience#}
+				<div class="item">
+					<div class="con">
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][354]#}：</dt>{#* 公司名称 *#}
+			          <dd><input type="text" class="inp company" value="{#$experience[0]#}" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][138]#}：</dt>{#* 工作时间  *#}
+			          <dd><input type="text" class="inp date1" id="date1" value="{#$experience[1]#}" /><em class="fn-left">&nbsp;-&nbsp;</em><input type="text" class="inp date2" id="date2" value="{#$experience[2]#}" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][139]#}：</dt>{#* 所在部门  *#}
+			          <dd><input type="text" class="inp bumen" value="{#$experience[3]#}" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][140]#}：</dt>{#* 担任职位  *#}
+			          <dd><input type="text" class="inp zhiwei" value="{#$experience[4]#}" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="single fn-clear">
+			          <dt>{#$langData['siteConfig'][19][141]#}：</dt>{#* 工作内容  *#}
+			          <dd><textarea class="inp neirong">{#$experience[5]#}</textarea></dd>
+			        </dl>
+			      </div>
+					</div>
+					<div class="col"></div>
+					<span class="btn move" title="{#$langData['siteConfig'][6][19]#}"><i></i></span>{#* 移动  *#}
+					<span class="btn del" title="{#$langData['siteConfig'][6][8]#}"><i></i></span>{#* 删除  *#}
+					<span class="btn add" title="{#$langData['siteConfig'][6][18]#}"><i></i></span>{#* 添加  *#}
+				</div>
+				{#/foreach#}
+				{#else#}
+				<div class="item">
+					<div class="con">
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][354]#}：</dt>{#* 公司名称 *#}
+			          <dd><input type="text" class="inp company" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][138]#}：</dt>{#* 工作时间  *#}
+			          <dd><input type="text" class="inp date1" id="date1" /><em class="fn-left">&nbsp;-&nbsp;</em><input type="text" class="inp date2" id="date2" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][139]#}：</dt>{#* 所在部门  *#}
+			          <dd><input type="text" class="inp bumen" /></dd>
+			        </dl>
+			        <dl class="fn-clear">
+			          <dt>{#$langData['siteConfig'][19][140]#}：</dt>{#* 担任职位  *#}
+			          <dd><input type="text" class="inp zhiwei" /></dd>
+			        </dl>
+			      </div>
+						<div class="fn-clear">
+			        <dl class="single fn-clear">
+			          <dt>{#$langData['siteConfig'][19][141]#}：</dt>{#* 工作内容  *#}
+			          <dd><textarea class="inp neirong"></textarea></dd>
+			        </dl>
+			      </div>
+					</div>
+					<div class="col"></div>
+					<span class="btn move" title="{#$langData['siteConfig'][6][19]#}"><i></i></span>{#* 移动  *#}
+					<span class="btn del" title="{#$langData['siteConfig'][6][8]#}"><i></i></span>{#* 删除  *#}
+					<span class="btn add" title="{#$langData['siteConfig'][6][18]#}"><i></i></span>{#* 添加  *#}
+				</div>
+				{#/if#}
+			</div>
+			<div class="fn-clear">
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><a href="javascript:;" class="newbtn">{#$langData['siteConfig'][6][18]#}</a></dd>{#* 添加  *#}
+				</dl>
+			</div>
+    </div>
+
+    <div class="thead">{#$langData['siteConfig'][19][142]#}</div>{#* 教育背景  *#}
+    <div class="jcon">
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][143]#}：</dt>{#* 最高学历  *#}
+          <dd>
+						<div class="sel-group">
+    					<button type="button" class="sel">{#if $detail_educational#}{#$detail_educationalname#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}<span class="caret"></span></button>{#* 请选择  *#}
+    					<ul class="sel-menu">
+    						{#job action="item" return="item" type="2"#}
+    						<li><a href="javascript:;" data-id="{#$item.id#}">{#$item.typename#}</a></li>
+    						{#/job#}
+    					</ul>
+    				</div>
+    				<input type="hidden" name="educational" id="educational" value="{#$detail_educational#}" />
+					</dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][144]#}：</dt>{#* 毕业学院  *#}
+          <dd><input type="text" name="college" class="inp" id="college" value="{#$detail_college#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][145]#}：</dt>{#* 毕业时间  *#}
+          <dd><input type="text" name="graduation" class="inp" id="graduation" readonly value="{#$detail_graduation|date_format:"%Y-%m-%d"#}" /></dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][146]#}：</dt>{#* 所学专业  *#}
+          <dd><input type="text" name="professional" class="inp" id="professional" value="{#$detail_professional#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][147]#}：</dt>{#* 外语水平  *#}
+          <dd><input type="text" name="language" class="inp" id="language" value="{#$detail_language#}" /></dd>
+        </dl>
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][19][148]#}：</dt>{#* 计算机水平  *#}
+          <dd><input type="text" name="computer" class="inp" id="computer" value="{#$detail_computer#}" /></dd>
+        </dl>
+      </div>
+      <div class="fn-clear">
+        <dl class="single fn-clear">
+          <dt>{#$langData['siteConfig'][19][149]#}：</dt>{#* 其他教育  *#}
+          <dd><textarea name="education" id="education" class="inp">{#$detail_education#}</textarea></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="thead">{#$langData['siteConfig'][19][150]#}</div>{#* 自我描述  *#}
+    <div class="jcon">
+      <dl class="single fn-clear">
+        <dt>{#$langData['siteConfig'][19][151]#}：</dt>{#* 个人评价  *#}
+        <dd><textarea name="evaluation" id="evaluation" class="inp">{#$detail_evaluation#}</textarea></dd>
+      </dl>
+      <dl class="single fn-clear">
+        <dt>{#$langData['siteConfig'][19][152]#}：</dt>{#* 职业目标  *#}
+        <dd><textarea name="objective" id="objective" class="inp">{#$detail_objective#}</textarea></dd>
+      </dl>
+      <dl class="single fn-clear">
+        <dt>&nbsp;</dt>
+        <dd><button class="submit" id="submit">{#$langData['siteConfig'][6][75]#}</button></dd>{#* 保存简历  *#}
+      </dl>
+    </div>
+
+  </form>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>

@@ -1,0 +1,11 @@
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+  var atpage = 1, totalCount = 0, pageSize = 20;
+</script>
+
+<div class="list collect" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></div>{#* 加载中，请稍候 *#}
+<div class="opera">
+  <label><input type="checkbox" id="selectAll" /> {#$langData['siteConfig'][6][28]#}</label>{#* 全选*#}
+  <a href="javascript:;" class="delSelect">{#$langData['siteConfig'][6][8]#}</a>{#* 删除 *#}
+</div>
+<div class="pagination fn-clear"></div>

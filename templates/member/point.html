@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$cfg_pointName#}{#$langData['siteConfig'][16][45]#} - {#$cfg_webname#}</title>{#* 明细 *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var atpage = 1, totalCount = 0, pageSize = 15;
+</script>
+</head>
+
+<body>
+{#$pageTitle = $cfg_pointName|cat:$langData['siteConfig'][16][45]#}{#* 明细 *#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<ul class="main-tab">
+				<li class="curr"><a href="javascript:;">{#$cfg_pointName#}{#$langData['siteConfig'][16][45]#}</a></li>{#* 明细 *#}
+				<!-- <li><a href="{#getUrlPath service='member' type='user' template='coupon'#}">优惠券</a></li> -->
+			</ul>
+
+			<ul class="main-sub-tab">
+				<li class="sel">
+					<label data-id="" class="curr"><s></s>{#$langData['siteConfig'][9][0]#}</label>{#* 全部 *#}
+					<label data-id="1"><s></s>{#$langData['siteConfig'][19][378]#}</label>{#* 收入 *#}
+					<label data-id="0"><s></s>{#$langData['siteConfig'][19][379]#}</label>{#* 支出 *#}
+				</li>
+				<li class="static" id="total">{#$langData['siteConfig'][23][66]#}{#$cfg_pointName#}：{#$userinfo.point#}<label></label></li>{#* 总 *#}
+			</ul>
+
+			<div class="list {#$module#}" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></div>{#* 加载中，请稍后 *#}
+			<div class="pagination fn-clear"></div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/point.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

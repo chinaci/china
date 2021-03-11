@@ -1,0 +1,15 @@
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+  var atpage = 1, totalCount = 0, pageSize = 20;
+</script>
+
+<ul class="main-sub-tab">
+  <li class="sel">
+    <label data-id="0" class="curr"><s></s>{#$langData['siteConfig'][9][31]#} (<span id="state0">0</span>)</label>{#* 待处理 *#}
+    <label data-id="1"><s></s>{#$langData['siteConfig'][9][32]#} (<span id="state1">0</span>)</label>{#* 已面试 *#}
+    <label data-id="2"><s></s>{#$langData['siteConfig'][9][33]#} (<span id="state2">0</span>)</label>{#* 不合适 *#}
+  </li>
+</ul>
+
+<div class="list invitation" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></div>{#* 加载中，请稍候 *#}
+<div class="pagination fn-clear"></div>
