@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_member['nickname']#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sj-detail.css?v={#$cfg_staticVersion#}">
+<link rel='stylesheet' href='{#$templets_skin#}css/photoswipe.css?v={#$cfg_staticVersion#}'>
+<link rel='stylesheet' href='{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}'>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#};
+
+var pageData = {
+	title: '{#$detail_member['nickname']#}',
+	address: '{#$detail_address#}',
+	lat: '',
+	lng: '',
+	lnglat: '{#$detail_lnglat#}',
+	mapType: '{#$site_map#}',
+	cityName: '{#$siteCityInfo['name']#}',
+	mapKey: '{#$site_map_key#}'
+};
+</script>
+</head>
+
+<body>
+<!-- 头部 -->
+{#$pageTitle = "商家详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 标题地址 -->
+<div class="shop-info">
+	<div class="shop-tit">
+		<h3>{#$detail_member['nickname']#}</h3>
+		<h5>{#$detail_typename#}&nbsp;&nbsp;&nbsp;&nbsp;营业时间：{#$detail_openStart#} - {#$detail_openEnd#}</h5>
+	</div>
+	<div class="shop-addr fn-clear">
+		{#if $site_map == "baidu"#}
+		<a href="http://api.map.baidu.com/geocoder?address={#$detail_address#}&output=html" target="_blank" class="shop-addr-msg appMapBtn"><i><img src="{#$templets_skin#}images/map.png"></i>{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}<br />商圈：{#$detail_circle#}</a>
+		{#elseif $site_map == "google"#}
+		<a href="https://www.google.com/maps/place/{#$detail_addrname[0]#}{#$detail_address#}" target="_blank" class="shop-addr-msg appMapBtn"><i><img src="{#$templets_skin#}images/map.png"></i>{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}<br />商圈：{#$detail_circle#}</a>
+		{#elseif $site_map == "amap"#}
+		<a href="http://ditu.amap.com/search?query={#$detail_address#}" target="_blank" class="shop-addr-msg appMapBtn"><i><img src="{#$templets_skin#}images/map.png"></i>{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}<br />商圈：{#$detail_circle#}</a>
+		{#elseif $site_map == "qq"#}
+		<a href="http://apis.map.qq.com/uri/v1/search?keyword={#$detail_address#}" target="_blank" class="shop-addr-msg appMapBtn"><i><img src="{#$templets_skin#}images/map.png"></i>{#$detail_addrname[0]#} {#$detail_addrname[1]#} {#$detail_address#}<br />商圈：{#$detail_circle#}</a>
+		{#/if#}
+		<a href="tel:{#$detail_tel#}" class="shop-addr-num r"><i><img src="{#$templets_skin#}images/phone.png"></i></a>
+	</div>
+</div>
+<!-- 团购选项 -->
+<div class="team">
+	{#tuan action="tlist" return="list" store=$detail_id#}
+	<dl>
+		<dt><img src="{#$templets_skin#}images/{#if $list.packtype == 1#}quan{#else#}tuan{#/if#}.png"></dt>
+		<dd>
+			<ul>
+				<li>
+					<a href="{#$list.url#}" class="fn-clear">
+						<div class="team-img">
+							<img src="{#changeFileSize url=$list.litpic type='small'#}">
+						</div>
+						<div class="team-txt">
+							<h3>{#$list.title#}</h3>
+							<p class="saled"><span>已售{#$list.sale#} ></span></p>
+							<p><span class="price-team">{#echoCurrency type='symbol'#}<em>{#$list.price#}</em></span><span class="price-day">门市价：{#echoCurrency type='symbol'#}{#$list.market#}</span></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</dd>
+	</dl>
+	{#/tuan#}
+</div>
+
+<!-- 附近团购 -->
+<div class="near">
+	<div class="near-tit">附近团购</div>
+	<div class="near-box">
+		{#tuan action="tlist" return="list" addrid=$detail_addrid#}
+		<div class="near-list">
+			<a href="{#$list.url#}" class="fn-clear">
+				<div class="near-img"><img src="{#changeFileSize url=$list.litpic type='small'#}"></div>
+				<dl>
+					<dt>{#$list.title#}</dt>
+					<dd class="near-info">{#$list.subtitle#}</dd>
+					<dd class="near-price"><span class="team-price">{#echoCurrency type='symbol'#}<em>{#$list.price#}</em></span><span class="day-price">门市价：{#echoCurrency type='symbol'#}{#$list.market#}</span><span class="grade">{#$list.common.rating#}分({#$list.common.count#})</span></dd>
+				</dl>
+			</a>
+		</div>
+		{#/tuan#}
+	</div>
+</div>
+
+<!-- 更多商家 -->
+<div class="near more">
+	<div class="near-tit">相关团购</div>
+	<div class="near-box">
+
+		{#tuan action="tlist" return="list" typeid=$detail_typeid#}
+		<div class="near-list">
+			<a href="{#$list.url#}">
+				<div class="near-img"><img src="{#changeFileSize url=$list.litpic type='small'#}"></div>
+				<dl>
+					<dt>{#$list.title#}</dt>
+					<dd class="near-info">
+						<div class="shop-star">
+							<i class="icon-star"><s style="width: {#$detail_rating / 5 * 100#}%;"></s></i>
+							<span class="more-grade">{#$list.common.rating#}分</span>
+						</div>
+					</dd>
+					<dd class="more-msg">
+						<span>{#$list.store.typename#}</span><span class="r">已售{#$list.sale#}份</span>
+					</dd>
+				</dl>
+				<div class="clear"></div>
+			</a>
+		</div>
+		{#/tuan#}
+
+	</div>
+</div>
+
+<!-- 底部 -->
+{#include file="footer.html"#}
+
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tuan_description#}',
+		"title": '{#$detail_member['nickname']#}',
+		"imgUrl": '{#$tuan_logoUrl#}',
+		"link": '{#getUrlPath service="tuan" template="store" id=$detail_id#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

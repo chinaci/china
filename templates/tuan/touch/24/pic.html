@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}图片</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/picture.css">
+<link rel='stylesheet' href='{#$templets_skin#}css/photoswipe.css'>
+<link rel='stylesheet' href='{#$templets_skin#}css/default-skin.css'>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+<div class="photoBox">
+	<div class="photo-head-h">
+		<div class="photo-head"><a href="{#getUrlPath service="tuan" template="detail" id=$detail_id#}" class="back"><i></i></a></div>
+	</div>
+	<div class="clear"></div>
+	<div class="swiper-container">
+		<ul id="Gallery" class="swiper-wrapper">
+			{#foreach from=$detail_pics item=pics key=k#}
+			<li data-type="1" class="swiper-slide"><img src="{#$templets_skin#}images/loader.gif" data-src="{#$pics.path#}" alt="{#$k+1#}/{#$detail_pics|@count#}"></li>
+			{#/foreach#}
+		</ul>
+	</div>
+	<div class="pic-int" style="z-index: 1001; display: block;">
+		<div class="flor f10"><span class="f14"></div>
+	</div>
+</div>
+
+<script>var atPage = 0;</script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/idangerous.swiper.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script src="{#$templets_skin#}js/picture.js"></script>
+</body>
+</html>

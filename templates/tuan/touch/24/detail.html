@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/tuan-detail.css?v={#$cfg_staticVersion#}">
+<link rel='stylesheet' href='{#$templets_skin#}css/photoswipe.css?v={#$cfg_staticVersion#}'>
+<link rel='stylesheet' href='{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}'>
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+
+var storeID     = {#$detail_sid#};
+var detailID    = {#$detail_id#};
+var detailTitle = '{#$detail_title#}';
+var detailPrice = {#$detail_price#};
+var maxCount    = {#$detail_limit#};
+var detailThumb = '{#$detail_litpic#}';
+var detailUrl   = '{#getUrlPath service="tuan" template="detail" id=$detail_id#}';
+var date        = [{#$smarty.now#}, {#$detail_startdate#}, {#$detail_enddate#}];
+</script>
+</head>
+
+<body>
+<!-- 头部 -->
+{#$pageTitle = "团购详情"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 头部 end-->
+
+<!-- 图片 -->
+<div class="pic-banner">
+	<div class="imgbox">
+		<a href="javascript:;"><img src="{#$detail_litpic#}"></a>
+	</div>
+	<div class="pic-tip">
+		<a href="javascript:;">
+			<p class="pic-name">{#$detail_title#}</p>
+			<p class="pic-info">{#$detail_subtitle#}</p>
+		</a>
+	</div>
+</div>
+<!-- 图片 end-->
+
+<!-- 标题地址 -->
+<div class="shop-info">
+	<div class="shop-tit fn-clear">
+		<span class="tuan-price">{#echoCurrency type='symbol'#}<em>{#$detail_price#}</em></span>
+		<span class="day-price">门市价：{#echoCurrency type='symbol'#}{#$detail_market#}</span>
+		{#if $detail_limit <= 0#}
+		<a href="javascript:;" class="disabled">已售完</a>
+		{#else#}
+		<a data-href="{#getUrlPath service="tuan" template="buy" id={#$detail_id#} count="1"#}" href="javascript:;" class="shop-buy">立即抢购</a>
+		{#/if#}
+	</div>
+	<div class="shop-addr">
+		<span class="green-item"><i><img src="{#$templets_skin#}images/success.png"></i>随时退</span>
+		<span class="gray-item"><i><img src="{#$templets_skin#}images/people1.png"></i>已售{#$detail_sale#}</span>
+		<span class="green-item"><i><img src="{#$templets_skin#}images/success.png"></i>过期自动退</span>
+		{#if $detail_collect == 1#}<span class="gray-item collect has"><i><img src="{#$templets_skin#}images/collect_has.png"></i>已收藏</span>{#else#}<span class="gray-item collect"><i><img src="{#$templets_skin#}images/collect_no.png"></i>收藏</span>{#/if#}
+	</div>
+</div>
+<!-- 标题地址 end-->
+
+<!-- 总评分 -->
+<div class="judge-num">
+	<a class="judge-tit fn-clear" href="{#getUrlPath service='tuan' template='review' id={#$detail_id#}#}">
+		<div class="shop-star">
+			<i class="icon-star"><s style="width: {#$detail_rating / 5 * 100#}%;"></s></i>
+			<span class="grade">{#$detail_rating#}分</span>
+			<span class="compare">{#$detail_totalCommon#}人评价 ＞</span>
+		</div>
+	</a>
+</div>
+<!-- 总评分 end-->
+
+<!-- 商家信息 -->
+<div class="seller-msg">
+	<div class="seller-name">
+		<span>商家信息</span>
+	</div>
+	<div class="seller-info">
+		<a href="{#getUrlPath service='tuan' template='store' id={#$detail_store['id']#}#}">
+			<h3>{#$detail_store['member']['company']#}</h3>
+			<p>{#$detail_store['addrname'][0]#} {#$detail_store['addrname'][1]#} {#$detail_store['address']#}</p>
+		</a>
+		<a href="tel:{#$detail_store['tel']#}" class="phone-call"><i><img src="{#$templets_skin#}images/phone.png"></i></a>
+	</div>
+</div>
+<!-- 商家信息 end-->
+
+{#if $detail_package|@count neq 0#}
+{#if $detail_packtype == 1#}
+<!-- 套餐详情 代金券-->
+<div class="tuan-detail dai-tuan">
+	<div class="tuan-tit">
+		<span>套餐</span>
+	</div>
+	<div class="tuan-con">
+		<ul>
+			<li class="fn-clear">
+				<span class="food-name">{#$detail_package[0]#}</span>
+				<span class="food-num">{#$detail_package[1]#}</span>
+				<span class="food-price">{#$detail_package[2]#}</span>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 套餐详情 代金券 end-->
+
+{#elseif $detail_packtype == 2#}
+<!-- 套餐详情 团购-->
+<div class="tuan-detail">
+	<div class="tuan-tit">
+		<span>套餐</span>
+	</div>
+	<div class="tuan-con">
+		<ul>
+			{#foreach from=$detail_package item=package#}
+			<li class="food-tit">{#$package['title']#}</li>
+			{#foreach from=$package['tr'] key=key item=tr#}
+			<li class="fn-clear">
+				<span class="food-name">{#$tr[0]#}</span>
+				<span class="food-num">{#$tr[1]#}</span>
+				<span class="food-price">{#$tr[2]#}</span>
+			</li>
+			{#/foreach#}
+			{#/foreach#}
+		</ul>
+		<div class="tuan-tip">
+			<p>最高价值：<span>{#echoCurrency type='symbol'#}{#$detail_market#}</span>团购价：<span class="price">{#echoCurrency type='symbol'#}{#$detail_price#}</span></p>
+		</div>
+	</div>
+</div>
+<!-- 套餐详情 团购 end-->
+
+{#/if#}
+
+{#/if#}
+
+<!-- 购买须知 -->
+<div class="uknow">
+	<div class="uknow-tit">
+		<span>购买须知</span>
+	</div>
+	<div class="uknow-con">
+		{#if $detail_notice|@count neq 0#}
+		{#foreach from=$detail_notice item=notice#}
+		<p class="item-tit">{#$notice.title#}：</p>
+		<p class="item-con">{#$notice.note#}</p>
+		{#/foreach#}
+		{#/if#}
+	</div>
+</div>
+<!-- 购买须知 end-->
+
+<!-- 查看图文详情 -->
+<div class="pic-con"><a href="javascript:;" id="showDetail">查看图文详情 ></a></div>
+<!-- 查看图文详情 end-->
+
+<!-- 图文详情 -->
+<div class="uknow fn-hide" id="bodyDetail">
+	<div class="uknow-tit">
+		<span>图文详情</span>
+	</div>
+	<div class="uknow-con">
+		<textarea id="tuanDetail">{#$detail_body#}</textarea>
+	</div>
+</div>
+<!-- 图文详情 end-->
+
+<!-- 买家评价 -->
+<div class="judge">
+	<div class="judge-tit"><span>评价</span></div>
+	<div id="common"><div class="loading">加载中...</div></div>
+	<div class="more-comment"><a href="{#getUrlPath service='tuan' template='review' id={#$detail_id#}#}">查看全部{#$detail_totalCommon#}条评价<span>></span></a></div>
+</div>
+<!-- 买家评价 end -->
+
+<!-- 相关团购 -->
+<div class="relative">
+	<div class="relative-tit">
+		<span>该商家的其他团购</span>
+	</div>
+	{#tuan action="tlist" return="list" store=$detail_sid#}
+	{#if $list.id != $detail_id#}
+	<div class="relative-con">
+		<div class="relative-item">
+			<a href="{#$list.url#}">
+				<div class="item-l">
+					<p>{#$list.title#}</p>
+					<p><span class="green-item">{#echoCurrency type='symbol'#}{#$list.price#}</span><span class="gray-item">门市价：{#echoCurrency type='symbol'#}{#$list.market#}</span></p>
+				</div>
+				<div class="item-r">
+					<span><img src="{#$templets_skin#}images/arr.png"></span>
+				</div>
+			</a>
+		</div>
+	</div>
+	{#/if#}
+	{#/tuan#}
+</div>
+<!-- 相关团购 end-->
+
+{#include file="footer.html"#}
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+<script src="{#$cfg_staticPath#}js/common-touch.js?v={#$cfg_staticVersion#}"></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe.min.js'></script>
+<script src='{#$cfg_staticPath#}js/ui/photoswipe-ui-default.min.js'></script>
+<script src="{#$templets_skin#}js/index1.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/sj-detail.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tuan_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service="tuan" template="detail" id=$detail_id#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

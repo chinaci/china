@@ -1,0 +1,35 @@
+html {background-color: #f0efed;}
+body {opacity: 0;}
+body.show{opacity: 1;}
+body.fixed{position: fixed;}
+a:link,a:active,a:visited,a:hover { background: none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent;}
+
+/*选择城市*/
+.search-box{background: #fff; border-bottom: 1px solid #f2f2f2; width: 100%;}
+.search-box form{position: relative; background: #fff; padding: .1rem .3rem;}
+.search-box input{ outline: 0; border: 0; border-radius: .06rem; padding: .1rem .1rem .1rem .5rem; width: 6.3rem; font-size: .28rem; line-height: .4rem; background: #eee;}
+.search-box .icon{position: absolute; width: .4rem; height: .4rem; left: .4rem; top: .2rem;}
+.search-box .icon img{display: block; width: .4rem; height: .4rem;}
+.search-box .close{position: absolute; width: .5rem; height: .5rem; right: .4rem; top: .15rem; display: none;}
+.search-box .close img{display: block; width: .3rem; height: .3rem; margin: .1rem auto;}
+.table-tit{color: #666; padding: .1rem .3rem; font-size: .26rem; text-transform: uppercase;}
+
+.local{position: relative; background: #fff; padding: .2rem .3rem; font-size: .28rem; line-height: .4rem;}
+.local p{line-height: .4rem; height: .4rem;}
+.localBtn{position: absolute; right: .3rem; top: .2rem; color: #2595fb; padding-left: .4rem; background: url(../images/local.png) left top no-repeat; background-size: .35rem auto;}
+.table-list li{background: #fff; padding: 0 1rem 0 .3rem; font-size: .28rem; border-bottom: 1px solid #f2f2f2;}
+.table-list li a{display: block; padding: .25rem 0;}
+.no-select{ -webkit-user-select:none; -moz-user-select:none; -o-user-select:none; user-select:none;}
+
+.szm{position: fixed; right: 0; top: 3rem; z-index: 2;}
+.szm li{color: #666; text-transform: uppercase; width: .5rem; height: .4rem; text-align: center;}
+.szm li a{display: block;}
+
+/*搜索结果列表*/
+.search-list{position: fixed; top: 1.7rem; background: #fff; left: 0; right: 0; bottom: 0; z-index: 9; border-top: 1px solid #f2f2f2; overflow: auto; display: none;}
+.search-list li{border-bottom: 1px solid #f2f2f2; font-size: .28rem;}
+.search-list a{padding: .25rem .3rem; display: block;}
+
+/*字母放大*/
+.letter{width: 1.8rem; height: 1.8rem; position: fixed; top: 50%; left: 50%; margin-left: -.9rem; margin-top: -.9rem; text-align: center; background: #717171; color: #fff; line-height: 1.8rem; font-size: .6rem; border-radius: .08rem; display: none; text-transform: uppercase;}
+.letter a{color: #fff;}

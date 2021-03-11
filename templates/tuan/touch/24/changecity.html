@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>选择城市 - {#$tuan_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/city.css">
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js"></script>
+<script type="text/javascript">
+	var templets = '{#$templets_skin#}',staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 s -->
+{#$pageTitle = '选择城市'#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 头部 e -->
+
+<!-- 选择城市 -->
+<div class="search-box">
+	<form action="" method="post">
+		<i class="icon"><img src="{#$templets_skin#}images/icon-search.png" alt=""></i>
+		<input type="text" name="" value="" placeholder="输入城市名或拼音查询">
+		<em class="close"><img src="{#$templets_skin#}images/icon-close.png" alt=""></em>
+	</form>
+</div>
+<div class="main">
+	{#if $site_map == "baidu"#}
+	<p class="table-tit no-select">当前定位城市</p>
+	<div class="local"><p>定位中..</p><span class="localBtn">重新定位</span></div>
+	{#/if#}
+	<div class="table-city"></div>
+	<div class="szm navbar"></div>
+</div>
+
+<div class="search-list"><ul></ul></div>
+
+<div class="letter">A</div>
+{#* 微信分享 *#}
+{#$Share_description = {#$waimai_description#}#}
+{#$Share_title = {#$waimai_title#}#}
+{#$Share_img = {#$waimai_logoUrl#}#}
+{#$Share_url = {#$waimai_channelDomain#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/city.js"></script>
+</body>
+</html>

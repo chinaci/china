@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$tuan_title#}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', countDownTime = '{#$smarty.now|date_format:"%Y/%m/%d 00:00:00"#}', cfg_staticPath = '{#$cfg_staticPath#}', hideFileUrl = {#$cfg_hideUrl#}, staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 -->
+{#$pageTitle = $tuan_channelName#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute"#}
+<!-- 头部 end -->
+
+<!-- 幻灯片 s -->
+<div class="wrapper">
+	<div class="swiper-container" id="slider">
+		<div class="swiper-wrapper">
+			{#myad title="团购秒杀_模板一_移动端_广告一" type="slide"#}
+		</div>
+		<div class="pagination"></div>
+	</div>
+</div>
+<!-- 幻灯片 e -->
+
+<!-- 滑动导航 -->
+<div class="swiper-container" id="slideNav">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<ul class="nav fn-clear">
+				{#tuan action="type" return='type'#}
+				<li><a href="{#$type.url#}"><span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}" alt="{#$type.typename#}"></span><span class="icon-txt">{#$type.typename#}</span></a></li>
+				{#/tuan#}
+			</ul>
+    </div>
+	</div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- 导购 -->
+<div class="daogou">
+	<div class="countDown">
+		{#myad title="团购秒杀_模板一_移动端_广告二"#}
+	</div>
+	<ul class="sale-box r">
+		{#myad title="团购秒杀_模板一_移动端_广告三"#}
+	</ul>
+</div>
+
+<!-- 猜你喜欢 -->
+<div class="u-like">
+	<div class="like-tit"><i></i><span>猜你喜欢</span></div>
+	<div class="like-con">
+		<div class="loading">加载中...</div>
+		<div class="all-tuan"><a href="list.html">查看全部团购</a></div>
+	</div>
+</div>
+
+
+<div class="fixFooter">
+  <ul>
+    <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+    <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='order-tuan'#}"><i></i>订单</a></li>
+    <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+  </ul>
+</div>
+
+
+{#include file="footer.html"#}
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tuan_description#}',
+		"title": '{#$tuan_title#}',
+		"imgUrl": '{#$tuan_logoUrl#}',
+		"link": '{#$tuan_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

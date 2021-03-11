@@ -1,0 +1,18 @@
+/*头部*/
+.header{height: .8rem;width: 100%;border-bottom: 1px solid #ebebeb;display: -webkit-box;background: #fff;position: fixed;max-width: 1080px;z-index: 10;}
+.header-l{line-height: .8rem;width: 1rem;}
+.header-l a{margin: .15rem .2rem;display: block;}
+.header-l img{display: block;width: .5rem;height: .5rem;}
+.header-r{font-size: .34rem;line-height: .8rem;-webkit-box-flex: 1;text-align: center;}
+
+/*相册内容*/
+.picture{padding-top: .81rem;}
+.pic-tab{background: #fff;height: .8rem;line-height: .8rem;font-size: .3rem;display: -webkit-box;overflow-x: auto;position: fixed;z-index: 10;width: 100%;max-width: 1080px;}
+.pic-tab a{display: block;width: 1.85rem;text-align: center;height: .75rem;}
+.pic-tab a.active{border-bottom: .06rem solid #ff552e;}
+.pic-list{padding: 1.2rem .2rem 0 .2rem;display: none;}
+.pic-list figure{width: 3.2rem;height: 3.2rem;float: left;padding: .1rem;background: #fff;margin-bottom: .3rem}
+.pic-list figure:nth-child(odd){margin-right: .3rem;}
+.pic-list figure a{display: block;position: relative;width: 100%;height: 100%}
+.pic-list figure img{display: block;width: 100%;height: 100%;}
+.pic-list figure p{position: absolute;bottom: 0;height: .6rem;line-height: .6rem;;background: rgba(0,0,0,.6);width: 100%;color: #fff;text-align: center;font-size: .28rem;overflow: hidden;}
