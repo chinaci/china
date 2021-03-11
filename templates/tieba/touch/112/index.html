@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$tieba_title#}</title>
+<meta name="apptitle" content="{#$tieba_channelName#}">
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+	var templets = '{#$templets_skin#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var page = 1;
+  var pageSize = 5;
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = $tieba_channelName#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<!-- banner s -->
+<div class="banner">
+  <div class="wrapper">
+      <div class="swiper-container">
+          <div class="swiper-wrapper">
+          	  {#myad title="贴吧社区_模板二_移动端_广告一" type="slide"#}
+          </div>
+          <div class="pagination"></div>
+      </div>
+  </div>
+</div>
+<!-- banner e -->
+<!-- 搜索 s-->
+<div class="search-form fn-clear">
+  <div class="sobj">
+    <div class="area">
+      <a href="{#$cfg_basehost#}/changecity.html">
+        <i></i>
+        <label>{#$siteCityInfo['name']#}</label>
+        <s></s>
+      </a>
+    </div>
+    <div class="inp">
+      <a href="{#$cfg_basehost#}/search-list.html?action=house&keywords=" >
+        <s></s>
+        <label>帖子、板块、用户</label>
+        <span>搜索</span>
+      </a>
+    </div>
+  </div>
+  {#if $cfg_qiandao_state#}<div class="qiandao"><a href="{#getUrlPath service='member' type='user' template='qiandao'#}"><img src="{#$templets_skin#}images/qiandao.png"><p>签到</p></a></div>{#/if#}
+</div>
+<!-- 搜索 e -->
+
+<!-- 滑动导航 s -->
+<div class="pubBox swiper-nav">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <ul>
+              	  {#tieba action="type" return='type'#}
+                  <li>
+                    <a href="{#$type.url#}">
+                      <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+                      <span class="icon-txt">{#$type.typename#}</span>
+                    </a>
+                  </li>
+                  {#if !(($_bindex.type) % 10)#}
+				  </ul>
+				  </div>
+				  <div class="swiper-slide">
+	        	  <ul>
+	        	  {#/if#}
+                  {#/tieba#}
+              </ul>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<!-- 滑动导航 e -->
+
+<!-- 总数 s -->
+<div class="pubBox account">
+  <ul class="fn-clear">
+    <li><a href="javascript:;"><p>用户: <em class="user">0</em></p></a></li>
+    <li><a href="javascript:;"><p>发贴量: <em class="views">0</em></p></a></li>
+    <li><a href="javascript:;"><p>今日：<em class="today">0</em></p></a></li>
+  </ul>
+</div>
+<!-- 总数 e -->
+
+<!-- 推荐置顶、最新发布 -->
+<div class="pubBox recomTab">
+  <ul>
+    <li class="active" data-id="1" data-action="recomTop" data-page="1" data-totalpage="1">
+      <a href="javascript:;">推荐置顶</a>
+    </li>
+    <li data-id="2" data-action="newFabu" data-page="1" data-totalpage="1">
+      <a href="javascript:;">最新发布</a>
+    </li>
+     <li data-id="3" data-action="imgTie" data-page="1" data-totalpage="1">
+      <a href="javascript:;">图片帖子</a>
+    </li>
+     <li data-id="4" data-action="videoTie" data-page="1" data-totalpage="1">
+      <a href="javascript:;">视频帖子</a>
+     </li>
+  </ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+  <div class="swiper-container" id="tabs-container">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide ">
+            <ul class="fn-clear recomlist conlist">
+            </ul>
+         </div>
+         <div class="swiper-slide ">
+            <ul class="fn-clear newfblist conlist">
+            </ul>
+         </div>
+          <div class="swiper-slide ">
+            <ul class="fn-clear imglist conlist">
+            </ul>
+         </div>
+          <div class="swiper-slide">
+            <ul class="fn-clear videolist conlist">
+            </ul>
+         </div>
+      </div>
+  </div>
+</div>
+
+<!-- 发布 -->
+<a href="{#getUrlPath service='tieba' template='fabu'#}" class="fabu-btn"><i></i></a>
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<div class="wechat-fix"><img src="{#$templets_skin#}images/wechat-fix.png" alt=""></div>
+<div class="wechat-popup">
+  <div class="con">
+    <a href="javascript:;" class="close">×</a>
+    {#if $cfg_weixinQr#}
+    <dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>
+    {#/if#}
+	{#if $cfg_miniProgramQr#}
+    <dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>
+  	{#/if#}
+  </div>
+</div>
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="tieba"#}
+<!-- 大图展示 s-->
+<div class="bigBoxShow">
+  <div class="swiper-container bigSwiper">
+      <i class="vClose"></i>
+      <div class="swiper-wrapper">
+
+      </div>
+      <div class="swiper-pagination bigPagination"></div>
+  </div>
+</div>
+<!-- 大图展示 e-->
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tieba_description#}',
+		"title": '{#$tieba_title#}',
+		"imgUrl": '{#$tieba_logoUrl#}',
+		"link": '{#$tieba_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.animate1.0.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

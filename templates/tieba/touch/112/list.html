@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#if $seoTitle != ""#}{#$seoTitle#}{#/if#}</title>
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var typeid = {#$typeid|string_format:"%d"#};
+  var templets = '{#$templets_skin#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = $tieba_channelName#}
+{#include file="../../../siteConfig/touch_top.html"#}
+
+<div class="top-box">
+   <h2>{#$typename#}</h2>
+   <p><span>今日发帖: {#$tiziTodayTotal|number_format#}</span><span>浏览量：{#if $typeTotal > 10000#}{#($typeTotal/10000)|string_format:"%.1f"#} <em>万</em>{#else#}{#$typeTotal|number_format#}{#/if#}</span></p>
+</div>
+
+<div class="pubBox seconedTab">
+     <ul class="fn-clear">
+        <li data-id="0" class="all {#if empty($typeid)#}active{#/if#}"><a href="javascript:;">全部</a></li>
+        {#tieba action="type" return='type'#}
+        <li data-id="{#$type.id#}" class="{#if $typeid==$type.id#}active{#/if#}"><a href="javascript:;">{#$type.typename#}</a></li>
+        {#/tieba#}
+    </ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="container">
+  <div class="swiper-container" id="tabs-container">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide">
+            <ul class="fn-clear conlist">
+            </ul>
+         </div>
+      </div>
+  </div>
+</div>
+
+<!-- 大图展示 s-->
+<div class="bigBoxShow">
+  <div class="swiper-container bigSwiper">
+      <i class="vClose"></i>
+      <div class="swiper-wrapper">
+
+      </div>
+      <div class="swiper-pagination bigPagination"></div>
+  </div>
+</div>
+<!-- 大图展示 e-->
+
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+        "description": '{#$tieba_description#}',
+        "title": '{#if $seoTitle != ""#}{#$seoTitle#}{#else#}{#$tieba_title#}{#/if#}',
+        "imgUrl": '{#$tieba_logoUrl#}',
+        "link": '{#getUrlPath service="tieba" template="list" id=$typeid#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

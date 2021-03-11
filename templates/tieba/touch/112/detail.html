@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no">
+<title>{#$detail_title#}{#if $seoTitle != ""#}{#/if#}</title>
+<meta name="apptitle" content="帖子正文">
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba';
+  var currentPhoto = "{#$currentPhoto#}", louzuid = '{#$louzu['uid']#}', id = {#$detail_id#}, cookiePre = '{#$cfg_cookiePre#}',templets = '{#$templets_skin#}',staticPath = '{#$cfg_staticPath#}';
+  var rewardUrl = '{#getUrlPath service="tieba" template="reward" id=$detail_id#}';
+  var uplikeUrl = '{#getUrlPath service="tieba" template="uplike" id=$detail_id#}';
+  var JubaoConfig = {
+		"module" : 'tieba',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	  };
+	var touch_poster = 1;  //是否有海报按钮
+</script>
+</head>
+<body>
+<!-- nav -->
+{#$pageTitle = '帖子正文'#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 海报 -->
+{#include file="../../../siteConfig/public_touch_poster.html" posterModule='tiebaDetail'#}
+{#include file="../../../siteConfig/touch_poster_3.7.html" posterType="tiebaModule"#}
+<div class="pubBox topTitle">
+   <h3 class="title">{#$detail_title#}</h3>
+   <div class="info">
+   		<p class="fn-clear"><a href="{#$cfg_basehost#}/user/{#$louzu['uid']#}"><img src="{#if $louzu.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$louzu.photo#}" type="middle"#}{#/if#}" alt=""><span>{#$louzu.nickname#}<br /><small>{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</small></span></a></p>
+   		{#if $louzu['uid'] != $userinfo['userid']#}
+   			{#if $userinfo && $isfollow#}
+   			<a href="javascript:;" class="btn-care cared">已关注</a>
+   			{#else#}
+   			<a href="javascript:;" class="btn-care">关注</a>
+   			{#/if#}
+   		{#/if#}
+   </div>
+</div>
+
+<div class="pubBox mainContent">
+	<div class="content">
+	{#$detail_content#}
+	</div>
+	<div class="btnbox" id="btnbox">
+		<div class="uplikebox{#if !empty($isuplike)#} active{#/if#}"><s><img src="{#$templets_skin#}images/uplikeIcon.png" alt=""></s><span>赞</span></div>
+		<div class="shoucan {#if $collect == 'has'#}active{#/if#}"><s><img src="{#$templets_skin#}images/shoucan{#if $collect == 'has'#}g{#/if#}.png" alt=""></s><span>{#if $collect == 'has'#}已收藏{#else#}收藏{#/if#}</span></div>
+		<div class="sharebox HN_PublicShare"><s><img src="{#$templets_skin#}images/shareIcon.png" alt=""></s><span>分享</span></div>
+		{#if 'reward'|in_array:$cfg_ucenterLinks#}
+		<div class="rewardbox"><s><img src="{#$templets_skin#}images/rewardIcon.png" alt=""></s><span>打赏</span></div>
+		{#/if#}
+	</div>
+	<div class="uplikelist fn-clear">
+		<i class="upIcon"></i>
+		<ul class="fn-clear" id="memberlist">
+		</ul>
+		<div class="morebox"><em></em></div>
+	</div>
+	<div class="conbottom">
+		<span class="readNum">阅读 {#$detail_click#}</span>
+		<span class="reportbox HN_Jubao"><i></i>举报</span>
+	</div>
+</div>
+
+<div class="pubBox commentBox fn-clear">
+	<div class="head-title">
+		<p class="fn-clear"><span>网友评论 (<em class="totalCount">0</em>)</span></p>
+	</div>
+	<div class="commentList">
+		<ul class="commentlist" data-page="2">
+		</ul>
+	</div>
+
+</div>
+
+<div class="c-bottom bottom_reply_fixed">
+	<i class="emoIcon"></i>
+	<div class="commenttext" >
+		<div class="text placeholder"  contenteditable  placeholder="我来说两句..."></div>
+
+	</div>
+	<a href="javascript:;" class="btnSend">发送</a>
+</div>
+
+<div class="emotion-box">
+
+</div>
+
+<div class="mask"></div>
+<!-- 打赏 s -->
+<div class="reward">
+  <a href="javascript:;" class="close"></a>
+  <div class="reward-a">
+    <div class="reward-box fn-clear">
+      <a href="javascript:;" class="active">{#echoCurrency type='symbol'#}<em>1.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>2.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>5.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>10.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>20.00</em></a>
+      <a href="javascript:;">{#echoCurrency type='symbol'#}<em>50.00</em></a>
+    </div>
+    <a href="javascript:;" class="reword-other">其他金额</a>
+  </div>
+  <div class="reward-b">
+    <div class="reward-inp fn-hide">
+      <label class="inp-tag">金额</label>
+      <input type="number" name="" value="" min="0.50" maxlength="8" placeholder="输入打赏金额" id="reward">
+    </div>
+    <a href="javascript:;" class="reword-sure">确定</a>
+  </div>
+</div>
+<!-- 打赏 e -->
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+  <div class="tit">选择支付方式</div>
+  <ul>
+  	{#siteConfig action="payment"#}
+  	{#if $row.pay_code == "wxpay"#}
+    <li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "globalalipay"#}
+    <li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "alipay"#}
+    <li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+    {#elseif $row.pay_code == "paypal"#}
+    <li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+    {#/if#}
+    {#/siteConfig#}
+  </ul>
+  <a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+<div class="gotop"><img src="{#$templets_skin#}images/go-top.png" alt=""></div>
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$tieba_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#if $detail_imgGroup[0]#}{#$detail_imgGroup[0]#}{#else#}{#$tieba_logoUrl#}{#/if#}',
+		"link": '{#getUrlPath service='tieba'  template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/im/BenzAMRRecorder.js"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/like-effect.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
