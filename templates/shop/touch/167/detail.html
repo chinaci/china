@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>商品详情</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.bigImage_1.2.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}',templets='{#$templets_skin#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+	jQuery = $;
+	var detailID = {#$detail_id#};     //当前商品信息ID
+	var storeid  = {#$detail_store['id']#};     //商家ID
+	var detailTitle = '{#$detail_title#}';
+	var detailPrice = {#$detail_price#};
+	var maxCount = {#$detail_limit#};  //最多购买数量
+	var detailinventory = {#$detail_inventory#};
+	var detailThumb = '{#changeFileSize url={#$detail_litpic#} type='small'#}';   //当前商品缩略图
+	var detailUrl = '{#getUrlPath service="shop" template="detail" id=$detail_id#}';
+	var date = [];
+	{#if $detail_flag|strpos:"3" !== false#}
+	date = [{#$smarty.now#}, {#$detail_btime#}, {#$detail_etime#}];
+	{#/if#}
+
+	var JubaoConfig = {
+		"module" : 'shop',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+
+	//商品信息-商品颜色和尺寸
+	var sku_conf = {
+
+			//属性表
+			"property": [
+				{#foreach from=$detail_specificationArr item=spe#}
+				{
+					"name": "{#$spe.typename#}",
+					"options": [
+						{#foreach from=$spe.item item=item#}
+						{"id": "{#$item.id#}",	"name": "{#$item.name#}"{#if $item.pic#}, "pic": "{#$item.pic#}"{#/if#}},
+						{#/foreach#}
+					]
+				},
+				{#/foreach#}
+			]
+
+			//属性值
+			,"data": {
+
+				{#foreach from=$detail_specification item=spe#}
+				{#if $spe.price[2] > 0#}
+				"{#$spe.spe|replace:"-":";"#}": {price: {#$spe.price[1]#}, mprice: {#$spe.price[0]#}, stock: {#$spe.price[2]#}},
+				{#/if#}
+				{#/foreach#}
+			}
+	};
+
+	//商品规格选择
+	var detail_video='{#$detail_video#}';
+	var imconfig = {
+		'mod':'shop',
+		'chatid':"{#$detail_store['userid']#}",
+		'title': '{#$detail_title#}',
+		"price": '<em>{#echoCurrency type="symbol"#}</em>{#$detail_price#}',
+		"imgUrl": '{#changeFileSize url={#$detail_litpic#} type='small'#}',
+		"link": '{#getUrlPath service="shop" template="detail" id=$detail_id#}',
+
+	};
+
+	var touch_poster = 1;  //是否有海报按钮
+	var userinfo = '{#$userinfo.photo#}';
+</script>
+<style>
+	.html2ShopWrap .rignt_recinfo .username{display: inline-block;  vertical-align: middle;}
+	.html2ShopWrap .html2_p_info{border-radius: 0 0 .1rem .1rem;}
+	.html2ShopWrap .html2_p_info .nqginfo {position: relative; overflow: hidden; display: inline-block;}
+	.html2ShopWrap .html2_p_info .nqginfo .line{display: block; height: 1px; width: 100%; background: #999; position: absolute; top: 52%; left: 0;}
+</style>
+</head>
+
+<body>
+	<!-- 头部 -->
+	{#include file="../../../siteConfig/touch_top.html" pageTitle="商品详情"#}
+	<!-- 头部 end -->
+
+	<div class="html2Wrap html2ShopWrap">
+		<div class="html2_node" id="html2_node">
+			{#if $userinfo.nickname#}
+			<div class="html2_rec">
+				<div class="left_recimg"><img src="{#if $userinfo.photo#}{#$userinfo.photo#}{#else#}/static/images/noPhoto_40.jpg{#/if#}" /></div>
+				<div class="rignt_recinfo">
+					<h3><i class="username">{#$userinfo.nickname|mb_substr:0:2:'UTF-8'#}***</i>向你推荐<span>用户推荐</span></h3>
+					<p>这个宝贝太值了，强烈推荐</p>
+				</div>
+			</div>
+			{#/if#}
+			<div class="himg_box2"><img src="{#$detail_litpic#}" /></div>
+			<div class="html2_p_info">
+				<div class="html2_qrcode1"><img src="/include/qrcode.php?data={#getUrlPath service='shop' template='detail'  id={#$detail_id#} #}"></div>
+				<div class="left_info">
+					<div class="hpro_title">{#$detail_title#}</div>
+					<div class="pro_price">
+						<div class="l"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span>  <span class="nqginfo "><span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}<i class="line"></i></span></span></div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="html2_info">
+				<h2>{#$cfg_shareTitle#}</h2>
+				<p>{#$cfg_shareDesc#}</p>
+				<h3><span>长按识别二维码看详情</span></h3>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- 视频图片轮播 s-->
+	<div class="topSwiper msend">
+		{#if $detail_states==2&&$detail_ketime<time()#}
+		<div class="alendcover"></div>
+		{#/if#}
+		<div class="swiper-container">
+	          <div class="swiper-wrapper">
+	              {#if !empty($detail_video)#}
+	              <div class="swiper-slide video-box">
+	              	<img src="{#$detail_litpic#}" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" alt=""></div>
+	              </div>
+	              {#/if#}
+	              {#foreach from=$detail_pics item=pic#}
+	              <div class="swiper-slide"><img src="{#changeFileSize url={#$pic.path#} type='large'#}" width="100%" height="100%"></div>
+	              {#/foreach#}
+	          </div>
+	          <div class="swiper-pagination"></div>
+	    </div>
+	    <div class="markBox">
+	        {#if !empty($detail_video)#}
+			<a href="javascript:;" class="pmark video"><i class="ivIcon"></i>视频</a>
+			{#/if#}
+			<a href="javascript:;" class="pmark picture">图片</a>
+		</div>
+	</div>
+	<!-- 视频图片轮播 e-->
+
+	{#if $detail_states==1#}
+		{#if $detail_btime>time()#}
+		<!-- 抢购未开始显示 -->
+		<div class="qginfo">
+			<div class="l"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span>  <span class="nqginfo"><span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}</span></span></div>
+			<div class="r">
+				<div class="rtime">
+					<span>距开始</span>
+					<div class="jsTime fn-clear" data-time="{#$detail_btime#}">
+						<span class="day"></span><em>:</em>
+						<span class="hour"></span><em>:</em>
+						<span class="minute"></span><em>:</em>
+						<span class="second"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		{#elseif $detail_etime>time()#}
+		<!-- 抢购已开始显示 -->
+		 <div class="qginfo">
+			<div class="l"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span> <span class="nqginfo"><span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}</span><span>已抢{#$detail_sales#}件</span></span></div>
+			<div class="r">
+				<div class="rtime">
+					<span>距结束</span>
+					<div class="jsTime fn-clear" data-time="{#$detail_etime#}">
+						<span class="day"></span><em>:</em>
+						<span class="hour"></span><em>:</em>
+						<span class="minute"></span><em>:</em>
+						<span class="second"></span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		{#else#}
+		{#/if#}
+	{#elseif $detail_states==2#}
+	<!-- 秒杀信息 s-->
+	<div class="msinfo">
+		<div class="l"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span> <span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}</span></div>
+		<div class="r">
+			<!-- 秒杀未开始显示 -->
+			{#if $detail_kstime>time()#}
+			<div class="rtime">
+				<span>距开始</span>
+				<div class="jsTime fn-clear" data-time="{#$detail_kstime#}">
+					<span class="day">0</span><em>:</em>
+					<span class="hour">0</span><em>:</em>
+					<span class="minute">0</span><em>:</em>
+					<span class="second">0</span>
+				</div>
+			</div>
+			{#elseif $detail_ketime<time()#}
+				<!-- 秒杀已结束显示 -->
+				 <p class="pend">秒杀已结束</p>
+			{#elseif $detail_kstime<time()#}
+				<!-- 秒杀已开始显示 -->
+			    <img src="{#$templets_skin#}images/mastart.png" alt="">
+		    {#/if#}
+		</div>
+	</div>
+	<!-- 秒杀信息 e-->
+	{#/if#}
+
+	<!-- 商品信息s -->
+	<div class="shopInfo">
+	    {#if $detail_states!=1 && $detail_states!=2#}
+		<div class="info_price"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span><span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}</span></div>
+		{#elseif $detail_states==1 && $detail_etime<time()#}
+		<div class="info_price"><span class="nprice"><em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}</span><span class="yprice">{#echoCurrency type='symbol'#} {#$detail_mprice#}</span></div>
+		{#/if#}
+		<div class="info_box fn-clear">
+			<p class="soucang {#if $detail_collect == 1#}hascang{#/if#}">
+				<i></i>
+				<span>{#if $detail_collect == 1#}已{#/if#}收藏</span>
+			</p>
+			<h2>{#$detail_title#}</h2>
+		</div>
+
+		<div class="bo_info"><span class="yunfei">{#$detail_logisticNote#}</span><span class="xiaol">销量:{#$detail_sales#}笔</span><span class="address">{#$detail_store['addr'][0]#} {#$detail_store['addr'][1]#}</span></div>
+	</div>
+	<!-- 商品信息e -->
+	<!-- 优惠券 s -->
+	<div class="youhui">
+		<p>优惠<span>满1999减100</span></p>
+		<p class="receive">领取 <s class="right"></s></p>
+	</div>
+	<!-- 优惠券 e -->
+
+	<!-- 规格、数量 s-->
+	<div class="goods_tp">
+		<div class="goods_box btn-guige"><span>规格</span><input type="text" value="请选择 {#foreach from=$detail_specificationArr item=spe#} {#$spe.typename#}{#/foreach#}" class="inpSelect" readonly unselectable="on" onfocus="this.blur()"><s class="right"></s></div>
+		<div class="goods_box"><span>数量</span><p class="sizeBtn"><a href="javascript:;" class="numbtn reduce">－</a><input type="number" class="count" value="1"><a href="javascript:;" class="numbtn add">＋</a></p></div>
+	</div>
+	<!-- 规格、数量 e-->
+
+	<!-- 图文详情 s-->
+	<div class="goods_detail">
+		<ul class="det-tab">
+			<li class="active">图文详情 <s></s></li>
+			{#if $detail_property#}<li>产品参数 <s></s></li>{#/if#}
+			<li>用户评价 <s></s></li>
+		</ul>
+		<div class="det-con picshow show">
+			{#if empty($detail_mbody)#}
+				{#$detail_body#}
+			{#else#}
+				{#$detail_mbody#}
+			{#/if#}
+		</div>
+		{#if $detail_property#}
+		<div class="det-con">
+		    {#foreach from=$detail_property item=type#}
+			<p class="pbox"><span>{#$type.typename#}</span>{#$type.val#}</p>
+			{#/foreach#}
+		</div>
+		{#/if#}
+		<div class="det-con  ">
+			<ul class="com-tab fn-clear">
+				<li class="active"><a href="javascript:;">全部 <em class="all"></em></a></li>
+				<li data-type="h"><a href="javascript:;">好评 <em class="hp"></em></a></li>
+				<li data-type="z"><a href="javascript:;">中评 <em class="zp"></em></a></li>
+				<li data-type="c"><a href="javascript:;">差评 <em class="cp"></em></a></li>
+				<!--<li data-type="wg"><a href="javascript:;">外观好看</a></li>
+				<li data-type="zl"><a href="javascript:;">质量好</a></li>
+				<li data-type="sy"><a href="javascript:;">声音小</a></li>
+				<li data-type="yw"><a href="javascript:;">无异味</a></li>-->
+			</ul>
+			<div class="comment-box">
+				<ul class="com-list">
+				</ul>
+				<div class="morebox"><a href="javascript:;">查看更多</a></div>
+			</div>
+
+		</div>
+	</div>
+	<!-- 图文详情 e-->
+
+	<!-- 相似推荐 s-->
+	<div class="recombox">
+		<div class="sbotop fn-clear">
+			<div class="sbleft">
+                <a href="{#$detail_store['domain']#}"><img src="{#$detail_store['logo']#}" alt="{#$detail_store['title']#}"></a>
+			</div>
+			<div class="sbright">
+                <h3><a href="{#$detail_store['domain']#}">{#$detail_store['title']#}</a></h3>
+				<p class="goodcom">好评率 <em>{#$detail_store['rating']#}</em></p>
+				<p class="fn-clear"><span class="rzcon"><i></i>实名认证</span><span class="bzjcon"><i></i>保证金</span><span class="wepay"><i></i>微信支付</span></p>
+				{#if $detail_storeCollect == 1#}
+				<a href="javascript:;" class="btn-care cared">已关注</a>
+				{#else#}
+				<a href="javascript:;" class="btn-care"><i></i>关注</a>
+				{#/if#}
+			</div>
+		</div>
+		<div class="sbomain">
+			<ul class="sbotab">
+				<li class="active">相似推荐 <s></s></li>
+				<li>店铺热销 <s></s></li>
+			</ul>
+			<div class="sbocon sbshow fn-clear">
+			    {#shop action="slist" return="list" typeid={#$detail_typeid#} store={#$detail_store['id']#} page="1" pageSize="3"#}
+				<div class="conbox">
+					<a href="{#$list.url#}">
+						<div class="imgbox">
+							<img src="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="">
+							<div class="imgcover"></div>
+						</div>
+						<div class="txtbox">
+							<p>{#$list.title#}</p>
+							<span>{#echoCurrency type='symbol'#}{#$list.price#}</span>
+						</div>
+					</a>
+				</div>
+				{#/shop#}
+			</div>
+			<div class="sbocon fn-clear">
+			    {#shop action="slist" return="list" orderby=1 store={#$detail_store['id']#} page="1" pageSize="3"#}
+				<div class="conbox">
+					<a href="{#$list.url#}">
+						<div class="imgbox">
+							<img src="{#changeFileSize url={#$list.litpic#} type='middle'#}" alt="">
+							<div class="imgcover"></div>
+						</div>
+						<div class="txtbox">
+							<p>{#$list.title#}</p>
+							<span>{#echoCurrency type='symbol'#}{#$list.price#}</span>
+						</div>
+					</a>
+				</div>
+				{#/shop#}
+			</div>
+		</div>
+	</div>
+
+	<!-- 相似推荐 e-->
+
+	<!-- 看看别的 -->
+	<div class="other">
+		<h4 class="otitle">看看别的 </h4>
+		<ul class="goodlist fn-clear">
+			<!-- <li>
+				<a href="javascript:;">
+					<img src="{#$templets_skin#}upfile/goodImg01.png" alt="">
+					<div class="goodInfo">
+						<h4>小米MIJIA/米家 电热水壶 304不锈钢 </h4>
+						<div class="infobot">
+							<div class="left">
+								<h5><em>￥</em>109</h5>
+								<p class="sellnum">销量3104笔</p>
+							</div>
+							<div class="right"><i class="bIcart"></i></div>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="{#$templets_skin#}upfile/goodImg02.png" alt="">
+					<div class="goodInfo">
+						<h4>网易严选20英寸铝框旅行 箱拉杆箱 男女静音万向…</h4>
+						<div class="infobot">
+							<div class="left">
+								<h5><em>￥</em>109</h5>
+								<p class="sellnum">销量3104笔</p>
+							</div>
+							<div class="right"><i class="bIcart"></i></div>
+						</div>
+					</div>
+				</a>
+			</li> -->
+		</ul>
+		<div class="morebox"><a href="javascript:;">查看更多</a></div>
+	</div>
+
+
+
+	<div class="footer fn-clear">
+		<div class="fbox fn-clear">
+			{#if $detail_store['userid']#}<div class="chat chat_to-Link" data-type="detail"><a href="javascript:;"><img src="{#$templets_skin#}images/fchat.png" alt=""><span>聊天</span></a></div>{#/if#}
+			<div class="shop"><a href="{#$detail_store['domain']#}"><img src="{#$templets_skin#}images/fshop.png" alt=""><span>店铺</span></a></div>
+		</div>
+		{#if $detail_states==1#}
+			{#if $detail_btime>time()#}
+			    <div class="fbox addCart disabled">加入购物车</div>
+				<div class="fbox gobuy disabled">未开始</div>
+			{#elseif $detail_etime>time()#}
+			    <div class="fbox addCart">加入购物车</div>
+				<div class="fbox gobuy">立即购买</div>
+			{#else#}
+			    <div class="fbox addCart disabled">加入购物车</div>
+				<div class="fbox gobuy disabled">已结束</div>
+			{#/if#}
+        {#elseif $detail_states==2#}
+        	<!-- 秒杀未开始显示 -->
+			{#if $detail_kstime>time()#}
+			    <div class="fbox addCart disabled">加入购物车</div>
+				<div class="fbox gobuy disabled">未开始</div>
+			{#elseif $detail_ketime<time()#}
+				<!-- 秒杀已结束显示 -->
+				<div class="fbox addCart disabled">加入购物车</div>
+				<div class="fbox gobuy disabled">已结束</div>
+			{#elseif $detail_kstime<time()#}
+				<!-- 秒杀已开始显示 -->
+				<div class="fbox addCart">加入购物车</div>
+				<div class="fbox gobuy">立即购买</div>
+		    {#/if#}
+		{#else#}
+		<div class="fbox addCart">加入购物车</div>
+		<div class="fbox gobuy">立即购买</div>
+		{#/if#}
+	</div>
+
+	<div class="color-box">
+		<div class="color-main" id="color-main">
+			<div class="color-main-box">
+				<div class="color-info">
+					<div class="color-info-img">
+						<img data-src="{#$detail_litpic#}" src="{#$detail_litpic#}" alt="">
+					</div>
+					<div class="color-info-txt">
+						<span class="color-info-price aaaaa">{#echoCurrency type='symbol'#}<em id="price">{#$detail_price#}</em></span>
+						<span>{#$langData['siteConfig'][19][525]#}：<i id="stock">{#$detail_inventory#}</i> 件</span>
+						<span class="guige">{#$langData['siteConfig'][6][21]#}：<em></em></span>
+					</div>
+					<a href="javascript:;" class="closed"></a>
+				</div>
+				<div id="skuObj">
+				</div>
+				<div class="color-info-ul fn-clear">
+					<h3 style="float:left;">{#$langData['siteConfig'][19][311]#}</h3>
+					<div class="color-info-ul">
+						<div class="color-info-account">
+							<span class="fs reduce">－</span>
+							<input type="number" class="count" value="1">
+							<span class="bn fs add">＋</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			{#if $detail_states==1#}
+				{#if $detail_btime>time()#}
+				    <div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart disabled">未开始</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart disabled">未开始</a>
+					</div>
+				{#elseif $detail_etime>time()#}
+				    <div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+					</div>
+				{#else#}
+				    <div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart disabled">已结束</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart disabled">已结束</a>
+					</div>
+				{#/if#}
+	        {#elseif $detail_states==2#}
+	        	<!-- 秒杀未开始显示 -->
+				{#if $detail_kstime>time()#}
+					<div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart disabled">未开始</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart disabled">未开始</a>
+					</div>
+				{#elseif $detail_ketime<time()#}
+					<!-- 秒杀已结束显示 -->
+					<div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart disabled">已结束</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart disabled">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart disabled">已结束</a>
+					</div>
+				{#elseif $detail_kstime<time()#}
+					<!-- 秒杀已开始显示 -->
+					<div class="color-footer color-footer-select">
+						<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+						<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+					</div>
+					<div class="color-footer color-footer-cart dn">
+						<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+					</div>
+					<div class="color-footer color-footer-once dn">
+						<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+					</div>
+			    {#/if#}
+			{#else#}
+				<div class="color-footer color-footer-select">
+					<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+					<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+				</div>
+				<div class="color-footer color-footer-cart dn">
+					<a href="javascript:;" class="add-cart">{#$langData['shop'][1][4]#}</a>
+				</div>
+				<div class="color-footer color-footer-once dn">
+					<a href="javascript:;" class="buy-cart">{#$langData['siteConfig'][18][35]#}</a>
+				</div>
+			{#/if#}
+
+		</div>
+	</div>
+
+	<div class="mask"></div>
+	<!-- 海报弹出s -->
+	{#include file="../../../siteConfig/touch_poster.html"#}
+	<!-- 海报弹出e -->
+
+	<!-- 视频图片弹出层 s-->
+	<div class="videoModal">
+		<div class="swiper-container">
+			  <i class="vClose"></i>
+	          <div class="swiper-wrapper">
+
+	          </div>
+	          <div class="swiper-pagination"></div>
+	    </div>
+	</div>
+	<!-- 视频图片弹出层 e-->
+
+	<!--&lt;!&ndash; 评论区图片大图展示 s&ndash;&gt;-->
+	<!--<div class="bigBoxShow">-->
+	  <!--<div class="swiper-container bigSwiper">-->
+	      <!--<i class="vClose"></i>-->
+	      <!--<div class="swiper-wrapper">-->
+
+	      <!--</div>-->
+	      <!--<div class="swiper-pagination bigPagination"></div>-->
+	  <!--</div>-->
+	<!--</div>-->
+	<!--&lt;!&ndash; 评论区图片大图展示 e&ndash;&gt;-->
+
+	<!-- 底部悬浮 s -->
+	<!--<div class="wechat">-->
+	  <!--<a href="javaScript:;"><i></i></a>-->
+	<!--</div>-->
+	<!--<div class="gocart topcart">-->
+	  <!--<a class="cart-btn" href="{#getUrlPath service=shop template=cart#}"><i></i><em class="cart num">0</em></a>-->
+	<!--</div>-->
+	<!--<div class="my">-->
+	  <!--<a href="{#$member_userDomain#}"><i></i></a>-->
+	<!--</div>-->
+	<!--<div class="gotop">-->
+	  <!--<a href="javaScript:;"><i></i></a>-->
+	<!--</div>-->
+	<!-- 底部悬浮 e-->
+<div class="wechat-popup">
+	<div class="con">
+		<a href="javascript:;" class="close">×</a>
+		{#if $cfg_weixinQr#}
+		<dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>
+		{#/if#}
+		{#if $cfg_miniProgramQr#}
+		<dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>
+		{#/if#}
+	</div>
+</div>
+<div class="topcart" style="display:none;"><div class="cart-con"><div class="cartlist"><ul></ul></div></div></div>
+<form action="{#getUrlPath service='shop' template='confirm-order'#}" data-action="{#$cfg_basehost#}/include/ajax.php?service=shop&action=confirm_order" method="get" id="buyForm">
+	<input type="hidden" name="pros[]" id="pros" value="">
+</form>
+
+	<!-- 图片放大 -->
+	{#include file="../../../siteConfig/bigimg_1.2.html"#}
+<script>
+	var atpage = 1,
+		pageSize = 20,
+		keywords = '{#$keywords#}';
+</script>
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_store['title']#}',
+		"title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='shop' template='detail' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/goodsD.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

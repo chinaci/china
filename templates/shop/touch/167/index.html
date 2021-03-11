@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<title>{#$shop_channelName#}</title>
+<meta name="apptitle" content="{#$shop_channelName#}">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}1">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_basehost#}/include/lang/{#$langList.currCode#}.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$shop_channelDomain#}',staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+    var defaultindex = '{#$defaultindex#}';
+	jQuery = $;
+</script>
+</head>
+
+<body>
+{#$pageCurr = 'index'#}
+<div class="blackFix  {#if $defaultindex=='shop'#}paddingDown{#/if#}"></div> 
+
+<!-- 搜索 e-->
+<div class="banner_wrap">	
+	<!-- 头部 -->
+	{#include file="../../../siteConfig/touch_top.html" pageTitle=$shop_channelName#}
+	<!-- 头部 end -->
+	<div class="fixImg"><img src="{#$templets_skin#}images/banner_bg.png" alt=""></div>
+	<!-- 搜索 s-->
+	<div class="search-form fn-clear fir-form curr {#if $defaultindex=='shop'#}paddingDown{#/if#}">
+	  <div class="sobj">
+	    <div class="type">
+	        <label>{#$langData['siteConfig'][16][25]#}</label> {#* 商品 *#}
+	        <s></s>
+	    </div>
+
+	    <div class="inp">
+	      <form action="{#getUrlPath service='shop' template='list'#}" id="sform2" class="sform">
+	      	<div class="inp_wrap">
+	      		<s></s>
+	            <input id="botkeywords" name="keywords" type="text" placeholder="{#$langData['shop'][6][0]#}"  class="botKey keys"> {#* 输入宝贝关键词 *#}
+	      	</div>		        
+	        <span id="search">{#$langData['siteConfig'][6][109]#}</span> {#* 搜索 *#}
+	      </form>
+		<div class="clear_inp"><img src="{#$templets_skin#}images/clear_input.png" alt=""></div>
+		  {#if $imagesearch#}
+		  <div class="imgsearch">
+			    <span class="imgsearch-btn"></span>
+			    <input type="file" name="Filedata" class="fn-hide file_ImgUp" id="Filedata_imgsearch2">
+		  </div>
+		  {#/if#}
+
+	    </div>
+	  </div>
+
+	  <div class="typelist">
+	    	<p>{#$langData['siteConfig'][17][12]#}</p> {#* 店铺 *#}
+	  </div>
+	</div>
+	<!-- 搜索 e-->
+	<div class="hot-s">
+		{#* 首页 *#}
+		<a href="{#$shop_channelDomain#}" class="curr fir-a"><span>{#$langData['siteConfig'][0][0]#}</span></a>
+		<p class="hot-scroll">
+		{#siteConfig module="shop" action="hotkeywords" return="hotkeywords"#}
+		<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}><span>{#$hotkeywords.keyword#}</span></a>
+		{#/siteConfig#}	
+		</p>
+		
+	</div>
+	
+</div>
+<div class="main_wrap">
+	<!-- banner s -->
+	<div class="banner">
+	  <div class="wrapper">
+	      <div class="swiper-container">
+	          <div class="swiper-wrapper">
+	              {#myad title="商城_模板三_移动端_广告一" type="slide"#}
+	          </div>
+	          <div class="pagination"></div>
+	      </div>
+	  </div>
+	</div>
+	<!-- banner e -->
+	<div class="pub_wrap">	
+		<div class="nav_wrap">
+			<div class="tcTop">
+				<ul class="fn-clear">
+					<li>
+						<a href="{#getUrlPath service='shop' template='qianggou'#}">
+							 <span class="icon-circle"><img src="{#$templets_skin#}images/qianggou.png"></span>
+							 <span class="icon-txt">{#$langData['shop'][6][1]#}</span>  {#* 限时抢购 *#}
+						</a>
+					</li>
+					<li>
+						<a href="{#getUrlPath service='shop' template='secKill'#}">
+							 <span class="icon-circle"><img src="{#$templets_skin#}images/miaosha.png"></span>
+							 <span class="icon-txt">{#$langData['shop'][6][2]#}</span>  {#* 准点秒杀 *#}
+						</a>
+					</li>
+					<li>
+						<a href="{#getUrlPath service='integral' template='index'#}">
+							 <span class="icon-circle"><img src="{#$templets_skin#}images/jifen.png"></span>
+							 <span class="icon-txt">{#$langData['shop'][6][3]#}</span>  {#* 积分商城 *#}
+						</a>
+					</li>
+					<li>
+						<a href="{#getUrlPath service='shop' template='store'#}">
+							 <span class="icon-circle"><img src="{#$templets_skin#}images/shangjia.png"></span>
+							 <span class="icon-txt">{#$langData['shop'][6][4]#}</span>  {#* 推荐商家 *#}
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- 模块链接 s -->
+			<div class="tcInfo">			
+				<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			            <div class="swiper-slide">
+			                <ul>		                	
+			                    {#shop action="type" return="type"#}
+			                    {#if $_bindex.type<8#}
+			                    <li>
+									<a href="{#getUrlPath service='shop' template='list' param="typeid={#$type.id#}"#}">
+										 <span class="icon-circle"><img src="{#$type.iconturl|default: '/static/images/type_default.png'#}"></span>
+										 <span class="icon-txt">{#$type.typename#}</span>
+									</a>
+								</li>
+								{#elseif $_bindex.type==9#}
+								<li>
+									<a href="{#$shop_channelDomain#}/category.html">
+										 <span class="icon-circle"><img src="{#$templets_skin#}images/gengduo.png"></span>
+										 <span class="icon-txt">{#$langData['shop'][6][5]#}</span> {#* 更多分类 *#}
+									</a>
+								</li>
+								{#/if#}
+			                    {#if !(($_bindex.type) % 4)#}
+			                </ul>
+			            </div>
+			            <div class="swiper-slide">
+			                <ul>
+			                    {#/if#}
+			                    {#/shop#}
+			                </ul>
+			            </div>
+			        </div>
+			        <div class="pagination"></div>
+			    </div>
+			</div>
+			<!-- 模块链接 e -->
+		
+		
+			<!-- 头条资讯 s -->
+			<div class="ttNews fn-clear">
+				<div class="lBox">
+					<a href="{#getUrlPath service='shop' template='news'#}">
+						<img src="{#$templets_skin#}images/toutiao.png" alt="">
+					</a>					
+				</div>
+				<div class="mBox">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					    	{#shop action="news" return="list" pageSize=6#}
+					        <div class="swiper-slide swiper-no-swiping">				        	
+				        		<p><a href="{#$list.url#}"><span class="tc-title">{#$list.title#}</span><span class="tc-type" data-num="5">{#$list.typename#}</span></a> </p>				        	
+					        </div>
+					        {#/shop#}
+					    </div>
+					</div>
+				</div>
+
+			</div>
+			<!-- 头条资讯 e -->
+		</div>
+	</div>
+	<div class="advBox advBox1">
+		{#myad title="商城_模板三_移动端_广告二"#}
+	</div>
+	<!-- 优选活动 s -->
+	<div class="activity ">
+		<h2 class="com-title">{#$langData['shop'][6][6]#}</h2> {#* 优选活动 *#}
+		<div class="advBox2 fn-clear">
+			{#myad title="商城_模板三_移动端_广告三"#}
+		</div>
+		
+	</div>
+	<!-- 优选活动 e -->
+	<!-- 限时抢购 s-->
+	<div class="qgou">		
+		<div class="qiangBg">
+			<div class="boxTitle fn-clear"><strong>{#$langData['shop'][6][1]#}</strong> {#* 限时抢购 *#}
+				<span class="qgTime">{#$langData['shop'][6][7]|replace:'1':'<em>0</em>'#}</span> {#* 1点场 *#}
+				<div class="jsTime fn-clear" id="timeCounter"  data-time="">
+					<span class="hour">00</span><em>:</em>
+					<span class="minute">00</span><em>:</em>
+					<span class="second">00</span>
+				</div>
+				<a href="{#getUrlPath service='shop' template='qianggou'#}" class="more-qg"><img src="{#$templets_skin#}images/more-qg.png" alt=""></a>
+			</div>
+			<div class="boxCon fn-clear">
+				<div class="swiper-container">
+					<div class="tc-activity  swiper-wrapper" >
+						<!--占位-->
+						<div class="activity-pl_h swiper-slide"></div>
+						<div class="activity-pl_h swiper-slide"></div>
+						<div class="activity-pl_h swiper-slide"></div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<!-- 限时抢购 e-->
+
+	<!-- 准点秒杀 s-->
+	<div class="public msha">
+			<i class="add-bg"></i>		
+			<div class="boxTitle fn-clear">
+				<h2 class="com-title">{#$langData['shop'][6][2]#}</h2> {#* 准点秒杀 *#}
+				<a href="{#getUrlPath service='shop' template='secKill'#}"><img src="{#$templets_skin#}images/more-zd.png" alt=""> </a>
+			</div>			
+			<div class="puBox fn-clear">
+			    {#shop action="slist" limited="5" pageSize=3 return=list#}
+				<div class="goodbox" data-kstime='{#$list.kstime#}'>
+					<div class="boxImg">
+						<a href="{#$list.url#}">					
+						<img src="{#if !empty($list.litpic)#}{#$list.litpic#}{#else#}{#$cfg_basehost#}/static/images/blank.gif{#/if#}" alt="">
+						</a>
+					</div>
+					{#$priceArr = "."|explode:$list.price#}
+					<div class="boxText">						
+						{#echoCurrency type='symbol'#}<strong>{#$priceArr[0]#}</strong><em>.{#$priceArr[1]#}</em>
+					</div>
+					<p class="ms-mprice"><span>{#echoCurrency type='symbol'#}<em>{#$list.mprice#}</em></span></p>
+				</div>
+				{#/shop#}
+			</div>
+		
+	</div>
+	{#if $pageInfo.totalCount < 3#}
+	<style>.msha{display:none;}</style>
+	{#/if#}
+	<!-- 准点秒杀 e-->
+
+	<!-- 推荐商家 s-->
+	<div class="c_shop">
+		<div class="ltbg fn-clear"><span>{#$langData['shop'][6][4]#}</span> {#* 推荐商家 *#}
+			
+			<a href="javascript:;" class="all-collect">
+				<em class="no-collect"></em>
+				<em class="has-em"></em>
+				<img src="{#$templets_skin#}images/heart.png" alt="">
+			</a>
+			<a href="{#getUrlPath service='shop' template='store'#}" class="more-qg more-store"><img src="{#$templets_skin#}images/more-qg.png" alt=""></a>
+			
+		</div>
+		<div class="shop_wrap">
+			<div class="loading">{#$langData['siteConfig'][38][8]#}</div>  {#* 加载中.... *#}
+		</div>
+		<div class="morebox"><a href="{#getUrlPath service='shop' template='store'#}">{#$langData['siteConfig'][6][52]#}<i></i></a></div>  {#* 查看更多 *#}
+	</div>
+	<!-- 推荐商家 e-->
+	<!-- 销量榜 s-->
+	<div class="sale_wrap">
+		<div class="top_tab">
+			<ul>
+				<li class="active" data-id="1" data-type='orderby'>{#$langData['shop'][6][9]#}</li>  {#* 销量榜 *#}
+				<li data-id="1" data-type='flag'>{#$langData['shop'][6][10]#}</li>  {#* 特价榜 *#}
+				<li data-id="2" data-type='flag'>{#$langData['shop'][6][11]#}</li>  {#* 热卖榜 *#}
+				<li data-id="6" data-type='orderby'>{#$langData['shop'][6][12]#}</li>  {#* 人气榜 *#}
+			</ul>
+		</div>
+		<div class="sale_con">
+			{#* 销量榜 --- 每日12点更新 *#}
+			<div class="top_tit"><span>{#$langData['shop'][6][9]#}</span><em>{#$langData['shop'][6][13]#}</em></div>
+			<ul>
+				<div class="loading">{#$langData['siteConfig'][38][8]#}</div>  {#* 加载中.... *#}
+			</ul>
+		</div>
+	</div>
+	<!-- 销量榜 e-->
+	<div class="advBox advBox3">{#myad title="商城_模板三_移动端_广告四"#}</div>
+	<!-- 精选好物 s-->
+	<div class="good_wrap">
+		<div class="good_tab">
+			<ul class="tab_ul">
+				{#* 精选好物 *#}
+				<li class="curr">{#$langData['shop'][6][14]#}</li>
+
+				{#* 限时抢购 *#}
+				<li><a href="{#getUrlPath service='shop' template='qianggou'#}">{#$langData['shop'][6][1]#}</a></li>
+
+				{#* 准点秒杀 *#}
+				<li><a href="{#getUrlPath service='shop' template='secKill'#}">{#$langData['shop'][6][2]#}</a></li>
+
+				{#* 推荐商家 *#}
+				<li><a href="{#getUrlPath service='shop' template='store'#}">{#$langData['shop'][6][4]#}</a></li>
+			</ul>
+		</div>
+		<ul class="goodlist fn-clear">
+		</ul>
+
+	</div>
+	<!-- 精选好物 e-->
+</div>
+
+<!-- 搜图样式 s-->
+<div class="soutu">
+</div>
+<!-- 搜图样式 e-->
+<!-- 头部搜索隐藏页面 -->
+<div class="serach_cover">
+	<!-- 搜索 s-->
+	<div class="search-form search-fixForm fn-clear">
+	  <div class="sobj">
+	    <div class="type">
+	        <label>{#$langData['siteConfig'][16][25]#}</label> {#* 商品 *#}
+	        <s></s>
+	    </div>
+
+	    <div class="inp">
+	      	<form action="{#getUrlPath service='shop' template='list'#}" id="sform1" class="sform">
+		      	<div class="inp_wrap">     		
+		            <input id="topkeywords" name="keywords" type="text" placeholder="{#$langData['shop'][6][0]#}" class="topKey keys"> {#* 输入宝贝关键词 *#}
+		      	</div>		        
+	      	</form>
+			<div class="clear_inp"><img src="{#$templets_skin#}images/clear_input.png" alt=""></div>
+			{#if $imagesearch#}
+			<div class="imgsearch">
+				<span class="imgsearch-btn"></span>
+				<input type="file" name="Filedata" class="fn-hide file_ImgUp" id="Filedata_imgsearch1">
+
+			</div>
+			{#/if#}
+
+	    </div>
+	  </div>
+	  <div class="cancel_serach">{#$langData['siteConfig'][6][12]#}</div> {#* 取消 *#}
+
+	  <div class="typelist">
+	    	<p>{#$langData['siteConfig'][17][12]#}</p> {#* 店铺 *#}
+	  </div>
+	</div>
+	<div class="sousuo">
+		<!-- 历史搜索 s-->
+		<div class="story-search">
+			<h2 class="ser-title">{#$langData['shop'][6][32]#}<i class="del-histroy"></i></h2> {#* 历史搜索 *#}
+			<div class="histroy-div fn-clear">
+			</div>
+		</div>
+		<!-- 历史搜索 e-->
+		<!-- 热门发现 s-->
+		<div class="hot-find">
+			<h2 class="ser-title">{#$langData['shop'][6][33]#}</h2> {#* 热门发现 *#}
+			<div class="hot-div fn-clear">
+				{#siteConfig module="shop" action="hotkeywords" return="hotkeywords"#}
+				<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}><span>{#$hotkeywords.keyword#}</span></a>
+				{#/siteConfig#}
+			</div>
+		</div>
+		<!-- 热门发现 e-->
+	</div>
+	
+</div>
+<!-- 底部 -->
+{#*{#include file="bottom.html" #}*#}
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="shop"#}
+<!-- 底部 end -->
+
+<!-- 加入购物车 -->
+<div class="size-box">
+	<div class="size-selected">
+		<div class="size-img"><img src="{#$templets_skin#}upfile/shImg03.png"></div>
+		<div class="size-txt">
+			<p class="price">{#echoCurrency type='symbol'#}<b></b></p>
+			<p class="count">{#$langData['siteConfig'][19][525]#} <b></b> 件</p>
+			<p class="guige" style="display: none">{#$langData['siteConfig'][6][21]#}：<em></em></p>
+		</div>
+		<a href="javascript:;" class="closed"></a>
+	</div>
+	<div class="scrollbox indexscrollbox" id="scrollbox">
+		<div class="scroll" >
+			<div class="size-html">
+				<dl class="sys_item"></dl>
+				<dl class="sys_item"></dl>
+			</div>
+		</div>
+	</div>
+	<div class="size-confirm"><a href="javascript:;">{#$langData['siteConfig'][6][1]#}</a></div>
+</div>
+
+<div class="mask"></div>
+
+<div class="topcart" style="display:none;"><div class="cart-con"><div class="cartlist"><ul></ul></div></div></div>
+<script>
+	var atpage = 1,
+		pageSize = 6,
+		keywords = '{#$keywords#}';
+	var prourl   = '{#getUrlPath service='shop' template='list'#}';
+	var storeurl = '{#getUrlPath service='shop' template='store'#}';
+</script>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/iscroll.js" type="text/javascript"></script>
+<script type='text/javascript' src='{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js?v={#$cfg_staticVersion#}'></script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$shop_description#}',
+		"title": '{#$shop_title#}',
+		"imgUrl": '{#$shop_logoUrl#}',
+		"link": '{#$shop_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

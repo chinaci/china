@@ -1,0 +1,76 @@
+body{background: #f2f2f2;}
+.timeaxis_warp{position: relative;background:#41414a;color:#fff;}
+.timeaxis_warp.topfixed{position: fixed!important;top:0;left:0;right:0;z-index: 10;height: .88rem;}
+
+.timeaxis-current {position: absolute;top: 0;bottom: 0;left: 40%;right: 40%;z-index: 1;background: #ff3451;}
+.timeaxis-current:after {content: "";position: absolute;top: 100%;left: 0;right: 0;z-index: 18;display: block;height: 0;width: 0;margin: auto;border-top: 7px solid #ff3451;border-left: 9px solid transparent;border-right: 9px solid transparent;}
+.gallery-thumbs{height:.88rem;margin-bottom: .2rem; }
+.gallery-thumbs .swiper-wrapper .swiper-slide{position:relative;display: inline-block;height:.88rem;text-align: center;}
+
+.gallery-thumbs .swiper-wrapper .swiper-slide p{margin-top:.05rem;font-size: .32rem;}
+
+/*必抢好货*/
+.ggoodbox{padding:.1rem .15rem;}
+.good_box{height: 3rem;background: #fff;border-radius: .08rem;padding:.3rem .2rem ;}
+.good_box p.ptitle img{height: .3rem;}
+.main_box,.glistbox ul li{margin:.1rem 0;}
+.main_box .imgbox,.glistbox ul li .imgbox{float: left;width: 2.4rem;height: 2.4rem;overflow: hidden;padding:.1rem;margin-right: .4rem;}
+.main_box .imgbox img,.glistbox ul li .imgbox img{width: 100%;height: 100%;}
+.main_box .txtbox,.glistbox ul li .txtbox{ width: 55%;float:left;padding:.1rem 0;text-align: left;}
+.main_box .txtbox .info,.glistbox ul li .txtbox .info{height:1.42rem; }
+.main_box .txtbox h4,.glistbox ul li .txtbox h4{font-size: .3rem;color:#333;margin-bottom: .15rem;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;white-space: normal;text-overflow: ellipsis;}
+.main_box .txtbox p,.glistbox ul li .txtbox p{line-height: .45rem;font-size: .26rem;color:#333;}
+.main_box .txtbox p i,.glistbox ul li .txtbox p i{width: .45rem;height: .45rem;float: left;}
+.main_box .mark1{background: url(../images/mark1.png) no-repeat center center;background-size: .45rem;}
+.main_box .mark2{background: url(../images/mark2.png) no-repeat center center;background-size: .45rem;}
+.main_box .txtbox .qtstart,.glistbox ul li .txtbox .qtstart{text-align: left;color:#ff3451;margin:.1rem 0 .05rem;font-size: .28rem;}
+.qprogress{position:relative;width: 2rem;height: .26rem;border-radius: .13rem;background: rgba(255, 52, 81,.3);margin: .1rem 0;overflow: hidden;}
+.qprogress s{display:block;width: 27%;position:absolute;left:0;background: #ff3451;height: .26rem;border-radius: .13rem;}
+.qprogress span{position: absolute;left:.13rem;top: -.015rem;color:#fff;font-size: .2rem;}
+.pricebox{line-height:.54rem;}
+.pricebox .nprice{font-size: .32rem;color:#ff3451;}
+.pricebox .nprice em{font-size: .24rem;}
+.pricebox .yprice{font-size: .22rem;color:#999;text-decoration: line-through;}
+.pricebox .gobuying{display: block;float: right;border-radius:.1rem;width: 1.3rem;height: .54rem;line-height:.54rem;background: #ff3451;text-align: center;color: #fff;font-size: .28rem;}
+
+/*猜你喜欢*/
+.likebox{padding:.15rem;background: #fff;margin-bottom: .1rem;}
+.likebox p.ptitle{padding:.2rem;}
+.likebox p.ptitle img{height: .3rem;}
+.ulbox li{width: 2.3rem;float: left;margin-right:.15rem;}
+.ulbox li:last-child{margin-right: 0;}
+.ulbox li a{display: block;}
+.ulbox .imgbox{width: 2.3rem;height: 2.3rem;border-radius: .08rem;overflow: hidden;}
+.ulbox .imgbox img{width: 100%;height: 100%;}
+.ulbox .textbox {padding:.2rem.1rem 0;}
+.ulbox .textbox p{overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;white-space: normal;}
+.ulbox .textbox span{display: block;color:#ff3451;margin:.2rem 0 .1rem;font-size: .28rem;text-align: center;}
+
+/*列表*/
+.glistbox ul li{background: #fff;border-bottom:#f2f2f2;padding:.2rem .1rem;}
+.glistbox ul li:last-child{border-bottom: 0;}
+
+
+
+/*微信 返回顶部*/
+.wechat,.gocart,.my,.gotop{width:.66rem;height:.66rem;z-index:209;text-align:center;border-radius:50%;box-shadow: 0px 3px 11px 0px rgba(0, 193, 146, 0.09);}
+.wechat i,.gocart i,.my i,.gotop i{display:block;width:.66rem;height:.66rem;}
+.wechat{position:fixed;bottom:3.6rem;right:.3rem;background:#fff;line-height:.66rem;}
+.wechat i{background: url(../images/wechat.png) no-repeat center;background-size:.66rem;}
+.gocart{position:fixed;bottom:2.6rem;right:.3rem;background:#ff3451;}
+.gocart i{background: url(../images/cart.png) no-repeat center;background-size:.66rem;}
+.my{position:fixed;bottom:1.6rem;right:.3rem;z-index:209;background:#fff;border:1px solid#eee;}
+.my i{background: url(../images/myIcon.png) no-repeat center;background-size:.66rem;}
+.gotop{position:fixed;bottom:.6rem;right:.3rem;z-index:209;background:#fff;border:1px solid#eee;}
+.gotop i{background: url(../images/gotop.png) no-repeat center;background-size:.66rem;}
+
+/* 浏览器端扫码提示 */
+.wechat-popup {position: fixed; width: 6.8rem; top: calc(50% - 3rem); left: calc(50% - 3.4rem); z-index: 99999; visibility: hidden;}
+.wechat-popup:before {position: fixed; z-index: 1; display: block; content: ''; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);}
+.wechat-popup .con {display: -webkit-box; position: relative; z-index: 2; padding: 50px 10px 20px; background: #fff; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+.wechat-popup .close {position: absolute; right: .2rem; top: .2rem; width: .5rem; height: .5rem; border: 1px solid #dcdcdc; border-radius: 50%; line-height: .4rem; text-align: center; color: #dcdcdc; font-size: .5rem; font-weight: 100;}
+.wechat-popup dl {-webkit-box-flex: 1; text-align: center; margin: 0 5px;}
+.wechat-popup dl img {width: 94%; height: 94%; max-width: 3rem; max-height: 3rem; margin: 0 auto; padding: 3%; border: 1px solid #eee; display: block;}
+.wechat-popup dd {line-height: 1.5em; padding-top: 5px;}
+
+.huoniao_iOS .timeaxis_warp.topfixed{margin-top: 20px;}
