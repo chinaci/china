@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找公司-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="找公司,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找公司,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/company.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='company'#}#}
+
+<body>
+{#$pageMark = "company"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear" id="J_crumbs">
+	<div class="screening">
+		<div class="hd">
+			<i></i><p>筛选条件</p>
+		</div>
+		<div class="bd">
+			<dl class="open">
+				<dt><a href="javascript:;">公司性质<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=''#}#J_crumbs"{#if $nature == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="5"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature={#$type.id#}#}#J_crumbs"{#if $nature == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">公司规模<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} scale=''#}#J_crumbs"{#if $scale == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="6"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} scale={#$type.id#}#}#J_crumbs"{#if $scale == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="chose fn-clear">
+			<div class="moreScreening fn-left">
+				<dl id="addrObj">
+					<dt><a href="javascript:;" class="m" id="addr1" title="{#$addrName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addrid='%addr%'#}#J_crumbs">{#if $addrName == ""#}工作地点{#else#}{#$addrName#}{#/if#}<i></i></a></dt>
+					<dd class="area area1"></dd>
+				</dl>
+				<dl id="industryObj">
+					<dt><a href="javascript:;" class="m" id="industry" title="{#$industryName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} industry='%industry%'#}#J_crumbs">{#if $industryName == ""#}行业领域{#else#}{#$industryName#}{#/if#}<i></i></a></dt>
+					<dd class="industry area1"></dd>
+				</dl>
+			</div>
+			<div class="fn-right">
+				<div class="sort">
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == ''#} class="curr"{#/if#}>默认</a>
+					|
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=1#}#J_crumbs" class="time{#if $orderby == 1#} curr{#/if#}">点评数<i class="icon-sort"></i></a>
+					|
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=2#}#J_crumbs" class="time{#if $orderby == 2#} curr{#/if#}">职位数<i class="icon-sort"></i></a>
+				</div>
+				<div class="tcount">共<label id="totalCount">0</label>家公司</div>
+				<div class="pages">
+					<a href="javascript:;" class="prev" title="上一页">&lt;</a>
+					<span class="atpage">{#$page#}</span>/<span class="total" id="totalPage">1</span>
+					<a href="javascript:;" class="next" title="下一页">&gt;</a>
+				</div>
+			</div>
+		</div>
+		<!-- 公司列表 s -->
+		<div class="boxlist">
+			<ul class="fn-clear">
+
+				{#job action="company" return="company" nature={#$nature#} scale={#$scale#} addrid={#$addrid#} industry={#$industry#} orderby={#$orderby#} page={#$page#} pageSize=20#}
+				<li class="fn-clear">
+					{#if strstr($company.property, "r")#}<i class="state state-tuijian"></i>{#/if#}
+					<div class="logo"><a href="{#$company.url#}" target="_blank" title="{#$company.title#}"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$company.logo#}" alt="{#$company.title#}"></a></div>
+					<div class="t1">
+						<p class="name"><a href="{#$company.url#}" target="_blank" title="{#$company.title#}">{#$company.title#}</a></p>
+						<div class="ctaglist">
+							{#if $company.license#}<a href="javascript:;" class="ctag ctag-renzhen" style="cursor:default;" title="认证企业"></a>{#/if#}
+							{#if $company.pics#}<a href="{#getUrlPath service='job' template='company-album' id={#$company.id#}#}" target="_blank" class="ctag ctag-pic"></a>{#/if#}
+							<!-- <a href="{#$company.url#}" target="_blank" class="ctag ctag-shipin"></a>
+							<a href="javascript:;" class="ctag ctag-weixin"><div class="ewmbox"><img src="upfile/ewm_wx.png" alt=""></div></a>
+							<a href="" class="ctag ctag-qq"></a> -->
+							<a href="javascript:;" class="ctag ctag-ewm" style="cursor:default;" data-url="{#$company.url#}"><div class="ewmbox"></div></a>
+						</div>
+						<p class="place"><span title="{#$company.addr[0]#} {#$company.addr[1]#} {#$company.address#}">{#$company.addr[0]#} {#$company.addr[1]#} {#$company.address#}</span> <a href="{#$company.url#}#map" target="_blank">地图</a></p>
+						<p class="business">{#$company.industry#}</p>
+					</div>
+					<div class="t2">
+						<p><span class="sp1">在招职位</span><br><span class="sp2">{#$company.pcount#}个</span><br><span class="sp3">{#$company.wcount#}条工资</span></p>
+					</div>
+				</li>
+				{#/job#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">抱歉！ 暂无相关公司信息！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<!-- 公司列表 e -->
+
+		<!-- 分页 -->
+		{#getPageList service='job' template='company' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/plist.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/company.js"></script>
+</body>
+</html>

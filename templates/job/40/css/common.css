@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:12px "Microsoft Yahei","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+input,button{font:14px "Microsoft Yahei","Arial Narrow"}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+a{text-decoration:none; color: #555}
+a:hover{color:#cd0200}
+i,em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+a:hover img{-webkit-transform:scale(1,1);}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+.l{float: left;}
+.r{float: right;}
+.t20{margin-top: 20px;}
+.t10{margin-top: 10px;}
+.o_h {word-wrap: normal;white-space: nowrap;text-overflow: ellipsis;}
+.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+.fn-clear{zoom:1}
+.w280{width: 270px;}
+.w90{width: 90px}
+.w60{width: 60px}
+.w80{width: 80px}
+.w200{width: 200px}
+.w100{width: 100px}
+.w160{width: 170px}
+.w20{width: 20px; margin-left: 20px}
+.w240{width: 230px; }
+.w48{width: 48px}
+.w122{width: 72px}
+.w260{width:260px;}
+.w290{width: 290px}
+.w180{width: 140px}
+.w160{width: 160px;}
+.w300{width: 300px;}
+.w140{width:110px;}
+.w150{width: 100px}
+.wrap{width: 1000px; margin:0 auto;}
+.w1200 .wrap{width: 1200px;}
+
+.w1200 .w150{width: 150px;}
+.w1200 .w140{width: 140px;}
+.w1200 .w180{width: 180px;}
+
+
+
+
+
+
