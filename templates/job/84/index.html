@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$job_title#}</title>
+<meta name="keywords" content="{#$job_keywords#}" />
+<meta name="description" content="{#$job_description#}" />
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css">
+<link rel="stylesheet" href="{#$templets_skin#}css/job.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', templatePath = '{#$templets_skin#}';
+</script>
+</head>
+
+<body class="w1200">
+	{#$channel = 'job'#}
+	{#$hotline = $job_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+			<!-- 中间招聘信息部分 s -->
+		<div class="job">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+		    <div class="bd">
+					{#myad title="招聘求职_模板五_电脑端_广告一" type="slide"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					<li class="NewsNav_bc"><a href="javascript:;">推荐职位</a></li>
+					<li><a href="javascript:;">招聘企业</a></li>
+					<li><a href="javascript:;">简历</a></li>
+				</ul>
+			</div>
+			<!-- 导航栏 e-->
+			<!-- 招聘信息列表 s -->
+			<div class="job_list">
+
+
+				<div class="job_tab post">
+					{#job action="post" return="post" page="1"  pageSize=10#}
+					<div class="Recommend_box">
+						<div class="RB_lead fn-clear">
+							<div class="RB_title"><a target="_blank" href="{#$post.url#}">{#$post.title#}</a></div>
+							<div class="Rb_name"><a target="_blank" href="{#$post.company['domain']#}">{#$post.company['title']#}</a></div>
+						</div>
+						<div class="RB_detail fn-clear">
+							<div class="pay"><span>{#$post.salary#}/月</span>{#$post.addr[0]#}&nbsp;&nbsp;{#$post.addr[1]#}<em>|</em>{#$post.experience#}<em>|</em>{#$post.educational#}</div>
+							<div class="scale">{#$post.type#}<em>|</em>{#$post.number#}人</div>
+						</div>
+						<div class="time">{#$post.timeUpdate#}发布</div>
+					</div>
+					{#/job#}
+					<div class="load-more"><div class="load-add"><i></i><span>加载更多</span></div></div>
+				</div>
+
+				<div class="job_tab fn-hide company">
+					{#job action="company" return="company" page="1"  pageSize=10#}
+					<div class="job_detail fn-clear">
+						<div class="job_pic"><a target="_blank" href="{#$company.url#}"><img src="{#$company.logo#}" alt="{#$company.title#}"></a></div>
+						<div class="job_title"><a target="_blank" href="{#$company.url#}">{#$company.title#}</a></div>
+						<div class="job_tips"><em style="border:none;"></em></div>
+						<div class="nature"><em>行业性质</em>&nbsp;&nbsp;  {#$company.industry#} &nbsp;&nbsp;&nbsp;&nbsp;<em>规模</em>  &nbsp;&nbsp; {#$company.scale#}</div>
+						<div class="job_location"><i></i>{#$company.address#} </div>
+						<div class="In_recruit">
+							<p>在招职位</p>
+							<span>{#$company.pcount#}</span>
+						</div>
+					</div>
+					{#/job#}
+					<div class="load-more"><div class="load-add"><i></i><span>加载更多</span></div></div>
+				</div>
+
+				<div class="job_tab fn-hide resume">
+					{#job action="resume" return="resume" page="1"  pageSize=10#}
+					<div class="Resume fn-clear">
+						<div class="Resume_pic"><a target="_blank" href="{#$resume.url#}"><img src="{#$resume.photo#}" alt=""></a></div>
+						<div class="Resume_name"><a target="_blank" href="{#$resume.url#}">{#$resume.name#}</a><em>2017.6.30发布</em></div>
+						<div class="Resume_form">{#$resume.age#}岁 {#$resume.professional#}   {#$resume.workyear#}年工作经验   {#$resume.educational#}  </div>
+						<div class="Resume_intention">求职意向：{#$resume.type#}</div>
+						<div class="Resume_btn"><a target="_blank" href="{#$resume.url#}" class="view">查看联系方式</a></div>
+					</div>
+					{#/job#}
+					<div class="load-more"><div class="load-add"><i></i><span>加载更多</span></div></div>
+				</div>
+
+			</div>
+			<!-- 招聘信息列表 e -->
+		</div>
+	<!-- 中间招聘信息部分 e -->
+	<!-- 右侧招聘信息汇总 s -->
+		<div class="Information">
+			<div class="issue fn-clear"><a target="_blank" href="{#getUrlPath service='job'  template='zhaopin'#}">找工作</a><a target="_blank" href="{#getUrlPath service='member' template='post' param='do=add'#}">发布职位</a></div>
+			<div class="ad">{#myad title="招聘求职_模板五_电脑端_广告二"#}</div>
+			<!-- <div class="Infor_list">
+				<div class="Infor_lead fn-clear"><em>一句话招聘</em> <a href="#">更多 ></a></div>
+				<div class="One_word">
+					{#job action="sentence" return="sentence1" type="0"  pageSize=4#}
+					<div class="OW_txt">
+						<div class="OW_title">
+							<i></i><a target="_blank" href="{#$sentence1.url#}">{#$sentence1.title#}</a><em>男女不限 两年工作经验</em>
+						</div>
+						<div class="contact fn-clear">
+							<div class="tel"><i></i>{#$sentence1.contact#}</div>
+							<div class="person">联系人：{#$sentence1.people#}</div>
+						</div>
+					</div>
+					{#/job#}
+				</div>
+			</div>
+			<div class="Infor_list">
+				<div class="Infor_lead fn-clear"><em>一句话求职</em> <a target="_blank" href="#">更多 ></a></div>
+				<div class="One_occu">
+
+					{#job action="sentence" return="sentence2" type="1"  pageSize=4#}
+					<div class="occu_txt">
+						<h1><a target="_blank" href="{#$sentence2.url#}">{#$sentence2.title#}</a></h1>
+						<div class="experience fn-clear">
+							<em>{#$sentence2.people#}  男   3年工作经验</em>
+							<span><i></i>{#$sentence2.contact#}</span>
+						</div>
+					</div>
+					{#/job#}
+
+				</div>
+			</div> -->
+			<div class="Infor_list">
+				<div class="Infor_lead fn-clear"><em>职场资讯</em> <a target="_blank" href="{#getUrlPath service='job'  template='news'#}">更多 ></a></div>
+				<div class="message">
+					<ul>
+						{#job action="news" return="news" typeid={#$typeid#} page={#$page#}  pageSize=8#}
+						<li><a target="_blank" href="{#$news.url#}"><em>[{#$news.typename#}]</em> {#$news.title#}</a><span>{#$news.pubdate|date_format:"%Y-%m-%d"#}</span></li>
+						{#/job#}
+					</ul>
+				</div>
+			</div>
+			<div class="Infor_list">
+				<div class="Infor_lead fn-clear"><em>招聘会</em> <a target="_blank" href="{#getUrlPath service='job'  template='zhaopinhui'#}">更多 ></a></div>
+				<div class="fair">
+					{#job action="fairs" return="fairs"  pageSize=3#}
+					<div class="fair_detail fn-clear">
+						<div class="fair_pic"><a target="_blank" href="{#$fairs.url#}" target="_blank"><img src="{#$fairs.fairs['pics'][0]['pic']#}" alt="{#$fairs['title']#}"></a></div>
+						<h1><a href="{#$fairs.url#}" target="_blank">{#$fairs.title#}</a></h1>
+						<ul>
+							<li>场馆：{#$fairs.fairs['title']#}</li>
+							<li>时间：{#$fairs.date#} {#$fairs.began#}-{#$fairs.end#} </li>
+							<li>地址：{#$fairs.fairs.addr[0]#} {#$fairs.fairs.addr[1]#} {#$fairs.fairs.address#}</li>
+						</ul>
+					</div>
+					{#/job#}
+				</div>
+			</div>
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧招聘信息汇总 e -->
+
+
+
+	</div>
+<!-- 主干部分 e-->
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v3"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v1"></script>
+</body>
+</html>

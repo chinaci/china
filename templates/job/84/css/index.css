@@ -1,0 +1,224 @@
+/* 顶部幻灯 */
+.slideshow_1200_60 {height: 60px; position: relative; z-index: 99; margin: 10px auto;}
+#slideshow120060 {height: 60px; overflow: hidden; position: relative; z-index: 9;}
+.slideshow_1200_60 .slideshow-item {position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 11;}
+.slideshow_1200_60 .slideshow-item a, .slideshow_1200_60 .slideshow-item a img {width: 1000px; height: 60px; display: block;}
+.w1200 .slideshow_1200_60 .slideshow-item a, .w1200 .slideshow_1200_60 .slideshow-item a img {width: 1200px;}
+.slideshow_1200_60 .slideshow-item .slideinfo {display: none;}
+.slideshow_1200_60 .slidebtn {position: absolute; bottom: 10px; right: 10px; text-align: right; z-index: 10;}
+.slideshow_1200_60 .slidebtn a {background: #a9c6d8; width: 10px; height: 10px; border-radius: 100%; display: inline-block; _display: inline; _zoom: 1; margin: 0 0 0 10px; font-size: 0;}
+.slideshow_1200_60 .slidebtn a.activeSlide {background: #6c9f02;}
+.slideshow_1200_60 .close {position: absolute; right: 4px; top: 4px; z-index: 10; width: 12px; height: 12px; background: url('/static/images/icons.png') no-repeat -12px -855px; font-size: 0;}
+
+/* 公共ICON */
+.fsearch .s-form .input label s,
+.fsearch .s-form .area s,
+.flogin .fitem,
+.bole i,
+.jj dd li,
+.mq dd li,
+.tj li,
+.n-list li,
+.service i {background-image: url('../images/indexSprite.png'); background-repeat: no-repeat;}
+
+/* 搜索 */
+.fsearch {float: left; margin: 25px 0;}
+.fsearch .link {margin-bottom: 10px; font-size: 14px; line-height: 16px;}
+.fsearch .link a {color: #666;}
+.fsearch .link a:hover {color: #cd0001; text-decoration: underline;}
+.fsearch .link span {width: 1px; display: inline-block; vertical-align: middle; height: 15px; overflow: hidden; margin: -1px 10px 0 10px; background-color: #ccc;}
+.fsearch .s-form {height: 38px; border: 6px solid #e8e7e7; background-color: #fff;}
+.fsearch .s-form .zn {float: left; width: 100px; height: 38px; position: relative; z-index: 4; font-size: 16px; color: #343434; line-height: 38px; padding: 0 13px 0 10px; cursor: pointer;}
+.w1200 .fsearch .s-form .zn {width: 150px;}
+.fsearch .s-form .zn span, .fsearch .s-form .area span {display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.fsearch .s-form .zn s {position: absolute; right: 0; top: 17px; width:0; height:0; border-width:4px; border-style:solid dashed dashed dashed; border-color:#666 transparent transparent transparent;}
+.fsearch .s-form .input {float: left; position: relative; height: 16px; margin: 11px 10px; padding: 0 10px; border-left: 1px solid #dedbdb; border-right: 1px solid #dedbdb;}
+.fsearch .s-form .input label {position: absolute; left: 10px; top: 0; line-height: 16px; color: #c9c9c9; font-size: 14px; cursor: text;}
+.fsearch .s-form .input label s {float: left; width: 16px; height: 16px; margin-right: 3px; background-position: -160px -4px;}
+.fsearch .s-form .input input {width: 200px; height: 25px; margin-top: -5px; border: 0; font-family: microsoft yahei; font-size: 14px;}
+.w1200 .fsearch .s-form .input input {width: 330px;}
+.fsearch .s-form .area {float: left; width: 80px; height: 38px; position: relative; z-index: 6; font-size: 16px; color: #343434; line-height: 38px; padding: 0 18px 0 0; cursor: pointer; border-right: 6px solid #e8e7e7;}
+.w1200 .fsearch .s-form .area {width: 100px;}
+.fsearch .s-form .area s {position: absolute; right: 6px; top: 17px; width:0; height:0; border-width:4px; border-style:solid dashed dashed dashed; border-color:#666 transparent transparent transparent;}
+
+/* 选择区域 */
+#areaList {position: absolute; left: -11px; top: 38px; width: 500px; min-height: 80px; padding: 15px 0 7px; cursor: default; background-color: #fff; border: 1px solid #ddd; border-top: none; -moz-box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.3); box-shadow: 0 10px 25px rgba(0,0,0,.3); -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+#areaList p {line-height: 80px;}
+#areaList .sub-data {float: left; position: relative; width: 21%; height: 25px; line-height: 25px; font-size: 14px; margin: 0 2% 8px;}
+#areaList .sub-data a {display: block; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#areaList .curr {background-color: #ed8f36;}
+#areaList .curr a {color: #fff;}
+#areaList .curr i {position: absolute; left: 50%; bottom: -6px; margin-left: -5px; width:0; height:0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #e8e7e7;}
+#areaList ul {display: none; float: left; width: 100%; margin: -2px 0 5px; padding: 5px 0; background-color: #e8e7e7;}
+#areaList li {float: left; width: 21%; height: 25px; text-align: center; line-height: 25px; padding: 0 2%; font-size: 13px;}
+#areaList li a {display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+.fsearch .s-form .s-btn {float: left; width: 110px; height: 36px; line-height: 36px; font-size: 18px; color: #666; text-align: center; letter-spacing: 7px; border: 1px solid #c9c9c9; background-image: -moz-linear-gradient(top, #f3f3f3, #dfdfdf); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(1, #dfdfdf)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#dfdfdf', GradientType='0'); text-shadow: 1px 1px 1px #fff;}
+.fsearch .s-form a:hover.s-btn {background-image: -moz-linear-gradient(top, #dfdfdf, #f3f3f3); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dfdfdf), color-stop(1, #f3f3f3)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#f3f3f3', GradientType='0');}
+
+/* 登录 */
+.flogin {float: right; margin: 25px 0;}
+.flogin .fitem {float: left; width: 188px; height: 76px; margin-left: 11px; text-align: center;}
+.flogin .per {background-position: -3px -65px;}
+.flogin .com {background-position: -3px -142px;}
+.flogin .fitem h3 {height: 36px; line-height: 36px; font-size: 20px;}
+.flogin .fitem a {display: block; color: #fff;}
+.flogin .fitem a:hover {color: #fff; text-decoration: underline;}
+.flogin .fitem .l, .flogin .fitem .r {float: left; width: 94px; height: 38px; margin-top: 2px; line-height: 38px; font-size: 16px;}
+
+/* 模块标题 */
+.mt {height: 40px; line-height: 40px; border-top: 1px solid #eee; border-bottom: 2px solid #4a4a4a; background-color: #fff;}
+.mt h2 {float: left; position: relative; font-size: 20px; color: #393033; padding: 0 0 0 5px; border-bottom: 2px solid #f60; border-right: 12px solid #fff;}
+.mt h2 s {position: absolute; right: -10px; bottom: -7px; width: 0; height: 0; border-top: 7px solid #f60; border-right: 7px solid transparent;}
+.mt .more {float: right; font-size: 12px; color: #b6b3b3;}
+
+/* 左右箭头 */
+.mt .corl {float: right; height: 20px; margin: 10px 5px 0 0; line-height: 20px; font-size: 16px; font-family: '宋体'; font-weight: 700; background-color: #eeeeee;}
+.mt .corl a {float: left; width: 23px; height: 20px; text-align: center; color: #8f8f90;}
+.mt .corl a:hover, .mt .corl .curr {color: #fff; background-color: #fab24b;}
+
+
+/* 伯乐 */
+.bole {height: 215px; margin-top: 20px;}
+.bole ul {width: 1004px;}
+.w1200 .bole ul {width: 1204px;}
+.bole li {float: left; position: relative; z-index: 3; width: 143px; height: 186px;}
+.w1200 .bole li {width: 172px;}
+.bole .i1 {width: 122px; height: 166px; margin: 0 auto; background-color: #f7f7f7; padding: 10px;}
+.bole img {display: block; margin: 0 auto 5px; width: 115px; height: 115px; border: 2px solid #fff;}
+.bole p {font-size: 14px; color: #666; height: 22px; line-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.bole .name {float: left; font-size: 16px; color: #f60;}
+.bole p i {float: left; width: 19px; height: 16px; text-indent: -999em; margin: 2px 0 0 5px;}
+.bole .icon-hr {background-position: -79px -3px;}
+.bole .icon-lt {background-position: -100px -3px;}
+.bole .icon-gg {background-position: -121px -3px;}
+
+.bole .i2 {display: none; position: absolute; left: 0; top: 0; width: 358px; height: 215px; background-color: #80d3f3;}
+.bole .show {z-index: 4;}
+.bole .show .i2 {display: block; z-index: 5; -webkit-animation: leftFadeIn .3s ease-out; -moz-animation: leftFadeIn .3s ease-out; animation: leftFadeIn .3s ease-out;}
+.bole .info .img {float: left; width: 119px; height: 119px; margin: 10px 0 0 10px;}
+.bole .i2 .name {color: #fff;}
+.bole .i2 i {margin-top: 4px;}
+.bole .info .txt {float: left; width: 229px; padding-top: 5px;}
+.bole .i2 p {padding: 0 10px; color: #fff; height: 26px; line-height: 26px;}
+.bole .i2 p a {color: #fff;}
+.bole .i2 .sj {height: 26px; background-color: #72caec; padding: 7px 10px 7px 0; margin: 5px 0 10px;}
+.bole .i2 .sj a {float: left; width: 69px; height: 26px; line-height: 13px; text-align: center; font-size: 13px; color: #fff;}
+.bole .i2 .sj .m {border-left: 1px solid #5cb5d7; border-right: 1px solid #5cb5d7;}
+.bole .i2 dl {margin: 0 10px; font-size: 14px; color: #fff;}
+.bole .i2 dt {float: left;}
+.bole .i2 dd {position: relative; overflow: hidden; height: 42px;}
+
+/* 热门职位 */
+.hot-zw {overflow: hidden; margin-bottom: -1px;}
+.hot-zw .l-item {float: left; width: 105%;}
+.hot-zw dl {float: left; width: 330px; border-bottom: 1px solid #f4f4f4; margin: 20px 10px 0 0; padding-bottom: 10px;}
+.w1200 .hot-zw dl {width: 390px; margin: 20px 20px 0 0;}
+.hot-zw dt {height: 26px; line-height: 26px; font-size: 16px; color: #0c0c0c;}
+.hot-zw dt s {float: left; width: 26px; height: 26px; margin-right: 5px; background: url('../images/induIcon.png') no-repeat;}
+.hot-zw dt s.icon1 {background-position: -4px -5px;}
+.hot-zw dt s.icon2 {background-position: -4px -40px;}
+.hot-zw dt s.icon3 {background-position: -4px -76px;}
+.hot-zw dt s.icon4 {background-position: -4px -111px;}
+.hot-zw dt s.icon5 {background-position: -4px -147px;}
+.hot-zw dt s.icon6 {background-position: -4px -182px;}
+.hot-zw dt a {color: #3aa1e2;}
+.hot-zw dt a:hover {text-decoration: underline;}
+.hot-zw dd {height: 104px; padding: 10px 0 5px 15px;}
+.hot-zw dd span {float: left; margin-right: 20px; line-height: 26px; font-size: 14px; white-space: nowrap;}
+.w1200 .hot-zw dd span {margin-right: 30px;}
+.hot-zw dd span a {color: #6f6f6f;}
+.hot-zw dd span a:hover {color: #fe6d0d;}
+
+/* 紧急招聘 */
+.jj {width: 1280px; padding-bottom: 25px;}
+.w1200 .jj {width: 1225px;}
+.jj dl {float: left; width: 229px; height: 142px; border: 1px solid #f1f1f1; margin: 25px 25px 0 0;}
+.w1200 .jj dl {width: 218px;}
+.jj dt {padding: 11px; background: #fff;}
+.jj dt a {display: block; width: 196px; height: 63px; text-align: center;}
+.jj dt a i {display: inline-block; height: 100%; vertical-align: middle;}
+.jj dt img {max-width: 196px; max-height: 63px; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+.jj dd {margin: 0 11px; border-top: 1px solid #ece8e8;}
+.jj dd ul {margin-top: 5px;}
+.jj dd li {float: left; width: 88px; padding: 0 5px 0 10px; line-height: 25px; background-position: -7px -269px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.w1200 .jj dd li {width: 83px;}
+.jj .hover {border: 1px solid #efa04b; background: #efa04b; color: #fff;}
+.jj .hover dd {border-color: #efa04b;}
+.jj .hover dd a {color: #fff;}
+.jj .hover dd a:hover {text-decoration: underline; color: #fff;}
+.jj .hover li {background-position: -7px -299px;}
+
+/* 名企招聘 */
+.mq {width: 1325px; padding-bottom: 25px;}
+.w1200 .mq {width: 1225px;}
+.mq dl {float: left; position: relative; z-index: 3; width: 222px; margin: 25px 37px 0 0;}
+.w1200 .mq dl {margin: 25px 22px 0 0;}
+.mq dl dt {border: 1px solid #f1f1f1;}
+.mq dt a {display: block; width: 220px; height: 70px; text-align: center;}
+.mq dt a i {display: inline-block; height: 100%; vertical-align: middle;}
+.mq dt img {max-width: 220px; max-height: 70px; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+
+.mq dd {display: none; position: absolute; left: 222px; top: 0; width: 220px; height: 160px; background: #efa04b;}
+.mq .show {z-index: 4;}
+.mq .show dd {display: block; z-index: 5; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+.mq dd ul {padding: 10px; font-size: 14px;}
+.mq dd li {background-position: -7px -299px; line-height: 25px; padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.mq dd li a {color: #fff;}
+.mq dd li a:hover {text-decoration: underline; color: #fff;}
+.mq dd p {height: 30px; line-height: 30px; background-color: #e18929; text-indent: 25px; font-size: 14px; font-weight: 700;}
+.mq dd p a {color: #fff;}
+
+/* 推荐企业 */
+.tj {width: 1060px; margin: 10px 0 20px;}
+.w1200 .tj {width: 1260px;}
+.tj li {float: left; width: 303px; height: 28px; padding: 0 10px; margin-right: 20px; line-height: 28px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background-position: -8px -268px; white-space: break-all;}
+.w1200 .tj li {width: 380px;}
+.tj li a:hover {text-decoration: underline;}
+.tj li .t {float: left; color: #0163b2; margin-right: 10px;}
+.tj li span {float: left; margin-right: 10px;}
+.tj li span a {color: #666;}
+
+/* 招聘会 */
+.zph {width: 100%; margin: 20px 0;}
+.zph th {height: 35px; font-size: 16px; background-color: #727272; color: #fff;}
+.zph td {height: 43px; font-size: 14px; text-align: left; border-bottom: 1px dashed #efeeee; color: #666;}
+.zph .fe {width: 6px; overflow: hidden;}
+.zph td a {color: #666;}
+.zph td a:hover {color: #f60; text-decoration: underline;}
+.zph td.fe {border-bottom: 1px solid #fdb98c;}
+.zph td span {color: #f60;}
+.zph .hover td {background-color: #f4f4f4;}
+
+/* 简历 */
+.jl {width: 1280px; margin-top: 20px;}
+.w1200 .jl {width: 1220px;}
+.jl dl {float: left; width: 210px; padding: 10px; border: 1px solid #f1f1f1; background-color: #fafafa; margin: 0 24px 24px 0;}
+.w1200 .jl dl {width: 197px;}
+.jl dt, .jl dt a, .jl dt img {float: left; width: 80px; height: 100px;}
+.jl dd {float: left; width: 116px; padding-left: 14px; color: #666; font-size: 14px; line-height: 22px;}
+.jl dd p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.w1200 .jl dd {width: 103px;}
+.jl dd span {color: #f60;}
+.jl dd a {display: block; width: 87px; height: 25px; margin-top: 7px; line-height: 25px; text-align: center; color: #fff; background: #f68b17;}
+.jl dl.hover {background-color: #80d3f3;}
+.jl dl.hover dd, .jl dl.hover dd span {color: #fff;}
+
+/* 资讯 */
+.n-list {float: left; width: 322px;}
+.w1200 .n-list {width: 380px;}
+.n-list.m {margin: 0 17px;}
+.w1200 .n-list.m {margin: 0 29px;}
+.n-top {height: 40px; line-height: 40px; border-bottom: 2px solid #727272;}
+.n-top h3 {float: left; font-size: 20px; color: #393033; margin-left: 5px;}
+.n-top .more {float: right; font-size: 12px; color: #8d8c8c;}
+.n-rec {margin: 10px 0 5px 0; border-bottom: 1px solid #ececec;}
+.n-rec .img, .n-rec img {width: 322px; height: 116px; display: block;}
+.w1200 .n-rec .img, .w1200 .n-rec img {width: 380px; height: 137px;}
+.n-rec p {padding: 15px 0 10px 0; text-indent: 2em; line-height: 25px; font-size: 14px; color: #1c1b1b;}
+.n-rec p a {font-size: 12px; color: #f60;}
+.n-list li {height: 32px; line-height: 32px; padding-left: 10px; background-position: -9px -266px;}
+.n-list li a {float: left; width: 240px; font-size: 14px; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.w1200 .n-list li a {width: 295px;}
+.n-list li span {float: right; font-size: 12px; color: #adaaaa;}
+.n-list li a:hover {color: #f60; text-decoration: underline;}

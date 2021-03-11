@@ -1,0 +1,54 @@
+html {background-color: #f4f4f4;}
+
+/* 左侧列表 */
+.leftMenu {width: 230px;float: left;margin-top: 25px; background-color: #fff;}
+.leftMenu .box {padding:2px;border:1px solid #ececec;}
+.leftMenu .hd {height: 44px;line-height: 44px;padding-left: 45px;color: #fff;font-size: 16px;background: #f88945;}
+.leftMenu .d {padding-right:5px;font-weight: bold;}
+.leftMenu .bd ul {padding:5px 0 10px;}
+.leftMenu .bd li {line-height: 45px;}
+.leftMenu .bd li a {display: block;padding:0 30px 0 45px;font-size: 16px;color: #000;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.leftMenu .bd li a:hover {color: #f88945;}
+.leftMenu .bd li.curr a {color: #fff;background: #f88945;}
+
+
+/* 右侧 */
+.rightBox {width: 680px; float: left; margin-top: 25px; margin-left: 20px; background-color: #fff;}
+.w1200 .rightBox {width: 880px;}
+.list {padding:10px 15px;border:1px solid #ececec;}
+.listTab {width: 100%;font-size: 14px;}
+ /*tbody:before {line-height:1.5em; content:"\200C"; display:block;}*/
+.listTab thead {font-size: 18px;color: #333;background:#f8f8f8;}
+.listTab tr {line-height: 26px;}
+.listTab thead tr {line-height: 50px;}
+.listTab tbody td.down {padding-right:0;}
+.listTab thead .title span {padding-left: 40px;}
+.listTab .down {text-align: center;}
+.listTab .main {height: 55px;border-bottom: 1px solid #eee;}
+.listTab .main.curr {border-color: #fff;}
+.listTab .curr , .listTab .show {background: #f8f8f8;}
+.listTab .title {width: 40%;}
+.listTab .size ,.listTab .format ,.listTab .time ,.listTab .down {width: 15%;}
+.listTab tbody .size span ,.listTab tbody .format span ,.listTab tbody .time span ,.listTab tbody .down span {color: #999;}
+.listTab tbody span {display: block;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.listTab .s {position: relative;left:0;float: left;margin-right: 5px;font-family: "SimSun";font-weight: bold;color: #8a888f;-webkit-transition: all .25s;transition: all .25s;}
+.listTab .curr .s {color: #f60;left:-5px;}
+.listTab .bt {width: 200px;float: left;font-weight: 600;color: #000;}
+.w1200 .listTab .bt {width: 274px;}
+.w1200 .listTab tbody .size span ,.w1200 .listTab tbody .format span {width: 110px;}
+.listTab tbody .size span ,.listTab tbody .format span {width: 80px;}
+.listTab .des {display: none;}
+.listTab .des span {width: 505px;height: 25px;}
+.w1200 .listTab .des span {width: 705px;}
+.listTab .des.show {display: table-row;}
+.listTab .des td {padding-left: 15px;color: #666;}
+.listTab .btn {padding:4px 20px;background: #70ca63;color: #fff;}
+.listTab .curr .btn {background: #d24637;}
+.listTab .curr .btn:hover {background: #DC5E51;}
+
+.pagination {padding-top: 35px;}
+
+.empty {height: 400px; line-height: 300px; text-align: center; font-size: 16px;}
+
+.ui_state_tips .ui_icon_bg {margin: 5px 0 2px 9px;}
+.ui_state_tips .ui_content {margin-top: 9px;}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>找人才-找简历-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="找人才,找简历,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="找人才,找简历,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/resume.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+{#$pageUrl = {#getUrlPath service='job' template='resume'#}#}
+
+<body>
+{#$pageMark = "resume"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear" id="J_crumbs">
+	<div class="screening">
+		<div class="hd">
+			<i></i><p>筛选条件</p>
+		</div>
+		<div class="bd">
+			<dl class="open">
+				<dt><a href="javascript:;">性别<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} sex=''#}#J_crumbs"{#if $sex == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} sex=0#}#J_crumbs"{#if $sex == 0 && $sex != ""#} class="curr"{#/if#}>男</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} sex=1#}#J_crumbs"{#if $sex == 1#} class="curr"{#/if#}>女</a>
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">职位性质<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=''#}#J_crumbs"{#if $nature == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=0#}#J_crumbs"{#if $nature == 0 && $nature != ""#} class="curr"{#/if#}>全职</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=1#}#J_crumbs"{#if $nature == 1#} class="curr"{#/if#}>兼职</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=2#}#J_crumbs"{#if $nature == 2#} class="curr"{#/if#}>临时</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} nature=3#}#J_crumbs"{#if $nature == 3#} class="curr"{#/if#}>实习</a>
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">到岗时间<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} startwork=''#}#J_crumbs"{#if $startwork == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="4"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} startwork={#$type.id#}#}#J_crumbs"{#if $startwork == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">工作经验<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear=''#}#J_crumbs"{#if $workyear == ""#} class="curr"{#/if#}>不限</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear=',1'#}#J_crumbs"{#if $workyear == ',1'#} class="curr"{#/if#}>一年以下</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear='1,2'#}#J_crumbs"{#if $workyear == '1,2'#} class="curr"{#/if#}>1-2年</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear='3,5'#}#J_crumbs"{#if $workyear == '3,5'#} class="curr"{#/if#}>3-5年</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear='6,7'#}#J_crumbs"{#if $workyear == '6,7'#} class="curr"{#/if#}>6-7年</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear='8,10'#}#J_crumbs"{#if $workyear == '8,10'#} class="curr"{#/if#}>8-10年</a>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workyear='10,'#}#J_crumbs"{#if $workyear == '10,'#} class="curr"{#/if#}>10年以上</a>
+				</dd>
+			</dl>
+			<dl class="open">
+				<dt><a href="javascript:;">学历要求<i></i></a></dt>
+				<dd>
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} educational=''#}#J_crumbs"{#if $educational == ""#} class="curr"{#/if#}>不限</a>
+					{#job action="item" return="type" type="2"#}
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} educational={#$type.id#}#}#J_crumbs"{#if $educational == {#$type.id#}#} class="curr"{#/if#}>{#$type.typename#}</a>
+					{#/job#}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="chose fn-clear">
+			<div class="moreScreening fn-left">
+				<dl id="addrObj">
+					<dt><a href="javascript:;" class="m" id="addr1" title="{#$addrName#}" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addr='%addr%'#}#J_crumbs">{#if $addrName == ""#}工作地点{#else#}{#$addrName#}{#/if#}<i></i></a></dt>
+					<dd class="area area1"></dd>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;" class="m" id="zn" data-url="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} jtype='%type%'#}#J_crumbs">{#if $typeName == ""#}职位类型{#else#}{#$typeName#}{#/if#}<i></i></a></dt>
+				</dl>
+			</div>
+			<div class="fn-right">
+				<div class="sort">
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}#J_crumbs"{#if $orderby == ''#} class="curr"{#/if#}>默认</a>
+					|
+					<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=1#}#J_crumbs" class="time{#if $orderby == 1#} curr{#/if#}">更新时间<i class="icon-sort"></i></a>
+				</div>
+				<div class="tcount">共<label id="totalCount">0</label>位人才</div>
+				<div class="pages">
+					<a href="javascript:;" class="prev" title="上一页">&lt;</a>
+					<span class="atpage">{#$page#}</span>/<span class="total" id="totalPage">1</span>
+					<a href="javascript:;" class="next" title="下一页">&gt;</a>
+				</div>
+			</div>
+		</div>
+		<!-- 人才列表 s -->
+		<div class="boxlist">
+			<ul class="fn-clear">
+
+				{#job action="resume" return="resume" sex={#$sex#} nature={#$nature#} startwork={#$startwork#} workyear={#$workyear#} educational={#$educational#} addr={#$addr#} jtype={#$jtype#} orderby={#$orderby#} page={#$page#} pageSize=42#}
+				<li class="fn-clear">
+					<div class="pic">
+						<a href="{#$resume.url#}" target="_blank" title="{#$resume.name#}"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$resume.photo#}" alt="{#$resume.name#}" /><div class="bg"></div></a>
+					</div>
+					<div class="txt">
+						<p class="n"><a href="{#$resume.url#}" target="_blank">{#$resume.name#}</a><span class="green">{#if $resume.sex == 0#}男{#else#}女{#/if#} {#$resume.age#}岁 {#$resume.educational#}</span></p>
+						<p><span class="tp">职位</span><span class="blue">{#$resume.type#}</span></p>
+						<p><span class="tp">工龄</span><span class="red">{#$resume.workyear#}</span>年工作经验</p>
+						<p><span class="tp">居住</span>{#$resume.addr[0]#}-{#$resume.addr[1]#}</p>
+					</div>
+				</li>
+				{#/job#}
+				{#if $pageInfo.totalCount == 0#}
+				<li class="empty">抱歉！ 暂无相关简历！</li>
+				{#/if#}
+			</ul>
+		</div>
+		<!-- 人才列表 e -->
+
+		<!-- 分页 -->
+		{#getPageList service='job' template='resume' pageType='dynamic' param="{#$pageParam#}&page=#page##J_crumbs"#}
+
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript">
+	var totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#};
+	var pageUrl = '{#getUrlParam url={#$pageUrl#} data="{#$pageParam#}&page=pagePlaceholder"#}#J_crumbs';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/plist.js"></script>
+</body>
+</html>

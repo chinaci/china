@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_name#}的个人简历-找简历-互联网招聘求职网-{#$job_title#}</title>
+<meta name="keywords" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,招聘信息,互联网招聘" />
+<meta name="description" content="{#$detail_name#}的个人简历,找人才,找简历,招聘网,求职网,互联网招聘,{#$cfg_shortname#}招聘是互联网领域垂直招聘网站,互联网职业机会尽在{#$cfg_shortname#}招聘" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/resume-detail.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$job_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var id = {#$detail_id#};
+</script>
+</head>
+
+<body>
+{#$pageMark = "resume"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear">
+	<div class="screening">
+		<div class="jl_menu">
+			{#if $userinfo.userType == 2#}
+			<a href="javascript:;" class="btn btn_1 yqms">邀请面试</a>
+			<a href="javascript:;" class="btn btn_2 sc">收藏简历</a>
+			{#/if#}
+			<a href="{#getUrlPath service='member' type='user' template='job' module='resume'#}" class="btn btn_3">更新简历</a>
+			<a href="{#getUrlPath service='member' type='user' template='job' module='resume'#}" class="btn btn_4">发布简历</a>
+		</div>
+	</div>
+	<div class="rightMain">
+		<div class="jl">
+			<div class="pt base profile">
+				<img src="{#if $detail_photo == ""#}{#$cfg_staticPath#}images/blank.gif{#else#}{#$detail_photo#}{#/if#}" />
+				<h2>{#$detail_name#} <small>的简历</small></h2>
+				<p class="p1"><span>{#if $detail_sex == 0#}男{#else#}女{#/if#}&nbsp;&nbsp;{#$detail_age#}岁</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>籍贯：{#$detail_home#}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>现居：{#$detail_address#}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>{#$detail_pubdate|date_format:"%Y-%m-%d"#}更新</span></p>
+				<span class="bh">职位编号：{#$detail_code#}</span>
+			</div>
+			<div class="pt base lxr">
+				<ul class="fn-clear">
+					<label>联系方式</label>
+					{#if $detail_phone#}
+					<p>联系电话：{#$detail_phone#}</p>
+					<p>电子邮箱：{#$detail_email#}</p>
+					{#else#}
+					{#if !$userinfo#}
+					<div class="empty">对不起，简历的联系方式仅限企业会员查看,请 <a href="javascript:;" class="lg">登陆</a> 或 <a href="{#$cfg_basehost#}/register.html" target="_blank">注册</a></div>
+					{#else#}
+					{#if $userinfo.userType == 1#}
+					<div class="empty">对不起，简历的联系方式仅限企业会员查看！</div>
+					{#else#}
+					<div class="empty">查看该简历的联系方式需要扣除 {#$job_resume_point#} 积分，是否查看？ <a href="javascript:;" class="ck">点击查看</a></div>
+					{#/if#}
+					{#/if#}
+					{#/if#}
+				</ul>
+			</div>
+			<div class="pt base">
+				<ul class="fn-clear">
+					<label>求职意向</label>
+					<li>意向地点：<span>{#$detail_addrname|replace:">":" "#}</span></li>
+					<li>职位性质：<span>{#if $detail_nature == 0#}全职{#elseif $detail_nature == 1#}兼职{#elseif $detail_nature == 2#}临时{#elseif $detail_nature == 3#}实习{#/if#}</span></li>
+					<li>意向职位：<span>{#$detail_typename#}</span></li>
+					<li>期望薪资：<span>{#$detail_salary#} {#echoCurrency type='short'#}/月</span></li>
+					<li>到岗时间：<span>{#$detail_startworkname#}</span></li>
+					<li>目前状况：<span>{#$detail_workStateName#}</span></li>
+				</ul>
+			</div>
+			<div class="pt base">
+				<ul class="fn-clear">
+					<label>工作经历</label>
+					<li>工作年限：<span>{#$detail_workyear#} 年</span></li>
+					<li class="gzjl">
+						{#foreach from=$detail_experience item=experience#}
+						<div class="item">
+							<p><strong>{#$experience[0]#}</strong></p>
+							<p><em>所在部门：</em>{#$experience[3]#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>担任职位：</em>{#$experience[4]#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>在职时间：</em>{#$experience[1]#} 至 {#$experience[2]#}</p>
+							<p class="nr"><em>工作内容：</em>{#$experience[5]|nl2br#}</p>
+						</div>
+						{#/foreach#}
+					</li>
+				</ul>
+			</div>
+			<div class="pt base">
+				<ul class="fn-clear">
+					<label>教育背景</label>
+					<li>最高学历：<span>{#$detail_educationalname#}</span></li>
+					<li>毕业学院：<span>{#$detail_college#}</span></li>
+					<li>毕业时间：<span>{#$detail_graduation|date_format:"%Y-%m-%d"#}</span></li>
+					<li>所学专业：<span>{#$detail_professional#}</span></li>
+					<li>外语水平：<span>{#$detail_language#}</span></li>
+					<li>计算机水平：<span>{#$detail_computer#}</span></li>
+					<li>其他教育：<span>{#$detail_education|nl2br#}</span></li>
+				</ul>
+			</div>
+			<div class="pt base">
+				<ul class="fn-clear">
+					<label>自我描述</label>
+					<dl class="dl1">
+						<dt>个人评价：</dt>
+						<dd>{#$detail_evaluation|nl2br#}</dd>
+					</dl>
+					<dl class="dl1">
+						<dt>职业目标：</dt>
+						<dd>{#$detail_objective|nl2br#}</dd>
+					</dl>
+				</ul>
+			</div>
+			<div class="pt do">
+				{#if $userinfo.userType == 2#}
+				<a href="javascript:;" id="yq" class="btn1">邀请面试</a>
+				<a href="javascript:;" id="sc" class="btn1">收藏简历</a>
+				{#/if#}
+				<a href="javascript:window.print();" id="dy" class="btn2"><i></i>打印</a>
+				<div id="fx" class="btn2 shear"><div class="bdsharebuttonbox bdshare-button-style1-16"><a href="#" class="bds_more" data-cmd="more"><i></i>分享</a></div></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/resume.js"></script>
+</body>
+</html>
