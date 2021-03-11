@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+<title>{#$live_channelName#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/liveBroadcast.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$live_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$live_channelName#}"#}
+
+<!-- 轮播图 s -->
+<div class="banner">
+  <div class="wrapper">
+      <div class="swiper-container">
+          <div class="swiper-wrapper">
+			  {#myad title="直播_模板二_移动端_广告一" type="slide"#}
+          </div>
+          <div class="pagination"></div>
+      </div>
+  </div>
+</div>
+<!-- 轮播图 e -->
+
+<!-- 图标列表 -->
+<div class="icon_list fn-clear fn-hide">
+	<div class="list_01"><a href="{#getUrlPath service=member type=user template=fabu module=live#}"><img src="{#$templets_skin#}images/ic_01.png"><p>我的直播</p></a></div>
+	<div class="list_01"><a href="javaScript:;"><img src="{#$templets_skin#}images/ic_02.png"><p>APP下载</p></a></div>
+	<div class="list_01"><a href="javaScript:;"><img src="{#$templets_skin#}images/ic_03.png"><p>商业直播</p></a></div>
+	<div class="list_01"><a href="javaScript:;"><img src="{#$templets_skin#}images/ic_04.png"><p>购物直播</p></a></div>
+</div>
+
+<!-- 搜索区域 -->
+<div class="search-box fn-clear">
+  <div class="search">
+    <input type="text" id="search_keyword" class="txt_search" value="" autocomplete="off" placeholder="请输入您要搜索的企业关键词">
+  </div>
+  <div class="search-btn"><a href="javaScript:;">搜索</a></div>
+</div>
+
+<!-- 直播推荐 -->
+<div class="recommend">
+	<div class="groom_title fn-clear"><span>直播推荐</span></div>
+	{#live action="alive" return="list" pageSize="1" orderby="click" state="1" mo="1"#}
+	<div class="play_main">
+		<a href="{#$list.url#}">
+			<div class="groom_sp">
+				<img src="{#$list.litpic#}">
+				<span class="huifang{#if $list.state == 1#} zbz{#/if#}">{#if $list.state == 2#}回放{#else if $list.state == 1#}直播中{#else#}未直播{#/if#}</span>
+				<div class="bofang"></div>
+				<div class="bofang_icon"></div>
+				<div class="zhezhao"></div>
+				<p class="fn-clear"><span>{#$list.click#}</span><span>{#if $list.state == 2#}{#$list.times#}{#/if#}</span></p>
+			</div>
+			<p class="groom_txt">{#$list.title#}</p>
+		</a>
+	</div>
+	{#/live#}
+	<div class="play_list fn-clear">
+		{#live action="alive" return="list" pageSize="9999" type="3" mo="1"#}
+		<div class="play_main">
+			<a href="{#$list.url#}">
+				<div class="groom_sp">
+					<img src="{#$list.litpic#}">
+					<span class="huifang{#if $list.state == 1#} zbz{#/if#}">{#if $list.state == 2#}回放{#else if $list.state == 1#}直播中{#else#}未直播{#/if#}</span>
+					<div class="bofang"></div>
+					<div class="bofang_icon"></div>
+					<div class="zhezhao"></div>
+					<p class="fn-clear"><span>{#$list.click#}</span><span>{#if $list.state == 2#}{#$list.times#}{#/if#}</span></p>
+				</div>
+				<p class="groom_txt">{#$list.title#}</p>
+			</a>
+		</div>
+		{#/live#}
+	</div>
+</div>
+
+<!-- 发布会 -->
+<div class="recommend fbh fn-hide">
+	<div class="groom_title fn-clear"><span>发布会</span></div>
+	{#live action="alive" return="list" pageSize="1" orderby="click" typename="发布会" state="1" mo="1"#}
+	<div class="play_main">
+		<a href="{#$list.url#}">
+			<div class="groom_sp">
+				<img src="{#$list.litpic#}">
+				<span class="huifang">{#if $list.state == 2#}回放{#else if $list.state == 1#}直播中{#else#}未直播{#/if#}</span>
+				<div class="bofang"></div>
+				<div class="bofang_icon"></div>
+				<div class="zhezhao"></div>
+				<p class="fn-clear"><span>{#$list.click#}</span><span>{#if $list.state == 2#}{#$list.times#}{#/if#}</span></p>
+			</div>
+			<p class="groom_txt">{#$list.title#}</p>
+		</a>
+	</div>
+	{#/live#}
+	<div class="play_list fn-clear">
+		{#live action="alive" return="list" pageSize="4" typename="发布会" mo="1"#}
+		<div class="play_main">
+			<a href="{#$list.url#}">
+				<div class="groom_sp">
+					<img src="{#$list.litpic#}">
+					<span class="huifang">{#if $list.state == 2#}回放{#else if $list.state == 1#}直播中{#else#}未直播{#/if#}</span>
+					<div class="bofang"></div>
+					<div class="bofang_icon"></div>
+					<div class="zhezhao"></div>
+					<p class="fn-clear"><span>{#$list.click#}</span><span>{#if $list.state == 2#}{#$list.times#}{#/if#}</span></p>
+				</div>
+				<p class="groom_txt">{#$list.title#}</p>
+			</a>
+		</div>
+		{#/live#}
+
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$live_description#}',
+		"title": '{#$live_title#}',
+		"imgUrl": '{#$live_logoUrl#}',
+		"link": '{#$live_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/liveBroadcast.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+
+

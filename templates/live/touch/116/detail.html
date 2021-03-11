@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$livedetail_title#}</title>
+<meta name="keywords" content="{#$live_keywords#}"/>
+<meta name="description" content="{#$live_description#}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" src="//g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js"></script>
+<style>html, body {height: 100%;}</style>
+<script>
+    var cookiePre='{#$cfg_cookiePre#}',masterDomain = '{#$cfg_basehost#}',typeid='',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+    var newsid = {#$livedetail_id#};
+    var JubaoConfig = {
+  		"module" : 'live',
+  		"action" : 'detail',
+  		"id" : '{#$livedetail_id#}'
+  	};
+</script>
+</head>
+
+<body class="shuping">
+<div style="position: fixed; left: 0; right: 0; width: 100%; height: 100%; overflow: hidden; bottom: 0; top: 0;">
+{#$pageTitle = {#$livedetail_title#}#}
+{#include file="../../../siteConfig/touch_top.html" headTheme="absolute"#}
+<div class="vLive_con">
+  {#if $livedetail_state == 2 && $detail_mp4url == ''#}
+  <div class="empty"><img src="{#$templets_skin#}images/huifang.png"><p>视频回放正在制作中，请稍后访问...</p></div>
+  {#/if#}
+	<div id="J_prismPlayer"{#if !$detail_mp4url && !$detail_url#} style="display: none;"{#/if#}></div>
+	<!--<video src="{#$detail_url#}" controls="controls">您的浏览器不支持 video 标签。</video>-->
+</div>
+<div class="vPer_box">
+    <div class="per_info vPer_info">
+        <a href="{#$livedetail_userurl#}">
+            <span class="head_img peo_head"><img src="{#$livedetail_photo#}"></span>
+            <p><span class="peo_name">{#$livedetail_nickname#}</span><span>浏览次数：{#$livedetail_click#}</span></p>
+        </a>
+
+            <span class="per_care peo_care">
+            	{#if $fid != $userid#}
+            		{#if $userid && $isfollow#}
+            		<button data-id="{#$fid#}" class="follow btnCare1">已关注</button>
+            		{#else#}
+            		<button data-id="{#$fid#}" class="follow btnCare">关注</button>
+            		{#/if#}
+            	{#else#}
+                {#/if#}
+            </span>
+    </div>
+    <button id="v_refresh" style="display: none;"></button>
+</div>
+<div class="empty_box">
+
+</div>
+<div class="chat_box">
+    <div class="box_main">
+        <ul class="main_info" id="main_info">
+        </ul>
+    </div>
+    <div class="box_bottom input_box">
+      <div>
+        <span class="bg"></span>
+        <input id="rc-chatroom-input" type="text" placeholder="来说点什么吧...">
+        <button class="btn-send" id="rc-chatroom-button">发送</ button>
+        <button class="btn_share1 share HN_PublicShare"></button>
+      </div>
+    </div>
+</div>
+<div class="live_like">
+    <button class="like_img" data-id="{#$livedetail_id#}"><img src="{#$templets_skin#}images/live_like.png" alt=""></button>
+    <span class="click">{#$livedetail_up#}</span>
+</div>
+</div>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+<script type="text/javascript">
+$(function(){
+  if(device.indexOf('huoniao_iOS') > -1){
+    $('html').css({"padding-bottom": "20px"});
+  }
+
+  $('body').height($('body')[0].clientHeight);
+});
+
+var username='{#$livedetail_username#}';
+var userphoto='{#$livedetail_userphoto#}';
+var appKey = "{#$livedetail_appKey#}";
+var token  = "{#$livedetail_token#}";
+var config = {
+    protobuf : "{#$cfg_staticPath#}js/rong/protobuf-2.2.8.min.js"
+};
+var count = 0;// 拉取最近聊天最多 50 条。
+var chatRoomId = "{#$detail_chatRoomId#}"; // 聊天室 Id。
+
+var isfalse ={#if $livedetail_state==2#}false{#else#}true{#/if#};
+var source = {#if $livedetail_state==2#}'{#$detail_mp4url#}'{#else#}'{#$detail_url#}'{#/if#};
+var player = new Aliplayer({
+     id: "J_prismPlayer",
+     autoplay: true,
+     isLive: isfalse,
+     playsinline:true,
+     width:"100%",
+     height:"100%",
+     useH5Prism:true,
+     useFlashPrism:false,
+     source:source,
+     cover:"{#$livedetail_litpic#}",
+     x5_type: "h5",
+     x5_fullscreen: !0,
+     skinLayout: [{
+        name: "bigPlayButton",
+        align: "cc"
+      }, {
+        name: "H5Loading",
+        align: "cc"
+      }]
+   }
+);
+
+player.on("pause", function(e) {
+  $('.empty_box').click();
+})
+player.on("requestFullScreen", function(n) {
+    r.default.adjustLayout(!0),
+    player.cancelFullScreen()
+})
+player.tag.addEventListener("x5videoexitfullscreen", function() {
+    WeixinJSBridge && WeixinJSBridge.call("closeWindow")
+})
+$(document).on("WeixinJSBridgeReady", function() {
+  $(player.el()).find("video")[0].play()
+  if(device.indexOf('huoniao_Android') > -1){
+  	$('.chat_box').css('bottom', '20px');
+  }
+})
+
+$(player.el()).find("video").attr('poster', '{#$livedetail_litpic#}');
+
+
+$(document).one('touchstart', function (e) {
+  player.play();
+  if(device.indexOf('huoniao_Android') > -1){
+  	$('.chat_box').css('bottom', '20px');
+  }
+  return false;
+});
+</script>
+
+<script>
+	var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$livedetail_title#}',
+        "title": '{#$livedetail_title#}',
+        "imgUrl": '{#$livedetail_litpic#}',
+        "link": '{#getUrlPath service='live'  template='detail' id={#$livedetail_id#}#}',
+    };
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/rong/RongIMLib-2.2.9.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/chatroom.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

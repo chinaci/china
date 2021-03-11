@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+    <title>{#$live_channelName#}</title>
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/liveBroadcast_detail.css?v={#$cfg_staticVersion#}"/>
+    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.0/skins/default/aliplayer-min.css" />
+    <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.8.0/aliplayer-min.js"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	    <script>jQuery.noConflict()</script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$live_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+        var hideFileUrl = '{#$cfg_hideUrl#}';
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var id = '{#$livedetail_id#}', luser_id = '{#$userid#}';
+        var live_user = '{#$livedetail_user#}';
+
+        var modelType = "video", amount = '{#$livemoney#}';
+    </script>
+    <style>
+        .fullscreen video {object-position: center top; object-fit: contain;}
+        .prism-player{height: 4.2rem; position: relative;}
+        .prism-animation{display: none;}
+    </style>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$livedetail_title#}"#}
+
+{#if $liveUserAuth eq 1#}
+<div class="prism-player " id="player-con" data-type="{#$livedetail_state#}" data-src="{#if $livedetail_state==2#}{#$detail_mp4url#}{#else#}{#$detail_url#}{#/if#}" data-poster="{#$livedetail_litpic#}">
+	
+	<div class="video-btn">
+        <div class="play-box video-icon-box" id="vbplay">
+            <i class="play-icon video-icon"></i>
+        </div>
+        <div class="load-box video-icon-box" style="display: none;">
+            <i class="load-icon video-icon"></i>
+        </div>
+        <div class="reload-box video-icon-box" style="display: none;">
+            <i class="reload-icon"></i>
+            <p>重新播放</p>
+        </div>
+        <div class="error-box video-icon-box" style="display: none;">
+            <p class="err-info">视频出错了，请检查网络状况</p>
+            <div class="reload-box">
+                <i class="reload-icon"></i>
+                <p>重新加载</p>
+            </div>
+        </div>
+    </div>
+    <!--我的控制条-->
+    <div id="video-control" style="display: none;">
+        <div class="btn-control">
+            <div id="play" class="play"> </div>
+        </div>
+        <div id="time" class="time"> 00:00 </div>
+        <div id="progress"> <span id="bar"></span>
+            <div id="control"> </div>
+        </div>
+        <div class="btn-control">
+            <div id="sound" class="soundon"> </div>
+        </div>
+        <div id="full" class="full"> </div>
+    </div>
+	
+
+
+</div>
+
+
+<div class="navigation_list">
+    <ul class="fn-clear">
+        <li class="active">互动<i></i></li>
+        <li>介绍<i></i></li>
+        <li>榜单<i></i></li>
+        <!--<li>合作<i></i></li>-->
+    </ul>
+    {#if $livedetail_isfollow#}
+    <span class="active">已关注</span>
+    {#else#}
+    <span>关注</span>
+    {#/if#}
+
+</div>
+{#else#}
+    {#if $liveType eq 1#}
+    <!-- 加密 -->
+    <div class="liveType1">
+        <form action="{#$check_pass_url#}" method="post">
+            该直播需要输入密码才能播放，请输入密码: <input type="text" value="" name="password">
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <!-- 加密 end-->
+    {#else#}
+    <div class="liveType2">
+        <span>该视频需要付钱才能观看</span>
+        <button class="start_pay">付钱</button>
+    </div>
+    {#/if#}
+
+{#/if#}
+
+
+<div class="main">
+    <!-- 互动 -->
+    <div class="hudong">
+        <div class="interact main_info" id="main_info">
+
+        </div>
+
+        <div class="fixed_icon">
+            <!--<div class="fi_01"><a href="javaScript:;"><img src="{#$templets_skin#}images/ic_05.png"></a></div>-->
+            <div class="fi_02 fn-hide"><a href="{#getUrlPath service=live action=sharePage live_id=$livedetail_id#}"><img src="{#$templets_skin#}images/ic_06.png"></a></div>
+            <div class="fi_03"><a href="javascript:;"><img src="{#$templets_skin#}images/ic_07.png"></a></div>
+
+            <div class="fi_04 {#if $livedetail_iszan#}active{#/if#}"><img src="{#$templets_skin#}images/ic_08.png"><p>{#$livedetail_zanCount#}</p></div>
+
+        </div>
+        <div class="search_bar fn-clear">
+            <span class="biaoqin"></span>
+            <!-- <input type="text" id="search_keyword" class="txt_search" value="" autocomplete="off" placeholder="请输入您要搜索的企业关键词"> -->
+            <span class="search_keyword">请输入您要发表的评论</span>
+            <span class="liwu"></span>
+            <span class="jia"></span>
+        </div>
+    </div>
+
+
+    <!-- 互动 e-->
+
+    <!-- 介绍 -->
+    <div class="jieshao" style="display: none;">
+        <a href="{#getUrlPath service=video action=personal id=$livedetail_user#}">
+            <div class="jieshao_info fn-clear">
+                <div class="info_img"><img src="{#$livedetail_litpic#}"></div>
+                <div class="info_text">
+                    <p>{#$livedetail_nickname#}</p>
+                    <!--<p>直击峰会现场</p>-->
+                </div>
+                <i></i>
+            </div>
+        </a>
+        <div class="introduce fn-hide">
+            <div class="introduce_txt">直播介绍</div>
+            <div class="introduce_title">
+
+            </div>
+        </div>
+    </div>
+    <!-- 介绍 e-->
+
+
+    <!-- 邀请榜 -->
+    <div class="yaoqinbang" style="display: none;">
+        <div class="yqb">
+            <div class="switch_list">
+                <p>
+                    <span class="active" data-id="1">邀请榜</span><span data-id="2">打赏榜</span>
+                </p>
+            </div>
+            <div class="request_list yaoqingbang" style="display: block">
+                <ul>
+                    {#$a=0#}
+                    {#live action=getShareList return=list liveid=$livedetail_id#}
+                    <input type="hidden" value="{#$a++#}">
+                    <li class="fn-clear">
+                        <span class="ranking {#if $a < 4#}ranking_0{#$a#}{#/if#}"></span>
+                        <div class="ranking_info fn-clear">
+                            <div class="user_img"><img src="{#$list['user']['photo']#}"></div>
+                            <p class="user_name">{#$list['user']['username']#}</p>
+                            <p class="user_data">邀请<em>{#$list['scount']#}</em>人</p>
+                        </div>
+                    </li>
+                    {#/live#}
+                    {#$a=null#}
+
+                </ul>
+            </div>
+
+            <div class="request_list dashangbang" style="display: none">
+                <ul>
+                    {#$a=0#}
+                    {#live action=getRewardList return=list liveid=$livedetail_id#}
+                    <input type="hidden" value="{#$a++#}">
+                    <li class="fn-clear">
+                        <span class="ranking {#if $a < 4#}ranking_0{#$a#}{#/if#}"></span>
+                        <div class="ranking_info fn-clear">
+                            <div class="user_img"><img src="{#$list['user']['photo']#}"></div>
+                            <p class="user_name">{#$list['user']['username']#}</p>
+                            <p class="user_data">共打赏<em>{#$list['sumamount']#}</em>元</p>
+                        </div>
+                    </li>
+                    {#/live#}
+                    {#$a=null#}
+
+                </ul>
+            </div>
+
+
+        </div>
+        <a class="btn_request" href="{#getUrlPath service=live action=sharePage live_id=$livedetail_id#}">我要邀请</a>
+    </div>
+
+    <!-- 合作 -->
+    <div class="hezuo" style="display: none;">
+        <!-- 没有合作的时候显示 -->
+        <div class="no_hz">
+            <img src="{#$templets_skin#}images/img.png">
+            <p>TA还没有上传合作信息哦</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- 发表评论框 -->
+<div class="ios-input-box">
+    <div class="ios-input-con">
+        <p>发表评论</p>
+        <!-- <textarea placeholder="请输入评论内容" class="ios-comment-area"></textarea> -->
+        <div class="txt" id="content">
+            <!--<font class="txt-gray">帖子内容</font>-->
+
+            <div class="textarea placeholder" contenteditable="true" id="content_text">
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="ios-input-close">取消</div>
+            <div class="ios-input-submit">发送</div>
+        </div>
+    </div>
+</div>
+
+<!-- 礼物 -->
+<div class="mask"></div>
+<div class="layui-m-anim-scale" id="c-gift">
+    <ul class="mlbn-present fn-clear">
+
+        {#live action=getGift return=gift#}
+        <li data-id="{#$gift['id']#}">
+            <a href="javaScript:;">
+                <span><img src="{#$gift['gift_litpic']#}"></span>
+                <p class="mlbn-present-zan-name">{#$gift['gift_name']#}</p>
+                <p class="mlbn-present-zan-money">{#$gift['gift_price']#}元</p>
+            </a>
+        </li>
+        {#/live#}
+
+    </ul>
+    <ul class="d-flex fn-clear" id="fs-gift-number">
+        <li class="f-12rem s_title">数量</li>
+        <li class="clearfix fsl-shuliang">
+            <span class="fsl-shuliang-reduce">－</span>
+            <input type="text" class="fsl-shuliang-number" id="fs-gift-amount" value="1">
+            <span class="fsl-shuliang-plus">＋</span>
+        </li>
+        <li class="flex f-12rem fsl-present-price">合计：<var id="fs-gift-total">2.00</var>元</li>
+        <li class="fsl-fasong-bt">
+            <a id="fs-gift-send" class="enable">赠送</a>
+        </li>
+    </ul>
+</div>
+
+<!-- qq表情 -->
+<div class="emotion-box">
+    <ul class="fn-clear">
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f01.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f02.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f03.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f04.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f05.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f06.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f07.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f08.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f09.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f10.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f11.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f12.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f13.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f14.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f15.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f16.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f17.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f18.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f19.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f20.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f21.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f22.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f23.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f24.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f25.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f26.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f27.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f28.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f29.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f30.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f31.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f32.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f33.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f34.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f35.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f36.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f37.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f38.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f39.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f40.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f41.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f42.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f43.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f44.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f45.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f46.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f47.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f48.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f49.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="/static/images/ui/emot/baidu/i_f50.png" alt=""></a></li>
+    </ul>
+</div>
+
+<!-- 加--红包、照片 -->
+<div class="mask_01"></div>
+<div class="Multi_function fn-clear">
+    <div class="red_envelopes"><a href="{#getUrlPath service=live action=redPacket live_id=$livedetail_id cid=$detail_chatRoomIds#}"><img src="{#$templets_skin#}images/ioc_02.png"></a><p>红包</p></div>
+    <div class="photograph"><img src="{#$templets_skin#}images/ioc_01.png"><p>图片</p><div class="photograph1"></div></div>
+</div>
+
+<div class="disk_01"></div>
+
+<!-- 关注二维码 -->
+<div class="follow_QR">
+    <p class="QR_txt">长按关注微信公众号</p>
+    <div class="QR_img"><img src="{#$cfg_weixinQr#}"></div>
+    <p class="QR_title">关注直播最新动态</p>
+</div>
+
+
+
+
+<!-- 点击领取红包弹出层 -->
+<div class="disk_02"></div>
+<div class="hb_img">
+    <img class="hb_bg" src="{#$templets_skin#}images/hongbao_01.png">
+    <div class="hb_portrait"><img src="{#$livedetail_userphoto#}"></div>
+    <p class="hb_txt">{#$livedetail_username#}</p>
+    <p class="hb_title">发了一个红包</p>
+    <p class="hb_slogan">恭喜发财，大吉大利</p>
+    <div class="hb_qiang" data-id="" data-state=""><img src="{#$templets_skin#}images/hongbao_02.png"></div>
+    <a class="hb_receive" href="javaScript:;" style="display: none">查看领取详情>></a>
+    <i class="sign_out"></i>
+</div>
+
+
+
+<div class="disk_03"></div>
+<div class="hongbao_list">
+    <div class="list_top">
+        <img class="huodong_bg" src="{#$templets_skin#}images/h_01.png">
+        <div class="hb_portrait"><img src=""></div>
+        <p class="hb_txt"></p>
+        <p class="hb_slogan">恭喜发财，大吉大利</p>
+        <p class="hb_m"><em class="hb_m_number">99.99</em><em>元</em></p>
+        <a class="put_forward" href="{#getUrlPath service=member type=user template=withdraw#}">提现</a>
+        <i class="hd_sign_out"></i>
+    </div>
+    <div class="list_bottom">
+        <p class="bg_botton_txt">已领取<em class="h_yilingqu">1</em>/<em class="h_zonggong">5</em>个，共<em class="ylq_yuan">5</em>/<em class="zg_yuan">5</em>元</p>
+        <ul class="list_qianghongbao">
+
+        </ul>
+    </div>
+</div>
+
+<div class="protips"></div>
+
+
+
+<!-- 打赏弹窗 -->
+<div class="disk_04"></div>
+<div class="dashang">
+    <div class="hong_d"></div>
+    <div class="hong_top">
+        <img class="hong_bg" src="{#$templets_skin#}images/h_02.png">
+        <p class="hong_txt">红包打赏给</p>
+        <div class="hong_portrait"><img src="{#$livedetail_litpic#}"></div>
+        <p class="hong_name">{#$livedetail_nickname#}</p>
+        <p class="hong_title">打赏榜上有名，赏金额会送给主播</p>
+        <i class="hong_sign_out"></i>
+    </div>
+    <div class="hong_bottom">
+        <div class="hong_bg_l">
+            <ul class="fn-clear">
+                <li>1元</li>
+                <li>10元</li>
+                <li>20元</li>
+                <li>40元</li>
+                <li>8元</li>
+                <li>100元</li>
+            </ul>
+            <p class="other_money">其他金额</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="disk_05"></div>
+<div class="gengduo">
+    <p class="gengduo_txt">其他金额</p>
+    <div class="gengduo_n"><input type="text" name="other_money" placeholder="可填写0.1――999">元</div>
+    <div class="gengduo_btn fn-clear"><p class="gengduo_btn_01">取消</p><p class="gengduo_btn_02">确定</p></div>
+</div>
+
+
+
+<!-- 大图展示 s-->
+<div class="bigBoxShow">
+    <div class="swiper-container bigSwiper">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination bigPagination"></div>
+    </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+    var username='{#$livedetail_username#}';
+    var userphoto='{#$livedetail_userphoto#}';
+    var appKey = "{#$livedetail_appKey#}";
+    var token  = "{#$livedetail_token#}";
+    var config = {
+        protobuf : "{#$cfg_staticPath#}js/rong/protobuf-2.2.8.min.js"
+    };
+    var count = 0;// 拉取最近聊天最多 50 条。
+    var chatRoomId = "{#$detail_chatRoomId#}"; // 聊天室 Id。{#$detail_url#}
+    var live_user_n = '{#$livedetail_nickname#}';
+
+
+//  var player = document.getElementById('video');
+//  player.addEventListener('x5videoenterfullscreen', function(){
+//      player.style.width = window.screen.width + 'px';
+//      player.style.height = window.screen.height + 'px';
+//      document.body.classList.add('fullscreen');
+//  });
+//  player.addEventListener('x5videoexitfullscreen', function(){
+//      player.style.height = '';
+//      document.body.classList.remove('fullscreen');
+//  });
+
+</script>
+
+<script>
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$live_channelName#}',
+        "title": '{#$livedetail_title#}',
+        "imgUrl": '{#$livedetail_litpic#}',
+        "link": '{#getUrlPath service='live'  template='h_detail' id={#$livedetail_id#}#}',
+    };
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.animate1.0.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/rong/RongIMLib-2.2.9.min.js"></script>
+<script src="{#$templets_skin#}js/liveBroadcast_detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+  
+
