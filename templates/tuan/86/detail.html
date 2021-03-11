@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}团购|图片|价格|菜单 - {#$tuan_channelName#} - {#$cfg_webname#}</title>
+<meta name="description" content="{#$detail_subtitle#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', cfg_staticPath = staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+
+	var storeID     = {#$detail_sid#};
+	var detailID    = {#$detail_id#};
+	var detailTitle = '{#$detail_title#}';
+	var detailPrice = {#$detail_price#};
+	var maxCount    = {#$detail_limit#};
+	var detailThumb = '{#$detail_litpic#}';
+	var detailUrl   = '{#getUrlPath service="tuan" template="detail" id=$detail_id#}';
+	var date        = [{#$smarty.now#}, {#$detail_startdate#}, {#$detail_enddate#}];
+	var site_map    = '{#$site_map#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top.html"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+
+	<!-- 面包屑 -->
+	<p class="crumbs">
+		<a href="{#$tuan_channelDomain#}" target="_blank">首页</a> &raquo;
+		<a href="{#getUrlPath service='tuan' template='list' typeid=$detail_store['typeid']#}" target="_blank">{#$detail_store['typename']#}</a> &raquo;
+		<a href="{#getUrlPath service='tuan' template='list' typeid=$detail_store['typeid'] addrid=$detail_store['addrid']#}" target="_blank">{#$detail_store['addrname'][1]#}</a> &raquo;
+		<a href="{#getUrlPath service='tuan' template='detail' id=$detail_id#}">{#$detail_title#}</a>
+	</p>
+
+	<div class="summary">
+		<h1>{#$detail_title#}</h1>
+		<h2>{#$detail_subtitle#}</h2>
+
+		<div class="fn-clear">
+
+			<!-- 图集 -->
+			<div class="l">
+				<div class="slider">
+					<ul>
+						{#if $detail_pics|@count neq 0#}
+						{#foreach from=$detail_pics item=pics#}
+						<li><i></i><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$pics.path#}" /></li>
+						{#/foreach#}
+						{#/if#}
+					</ul>
+				</div>
+				<div class="imgctrl">
+					<ul class="fn-clear">
+						{#if $detail_pics|@count neq 0#}
+						{#foreach from=$detail_pics item=pics#}
+						<li><s></s><img src="{#changeFileSize url="{#$pics.path#}" type="small"#}" /></li>
+						{#/foreach#}
+						{#/if#}
+					</ul>
+				</div>
+				<a class="prev" href="javascript:;"></a>
+				<a class="next" href="javascript:;"></a>
+			</div>
+
+			<!-- 基本信息 -->
+			<div class="r">
+				<dl class="fn-clear">
+					<dt>团购价格</dt>
+					<dd class="price"><span class="pr">{#echoCurrency type='symbol'#}<strong>{#$detail_price#}</strong></span><del>{#echoCurrency type='symbol'#}{#$detail_market#}</del><span class="discount">{#$detail_discount#}折</span></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>已售数量</dt>
+					<dd class="join">{#$detail_sale#}</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>网友评分</dt>
+					<dd>
+						<span class="rate"><s><i style="width: {#$detail_rating / 5 * 100#}%;"></i></s>{#$detail_rating#}分</span>
+						<a href="javascript:;" class="comments"><s></s><span>{#$detail_totalCommon#}</span>人评价</a>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>有效期</dt>
+					<dd><span class="expiry"><s></s></span></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>团购数量</dt>
+					<dd class="counter">
+						<button type="button" class="minus">-</button><input type="text" id="count" value="1" maxlength="5" onkeyup="value=value.replace(/\D+/ig,'')" /><button type="button" class="add">+</button>
+						<span class="tips"></span>
+					</dd>
+				</dl>
+				<div class="btns">
+					{#if $detail_limit <= 0#}
+					<a href="javascript:;" class="disabled">已售完</a>
+					{#else#}
+					<a href="javascript:;" data-url="{#getUrlPath service="tuan" template="buy" id={#$detail_id#} count="%count%"#}" class="link-buy">立即抢购</a>
+					<a href="javascript:;" class="link-add"><s></s>加入购物车</a>
+					{#/if#}
+				</div>
+				<div class="tools">
+					{#if $detail_collect == 1#}
+					<a href="javascript:;" class="favorite curr"><s></s>已收藏</a>
+					{#else#}
+					<a href="javascript:;" class="favorite"><s></s>收藏</a>
+					{#/if#}
+					<a href="javascript:;" class="share bdsharebuttonbox bds_more" data-cmd="more"><s></s>分享</a>
+
+					<div class="service">
+						<label>服务</label>
+						<a href="#" target="_blank" class="s1"><s></s>支持随时退</a>
+						<a href="#" target="_blank" class="s2"><s></s>过期自动退</a>
+					</div>
+				</div>
+
+				<div class="morder fn-clear">
+					<div class="i">
+						<b></b>
+						<h3>手机扫一扫</h3>
+						<p>下单更快速便捷</p>
+					</div>
+					<div class="q">
+						<b></b><s></s><i></i>
+						<span id="qrcode"></span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- 重要通知 -->
+	{#if $detail_tips != ""#}
+	<!-- <blockquote>
+		<h5><strong>重要通知</strong></h5>
+		<p>{#$detail_tips#}</p>
+	</blockquote> -->
+	{#/if#}
+
+	<!-- 其他团购 -->
+	<div class="other-biz">
+		<div class="subtit">
+			<h3>该商家的其他团购</h3>
+			<span class="o3"><strong>已售</strong></span>
+			<span class="o2"><strong>门店价</strong></span>
+			<span class="o1"><strong>团购价</strong></span>
+		</div>
+		<ul class="list">
+			{#tuan action="tlist" return="list" store=$detail_sid#}
+			{#if $list.id != $detail_id#}
+			<li>
+				<a href="{#$list.url#}" class="fn-clear">
+					<span class="tit">{#$list.title#}</span>
+					<span class="o3">{#$list.sale#}</span>
+					<span class="o2">{#echoCurrency type='symbol'#}{#$list.market#}</span>
+					<span class="o1 price">{#echoCurrency type='symbol'#}<strong>{#$list.price#}</strong></span>
+				</a>
+			</li>
+			{#/if#}
+			{#/tuan#}
+		</ul>
+	</div>
+
+</div>
+
+<!-- 内容 -->
+<div class="wrap container">
+
+	<!-- 内容导航 -->
+	<div class="con-nav">
+		<div class="fixnav">
+			<div class="wrap">
+				<ul>
+					<li class="current"><a href="javascript:;">商家位置</a></li>
+					<li><a href="javascript:;">购买须知</a></li>
+					<li><a href="javascript:;">本单详情</a></li>
+					<li><a href="javascript:;">商家介绍</a></li>
+					<li><a href="javascript:;">消费评价<small>({#$detail_totalCommon#})</small></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- 商家位置 -->
+	<h5 class="con-tit">商家位置</h5>
+	<div class="bus-addr fn-clear">
+		<div class="l">
+			<div class="map"><div id="map" data-lnglat="{#$detail_store['lnglat']#}"></div></div>
+			{#if $site_map == "baidu"#}<a href="javascript:;" class="showbig"><s></s>查看完整地图</a>{#/if#}
+		</div>
+		<div class="r">
+			<h3><a href="{#getUrlPath service='tuan' template='store' id=$detail_store['id']#}" target="_blank">{#$detail_store['member']['company']#}</a></h3>
+			<p class="r1">评价：<a href="{#getUrlPath service='tuan' template='store' id=$detail_store['id']#}#comment" target="_blank"><strong>{#$detail_store['totalCommon']#}</strong></a>人评价</p>
+			<p class="r1">地址：{#$detail_store['addrname'][0]#} {#$detail_store['addrname'][1]#} {#$detail_store['address']#}</p>
+			{#if $site_map == "baidu"#}<p><a href="javascript:;" class="showbig">查看地图</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="showbig">公交/驾车去这里</a></p>{#/if#}
+			<p class="r1">电话：{#$detail_store['tel']#}</p>
+			<p class="r1">营业时间：{#$detail_store['openStart']#} - {#$detail_store['openEnd']#}</p>
+		</div>
+	</div>
+
+	<!-- 购买须知 -->
+	<h5 class="con-tit">购买须知</h5>
+	<div class="term">
+		<dl class="fn-clear">
+			{#if $detail_notice|@count neq 0#}
+			{#foreach from=$detail_notice item=notice#}
+			<dt>{#$notice.title#}</dt>
+			<dd>{#$notice.note#}</dd>
+			{#/foreach#}
+			{#/if#}
+		</dl>
+	</div>
+
+	<!-- 本单详情 -->
+	<h5 class="con-tit">本单详情</h5>
+
+	<!-- 套餐内容 -->
+	<div class="menu">
+		{#if $detail_package|@count neq 0#}
+
+		{#if $detail_packtype == 1#}
+
+		<table>
+			<thead>
+				<tr>
+					<th class="name">套餐内容</th>
+					<th>单价</th>
+					<th>数量/规格</th>
+					<th class="subtotal">小计</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="name">{#$detail_package[0]#}</td>
+					<td>{#$detail_package[1]#}</td>
+					<td>{#$detail_package[2]#}</td>
+					<td class="subtotal">{#$detail_package[3]#}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		{#elseif $detail_packtype == 2#}
+
+		<table>
+			<thead>
+				<tr>
+					<th class="name" colspan="2">套餐内容</th>
+					<th>单价</th>
+					<th>数量/规格</th>
+					<th class="subtotal">小计</th>
+				</tr>
+			</thead>
+			{#foreach from=$detail_package item=package#}
+			<tbody>
+				{#foreach from=$package['tr'] key=key item=tr#}
+				<tr>
+					{#if $key == 0#}<td rowspan="{#$package['tr']|@count#}" class="subline"><strong>{#$package['title']#}</strong></td>{#/if#}
+					<td class="name">{#$tr[0]#}</td>
+					<td>{#$tr[1]#}</td>
+					<td>{#$tr[2]#}</td>
+					<td class="subtotal">{#$tr[3]#}</td>
+				</tr>
+				{#/foreach#}
+			</tbody>
+			{#/foreach#}
+		</table>
+
+		{#/if#}
+
+		<p>最高价值：<span>{#echoCurrency type='symbol'#}{#$detail_market#}</span>团购价：<span class="price">{#echoCurrency type='symbol'#}{#$detail_price#}</span></p>
+
+		{#/if#}
+	</div>
+
+	<!-- 团购详情 -->
+	<div class="content">
+		<h2 class="standard-bar">团购详情</h2>
+		{#$detail_body|replace:'src=':'src="/static/images/blank.gif" data-url='#}
+	</div>
+
+	<!-- 商家介绍 -->
+	<h5 class="con-tit">商家介绍</h5>
+	<div class="content">
+		<h2 class="standard-bar">{#$detail_store['member']['company']#}</h2>
+		{#$detail_store['body']|replace:'src=':'src="/static/images/blank.gif" data-url='#}
+	</div>
+
+	<!-- 消费评价 -->
+	<h5 class="con-tit">消费评价<span class="add-comment">我买过本单，<a href="{#getUrlPath service='member' type='user' template='order' module='tuan' param='state=5'#}" target="_blank">我要评价</a></span></h5>
+
+	<!-- 统计评分 -->
+	<div class="rating-review fn-clear">
+		<div class="total">
+			<div class="total-score"><strong>{#$detail_rating#}</strong>分</div>
+			<div class="total-group"><s><i style="width: {#$detail_rating / 5 * 100#}%;"></i></s></div>
+			<div class="total-count">共<strong>{#$detail_totalCommon#}</strong>人评价</div>
+		</div>
+		<div class="score">
+			<dl class="fn-clear">
+				<dt>描述</dt>
+				<dd><s><i style="width: {#$detail_score1 / 5 * 100#}%;"></i></s>{#$detail_score1#}分</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>服务</dt>
+				<dd><s><i style="width: {#$detail_score2 / 5 * 100#}%;"></i></s>{#$detail_score2#}分</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>环境</dt>
+				<dd><s><i style="width: {#$detail_score3 / 5 * 100#}%;"></i></s>{#$detail_score3#}分</dd>
+			</dl>
+		</div>
+		<div class="count">
+			<dl class="fn-clear">
+				<dt>5分</dt>
+				<dd><em><i style="width: {#if $detail_totalCommon#}{#$detail_rating5 / $detail_totalCommon * 100#}{#else#}0{#/if#}%;"></i></em>{#$detail_rating5#}人</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>4分</dt>
+				<dd><em><i style="width: {#if $detail_totalCommon#}{#$detail_rating4 / $detail_totalCommon * 100#}{#else#}0{#/if#}%;"></i></em>{#$detail_rating4#}人</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>3分</dt>
+				<dd><em><i style="width: {#if $detail_totalCommon#}{#$detail_rating3 / $detail_totalCommon * 100#}{#else#}0{#/if#}%;"></i></em>{#$detail_rating3#}人</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>2分</dt>
+				<dd><em><i style="width: {#if $detail_totalCommon#}{#$detail_rating2 / $detail_totalCommon * 100#}{#else#}0{#/if#}%;"></i></em>{#$detail_rating2#}人</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>1分</dt>
+				<dd><em><i style="width: {#if $detail_totalCommon#}{#$detail_rating1 / $detail_totalCommon * 100#}{#else#}0{#/if#}%;"></i></em>{#$detail_rating1#}人</dd>
+			</dl>
+		</div>
+	</div>
+
+	<!-- 评价列表 -->
+	<div class="review-list">
+
+		<!-- 筛选&&排序 -->
+		<ul class="filter fn-clear">
+			<li class="current" data-filter=""><a href="javascript:;">全部</a></li>
+			<li data-filter="pic"><a href="javascript:;">晒图评价</a></li>
+			<li data-filter="lower"><a href="javascript:;">只看低分</a></li>
+			<li class="fn-right">
+				<select>
+					<option value="default">默认排序</option>
+					<option value="time">时间排序</option>
+				</select>
+			</li>
+		</ul>
+
+		<!-- 列表 -->
+		<div class="ratelist">
+			<p class="loading"><img src="{#$cfg_staticPath#}images/loading_h8.gif" /></p>
+			<ul id="rateList"></ul>
+			<!-- 分页 -->
+			<div class="pagination fn-clear"></div>
+		</div>
+
+	</div>
+
+</div>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+{#if $site_map == "baidu"#}
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+{#/if#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+
+<!--[if lte IE 9]>
+<script src="{#$cfg_staticPath#}js/ui/requestAnimationFrame.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.fly.min.js"></script>
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

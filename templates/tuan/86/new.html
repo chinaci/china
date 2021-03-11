@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>今日团购 - {#$tuan_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$tuan_keywords#}" />
+<meta name="description" content="{#$tuan_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', cookieDomain = '{#$cfg_cookieDomain#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top.html"#}
+{#include file="top.html"#}
+
+<div class="wrap fn-clear">
+	<!-- 大图幻灯 s -->
+	<div class="slideshow">
+		<div id="slideshow">
+		  <script src="{#$cfg_basehost#}/include/json.php?action=adjs&model=tuan&title=幻灯广告&type=slide" language="javascript"></script>
+		</div>
+		<div id="slidebtn" class="slidebtn"></div>
+		<a href="javascript:;" class="prev" id="slidebtn_prev"><i></i><s></s></a>
+		<a href="javascript:;" class="next" id="slidebtn_next"><i></i><s></s></a>
+	</div>
+	<!-- 大图幻灯 e -->
+
+	<div class="slideright_ad">
+		<ul class="fn-clear"><script src="{#$cfg_basehost#}/include/json.php?action=adjs&model=tuan&title=幻灯右侧4个小广告" language="javascript"></script></ul>
+	</div>
+
+</div>
+
+<div class="mod-list" id="mod-list">
+	<div class="fixnav">
+		<div class="filterbg">
+			<div class="wrap">
+				<h5>每日10:00上新</h5>
+				<div class="addr">
+					<a href="javascript:;" class="chooaddr" data-id="0">所属区域<s></s></a>
+					<div class="addrpop">
+						<s><i></i></s>
+						<ul class="fn-clear">
+							<li><a href="javascript:;" data-id="0">所有区域</a></li>
+							{#tuan action="addr" return="addr"#}
+							<li><a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a></li>
+							{#/tuan#}
+						</ul>
+					</div>
+				</div>
+				<div class="flags">
+					<label data-val="dujia"><s></s>独家</label>
+					<label data-val="yuyue"><s></s>免预约</label>
+					<label data-val="quan"><s></s>代金券</label>
+				</div>
+				<div class="mod-filter">
+					<ul class="sort fn-clear" style="border: none;">
+						<li class="sort-"><a href="javascript:;" class="on">默认</a></li>
+						<li class="sort-1"><a href="javascript:;">销量<i></i></a></li>
+						<li class="sort-3"><a href="javascript:;">价格<i></i></a></li>
+					</ul>
+					<div class="pagination">
+						<span class="pg-prev"><i class="trigger"></i><span class="text">上一页</span></span>
+						<span class="pg-next"><span class="text">下一页</span><i class="trigger"></i></span>
+						<span class="sum"><em>1</em>/1</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap" id="mod-item">
+		<ul class="fn-clear">
+			{#tuan action="tlist" return="list" filter="today" pageSize="60"#}
+			<li>
+				<a href="{#$list.url#}" target="_blank">
+					<span class="marks">
+						{#foreach from=$list.flag item=flag#}
+						<span class="item {#$flag#}"></span>
+						{#/foreach#}
+					</span>
+					<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$list.litpic#}" type="small"#}" alt="{#$list.title#}" />
+					<span class="geo"><i></i><strong>商圈：</strong>{#$list.store.circle#}</span>
+					<h4>{#$list.title#}</h4>
+					<h3 title="{#$list.subtitle#}">{#$list.subtitle#}</h3>
+					<div class="item-prices">
+						<div class="price"><i>{#echoCurrency type='symbol'#}</i><em class="actPrice">{#$list.price#}</em></div>
+						<div class="dock"><del class="orig-price">{#echoCurrency type='symbol'#}{#$list.market#}</del></div>
+						<div class="prompt"><span class="sold-num"><em>{#$list.sale#}</em> 件已售</span></div>
+						<div class="link">马上抢</div>
+					</div>
+				</a>
+			</li>
+			{#/tuan#}
+		</ul>
+		{#if $pageInfo.totalCount == 0#}
+		<div class="loading">暂无相关信息！</div>
+		{#else#}
+		<div class="loading fn-hide">加载中，请稍候...</div>
+		{#/if#}
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+<script>
+	var atpage = 1,
+			totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+			totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+			pageSize = 60;
+</script>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=4"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/new.js?v=4"></script>
+</body>
+</html>

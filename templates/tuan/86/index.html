@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class='w1200'>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$tuan_title#}</title>
+	<meta name="keywords" content="{#$tuan_keywords#}" />
+	<meta name="description" content="{#$tuan_description#}" />
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$cfg_staticPath#}css/newtemplets_public.css?v={#$cfg_staticVersion#}">
+	<link rel="stylesheet" href="{#$templets_skin#}css/tuan.css?v={#$cfg_staticVersion#}">
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js?v={#$cfg_staticVersion#}"></script>
+	<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tuan_channelDomain#}', templatePath = '{#$templets_skin#}';
+	</script>
+</head>
+
+<body class="w1200">
+	{#$channel = 'tuan'#}
+	{#$hotline = $tuan_hotline#}
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_top_v2.html"#}
+
+
+	<!-- 中间团购信息部分 s -->
+		<div class="tuan">
+			<!-- 幻灯片 s -->
+			<div class="flash">
+		        <div class="bd">
+					{#myad title="团购秒杀_模板二_电脑端_广告一"#}
+				</div>
+				<div class="hd"><ul></ul></div>
+	        </div>
+			<!-- 幻灯片 e -->
+			<!-- 导航栏 s-->
+			<div class="NewsNav fn-clear">
+				<ul>
+					{#tuan action="type" return='bjtype' page="1" pageSize="8"#}
+					<li{#if $_bindex.bjtype == 1#} class="NewsNav_bc on"{#/if#} ><a href="javascript:;" data-id="{#$bjtype.id#}">{#$bjtype.typename#}</a></li>
+					{#/tuan#}
+				</ul>
+				<span><a href="javascript:;">更多<i></i></a>
+					<div class="more_list">
+						<ul>
+							{#tuan action="type" return='cjtype' page="1"#}
+							{#if $_bindex.cjtype >8#}
+							<li><a href="javascript:;" data-id="{#$cjtype.id#}">{#$cjtype.typename#}</a></li>
+							{#/if#}
+							{#/tuan#}
+						</ul>
+					</div>
+				</span>
+			</div>
+			<!-- 导航栏 e-->
+			<div class="tuan_list" id="tuan_list">
+			</div>
+		</div>
+	<!-- 中间团购信息部分 e -->
+	<!-- 右侧秒杀 整点团信息汇总 s -->
+		<div class="Information">
+			<div class="issue"><a href="{#$member_busiDomain#}" target="_blank">发布团购</a></div>
+			<!-- <div class="seckill">
+				<div class="seckill_lead fn-clear"><em><i></i>秒杀专区</em><a href="#">更多>></a></div>
+				<div class="seckill_list">
+					<div class="seckill_detail fn-clear">
+						<div class="seck_pic"><img src="{#$templets_skin#}upfile/1420614932257.jpg" alt=""></div>
+						<h1>中粮美滋滋天天见坚果每日坚果彩盒装750g/盒(内含25)g*30）</h1>
+						<div class="seck_price"><em><i>￥</i>108.00</em><s><i>￥</i>200.00</s><span>开通提醒</span></div>
+						<div class="count_down">4天18时29分32秒后开始</div>
+					</div>
+					<div class="seckill_detail fn-clear">
+						<div class="seck_pic"><img src="{#$templets_skin#}upfile/1420614932257.jpg" alt=""></div>
+						<h1>中粮美滋滋天天见坚果每日坚果彩盒装750g/盒(内含25)g*30）</h1>
+						<div class="seck_price"><em><i>￥</i>108.00</em><s><i>￥</i>200.00</s><span>开通提醒</span></div>
+						<div class="count_down">4天18时29分32秒后开始</div>
+					</div>
+					<div class="seckill_detail fn-clear">
+						<div class="seck_pic"><img src="{#$templets_skin#}upfile/1420614932257.jpg" alt=""></div>
+						<h1>中粮美滋滋天天见坚果每日坚果彩盒装750g/盒(内含25)g*30）</h1>
+						<div class="seck_price"><em><i>￥</i>108.00</em><s><i>￥</i>200.00</s><span>开通提醒</span></div>
+						<div class="count_down">4天18时29分32秒后开始</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="integral">
+				<div class="integral_lead fn-clear"><em>整点团</em></div>
+				<div class="integral_box">
+					<div class="inter_bc"></div>
+					<div class="integral_list">
+					</div>
+				</div>
+			</div>
+			<div class="Qrcode fn-clear">
+				<ul>
+					<li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""><p>手机APP下载</p></li>
+					<li><img src="{#$cfg_weixinQr#}" alt=""><p>微信公众号</p></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 右侧秒杀 整点团信息汇总 e -->
+
+
+
+
+	</div>
+<!-- 主干部分 e-->
+<!-- 底部 s-->
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_foot_v2.html"#}
+<!-- 底部 e-->
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/newtemplets_public.js?v3"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v2"></script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+.tuan{
+	width: 675px;
+	float: left;
+	margin:0 22px;
+}
+
+
+.city-info {float: left; width: 110px; position: relative; margin: 30px 0 0 10px;}
+.w1200 .city-info {width: 170px;}
+.city-info h2 {position: relative; display: inline-block; z-index: 8; border: 1px solid #fff;}
+.city-info h2 a {position: relative; display: block; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 20px; font-weight: 500; color: #333; padding: 0 25px 0 10px;}
+.w1200 .city-info h2 a {max-width: 120px;}
+.city-info h2 a s {position: absolute; height: 0; width: 0; line-height: 0; font-size: 0; border: 5px dashed transparent; top: 14px; right: 8px; border-top: 5px solid #666; z-index: 10;}
+.city-info.curr h2 {border-color: #ccc; border-bottom-color: #fff; background: #fff;}
+.city-info ul {display: none; position: absolute; z-index: 7; left: 0; top: 31px; width: 370px; padding: 15px 20px 5px; background-color: #fff; border: 1px solid #ccc; box-shadow: 2px 2px 5px #ccc;}
+.city-info.curr ul {display: block;}
+.city-info li {float: left; margin: 0 20px 8px 0; font-size: 14px;}
+.city-info li a:hover {text-decoration: underline;}
+
+
+.header1 .search1.search_tuan {width: 490px;}
+.header1 .search1.search_tuan input.SearchFirst {width: 335px;}
+
+
+
+/*幻灯片*/
+.flash{
+	width: 675px;
+	height: 350px;
+	overflow: hidden;
+	margin-top: 20px;
+	position: relative;
+}
+.flash .bd {height: 350px;}
+.flash img{
+	width: 100%;
+	height: 100%;
+}
+.flash .slideshow-item{
+	position: relative;
+	height: 350px;
+}
+.flash .slideinfo{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+.flash .slideinfo .bg{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    z-index: 1;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(.8, #000));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background: #333\0;
+    bottom: 0;
+}
+.flash .slideinfo h3{
+	z-index: 2;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+.flash .slideinfo h3 a{
+	color: #fff;
+	font-size: 18px;
+	width: 450px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.flash .hd{
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	z-index: 2;
+}
+.flash .hd ul li{
+	float: left;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #7d7c77;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.flash .hd ul li.on{
+	background: #fff;
+}
+
+
+/*公用导航栏*/
+.NewsNav {
+	background: #f4f4f4;
+	height: 50px;
+	line-height: 50px;
+	width: 675px;
+}
+.NewsNav ul li {
+	float: left;
+	width: 75px;
+	text-align: center;
+	font-size: 16px;
+	position: relative;
+}
+.NewsNav ul li:after{
+	content:"";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 75px;
+	height: 2px;
+	background: #23b8f6;
+	display: none;
+}
+.NewsNav ul li.NewsNav_bc:after{
+	display: block;
+}
+
+.NewsNav ul li:hover i{
+	background-position: -32px -65px;
+}
+.NewsNav span{
+	float: left;
+	width: 75px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	position: relative;
+	font-size: 16px;
+}
+.NewsNav span a{
+	display: block;
+	font-weight: 600;
+	font-weight: normal;
+}
+.NewsNav span i{
+    width: 17px;
+    height: 10px;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -6px -7px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.NewsNav span:hover .more_list{
+	display: block;
+}
+.more_list{
+	position: absolute;
+	right: 0;
+	top: 50px;
+	width: 675px;
+	z-index: 3;
+	background: rgba(244, 244, 244, 0.86);
+	display: none;
+    -webkit-animation: topFadeIn .3s ease-out;
+    -moz-animation: topFadeIn .3s ease-out;
+    animation: topFadeIn .3s ease-out;
+}
+.more_list ul li{
+	float: left;
+}
+.more_list ul li a{
+	font-weight: normal;
+}
+
+
+
+/*团购详情列表*/
+.tuan_list{
+	width: 675px;
+}
+.tuan_detail{
+    padding: 25px 5px;
+    border-bottom: 1px solid #dadada;
+    position: relative;
+}
+.tuan_detail:hover {
+    background: rgba(241, 241, 241, 0.39);
+}
+.tuan_detail .tuan_pic{
+	width: 166px;
+	height: 122px;
+	overflow: hidden;
+	float: left;
+	background: url(../images/pic.png) no-repeat center;
+	margin-right: 15px;
+}
+.tuan_detail .tuan_pic img{
+	width: 100%;
+	min-height: 122px;
+}
+.tuan_detail .tuan_title a{
+	font-size: 20px;
+	font-weight: bold;
+}
+.tuan_detail .tuan_title i{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: url(../images/infor.png) no-repeat;
+    vertical-align: text-bottom;
+    margin-left: 3px;
+}
+.tuan_detail .tuan_title i.ding{
+	background-position: -163px -172px;
+}
+.tuan_detail .tuan_title i.bao{
+	background-position: -205px -172px;
+}
+.tuan_detail .tuan_title .tuan_tips{
+	float: right;
+    line-height: 34px;
+    color: #23b8f6;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tuan_detail .tuan_title .tuan_tips em{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background: url(../images/infor.png) no-repeat;
+    background-position: -1px -106px;
+    vertical-align: text-bottom;
+    margin-right: 3px;
+}
+.tuan_detail .tuan_stitle{
+	font-size: 14px;
+	color: #a6a6a6;
+	margin-top: 2px;
+	height: 21px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tuan_detail .star{
+	height: 25px;
+	line-height: 25px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.tuan_detail .star .star_de{
+    width: 120px;
+    height: 25px;
+    background: url(../images/star_1.png) repeat-x;
+    float: left;
+    margin-right: 10px;
+    vertical-align: text-bottom;
+    margin-right: 20px;
+}
+.tuan_detail .star .star_de i{
+    width: 50%;
+    height: 25px;
+    background: url(../images/star.png) repeat-x;
+    display: block;
+}
+.tuan_detail .star .down{
+	font-size: 14px;
+	color: #a6a6a6;
+}
+.tuan_detail .star .down em{
+	color: #23b8f6;
+}
+.tuan_detail .price{
+	font-size: 14px;
+	color: #f45118;
+}
+.tuan_detail .price em{
+	font-size: 20px;
+}
+.tuan_detail .price span{
+	color: #a6a6a6;
+	font-size: 14px;
+	margin-left: 20px;
+}
+.tuan_detail .right_now{
+	position: absolute;
+	right: 5px;
+	bottom: 25px;
+	width: 98px;
+	height: 38px;
+	border-radius: 5px;
+	background: #23b8f6;
+	color: #fff;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.tuan_detail .right_now a{
+	color: #fff;
+	display: block;
+}
+.load-add{
+	width: 100%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 14px;
+	background: #f8f8f8;
+	color: #bfbfbf;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.load-add:hover{
+	background: #23b8f6;
+	color: #fff;
+}
+.loading{
+    text-align: center;
+    margin: 50px 0;
+    font-size: 20px;
+}
+.loading img{
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+
+
+/*右侧直播信息汇总*/
+.Information{
+	float: left;
+	width: 351px;
+}
+.Information .issue{
+	width: 351px;
+	height: 62px;
+	background: url(../images/btn_bc.png) no-repeat center;
+	background-size: 355px;
+	text-align: center;
+	line-height: 62px;
+	font-size: 16px;
+	margin-top: 20px;
+}
+.Information .issue a{
+	display: block;
+}
+.seckill{
+	margin-top: 15px;
+	border: 1px solid #ececec;
+}
+.seckill .seckill_lead{
+	background: #f8f8f8;
+	height: 57px;
+	line-height: 57px;
+	font-size: 14px;
+	padding: 0 12px;
+}
+.seckill .seckill_lead em{
+	float: left;
+	font-size: 16px;
+}
+.seckill .seckill_lead em i{
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	vertical-align: text-bottom;
+	background: url(../images/infor.png) no-repeat;
+    background-position: -299px -213px;
+	margin-right: 5px;
+}
+.seckill .seckill_lead a{
+	float: right;
+	color: #c0c0c0;
+}
+.seckill .seckill_lead a:hover{
+	color: #34bdf6;
+}
+.seckill .seckill_list{
+	padding: 0 12px;
+	height: 392px;
+	overflow: hidden;
+}
+.seckill .seckill_detail{
+	padding: 15px 0;
+	border-bottom: 1px solid #d6d6d6;
+}
+.seckill .seckill_detail .seck_pic{
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+}
+.seckill .seckill_detail .seck_pic img{
+	width: 100%;
+	min-height: 100px;
+}
+.seckill .seckill_detail h1{
+	font-size: 16px;
+	height: 50px;
+	position: relative;
+	overflow: hidden;
+}
+.seckill .seckill_detail .seck_price {
+	height: 32px;
+	line-height: 32px;
+}
+.seckill .seckill_detail .seck_price i{
+	font-style: normal;
+	font-size: 12px;
+}
+.seckill .seckill_detail .seck_price em{
+	color: #f43a1c;
+	font-size: 14px;
+}
+.seckill .seckill_detail .seck_price s{
+	color: #cccccc;
+	margin-left: 10px;
+}
+.seckill .seckill_detail .seck_price span{
+	float: right;
+	width: 73px;
+	height: 32px;
+	border-radius: 5px;
+	color: #fff;
+	background: #23b8f6;
+	text-align: center;
+	line-height: 32px;
+	cursor: pointer;
+}
+.seckill .seckill_detail .count_down{
+	color: #cccccc;
+}
+.integral{
+	margin-top: 20px;
+}
+.integral .integral_lead{
+	height: 57px;
+	line-height: 57px;
+}
+.integral .integral_lead em{
+	font-size: 16px;
+	float: left;
+	width: 100px;
+}
+.integral .integral_lead a{
+	float: right;
+	color: #c0c0c0;
+	font-size: 14px;
+}
+.integral .integral_lead a:hover{
+	color: #23b8f6;
+}
+.integral_box{
+	width: 349px;
+	overflow: hidden;
+	position: relative;
+}
+.integral_list{
+	padding: 0 15px 35px 30px;
+	background: #f8f8f8;
+	position: relative;
+	height: 622px;
+	width: 320px;
+	overflow: auto;
+	background: url(../images/line_1.png) repeat-y 15px;
+}
+.inter_bc{
+	height: 63px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	right: 0;
+	background: url(../images/line_2.png) repeat-x;
+	z-index: 3;
+}
+.integral_list .integral_detail{
+	padding: 15px 0;
+}
+.integral_list .integral_detail.on_time .inte_time{
+	font-size: 12px;
+	color: #c3c3c3;
+	position: relative;
+	margin-bottom: 10px;
+}
+.integral_list .integral_detail.on_time .inte_time i{
+	width: 8px;
+	height: 8px;
+	background: #e5e5e5;
+	border-radius: 100%;
+	position: absolute;
+	left: -18px;
+	top: 5px;
+}
+.integral_list .integral_detail.on_time .inte_time em{
+	float: left;
+	width: 50%;
+	overflow: hidden;
+}
+.integral_list .integral_detail.on_time .inte_time span{
+	float: right;
+	width: 50%;
+	overflow: hidden;
+	text-align: right;
+}
+.integral_list .integral_detail.on_time .inte_time span .time_tips{
+	display: inline-block;
+}
+.integral_list .integral_detail .inte_txt .inte_pic{
+	float: left;
+	width: 75px;
+	height: 75px;
+	overflow: hidden;
+	margin-right: 10px;
+}
+.integral_list .integral_detail .inte_txt .inte_pic img{
+	width: 100%;
+	min-height: 75px;
+}
+.integral_list .integral_detail .inte_txt h1{
+	font-size: 14px;
+	height: 40px;
+	overflow: hidden;
+	margin-bottom: 2px;
+}
+.integral_list .integral_detail .inte_txt .inte_price {
+	height: 32px;
+	line-height: 32px;
+}
+.integral_list .integral_detail .inte_txt .inte_price i{
+	font-style: normal;
+	font-size: 12px;
+}
+.integral_list .integral_detail .inte_txt .inte_price em{
+	color: #f43a1c;
+	font-size: 14px;
+}
+.integral_list .integral_detail .inte_txt .inte_price s{
+	color: #cccccc;
+	margin-left: 10px;
+}
+.integral_list .integral_detail.on_time .inte_txt .inte_price span{
+	float: right;
+	width: 73px;
+	height: 32px;
+	border-radius: 5px;
+	color: #fff;
+	background: #23b8f6;
+	text-align: center;
+	line-height: 32px;
+}
+.integral_list .integral_detail .inte_txt .inte_price span{
+	float: right;
+	width: 73px;
+	height: 32px;
+	border-radius: 5px;
+	color: #fff;
+	background: #b2b2b2;
+	text-align: center;
+	line-height: 32px;
+}
+.Qrcode{
+	margin-top: 20px;
+}
+.Qrcode ul{
+	width: 380px;
+}
+.Qrcode ul li{
+	width: 165px;
+	height: 200px;
+	float: left;
+	margin-right: 18px;
+}
+.Qrcode ul li img{
+	width: 146px;
+	height: 146px;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.Qrcode ul li p{
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.mnbtn{
+	height: 100px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	line-height: 100px;
+}

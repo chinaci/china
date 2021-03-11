@@ -1,0 +1,86 @@
+<div class="footer">
+	<div class="wrap">
+		<ul class="fn-clear">
+			{#*
+			<li class="item-wide">
+				<a href="#" class="fn-clear feedback">
+					<i class="icon"></i>
+					<span>意见反馈</span>
+					<p>让我们倾听你的声音</p>
+				</a>
+				<a href="tel:4008205527" class="fn-clear tel">
+					<i class="icon"></i>
+					<span>客服电话</span>
+					<p>400-025-1158</p>
+				</a>
+			</li>
+			<li class="item-wide">
+				<a href="#" class="fn-clear business">
+					<i class="icon"></i>
+					<span>商务合作</span>
+					<p>在点评组织团购</p>
+				</a>
+				<a href="#" class="fn-clear kf">
+					<i class="icon"></i>
+					<span>在线客服</span>
+					<div class="m-lbtn">立即提问</div>
+				</a>
+			</li>
+			*#}
+			<li class="item-narrow">
+				<dl>
+					<dt>关于我们</dt>
+					{#siteConfig action="singel" pageSize="5"#}
+					<dd><a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a></dd>
+					{#/siteConfig#}
+				</dl>
+			</li>
+			{#siteConfig action='helpsType' return='type' pageSize="5"#}
+			<li class="item-narrow">
+				<dl>
+					<dt>{#$type.typename#}</dt>
+					{#siteConfig action='helpsType' type={#$type.id#} return='type1' pageSize="5"#}
+					<dd><a href="{#getUrlPath service='siteConfig' template='help' id={#$type1.id#}#}" target="_blank">{#$type1.typename#}</a></dd>
+					{#/siteConfig#}
+				</dl>
+			</li>
+			{#/siteConfig#}
+		</ul>
+	</div>
+</div>
+
+<div class="wrap copyright">
+	{#$cfg_powerby#}
+	<p class="tg-footer-credit-box">
+		<a target="_blank" href="#"><img alt="网络社会征信网" height="47" src="http://i3.dpfile.com/s/res/zx110-1.4a2a9ace41739062a34095c9b8243f53.png"></a>
+		<a target="_blank" href="#"><img alt="可信网站" height="47" src="http://i1.dpfile.com/cms/20140220/472415298750.jpg"></a>
+		<a target="_blank" href="#"><img alt="AAA认证" height="47" src="http://i1.dpfile.com/s/res/trust_org.a60b32383d8f65848924df40c74c0eb5.png"></a>
+		<a target="_blank" href="#"><img alt="诚信网站" height="47" src="http://i2.dpfile.com/s/res/chengxin.ca5cd00719112ed37c691634e73d4955.png"></a>
+	</p>
+</div>
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+{#if $template != "buy" && $template != "payreturn" && $template != "editorder"#}
+<div class="glocart{#if $template == "cart" || $template == "pay"#} fn-hide{#/if#}" id="glocart">
+	<div class="cartbtn">
+		<a class="cartpop" href="javascript:;">
+			<span>我的购物车<b>0</b>件</span>
+			<sub></sub><sup></sup>
+		</a>
+		<a href="{#getUrlPath service="tuan" template="cart"#}" class="cartlink">结算<s></s></a>
+	</div>
+	<div class="cartcontent"><div class="cartwrap">
+	<div class="empty">暂时没有商品</div>
+		<div class="cartlist">
+			<ul></ul>
+			<div class="statics">共计：<span>{#echoCurrency type='symbol'#}<strong>0.00</strong></span>&nbsp;&nbsp;(不含运费)</div>
+		</div>
+	</div></div>
+</div>
+{#/if#}
+
+{#$cfg_statisticscode#}

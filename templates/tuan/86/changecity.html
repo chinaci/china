@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$tuan_title#}</title>
+<meta name="keywords" content="{#$tuan_keywords#}" />
+<meta name="description" content="{#$tuan_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=1" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/index_public.css?v=1" />
+<link rel="stylesheet" href="{#$templets_skin#}css/changecity.css?v=1" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}';
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+<body>
+{#*
+{#$city = 0#}
+{#tuan action="city"#}
+{#$city = 1#}
+<h3>&nbsp;&nbsp;&nbsp;<a href="{#$row.url#}">{#$row.name#}</a></h3>
+{#/tuan#}
+{#if $city == 0#}
+请在后台添加要运营的城市！
+{#/if#}
+*#}
+
+
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap">
+  <!-- head s -->
+  <div class="header fn-clear">
+  	<div class="logo">
+  		<a href="{#$cfg_basehost#}" title="{#$cfg_webname#}">
+        <img src="{#$cfg_weblogo#}" alt="{#$cfg_webname#}">
+        <div class="shortname"><h2>{#$cfg_shortname#}</h2><p>地方最大最全生活网</p></div>
+      </a>
+  	</div>
+  	<dl class="kefu fn-clear">
+  		<dt><img src="{#$templets_skin#}images/kf_tel.png" alt=""></dt>
+  		<dd>
+  			<p class="p1">客服热线</p>
+  			<p class="p2">{#$cfg_hotline#}</p>
+  		</dd>
+  	</dl>
+  </div>
+  <!-- head e -->
+  <div class="split-line"></div>
+  <div class="area_bg">
+    <h3 class="topTit">请选择您所在的城市</h3>
+    <div class="cityArea fn-clear">
+      {#$city = 0#}
+      {#tuan action="city"#}
+      {#$city = 1#}
+      <a href="{#$row.url#}">{#$row.name#}</a>
+      {#/tuan#}
+      {#if $city == 0#}
+      请在后台添加要运营的城市！
+      {#/if#}
+    </div>
+  </div>
+</div>
+
+{#include file="../../siteConfig/footer1.html"#}
+
+<script src="{#$cfg_staticPath#}js/common.js" charset="utf-8"></script>
+</body>
+</html>
