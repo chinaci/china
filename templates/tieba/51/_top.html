@@ -1,0 +1,41 @@
+<!-- 头部背景 s -->
+<div class="head-bg"><script src="/include/json.php?action=adjs&title=贴吧社区_模板一_电脑端_广告一" language="javascript"></script></div>
+<!-- 头部背景 e -->
+
+<!-- 内容部分 s -->
+<div class="main">
+  <div class="main-info fn-clear">
+    <div class="mf-left fn-left">
+      <div class="mfl-txt">
+        <div class="mfl-txt-top fn-clear">
+          <a href="{#$tieba_channelDomain#}" class="name">{#$tieba_channelName#}</a>
+          <div class="num fn-left">帖子： <em>{#$tiziTotal|number_format#}</em>今日：<em>{#$tiziTodayTotal|number_format#}</em>昨日：<em>{#$tiziYestodayTotal|number_format#}</em></div>
+        </div>
+        <div class="mfl-txt-bottom">
+          <p>{#$tieba_description#}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mf-right fn-right">
+      <form method="get" action="{#$tieba_channelDomain#}">
+        <input type="text" value="{#$keywords#}" placeholder="吧内搜索" name="keywords" class="inp fn-left">
+        <input type="submit" class="btn fn-left">
+      </form>
+    </div>
+    <div class="bg"></div>
+  </div>
+  {#$tid = 0#}
+  {#if $typeid && !$parentid#}
+    {#$tid = $typeid#}
+  {#else#}
+    {#$tid = $parentid#}
+  {#/if#}
+  {#if $tid#}
+  <div class="main-tab">
+    <ul class="fn-clear">
+      {#tieba action="type" type={#$tid#}#}
+      <li{#if $typeid == $row.id || $parentid == $row.id#} class="on"{#/if#}><a href="{#getUrlPath service='tieba' template='list' typeid={#$row.id#}#}">{#$row.typename#}</a></li>
+      {#/tieba#}
+    </ul>
+  </div>
+  {#/if#}

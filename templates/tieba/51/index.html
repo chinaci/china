@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#if $seoTitle != ""#}{#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../member/css/fabu-pay.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+var id = 0;
+
+var payReturn = "{#getUrlPath service='member' type='user' template='manage' action='tieba'#}";
+</script>
+</head>
+
+{#$pageCurr = "index"#}
+
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="tieba"#}
+
+
+<div class="wrap">
+
+  {#include file="_top.html"#}
+
+  <div class="main-content fn-clear">
+    <div class="main-content-left fn-left">
+      <ul>
+        {#tieba action='tlist' keywords={#$keywords#} page={#$atpage#} pageSize="20"#}
+        {#$style = ""#}
+        {#if $row.color != ""#}
+        {#$style = $style|cat:" color: "|cat:$row.color|cat:";"#}
+        {#/if#}
+        {#if $row.bold == 1#}
+        {#$style = $style|cat:" font-weight: 700;"#}
+        {#/if#}
+        <li>
+          <div class="main-list fn-clear main-pic">
+            <div class="reply fn-left"><span>{#$row.click#}</span></div>
+            <div class="cont fn-clear">
+              <div class="pic-top fn-clear">
+                <div class="title fn-left">
+                    {#if $row.top#}<i class="icon-top" title="置顶"></i>{#/if#}
+                    {#if $row.jinghua#}<i class="icon-jing" title="精华"></i>{#/if#}
+                    <a href="{#$row.url#}"{#if $style#} style="{#$style#}"{#/if#} target="_blank">{#$row.title#}</a>
+                </div>
+                <div class="user fn-right">
+                  <span class="user-name"><i class="icon-user"></i><a href="{#$cfg_basehost#}/user/{#$row.uid#}#tieba" target="_blank">{#$row.username#}</a></span><span class="time fn-right">{#$row.pubdate|date_format:"%H:%M"#}</span>
+                </div>
+              </div>
+
+              {#if $row.imgGroup#}
+              <div class="pic-bottom fn-clear">
+                <div class="carousel fn-left">
+                  <div class="thumb">
+                    <div class="plist">
+                      <ul class="fn-clear">
+                        {#foreach from=$row.imgGroup item="img" key="k"#}
+                        {#if $k < 4#}<li><a href="javascript:;"><img src="{#$img#}" alt="{#$row.title#}" /></a></li>{#/if#}
+                        {#/foreach#}
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="album">
+                    <a href="javascript:;" hidefocus="true" class="prev"></a>
+                    <a href="javascript:;" hidefocus="true" class="close"></a>
+                    <a href="javascript:;" hidefocus="true" class="next"></a>
+                    <div class="albumlist">
+                      {#foreach from=$row.imgGroup item="img" key="k"#}
+                      {#if $k < 4#}<div class="aitem"><i></i><img src="{#$img#}"></div>{#/if#}
+                      {#/foreach#}
+                    </div>
+                  </div>
+                </div>
+                {#if $row.lastReply#}
+                <div class="reply-user fn-right">
+                  <span class="ruser-name"><i class="icon-user"></i><a href="{#$cfg_basehost#}/user/{#$row.lastReply['uid']#}#tieba" target="_blank">{#$row.lastReply['username']#}</a></span><span class="reply-time fn-right">{#$row.lastReply['pubdate']|date_format:"%H:%M"#}</span>
+                </div>
+                {#/if#}
+              </div>
+              {#else#}
+              <div class="pic-bottom fn-clear">
+                <p class="w560 fn-left">{#$row.content#}</p>
+                {#if $row.lastReply#}
+                <div class="reply-user fn-right">
+                  <span class="ruser-name"><i class="icon-user"></i><a href="{#$cfg_basehost#}/user/{#$row.lastReply['uid']#}#tieba" target="_blank">{#$row.lastReply['username']#}</a></span><span class="reply-time fn-right">{#$row.lastReply['pubdate']|date_format:"%H:%M"#}</span>
+                </div>
+                {#/if#}
+              </div>
+              {#/if#}
+            </div>
+          </div>
+        </li>
+        {#/tieba#}
+      </ul>
+
+      {#if $pageInfo.totalCount == 0#}
+      	<div class="empty">抱歉！ 暂无相关帖子</div>
+      {#/if#}
+
+      {#getPageList service='tieba' template='index' pageType='dynamic' param="page=#page#"#}
+
+    </div>
+
+    {#include file="_right.html"#}
+  </div>
+</div>
+<!-- 内容部分 e -->
+
+{#include file="../../member/fabu-pay.html" module="tieba"#}
+{#include file="_footer.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../member/js/fabu-pay.js?v=?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

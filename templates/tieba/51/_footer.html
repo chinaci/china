@@ -1,0 +1,71 @@
+<div class="publish-box" id="publish">
+  {#if ($pageCurr == "detail" && $detail_isreply) || $pageCurr != "detail"#}
+  <div class="publish">
+    <div class="publish-tit fn-clear">
+      <div class="pt-left fn-left"><a href="javascript:;"><i></i>{#if $pageCurr != "detail"#}发表新帖{#else#}发表回复{#/if#}</a></div>
+    </div>
+    <div class="publish-info" data-type="{#$pageCurr#}" data-typeid="{#$typeid#}">
+      {#if $userinfo#}
+        {#if $pageCurr == "index" || $pageCurr == "list"#}
+
+        <div class="sel-city">
+            <select id="city">
+                <option value="">请选择城市</option>
+                {#tieba action="city" return="city"#}
+                <option value="{#$city.id#}">{#$city.name#}</option>
+                {#/tieba#}
+            </select>
+        </div>
+
+        {#if $pageCurr == "index"#}
+        <div class="sel-type">
+            <select id="selType">
+                <option value="">请选择分类</option>
+                {#tieba action="type"#}
+                <option value="{#$row.id#}">{#$row.typename#}</option>
+                {#/tieba#}
+            </select>
+        </div>
+        {#/if#}
+
+        <input type="text" id="pubTitle" placeholder="请填写标题" class="pf-tit">
+        {#/if#}
+        <div class="pf-txt">
+          <script id="content" name="content" type="text/plain" style="width:100%; height:300px"></script>
+        </div>
+        <div class="pf-verify">
+            <input type="text" id="pubCode" placeholder="请填写验证码" class="pf-tit">
+            <img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+        </div>
+        <div class="submit">
+          <input type="button" id="sendBtn" value="发表">
+        </div>
+      {#else#}
+      <div class="login"><a href="javascript:;" id="login">请先登录</a></div>
+      {#/if#}
+    </div>
+  </div>
+  {#/if#}
+  <div class="foot">
+    <span>Copyright © {#$smarty.now|date_format:"%Y"#} {#$cfg_shortname#}.<br />{#$cfg_statisticscode#}</span>
+  </div>
+</div>
+
+<!-- 浮动导航 s -->
+<div class="floatNav">
+  <ul>
+    <li class="fatie"><a href="{#if $pageCurr == "detail"#}{#$tieba_channelDomain#}#publish{#else#}#publish{#/if#}"></a></li>
+    <li class="shua"><a href="javascript:;" onclick="javascript:window.location.reload();"></a></li>
+    <li><a href="javascript:;" class="share bdsharebuttonbox bds_more" data-cmd="more"></a></li>
+    <li class="top"><a href="javascript:;"></a></li>
+  </ul>
+</div>
+<!-- 浮动导航 e -->
+
+{#if ($pageCurr == "detail" && $detail_isreply) || $pageCurr != "detail"#}
+<script type='text/javascript' src='/include/ueditor/ueditor.config.js?v={#$cfg_staticVersion#}'></script>
+<script type='text/javascript' src='/include/ueditor/ueditor.all.js?v={#$cfg_staticVersion#}'></script>
+{#/if#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>

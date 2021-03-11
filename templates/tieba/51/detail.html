@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$detail_title#}{#if $seoTitle != ""#} - {#$seoTitle#} - {#/if#}{#$tieba_title#}</title>
+<meta name="keywords" content="{#$tieba_keywords#}" />
+<meta name="description" content="{#$tieba_description#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/video-js.css" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/vsg-skin.css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script>
+var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', staticPath = '{#$cfg_staticPath#}', modelType = 'tieba';
+
+var criticalPoint = 1240, criticalClass = "w1200";
+$("html").addClass($(window).width() > criticalPoint ? criticalClass : "w1000");
+
+var id = {#$detail_id#}, hideFileUrl = {#$cfg_hideUrl#}, replyPageSize = 6;
+</script>
+</head>
+
+{#$pageCurr = "detail"#}
+
+<body>
+{#include file="../../siteConfig/public_top_v1.html" channel="tieba"#}
+<div class="wrap">
+
+  {#include file="_top.html"#}
+
+  <div class="main-content fn-clear">
+        <div class="main-content-left fn-left">
+          <div class="ml-header-box">
+            <div class="ml-header">
+              <div class="ml-tit fn-clear">
+                <h1 class="fn-left">{#$detail_title#}</h1>
+                <div class="ml-tag fn-right">
+                  {#if $see_lz#}
+                  <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#}#}" class="icon-1 icon-1-1"><span>取消只看楼主</span></a>
+                  {#else#}
+                  <a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param='see_lz=1'#}" class="icon-1"><span>只看楼主</span></a>
+                  {#/if#}
+                  <a href="javascript:;" class="icon-2{#if $collect == "has"#} curr{#/if#}"><span>{#if $collect == "has"#}已收藏{#else#}收藏{#/if#}</span></a>
+                  {#if $detail_isreply#}<a href="javascript:;" class="icon-3 reply-bottom"><span>回复</span></a>{#/if#}
+                </div>
+              </div>
+              <p class="ml-con"><span>人气：<em>{#$detail_click#}</em></span>{#if $detail_isreply#}<span>回复：<em>{#$detail_replynums#}</em></span>{#/if#}</p>
+            </div>
+          </div>
+          <div class="ml-list list-first">
+
+            {#if $atpage < 2#}
+            <div class="ml-list-info fn-clear louzu">
+              <div class="ml-list-left fn-left">
+                <div class="lz-icon" title="点击只看楼主帖"><a  href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param='see_lz=1'#}"></a></div>
+                {#if $louzu#}
+                <div class="ml-list-img"><a target="_blank" href="{#$cfg_basehost#}/user/{#$louzu.uid#}#tieba">
+                  <div class="user_hover user_bimg_hover"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $louzu.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$louzu.photo#}" type="middle"#}{#/if#}" /></div>
+                  <p class="user_hover">{#$louzu.nickname#}</p>
+                  </a>
+                </div>
+                <div class="ml-list-txt">
+                  <p>帖子：<em>{#$louzu.tizi_louzuTotal#}</em></p>
+                  <p>精华：<em>{#$louzu.tizi_louzuJinghuaTotal#}</em></p>
+                  <p>注册：{#$louzu.regtime|date_format:"%Y-%m-%d"#}</p>
+                </div>
+                {#/if#}
+              </div>
+              <div class="ml-list-right">
+                <div class="txt-wrap">
+                  {#$detail_content#}
+                </div>
+
+                <!-- 打赏 s -->
+                {#if 'reward'|in_array:$cfg_ucenterLinks#}
+                {#$rewardCount = 0#}
+            		{#$rewardHtml1 = ''#}
+            		{#$rewardHtml2 = ''#}
+                {#tieba action='rewardList' return='reward' aid=$detail_id#}
+                {#if $reward.photo != ""#}
+                  {#$photo = $reward.photo#}
+                {#else#}
+                  {#$photo = $cfg_staticPath|cat:"images/default_user.jpg"#}
+                {#/if#}
+                {#if $reward.username != ""#}
+                  {#$username = $reward.username#}
+                {#else#}
+                  {#$username = "匿名"#}
+                {#/if#}
+            		{#if $reward.id != ""#}
+            			{#$id = $cfg_basehost|cat:"/user/"|cat:$reward.id#}
+            		{#else#}
+            			{#$id = "javascript:;"#}
+            		{#/if#}
+            		{#$date = $reward.date|date_format:'%Y-%m-%d %H:%M:%S'#}
+            		{#if $_bindex.reward < 11#}
+            		{#$rewardHtml1 = $rewardHtml1|cat:'<li data-id="'|cat:$reward.id|cat:'"><a href="'|cat:$id|cat:'" target="_blank"><img src="'|cat:$photo|cat:'" alt="'|cat:$username|cat:'" title="'|cat:$username|cat:'" /></a></li>'#}
+            		{#/if#}
+            		{#$rewardHtml2 = $rewardHtml2|cat:'<li data-id="'|cat:$reward.id|cat:'"><a href="'|cat:$id|cat:'" target="_blank"><img src="'|cat:$photo|cat:'" alt="'|cat:$username|cat:'" title="'|cat:$username|cat:'" /></a><p><a href="'|cat:$id|cat:'" target="_blank">'|cat:$username|cat:'</a></p><span>'|cat:$date|cat:'</span></li>'#}
+                {#$rewardCount = $rewardCount + 1#}
+                {#/tieba#}
+                <div class="rewardS">
+            	    <div class="rewardS-txt">
+            	      <h3>觉得小编写的好，就打赏一个吧~</h3>
+            	      <div class="rewardS-support fn-clear">
+            	        <a href="javascript:;" class="money">{#echoCurrency type="symbol"#}打赏支持</a>
+            					{#if $rewardCount#}
+            				    <div class="rewardS-user">
+            				      <ul class="fn-clear">{#$rewardHtml1#}</ul>
+            				    </div>
+            					{#/if#}
+            					{#if $rewardCount#}<span class="num"><font>{#$rewardCount#}</font>人支持</span>{#/if#}
+            	      </div>
+            	    </div>
+            		</div>
+                <div class="pop pop_main_box">
+            		  <i class="pop-close icon-cross-lighter"></i>
+            		  <div class="pop-title"><div class="pop_name">{#$rewardCount#}人已对本文进行打赏</div></div>
+            		  <div class="pop-content">
+            		    <div class="pop-interval" id="page-list-content">
+            		      <ul class="gratuity_list">{#$rewardHtml2#}</ul>
+            		      <ul class="rwPage"></ul>
+            		    </div>
+            		  </div>
+            	  </div>
+                {#/if#}
+                <!-- 打赏 e -->
+
+                <div class="fn-clear">
+                  <div class="bdsharebuttonbox fn-left"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a></div>
+                  <div class="fn-right reply-box">
+                    <span>楼主</span><span>{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</span>{#if $detail_isreply#}<span class="reply reply-bottom">回复</span>{#/if#}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {#/if#}
+
+
+            {#if $detail_isreply#}
+            {#$pageSize = 10#}
+
+            {#$only_lz = 0#}
+            {#if $see_lz#}
+                {#$only_lz = $detail_uid#}
+            {#/if#}
+            {#member action='getComment' return='row' type='tieba-detail' orderby='1' aid={#$detail_id#} uid={#$only_lz#} page={#$atpage#} pageSize={#$pageSize#}#}
+            <div class="ml-list-info fn-clear" data-id="{#$row.id#}" data-reply="{#$row.replynums#}">
+              <div class="ml-list-left fn-left">
+                {#if $row.user#}
+
+                {#if $row.user.userid == $detail_uid#}<div class="lz-icon" title="点击只看楼主帖"><a href="{#getUrlPath service='tieba' template='detail' id={#$detail_id#} param='see_lz=1'#}"></a></div>{#/if#}
+
+                <div class="ml-list-img"><a target="_blank" href="{#$cfg_basehost#}/user/{#$row.user.userid#}#tieba">
+                  <div class="user_hover user_bimg_hover "><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $row.user.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$row.user.photo#}" type="middle"#}{#/if#}" /></div>
+                  <p class="user_hover">{#$row.user.nickname#}</p>
+                  </a></div>
+                <div class="ml-list-txt">
+                    <p>帖子：<em>{#$row.tizi_memberTotal#}</em></p>
+                    <p>精华：<em>{#$row.tizi_memberJinghuaTotal#}</em></p>
+                    <p>注册：{#$row.user.regtimeold|date_format:"%Y-%m-%d"#}</p>
+                </div>
+                {#/if#}
+              </div>
+              <div class="ml-list-right">
+                <div class="txt-wrap">
+                  {#$row.content#}
+                </div>
+                <div class="fn-clear">
+                  <div class="fn-right reply-box">
+                    {#$floor = ($atpage - 1) * $pageSize + $_bindex.row#}
+                    {#if $floor == 1#}
+                    <span>沙发</span>
+                    {#elseif $floor == 2#}
+                    <span>板凳</span>
+                    {#elseif $floor == 3#}
+                    <span>地板</span>
+                    {#else#}
+                    <span>{#$floor+1#}楼</span>
+                    {#/if#}
+                    <span>{#$row.dtime|date_format:"%Y-%m-%d %H:%M:%S"#}</span><span class="reply{#if $row.replynums > 0#} fn-hide{#/if#}">回复({#$row.replynums#})</span><span class="reply-shou{#if $row.replynums <= 0#} fn-hide{#/if#}"><a href="javascript:;">收起回复({#$row.replynums#})</a></span>
+                  </div>
+                </div>
+                <div class="reply-more{#if $row.replynums <= 0#} fn-hide{#/if#}"></div>
+              </div>
+            </div>
+            {#/member#}
+
+            {#/if#}
+
+          </div>
+
+          {#getPageList service='tieba' template='detail' id={#$detail_id#} pageType='dynamic' param="page=#page#"#}
+
+        </div>
+
+        {#include file="_right.html"#}
+      </div>
+
+</div>
+
+
+{#include file="_footer.html"#}
+
+  <!-- 表情 s -->
+  <div class="emotion-box">
+    <div class="emotion-con">
+      <div class="arrow"></div>
+      <table border="1" bordercolor="#e3e3e3">
+        <tbody>
+          <tr>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f01.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f02.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f03.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f04.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f05.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f06.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f07.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f08.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f09.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f10.png" alt="" /></a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f11.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f12.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f13.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f14.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f15.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f16.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f17.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f18.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f19.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f20.png" alt="" /></a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f21.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f22.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f23.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f24.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f25.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f26.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f27.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f28.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f29.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f30.png" alt="" /></a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f31.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f32.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f33.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f34.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f35.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f36.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f37.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f38.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f39.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f40.png" alt="" /></a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f41.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f42.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f43.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f44.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f45.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f46.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f47.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f48.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f49.png" alt="" /></a></td>
+            <td><a href="javascript:;"><img src="{#$cfg_staticPath#}images/ui/emot/baidu/i_f50.png" alt="" /></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 表情 e -->
+  <!-- 打赏浮动层 s -->
+  <div class="rewardS-mask"></div>
+  <div class="rewardS-pay">
+    <div class="rewardS-pay-tit">
+      <a href="javascript:;" class="close fn-right">×</a><h3>打赏支持</h3>
+    </div>
+      <div class="rewardS-pay-box">
+        <div class="rewardS-pay-money">
+          <span>打赏金额 </span><strong class="icon">{#echoCurrency type="symbol"#}</strong>
+          <input type="text" name="" value="5" class="inp" />
+          <ul class="rewardS-pay-select">
+            <li>1{#echoCurrency type="short"#}</li><li>2{#echoCurrency type="short"#}</li><li>5{#echoCurrency type="short"#}</li><li>10{#echoCurrency type="short"#}</li><li>20{#echoCurrency type="short"#}</li><li>50{#echoCurrency type="short"#}</li>
+          </ul>
+        </div>
+        <div class="rewardS-pay-way">
+          <h3>选择支付方式：</h3>
+          <ul class="fn-clear">
+        {#siteConfig action="payment" return=payrow#}
+          <li{#if $_bindex.payrow == 1#} class="on"{#/if#} data-type="{#$payrow.pay_code#}"><a href="javascript:;" class="{#$payrow.pay_code#}" title="{#$payrow.pay_name#}"></a><em></em></li>
+          {#/siteConfig#}
+          </ul>
+        </div>
+      </div>
+      <div class="rewardS-sumbit">
+        <a href="javascript:;" target="_blank" data-url="{#$cfg_basehost#}/include/ajax.php?service=tieba&action=reward&aid={#$detail_id#}&amount=$amount&paytype=$paytype">确认支付</a>
+      </div>
+  </div>
+  <!-- 打赏浮动层 e -->
+
+
+<script type="text/template" id="replyTemp">
+    <div class="comment">
+      <div class="textarea" contenteditable="true" data-type="parent"></div>
+      <div class="emotion fn-clear">
+        <a href="javascript:;" class="subtn fn-right">发表</a>
+        <input type="button" class="emotion-more fn-right" />
+      </div>
+    </div>
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/videojs-ie8.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/video.js"></script>>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/audio.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
