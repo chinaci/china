@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>{#$detail_title#} - {#$list_typename#} - {#$article_channelName#} - {#$cfg_webname#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/tcplayer.css?v={#$cfg_staticVersion#}"/>
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/svdetail.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/tcplayer.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$templets_skin#}js/hls.min.0.8.8.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+			var hideFileUrl = {#$cfg_hideUrl#};
+			var cookiePre = '{#$cfg_cookiePre#}';
+//		    var is_follow = {#$detail_is_follow#};
+		  var detail_id = '{#$detail_id#}', uid = '{#$detail_admin#}', mold = '{#$detail_mold#}', typeid = '{#$detail_typeid#}';
+//var detail_videotype = {#$detail_videotype#};
+			var detail_videotype = 1;
+		</script>
+		{#* 微信分享 *#}
+		{#$Share_description = {#$detail_description#}#}
+		{#$Share_title = {#$detail_title#}#}
+		{#$Share_img = {#$detail_litpic|default:$article_logoUrl#}#}
+		{#$Share_url = {#getUrlPath service="article" template="detail" id=$detail_id#}#}
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+	</head>
+	<style>
+		/*.vjs-button-icon{display: none;}*/
+    </style>
+	<body>
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="短视频详情"#}
+		<div class="shortdetailBox">
+			<div class="videoBox">
+				<!--<i></i>-->
+				<div class="play-times">{#$detail_click#}次播放</div>
+				<video id="video" preload="mete"  playsinline webkit-playsinline src="{#$detail_video#}" poster="{#$detail_litpic#}"></video>
+				<!-- <iframe src="{#$detail_videourl#}" frameborder="0" width="100%" height="" class="vIframe" allowfullscreen="true"></iframe> -->
+			</div>
+			<div class="videoInfoBox">
+				<div class="videoinfo">
+					<div class="art_title_more fn-clear">
+						{#if !empty($detail_media)#}
+						<div class="_left">
+							<a class="userimgbox" href="{#$detail_media.url#}">
+								<img src="{#$detail_media.ac_photo#}" alt="">
+							</a>
+							<h2><a href="{#$detail_media.url#}">{#$detail_writer#}</a>{#if $detail_source#}  <em>·</em>  {#$detail_source#}{#/if#}</h2>
+						</div>
+						{#else#}
+						<div class="_left">
+								<a class="userimgbox" href="javascript:;">
+									<img src="{#$cfg_staticPath#}images/noPhoto_60.jpg" alt="">
+								</a>
+								<h2><a href="javascript:;">{#$detail_writer#}</a>{#if $detail_source#}  <em>·</em>  {#$detail_source#}{#/if#}</h2>
+						</div>
+						{#/if#}
+
+						{#if !empty($detail_media)#}
+						{#if $detail_media.isfollow!=2#}
+						<div class="_right">
+							{#if $detail_media.isfollow==1#}
+							<a href="javascript:;" data-id="{#$detail_media.id#}" class="btn_care cared"><s></s>已关注</a>
+							{#else#}
+							<a href="javascript:;" data-id="{#$detail_media.id#}" class="btn_care "><s></s>关注</a>
+							{#/if#}
+						</div>
+						{#/if#}
+						{#/if#}
+					</div>
+					<div class="videoTitle">
+						<h2>{#$detail_media.ac_profile#}</h2>
+						<div class="readBox">
+							<a href="{#if !$detail_notpost#}{#getUrlPath service='article' template='comment' id={#$detail_id#}#}{#else#}javascript:;{#/if#}" class="numreply">{#$detail_common#}</a>
+							<span class="numup{#if $detail_zan==1#} aclick{#/if#}">{#$detail_zannum#}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 评论 -->
+		{#if !$detail_notpost#}
+		<div class="text-content">
+			<div class="commentBox">
+				<div class="headtop">
+					<div class="head-title">
+						<p class="fn-clear"><span>评论  <em class="totalCount">({#$detail_common#})</em></span></p>
+					</div>
+				</div>
+
+				<div class="commentList">
+					<ul>
+						{#member action='getComment' return='common' type='article-detail' son='1' aid={#$detail_id#} orderby='hot' pageSize='3'#}
+						{#if is_array($common.user)#}
+						{#$nickname = $common.user.nickname#}
+						{#$photo = $common.user.photo|default: '/static/images/noPhoto_40.jpg'#}
+						{#else#}
+						{#$nickname = '游客'#}
+						{#$photo = '/static/images/noPhoto_40.jpg'#}
+						{#/if#}
+						<li>
+							<div class="headimgbox">
+								<img src="{#$photo#}" alt="">
+							</div>
+							<div class="rightInfo">
+								<h4>{#$nickname#}</h4>
+								<p class="txtInfo">{#$common.content#}</p>
+								{#if $common.lower.list!=null#}
+									{#if $common.lower.count>1#}
+									<div class="replyCon">
+										{#foreach from=$common.lower.list key=ck item=clist#}
+										{#if $ck<=2#}
+										<dl><dt><span class="spColor">{#if is_array($clist.user)#}{#$clist.user['nickname']#}{#else#}游客{#/if#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+										{#/if#}
+										{#/foreach#}
+										{#if $ck>=2#}
+										<a href="{#getUrlPath service='article' template='comdetail' id={#$common.id#}#}" class="pmore">查看全部{#$common.lower.count#}条回复 ></a>
+										{#/if#}
+									</div>
+									{#else#}
+									<div class="replyCon">
+											{#$n=1#}
+											{#foreach from=$common.lower.list key=ck item=clist#}
+											{#$n=$n+1#}
+											{#if $ck<1#}
+											<dl><dt><span class="spColor">{#if is_array($clist.user)#}{#$clist.user['nickname']#}{#else#}游客{#/if#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+												{#if $clist.lower.list!=null#}
+												{#foreach from=$clist.lower.list key=cks item=clists#}
+												<dl><dt><span class="spColor">{#if is_array($clists.user)#}{#$clists.user['nickname']#}{#else#}游客{#/if#}</span>回复 <span class="spColor">{#if is_array($clist.user)#}{#$clist.user['nickname']#}{#else#}游客{#/if#}：</span></dt><dd>{#$clists.content#}</dd></dl>
+												{#/foreach#}
+												{#if $n>1#}
+												<a href="{#getUrlPath service='article' template='comdetail' id={#$clist.id#}#}" class="pmore">查看全部{#$clist.lower.count#}条回复 ></a>
+												{#/if#}
+												{#/if#}
+											{#/if#}
+											{#/foreach#}
+										</div>
+									{#/if#}
+								{#/if#}
+								<div class="rbottom">
+									<div class="rtime">{#$common.dtime|date_format:'%m-%d %H:%M'#}</div>
+									<div class="rbInfo">
+										<a href="{#getUrlPath service='article' template='comdetail' id={#$common.id#}#}" class="btnReply"> <s></s> 回复 </a>
+										<a href="javascript:;" class="btnUp {#if $common.zan_has==1#}active{#/if#}" data-id="{#$common.id#}"> <s></s> <em>{#$common.zan#}</em> </a>
+									</div>
+								</div>
+							</div>
+						</li>
+						{#/member#}
+					</ul>
+				</div>
+				<div class="allmore"><a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}">全部{#$detail_common#}条评论 <s></s></a></div>
+			</div>
+			{#/if#}
+
+			<!-- 精彩推荐 -->
+			<div class="recomBox">
+				<div class="headtop">
+					<div class="head-title">
+						<p class="fn-clear"><span>精彩推荐 </span></p>
+					</div>
+				</div>
+
+				<div class="recomList shortVideoBox">
+					<ul class="ulBox box1">
+					</ul>
+					<ul class="ulBox box2">
+					</ul>
+					<div class="loading"><img src="{#$templets_skin#}images/loading.gif" alt=""><span>加载中</span></div>
+				</div>
+			</div>
+		</div>
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+		<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/svdetail.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

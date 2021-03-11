@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$detail_title#} - {#$list_typename#} - {#$article_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$detail_keywords#}">
+<meta name="description" content="{#$detail_description#}">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newsd.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl ={#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var newsid = {#$detail_id#};
+	var page = 1;
+	var pageSize = 10;
+	var maxSize = 30;
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = "{#$list_typename#}"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 正文 s -->
+<div class="content">
+	<section class="art_title">
+		<h2>{#$detail_title#}</h2>
+		<div class="art_title_more fn-clear">
+			<div class="_left">
+				<div class="imgbox">
+					<img src="{#$detail_media.ac_photo#}" alt="">
+				</div>
+				<div class="imgInfo">
+					<h5>{#$detail_writer#}</h5>
+					<p>{#$detail_pubdate|date_format:'%m-%d %H:%M'#}{#if $detail_source#}  <em>·</em>  {#$detail_source#}{#/if#}  <em>·</em>  阅读 {#$detail_click#}</p>
+				</div>
+			</div>
+			{#if $detail_media#}
+			{#if $detail_media.isfollow!=2#}
+			<div class="_right">
+				{#if $detail_media.isfollow==1#}
+				<a href="javascript:;" data-id="{#$detail_media.id#}" class="btn_care cared"><s></s>已关注</a>
+				{#else#}
+				<a href="javascript:;" data-id="{#$detail_media.id#}" class="btn_care"><s></s>关注</a>
+				{#/if#}
+			</div>
+			{#/if#}
+			{#/if#}
+		</div>
+	</section>
+	<div class="artMainCon img_box">
+			{#$detail_body#}
+	</div>
+	{#$detail_page#}
+	<div class="btnbox" id="btnbox">
+		{#if 'reward'|in_array:$cfg_ucenterLinks && $rewardSwitch == 0 && $detail_reward_switch == 0#}
+		<div class="rewardbox"><s><img src="{#$templets_skin#}images/rewardIcon.png" alt=""></s></div>
+		{#/if#}
+	</div>
+	<div class="rewardlist fn-clear">
+		<div class="rwline"><i></i></div>
+		<div class="dsCount"><i class="dsIcon"></i> {#if $detail_rewardcount > 0#}<span>{#$detail_rewardcount#}</span>{#/if#}</div>
+
+		<ul class="fn-clear" id="memberlist">
+			{#article action='rewardList' return='reward' aid=$detail_id pageSize='7'#}
+			{#if $_bindex.reward<=7#}
+			<li><img src="{#$reward.photo|default:'/static/images/noPhoto_60.jpg'#}" alt=""></li>
+			{#/if#}
+			{#/article#}
+		</ul>
+		{#if $pageInfo.totalCount > 7#}
+		<div class="morebox"><a href="{#getUrlPath service='article' template='rewardlist' id={#$detail_id#}#}"><i></i></a></div>
+		{#/if#}
+	</div>
+</div>
+<!-- 正文 e -->
+
+<!-- 评论 -->
+{#if !$detail_notpost#}
+<div class="commentBox">
+	<div class="headtop">
+		<div class="head-title">
+			<p class="fn-clear"><span>评论  <em class="totalCount">({#$detail_common#})</em></span></p>
+		</div>
+	</div>
+
+	<div class="commentList">
+		<ul>
+			{#member action='getComment' return='common' type='article-detail' son='1' aid={#$detail_id#} orderby='hot' pageSize='3'#}
+			{#if is_array($common.user)#}
+			{#$nickname = $common.user.nickname#}
+			{#$photo = $common.user.photo|default: '/static/images/noPhoto_40.jpg'#}
+			{#else#}
+			{#$nickname = '游客'#}
+			{#$photo = '/static/images/noPhoto_40.jpg'#}
+			{#/if#}
+			<li>
+				<div class="imgbox">
+					<img src="{#$photo#}" alt="">
+				</div>
+				<div class="rightInfo">
+					<h4>{#$nickname#}</h4>
+					<p class="txtInfo">{#$common.content#}</p>
+					{#if $common.lower.list!=null#}
+						{#if $common.lower.count>1#}
+						<div class="replyCon">
+							{#foreach from=$common.lower.list key=ck item=clist#}
+							{#if $ck<=2#}
+
+							{#if is_array($clist.user)#}
+							{#$nickname = $clist.user.nickname#}
+							{#else#}
+							{#$nickname = '游客'#}
+							{#/if#}
+
+							<dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+							{#/if#}
+							{#/foreach#}
+							{#if $ck>=2#}
+							<a href="{#getUrlPath service='article' template='comdetail' id={#$common.id#}#}" class="pmore">查看全部{#$common.lower.count#}条回复 ></a>
+							{#/if#}
+						</div>
+						{#else#}
+						<div class="replyCon">
+								{#$n=1#}
+								{#foreach from=$common.lower.list key=ck item=clist#}
+
+								{#if is_array($clist.user)#}
+								{#$nickname = $clist.user.nickname#}
+								{#else#}
+								{#$nickname = '游客'#}
+								{#/if#}
+
+								{#$n=$n+1#}
+								{#if $ck<1#}
+								<dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+									{#if $clist.lower.list!=null#}
+										{#foreach from=$clist.lower.list key=cks item=clists#}
+
+										{#if is_array($clists.user)#}
+										{#$nickname2 = $clists.user.nickname#}
+										{#else#}
+										{#$nickname2 = '游客'#}
+										{#/if#}
+
+										<dl><dt><span class="spColor">{#$nickname2#}</span>回复 <span class="spColor">{#$nickname#}：</span></dt><dd>{#$clists.content#}</dd></dl>
+										{#/foreach#}
+										{#if $n>1#}
+										<a href="{#getUrlPath service='article' template='comdetail' id={#$clist.id#}#}" class="pmore">查看全部{#$clist.lower.count#}条回复 ></a>
+										{#/if#}
+									{#/if#}
+								{#/if#}
+								{#/foreach#}
+							</div>
+						{#/if#}
+					{#/if#}
+					<div class="rbottom">
+						<div class="rtime">{#$common.dtime|date_format:'%m-%d %H:%M'#}</div>
+						<div class="rbInfo">
+							<a href="{#getUrlPath service='article' template='comdetail' id={#$common.id#}#}" class="btnReply"> <s></s> 回复 </a>
+							<a href="javascript:;" class="btnUp {#if $common.zan_has==1#}active{#/if#}" data-id="{#$common.id#}"> <s></s> <em>{#$common.zan#}</em> </a>
+						</div>
+					</div>
+				</div>
+			</li>
+			{#/member#}
+		</ul>
+	</div>
+	<div class="allmore"><a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}">{#if $detail_common > 0#}全部{#$detail_common#}条评论{#else#}还没有人评论，去说两句吧{#/if#} <s></s></a></div>
+</div>
+{#/if#}
+
+<!-- 精彩推荐 -->
+<div class="recomBox">
+	<div class="headtop">
+		<div class="head-title">
+			<p class="fn-clear"><span>精彩推荐 </span></p>
+		</div>
+	</div>
+
+	<div class="recomList">
+		<ul>
+			{#article action='alist' notid=$detail_id typeid=$detail_typeid return='data' pageSize='4'#}
+			<li class="singleBox">
+				<a href="{#$data.url#}" class="fn-clear">
+					{#if $data.litpic#}
+					<div class="aright_">
+						<img src="{#$data.litpic#}">
+						{#*<span class="Icount">{#count($data.group_img)#}图</span>*#}
+					</div>
+					{#/if#}
+					<div class="aleft">
+						<h2>{#$data.title#}</h2>
+						<p>
+							<span>{#$data.source#}</span>
+							<span>{#$data.common#}评论<em>·</em>{#$data.pubdate|date_format:'%m-%d'#}</span>
+						</p>
+					</div>
+				</a>
+			</li>
+			{#/article#}
+			<!-- <p class="error">没有更多了</p> -->
+		</ul>
+	</div>
+</div>
+
+<div class="nfooter">
+	{#if !$detail_notpost#}
+	<a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}" class="f_write"> <s></s> <span>说说你的看法...</span></a>
+	{#/if#}
+	<a href="javascript:;" class="f_share HN_PublicShare"> <s></s></a>
+	{#if !$detail_notpost#}
+	<a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}" class="f_read"> <s></s> <span>{#$detail_common#}</span></a>
+	{#/if#}
+</div>
+<!-- HN_PublicShare -->
+
+<!-- 打赏 s -->
+<div class="shang-box">
+	<div class="shang-money">
+		<a href="javascript:;" class="close"></a>
+		<div class="pic-box">
+			<img src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#$userinfo.photo#}{#/if#}" alt="">
+		</div>
+		<div class="shang-item">
+			<span class="shang-item-cash">{#echoCurrency type='symbol'#}<em>0.88</em></span>
+			<span class="inp">其他金额</span>
+			<div class="shang-else">
+				<em>{#echoCurrency type='symbol'#}</em><input type="text" placeholder="最多不超过2000{#echoCurrency type='short'#}">
+			</div>
+			<p class="error-tip"><span>金额不能超过2000{#echoCurrency type='short'#}</span></p>
+		</div>
+		<div class="shang-btn">
+			<a href="javascript:;">赏</a>
+		</div>
+		<p class="tip-p">打赏不能超过2000{#echoCurrency type='short'#}</p>
+	</div>
+</div>
+<!-- 打赏 e -->
+
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+	<div class="tit">选择支付方式</div>
+	<ul>
+		{#siteConfig action="payment"#}
+		{#if $row.pay_code == "wxpay"#}
+		<li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "globalalipay"#}
+		<li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "alipay"#}
+		<li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "paypal"#}
+		<li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+		{#/if#}
+		{#/siteConfig#}
+	</ul>
+	<a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+
+<!-- 遮罩层 s -->
+<div class="mask"></div>
+<!-- 遮罩层 e -->
+
+<!-- 图片放大 -->
+{#include file="../../../siteConfig/bigimg_1.2.html"#}
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic|default:$article_logoUrl#}',
+		"link": '{#getUrlPath service="article" template="detail" id=$detail_id#}',
+	},
+	JubaoConfig = {
+		"module" : 'article',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/newsd.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

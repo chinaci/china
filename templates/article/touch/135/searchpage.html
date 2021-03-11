@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>{#$keywords#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" href="{#$templets_skin#}css/search_result.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', templets_skin = '{#$templets_skin#}';
+			var detailListId = 'search-content';
+		</script>
+		{#* 微信分享 *#}
+		{#$Share_description = {#$article_description#}#}
+		{#$Share_title = {#$article_title#}#}
+		{#$Share_img = {#$article_logoUrl#}#}
+		{#$Share_url = {#$article_channelDomain#}#}
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+	</head>
+	<body>
+		
+		
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="搜索结果"#}
+		<div class="top-box" >
+			<div class="searchbox">
+				<div class="d_search">
+					<form method="get"  id="myform" action="">
+						<a href="javascript:;">
+							<s></s>
+							<input type="text" name="keywords" id="keywords" value="{#$keywords#}" placeholder="请输入关键字"/>
+						</a>
+					</form>
+				</div>
+			</div>
+			
+			<nav class="nav searchnav">
+				<ul>
+					<li data-id="0" class="active"><a data-id="0" href="javascript:;">头条</a><s></s></li>
+					<li data-id="2"><a data-id="2" href="javascript:;">视频</a><s></s></li>
+					<li data-id="1"><a data-id="1" href="javascript:;">图集</a><s></s></li>
+					<li data-id="3"><a data-id="3" href="javascript:;">短视频</a><s></s></li>
+					<li><a href="{#getUrlPath service="article" template="media"#}">自媒体</a><s></s></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="search-content ulbox" id="search-content">
+			<ul>
+				<div class="loading"><img src="{#$templets_skin#}images/loading.gif" alt=""><span>加载中</span></div>
+			</ul>
+		</div>
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+		<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+		<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/searchpage.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

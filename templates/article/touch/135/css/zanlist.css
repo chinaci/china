@@ -1,0 +1,16 @@
+body,html{background-color: #f4f4f4;}
+
+.header-search a{display: none;}
+.header-address{margin-right: .9rem;}
+
+.rewardbox{margin-top:.12rem;}
+.rewardbox ul li{position: relative;padding:.24rem;background: #fff;margin-bottom: .12rem;}
+.rewardbox ul li .imgbox{width: .84rem;height: .84rem;border-radius: 50%;overflow: hidden;float: left;margin-right: .2rem;}
+.rewardbox ul li .imgbox a{display: block;}
+.rewardbox ul li .imgbox img{width: 100%;height: .84rem;}
+.rewardbox ul li .lrInfo{padding-left: 1.04rem;height: .84rem;line-height: .42rem;}
+.rewardbox ul li .lrInfo h4{font-size: .28rem;color:#333;font-weight: 600;}
+.rewardbox ul li .lrInfo p{font-size: .28rem;color:#333;font-weight: 600;}
+.rewardbox ul li .lrInfo span{color:#a0a0a0;font-size: .24rem;}
+.rewardbox ul li .lright{font-size: .22rem;color:#fff;position: absolute;top:50%;margin-top: -.25rem;right: .24rem; background-color: #4d6fff; height: .46rem; border-radius: .23rem; padding-left: .2rem; padding-right: .2rem; line-height: .46rem;}
+.rewardbox ul li .lright.cared {background-color: #c4c4c4;}

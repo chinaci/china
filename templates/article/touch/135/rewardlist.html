@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>打赏列表</title>
+<meta name="keywords" content="{#$article_keywords#}">
+<meta name="description" content="{#$article_description#}">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/rewardlist.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$tieba_channelDomain#}', modelType = 'tieba', staticPath = '{#$cfg_staticPath#}';
+  var templets = '{#$templets_skin#}';
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+<body>
+<!-- nav -->
+{#include file="../../../siteConfig/touch_top.html" pageTitle="打赏列表"#}
+
+<div class="rewardbox">
+    <ul>
+			{#article action='rewardList' return='reward' aid=$detail_id#}
+    	<li>
+    		<div class="lleft">
+    			<div class="imgbox">
+	    			<img src="{#$reward.photo|default:'/static/images/noPhoto_60.jpg'#}" alt="">
+	    		</div>
+	    		<div class="lrInfo">
+	    			<p class="uname">{#$reward.username#}</p>
+	    			<span>{#$reward.date|date_format:'%Y-%m-%d %H:%M:%S'#}</span>
+	    		</div>
+    		</div>
+    		<div class="lright">{#echoCurrency type='symbol'#}{#$reward.amount#}</div>
+			</li>
+			{#/article#}
+    </ul>
+</div>
+
+</body>
+</html>

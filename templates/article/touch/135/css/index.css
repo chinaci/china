@@ -1,0 +1,69 @@
+.header{position: fixed;top:0;left:0;right: 0;}
+.huoniao_iOS .nav {top:0;}
+.huoniao_iOS .searchbox {margin-top: 1rem;}
+/*导航 */
+nav{position: fixed;top:.9rem;left:0;right: 0;background-color: #f8f8f8;height: .98rem;line-height: .98rem;border-top:solid 1px #dedede;border-bottom:solid 1px #dedede;z-index: 100;}
+nav.fixed{position: fixed;top:0;}
+nav ul{position: relative;white-space: nowrap;overflow-x: scroll;-webkit-overflow-scrolling: touch;box-sizing: border-box;}
+nav ul::-webkit-scrollbar{display:none}
+nav ul li{display: inline-block;padding:0 .24rem;position: relative;}
+nav ul li a{font-size: .32rem;color:#212121;}
+nav ul li.active a{color:#f6293a;}
+nav ul li.active s{position: absolute;display: block;bottom: .2rem;width: .22rem;height: .04rem;background-color: #f6293a;left:50%;margin-left:-.11rem;}
+
+/*搜索*/
+.searchbox{padding:.2rem .24rem;margin-top:1.9rem;}
+.d_search{position: relative;height: .64rem;line-height: .64rem;background-color: #f5f5f5;border-radius: .64rem;}
+.d_search a{display: block;}
+.d_search s{position: absolute;top:50%;margin-top:-.15rem;left:.24rem;width: .3rem;height: .3rem;display: block;background: url(../images/icon_search.png) no-repeat center center;background-size: cover;}
+.d_search span{padding-left:.7rem;font-size:.26rem;color:#a6a6a6;}
+
+/*头部幻灯片部分*/
+.artbanner {position: relative;}
+.artbanner .swiper-container {color: #fff;text-align: center;height: 4.5rem;}
+.artbanner .swiper-container .slideshow-item {-webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0; width: 100%; height: 100%; position: relative;}
+.artbanner .swiper-container .slideshow-item a{display: block;}
+.artbanner .swiper-wrapper img {display: block;width: 100%;}
+.artbanner .pagination {position: absolute;z-index: 20;left: 0;bottom: .1rem;width: 100%;}
+.artbanner .swiper-active-switch {background: #fff;}
+.artbanner .swiper-dynamic-links {text-align: center;}
+.artbanner .swiper-pagination-bullet{opacity: 0.5;}
+.artbanner .swiper-pagination-bullet-active{width: .2rem!important;height:.04rem;background: #f6293a!important;opacity: 1!important;}
+.artbanner .swiper-pagination-bullet{width: .12rem;height: .04rem;background: #fff;opacity: .5;    transition: all .4s ease-in-out;-ms-transition: all .4s ease-in-out;-moz-transition: all .4s ease-in-out;-webkit-transition: all .4s ease-in-out;-o-transition: all .3s ease-in-out;border-radius:0;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 3px;}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{text-align: center;}
+
+.artbanner .slideinfo{position: absolute;bottom:0;height: 1.8rem;left:0;right: 0;padding:0 .24rem;}
+.artbanner .slideinfo h3 a{font-size: .36rem;color:#fff;position: absolute;bottom:.42rem;z-index: 10;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; max-width: 90%;}
+.artbanner .slideinfo .bg{position: absolute;top:0;left:0;right: 0;bottom:0;background-image: -moz-linear-gradient( rgba(0,0,0,0) 0%, rgba(0,0,0,.67) 100%);background-image: -webkit-linear-gradient( rgba(0,0,0,0) 0%, rgba(0,0,0,.67) 100%);background-image: -ms-linear-gradient( rgba(0,0,0,0) 0%, rgba(0,0,0,.67) 100%);}
+
+
+/*今日要闻*/
+.titbox{padding:.4rem .24rem;font-size: .36rem;color:#212121;font-weight: bold;border-bottom:solid 1px #e8e8e8;}
+
+/*新闻列表*/
+.ulbox ul li a{padding:.24rem;border-bottom:solid 1px #e8e8e8; display: block;}
+.ulbox ul li a:active{background:#f2f2f2;}
+.ulbox .vBox{border-bottom:none;}
+.ulbox ul li .aleft{position: relative; overflow: hidden;}
+.ulbox ul li .aright_{float: right;margin-left:.2rem;position: relative;width: 2.28rem;height: 1.5rem;border-radius: .06rem;overflow: hidden;}
+.ulbox ul li .aright_ img,.ulbox ul li .imgBox .mBox img{width:100%;min-height:100%;position: absolute;top:0;left:0;right: 0;bottom: 0;margin:auto;display: block;}
+
+.ulbox ul li h2{font-size: .34rem;color:#3b3b3b;line-height: .45rem;margin-bottom: .2rem; display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;white-space: normal;text-align: justify; overflow: hidden;}
+.ulbox ul li.singleBox h2{overflow: hidden;margin-bottom:.06rem;}
+.ulbox ul li p{font-size: .24rem;color:#a6a6a6;margin-top: .18rem;overflow: hidden;}
+.ulbox ul li p span{margin-right: .2rem;}
+.ulbox ul li p span em{margin:0 .1rem;}
+/*单图*/
+.ulbox .singleBox p span:first-child{max-width:1.6rem;float:left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.Icount{position: absolute;right: .1rem;bottom: .08rem;background-color: rgba(0,0,0,.31);height: .32rem;padding:0 .16rem;border-radius:.16rem; font-size: .24rem;color:#fff;}
+/*多图*/
+.ulbox .multipleBox .imgBox {position: relative;}
+.ulbox .multipleBox .imgBox .mBox{margin-right:.06rem;float: left; position: relative;width: 2.28rem;height: 1.5rem;border-radius: .06rem;overflow: hidden;}
+.ulbox .multipleBox .imgBox .mBox.last{margin-right: 0;}
+.ulbox ul li .ihot{display: inline-block;width: .35rem;height: .35rem;background: url(../images/icon_hot.png) no-repeat center center;background-size: cover;vertical-align: -.05rem;margin:0 .05rem;}
+/*大图*/
+.ulbox ul li.bigBox .imgBox{height: 3.6rem;width: 100%;position: relative;border-radius: .06rem;overflow: hidden;}
+.ulbox ul li.bigBox img{width:100%;min-height:100%;position: absolute;top:0;left:0;right: 0;bottom: 0;margin:auto;display: block;}
+
+

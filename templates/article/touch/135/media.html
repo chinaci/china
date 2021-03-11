@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>自媒体-{#$article_title#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/media.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+			var detailListId = 'mediaBox', templets_skin = '{#$templets_skin#}';
+		</script>
+	</head>
+	<body>
+		{#$pageCurr = 'index'#}
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="自媒体"#}
+		<!--导航-->
+		<nav class="nav medianav">
+			<ul>
+				<li data-id="" class="active"><a href="javascript:;">全部</a><s></s></li>
+				{#article action='selfmedia_type' return='list'#}
+				<li data-id="{#$list.id#}"><a href="javascript:;" data-id="{#$list.id#}">{#$list.typename#}</a><s></s></li>
+				{#/article#}
+			</ul>
+		</nav>
+		<!--搜索-->
+		<div class="searchbox">
+			<div class="d_search">
+				<form method="get"  id="myform" action="">
+					<a href="javascript:;">
+						<s></s>
+						<span><input type="text" name="keywords" id="keywords" value="" placeholder="输入搜索关键词"></span>
+					</a>
+				</form>
+			</div>
+		</div>
+		
+		<!--自媒体列表-->
+		<div class="mediaBox" id="mediaBox">
+			<ul>
+				<div class="loading"><img src="{#$templets_skin#}images/loading.gif" alt=""><span>加载中</span></div>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var wxconfig = {
+				"appId": '{#$wxjssdk_appId#}',
+				"timestamp": '{#$wxjssdk_timestamp#}',
+				"nonceStr": '{#$wxjssdk_nonceStr#}',
+				"signature": '{#$wxjssdk_signature#}',
+				"description": '{#$article_description#}',
+				"title": '{#$article_title#}-自媒体',
+				"imgUrl": '{#$article_logoUrl#}',
+				"link": '{#getUrlPath service="article" template="media"#}',
+			};
+		
+			document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+		<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/media.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

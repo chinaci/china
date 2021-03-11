@@ -1,0 +1,25 @@
+<div class="footer">
+	<div class="fbox gotop"><i></i></div>
+	<div class="fbox wechat"><i></i></div>
+	<div class="fbox my"><a href="{#getUrlPath service='member' type='user'#}"><i></i></a></div>
+	<div class="fbox add"><i></i></div>
+	{#if $ismedia==1#}
+	<!-- 发布 -->
+	<div class="fbox rzbox"><a style="color: #fff;" href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}"><i></i></a></div>
+	{#else#}
+	<!-- 入驻自媒体 -->
+	<div class="fbox rzbox"><span><a style="color: #fff;" href="{#getUrlPath service='member' type='user' template='config' action='selfmedia'#}">入驻<br>自媒体</span></a></div>
+	{#/if#}
+</div>
+<div class="wechat-popup">
+  <div class="con">
+    <a href="javascript:;" class="close">×</a>
+    {#if $cfg_weixinQr#}
+    <dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>
+    {#/if#}
+	  {#if $cfg_miniProgramQr#}
+    <dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>
+  	{#/if#}
+  </div>
+</div>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>

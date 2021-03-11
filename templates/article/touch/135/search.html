@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>搜索</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+			var templets_skin = '{#$templets_skin#}';
+		</script>
+		
+	</head>
+	<body>
+	
+	<!--搜索栏-->
+	<div class="searchIn-box">
+		<form class="searchIn" action="{#getUrlPath service="article" template="searchpage"#}" method="get">
+			<!--搜索按钮-->
+			<i></i>
+			<input type="search" name="keywords" id="keywords" placeholder="请输入搜索内容" />
+			<!-- <button>取消</button> -->
+			<a href="javascript:history.go(-1)" class="goBack">取消</a>
+		</form>
+	</div>
+	<div class="search-content">
+		<dl>
+			<dt>热门搜索</dt>
+			{#siteConfig module="article" action="hotkeywords" return="hotkeywords"#}
+			<dd><a href="{#getUrlPath service="article" template="searchpage"#}?keywords={#$hotkeywords.oldkeyword#}">{#$hotkeywords.keyword#}</a></dd>
+			{#/siteConfig#}
+		</dl>
+	</div>
+	
+	<script type="text/javascript">
+		var wxconfig = {
+			"appId": '{#$wxjssdk_appId#}',
+			"timestamp": '{#$wxjssdk_timestamp#}',
+			"nonceStr": '{#$wxjssdk_nonceStr#}',
+			"signature": '{#$wxjssdk_signature#}',
+			"description": '{#$article_description#}',
+			"title": '{#$article_title#}',
+			"imgUrl": '{#$article_litpic#}',
+			"link": '{#getUrlPath service="article" template="search"#}',
+		};
+		document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script>
+	setTimeout(console.log($("html").attr("style")),1000)
+	</script>
+	</body>
+</html>

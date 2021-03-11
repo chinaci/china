@@ -1,0 +1,71 @@
+/*加载更多*/
+.loading{padding:.6rem 0;text-align: center;}
+.loading img{width: .4rem;}
+.loading span{display: block;font-size: .26rem;color:#919191;margin:.2rem auto;}
+
+
+/*底部悬浮*/
+.footer {display: none;}
+.footer .fbox{width: .8rem;height: .8rem;border-radius: 50%;background-color: #fff;position: fixed;right:.24rem;box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.13);bottom:1rem;z-index: 99;}
+.footer .fbox i{display: block;width: .8rem;height: .8rem;}
+.wechat,.my,.gotop{display: none;}
+.footer .gotop{bottom:3rem;-webkit-animation: twinkling .3s ease-in-out;; -moz-animation: twinkling .3s ease-in-out;; animation: twinkling .3s ease-in-out;}
+.footer .add{bottom:2rem;}
+.footer .gotop i{background: url(../images/icon_gotop.png) no-repeat center center;background-size:cover;}
+.footer .wechat i{background: url(../images/icon_wechat.png) no-repeat center center;background-size:cover;}
+.footer .my i{background: url(../images/icon_my.png) no-repeat center center;background-size:cover;}
+.footer .add i{background: url(../images/icon_add.png) no-repeat center center;background-size:cover;}
+.footer .rzbox{bottom:1rem;box-shadow:none;text-align:center;background: url(../images/icon_bg.png) no-repeat center center;background-size:cover;}
+.footer .rzbox i{display: block;width: .8rem;height: .8rem;border-radius: 50%;background: url(../images/icon_fb.png) no-repeat center center;background-size:cover;}
+.footer .rzbox span{text-align: center;color: #fff;font-size: .2rem;margin-top: .1rem;display: block;}
+/* iPhoneX适配 */
+.gotop{bottom: calc(3rem + constant(safe-area-inset-bottom));bottom: calc(3rem + env(safe-area-inset-bottom));}
+.add{bottom: calc(2rem + constant(safe-area-inset-bottom));bottom: calc(2rem + env(safe-area-inset-bottom));}
+.rzbox{bottom: calc(1rem + constant(safe-area-inset-bottom));bottom: calc(1rem + env(safe-area-inset-bottom));}
+
+.add_x {animation:add_show .3s;-moz-animation:add_show .3s; -webkit-animation:add_show .3s;-o-animation:add_show .3s;animation-fill-mode:forwards;}
+.add_y {animation:add_hide .3s;-moz-animation:add_hide .3s;-webkit-animation:add_hide .3s;-o-animation:add_hide .3s;animation-fill-mode:forwards;}
+.add img {width:.9rem;height:.9rem;}
+.wechat_show {animation:gelatine .8s linear forwards;animation-name:d_wechat,gelatine;animation-duration:.2s,.8s;display:block;}
+.wechat_hide {animation:d_wechat_hide .3s;-moz-animation:d_wechat_hide .3s;    -webkit-animation:d_wechat_hide .3s;    -o-animation:d_wechat_hide .3s;}
+.wechat a,.my a {color:#fff;font-size:.22rem;display: block;}
+.wechat img,.my img {height:.33rem;margin-top:.14rem;}
+.my_show {animation:gelatine .8s linear forwards;animation-name:d_my,gelatine;animation-duration:.2s,.8s;display:block;}
+.my_hide {animation:d_my_hide .3s;-moz-animation:d_my_hide .3s;-webkit-animation:d_my_hide .3s;-o-animation:d_my_hide .3s;}
+@keyframes d_wechat {0% {bottom:2rem;}
+100% {bottom:4rem;}
+}
+@keyframes d_my {0% {bottom:2rem;}
+100% {bottom:3rem;}
+}
+@keyframes d_wechat_hide {0% {bottom:4rem;}
+100% {bottom:2rem;}
+}
+@keyframes d_my_hide {0% {bottom:3rem;}
+100% {bottom:2rem;}
+}
+/*加的变换*/
+@keyframes add_show {0% {transform:rotate(0deg);}
+100% {transform:rotate(45deg);}
+}
+@keyframes add_hide {0% {transform:rotate(45deg);}
+100% {transform:rotate(0deg);}
+}
+@keyframes gelatine {from,to {-webkit-transform:scale(1,1);transform:scale(1,1);}
+25% {-webkit-transform:scale(0.9,1.1);transform:scale(0.9,1.1);}
+50% {-webkit-transform:scale(1.1,0.9);transform:scale(1.1,0.9);}
+75% {-webkit-transform:scale(0.95,1.05);transform:scale(0.95,1.05);}
+from,to {-webkit-transform:scale(1,1);transform:scale(1,1);}
+25% {-webkit-transform:scale(0.9,1.1);transform:scale(0.9,1.1);}
+50% {-webkit-transform:scale(1.1,0.9);transform:scale(1.1,0.9);}
+75% {-webkit-transform:scale(0.95,1.05);transform:scale(0.95,1.05);}
+}
+
+/* 浏览器端扫码提示 */
+.wechat-popup {position: fixed; width: 6.8rem; top: calc(50% - 3rem); left: calc(50% - 3.4rem); z-index: 999999; visibility: hidden;}
+.wechat-popup:before {position: fixed; z-index: 1; display: block; content: ''; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);}
+.wechat-popup .con {display: -webkit-box; position: relative; z-index: 2; padding: 50px 10px 20px; background: #fff; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+.wechat-popup .close {position: absolute; right: .2rem; top: .2rem; width: .5rem; height: .5rem; border: 1px solid #dcdcdc; border-radius: 50%; line-height: .4rem; text-align: center; color: #dcdcdc; font-size: .5rem; font-weight: 100;}
+.wechat-popup dl {-webkit-box-flex: 1; text-align: center; margin: 0 5px;}
+.wechat-popup dl img {width: 94%; height: 94%; max-width: 3rem; max-height: 3rem; margin: 0 auto; padding: 3%; border: 1px solid #eee; display: block;}
+.wechat-popup dd {line-height: 1.5em; padding-top: 5px;}

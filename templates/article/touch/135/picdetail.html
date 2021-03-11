@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{#$cfg_soft_lang#}">
+		<title>{#$detail_title#} - {#$list_typename#} - {#$article_channelName#} - {#$cfg_webname#}</title>
+		<meta name="keywords" content="{#$article_keywords#}">
+		<meta name="description" content="{#$article_description#}">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/idangerous.swiper.css">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/imgdetail.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/picture.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/picture1.css?v={#$cfg_staticVersion#}">
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+			var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+			var detailListId = 'maincontent', pageid = {#$detail_id#};
+			var pageInfo = [{
+				'id': {#$detail_id#},
+				'typeid': {#$detail_typeid#},
+				'typeName': ['{#$detail_typeName[0]#}', '{#$detail_typeName[1]#}'],
+				'typeUrl': '{#$detail_typeUrl#}',
+				'title': '{#$detail_title#}',
+				'url': '{#$url#}',
+				'picnum': {#$detail_imglist|@count#},
+				'from': '{#$detail_source#}',
+				'fromUrl': '{#$detail_sourceurl#}',
+				'writer': '{#$detail_writer#}',
+				'click': '{#$detail_click#}'
+			}];
+		</script>
+		{#* 微信分享 *#}
+		{#$Share_description = {#$detail_description#}#}
+		{#$Share_title = {#$detail_title#}#}
+		{#$Share_img = {#$detail_litpic|default:$article_logoUrl#}#}
+		{#$Share_url = {#getUrlPath service="article" template="detail" id=$detail_id#}#}
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+	</head>
+	<body>
+		{#include file="../../../siteConfig/touch_top.html" pageTitle=$detail_title headTheme="transparent absolute"#}
+
+			{#if $detail_media#}
+			<dl class="userinfo">
+				<dt><a href="{#$detail_media.url#}"><img src="{#$detail_media.ac_photo#}" alt=""></a></dt>
+				<dd>
+					<h3><a href="{#$detail_media.url#}">{#$detail_writer#}</a></h3>
+					<p>{#$detail_pubdate|date_format:'%Y-%m-%d %H:%M'#}{#if $detail_source#}  <em>·</em>  {#$detail_source#}{#/if#}  <em>·</em>  阅读 {#$detail_click#}</p>
+				</dd>
+			</dl>
+			{#else#}
+			<dl class="userinfo">
+				<dt><img src="/static/images/default_user.jpg" alt=""></dt>
+				<dd>
+					<h3>{#$detail_writer#}</h3>
+					<p>{#$detail_pubdate|date_format:'%m-%d %H:%M'#}{#if $detail_source#}  <em>·</em>  {#$detail_source#}{#/if#}  <em>·</em>  阅读 {#$detail_click#}</p>
+				</dd>
+			</dl>
+			{#/if#}
+			<div class="openBody{#if $detail_body#} show{#/if#}" data-id="{#$detail_id#}">正文</div>
+    	<div class="imgsBox">
+    		<div class="swiper-container">
+				<ul id="Gallery" class="swiper-wrapper">
+					{#$i=1#}
+					{#foreach from=$detail_imglist item="img"#}
+		    		<li class="swiper-slide">
+						<img src="{#$img.path#}" alt=""  class="swiper-lazy">
+						<div class="swiper-lazy-preloader"></div>
+						<div class="font_scroll">
+							<span><em>{#$i#}</em>/{#count($detail_imglist)#}&nbsp;&nbsp;&nbsp;{#$img.info#}</span>
+						</div>
+					</li>
+					{#$i=$i+1#}
+					{#/foreach#}
+				</ul>
+			</div>
+			{#if !$detail_notpost#}
+			<div class="replyBox">
+				<div class="_left"><a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}"><span>说说你的看法...</span></a></div>
+				<div class="_right">
+					<a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}" class="replyNum"><i>{#$detail_common#}</i></a>
+					<span class="HN_PublicShare share"></span>
+				</div>
+			</div>
+			{#/if#}
+    	</div>
+    	<!-- 正文 s -->
+    	<div class="fixedWin bodyWin" id="bodyWin">
+    	  <!-- <div class="header">
+    	    <div class="header-l"><a href="javascript:;" class="fixedWin-close"></a></div>
+    	    <div class="header-address">
+    	      <span>详情</span>
+    	    </div>
+    	    <div class="header-search vh">
+    	      <a href="javascript:;" class="dropnav"></a>
+    	    </div>
+    	  </div> -->
+    	  <div class="fixedWin-close"></div>
+    	  <div class="fixedWin-content">
+    	    <div class="content" id="body_{#$detail_id#}">{#$detail_body#}</div>
+    	  </div>
+    	</div>
+    	<!-- 正文 e -->
+    	<script src="{#$templets_skin#}js/idangerous.swiper.min.js"></script>
+		<script src="{#$templets_skin#}js/picture1.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

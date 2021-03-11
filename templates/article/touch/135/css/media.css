@@ -1,0 +1,47 @@
+html{background-color: #f2f2f2;}
+.header{position: fixed;top:0;left:0;right: 0;}
+.huoniao_iOS .nav {top:0;}
+.huoniao_iOS .searchbox {margin-top: 1rem;}
+/*导航 */
+nav{position: fixed;top:.9rem;left:0;right: 0;background-color: #f8f8f8;height: .98rem;line-height: .98rem;border-top:solid 1px #dedede;z-index: 100; padding-left: .2rem; padding-right: .2rem;}
+nav.fixed{position: fixed;top:0;}
+nav ul{position: relative;white-space: nowrap;overflow-x: scroll;-webkit-overflow-scrolling: touch;box-sizing: border-box;}
+nav ul::-webkit-scrollbar{display:none}
+nav ul li{display: inline-block;padding:0 .24rem;position: relative;}
+nav ul li a{font-size: .3rem;color:#212121;}
+nav ul li.active a{color:#f6293a;}
+nav ul li.active s{position: absolute;display: block;bottom: .2rem;width: .22rem;height: .04rem;background-color: #f6293a;left:50%;margin-left:-.11rem;}
+
+/*搜索*/
+.searchbox{padding:.2rem .24rem;margin-top:1.9rem; background-color: #fff; border-bottom: solid .01rem #f9f9f9;}
+.d_search{position: relative;height: .64rem;line-height: .64rem;background-color: #f5f5f5;border-radius: .64rem;}
+.d_search a{display: block;}
+.d_search s{position: absolute;top:50%;margin-top:-.15rem;left:.24rem;width: .3rem;height: .3rem;display: block;background: url(../images/icon_search.png) no-repeat center center;background-size: cover;}
+.d_search span{padding-left:.7rem;font-size:.26rem;color:#a6a6a6;}
+.d_search span #keywords{border: none;background: #f5f5f5;width: 90%;}
+.d_search span #keywords::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #a6a6a6;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #a6a6a6;
+}
+.d_search span #keywords::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #a6a6a6;
+}
+.d_search span #keywords::-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #a6a6a6;
+}
+
+/*自媒体列表*/
+
+.liBox{background-color: #fff; width: 100%; margin-bottom: .2rem;}
+.liBox>a{display: block;}
+.liBox:active{background-color: #f2f2f2;}
+.liMedia{ margin-left: .24rem; margin-right: .24rem; overflow: hidden; padding: .35rem 0;}
+.liMedia ._left{float: left; width: 1.1rem ; height: 1.1rem; border-radius: .08rem; overflow: hidden;}
+.liMedia ._left img{width: 100%; height: 100%; object-fit: cover;}
+.liMedia ._right{margin-left: .18rem; float: left;}
+.liMedia ._right h2{font-size: .32rem; color: #3b3b3b;}
+.liMedia ._right p{font-size: .26rem; color: #a6a6a6; margin-top: .24rem;}
+.liMedia ._right p em{color: #3b3b3b;}
+.liMedia ._right span{margin-right: .46rem;}

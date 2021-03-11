@@ -1,0 +1,10 @@
+<nav class="nav">
+		<ul>
+			<li {#if $pageCurr == "index"#} class="active"{#/if#}><a href="{#$article_channelDomain#}">首页</a><s></s></li>
+			<li {#if $pageCurr == "toutiao"#} class="active"{#/if#}><a href="{#getUrlPath service="article" template="toutiao"#}">头条</a><s></s></li>
+			<li {#if $pageCurr == "video"#} class="active"{#/if#}><a href="{#getUrlPath service="article" template="video"#}">视频</a><s></s></li>
+			<li {#if $pageCurr == "picnews"#} class="active"{#/if#}><a href="{#getUrlPath service="article" template="picnews"#}">图集</a><s></s></li>
+			<li {#if $pageCurr == "short_video"#} class="active"{#/if#}><a href="{#getUrlPath service="article" template="short_video"#}">短视频</a><s></s></li>
+			<li {#if $pageCurr == "media"#} class="active"{#/if#}><a href="{#getUrlPath service="article" template="media"#}">自媒体</a><s></s></li>
+		</ul>
+	</nav>

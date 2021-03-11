@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>头条-{#$article_title#}</title>
+<meta name="keywords" content="{#$article_keywords#}">
+<meta name="description" content="{#$article_description#}">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+	var detailListId = 'maincontent', mold = '{#$mold#}', hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', listid = {#$list_id|default:0#};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$article_description#}#}
+{#$Share_title = {#$article_title|cat:"-头条"#}#}
+{#$Share_img = {#$article_logoUrl#}#}
+{#$Share_url = {#getUrlPath service='article' template='toutiao'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+
+<body>
+	{#include file="../../../siteConfig/touch_top.html" pageTitle="头条"#}
+<div class="main_content">
+	<nav class="nav">
+		<div class="navfixbox fix">
+			<div class="navbox clearfix">
+				<div id="nav">
+					<div class="clearfix" id="nav_list">
+						<div class="item curr" id="nav_item_0" data-id="0"><a href="javascript:;">全部</a><s></s></div>
+						{#$n=1#}
+						{#article action='type' mold="$mold" return='type'#}
+						<div class="item" id="nav_item_{#$type.id#}" data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a><s></s></div>
+						{#$n=$n+1#}
+						{#/article#}
+					</div>
+				</div>
+				<div class="bmline"></div>
+			</div>
+			<div class="sub_nav_pd"><div id="sub_navWrap"></div></div>
+		</div>
+	</nav>
+	<div class="searchbox">
+		<div class="d_search">
+			<a href="{#getUrlPath service="article" template="search"#}">
+				<s></s>
+				<span>输入搜索关键词</span>
+			</a>
+		</div>
+	</div>
+	<div class="artbanner">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				
+			</div>
+			<div class="pagination"></div>
+		</div>
+	</div>
+	<div class="clearfix" id="maincontent">
+		
+		<div class="swrip-panel" id="chanel_0">
+			
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="copyright">©{#$smarty.now|date_format:"%Y"#}{#$cfg_shortname#}版权所有</div>
+</div>
+
+<div class="fixBtn">
+	<div id="backTop" class="btn"></div>
+</div>
+
+<!-- 弹出层 -->
+<div class="modal-msg modal">
+	<span class="txt"></span>
+</div>
+
+{#include file="_footer.html"#}
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/slider.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>
