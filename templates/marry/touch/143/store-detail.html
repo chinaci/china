@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{#if $istype==1#}
+	    {#$pageTitle="{#$langData['marry'][0][18]#}"#}
+	{#elseif $istype==2#}
+	    {#$pageTitle="{#$langData['marry'][0][46]#}"#}
+	{#elseif $istype==3#}
+	    {#$pageTitle="{#$langData['marry'][0][3]#}"#}
+	{#/if#}
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$detail_title#}-{#if $istype==1#}{#$langData['marry'][0][18]#}{#elseif $istype==2#}{#$langData['marry'][0][46]#}{#elseif $istype==3#}{#$langData['marry'][0][3]#}{#/if#}</title>{#*婚宴酒店 *#} {#*婚礼策划 *#} {#*婚纱摄影*#}
+	<meta name="apptitle" content="{#$pageTitle#}">
+    <meta name="keywords" content="{#$detail_title#} {#$marry_keywords#}">
+    <meta name="description" content="{#$detail_title#} {#$marry_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+    {#if $istype==1#}
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/store-detail.css?v={#$cfg_staticVersion#}">
+    {#elseif $istype==2#}
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/plan-detail.css?v={#$cfg_staticVersion#}">
+    {#elseif $istype==3#}
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+    {#/if#}
+	<script src="{#$cfg_staticPath#}js/ui/html2canvas.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-2.1.1.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';
+        var detail_video='{#$detail_videoSource#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', fromType = 'store';
+        var pageData = {
+            id: '{#$detail_id#}',
+            title: '{#$detail_title#}',
+            address: '{#$detail_address#}',
+            lat: '{#$detail_lat#}',
+            lng: '{#$detail_lng#}',
+            mapType: '{#$site_map#}',
+            cityName: '{#$siteCityInfo['name']#}',
+            mapKey: '{#$site_map_key#}'
+        };
+        var istype = '{#$istype#}', typeid = '{#$typeid#}';
+        var imconfig = {
+			'mod':'marry',
+			'chatid':"{#$detail_userid#}",
+		}
+		var JubaoConfig = {
+			"module" : 'marry',
+			"action" : 'store',
+			"id" : '{#$detail_id#}'
+		};
+		var touch_poster = 1;
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" #}{#*婚宴酒店 *#}
+<style>
+	.html2Wrap .html2Con{background: #F8F8F8;}
+</style>
+
+<!-- 海报s -->
+	<div class="html2Wrap">
+		<div class="html2_node" id="html2_node">
+			<div class="html2Con">
+				{#if $istype==1#}
+				<!--商家信息-->
+				<div class="planInfo">
+				    <div class="infotop">
+				        <h2>{#$detail_title#}</h2>
+				        <p class="tip">
+				            {#foreach from=$detail_flagArr_ key=k item=val#}
+				            <span class="{#if $k==0#}dt{#elseif $k==1#}dl{#elseif $k==2#}gg{#/if#}">{#$val#}</span>
+				            {#/foreach#}
+				        </p>
+				        <p class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</p>{#*起 *#}
+				    </div>
+				    <div class="infobtom">
+				        <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+				        <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+				    </div>
+				</div>
+				{#elseif $istype==2#}
+				<!--商家信息-->
+				<div class="planInfo">
+				    <h2>{#$detail_title#}</h2>
+				    <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+				    <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+				    <span class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</span>{#*起 *#}
+				</div>
+				{#elseif $istype==3#}
+				<!--商家信息-->
+				<div class="planInfo">
+				    <h2>{#$detail_title#}</h2>
+				    <p class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</p>{#*起 *#}
+				    <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+				    <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+				</div>
+				{#/if#}
+
+				<div class="himgGroup">
+					{#if $detail_pics|@count ==0#}
+						<div class="himg_box_single"><img src="{#$detail_litpic#}"></div>
+					{#else#}
+						{#$r = $detail_pics|@count #}
+						{#foreach from=$detail_pics item=img key="key"#}
+						{#if $r==1#}
+						<div class="himg_box_single"><img src="{#$img.path#}"></div>
+						{#else if $key<3#}
+						<div class="himg_box1"><img src="{#$img.path#}"></div>
+						{#/if#}
+						{#/foreach#}
+					{#/if#}
+				</div>
+			</div>
+			<div class="html2_pub">
+				<h2 class="h_title">{#$cfg_shareTitle#}</h2>
+				<p>{#$cfg_shareDesc#}</p>
+				<div class="html2_qrcode"><img src="/include/qrcode.php?data={#getUrlPath service='marry' template='store-detail'  id={#$detail_id#} #}"></div>
+				<h3><span>长按识别二维码看详情</span></h3>
+			</div>
+
+		</div>
+	</div>
+	{#include file="../../../siteConfig/touch_poster.html"#}
+	<!-- 海报 -->
+
+
+<!-- 视频图片轮播 s-->
+<div class="topSwiper msend">
+    <div class="swiper-container swiper-container-horizontal swiper-container-ios">
+        <div class="swiper-wrapper">
+            {#if $detail_video#}
+            <div class="swiper-slide video-box" >
+                <img src="{#$detail_pics[0].path#}">
+                <div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" alt=""></div>
+            </div>
+            {#/if#}
+            {#foreach from=$detail_pics item=val#}
+            <div class="swiper-slide"><img src="{#$val.path#}"></div>
+            {#/foreach#}
+        </div>
+        <div class="swiper-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">3</span>/ <span class="swiper-pagination-total">6</span></div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    <div class="markBox">
+        {#if $detail_video#}<a href="javascript:;" class="pmark video">{#$langData['marry'][5][65]#}</a>{#/if#}
+        {#if $detail_pics#}<a href="javascript:;" class="pmark picture">{#$langData['marry'][5][66]#}</a>{#/if#}
+    </div>
+</div>
+<!--视频图片轮播 e-->
+{#if $istype==1#}
+<!--商家信息-->
+<div class="planInfo">
+    <div class="infotop">
+        <h2>{#$detail_title#}</h2>
+        <p class="tip">
+            {#foreach from=$detail_flagArr_ key=k item=val#}
+            <span class="{#if $k==0#}dt{#elseif $k==1#}dl{#elseif $k==2#}gg{#/if#}">{#$val#}</span>
+            {#/foreach#}
+        </p>
+        <p class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</p>{#*起 *#}
+    </div>
+    <div class="infobtom">
+        <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+        <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+    </div>
+</div>
+
+<!--商家介绍-->
+<div class="seller-intro">
+    <h3>{#$langData['marry'][0][21]#}</h3>{#*商家介绍 *#}
+    <div class="intro-brief">
+        <div class="introBox">
+            {#$detail_note#}
+        </div>
+        <div class="more readMore"></div>
+    </div>
+</div>
+
+<!--宴会场地-->
+<div class="meal">
+    <h3>{#$langData['marry'][0][22]#}</h3>{#*宴会场地 *#}
+    <ul class="meal-list">
+        {#marry action="hotelfieldList" return='Flist' store={#$detail_id#} orderby='1' pageSize='2'#}
+        <li class="fn-clear"><a href="{#$Flist.url#}">
+            <div class="img-box fn-left"><img src="{#changeFileSize url={#$Flist.litpic#} type='small'#}" alt=""></div>
+            <div class="info">
+                <p class="name">{#$Flist.title#}</p>
+                <p class="table"><span >{#$Flist.maxtable#}{#$langData['marry'][5][25]#}  {#$Flist.columnname#}{#$langData['marry'][5][26]#}</span> {#$Flist.fieldsname#}</p>
+                <p class="high">{#$langData['marry'][5][27]#}{#$Flist.floorheight#}m  {#$langData['marry'][5][28]#}{#$Flist.area#}m</p>
+            </div>
+        </a></li>
+        {#/marry#}
+    </ul>
+    <div class="more"><a href="{#getUrlPath service="marry" template="hotelmeallist" id={#$detail_id#}#}">{#$langData['marry'][0][25]#} ></a></div>{#*全部套餐 *#}
+</div>
+
+<!--婚宴菜单-->
+<div class="menu">
+    <h3>{#$langData['marry'][0][23]#}</h3>{#*婚宴菜单 *#}
+
+    <ul class="menu-list menubox">
+        {#marry action="hotelmenuList" return='Flist' store={#$detail_id#} orderby='1' pageSize='10'#}
+        <li><a class="fn-clear" href="{#getUrlPath service="marry" template="hotelmenu-detail" id={#$detail_id#}#}">
+            <span class="name fn-left">{#$Flist.title#}</span>
+            <i class="icon_next fn-right"></i>
+            <span class="price fn-right">{#echoCurrency type='symbol'#}<em>{#$Flist.price#}</em>/{#$langData['marry'][5][25]#}</span>
+        </a></li>
+        {#/marry#}
+    </ul>
+    <div class="more menuMore"></div>
+</div>
+{#elseif $istype==2#}
+<!--商家信息-->
+<div class="planInfo">
+    <h2>{#$detail_title#}</h2>
+    <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+    <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+    <span class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</span>{#*起 *#}
+</div>
+
+<!--商家案例-->
+<div class="seller-case">
+    <h3>{#$langData['marry'][0][49]#}</h3>{#*商家案例 *#}
+    <ul class="sellerList">
+        {#marry action="plancaseList" return='list' store={#$detail_id#} orderby='1' pageSize='4'#}
+        <li><a href="{#$list.url#}">
+            <div class="img-box"><img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt=""></div>
+            <p class="name">{#$list.title#}</p>
+            <div class="msg fn-clear"><span class="time">{#$list.holdingtimeSource1#}</span> <span class="hotel fn-right">{#$list.hoteltitle#}</span></div>
+        </a></li>
+        {#/marry#}
+    </ul>
+    <div class="more"><a href="{#getUrlPath service="marry" template="plancaselist" id={#$detail_id#}#}">{#$langData['marry'][0][51]#} ></a></div>{#*全部案例 *#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+    <style>.seller-case{display: none}</style>
+{#/if#}
+<!--精选套餐-->
+<div class="meal">
+    <h3>{#$langData['marry'][0][50]#}</h3>{#*精选套餐 *#}
+    <ul class="meal-list">
+        {#marry action="planmealList" return='list' store={#$detail_id#} type='0' businessid="2" istype="2" orderby='1' pageSize='4'#}
+        <li class="fn-clear"><a href="{#$list.url#}">
+            <div class="img-box fn-left">
+                <img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt="">
+                {#foreach from=$list.tagAll key=cks item=clists#}
+                {#if $cks>=2#}{#break#}{#/if#}
+                <i class="{#$clists.py#}"></i>
+                {#/foreach#}
+            </div>
+            <div class="info">
+                <p class="name">{#$list.title#}</p>
+                <p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}  </p>
+            </div>
+        </a></li>
+        {#/marry#}
+    </ul>
+    <div class="more"><a href="{#getUrlPath service="marry" template="planmeallist" id={#$detail_id#} typeid="0" istype="2" businessid="2"#}">{#$langData['marry'][0][52]#} ></a></div>{#*全部套餐 *#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+    <style>.meal{display: none}</style>
+{#/if#}
+{#elseif $istype==3#}
+<!--商家信息-->
+<div class="planInfo">
+    <h2>{#$detail_title#}</h2>
+    <p class="price"><em><i>{#echoCurrency type='symbol'#}</i>{#$detail_price#} </em>{#$langData['marry'][0][6]#}</p>{#*起 *#}
+    <p class="tel"><span>{#$langData['marry'][0][19]#}</span>{#$detail_tel#}</p>{#*电话 *#}
+    <p class="addr attr_addr"><span>{#$langData['marry'][0][20]#}</span><a class="appMapBtn" href="javascript:;" target="_blank">{#$detail_address#} <i  class="adr_icon"></i><input type="hidden"  id="lnglat"/></a></p>{#*地址 *#}
+</div>
+
+<!--商家介绍-->
+<div class="seller-intro">
+    <h3>{#$langData['marry'][0][21]#}</h3>{#*商家介绍 *#}
+    <div class="intro-brief">
+        <div class="introBox">
+            {#$detail_note#}
+        </div>
+        <div class="more readMore"></div>
+    </div>
+</div>
+
+<!--精选套餐-->
+<div class="meal">
+    <h3>{#$langData['marry'][0][50]#}</h3>{#*精选套餐 *#}
+    <ul class="meal-list">
+        {#marry action="planmealList" return='list' store={#$detail_id#} type={#$type#} businessid={#$typeid#} istype="3" orderby='1' pageSize='4'#}
+        <li class="fn-clear"><a href="{#$list.url#}">
+            <div class="img-box fn-left">
+                <img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt="">
+                {#foreach from=$list.tagAll key=cks item=clists#}
+                {#if $cks>=2#}{#break#}{#/if#}
+                <i class="{#$clists.py#}"></i>
+                {#/foreach#}
+            </div>
+            <div class="info">
+                <p class="name">{#$list.title#}</p>
+                <p class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}  </p>
+            </div>
+
+            </a></li>
+        {#/marry#}
+    </ul>
+    <div class="more"><a href="{#getUrlPath service="marry" template="planmeallist" id={#$detail_id#} typeid={#$type#} istype="3" businessid={#$typeid#}#}">{#$langData['marry'][0][52]#} ></a></div>{#*全部套餐 *#}
+</div>
+{#if $pageInfo.totalCount == 0#}
+    <style>.meal{display: none}</style>
+{#/if#}
+{#/if#}
+
+<!--用户评价-->
+<!-- 评论 -->
+<div class="commentBox">
+    <h3>{#$langData['marry'][0][24]#}</h3>{#*用户评价 *#}
+    <div class="commentList">
+        <ul>
+            {#member action='getComment' return='common' type='marry-store' son='1' aid={#$detail_id#} orderby='hot' pageSize='3'#}
+            {#if is_array($common.user)#}
+            {#$nickname = $common.user.nickname#}
+            {#$photo = $common.user.photo|default: '/static/images/noPhoto_40.jpg'#}
+            {#else#}
+            {#$nickname = '游客'#}
+            {#$photo = '/static/images/noPhoto_40.jpg'#}
+            {#/if#}
+            <li>
+                <div class="imgbox">
+                    <img src="{#$photo#}"  alt="">
+                </div>
+                <div class="rightInfo">
+                    <h4>{#$nickname#}</h4>
+                    <p class="txtInfo">{#$common.content#}</p>
+                    {#if $common.lower.list!=null#}
+						{#if $common.lower.count>1#}
+						<div class="replyCon">
+							{#foreach from=$common.lower.list key=ck item=clist#}
+							{#if $ck<=2#}
+
+							{#if is_array($clist.user)#}
+							{#$nickname = $clist.user.nickname#}
+							{#else#}
+							{#$nickname = '游客'#}
+							{#/if#}
+
+							<dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+							{#/if#}
+							{#/foreach#}
+							{#if $ck>=2#}
+							<a href="{#getUrlPath service='marry' template='comdetail' id={#$common.id#}#}" class="pmore">查看全部{#$common.lower.count#}条回复 ></a>
+							{#/if#}
+						</div>
+						{#else#}
+						<div class="replyCon">
+								{#$n=1#}
+								{#foreach from=$common.lower.list key=ck item=clist#}
+
+								{#if is_array($clist.user)#}
+								{#$nickname = $clist.user.nickname#}
+								{#else#}
+								{#$nickname = '游客'#}
+								{#/if#}
+
+								{#$n=$n+1#}
+								{#if $ck<1#}
+								<dl><dt><span class="spColor">{#$nickname#}：</span></dt><dd>{#$clist.content#}</dd></dl>
+									{#if $clist.lower.list!=null#}
+										{#foreach from=$clist.lower.list key=cks item=clists#}
+
+										{#if is_array($clists.user)#}
+										{#$nickname2 = $clists.user.nickname#}
+										{#else#}
+										{#$nickname2 = '游客'#}
+										{#/if#}
+
+										<dl><dt><span class="spColor">{#$nickname2#}</span>{#$langData['marry'][5][55]#} <span class="spColor">{#$nickname#}：</span></dt><dd>{#$clists.content#}</dd></dl>
+										{#/foreach#}
+										{#if $n>1#}
+										<a href="{#getUrlPath service='marry' template='comdetail' id={#$clist.id#}#}" class="pmore">{#$langData['marry'][5][60]#}{#$clist.lower.count#}{#$langData['marry'][5][61]#} ></a>
+										{#/if#}
+									{#/if#}
+								{#/if#}
+								{#/foreach#}
+							</div>
+						{#/if#}
+					{#/if#}
+                    <div class="rbottom">
+                        <div class="rtime">{#$common.dtime|date_format:'%m-%d %H:%M'#}</div>
+                        <div class="rbInfo">
+                            <a href="{#getUrlPath service='marry' template='comdetail' id={#$common.id#}#}" class="btnReply"> <s></s> {#$langData['marry'][5][55]#} </a>
+                            <a href="javascript:;" class="btnUp {#if $common.zan_has==1#}active{#/if#}" data-id="{#$common.id#}"> <s></s> <em>{#$common.zan#}</em> </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {#/member#}
+        </ul>
+    </div>
+    <div class="allmore"><a href="{#getUrlPath service='marry' template='comment' id={#$detail_id#}#}">{#if $detail_common > 0#}{#$langData['marry'][5][42]#}{#$detail_common#}{#$langData['marry'][5][43]#}{#else#}{#$langData['marry'][5][41]#}{#/if#} <s></s></a></div>
+</div>
+
+<!--底部按钮-->
+<div class="foot_contact container fn-clear">
+    <a data-id="{#$detail_id#}" class="coll-box{#if $detail_collect#} has{#/if#}"><s></s>{#if $detail_collect#}{#$langData['marry'][5][63]#}{#else#}{#$langData['marry'][5][64]#}{#/if#}</a>{#*收藏 *#}
+    <a href="javascript:;" data-tel="{#$detail_tel#}"  class="tel-box"><s></s>{#$langData['homemaking'][11][0]#}</a>{#*电话 *#}
+    <span class="tel chat_to-Link" data-type="user">{#$langData['siteConfig'][37][0]#}</span>{#*在线联系*#}
+</div>
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<!--电话弹出层-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>{#$langData['marry'][0][44]#}</h3>{#*联系我们*#}
+        <p class="fn-clear"><b>{#$detail_tel#}</b></p>
+        <div class="call"><a href="tel:{#$detail_tel#}" >{#$langData['marry'][0][43]#}</a></div>{#*立即拨打*#}
+    </div>
+</div>
+{#include file="_mapchose.html"#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$langData['marry'][5][67]#}：{#$detail_member['nickname']#}，{#$langData['marry'][5][68]#}：{#$detail_tel#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#if $detail_pics[0]['path']#}{#$detail_pics[0]['path']#}{#else#}{#$marry_logoUrl#}{#/if#}',
+        "link": '{#getUrlPath service='marry' template='store-detail' id={#$detail_id#} istype={#$istype#} typeid={#$typeid#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage_1.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+{#if $istype==1#}
+<script type="text/javascript" src="{#$templets_skin#}js/store-detail.js?v={#$cfg_staticVersion#}"></script>
+{#elseif $istype==2#}
+<script type="text/javascript" src="{#$templets_skin#}js/plan-detail.js?v={#$cfg_staticVersion#}"></script>
+{#elseif $istype==3#}
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+</body>
+</html>

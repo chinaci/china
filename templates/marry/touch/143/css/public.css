@@ -1,0 +1,61 @@
+.top{position: fixed;right: .2rem;bottom: .6rem;width: .8rem;height: .8rem;border-radius: 50%;border: 1px solid #eee;background: #fff;display: none;}
+.top i{display: inline-block;width: .8rem;height: .8rem;background: url("../images/go-top.png") no-repeat center center;background-size: contain;}
+.price{font-weight: bold;}
+.loading{height: 1.06rem;line-height: 1.06rem;font-size: .26rem;color: #a6a6a6;text-align: center;}
+
+/*置顶*/
+.gotop{position: fixed; bottom: 4rem; right: .25rem; width: 1rem; height: 1rem; z-index: 209; display: none;-webkit-animation: twinkling .3s ease-in-out;; -moz-animation: twinkling .3s ease-in-out;; animation: twinkling .3s ease-in-out;}
+.gotop img{display: block; width: 100%; height: 100%; }
+
+/*电话模态框*/
+.nos ,.nos body{overflow: hidden;}
+.modal-public{visibility: hidden;position: fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index: 999;}
+.modal-public.curr {visibility: visible;}
+.bgCover{ opacity: 1;visibility: hidden;overflow: hidden;background: #000;position: fixed;top: 0px;left: 0px;right: 0; bottom: 0;z-index: 99;-webkit-transition:none;transition:none;}
+.curr > .bgCover {opacity: .6;visibility: visible;}
+.modal-public .modal-main{display: block; position:relative!important;width: 70%;padding:.6rem .1rem .58rem;text-align: center;margin:auto;height: auto;position: fixed;left:0;top:25%;right:0;z-index: 9999;-webkit-border-radius: 0.04rem;-moz-border-radius: 0.04rem;border-radius: 0.04rem;background: #fff url(../images/modalbg.png) no-repeat;  background-position: 50% 125%;background-size: 120%;}
+
+.curr .modal-main {display: block;-webkit-animation: popup .3s ease-in;-moz-animation: popup .3s ease-in;animation: popup .3s ease-in;}
+.modal-public .close{width:.7rem;height: .7rem;position: absolute;top:.24rem;right:.21rem;}
+.modal-public .close img{width: 100%;}
+.modal-public .modal-main h3{font-size: .36rem;padding-bottom: .35rem;width: 60%;margin:auto;}
+.modal-public .modal-main h3:before,.modal-public .modal-main h3:after{width:20%;display:block;margin-top: .25rem;height:.02rem;}
+.modal-public .modal-main h3:before{content:'';float:left;background:linear-gradient(to left,#bcbcbc,#f8f8f8);}
+.modal-public .modal-main h3:after{content:'';float:right;background:linear-gradient(to left,#f8f8f8,#bcbcbc);}
+
+.modal-public .modal-main p{padding: .35rem .2rem;font-size: .34rem; color:#f86942; background: none;text-align: center;}
+.modal-public .modal-main .call{margin:.1rem auto 0;width: 2.07rem;height: .57rem;line-height:.57rem;border-radius: 4px;background: #f86942;box-shadow: 0 .05rem .1rem rgba(255,142,73,.5);}
+.modal-public .modal-main .call a{color:#fff;font-size: .28rem;}
+
+
+/*地图*/
+.tangram-suggestion-main{z-index: 999999; }
+.pageitem {position:fixed;display:none;height:100%;top:0;left:0;right:0;z-index:500000;}
+.lead {position:relative;text-align:center;height:1rem;line-height:1rem;background:#fff;margin-bottom:0.2rem;}
+.lead p {width:.5rem;height:.5rem;position:absolute;left:.15rem;top:.25rem;background:url(../images/Arrow_left.png) no-repeat center;background-size:.4rem;}
+.lead span {font-size:.36rem;}
+.lead b a {position:absolute;right:0.1rem;top:0rem;color:#e83829;font-size:0.28rem;width:1rem;}
+.lead input {height:.7rem;border:1px solid #e8e8e8;border-radius:0.1rem;width:75%;margin-left:0.2rem;padding-left:0.5rem;background:url(../images/search_1.png) no-repeat 0.1rem;background-size:.4rem;text-indent:0.2rem;font-size:0.28rem;}
+.map {position:relative;width:100%;height:100%;background:#ccc;margin-top:-.2rem;}
+#mapdiv {position:absolute;left:0;right:0;top:0;bottom:0;z-index:1;}
+.mapcenter {position:absolute;z-index:2;left:50%;top:50%;width:.6rem;height:.6rem;margin:-.4rem 0 0 -.3rem;background:url('../images/local1.png');background-size:cover;}
+.mapresults {position:absolute;top:6.5rem;left:0;right:0;bottom:0;background:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.mapresults li {position:relative;padding:.1rem .2rem .1rem .6rem;border-bottom:1px solid #efefef;}
+.mapresults li:before {position:absolute;content:"";left:.1rem;top:.2rem;width:.4rem;height:.4rem;background:url('../images/local1.png');background-size:cover;}
+.mapresults li h5 {font-size:.3rem;line-height:.5rem;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.mapresults li p {font-size:.24rem;color:#999;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.elseStreet {display:block;width:80%;margin:.3rem auto;border:2px solid #f00;height:.6rem;line-height:.6rem;border-radius:.5rem;color:#f00;font-size:.3rem;text-align:center;}
+.padTop20 .lead {padding-top:20px;}
+.padTop20 .lead p {top:0.57rem;}
+.padTop20 .mapresults {top:6.9rem;}
+#address{text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.mapresults{display: none;}
+
+/*底部按钮*/
+.foot_contact {height: 1rem;padding:.15rem .24rem;box-sizing:border-box;box-shadow: 0px 0px 10px 0px rgba(202, 202, 202, 0.24);position: fixed;bottom: 0;left: 0;right: 0;background: #fff;padding-bottom:calc(-.3rem + constant(safe-area-inset-bottom));padding-bottom: calc(-.3rem + env(safe-area-inset-bottom));}
+.foot_contact .coll-box{font-size: .24rem;color: #fc3a4a;text-align: center;float: left;width: .9rem;height: 1.3rem;box-sizing: border-box;}
+.foot_contact .coll-box s{display: block;width: .41rem;height: .38rem;background: url("../images/collection_01.png") center center;background-size: cover;margin: 0 auto;}
+.foot_contact .has s{background: url("../images/collection_02.png") center center no-repeat;background-size: contain;}
+.foot_contact .has{color: #fc3a4a;}
+.foot_contact .share{display:inline-block!important;margin-right:.25rem;display: inline-block;width: 2.9rem;height: .7rem;border-radius: .04rem;font-size: .24rem;background-image: -moz-linear-gradient( 0deg, rgb(244,166,14) 0%, rgb(245,195,20) 100%);background-image: -webkit-linear-gradient( 0deg, rgb(244,166,14) 0%, rgb(245,195,20) 100%);background-image: -ms-linear-gradient( 0deg, rgb(244,166,14) 0%, rgb(245,195,20) 100%);color: #fff;text-align: center;line-height: .7rem;}
+.foot_contact .tel{float:right;display: inline-block;width: 2.9rem;height: .7rem;border-radius: .04rem;font-size: .24rem;color: #fff;text-align: center;line-height: .7rem;background-image: -moz-linear-gradient( 0deg, rgb(249,55,78) 0%, rgb(249,106,56) 100%);    background-image: -webkit-linear-gradient( 0deg, rgb(249,55,78) 0%, rgb(249,106,56) 100%);    background-image: -ms-linear-gradient( 0deg, rgb(249,55,78) 0%, rgb(249,106,56) 100%);}

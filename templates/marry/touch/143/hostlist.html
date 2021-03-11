@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$langData['marry'][1][6]#}</title>{#*婚礼主持 *#}
+    <meta name="keywords" content="{#$marry_keywords#}">
+    <meta name="description" content="{#$marry_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hostlist.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+         var hideFileUrl ={#$cfg_hideUrl#};
+         var cookiePre = '{#$cfg_cookiePre#}';
+         var page = 1, pageSize = 10, detailListId = 'hostlist', keyword = "{#$keywords#}";
+     </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$langData['marry'][1][6]#}"#}{#*婚礼主持 *#}
+<div class="container">
+    <ul class="list" id="hostlist">
+    </ul>
+    <div class="loading"><span>{#$langData['marry'][0][36]#}...</span></div>{#*加载中*#}
+</div>
+
+<div class="top"><i></i></div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$marry_description#}',
+        "title": '{#if $list_typename#}{#$list_typename#}{#else#}{#$langData['marry'][1][6]#}{#/if#}',
+        "imgUrl": '{#$marry_logoUrl#}',
+        "link": '{#getUrlPath service="marry" template="hostlist"#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/hostlist.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

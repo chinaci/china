@@ -1,0 +1,14 @@
+
+html{background:#f8f8f8;}
+.popupRightBottom{display: none;}
+/*商家案例*/
+.seller-case{margin-bottom: .2rem;padding-top: .3rem;}
+.sellerList{display: flex;flex-wrap: wrap;padding: 0 .24rem;justify-content: space-between;}
+.sellerList li{width: 48%;margin-bottom: .25rem; border-radius: .08rem;background: #fff;}
+.sellerList li:active{background: #f8f8f8;}
+.sellerList li .img-box{height: 2.39rem;width: 100%;overflow: hidden;}
+.sellerList li .img-box img{width: 100%;}
+.sellerList li .name{font-size: .3rem;padding: .1rem .2rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.sellerList li .msg{font-size: .24rem;color: #a0a0a0;padding: 0 .2rem .2rem;}
+
+.loading{height: 1.06rem;line-height: 1.06rem;font-size: .26rem;color: #a6a6a6;text-align: center;background: #f8f8f8;}

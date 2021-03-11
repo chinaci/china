@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$langData['marry'][1][0]#}</title>{#*租婚车 *#}
+    <meta name="keywords" content="{#$marry_keywords#}">
+    <meta name="description" content="{#$marry_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/rentallist.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" >
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var hideFileUrl ={#$cfg_hideUrl#};
+        var cookiePre = '{#$cfg_cookiePre#}';
+        var page = 1, pageSize = 10, detailListId = 'rentallist', keyword = "{#$keywords#}";
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$langData['marry'][1][0]#}"#}{#*租婚车 *#}
+<div class="container">
+    <ul class="list" id="rentallist">
+    </ul>
+    <div class="loading"><span>{#$langData['marry'][0][36]#}...</span></div>{#*加载中*#}
+</div>
+
+<!--电话弹出层-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>{#$langData['marry'][0][44]#}</h3>{#*联系我们*#}
+        <p class="fn-clear"><b></b></p>
+        <div class="call"><a href="tel:" >{#$langData['marry'][0][43]#}</a></div>{#*立即拨打*#}
+    </div>
+</div>
+
+<div class="top"><i></i></div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$marry_description#}',
+        "title": '{#if $list_typename#}{#$list_typename#}{#else#}{#$langData['marry'][1][0]#}{#/if#}',
+        "imgUrl": '{#$marry_logoUrl#}',
+        "link": '{#getUrlPath service="marry" template="rentallist"#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/rentallist.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

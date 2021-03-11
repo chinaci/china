@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$detail_hostname#}-{#$langData['marry'][1][6]#}</title>
+	<meta name="apptitle" content="{#$langData['marry'][1][6]#}">{#*婚礼主持 *#}
+    <meta name="keywords" content="{#$marry_keywords#}">
+    <meta name="description" content="{#$marry_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/host-detail.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}';
+        var detail_video='{#$detail_video#}';
+        var hideFileUrl ={#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', fromType = 'host';
+        var imconfig = {
+			'mod':'marry',
+			'chatid':"{#$detail_store['userid']#}",
+			'title': '{#$detail_hostname#}',
+			"price": '<em>{#echoCurrency type='symbol'#}</em>{#$detail_price#}',
+			"imgUrl": '{#changeFileSize url={#$detail_workArr[0]['litpicSource']#} type='small'#}',
+			"link": '{#getUrlPath service="marry" template="host-detail" id=$detail_id#}',
+		}
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$langData['marry'][1][6]#}"#}{#*婚礼主持 *#}
+<div class="banner">
+    <div class="wrapper">
+        <div class="swiper-container swiper-container-horizontal swiper-container-ios">
+            <div class="swiper-wrapper topSwiper">
+                {#foreach from=$detail_workArr item=val#}
+                <div class="slideshow-item ">
+                    <div class="siteAdvObj"><a href="javascript:;" style="cursor:default;"><img src="{#$val.litpicSource#}" width="750" height="150" alt=""></a></div>
+                    <div class="item-bg"></div>
+                </div>
+                {#/foreach#}
+            </div>
+            <div class="pagination swiper-pagination-bullets">
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    </div>
+</div>
+
+<div class="host-msg">
+    <div class="msg-box fn-clear">
+        <div class="img-box fn-left"><img src="{#changeFileSize url="{#$detail_photoSource#}" type="small"#}" alt=""></div>
+        <div class="info">
+            <p class="name">{#$detail_hostname#}</p>
+            <p class="tel">{#$langData['marry'][1][7]#}: {#$detail_tel#}</p>{#*联系电话 *#}
+        </div>
+    </div>
+</div>
+
+<!-- 我的作品、个人介绍 -->
+<div class="recomTab">
+    <ul>
+        <li class="active" data-id="1" data-page="1" data-totalpage="1">
+            <a href="javascript:;">{#$langData['marry'][1][8]#}</a>{#*我的作品 *#}
+        </li>
+        <li data-id="2" data-page="1" data-totalpage="1">
+            <a href="javascript:;">{#$langData['marry'][1][9]#}</a>{#*个人介绍 *#}
+        </li>
+    </ul>
+</div>
+
+<!-- 内容部分 -->
+<div class="filter">
+        <ul class="content reInfo show">
+            {#foreach from=$detail_workArr item=val#}
+            <li class="liBox">
+                <a href="javascript:;" data-url="{#$val.videoSource#}">
+                    <div class="videoBox">
+                        <div class="videoInfo"><span>{#$val.title#}</span></div>
+                        <div class="vedioImg"><img src="{#$val.litpicSource#}"><i></i></div>
+                    </div>
+                </a>
+            </li>
+            {#/foreach#}
+        </ul>
+
+        <ul class="content  reShop intro">
+            <div class="introBox">
+                {#$detail_note#}
+            </div>
+        </ul>
+</div>
+
+<!--底部按钮-->
+<div class="foot_contact container fn-clear ">
+    <a data-id="{#$detail_id#}" class="coll-box{#if $detail_collect#} has{#/if#}"><s></s>{#if $detail_collect#}{#$langData['marry'][5][63]#}{#else#}{#$langData['marry'][5][64]#}{#/if#}</a>{#*收藏 *#}
+    <a href="{#$detail_companyurl#}"  class="shop-box"><s></s>{#$langData['homemaking'][0][9]#}</a>{#*商家 *#}
+	<a href="javascript:;" data-tel="{#$detail_store.tel#}"  class="tel-box"><s></s>{#$langData['homemaking'][11][0]#}</a>{#*电话 *#}
+    <span class="tel chat_to-Link" data-type="detail" data-tel="{#$detail_store.tel#}">{#$langData['marry'][0][28]#}</span>{#*联系商家*#}
+</div>
+
+<!-- 视频图片弹出层 s-->
+<div class="videoModal">
+    <div class="swiper-container">
+        <i class="vClose"></i>
+        <div class="swiper-wrapper">
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- 视频图片弹出层 e-->
+
+<!--电话弹出层-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/close.png" alt="">
+        </div>
+        <h3>{#$langData['marry'][0][44]#}</h3>{#*联系我们*#}
+        <p class="fn-clear"><b>{#$detail_store.tel#}</b></p>
+        <div class="call"><a href="tel:{#$detail_store.tel#}" >{#$langData['marry'][0][43]#}</a></div>{#*立即拨打*#}
+    </div>
+</div>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$langData['marry'][5][67]#}：{#$detail_hostname#}，{#$langData['marry'][5][68]#}：{#$detail_tel#}',
+        "title": '{#$detail_hostname#}',
+        "imgUrl": '{#if $detail_workArr[0]['litpicSource']#}{#$detail_workArr[0]['litpicSource']#}{#else#}{#$marry_logoUrl#}{#/if#}',
+        "link": '{#getUrlPath service='marry' template='host-detail' id={#$detail_id#}#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/host-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

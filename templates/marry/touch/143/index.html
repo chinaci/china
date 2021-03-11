@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$marry_title#}</title>{#*婚嫁 *#}
+    <meta name="apptitle" content="{#$marry_channelName#}">
+    <meta name="keywords" content="{#$marry_keywords#}">
+    <meta name="description" content="{#$marry_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$marry_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var templets_skin = '{#$templets_skin#}';
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$marry_channelName#}"#}
+<!--轮播图-->
+<div class="banner">
+    <div class="wrapper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {#myad title="婚嫁信息_模板一_移动端_广告一" type="slide"#}
+            </div>
+            <div class="pagination"></div>
+        </div>
+    </div>
+    <div class="area">
+        <a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=marry">
+            <s></s>
+            <label>{#$siteCityInfo['name']#}</label>
+            <i></i>
+        </a>
+    </div>
+</div>
+
+<!--导航-->
+<div class="nav">
+    <ul class="fn-clear">
+        <li><a href="{#getUrlPath service="marry" template="hotellist"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic01.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][13]#}</span></a>{#*婚宴酒店*#}
+        </a></li>
+        <li><a href="{#getUrlPath service="marry" template="planlist"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic02.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][14]#}</span></a>{#*婚礼策划*#}
+        </a></li>
+        <li><a href="{#getUrlPath service="marry" template="rentallist"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic03.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][15]#}</span></a>{#*租婚车*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="4"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic04.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][6]#}</span></a>{#*婚纱摄影*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="5"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic05.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][7]#}</span></a>{#*摄影跟拍*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="hostlist"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic06.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][16]#}</span></a>{#*婚礼主持*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="7"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic07.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][8]#}</span></a>{#*珠宝首饰*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="8"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic08.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][9]#}</span></a>{#*摄像跟拍*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="9"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic09.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][10]#}</span></a>{#*新娘跟妆*#}
+            </a></li>
+        <li><a href="{#getUrlPath service="marry" template="list" typeid="10"#}">
+            <span class="icon-circle"><img src="{#$templets_skin#}images/ic10.png" alt=""></span>
+            <span class="icon-text">{#$langData['marry'][2][11]#}</span></a>{#*婚纱礼服*#}
+            </a></li>
+    </ul>
+</div>
+
+<!--人气推荐-->
+<div class="recom">
+    <h3><span>{#$langData['marry'][0][1]#}</span></h3>{#*人气推荐 *#}
+    <ul>
+        {#myad title="婚嫁信息_模板一_移动端_广告二"#}
+    </ul>
+</div>
+
+<!--类别-->
+<div class="category">
+    <ul class="nav-tab">
+        <li class="curr"><span>{#$langData['marry'][0][2]#}</span></li>{#*精选酒店 *#}
+        <li><span>{#$langData['marry'][0][3]#}</span></li>{#*婚纱摄影 *#}
+        <li><span>{#$langData['marry'][0][4]#}</span></li>{#*婚庆策划 *#}
+        <li><span>{#$langData['marry'][0][5]#}</span></li>{#*旅拍套系 *#}
+    </ul>
+    <div class="filter">
+        <ul class="container hotel show">
+            {#marry action="storeList" return='list' filter='1' orderby='1' pageSize='3'#}
+            <li class="fn-clear"><a href="{#$list.url#}">
+                <div class="img-box"><img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt=""></div>
+                <p class="name">{#$list.title#}</p>
+                <div class="num fn-clear">{#$list.typename#} {#*|<span class="n">0-70桌</span>*#} <p class="fn-right"><span class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}</span>{#$langData['marry'][0][6]#}</p></div>{#*起 *#}
+            </a></li>
+            {#/marry#}
+        </ul>
+        <ul class="container wedding-photo">
+            {#marry action="storeList" return='list' filter='4' istype="3" orderby='1' pageSize='3'#}
+            <li class="fn-clear"><a href="{#$list.url#}">
+                <div class="img-box"><img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt="">  {#if $list.rec==1#}<s class="tujian"><img src="{#$templets_skin#}images/icon_tuij.png" alt=""></s>{#/if#}</div>
+                <p class="name">{#$list.title#}</p>
+                <div class="num fn-clear">{#$list.addrname[$list.addrname|count-2]#} <span class="n">{#$list.addrname[$list.addrname|count-1]#}</span> <p class="fn-right"><span class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}</span>{#$langData['marry'][0][6]#}</p></div>{#*起 *#}
+            </a></li>
+            {#/marry#}
+        </ul>
+        <ul class="container">
+            {#marry action="storeList" return='list' filter='2' istype="2" orderby='1' pageSize='3'#}
+            <li class="fn-clear"><a href="{#$list.url#}">
+                <div class="img-box"><img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt=""></div>
+                <p class="name">{#$list.title#}</p>
+                <div class="num fn-clear">{#$list.addrname[$list.addrname|count-2]#} <span class="n">{#$list.addrname[$list.addrname|count-1]#}</span> <p class="fn-right"><span class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}</span>{#$langData['marry'][0][6]#}</p></div>
+            </a></li>
+            {#/marry#}
+        </ul>
+        <ul class="container travel-photo">
+            {#marry action="storeList" return='list' filter='5' istype="3" orderby='1' pageSize='3'#}
+            <li class="fn-clear"><a href="{#$list.url#}">
+                <div class="img-box"><img src="{#changeFileSize url={#$list.litpic#} type='small'#}" alt=""></div>
+                <p class="name">{#$list.title#}</p>
+                <div class="num fn-clear">{#$list.addrname[$list.addrname|count-1]#} <span class="n"></span> <p class="fn-right"><span class="price"><i>{#echoCurrency type='symbol'#}</i>{#$list.price#}</span>{#$langData['marry'][0][6]#}</p></div>
+            </a></li>
+            {#/marry#}
+        </ul>
+    </div>
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="marry"#}
+</div>
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+        "timestamp": '{#$wxjssdk_timestamp#}',
+        "nonceStr": '{#$wxjssdk_nonceStr#}',
+        "signature": '{#$wxjssdk_signature#}',
+        "description": '{#$marry_description#}',
+        "title": '{#$marry_title#}',
+        "imgUrl": '{#$marry_logoUrl#}',
+        "link": '{#$marry_channelDomain#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

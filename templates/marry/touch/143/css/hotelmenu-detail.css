@@ -1,0 +1,15 @@
+/*.popupRightBottom{display: none;}*/
+.huoniao_iOS .container{top:0;}
+.container{position: fixed;bottom: 0;top: .9rem;left: 0;right: 0;background: #f8f8f8;display: flex;flex-wrap: nowrap;justify-content: space-between;}
+.container .navbox{width: 35%;background: #f6f6f7;overflow: auto;border-right: 1px solid #e5e5e5;}
+.container .navbox li{border-bottom: 1px solid #e5e5e5;text-align: center;padding: .15rem 0;font-size: .28rem;}
+.container .navbox li p{padding: .06rem;}
+.container .navbox li p.price em{font-weight:400;font-size: .32rem;}
+.container .navbox li.curr{background: #f83244;color: #fff;}
+
+.container .contentBox{width: 65%;background: #fff;overflow: auto;padding: .35rem;}
+.container .contentBox .content-item{display: none;}
+.container .contentBox .show{display: block;}
+.container .contentBox h3{font-size: .4rem;color: #333;font-weight: bold;padding-bottom: .25rem;}
+.container .contentBox  p{color: #666;font-size: .28rem;padding: .05rem;}
+

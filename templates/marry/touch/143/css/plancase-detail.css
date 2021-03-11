@@ -1,0 +1,14 @@
+html{background:#f8f8f8;}
+/*.popupRightBottom{display: none;}*/
+.title{font-size: .42rem;font-weight: bold;padding: .35rem .24rem;background: #fff;box-shadow: 0px 2px 6px 0px rgba(179, 179, 179, 0.2);margin-bottom: .2rem;}
+.msg{background: #fff;box-shadow: 0px 2px 6px 0px rgba(179, 179, 179, 0.2);padding: .35rem .24rem;position: relative;margin-bottom: .2rem;}
+.msg .img-box{width: .96rem;height: .96rem;border-radius: 50%;border: 1px solid #eee;overflow: hidden;margin-right: .25rem;}
+.msg .img-box img{width: .96rem;height: .96rem;border-radius: 50%;}
+.msg .info .name{font-size: .3rem;padding-bottom: .3rem;}
+.msg .info .adr{font-size: .24rem;color: #a0a0a0;}
+.msg .icon_next{display: inline-block;width: .16rem;height: .29rem;background: url("../images/icon_next.png") no-repeat;background-size: contain;position: absolute;right: .24rem;top: 50%;transform: translate(-50%, -50%)}
+
+.content{font-size: 0;padding-bottom: 2.2rem;}
+.content img{width:100%!important;max-height: 5rem;object-fit: cover;}
+
+
