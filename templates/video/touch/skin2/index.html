@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+<title>{#$video_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<!-- <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}"> -->
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$video_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+    var pageData = {
+        title: '',
+        address: '',
+        lat: '',
+        lng: '',
+        mapType: '',
+        cityName: '',
+        mapKey: ''
+    };
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="$video_channelName"#}
+<div class="choose-box">
+  <div class="pubBox recomTab">
+    <ul class="fn-clear">
+      <li daya-id="1" data-action="tuijian" class="tuijian active" data-page="1" data-totalpage="7" data-id="1"><a href="javascript:;">推荐</a><i></i></li>
+      <li daya-id="2" data-action="tongcheng" class="tongcheng fn-hide" data-page="1" data-totalpage="7" data-id="2"><a href="javascript:;">同城</a><i></i></li>
+	  
+	  {#if $siteCityInfo && $siteCityInfo['count'] > 1#}
+	  <div class="areaChose"><a href="{#$cfg_basehost#}/changecity.html?currentPageOpen=1&backModule=video" ><span>{#$siteCityInfo['name']#}</span></a></div>
+	  {#/if#}
+	  
+      <div class="hh fn-clear">
+          <div class="search">
+            <i></i>
+            <input type="text" id="search_keyword" class="txt_search" value="" autocomplete="off" placeholder="请输入您要搜索的视频关键词">
+            <span><a href="javaScript:;" class="search_keyword">搜索</a></span>
+          </div>
+          <span class="cuo"></span>
+      </div>
+    </ul>
+
+  </div>
+</div>
+<!-- 内容部分 -->
+<div class="container">
+  <div class="swiper-container swiper-container-horizontal swiper-container-autoheight swiper-container-ios" id="tabs-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <!-- 推荐 -->
+        <div class="content_p">
+        <div class="menu_list">
+          <ul class="fn-clear">
+            <li><img src="{#$templets_skin#}images/sp.png"><p>视频</p></li>
+            <li><a href="{#getUrlPath service='video' template='shortVideo'#}"><img src="{#$templets_skin#}images/dsp.png"><p>短视频</p></a></li>
+            <li><a href="{#getUrlPath service='live' template='index'#}"><img src="{#$templets_skin#}images/zb.png"><p>直播</p></a></li>
+            <li><a href="{#getUrlPath service='quanjing' template='index'#}"><img src="{#$templets_skin#}images/qj.png"><p>全景</p></a></li>
+          </ul>
+        </div>
+        <div class="video_list">
+          <ul>
+          </ul>
+        </div>
+        </div>
+
+
+
+      </div>
+      <div class="swiper-slide">
+        <!-- 同城 -->
+        <div class="content_p">
+        <div class="tc_list">
+          <ul class="fn-clear"></ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 微信 返回顶部 -->
+<!--<div class="jia_s">-->
+  <!--<a href="javaScript:;"><img src="{#$templets_skin#}images/jia_b.png"></a>-->
+<!--</div>-->
+<div class="wechat-fix">
+  <a href="javaScript:;"><img src="{#$templets_skin#}images/weic.png"></a>
+</div>
+<div class="gotop">
+  <a href="javaScript:;"><img src="{#$templets_skin#}images/toTop.png"></a>
+</div>
+<div class="ren">
+  <a href="{#getUrlPath service='video' template='personal'#}"><img src="{#$templets_skin#}images/ren.png"></a>
+</div>
+
+<!-- 微信二维码 -->
+<div class="wechat-popup">
+  <div class="con">
+    <a href="javascript:;" class="close">×</a>
+    {#if $cfg_weixinQr#}<dl><dt><img src="{#$cfg_weixinQr#}"></dt><dd>{#$cfg_weixinName#}<br>微信中长按识别</dd></dl>{#else#}您还没有上传相关图片{#/if#}
+    {#if $cfg_miniProgramQr#}<dl><dt><img src="{#$cfg_miniProgramQr#}"></dt><dd>{#$cfg_miniProgramName#}<br>微信中长按识别</dd></dl>{#/if#}
+  </div>
+</div>
+
+<!-- 遮罩层 -->
+<div class="mask"></div>
+
+{#include file="../../../siteConfig/touch_bottom_5.0.html" active="index" bottom_module="video"#}
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$video_description#}',
+		"title": '{#$video_title#}',
+		"imgUrl": '{#$video_logoUrl#}',
+		"link": '{#$video_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="../../../siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

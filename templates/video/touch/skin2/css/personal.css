@@ -1,0 +1,558 @@
+@charset "utf8";
+html {background: #f2f2f2;padding-bottom:constant(safe-area-inset-bottom);padding-bottom:env(safe-area-inset-bottom);}
+
+.choose-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100000;
+}
+.personal_data {
+        margin-top: .1rem;
+    background: #fff;
+        margin-bottom: .2rem;
+}
+.personal_data .data{
+    margin: 0 .2rem;
+    padding: .2rem 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+.personal_data .data .personalImg{
+    float: left;
+    width: 1.12rem;
+    height: 1.12rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.personal_data .data .personalImg img{
+    width: 1.12rem;
+    height: 1.12rem;
+}
+.personal_data .data .personalData{
+    float: left;
+    margin-left: .2rem;
+    margin-top: .2rem;
+}
+.personal_data .data .personalData p:first-child{
+    font-size: .32rem;
+    font-weight: bold;
+    padding-top: .12rem;
+    padding-bottom: .1rem;
+}
+.personal_data .data .personalData p:last-child{
+    font-size: .24rem;
+    color: #808080;
+}
+
+.personal_data .data .follow {
+    float: right;
+    display: inline-block;
+    margin-top: .24rem;
+}
+.personal_data .data .add_follow {
+    border: 1px solid #ff4d5d;
+    border-radius: .8rem;
+    color: #ff4d5d;
+    background: url(../images/jia.png) no-repeat .16rem center;
+    background-size: .26rem;
+    padding-left: .5rem;
+    height: .58rem;
+    line-height: .58rem;
+    font-size: .28rem;
+    padding-right: .2rem;
+}
+.personal_data .data .pitchOn {
+    /* border: 1px solid #ff4d5d; */
+    border-radius: .8rem;
+    padding: .06rem .3rem;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #ffa63c , #ff4d5d);
+    background: -o-linear-gradient(right, #ffa63c, #ff4d5d);
+    background: -moz-linear-gradient(right, #ffa63c, #ff4d5d);
+    background: linear-gradient(to right, #ffa63c , #ff4d5d);
+    /* padding-left: .5rem; */
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .28rem;
+}
+
+.personal_data .number{
+    position: relative;
+}
+.personal_data .number .count {
+    float: left;
+    width: 50%;
+    text-align: center;
+        margin: .16rem 0;
+}
+.personal_data .number .count p:first-child {
+    font-size: .28rem;
+    color: #34b0ff;
+    font-weight: bold;
+        padding-bottom: .06rem;
+}
+.personal_data .number .count p:last-child {
+    font-size: .24rem;
+    color: #808080;
+}
+.personal_data .number i{
+        display: inline-block;
+    height: .4rem;
+    border-right: 1px solid #d9d9d9;
+    position: absolute;
+    width: 1px;
+    left: 50%;
+    top: 50%;
+    margin-top: -.2rem;
+}
+
+
+.info{
+    background: #fff;
+    border-bottom: 1px solid #f2f2f2;
+        height: 1rem;
+}
+.info .info_n{
+        height: 1rem;
+            background: #fff;
+}
+.info ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    color: #4c4c4c;
+    font-size: .28rem;
+    font-weight: bold;
+    position: relative;
+        padding: .3rem 0;
+}
+.info ul li.active i{
+        width: .48rem;
+    height: .06rem;
+    display: inline-block;
+    border-radius: .6rem;
+    background: -webkit-linear-gradient(left, #00bbbd , #2efebc);
+    background: -o-linear-gradient(right, #00bbbd, #2efebc);
+    background: -moz-linear-gradient(right, #00bbbd, #2efebc);
+    background: linear-gradient(to right, #00bbbd , #2efebc);
+    left: 50%;
+    margin-left: -.24rem;
+        top: .76rem;
+        position: absolute;
+}
+
+
+
+/*他的视频*/
+.video_list>.p{
+    font-size: .28rem;
+    font-weight: bold;
+    padding: .3rem 0 .2rem 0.2rem;
+    background: #fff;
+}
+.video_list ul li{
+        box-shadow: 0px 4px 8px #ececec;
+    margin-bottom: .2rem;
+}
+.video_list ul li .bg_img{
+        height: 4.2rem;
+    width: 100%;
+    background: #000;
+    position: relative;
+}
+.video_list ul li .bg_img img{
+        height: 4.2rem;
+    width: 100%;
+  opacity:0.6; filter: alpha(opacity=60);
+}
+.video_list ul li .bg_img i{
+    background: url(../images/bf.png) no-repeat center center;
+    background-size: .52rem;
+    display: inline-block;
+    width: .66rem;
+    height: .7rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -.35rem;
+    left: 50%;
+    margin-left: -.33rem;
+}
+.video_list ul li .bg_img div{
+    position: absolute;
+    bottom: .2rem;
+        left: 0;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+}
+.video_list ul li .bg_img div span:first-child{
+    float: left;
+    margin-left: .2rem;
+    background: url(../images/icon_01.png) no-repeat left center;
+    background-size: .26rem;
+    padding-left: .3rem;
+}
+.video_list ul li .bg_img div span:last-child{
+    float: right;
+    margin-right: .2rem;
+}
+.video_list ul li .bg_content {
+    padding: .18rem .2rem;
+}
+
+.video_list ul li .bg_content>div .user_name{
+    float: left;
+    display: inline-block;
+    height: .5rem;
+    line-height: .5rem;
+    /* margin-left: .1rem; */
+    font-size: .24rem;
+    color: #808080;
+}
+.video_list ul li .bg_content>div .user_name em{
+    margin-right: .2rem;
+}
+
+.video_list ul li .bg_content p{
+        font-size: .3rem;
+            font-weight: bold;
+}
+
+.video_list ul li .bg_content>div .xinxi{
+    float: right;
+        background: url(../images/xinxi.png) no-repeat left center;
+        background-size: .36rem;
+    padding-left: .4rem;
+    height: .5rem;
+    line-height: .5rem;
+     color: #808080;
+}
+.video_list ul li .bg_content>div .dianzan{
+    float: right;
+    background: url(../images/dianzan.png) no-repeat left .04rem;
+    background-size: .36rem;
+    padding-left: .4rem;
+    margin-left: .28rem;
+    height: .5rem;
+    line-height: .5rem;
+     color: #808080;
+}
+.video_list ul li .bg_content>div span.active{
+        background: url(../images/dianzan_s.png) no-repeat left .04rem;
+        background-size: .36rem;
+}
+
+
+/*短视频*/
+.tc_list>.p{
+    font-size: .28rem;
+    font-weight: bold;
+    padding: .3rem 0 .2rem 0.2rem;
+}
+.tc_list ul{
+    position: relative;
+}
+.tc_list ul li{
+    width: 3.6rem;
+    display: inline-block;
+    float: left;
+        padding: 0 .08rem .2rem .08rem;
+    position: absolute;
+}
+.tc_list ul li .tc_img{
+        overflow: hidden;
+    border-top-left-radius:.1rem;
+    border-top-right-radius:.1rem;
+    position: relative;
+}
+.tc_list ul li .tc_img .ic_list {
+    position: absolute;
+    bottom: .2rem;
+    color: #fff;
+    padding: 0 .1rem;
+}
+.tc_list ul li .tc_img .ic_list .ic_01 {
+    background: url(../images/icon_01.png) no-repeat left center;
+    background-size: .26rem;
+}
+.tc_list ul li .tc_img .ic_list span {
+    padding-left: .34rem;
+    margin-right: .2rem;
+}
+.tc_list ul li .tc_img .ic_list .ic_02 {
+    background: url(../images/icon_02.png) no-repeat left center;
+    background-size: .26rem;
+}
+.tc_list ul li .tc_img .ic_list .ic_03 {
+    background: url(../images/icon_03.png) no-repeat left center;
+    background-size: .26rem;
+}
+.tc_list ul li .tc_img img{
+    width: 100%;
+    height: auto;
+        vertical-align: middle;
+}
+.tc_list ul li .tc_title{
+    color: #333;
+    font-size: .28rem;
+    padding: 0.16rem .1rem;
+    background: #fff;
+    border-bottom-right-radius:.1rem;
+    border-bottom-left-radius:.1rem;
+}
+.tc_list ul li .tc_txt{
+        padding: .1rem .1rem;
+    margin-bottom: .2rem;
+}
+.tc_list ul li .tc_txt .tc_headPortrait{
+    float: left;
+    height: .5rem;
+    width: .5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.tc_list ul li .tc_txt .tc_headPortrait img{
+    height: .5rem;
+    width: .5rem;
+}
+.tc_list ul li .tc_txt .tc_user_name{
+    float: left;
+    height: .5rem;
+    display: inline-block;
+    line-height: .5rem;
+    margin-left: .1rem;
+        color: #fff;
+    font-size: .22rem;
+}
+.tc_list ul li .tc_txt .tc_dianzan{
+    float: right;
+    background: url(../images/dianzan.png) no-repeat left .1rem;
+    background-size: .24rem;
+    padding-left: .34rem;
+    margin-left: .28rem;
+    height: .5rem;
+    line-height: .5rem;
+    color: #fff;
+    font-size: .22rem;
+}
+.tc_list ul li .tc_txt span.active{
+    background: url(../images/dianzan_s.png) no-repeat left .1rem;
+    background-size: .24rem;
+}
+.choose-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+
+/*他的直播*/
+.recommend>.p{
+    font-size: .28rem;
+    font-weight: bold;
+    padding: .3rem 0 0 0.2rem;
+}
+.recommend{
+    background: #fff;
+}
+.recommend .play_main{
+    border-bottom: .1rem solid #f2f2f2;
+    padding: 0.3rem .2rem 0 .2rem;
+}
+.recommend .play_main .groom_sp{
+    height: 4rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.recommend .play_main .groom_sp img{
+    width: 100%;
+}
+.recommend .play_main .groom_sp .huifang{
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+    background: #bfe100;
+    color: #fff;
+    padding: 0 .1rem;
+    height: .38rem;
+    text-align: center;
+    line-height: .38rem;
+    border-radius: .06rem;
+}
+.recommend .play_main .groom_sp .zbz {
+    background: #ffa13c;
+}
+.recommend .play_main .groom_sp .bofang{
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    top: 50%;
+    margin-top: -.55rem;
+    left: 50%;
+    margin-left: -.55rem;
+    background: #000;
+    opacity: .5;
+    border-radius: 50%;
+}
+.recommend .play_main .groom_sp .bofang_icon{
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    top: 50%;
+    margin-top: -.55rem;
+    left: 50%;
+    margin-left: -.55rem;
+        background:url(../images/bofang_icon.png) no-repeat .38rem center;
+    background-size: .44rem;
+}
+.recommend .play_main .groom_sp .zhezhao {
+    position: absolute;
+    bottom: 0;
+    height: 1.4rem;
+    width: 100%;
+    background: #000;
+    opacity: .6;
+    background: -webkit-linear-gradient(top, #000 , transparent);
+    background: -o-linear-gradient(top, #000, transparent);
+    background: -moz-linear-gradient(top, #000, transparent);
+    background: linear-gradient(to top, #000 , transparent);
+}
+.recommend .play_main .groom_sp p{
+    position: absolute;
+    bottom: 0.1rem;
+    color: #fff;
+        width: 6.9rem;
+    padding: 0 .1rem;
+}
+.recommend .play_main .groom_sp p span:first-child{
+    float: left;
+        background: url(../images/icon_01.png) no-repeat left center;
+    background-size: .26rem;
+        padding-left: .34rem;
+}
+.recommend .play_main .groom_sp p span:last-child{
+    float: right;
+}
+.recommend .play_main .groom_txt{
+    padding: .1rem 0;
+    font-size: .32rem;
+    font-weight: bold;
+    overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.recommend .play_main .shijian{
+    font-size: .24rem;
+    color: #808080;
+        padding-bottom: .3rem;
+}
+.recommend .play_main .shijian em{
+    margin-right: .2rem;
+}
+
+
+
+
+/*他的全景*/
+/*他的视频*/
+.panorama_list>.p{
+    font-size: .28rem;
+    font-weight: bold;
+    padding: .3rem 0 .2rem 0.2rem;
+    background: #fff;
+}
+.panorama_list{
+    background: #fff;
+}
+.panorama_list ul li{
+        box-shadow: 0px 4px 8px #ececec;
+    margin-bottom: .2rem;
+}
+.panorama_list ul li .bg_img{
+        height: 4.2rem;
+    width: 100%;
+    background: #000;
+    position: relative;
+}
+.panorama_list ul li .bg_img img{
+        height: 4.2rem;
+    width: 100%;
+  opacity:0.6; filter: alpha(opacity=60);
+}
+.panorama_list ul li .bg_img div{
+    position: absolute;
+    bottom: .2rem;
+        left: 0;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+}
+.panorama_list ul li .bg_img div span:first-child{
+    float: left;
+    margin-left: .2rem;
+    background: url(../images/icon_01.png) no-repeat left center;
+    background-size: .26rem;
+    padding-left: .3rem;
+}
+.panorama_list ul li .bg_content {
+    padding: .18rem .2rem;
+}
+
+.panorama_list ul li .bg_content>div .user_name{
+    float: left;
+    display: inline-block;
+    height: .5rem;
+    line-height: .5rem;
+    /* margin-left: .1rem; */
+    font-size: .24rem;
+    color: #808080;
+}
+.panorama_list ul li .bg_content>div .user_name em{
+    margin-right: .2rem;
+}
+
+.panorama_list ul li .bg_content p{
+        font-size: .3rem;
+            font-weight: bold;
+}
+
+.panorama_list ul li .bg_content>div .xinxi{
+    float: right;
+        background: url(../images/xinxi.png) no-repeat left center;
+        background-size: .36rem;
+    padding-left: .4rem;
+    height: .5rem;
+    line-height: .5rem;
+     color: #808080;
+}
+.panorama_list ul li .bg_content>div .dianzan{
+    float: right;
+    background: url(../images/dianzan.png) no-repeat left .04rem;
+    background-size: .36rem;
+    padding-left: .4rem;
+    margin-left: .28rem;
+    height: .5rem;
+    line-height: .5rem;
+     color: #808080;
+}
+.panorama_list ul li .bg_content>div span.active{
+        background: url(../images/dianzan_s.png) no-repeat left .1rem;
+        background-size: .36rem;
+}
+
+/*暂无数据的时候*/
+.no_data{
+    text-align: center;
+    font-size: .28rem;
+    color: #808080;
+    padding: .4rem 0;
+}
+
+
+
+
+

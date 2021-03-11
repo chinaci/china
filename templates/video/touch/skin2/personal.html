@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover" />
+<title>个人中心</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/personal.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var userid = '{#$userid#}';
+	var service = '{#$service#}';
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="个人中心"#}
+
+<div class="personal_data">
+    <div class="data fn-clear">
+        <div class="personalImg"><img src="{#$userinfo_per['photo']#}"></div>
+        <div class="personalData"><p>{#$userinfo_per['username']#}</p>
+            <p></p>
+        </div>
+        <span class="follow {#if $is_follow #}pitchOn{#else#}add_follow{#/if#}">{#if $is_follow #}已关注{#else#}关注{#/if#}</span>
+    </div>
+    <div class="number fn-clear">
+        <div class="count release"><p>{#$fabuCount#}</p><p>发布数</p></div>
+        <div class="count follow_number"><p>{#$fCount#}</p><p>关注人数</p></div>
+        <i></i>
+    </div>
+</div>
+
+<div class="info">
+    <div class="info_n">
+        <ul class="fn-clear">
+            <li class="active" data-id="1" data-page="1">视频<i></i></li>
+            <li data-id="2" data-page="1">短视频<i></i></li>
+            <li data-id="3" data-page="1">直播<i></i></li>
+            <li data-id="4" data-page="1">全景<i></i></li>
+        </ul>
+    </div>
+</div>
+
+<div class="list">
+<!-- 他的视频 -->
+<div class="video_list" style="display: none;">
+    <p class="p">他的视频</p>
+    <ul>
+    </ul>
+</div>
+
+<!-- 他的短视频 -->
+<div class="tc_list" style="display: none;">
+    <p class="p">他的短视频</p>
+    <ul class="fn-clear">
+    </ul>
+</div>
+
+<!-- 他的直播 -->
+<div class="recommend" style="display: none;">
+    <p class="p">他的直播</p>
+    <div class="recommend_list">
+
+        {#if $liveCount#}
+        {#live action="alive" return="list" uid="{#$userid#}"#}
+        <div class="play_main">
+            <a href="{#$list.url#}">
+                <div class="groom_sp">
+                    <img src="{#$list.litpic#}">
+                    <span class="huifang">{#if $list.state == 2#}回放{#else if $list.state == 1#}直播中{#else#}未直播{#/if#}</span>
+                    <div class="bofang"></div>
+                    <div class="bofang_icon"></div>
+                    <div class="zhezhao"></div>
+                    <p class="fn-clear"><span>{#$list.click#}</span><span>{#if $list.state == 2#}{#$list.times#}{#/if#}</span></p>
+                </div>
+                <p class="groom_txt">{#$list.title#}</p>
+            </a>
+        </div>
+        {#/live#}
+        {#else#}
+        <p class="no_data">暂无数据！</p>
+        {#/if#}
+    </div>
+</div>
+
+
+<!-- 他的全景 -->
+<div class="panorama_list"  style="display: none;">
+    <p class="p">他的全景</p>
+    <ul>
+    </ul>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$dating_description#}',
+		"title": '{#$userinfo_per['username']#}',
+		"imgUrl": '{#$userinfo_per['photo']#}',
+		"link": '{#getUrlPath service="video" template="personal" id="{#$userid#}"#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/personal.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+  
+
