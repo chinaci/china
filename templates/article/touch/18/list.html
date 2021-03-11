@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$list_typename#}</title>
+<meta name="keywords" content="{#$article_keywords#}">
+<meta name="description" content="{#$article_description#}">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/news.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}', listid = {#$list_id#};
+</script>
+
+{#* 微信分享 *#}
+{#$Share_description = {#$article_description#}#}
+{#$Share_title = {#$list_typename#}#}
+{#$Share_img = {#$article_logoUrl#}#}
+{#$Share_url = {#getUrlPath service='article' template='list' typeid={#$list_id#}#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+</head>
+
+<body>
+<div class="main_content">
+	<nav class="nav">
+		<div class="navfixbox fix">
+			<div class="navbox clearfix">
+				<div id="nav">
+					<div class="clearfix" id="nav_list">
+						<div class="item" id="nav_item_0" data-id="0"><a href="javascript:;">推荐</a></div>
+						{#article action="type" return="type"#}
+						<div class="item" id="nav_item_{#$type.id#}" data-id="{#$type.id#}"><a href="javascript:;">{#$type.typename#}</a></div>
+						{#/article#}
+					</div>
+				</div>
+				<div class="btn_l"><a href="{#$article_channelDomain#}" class="goBack"></a></div>
+				<div class="btn_r"></div>
+				<div class="bmline"></div>
+			</div>
+			<div class="sub_nav_pd"><div id="sub_navWrap"></div></div>
+		</div>
+	</nav>
+	<div class="clearfix" id="maincontent">
+		<div class="swrip-panel" id="chanel_0">
+
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="copyright">©{#$smarty.now|date_format:"%Y"#}{#$cfg_shortname#}版权所有</div>
+</div>
+
+<div class="fixBtn">
+    <a href="#" id="backTop" class="btn"></a>
+</div>
+
+<!-- 弹出层 -->
+<div class="modal-msg modal">
+	<span class="txt"></span>
+</div>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/slider.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/list.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

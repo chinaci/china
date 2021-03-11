@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{#$list_typename#}</title>
+<meta name="keywords" content="{#$detail_keywords#}">
+<meta name="description" content="{#$detail_description#}">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min_4.2.2.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/newsd.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+	var hideFileUrl ={#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var newsid = {#$detail_id#};
+	var page = 1;
+	var pageSize = 10;
+	var maxSize = 30;
+</script>
+</head>
+
+<body>
+<!-- nav -->
+{#$pageTitle = "{#$list_typename#}"#}
+{#include file="../../../siteConfig/touch_top.html"#}
+<!-- 正文 s -->
+<div class="content">
+	<section class="art_title">
+		<h2>{#$detail_title#}</h2>
+		<div class="art_title_more">
+			<time>{#$detail_pubdate|date_format:'%y-%m-%d %H:%M'#} {#$detail_source#}</time>
+			<div class="do">
+				<a href="javascript:"><span class="count">浏览：{#$detail_click#}</span></a>
+				<!-- <a href="javascript:" class="collect"><i class="icon-sc"></i><span class="count">收藏</span></a> -->
+			</div>
+		</div>
+	</section>
+	<div class="art_text">
+
+	{#if $detail_imglist#}
+	{#foreach from=$detail_imglist key=id item=i#}
+	<img src="{#$i.path#}" />
+	<p>{#$i.info#}</p>
+	{#/foreach#}
+	{#/if#}
+
+	<p>{#$detail_body#}</p>
+
+
+	{#$detail_page#}
+	</div>
+	{#if 'reward'|in_array:$cfg_ucenterLinks && $rewardSwitch == 0 && $detail_reward_switch == 0#}
+	<p class="shangbtn"><span><img src="{#$templets_skin#}images/shang.png" alt=""></span></p>
+	{#/if#}
+
+	{#if $detail_writer#}<p style="text-align:right;" class="article-editor">责任编辑：{#$detail_writer#}</p>{#/if#}
+	<section class="art_shear fn-clear">
+		<span class="t">分享到</span>
+		<!-- JiaThis Button BEGIN -->
+		<div class="jiathis_style_32x32">
+			<a class="jiathis_button_qzone HN_PublicShare_Singel" data-id="Qzone"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+			<a class="jiathis_button_tsina HN_PublicShare_Singel" data-id="sina"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+			<a class="jiathis_button_weixin HN_PublicShare_Singel" data-id="wechat"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+			<a class="jiathis_button_qq HN_PublicShare_Singel" data-id="QQ"><span class="jiathis_txt jtico jtico_qq"></span></a>
+		</div>
+		<div class="jiathis_button_more"><span class="jiathis_txt jtico jtico_more HN_PublicShare"></span></div>
+		<!-- JiaThis Button END -->
+	</section>
+</div>
+<!-- 正文 e -->
+
+{#if $detail_keywordsList|@count > 0#}
+<!-- 热门关注 s -->
+<div class="extend-module hotfocus">
+	<h2 class="md_title">本文关键词</h2>
+	<div class="hotfocus_bd">
+		{#foreach from=$detail_keywordsList key=id item=i#}
+		<a href="javascript:;" target="_blank">{#$i#}</a>
+		{#/foreach#}
+	</div>
+</div>
+<!-- 热门关注 e -->
+{#/if#}
+
+
+{#if !$detail_notpost#}
+<!-- 热门评论 s -->
+<div class="extend-module">
+	<h2 class="md_title">热门评论</h2>
+	<div class="comment_module">
+		<ul class="comment_list">
+			{#member action='getComment' return='common' type='article-detail' son='1' aid={#$detail_id#} orderby='hot' pageSize='5'#}
+			<li class="fn-clear">
+				<p class="author fn-clear">
+					<span>{#if is_array($common.user)#}<a href="{#$cfg_basehost#}/user/{#$common.user['userid']#}">{#$common.user['nickname']#}</a>{#else#}<a href="javascript:;">匿名</a>{#/if#}</span>
+					<time>{#$common.ftime#}</time>
+				</p>
+				<p class="des">{#$common.content#}</p>
+			</li>
+			{#/member#}
+		</ul>
+	</div>
+</div>
+
+<div class="comment-count">
+	<a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}" alt="全部评论" class="coment_app">全部评论</a>
+</div>
+<!-- 热门评论 e -->
+{#/if#}
+
+<!-- 精彩图片 s -->
+<div class="extend-module">
+	<h2 class="md_title">精彩图片</h2>
+	<ul class="pic_module fn-clear">
+		{#article action="alist" return="alist" thumb="1" page="1" pageSize="8"#}
+		<li>
+			<a href="{#$alist.url#}">
+				<div class="picwrap">
+					<img src="{#$templets_skin#}images/blank.gif" data-url="{#$alist.litpic#}" alt="">
+					<p class="bt">{#$alist.title#}</p>
+				</div>
+			</a>
+		</li>
+		{#/article#}
+	</ul>
+</div>
+<!-- 精彩图片 e -->
+
+<!-- 底部 s -->
+<footer id="footer">
+	<div class="footer">
+		<p class="footer_times">
+			<a href="{#$cfg_basehost#}" title="">&copy;{#$smarty.now|date_format:"%Y"#} {#$cfg_shortname#}</a>
+		</p>
+	</div>
+</footer>
+<!-- 底部 e -->
+{#*
+<!-- 底部评论 s -->
+<div class="footer_comment">
+	<div class="f_cmntbox">
+		<div class="f_cmnt_input">
+			<p>说说你的看法</p>
+		</div>
+		<div class="f_cmnt_num">
+			<a href="{#getUrlPath service='article' template='comment' id={#$detail_id#}#}"><span class="num">{#$detail_common#}</span></a>
+		</div>
+		<a href="javascript:;" class="f_shear HN_PublicShare"></a>
+	</div>
+	<div class="write_comment">
+		<div class="hd_btn fn-clear">
+			<a href="javascript:;" class="fl wcmt_cancel">取消</a>
+			<a href="javascript:;" class="fr wcmt_send" id="wcmt_send_btm">发布</a>
+		</div>
+		<div class="user_info fn-clear">
+			<div class="fl">
+				<a href="{#$member_userDomain#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" />{#$userinfo.nickname#}</a>
+			</div>
+			<div class="fr"><a href="{#$cfg_basehost#}/logout.html" class="logout">登出</a></div>
+		</div>
+		<div class="comment_area">
+			<textarea name="" class="newcomment" placeholder="说说你的看法"></textarea>
+		</div>
+	</div>
+</div>
+<!-- 底部评论 e -->
+*#}
+<!-- 返回顶部 s -->
+<div class="fixBtn">
+	<a href="javascript:;" class="backTop"></a>
+</div>
+<!-- 返回顶部 e -->
+
+
+<!-- 打赏 s -->
+<div class="shang-box">
+	<div class="shang-money">
+		<a href="javascript:;" class="close"></a>
+		<div class="pic-box">
+			<img src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#$userinfo.photo#}{#/if#}" alt="">
+		</div>
+		<div class="shang-item">
+			<span class="shang-item-cash">{#echoCurrency type='symbol'#}<em>0.88</em></span>
+			<span class="inp">其他金额</span>
+			<div class="shang-else">
+				<em>{#echoCurrency type='symbol'#}</em><input type="text" placeholder="最多不超过2000{#echoCurrency type='short'#}">
+			</div>
+			<p class="error-tip"><span>金额不能超过2000{#echoCurrency type='short'#}</span></p>
+		</div>
+		<div class="shang-btn">
+			<a href="javascript:;">赏</a>
+		</div>
+		<p class="tip-p">打赏不能超过2000{#echoCurrency type='short'#}</p>
+	</div>
+</div>
+<!-- 打赏 e -->
+
+
+<!-- 选择支付方式 s -->
+<div class="paybox">
+	<div class="tit">选择支付方式</div>
+	<ul>
+		{#siteConfig action="payment"#}
+		{#if $row.pay_code == "wxpay"#}
+		<li id="shangWxpay" class="pay1" data-id="wxpay">微信支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "globalalipay"#}
+		<li id="shangGlobalAlipay" class="pay2" data-id="globalalipay">支付宝支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "alipay"#}
+		<li id="shangAlipay" class="pay2" data-id="alipay">支付宝支付 <i class="radio"></i></li>
+		{#elseif $row.pay_code == "paypal"#}
+		<li id="shangPaypal" class="pay4" data-id="paypal">paypal支付 <i class="radio"></i></li>
+		{#/if#}
+		{#/siteConfig#}
+	</ul>
+	<a href="javascript:;" id="dashang" class="paybtn">支付</a>
+</div>
+<!-- 选择支付方式 e -->
+
+<!-- 遮罩层 s -->
+<div class="mask"></div>
+<!-- 遮罩层 e -->
+
+<script id="storeCss" type="text/html">
+	// .item .logo {width:3rem;}
+</script>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_description#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service="article" template="detail" id=$detail_id#}',
+	},
+	JubaoConfig = {
+		"module" : 'article',
+		"action" : 'detail',
+		"id" : '{#$detail_id#}'
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/ui/swiper.min_4.2.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$cfg_staticPath#}js/ui/jquery.bigImage.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+<script src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/newsd.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

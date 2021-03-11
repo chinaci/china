@@ -1,0 +1,150 @@
+/* @media (min-width: 320px) {
+  html , body {
+    font-size: 10px;
+  }
+}
+@media (min-width: 375px) {
+  html , body {
+    font-size: 12px;
+  }
+}
+@media (min-width: 480px) {
+  html , body {
+    font-size: 14px;
+  }
+} */
+body {background: #f4f4f4;}
+body {
+    font-size: 100%;
+    font-family: Helvetica,STHeiti,Droid Sans Fallback;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;}
+/* 头部 */
+#header {width: 100%;height: 44px;background: url(http://mat1.gtimg.com/www/mobi/image/headerbg_v2.png) 139px top no-repeat; -webkit-background-size: 141px 44px; -moz-background-size: 141px 44px; -o-background-size: 141px 44px; background-size: 141px 44px; border-bottom: 2px solid #b30808;}
+.logo {position: relative; background-image: url(../images/logo_news.png);display: inline-block; text-indent: -9999em; width: 119px; height: 30px; background-repeat: no-repeat; background-position: 0 0; -webkit-background-size: 119px 30px; -moz-background-size: 119px 30px; -o-background-size: 119px 30px; background-size: 119px 30px; margin: 7px 0 0 10px;}
+.logo a {display: block;}
+.logo:after {position: absolute; right: -40px; top: 8px; display: inline-block; width: 35px; height: 15px; background-image: url(../images/logo_fj.png); background-repeat: no-repeat; background-position: 0 0; -webkit-background-size: 35px 15px; -moz-background-size: 35px 15px; -o-background-size: 35px 15px; background-size: 35px 15px;content:" ";}
+.toggleChanels {position: relative;display: inline-block;float: right; margin: 14px 3.5px 0 0; width: 52px; height: 16px; color: #b30808;}
+.toggleChanels i {position: absolute;top:6px;right:8px;display: inline-block;width: 9px;height: 6px;background: url(../images/down_red.png) 0 0 no-repeat; -webkit-background-size: 9px 6px; -moz-background-size: 9px 6px; -o-background-size: 9px 6px; background-size: 9px 6px;}
+.toggleChanels.open i {-webkit-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); -webkit-transform-origin: center center;}
+.chanels {width: 100%;padding: 5px 0;display: none; background: #f5f5f5;  border-bottom: 1px solid #ccc;}
+.chanels.open {display: block;}
+.chanels ul{overflow: hidden;}
+.chanels li {display: inline-block; width: 20%; line-height: 30px; float: left; font-size: 1em; text-align: center;}
+.chanels li a {display: block; color: #232323;}
+
+/* nav */
+.nav {width: 100%; background: #fff; padding: 5px 0; overflow: hidden;}
+.nav li {width: 19%; line-height: 30px; float: left; font-size: 1.125em; text-align: center;}
+.nav li.on {background: #b30808; border-radius: 4px; margin-left: 1%;}
+.nav li a {display: block; color: #2e2e2e;}
+.nav li.on a {color: #fff;}
+
+/* banna */
+.banna {position: relative;width: 100%;}
+.banna a {display: block;}
+.banna .pic {width: 100%;max-height:165px;overflow: hidden;}
+.banna img {max-width: 100%;margin:0 auto;}
+.banna .bt {position: absolute; left: 0; bottom: 0; right: 0;height: 32px; line-height: 32px; padding: 0 36px 0 0; color: #fafafa;font-size: 1em;text-align: center; font-weight: 400; text-shadow: 1px 1px 1px #000; background: -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,.9)); background: -webkit-gradient(linear,top,from(rgba(0,0,0,0)),to(rgba(0,0,0,.9))); background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,.9)); background: -o-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,.9));}
+
+
+/* list */
+@media (min-width:320px) and (max-width:479px) {
+	.list {
+		min-height: 396px;
+	}
+}
+
+@media (min-width:480px) {
+	.list {
+		min-height: 236px;
+	}
+}
+
+.list {padding: 0 8px;}
+.list li {overflow: hidden; border-bottom: 1px solid #eceef0; box-shadow: 0 1px 1px #fff;}
+.list li a {display: block; color: #000;}
+.list li a:visited {color: #929292;}
+.list .loading {height: 30px; padding: 10px 0; line-height: 30px; color: #000; border: none;}
+.full {padding: 10px 0; border-bottom: 1px solid #eceef0;}
+.full h2,.modulelist .full h2 {height: 22px; line-height: 22px; overflow: hidden; font-size: 1.0625em; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; padding-left: 5px;}
+.full h2 {margin-bottom: 4px;}
+.modulelist .full h2 {margin-bottom: 0;}
+.full .thumb img,.photo .thumb img {margin: 0 auto; vertical-align: middle; max-width: 100%;}
+.full .thumb {width: 75px; height: 55px; line-height: 51px; padding: 1px; background: #e9f1f4; border: 1px solid #e0e0e0; float: left; text-align: center;}
+.full .thumb img {display: inline-block; max-height: 100% }
+.full p,.modulelist .full p {padding: 0 0 0 5px; line-height: 17px; font-size: .8125em; word-wrap: break-word; overflow: hidden; max-height: 34px; color: #878c92;}
+.full .count {height: 17px; line-height: 17px; display: inline-block; text-align: right; float: right;}
+.full .count i {font-size: .6875em; color: #878c92;}
+.photo {padding-bottom: 5px; border-bottom: 1px solid #eaeaea; box-shadow: 0 1px 1px #fbfbfb;}
+.photo h2 {height: 35px; line-height: 35px; font-size: .9375em; font-weight: 400; overflow: hidden;}
+.photo .thumb {width: 100%; text-align: center; background: #e9f1f4;}
+.photo .thumb img {display: block; max-height: 100%;}
+.cComm:before,.flag,.photo .count {display: inline-block;}
+.photo p {padding: 5px 0 0; line-height: 17px; font-size: .8125em; overflow: hidden; max-height: 34px; color: #878c92;}
+.photo .count {height: 17px; line-height: 17px; text-align: right; float: right;}
+.photo .count i {font-size: .6875em; color: #878c92;}
+.flag {margin-right: 4px; width: 24px; height: 14px; background-image: url(../images/flagicon.png); background-repeat: no-repeat; -webkit-background-size: 168px 14px; -moz-background-size: 168px 14px; -o-background-size: 168px 14px; background-size: 168px 14px; vertical-align: -1px }
+.cComm:before,.full .flag {vertical-align: middle;}
+.flag0 {background: 0 0; width: 0; margin-right: 0;}
+.flag1 {background-position: 0 0;}
+.flag2 {background-position: -24px 0;}
+.flag3 {background-position: -48px 0;}
+.flag4 {background-position: -72px 0;}
+.flag5 {background-position: -96px 0;}
+.flag6 {background-position: -120px 0;}
+.cComm {margin-left: 6px;}
+.cComm:before {content:" ";width: 10px; height: 10px; background-position: -84px 0; margin-right: 3px;}
+.cComm:before {display: inline-block;}
+
+
+.count i, .count i {font-family: Helvetica; font-style: normal; }
+
+.more {height: 33px; line-height: 33px; margin: 0 8px 15px; border: 1px solid #efefef; background-color: #f6f5f5; text-align: center;}
+.more ,.more a ,.more span {color: #b4b4b4;}
+.getmore:after ,.gochannel:after {content: ""; display: inline-block; width: 21px; height: 21px; vertical-align: -5px; margin-left: 5px;}
+.getmore:after {background-position: -42px 0; }
+
+
+/* module */
+.module {width: 100%;overflow: hidden;}
+.module .hd {height: 38px; border-top: 2px solid #9ac7ed; background-image: url(../images/hdbg.png); -webkit-background-size: 320px 62px; -moz-background-size: 320px 62px; -o-background-size: 320px 62px; background-size: 320px 62px; background-position: left -31px;}
+.module .hd h2.title {border-top: 2px solid #2a70be; margin-top: -2px; margin-left: 5px; background-image: url(../images/tab_ui.png); -webkit-background-size: 64px 39px; -moz-background-size: 64px 39px; -o-background-size: 64px 39px; background-size: 64px 39px; background-position: left top; color: #c14545;}
+.module .hd , .module .hd .title {background-repeat: no-repeat;}
+.module .hd .title {display: inline-block; float: left; width: 64px; height: 38px; line-height: 38px;text-align: center;}
+.module .title ,.module .lite h2 {font-size: 1.125em;font-weight: 400;}
+.modulelist {padding:0 8px;}
+.modulelist li {border-bottom: 1px solid #eceef0; box-shadow: 0 1px 1px #fff;overflow: hidden;}
+.modulelist li a {color: #000; }
+.modulelist li a:visited {color: #929292;}
+.modulelist .thumb {width: 75px; height: 55px; padding: 1px; background: #e9f1f4; border: 1px solid #e0e0e0; float: left; line-height: 51px; text-align: center; }
+.modulelist .full h2 {height: 22px; line-height: 22px; overflow: hidden; font-size: 1.0625em; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; padding-left: 5px; }
+.modulelist .full p {padding: 0 0 0 5px; line-height: 17px; font-size: .8125em; word-wrap: break-word; overflow: hidden; max-height: 34px; color: #878c92; }
+.lite h2 {height: 35px;line-height: 35px;white-space: nowrap;;text-overflow:ellipsis;overflow: hidden;}
+
+.mgetmore {margin: 15px 8px;;height: 33px; line-height: 33px; border: 1px solid #efefef; background-color: #f6f5f5; text-align: center;}
+.mgetmore ,.mgetmore a ,.mgetmore span {font-size: 1em;color: #b4b4b4;}
+.gochannel:after {background-position: -63px 0;}
+
+/* 底部导航 */
+.footnav {width: 100%; background: #49535d; padding: 12px 0;}
+.footer,.footnav li.current {background: #404a54 }
+.footnav li {float: left; width: 20%; text-align: center; height: 28px; line-height: 28px; font-size: .9375em }
+.footnav li a {color: #95a0ac }
+
+/* 底部 */
+.footer {padding: 10px 45px 12px 0; overflow: hidden; position: relative }
+.backtop,.loads {position: absolute }
+.footer .links {height: 25px; line-height: 25px; color: #565e61; font-size: .8125em; text-align: left }
+.footer .links a {color: #95a0ac; margin: 0 0 0 8px; display: inline; float: left }
+.footer .links a:before {background: #565e61; width: 1px; height: 12px; display: inline-block; vertical-align: -1px; font-size: 1em; color: #565e61; margin-right: 8px }
+.footer .links a:first-child:before {display: none }
+.copyright {padding:0 8px;font-size: .5em; color: #707982; text-align: left;}
+.foot_user {color: #95a0ac; font-size: .8125em; line-height: 25px; padding: 0 8px;}
+.foot_user span,.foot_user strong {font-weight: 400; vertical-align: middle }
+.backtop {width: 40px; height: 36px; background: #313a43; right: 12px; top: 10px }
+.backtop:after {content: " "; display: block; margin: 10px auto 0; width: 25px; height: 15px; background-position: -95px 0 }
+
+
+.cComm:before ,.getmore:after ,.gochannel:after , .backtop:after {background-image: url(../images/icon.png); background-repeat: no-repeat;-webkit-background-size: 119px 21px; -moz-background-size: 119px 21px; -o-background-size: 119px 21px; background-size: 119px 21px;}

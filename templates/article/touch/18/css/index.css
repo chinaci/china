@@ -1,0 +1,104 @@
+.container {margin-bottom:1.06rem;-webkit-animation:fadeIn 1s both;animation-duration:fadeIn 1s both;}
+
+/* banna */
+.banna {position: relative;}
+.picscroll li ,.picscroll li img {display: block;width: 100%;}
+.indicator {position: absolute;left:0;bottom:.2rem;display: block;width: 100%;text-align: center;z-index: 2;}
+.indicator i {display: inline-block;width: 18px;height: 3px;margin:5px;border-radius:0;background:rgba(0,0,0,0.35);border-radius:50px;}
+.indicator i.active {background:#ec6c53 none repeat scroll 0 0;}
+
+.water {position: absolute; left: 0; bottom: -.2rem; height: 30px; width: 100%; z-index: 1; }
+.water-1 , .water-2 {position: absolute; width: 100%; height: 30px;}
+.water-1 {background: url(../images/water-1.svg) repeat-x; background-size: 600px; -webkit-animation: wave-animation-1 3.5s infinite linear; animation: wave-animation-1 3.5s infinite linear; }
+.water-2 {top: 5px; background: url(../images/water-2.svg) repeat-x; background-size: 600px; -webkit-animation: wave-animation-2 6s infinite linear; animation: wave-animation-2 6s infinite linear; }
+@keyframes wave-animation-1{0%{background-position:0 top}100%{background-position:600px top}}
+@keyframes wave-animation-2{0%{background-position:0 top}100%{background-position:600px top}}
+
+/* 天气 */
+.weather {position:relative;padding:.3rem .2rem .3rem 1.3rem;color:#666;font-size:.26rem;center;font-weight:100;background-color:#FFF;height:.32rem;line-height:.32rem;z-index: 10;}
+#weather {color:#666;}
+#weather img {position:absolute;top:-0.1rem;left:.2rem;height:1rem;width:1rem;vertical-align:text-bottom;z-index:1;}
+.rss {color:#fff;display:block;position:absolute;right:.1rem;top:.2rem;line-height:.48rem;width:.8rem;height:.48rem;background-color:#ec6c53;border-radius:.04rem;color:#fff;text-align:center;z-index: 1;}
+@media only screen and (max-width:320px){.weather{padding-left:1.2rem}#weather img{left:.2rem}.weather .weather-dy{right:.1rem}}
+
+/* 频道列表 */
+.chanelList {padding:.2rem 0;background:#fff;}
+.chanelList li {float: left;width: 25%;text-align: center;}
+.chanelList li a {display: block;padding:.2rem 0;}
+.chanelList li img {display: block;width:1.2rem;height:1.2rem;margin:0 auto .2rem;}
+.chanelList a span {display: block;color:#222;font-size:.3rem;line-height:.3rem;font-weight:100;}
+
+
+
+/* 广告 */
+.ad {position:relative;margin:.2rem auto;padding-top:1px;background-color:#fff;}
+.ad .half {width: 50%;float: left;}
+.ad img {display: block;width: 100%;}
+
+
+.ptitle {height:.8rem;line-height:.8rem;padding:0 .3rem;margin-top:.2rem;text-align:left;font-size:.32rem;font-weight: normal;}
+
+/* 热门服务 */
+.hotServer {margin:.2rem 0;background: #fff;}
+.hotServer .list {padding-bottom: .4rem;}
+.hotServer li {width: 50%;float: left;}
+.hotServer li a {display: block;padding:.4rem 0 0 .3rem;}
+.hotServer li img {display: inline-block;width: .6rem;height: .6rem;float: left;}
+.hotServer li span {display: block;padding-left: .32rem;overflow: hidden;}
+.hotServer li .sp1 {font-size:.28rem;color: #666;}
+.hotServer li .sp2 {font-size:.24rem;color: #999;}
+
+/* 今日热点 */
+.todayHot {background:#fff;}
+.todayHot .list {margin-bottom: .2rem;}
+.todayHot dl {position: relative;padding:.2rem;}
+.todayHot dl:active {background: #eee;}
+.todayHot dl dt {height: 1.24rem;padding-right: 1.92rem;}
+.todayHot dl a {display: block;}
+.todayHot .bt {height: .8rem;line-height: .4rem;color: #333;font-size:.32rem;overflow: hidden;}
+.todayHot .t {float: right;margin-top: .12rem;font-size:.24rem;color: #999;line-height: .32rem;}
+.todayHot dl dd {position: absolute;right:.2rem;top:.2rem;}
+.todayHot dl dd img {display: block;width: 1.6rem;height: 1.2rem;}
+
+/* 底部 */
+footer {padding-bottom: .2rem;}
+footer p , footer a {color: #999;}
+footer p{height:.5rem;line-height:.5rem;font-size:.22rem;text-align:center;margin:0;}
+
+
+/* 底部固定导航 */
+.fixnav {position: fixed;left:50%;bottom:0;margin-left: -3.75rem;width: 7.5rem;height: 1.06rem;background:rgba(255,255,255,.96);z-index: 2;}
+.fixnav a {position: relative;display: block;width: 20%;height: .86rem;float: left;text-align: center;color:#999; font-size:.24rem;  line-height:.44rem;padding: .14rem 0 .06rem 0;}
+.fixnav .imgbox ,.fixnav .title {position: absolute;left:0;bottom:.44rem;width: 100%;text-align: center;}
+.fixnav .title {bottom:0;width: 100%;}
+.fixnav img.curr ,.fixnav .active .uncurr {display: none;}
+.fixnav .active .curr {display: block;}
+.fixnav img {display: block; height: .42rem; width: .42rem; margin: auto;}
+.fixnav img.big {width: .8rem;height: .8rem;}
+
+/* 天气订阅 */
+
+.weatherRss {display: none;position: relative;width: 85%;margin:10% auto;background-color: #fafafc; text-align: center; border-radius: 3px;z-index: 2; }
+.weatherRss .title {padding:1.2em .4rem .5em;font-weight:400;font-size:.34rem;text-align: center;}
+.weatherRss .ms {padding:0 .4rem;font-size:.3rem;color:#888;text-align: left;}
+.weatherRss .list {margin-top: 1.17647059em;background: #fff;}
+.weatherRss li {position: relative;margin-top: -1px;padding: .2rem .3rem;line-height: 22px;border-top: 1px solid #eee;border-bottom: 1px solid #eee;}
+.weatherRss .t {display: block;text-align: center;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+.weatherRss .chosetime {position: absolute;left:0;top:0;width: 100%;height: 100%;opacity:0;}
+.weatherRss .icon {position: absolute;right:.3rem;top:50%;margin-top: -0.15rem;display: block;width: .3rem;height: .3rem;}
+.chosetime:checked + .icon {background-image:url(../images/chose.png);background-size:.3rem;}
+.weatherRss .btn {margin-top: .4rem;line-height: .84rem;font-size:.34rem;border-top: 1px solid #eee;}
+.weatherRss .btn a {display: inline-block;width: 50%;float: left;text-align: center;color: #353535;}
+.weatherRss .bdr {display: block;border-right: 1px solid #eee;}
+#confirmRss {color: #ec6c53;}
+
+
+/*line*/
+.bottom_line{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0I2N0Y3MDNGOTlCMTFFNTkzMDFCOTEyMDkxMUI1MTYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0I2N0Y3MDJGOTlCMTFFNTkzMDFCOTEyMDkxMUI1MTYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDg0NjJGODdFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDg0NjJGODhFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz72OV1NAAAAGUlEQVR42mL6//8/AwizfPr06T8DEAAEGABs2wnWxK4pRQAAAABJRU5ErkJggg==);background-repeat:repeat-x;background-position:0 bottom;background-size:auto 1px}
+.top_line{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0I2N0Y3MDdGOTlCMTFFNTkzMDFCOTEyMDkxMUI1MTYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0I2N0Y3MDZGOTlCMTFFNTkzMDFCOTEyMDkxMUI1MTYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTYyMzQxMDNDREFFMTFFNTk0NURGNUMzNUYwRENCMDIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTYyMzQxMDRDREFFMTFFNTk0NURGNUMzNUYwRENCMDIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xPUURAAAAGElEQVR42mL8+PHjfwYgYPz/H0wzAAQYAFA6BtJK1b38AAAAAElFTkSuQmCC);background-repeat:repeat-x;background-position:0 top;background-size:auto 1px}
+.right_line{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAkCAMAAACUnRs9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjA2MEM2OTgxOEQ2RDExRTM4OEJERTUwNjU4NDZDRjEwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjA2MEM2OTgyOEQ2RDExRTM4OEJERTUwNjU4NDZDRjEwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDYwQzY5N0Y4RDZEMTFFMzg4QkRFNTA2NTg0NkNGMTAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDYwQzY5ODA4RDZEMTFFMzg4QkRFNTA2NTg0NkNGMTAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7q//aNAAAABlBMVEXj4+P///+et6UoAAAAAnRSTlP/AOW3MEoAAAAQSURBVHjaYmBkYKAXAggwAAgWACWbx3eKAAAAAElFTkSuQmCC);background-repeat:repeat-y;background-position:right center;background-size:1px auto;}
+
+
+
+@-webkit-keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
