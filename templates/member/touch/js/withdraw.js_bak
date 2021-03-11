@@ -1,0 +1,126 @@
+$(function(){
+
+  // 选择支付方式
+  $('.tbank').click(function(){
+    $(this).addClass('curr').siblings('li').removeClass('curr');
+    $('.bankbox').show();
+    $('.alipay').hide();
+  })
+
+  $('.talipay').click(function(){
+    $(this).addClass('curr').siblings('li').removeClass('curr');
+    $('.bankbox').hide();
+    $('.alipay').show();
+  })
+
+
+
+
+
+  //提交申请
+	$("#tj").bind("click", function(event){
+		var t = $(this), data = [];
+
+		var type = Number($(".tab .curr").attr('data-id')),
+				amount = $("#amount").val();
+
+		//银行卡
+		if(type == 1){
+			var bank = $("#bank").val(),
+					cardnum = $("#cardnum").val().replace(/\s/g, ""),
+					cardname = $("#cardname").val();
+
+			if(bank == ""){
+				showMsg('请输入开户行信息');
+				return false;
+			}
+
+			if(cardnum == ""){
+				showMsg('请输入银行卡号');
+				return false;
+			}
+
+			if(cardname == ""){
+				showMsg('请输入开户人姓名');
+				return false;
+			}
+
+
+			data.push("bank="+bank);
+			data.push("cardnum="+cardnum);
+			data.push("cardname="+cardname);
+
+		//支付宝
+		}else if(type == 2){
+			var alipaynum = $("#alipaynum").val(),
+					alipayname = $("#alipayname").val();
+
+			if(alipaynum == ""){
+				showMsg('请输入收款人帐号');
+				return false;
+			}
+
+			if(alipayname == ""){
+				showMsg('请输入收款人姓名');
+				return false;
+			}
+
+			data.push("bank=alipay");
+			data.push("cardnum="+alipaynum);
+			data.push("cardname="+alipayname);
+
+		}
+
+		if(amount == ""){
+			showMsg("请输入提现金额");
+			return false;
+		}
+
+		if(amount > money){
+			showMsg("您最多可提现 "+money);
+			return false;
+		}
+
+		data.push("amount="+amount);
+
+		// if(!$("#agree").is(":checked")){
+		// 	alert("您必须同意并接受《火鸟软件提现服务协议》");
+		// 	return false;
+		// }
+
+		t.attr("disabled", true).val("提交中...");
+
+
+		$.ajax({
+			url: masterDomain+"/include/ajax.php?service=member&action=withdraw",
+			type: "POST",
+			data: data.join("&"),
+			dataType: "jsonp",
+			success: function (data) {
+				if(data && data.state == 100){
+					var url = withdrawLog.replace("%id%", data.info);
+					location.href = url;
+				}else{
+					alert(data.info);
+					t.attr("disabled", false).val("申请提现");
+				}
+			},
+			error: function(){
+				alert("网络错误，请稍候重试！");
+				t.attr("disabled", false).val("申请提现");
+			}
+		});
+
+
+	});
+
+
+})
+
+
+// 错误提示
+function showMsg(str){
+  var o = $(".error");
+  o.html('<p>'+str+'</p>').show();
+  setTimeout(function(){o.hide()},1000);
+}
