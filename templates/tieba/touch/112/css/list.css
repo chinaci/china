@@ -1,0 +1,22 @@
+body{background: #f4f4f4!important;padding-bottom:0;}
+.pubBox{margin-bottom: .12rem;background: #fff;}
+/*顶部*/
+.top-box{height: 1.28rem;padding:.24rem;background: url(../images/listbanner.png) no-repeat center center;background-size:cover;color:#fff;}
+.top-box h2{font-size: .36rem;margin:.1rem 0 .2rem;}
+.top-box p{font-size: .26rem;}
+.top-box p span{margin-right: .2rem;}
+
+/*二级菜单*/
+.seconedTab ul {padding:.24rem .2rem;}
+.seconedTab ul li{width: 18%;text-align: center;float: left;height: .6rem;line-height: .6rem;margin:.1rem 1%;}
+.seconedTab ul li a{display:block;font-size: .26rem;}
+.seconedTab ul li.all a{border:solid 1px #cacaca;border-radius: .9rem;}
+.seconedTab ul li.active a{background: #4d6fff;color:#fff;border:none;border-radius: .9rem;border:solid 1px #4d6fff;}
+
+.rbottom p{color:#a0a0a0;font-size: .24rem;}
+.rbottom p:first-child{float: left;}
+.rbottom p:last-child{float: right;}
+.rbottom p span{margin-left: .5rem;}
+.rbottom p .comNum i{display: inline-block;width: .32rem;height: .32rem;background:url(../images/cnumIcon.png) no-repeat center center;background-size: .32rem;vertical-align: middle;margin-top: -.05rem;margin-right:.1rem;background-size: .32rem;}
+.rbottom p .shareNum i{display: inline-block;width: .32rem;height: .32rem;background:url(../images/snumIcon.png) no-repeat center center;background-size: .32rem;vertical-align: middle;margin-top: -.05rem;margin-right:.1rem;background-size: .32rem;}
+.loading{margin: .5rem auto;}

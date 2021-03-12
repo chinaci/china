@@ -1,0 +1,77 @@
+
+/*列表*/
+.conlist li{background: #fff;margin-bottom: .12rem;padding:.24rem;}
+.conlist li a{display: block;}
+.conlist li .rtop{margin-bottom: .2rem;}
+.conlist li .rtop .rpic{width: .74rem;height: .74rem;overflow:hidden;border-radius: 50%;float: left;margin-right: .2rem;}
+.conlist li .rtop .rpic img{width:100%;height: .74rem;}
+.conlist li .rtop .rinfo{float: left;width: 86%;}
+.conlist li .rtop .rinfo h4{font-size: .28rem;color:#333;font-weight: 600;position: relative;}
+.conlist li .rtop .rinfo h4 span.rtime{position: absolute;right: 0;color:#a0a0a0;font-size: .24rem;font-weight: 500;}
+.conlist li .rtop .rinfo p{font-size: .24rem;color:#a0a0a0;margin-top: .1rem;}
+.conlist li .rtop .rinfo p span{margin-right: .2rem;}
+.conlist li .rmain{margin:.1rem 0;}
+.conlist li .textbox {padding: .1rem 0; font-size: .28rem;line-height: 1.5em;}
+.conlist li .rmain .mtext p{font-weight: 600;font-size: .35rem;color:#333;line-height: 1.5em;}
+.conlist li .rmain .mtext .mtop{padding:.05rem .1rem;background: #ff455b;color:#fff;font-weight: 500;font-size: .24rem;border-radius: .04rem;margin-left:.15rem;}
+.conlist li .rmain .mtext .jinghua{padding:.05rem .1rem;background: #f89406;color:#fff;font-weight: 500;font-size: .24rem;border-radius: .04rem;margin-left:.15rem;}
+/*图集*/
+.conlist li .rmain .mmpic{position: relative;margin:.2rem 0;}
+.conlist li .rmain .mmpic .picbox{position: relative;overflow:hidden;}
+.conlist li .rmain .mmpic .picbox img{margin-right:.1rem;float: left;object-fit: cover;}
+.conlist li .rmain .mmpic .picbox img:nth-child(3n){margin-right: 0;}
+.conlist li .rmain .mmpic .picbox img:last-child{margin-right: 0;}
+.conlist li .rmain .mmpic .picNum{position: absolute;bottom:.2rem;right:.2rem;padding:.05rem .15rem;display: block;z-index: 9;background: rgba(0,0,0,.4);border-radius: .38rem;color:#fff;}
+
+/*视频*/
+.conlist li .rmain .mmpic video{width: 100%;background: #000;}
+
+
+.rbottom p{color:#a0a0a0;font-size: .24rem;}
+.rbottom p:first-child{float: left;}
+.rbottom p:last-child{float: right;}
+.rbottom p span{margin-left: .5rem;}
+.rbottom p .comNum i{display: inline-block;width: .32rem;height: .32rem;background:url(../images/cnumIcon.png) no-repeat center center;background-size: .32rem;vertical-align: middle;margin-top: -.05rem;margin-right:.1rem;background-size: .32rem;}
+.rbottom p .upNum i{display: inline-block;width: .32rem;height: .32rem;background:url(../images/upIcon.png) no-repeat center center;background-size: .32rem;vertical-align: middle;margin-top: -.05rem;margin-right:.1rem;background-size: .32rem;}
+
+.loading{text-align: center;line-height: .5rem;font-size: .26rem;margin:1rem auto;}
+
+
+/*大图展示*/
+.bigBoxShow{width: 100%;height: 100%;position: fixed;top:0;left:0;z-index: -1;opacity:0;background: #000;transition: all .4s;}
+.bigBoxShow .bigSwiper{position: relative;width: 100%;height: 100%;}
+.bigBoxShow .bigSwiper .swiper-wrapper{width: 100%;height: 100%;}
+.bigBoxShow .bigSwiper .swiper-wrapper .swiper-slide{width: 100%;height: 100%;}
+.bigBoxShow .bigSwiper .swiper-wrapper .swiper-slide .swiper-img{width: 100%;height: 100%;text-align: center; display: -webkit-box;  -webkit-box-flex: 1;-webkit-box-orient: vertical;-webkit-box-align: center;-webkit-box-pack: center;}
+.bigBoxShow .bigSwiper .swiper-wrapper .swiper-slide .swiper-img img{max-width: 90%;max-height: 80%;margin:0 auto;}
+.bigBoxShow .bigPagination{color:#fff;font-size: .28rem;bottom:.5rem;}
+.vClose{position: absolute;top: .2rem;right: .2rem;width: .5rem;height: .5rem;display: none;background: url(../images/vclose.png) no-repeat center center;background-size: .5rem;z-index: 11;}
+.bigBoxShow .vClose{display:block;}
+
+/* 浏览器端扫码提示 */
+.wechat-popup {position: fixed; width: 6.8rem; top: calc(50% - 3rem); left: calc(50% - 3.4rem); z-index: 99999; visibility: hidden;}
+.wechat-popup:before {position: fixed; z-index: 1; display: block; content: ''; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);}
+.wechat-popup .con {display: -webkit-box; position: relative; z-index: 2; padding: 50px 10px 20px; background: #fff; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
+.wechat-popup .close {position: absolute; right: .2rem; top: .2rem; width: .5rem; height: .5rem; border: 1px solid #dcdcdc; border-radius: 50%; line-height: .4rem; text-align: center; color: #dcdcdc; font-size: .5rem; font-weight: 100;}
+.wechat-popup dl {-webkit-box-flex: 1; text-align: center; margin: 0 5px;}
+.wechat-popup dl img {width: 94%; height: 94%; max-width: 3rem; max-height: 3rem; margin: 0 auto; padding: 3%; border: 1px solid #eee; display: block;}
+.wechat-popup dd {line-height: 1.5em; padding-top: 5px;}
+
+
+.gotop{position: fixed; bottom: 4.4rem; right: .1rem; width: 1rem; height: 1rem; z-index: 209; display: none;-webkit-animation: twinkling .3s ease-in-out;; -moz-animation: twinkling .3s ease-in-out;; animation: twinkling .3s ease-in-out;}
+.gotop img{display: block; width: 100%; height: 100%; }
+
+/* iPhoneX适配 */
+.gotop{
+  bottom: calc(4.4rem + constant(safe-area-inset-bottom));
+  bottom: calc(4.4rem + env(safe-area-inset-bottom));
+}
+
+.wechat-fix{position: fixed; bottom: 3.4rem; right: .1rem; width: 1rem; height: 1rem; z-index: 209;display: none;-webkit-animation: twinkling .3s ease-in-out;; -moz-animation: twinkling .3s ease-in-out;; animation: twinkling .3s ease-in-out;}
+.wechat-fix img{display: block; width: 100%; height: 100%; }
+
+/* iPhoneX适配 */
+.wechat-fix{
+  bottom: calc(3.4rem + constant(safe-area-inset-bottom));
+  bottom: calc(3.4rem + env(safe-area-inset-bottom));
+}

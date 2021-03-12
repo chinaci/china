@@ -1,0 +1,14 @@
+body{background: #f4f4f4;/*padding-bottom: 1rem;*/}
+.followbox{margin-top:.12rem;}
+.followbox ul li{position: relative;padding:.24rem;background: #fff;margin-bottom: .12rem;}
+.followbox ul li .left{width: .84rem;height: .84rem;border-radius: 50%;overflow: hidden;float: left;margin-right: .2rem;}
+.followbox ul li .left a{display: block;}
+.followbox ul li .left img{width: 100%;height: .84rem;}
+.followbox ul li .right{padding-left: 1.04rem;height: .84rem;line-height: .42rem;}
+.followbox ul li .right h4{font-size: .28rem;color:#333;font-weight: 600;}
+.followbox ul li .right p{color:#a0a0a0;font-size: .24rem;}
+.followbox ul li .right p span{margin-right: .2rem;}
+
+.btnCare{position: absolute;right: .24rem;top: 50%;margin-top: -0.25rem;display: block;padding:.1rem .2rem;border-radius: .46rem;text-align: center;color:#fff;background: #4d6fff;}
+.btnCare.cared{background: #c4c4c4;}
+.loading,.empty{text-align: center;margin:.5rem auto;}
