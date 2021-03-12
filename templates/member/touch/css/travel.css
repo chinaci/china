@@ -1,0 +1,20 @@
+body, html{background: #f8f8f8; font-size: .28rem;}
+
+/*.header-l{padding-right: .8rem;}*/
+.header-r{visibility: visible;}
+
+/* 其他入口链接 */
+.link li {position: relative; background: #fff; height: .9rem; font-size: .36rem; line-height: .9rem;color: #333;border-bottom: solid 1px #e8e8e8;}
+.link li a {display: block;padding:0 .25rem;}
+.link li a:active {background: #f2f2f2;}
+.link li i {display: inline-block; vertical-align: middle; width: .46rem; height: .46rem; background-size: contain;background-repeat:no-repeat; margin: -.08rem .2rem 0 0;}
+.link li .icon-config-shop {background-image: url('../images/travel/config-shop.png');}
+.link li .icon-order-travel {background-image: url('../images/travel/hou_ser4.png');}
+.link li .icon-hotel_manage {background-image: url('../images/travel/hotel_manage.png');}
+.link li .icon-ticket_manage {background-image: url('../images/travel/ticket_manage.png');}
+.link li .icon-rentcar_manage {background-image: url('../images/travel/rentcar_manage.png');}
+.link li .icon-video_manage {background-image: url('../images/travel/video_manage.png');}
+.link li .icon-travel_manage {background-image: url('../images/travel/travel_manage.png');}
+.link li .icon-visa_manage {background-image: url('../images/travel/visa_manage.png');}
+.link li .icon-agency_manage {background-image: url('../images/travel/agency_manage.png');}
+.link li::after {content: '';position: absolute; right: .3rem; top: 0;display: block; width: .2rem; height: .9rem; background: url(../images/arrow_icon.png) center center no-repeat; background-size: auto .24rem;}
