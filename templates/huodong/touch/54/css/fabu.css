@@ -118,7 +118,7 @@ label.fee_body.fn-hide, label.max.fn-hide, .fee_body.fn-hide {display: none;}
 .error p{position: fixed; width: 150px; background-color: rgba(0,0,0,.7); border-radius: 5px; color: #fff; font-size: 16px; line-height: 1.4; text-align: center; padding: 12px 10px; z-index: 9999; left: 50%; margin-left: -75px; top: 50%; margin-top: -24px;}
 
 
-.gz-rbtn:after, .gz-addr-active s:after, .gz-sel-addr-close:after, .gz-sel-addr-list li:after { background: url(/templates/member/touch/images/addressIcons.png?v=1) no-repeat; background-size: 1.57rem 1.08rem;}
+.gz-rbtn:after, .gz-addr-active s:after, .gz-sel-addr-close:after, .gz-sel-addr-list li:after { background: url(https://pic.xiant.ao/templates/member/touch/images/addressIcons.png?v=1) no-repeat; background-size: 1.57rem 1.08rem;}
 
 .ml4r{background: #fff; padding-left: .4rem;}
 #itemList{margin-bottom: .4rem;}
