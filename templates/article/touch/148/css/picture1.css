@@ -26,7 +26,7 @@ body{background: #fff; height: 100%;}
 .swiper-container {color: #fff;text-align: center;}
 .swiper-container .swiper-slide img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .swiper-wrapper{display: table;text-align: center;}
-.swiper-container .swiper-slide{position: relative; text-align: center;width: 100%;display: table-cell; background: url('/static/images/loading_h8.gif') no-repeat center center; height: 100%;border-width: 0;opacity: 0;transition: opacity .3s;}
+.swiper-container .swiper-slide{position: relative; text-align: center;width: 100%;display: table-cell; background: url('https://pic.xiant.ao/static/images/loading_h8.gif') no-repeat center center; height: 100%;border-width: 0;opacity: 0;transition: opacity .3s;}
 .swiper-container .swiper-lazy-preloader {display: inline-block; height: 100%; vertical-align: middle;}
 .photoBox .pic-int {position: absolute; top: .9rem; left: 0; width: 100%; height: .6rem; line-height: .6rem; color: #ffffff; font-size: .2rem; padding: 0 .3rem; overflow: hidden;font-size: 0.3rem;}
 .huoniao_iOS .photoBox .pic-int {top:.2rem;}
