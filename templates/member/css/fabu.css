@@ -69,11 +69,11 @@ body, button, input, select, textarea {font-family: 'microsoft yahei';}
 
 /* 上传缩略图 */
 .w-form dd.thumb {padding-bottom: 0;}
-.thumb .uploadinp {float: left; position: relative; width: 100px; height: 25px; background: url('/static/images/ui/swfupload/uploadbutton.png') no-repeat top; margin-right: 10px; border: 0;}
+.thumb .uploadinp {float: left; position: relative; width: 100px; height: 25px; background: url('https://pic.xiant.ao/static/images/ui/swfupload/uploadbutton.png') no-repeat top; margin-right: 10px; border: 0;}
 #licenseFiles, .reupload {position: relative}
 #license {margin: 4px 0 0}
 .thumb .uploading {top: -600px; left: -600px; position: absolute}
-.progressBar, .progressBar .progress {width: 342px; background: url('/static/images/ui/swfupload/progress.png') no-repeat;}
+.progressBar, .progressBar .progress {width: 342px; background: url('https://pic.xiant.ao/static/images/ui/swfupload/progress.png') no-repeat;}
 .progressBar {display: none; margin-top: 7px; width: 302px; height: 17px; position: relative}
 #cancelUploadBt {display: none; top: 0; right: -30px; font-size: 12px; color: #05a; line-height: 18px; text-decoration: none; position: absolute}
 #cancelUploadBt:hover {text-decoration: underline}
@@ -84,7 +84,7 @@ body, button, input, select, textarea {font-family: 'microsoft yahei';}
 #licenseFiles a, #licenseFiles img {display: block; overflow: hidden; max-width: 300px; max-height: 300px;}
 .sholder {display: inline-block;}
 .sholder img {max-width: 400px;}
-.reupload {width: 59px; height: 23px; margin-left: 10px; margin-bottom: 10px; line-height: 45px; text-align: center; text-decoration: none; font-size: 12px; color: #4d4d4d; background: url('/static/images/ui/swfupload/uploadbts.png') no-repeat; vertical-align: bottom; padding: 4px 6px;}
+.reupload {width: 59px; height: 23px; margin-left: 10px; margin-bottom: 10px; line-height: 45px; text-align: center; text-decoration: none; font-size: 12px; color: #4d4d4d; background: url('https://pic.xiant.ao/static/images/ui/swfupload/uploadbts.png') no-repeat; vertical-align: bottom; padding: 4px 6px;}
 
 
 /* 自动获取地址 */
@@ -114,7 +114,7 @@ body, button, input, select, textarea {font-family: 'microsoft yahei';}
 
 .tangram-suggestion-main {z-index: 1000; -moz-box-shadow: 3px 3px 6px rgba(0,0,0,0.3); -webkit-box-shadow: 3px 3px 6px rgba(0,0,0,0.3); box-shadow: 3px 3px 6px rgba(0,0,0,0.3);}
 .tangram-suggestion-main .tangram-suggestion {border-color: #ccc; background-color: rgba(255,255,255,.95)!important; background-color: #fff;}
-.tangram-suggestion-main td {height: 20px; line-height: 20px; padding: 6px 5px 6px 30px; background: url('/static/images/suggest-icon.png') no-repeat 10px center; color: #333;}
+.tangram-suggestion-main td {height: 20px; line-height: 20px; padding: 6px 5px 6px 30px; background: url('https://pic.xiant.ao/static/images/suggest-icon.png') no-repeat 10px center; color: #333;}
 .tangram-suggestion-main td b {color: #ff6000;}
 body .tangram-suggestion .route-icon {background: none;}
 .tangram-suggestion-main .tangram-suggestion-current {background-color: #ebebeb;}
