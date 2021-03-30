@@ -10,7 +10,7 @@ html {background:#f4f4f4;}
 .item.nr {background:#fdfae1;}
 .item .title {font-size: .3rem; border-bottom: 1px solid #f4f4f4; padding: .1rem .2rem;}
 .info-item {height: 3rem;padding: .2rem;}
-.item .pic {width: 4rem;height: 3rem;margin-right: .2rem;background:url('/static/images/ajax-loader.gif') center no-repeat;overflow: hidden;}
+.item .pic {width: 4rem;height: 3rem;margin-right: .2rem;background:url('https://pic.xiant.ao/static/images/ajax-loader.gif') center no-repeat;overflow: hidden;}
 .item .pic img {width: 100%;min-height:3rem;}
 .item .info {position: relative;height: 3rem; overflow: hidden;}
 .item .des {height: 2rem;padding:.1rem;border:1px solid #f4f4f4;border-radius:3px;-webkit-transition:border .25s;transition:border .25s;}
