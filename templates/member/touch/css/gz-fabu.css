@@ -1,6 +1,6 @@
 html, body {scroll-behavior: inherit;}
 
-.gz-rbtn:after, .gz-addr-active s:after, .gz-sel-addr-close:after, .gz-sel-addr-list li:after { background: url(/templates/member/touch/images/addressIcons.png?v=1) no-repeat; background-size: 1.57rem 1.08rem;}
+.gz-rbtn:after, .gz-addr-active s:after, .gz-sel-addr-close:after, .gz-sel-addr-list li:after { background: url(https://pic.xiant.ao/templates/member/touch/images/addressIcons.png?v=1) no-repeat; background-size: 1.57rem 1.08rem;}
 
 
 /*sprite*/
