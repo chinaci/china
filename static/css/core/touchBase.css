@@ -40,28 +40,28 @@ i, em{font-style: normal;}
 
 /* 头部 */
 .header{height: .9rem;display: -webkit-box;font-size: .32rem;line-height: .9rem;max-width: 1080px;position: relative;z-index: 100000;}
-.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_back.png) center center no-repeat; background-size: auto .4rem;}
+.header-l a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle; background: url(https://pic.xiant.ao/staticstatic/images/header_back.png) center center no-repeat; background-size: auto .4rem;}
 .header-l img{display: none!important;width: auto;height: .8rem;margin: 0 auto;}
 .header-address{-webkit-box-flex: 1;text-align: center; font-size: 18px; line-height: .9rem; margin: 0; font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .header-address a.changeCity{position: relative;}
 .header-address .downArea{position: absolute; right: -0.3rem; top: 0.15rem; border-top: .1rem solid #333; border-left: .1rem solid transparent; border-right: .1rem solid transparent;}
-.header-search a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;float: right; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_la.png?v=1) center center no-repeat; background-size: auto .4rem; text-align: center;}
-.header-search a.header-search{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/search.png) center center no-repeat; background-size: auto .4rem;}
+.header-search a{display: table-cell;height: .9rem;width: 1rem;vertical-align: middle;float: right; background: url(https://pic.xiant.ao/staticstatic/images/header_la.png?v=1) center center no-repeat; background-size: auto .4rem; text-align: center;}
+.header-search a.header-search{background: url(https://pic.xiant.ao/staticstatic/images/search.png) center center no-repeat; background-size: auto .4rem;}
 
 .header, .open.header, .open.transparent.header {background: #fff !important; }
-.header .header-l a, .open.header .header-l a {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_back.png?v=2');}
+.header .header-l a, .open.header .header-l a {background-image: url('https://pic.xiant.ao/staticstatic/images/header_back.png?v=2');}
 .header .header-address, .open.header .header-address {color: #000;}
-.header .header-search a, .open.header .header-search a {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_la.png?v=2');}
-.header .header-search a.header-search, .open.header .header-search a.header-search {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/search.png?v=2');}
+.header .header-search a, .open.header .header-search a {background-image: url('https://pic.xiant.ao/staticstatic/images/header_la.png?v=2');}
+.header .header-search a.header-search, .open.header .header-search a.header-search {background-image: url('https://pic.xiant.ao/staticstatic/images/search.png?v=2');}
 .header .header-search a.notMenu {background: none!important;}
 
 /* 透明头部 */
 .transparent.header {background: transparent !important; border-bottom: 0;}
-.transparent .header-l a {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_back_index.png?v=2');}
+.transparent .header-l a {background-image: url('https://pic.xiant.ao/staticstatic/images/header_back_index.png?v=2');}
 .transparent .header-address {color: transparent;}
 .transparent.notransfontcolor .header-address {color: #fff;}
-.transparent .header-search a {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/header_la_index.png?v=2');}
-.transparent .header-search a.header-search {background-image: url('https://cdn.jsdelivr.net/gh/60kr/china/static/images/search_icon.png');}
+.transparent .header-search a {background-image: url('https://pic.xiant.ao/staticstatic/images/header_la_index.png?v=2');}
+.transparent .header-search a.header-search {background-image: url('https://pic.xiant.ao/staticstatic/images/search_icon.png');}
 .absolute.header {position: absolute; left: 0; top: 0; right: 0;}
 
 
@@ -89,7 +89,7 @@ i, em{font-style: normal;}
 /*导航new*/
 .navHeight{height: .8rem;}
 	.dropnav {position: relative;}
-	.dropnav em{font-size: .16rem; display: block; width: .3rem; height: .3rem; background-color: #ff5e4d;border-radius: 50%;background-image: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/dot.png); background-size: .17rem auto; background-repeat: no-repeat; background-position: center; position: absolute; right: .2rem; top: .2rem;}
+	.dropnav em{font-size: .16rem; display: block; width: .3rem; height: .3rem; background-color: #ff5e4d;border-radius: 50%;background-image: url(https://pic.xiant.ao/staticstatic/images/dot.png); background-size: .17rem auto; background-repeat: no-repeat; background-position: center; position: absolute; right: .2rem; top: .2rem;}
 	#navlist_4{height: 5.4rem; overflow: auto; width: 100%;}
 	#navBox_4{position: fixed;top: 0; display: none; width: 100%; max-width: 10rem; margin: 0 auto; text-align: center; z-index: 100000; -webkit-animation: topFadeIn .3s ease-out; -moz-animation: topFadeIn .3s ease-out; animation: topFadeIn .3s ease-out;}
 	#navBox_4 .navlist_4{z-index: 2; position: relative; background: #fff; -webkit-overflow-scrolling: touch;}
@@ -112,7 +112,7 @@ i, em{font-style: normal;}
 	#fast_nav li i{display: block;}
 	#fast_nav li img{width:.56rem;}
 	#fast_nav h2{font-size: .34rem; color: #333; font-weight: bold; text-align: left; padding: .48rem 0 .4rem .12rem; position: relative; }
-	#fast_nav h2 .close_btn{display: block; width: .3rem; height: .3rem;background-image: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/close_2.png); position: absolute; right: 0; background-size: .3rem auto;background-repeat: no-repeat; background-position: center; top: .38rem; padding: .16rem;}
+	#fast_nav h2 .close_btn{display: block; width: .3rem; height: .3rem;background-image: url(https://pic.xiant.ao/staticstatic/images/close_2.png); position: absolute; right: 0; background-size: .3rem auto;background-repeat: no-repeat; background-position: center; top: .38rem; padding: .16rem;}
 	#fast_nav .message_num{position: relative;}
 	#fast_nav .message_num em{display: block; min-width: .3rem; height: .3rem; border-radius: .15rem; background-color: #ff5e4d; padding-left: .06rem; padding-right: .06rem; box-sizing: border-box; color: #fff; position: absolute;left: .8rem;  font-size: .2rem;}
 	.w_bg{width: 100%; height: .8rem; background-color: #ccc; position: absolute; bottom: .3rem; left: 0; right: 0; z-index: 10;pointer-events: none;
@@ -124,7 +124,7 @@ i, em{font-style: normal;}
 /*举报*/
 .HN_Jubao{display: none;}
 .JubaoBox{background: #fff;width: 80%;margin: 0 auto;border-radius: .1rem;position: fixed;left: 10%;top: 50%; z-index: 999999; display: none;}
-.JubaoBox .JuClose{position: absolute; right: 0; top: 0; display: block; width: .8rem; height: .8rem; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/close_3.png) center center no-repeat; background-size: .4rem auto;}
+.JubaoBox .JuClose{position: absolute; right: 0; top: 0; display: block; width: .8rem; height: .8rem; background: url(https://pic.xiant.ao/staticstatic/images/close_3.png) center center no-repeat; background-size: .4rem auto;}
 .JubaoBox .JuSelect p{border-bottom: 1px solid #f2f2f2; padding: .2rem;}
 .JubaoBox .JuSelect ul{padding: .2rem; font-size: .24rem; display: none;}
 .JubaoBox .JuSelect li{float: left; padding: .1rem .2rem; border: 1px solid #f2f2f2; margin: 0 .1rem .1rem 0; border-radius: .04rem;}
@@ -408,7 +408,7 @@ background:linear-gradient(0deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 100%); display: 
 .html2canvas_fixed.html2canvas_fixedV2{padding: 0;left: .85rem;right: .85rem;bottom: .5rem;bottom:calc(.5rem + env(safe-area-inset-bottom));bottom:calc(.5rem + constant(safe-area-inset-bottom));background: none;border-radius: 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 .html2canvas_fixed.html2canvas_fixedV2 .html2_img{margin-top: 0;max-height: 9rem;-webkit-overflow-scrolling : touch;position: relative;border-radius: .4rem;overflow-y: auto;}
 .html2canvas_fixed.html2canvas_fixedV2 .html2_img::-webkit-scrollbar{display: none}
-.html2canvas_fixed.html2canvas_fixedV2 .html2_canvas_top .html2_close{display: block;width: .5rem;height: .5rem;background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/haibaoClose.png) center center no-repeat;background-size:.5rem;right: auto;top: auto;margin: 0 auto .4rem;position: relative;}
+.html2canvas_fixed.html2canvas_fixedV2 .html2_canvas_top .html2_close{display: block;width: .5rem;height: .5rem;background: url(https://pic.xiant.ao/staticstatic/images/poster/haibaoClose.png) center center no-repeat;background-size:.5rem;right: auto;top: auto;margin: 0 auto .4rem;position: relative;}
 .html2canvas_fixed.html2canvas_fixedV2 .html2_canvas_top .hd{    color: #fff;font-size: .24rem;}
 
 	/*海报生成后*/
@@ -417,7 +417,7 @@ background:linear-gradient(0deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 100%); display: 
 /*装修	详情*/
 .renovationCase .html2_bg{background: linear-gradient(#FF624A, #FF954D);}
 .html2canvas_fixedV2.renovationModule .html2_img{max-height:9.4rem;background: linear-gradient(#FF624A, #FF954D);}
-.html2canvas_fixedV2.renovationModule .htmlimg_box::after,.html2canvas_fixedV2.renovationStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/renovationModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.renovationModule .htmlimg_box::after,.html2canvas_fixedV2.renovationStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/renovationModule.png) center center no-repeat;background-size: cover;}
 /*装修	商家*/
 .renovationStore .html2_bg{background: linear-gradient(#FF624A, #FF954D);}
 .html2canvas_fixedV2.renovationStoreModule .html2_img{max-height:8.7rem;background: linear-gradient(#FF624A, #FF954D);}
@@ -426,35 +426,35 @@ background:linear-gradient(0deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 100%); display: 
 .datingDetail .html2_bg{background: linear-gradient(#AC251B, #F64253);}
 .html2canvas_fixed.html2canvas_fixedV2.datingModule .html2_img{max-height:8.2rem;height: 8.2rem;background: linear-gradient(#AC251B, #F64253);}
 .html2canvas_fixed.html2canvas_fixedV2.datingModule .html2_img img{position: absolute;top: -1rem;left: 0;right: 0}
-.html2canvas_fixed.html2canvas_fixedV2.datingModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.datingModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
 /*交友 商家*/
 .datingStore .html2_bg{background: linear-gradient(#F23E4D, #F54052);}
 .html2canvas_fixed.html2canvas_fixedV2.datingStoreModule .html2_img{max-height:8.3rem;background: linear-gradient(#F23E4D, #F54052);}
-.html2canvas_fixed.html2canvas_fixedV2.datingStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.datingStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
 /*交友 红娘*/
 .datingHn .html2_bg{background: linear-gradient(to right, #F74355, #F13648);}
 .html2canvas_fixed.html2canvas_fixedV2.datinghnModule .html2_img{max-height:7.5rem;background: linear-gradient(to right, #F74355, #F13648);}
-.html2canvas_fixed.html2canvas_fixedV2.datinghnModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.datinghnModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/datingModule.png) center center no-repeat;background-size: cover;}
 
 /*二手 - 商家*/
 .infoDetail .html2_bg{background: #F5F5F7;}
 .html2canvas_fixed.html2canvas_fixedV2.infoStoreModule .html2_img{max-height:10rem;background: #F5F5F7}
-.html2canvas_fixed.html2canvas_fixedV2.infoStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/infoModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.infoStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/infoModule.png) center center no-repeat;background-size: cover;}
 /*二手 -- 详情*/
 .infoDetail .html2_bg{background: #F5F5F7;}
 .html2canvas_fixed.html2canvas_fixedV2.infoModule .html2_img{max-height:10rem;background: #F5F5F7}
-.html2canvas_fixed.html2canvas_fixedV2.infoModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/infoModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.infoModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/infoModule.png) center center no-repeat;background-size: cover;}
 
 /*房产*/
 /* .houseDetail .html2_bg{background: linear-gradient(to right, #F7593E, #F33A29);} */
-.html2canvas_fixed.html2canvas_fixedV2.houseModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.jjrHouseModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.houseStoreModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.cwhouseModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/houseModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.houseModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.jjrHouseModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.houseStoreModule .htmlimg_box::after,.html2canvas_fixed.html2canvas_fixedV2.cwhouseModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/houseModule.png) center center no-repeat;background-size: cover;}
 .html2canvas_fixedV2.houseModule .html2_img,.html2canvas_fixedV2.jjrHouseModule .html2_img,.html2canvas_fixedV2.houseStoreModule .html2_img,.html2canvas_fixedV2.cwhouseModule .html2_img{background: linear-gradient(to right, #F7593E, #F33A29);}
 .jjrHouse .html2_bg,.saleHouse .html2_bg{background: linear-gradient(to right, #F7593E, #F33A29);}
  /*房产 楼盘*/
 
 .loupanHouse .html2_bg{background: #14286E;}
 .html2canvas_fixed.html2canvas_fixedV2.loupanModule .html2_img{max-height:9.1rem;background: #14286E;}
-.html2canvas_fixed.html2canvas_fixedV2.loupanModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/loupanModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.loupanModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/loupanModule.png) center center no-repeat;background-size: cover;}
 
  /*房产 经纪人*/
 
@@ -467,19 +467,19 @@ background:linear-gradient(0deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 100%); display: 
 .homemakingStore .html2_bg{background: linear-gradient(#06B96E, #00B193);}
 .html2canvas_fixed.html2canvas_fixedV2.homemakingStoreModule .html2_img{max-height:8.8rem;
 background: linear-gradient(#06B96E, #00B193);}
-.html2canvas_fixed.html2canvas_fixedV2.homemakingStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/homemakingStoreModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.homemakingStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/homemakingStoreModule.png) center center no-repeat;background-size: cover;}
 
 /*家政 详情*/
 .homemakingService .html2_bg{background: linear-gradient(#FF5C49, #FF964D);}
 .html2canvas_fixed.html2canvas_fixedV2.homemakingServiceModule .html2_img{max-height:8.6rem;background: linear-gradient(#FF5C49, #FF964D);}
-.html2canvas_fixed.html2canvas_fixedV2.homemakingServiceModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/homemakingModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixed.html2canvas_fixedV2.homemakingServiceModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/homemakingModule.png) center center no-repeat;background-size: cover;}
 /*旅游*/
 .travelAgencyDetail .html2_bg,
 .travelHotelDetail .html2_bg,
 .travelCarDetail .html2_bg,
 .travelStore .html2_bg{background: #00CD8C;}
-.html2canvas_fixedV2.travelHotelModule .htmlimg_box::after,.html2canvas_fixedV2.travelModule .htmlimg_box::after,.html2canvas_fixedV2.travelVisaModule .htmlimg_box::after,.html2canvas_fixedV2.travelCarModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/travelModule.png) center center no-repeat;background-size: cover;}
-.html2canvas_fixedV2.travelStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/travelStoreModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.travelHotelModule .htmlimg_box::after,.html2canvas_fixedV2.travelModule .htmlimg_box::after,.html2canvas_fixedV2.travelVisaModule .htmlimg_box::after,.html2canvas_fixedV2.travelCarModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/travelModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.travelStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/travelStoreModule.png) center center no-repeat;background-size: cover;}
 .html2canvas_fixedV2.travelHotelModule .html2_img,.html2canvas_fixedV2.travelModule .html2_img,.html2canvas_fixedV2.travelVisaModule .html2_img,.html2canvas_fixedV2.travelCarModule .html2_img{background: #00CD8C;}
 /*旅游 - 酒店*/
 .html2canvas_fixedV2.travelHotelModule .html2_img{max-height: 9.2rem;}
@@ -495,51 +495,51 @@ background: linear-gradient(-31deg, #00C479 0%, #00B193 100%);}
 /*活动*/
 .huodongDetail .html2_bg{background: #00CD8C;}
 .html2canvas_fixedV2.huodongModule .html2_img{max-height: 9rem;background: #00CC8C;}
-.html2canvas_fixedV2.huodongModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/huodongModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.huodongModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/huodongModule.png) center center no-repeat;background-size: cover;}
 
 /*二手车*/
 .carDetail .html2_bg,
 .carStore .html2_bg{background: linear-gradient(#FF634B, #FF974E);}
 .html2canvas_fixedV2.carModule .html2_img,.html2canvas_fixedV2.carStoreModule .html2_img{background: linear-gradient(#FF634B, #FF974E); }
-.html2canvas_fixedV2.carStoreModule .htmlimg_box::after,.html2canvas_fixedV2.carModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/carModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.carStoreModule .htmlimg_box::after,.html2canvas_fixedV2.carModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/carModule.png) center center no-repeat;background-size: cover;}
 .html2canvas_fixedV2.carModule .html2_img{max-height: 8.8rem;}
 .html2canvas_fixedV2.carStoreModule .html2_img{max-height: 9.3rem;}
 /*贴吧*/
 .tiebaDetail .html2_bg{background: #f7f7f7;}
 .html2canvas_fixedV2.tiebaModule .html2_img{max-height: 9.2rem;background: #f7f7f7}
-.html2canvas_fixedV2.tiebaModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/tiebaModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.tiebaModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/tiebaModule.png) center center no-repeat;background-size: cover;}
 /*投票*/
 .voteDetail .html2_bg{background: #ffe035; bottom: 0 !important;}
 .html2canvas_fixedV2.voteModule .html2_img{max-height: 9rem;background: #004CD5;}
-.html2canvas_fixedV2.voteModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/voteModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.voteModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/voteModule.png) center center no-repeat;background-size: cover;}
 /*养老*/
 .pensionStore .html2_bg{background: #00CC89;}
 .html2canvas_fixedV2.pensionModule .html2_img{max-height: 9.3rem;background: #00CC89;}
-.html2canvas_fixedV2.pensionModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/pensionModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.pensionModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/pensionModule.png) center center no-repeat;background-size: cover;}
 /*招聘*/
 
 .jobDetail .html2_bg{background: #206BFF;}
 .html2canvas_fixedV2.jobModule .html2_img{max-height: 8.5rem;background: #206BFF;}
-.html2canvas_fixedV2.jobModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/jobModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.jobModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/jobModule.png) center center no-repeat;background-size: cover;}
 /*团购*/
 .tuanDetail .html2_bg{background: linear-gradient(to right, #FE7954, #FF4229);}
 .html2canvas_fixedV2.tuanModule .html2_img{max-height: 9.3rem;background: linear-gradient(to right, #FE7954, #FF4229);}
-.html2canvas_fixedV2.tuanModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/tuanModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.tuanModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/tuanModule.png) center center no-repeat;background-size: cover;}
 /*外卖*/
 .waimaiDetail .html2_bg{background: #FFC635;}
 .html2canvas_fixedV2.waimaiModule .html2_img{max-height: 8.7rem;background: #FFC635}
-.html2canvas_fixedV2.waimaiModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/waimaiModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.waimaiModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/waimaiModule.png) center center no-repeat;background-size: cover;}
 /*资讯*/
 .articleDetail .html2_bg{background:#F7F7F7;}
 .html2canvas_fixedV2.articleModule .html2_img{max-height: 8.6rem;background:#F7F7F7;}
-.html2canvas_fixedV2.articleModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/articleModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.articleModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/articleModule.png) center center no-repeat;background-size: cover;}
 /*教育 -- 课程*/
 .educationDetail .html2_bg,
 .educationTutor .html2_bg,
 .educationStore .html2_bg{background:#1F69FF;}
 .html2canvas_fixedV2.educationModule .html2_img,.html2canvas_fixedV2.educationTutorModule .html2_img,.html2canvas_fixedV2.educationStoreModule .html2_img{background:#1F69FF }
 .html2canvas_fixedV2.educationModule .html2_img{max-height: 9.3rem; }
-.html2canvas_fixedV2.educationModule .htmlimg_box::after,.html2canvas_fixedV2.educationTutorModule .htmlimg_box::after,.html2canvas_fixedV2.educationStoreModule .htmlimg_box::after{background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/poster/educationModule.png) center center no-repeat;background-size: cover;}
+.html2canvas_fixedV2.educationModule .htmlimg_box::after,.html2canvas_fixedV2.educationTutorModule .htmlimg_box::after,.html2canvas_fixedV2.educationStoreModule .htmlimg_box::after{background: url(https://pic.xiant.ao/staticstatic/images/poster/educationModule.png) center center no-repeat;background-size: cover;}
 /*教育 -- 家教*/
 .html2canvas_fixedV2.educationTutorModule .html2_img{max-height: 8.7rem;}
 /*教育 -- 机构*/
@@ -956,10 +956,10 @@ background: linear-gradient(-31deg, #00C479 0%, #00B193 100%);}
 
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
 
 
@@ -1415,7 +1415,7 @@ html.noscroll body {position: relative;}
 .layer_code{background: #fff; z-index: 10001; position: fixed; top: 50%; left: .3rem; right: .3rem; margin-top: -3.75rem; border-radius: .08rem; display: none;}
 .layer_search{position: relative;}
 .layer_search p{padding: .3rem; width: 100%; box-sizing: border-box; border: 0; outline: 0; border-bottom: 1px solid #eaeaea; border-top-left-radius: .08rem; border-top-right-radius: .08rem; color: #000; font-weight: 500;}
-.layer_search em{position: absolute; width: .5rem; height: .5rem; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/reduce_icon.png) center center no-repeat; background-size: .44rem auto; right: -.2rem; top: -.2rem;}
+.layer_search em{position: absolute; width: .5rem; height: .5rem; background: url(https://pic.xiant.ao/staticstatic/images/reduce_icon.png) center center no-repeat; background-size: .44rem auto; right: -.2rem; top: -.2rem;}
 .layer_code .layer_list{height: 6.5rem; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .layer .header {display: -webkit-box!important;}
 
@@ -1436,7 +1436,7 @@ html.noscroll body {position: relative;}
 .downLoadBottom{background: #fff;position: fixed;bottom: 0;left: 0;right: 0;
 box-shadow: 0px -5px 23px 0px rgba(0, 0, 0, 0.09);z-index: 99999;animation:bottomFadeIn .3s ease-out; padding-bottom:calc(-.3rem + constant(safe-area-inset-bottom));padding-bottom: calc(-.3rem + env(safe-area-inset-bottom));}
 .downLoadBottom .downLeft{ float: left;}
-.downLoadBottom i.closeDownload{width: .72rem;height: 1rem;background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/closeDownload.png) center center no-repeat; background-size: .36rem auto;float: left;}
+.downLoadBottom i.closeDownload{width: .72rem;height: 1rem;background: url(https://pic.xiant.ao/staticstatic/images/closeDownload.png) center center no-repeat; background-size: .36rem auto;float: left;}
 .downLoadBottom .downloadLogo{width: .7rem;height: .7rem;box-shadow: 0px 5px 23px 0px rgba(0, 0, 0, 0.09);border-radius: .1rem;background: #fff;float: left;margin-top: .15rem;}
 .downLoadBottom .downloadLogo img{width: 100%;height: 100%;object-fit: cover;border-radius: .1rem;}
 .downLoadBottom .downloadInfo{float: left;margin-top: .15rem;margin-left: .15rem}
@@ -1446,7 +1446,7 @@ box-shadow: 0px -5px 23px 0px rgba(0, 0, 0, 0.09);z-index: 99999;animation:botto
 
 
 /* 右侧app下载 */
-.appDwonload{display: block; width: .84rem; height: .84rem; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/appDown.png) no-repeat center/cover; position: fixed; right: .3rem; bottom: calc(2.5rem + constant(safe-area-inset-bottom)); bottom: calc(2.5rem + env(safe-area-inset-bottom)); z-index: 10000; }
+.appDwonload{display: block; width: .84rem; height: .84rem; background: url(https://pic.xiant.ao/staticstatic/images/appDown.png) no-repeat center/cover; position: fixed; right: .3rem; bottom: calc(2.5rem + constant(safe-area-inset-bottom)); bottom: calc(2.5rem + env(safe-area-inset-bottom)); z-index: 10000; }
 /* 下方弹出的下载 */
 .downloadBox{position: fixed; bottom: -.9rem; left: .3rem; right: .3rem; min-height: .9rem; border-radius: .45rem; background-color: #fff; box-shadow: 0 .05rem .23rem 0 rgba(0, 0, 0, 0.15); display: flex; align-items: center; justify-content: space-between;padding:  0 .2rem; z-index: 10000;transition: transform .4s ease-in-out;  transform: translateY(0); }
 .downloadBox.topShow{margin-bottom:calc(-.1rem + constant(safe-area-inset-bottom));margin-bottom: calc(-.1rem + env(safe-area-inset-bottom));  transform: translateY(-2.2rem);}
@@ -1456,7 +1456,7 @@ box-shadow: 0px -5px 23px 0px rgba(0, 0, 0, 0.09);z-index: 99999;animation:botto
 .downloadBox .left_app_info h3{font-size: .26rem; font-weight: bold; color: #333; max-width: 3.8rem;}
 .downloadBox .left_app_info .downloadLogo{width: .6rem; height: .6rem; background-color: #fff; box-shadow: 0 .05rem .23rem 0 rgba(0, 0, 0, 0.09); border-radius: .1rem; margin-right: .09rem; overflow: hidden;}
 .downloadBox .left_app_info .downloadLogo img{display: block; width: 100%; height: 100%; object-fit: cover;}
-.downloadBox .left_app_info .btn_close_appDownload{display: block; width: .2rem; height: .2rem; background: url(https://cdn.jsdelivr.net/gh/60kr/china/static/images/close_down.png) no-repeat center/cover; margin-right: .2rem; margin-left: .1rem;}
+.downloadBox .left_app_info .btn_close_appDownload{display: block; width: .2rem; height: .2rem; background: url(https://pic.xiant.ao/staticstatic/images/close_down.png) no-repeat center/cover; margin-right: .2rem; margin-left: .1rem;}
 
 /* 二手信息 底部评论*/
 .footer_comment.bottom_reply_fixed{display: none;}
