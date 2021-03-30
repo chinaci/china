@@ -286,7 +286,7 @@ a{transition: all 0s;}
 .rewardS-pay-box .rewardS-pay-way h3{font-size: 16px;}
 .rewardS-pay-box .rewardS-pay-way ul{margin-top: 20px;}
 .rewardS-pay-box .rewardS-pay-way ul li{width: 126px; height: 41px; position: relative; border: 1px solid #dedede; margin: 0 15px 15px 0; background: #fff; padding: 1px; float: left; cursor: pointer;}
-.rewardS-pay-box .rewardS-pay-way ul li a{display: block; height: 26px; margin: 7px auto 0; background: url(/templates/member/images/bank.png?v=2) no-repeat;}
+.rewardS-pay-box .rewardS-pay-way ul li a{display: block; height: 26px; margin: 7px auto 0; background: url(https://pic.xiant.ao/templates/member/images/bank.png?v=2) no-repeat;}
 .rewardS-pay-box .rewardS-pay-way ul li.on{border: 2px solid #f60; padding: 0;}
 .rewardS-pay-box .rewardS-pay-way ul li.on em{position: absolute; right: 0; bottom: 0; display: block; width: 20px; height: 21px; background: url('../images/pubSprite.png') -52px -35px;}
 .rewardS-pay-box .rewardS-pay-way ul li .wxpay{background-position: -3px -1045px; width: 101px;}
