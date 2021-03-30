@@ -118,7 +118,7 @@ em,i{font-style: normal;}
 .btn_address {margin-top: .1rem; line-height: .44rem;overflow: hidden;}
 .btn_address span {color: #999;float: right;background:rgb(208, 25, 0);color: #fff;padding: 3px 8px;border-radius: 5px;}
 .addresslist .item .edit{position:absolute;right:0;top:.4rem;bottom:.4rem;width:1rem;border-left:1px solid #eee;text-align:center;}
-.addresslist .item .edit:after{content:'';position:absolute;top:50%;left:50%;width:.36rem;height:.38rem;margin:-.19rem 0 0 -.09rem;border:0;background: url(/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
+.addresslist .item .edit:after{content:'';position:absolute;top:50%;left:50%;width:.36rem;height:.38rem;margin:-.19rem 0 0 -.09rem;border:0;background: url(https://pic.xiant.ao/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
     background-size: 1.57rem 1.08rem;background-position: -.53rem -.1rem;}
 .addresslist .item .edit.del:after{background-position: -1.11rem -.1rem; margin-left: -.19rem;}
 .addresslist .item .edit_btn {right: 1rem;}
