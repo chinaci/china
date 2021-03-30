@@ -142,8 +142,8 @@ html, body {height: 100%;}
 .list {position: relative; margin: -15px 0 0 0; overflow: hidden;}
 .mCSB_inside>.mCSB_container {margin-right: 10px;}
 .list .loading, .list .empty {line-height: 200px; text-align: center;}
-.list .loading {background: url('/static/images/loading_16.gif') no-repeat 120px 93px;}
-.list .loading-min {padding: 10px 0 10px 0; text-align: center; background: url('/static/images/loading_16.gif') no-repeat 115px 12px;}
+.list .loading {background: url('https://pic.xiant.ao/static/images/loading_16.gif') no-repeat 120px 93px;}
+.list .loading-min {padding: 10px 0 10px 0; text-align: center; background: url('https://pic.xiant.ao/static/images/loading_16.gif') no-repeat 115px 12px;}
 
 
 .list-item {border-bottom: 1px solid #e4e4e4;}
