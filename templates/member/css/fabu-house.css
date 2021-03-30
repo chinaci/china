@@ -1,6 +1,6 @@
 .choBtn {float: left; height: 34px; line-height: 34px; padding: 0 10px;}
-.choBtn s {width: 11px; height: 11px; display: block; margin-top: 10px; background: url('/static/images/admin/glyphicons-halflings.png') -241px -1px;}
-.choBtn.loading s {width: 16px; height: 16px; display: block; margin-top: 6px; background: url('/static/images/loading_16.gif') 0 0;}
+.choBtn s {width: 11px; height: 11px; display: block; margin-top: 10px; background: url('https://pic.xiant.ao/static/images/admin/glyphicons-halflings.png') -241px -1px;}
+.choBtn.loading s {width: 16px; height: 16px; display: block; margin-top: 6px; background: url('https://pic.xiant.ao/static/images/loading_16.gif') 0 0;}
 
 /* 选择数据库 */
 .chooseData {padding:15px 45px 10px 0; margin-bottom:10px;}
