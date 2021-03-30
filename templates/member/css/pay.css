@@ -75,9 +75,9 @@
 .paypwd .paypwd_txt{margin-right: 20px;font-size: 16px;color: #37373b;font-weight: bold;display: inline-block;vertical-align: middle;}
 
 .paypwd_tip{font-size: 12px;color: #ff756e;position: absolute;top: 7px;left: 910px;display: none}
-.paypwd_tip i{display: inline-block;width: 14px;height: 14px;background: url('/static/images/pay/paypwd_icon.png') no-repeat;background-size: 14px 14px;margin-right: 4px;vertical-align: middle;margin-top: -3px;}
+.paypwd_tip i{display: inline-block;width: 14px;height: 14px;background: url('https://pic.xiant.ao/static/images/pay/paypwd_icon.png') no-repeat;background-size: 14px 14px;margin-right: 4px;vertical-align: middle;margin-top: -3px;}
 .paypwd label{position: relative;}
-.paypwd .true{display: inline-block;width: 15px;height: 10px;background: url('/static/images/pay/true.png') no-repeat;background-size: 15px 10px;position: absolute;top: 8px;right: 15px;display: none;}
+.paypwd .true{display: inline-block;width: 15px;height: 10px;background: url('https://pic.xiant.ao/static/images/pay/true.png') no-repeat;background-size: 15px 10px;position: absolute;top: 8px;right: 15px;display: none;}
 .no_paypwd .no_left{float: left;  }
 .no_paypwd .no_right{float: right;  }
 .no_paypwd .no_left {font-size: 14px;color: #babbbf;padding-top: 8px;}
@@ -148,15 +148,15 @@
 .pay-bank .bank-icon {position: relative; float: left; width: 170px; height: 44px; padding: 1px; border: 1px solid #dedede; margin: 15px 12px 0 0; background-color: #fff;box-sizing: border-box; -moz-box-sizing: border-box;    -webkit-box-sizing: border-box;-ms-box-sizing: border-box; -o-box-sizing: border-box;}
 .pay-bank .bank-icon span {display: block; height: 26px; margin: 7px auto 0 17px; background-image: url('/templates/member/images/bank.png?v=2'); background-repeat: no-repeat;}
 .pay-bank .active {padding: 0; border: 2px solid #3377FF;}
-.pay-bank .active b {position: absolute; right: 0; bottom: 0; width: 20px; height: 20px; background: url('/static/images/pay/bankActive.png');background-size: 20px;}
+.pay-bank .active b {position: absolute; right: 0; bottom: 0; width: 20px; height: 20px; background: url('https://pic.xiant.ao/static/images/pay/bankActive.png');background-size: 20px;}
 
 /*扫码支付*/
 .pay-bank .blist.codePay{height: 311px;padding: 23px 0 34px 18px;position: relative;border-width: 0 1px 1px; border-color: #e0e0e0; border-style: solid; margin-bottom: 40px;}
 .qrpay{position: relative;margin-left: 367px;margin-top: 62px;}
 .code_fresh{position: absolute;top: -52px;right: 34px;cursor: pointer;font-size: 14px;color: #a2a4ab;}
-.code_fresh i{display: inline-block;width: 18px;height: 16px;background: url('/static/images/pay/fresh.png') no-repeat;background-size: 18px 16px;margin-right: 5px;vertical-align: middle;margin-top: -3px;}
+.code_fresh i{display: inline-block;width: 18px;height: 16px;background: url('https://pic.xiant.ao/static/images/pay/fresh.png') no-repeat;background-size: 18px 16px;margin-right: 5px;vertical-align: middle;margin-top: -3px;}
 .code_fresh:hover{color: #49494c}
-.code_fresh:hover i{background: url('/static/images/pay/fresh2.png') no-repeat;background-size: 18px 16px;}
+.code_fresh:hover i{background: url('https://pic.xiant.ao/static/images/pay/fresh2.png') no-repeat;background-size: 18px 16px;}
 .qrpay dl dt{width: 200px;height: 200px;float: left;}
 .qrpay dl dt img{width: 200px;height: 200px;}
 .qrpay dl dd{float: left;margin-left: 22px}
@@ -239,14 +239,14 @@
 /* 提交后提示层 */
 #shadowlayer {display: none; position: fixed; _position: absolute; width: 100%; height: 100%; background-color: #000; filter: alpha(opacity=15); opacity: .15; top: 0; left: 0; z-index: 9000;}
 .pay-pop {position: fixed; _position: absolute; left: 50%; top: 50%; z-index: 9001; display: none; width: 504px; height: 234px; margin: -117px 0 0 -252px;}
-.pay-pop a.pop-close {display: block; width: 14px; height: 14px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; right: 12px; top: 12px; z-index: 1004; background: url('/static/images/pay/pay.png');}
+.pay-pop a.pop-close {display: block; width: 14px; height: 14px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; right: 12px; top: 12px; z-index: 1004; background: url('https://pic.xiant.ao/static/images/pay/pay.png');}
 .pay-pop a.pop-close:hover {background-position: 0 -14px;}
 .pop-border {background-color: #000; filter: alpha(opacity=30); opacity: .3; position: absolute; left: -5px; top: -5px; right: -5px; bottom: -5px; z-index: 1002; border-radius: 5px;}
 .pop-main {width: 100%; height: 100%; background-color: #fff; position: relative; z-index: 1003;}
 .pop-title {height: 39px; border-bottom: 1px solid #e0e0e0; color: #3d3d3d; background-color: #f7f7f7; padding-left: 15px; font: 700 14px/39px Microsoft Yahei;}
 .pop-con {padding: 5px 25px 0;}
 .pop-con p {padding-top: 25px; height: 30px; font: 14px/30px Microsoft Yahei;}
-.pop-con i {display: inline-block; width: 21px; height: 21px; margin: 4px 15px 0 0; float: left; background: url('/static/images/pay/pay.png');}
+.pop-con i {display: inline-block; width: 21px; height: 21px; margin: 4px 15px 0 0; float: left; background: url('https://pic.xiant.ao/static/images/pay/pay.png');}
 .pop-con i.icon01 {background-position: 0 -30px;}
 .pop-con i.icon02 {background-position: 0 -51px;}
 .pop-con p span {float: left; padding-right: 12px;}
