@@ -117,8 +117,8 @@ html,body{background-color: #F9F9F9;padding-bottom: .5rem}
 
 .mapBtn {position: absolute; z-index: 2; left: 0; top: 0; right: 0;}
 .mapBtn button {position: absolute; top: .3rem; width: .8rem; height: .8rem; background-color: #fff; background-position: center; background-repeat: no-repeat; box-shadow: 0 0 5px rgba(0, 0, 0, .2); border: 0; border-radius: 3px; outline: 0;}
-#closeMap {left: .3rem; background-image: url('/static/images/close_2.png'); background-size: .4rem;}
-#refreshMap {right: .3rem; background-image: url('/static/images/refresh.png'); background-size: .4rem;}
+#closeMap {left: .3rem; background-image: url('https://pic.xiant.ao/static/images/close_2.png'); background-size: .4rem;}
+#refreshMap {right: .3rem; background-image: url('https://pic.xiant.ao/static/images/refresh.png'); background-size: .4rem;}
 
 .bubble {width: .52rem; height: .74rem; position: relative;}
 .bubble.shop {background: url('../images/paotui/quIcon.png') no-repeat center;background-size: .52rem .74rem;}
@@ -165,10 +165,10 @@ html,body{background-color: #F9F9F9;padding-bottom: .5rem}
 
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
 
 /*错误提示*/
