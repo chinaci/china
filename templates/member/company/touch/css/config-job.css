@@ -217,7 +217,7 @@ form{
     outline: none;
 }
 .QuanBox .QuanTitle .QuanTitle_close:after{
-    background: url(/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
+    background: url(https://pic.xiant.ao/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
     background-size: 1.57rem 1.08rem;
     content: '';
     position: absolute;
@@ -348,7 +348,7 @@ form{
     outline: none;
 }
 .SubwayBox .SubwayTitle .Subway_close:after{
-    background: url(/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
+    background: url(https://pic.xiant.ao/templates/member/touch/images/addressIcons.png?v=1) no-repeat;
     background-size: 1.57rem 1.08rem;
     content: '';
     position: absolute;
