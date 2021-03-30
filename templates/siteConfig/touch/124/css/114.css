@@ -63,7 +63,7 @@
 
 /* 加载中 */
 .loading {text-align: center; color: #aaa; padding: .5rem 0;}
-.loading span::before {display: inline-block; content: ''; width: .32rem; height: .32rem; background: url('/static/images/ajax-loader.gif'); background-size: cover; vertical-align: middle; margin: -.05rem .05rem 0 0;}
+.loading span::before {display: inline-block; content: ''; width: .32rem; height: .32rem; background: url('https://pic.xiant.ao/static/images/ajax-loader.gif'); background-size: cover; vertical-align: middle; margin: -.05rem .05rem 0 0;}
 
 /* 提示 */
 .tishi {width: 100%; position: fixed; z-index: 999; bottom: 50px;}
