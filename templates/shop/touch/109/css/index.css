@@ -51,7 +51,7 @@ body{background-color:#f7f7f7;}
 
 .imgsearch {position: absolute; z-index: 10; top: 0; right: 1.3rem; width: .7rem; height: .7rem; background: #f7f7f7;}
 .imgsearch .imgsearch-btn {width: .7rem; height: .7rem; display: block; background: url('../images/camera.png'); background-size: .65rem; background-repeat: no-repeat; background-position: center .06rem;}
-.imgsearch-btn.disabled {background: url('/static/images/ajax-loader.gif'); background-size: .5rem; background-repeat: no-repeat; background-position: center;}
+.imgsearch-btn.disabled {background: url('https://pic.xiant.ao/static/images/ajax-loader.gif'); background-size: .5rem; background-repeat: no-repeat; background-position: center;}
 
 /*模块链接*/
 .module ul{padding-bottom: .5rem;}
