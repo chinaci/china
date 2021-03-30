@@ -90,7 +90,7 @@ em,i{font-style: normal;}
 
 .imgsearch {position: absolute; z-index: 10; top: 0; right: 1.5rem; width: .6rem; height: .6rem; background: #f2f2f2;}
 .imgsearch .imgsearch-btn {width: .6rem; height: .6rem; display: block; background: url('../images/camera.png'); background-size: .6rem; background-repeat: no-repeat; background-position: center 0;}
-.imgsearch-btn.disabled {background: url('/static/images/ajax-loader.gif'); background-size: .4rem; background-repeat: no-repeat; background-position: center;}
+.imgsearch-btn.disabled {background: url('https://pic.xiant.ao/static/images/ajax-loader.gif'); background-size: .4rem; background-repeat: no-repeat; background-position: center;}
 
 
 /*商品列表*/
