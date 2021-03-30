@@ -384,7 +384,7 @@ a.choose-more{
 .comment .c-area .c-sub .np-login .o {color: #999;}
 .comment .c-area .c-sub .subtn {float:right; width: 67px; line-height: 28px; height: 28px; text-align: center; background-color: #379be9; margin: 6px 10px 0 0; color: #fff; border-radius: 2px;}
 .comment .c-area .c-sub a:hover.subtn {color: #fff;}
-.comment .c-area .c-sub .subtn.loading {font-size: 0; text-indent: -999em; background-color: #fff; background-image: url('/static/images/dots32.gif'); background-repeat: no-repeat; background-position: center;}
+.comment .c-area .c-sub .subtn.loading {font-size: 0; text-indent: -999em; background-color: #fff; background-image: url('https://pic.xiant.ao/static/images/dots32.gif'); background-repeat: no-repeat; background-position: center;}
 .comment .c-content {margin-top: 20px;}
 .comment .c-nav {border-bottom: 1px solid #ddd; height: 40px; line-height: 37px; font-size: 16px; font-family: microsoft yahei;}
 .comment .c-nav li {float: left; margin-right: 20px; position: relative; border-bottom: 3px solid #379be9; cursor: pointer;}
@@ -398,7 +398,7 @@ a.choose-more{
 .comment .c-subnav li {float: left; margin-right: 20px; color: #379be9;}
 .comment .c-subnav li.hot {color: #ff2968;}
 .comment .c-list .empty {line-height: 100px; height: 100px; text-align: center; font-size: 14px;}
-.comment .c-list .loading {width: 80px; height: 8px; display: block; margin: 50px auto; background: url('/static/images/loading_h8.gif') no-repeat;}
+.comment .c-list .loading {width: 80px; height: 8px; display: block; margin: 50px auto; background: url('https://pic.xiant.ao/static/images/loading_h8.gif') no-repeat;}
 .comment .c-list li {position: relative; padding-left: 40px; border-bottom: 1px solid #ddd; vertical-align: top;}
 .comment .c-list li .children li img {width: 35px; height: 35px;}
 .comment .children li li li li {margin-left: -35px;}
@@ -420,7 +420,7 @@ a.choose-more{
 .comment .c-list li .children li {border-bottom: 0; border-top: 1px dotted #ccc;}
 #loadMore {background-color: #ddd; color: #555; text-align: center; height: 28px; line-height: 28px; border-radius: 2px; cursor: pointer;}
 #loadMore:hover {background-color: #ccc;}
-#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
+#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('https://pic.xiant.ao/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
 .colorAnimate {-webkit-animation:colorAnimate 1.5s ease-out; -moz-animation:colorAnimate 1.5s ease-out; animation:colorAnimate 1.5s ease-out;}
 @-webkit-keyframes colorAnimate{ 0%{background-color: #fff;} 15%{background-color: #f7f7a5;} 30%{background-color: #fff;} 45%{background-color: #f7f7a5;} 60%{background-color: #fff;} 85%{background-color: #f7f7a5;} 100%{background-color: #fff;}}
 
