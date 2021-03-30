@@ -22,10 +22,10 @@ p,div,a,h1,h2,h3,h4,h5,h6,dt,dd,li{user-select: none ;-webkit-user-select: none 
 .module_data ul li p{font-size: .24rem; opacity: .7;}
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
 
 
