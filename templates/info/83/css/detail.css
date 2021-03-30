@@ -142,7 +142,7 @@
 .elist .item {padding: 10px; height: 150px; border-bottom: 1px solid #e5e9f0;}
 .elist .item:hover {-webkit-box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); -moz-box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); box-shadow: 0 1px 10px 3px rgba(0,0,0,.13); background-color: #f8f8f8;}
 .elist .pic {float: left; width: 148px; height: 148px; border: 1px solid #eee; background-color: #fff;}
-.elist .pic a {position: relative; display: block; width: 148px; height: 148px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.elist .pic a {position: relative; display: block; width: 148px; height: 148px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center;}
 .elist .pic a i {display: inline-block; height: 100%; vertical-align: middle;}
 .elist .pic a img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .elist .right {float: right; position: relative; width: 180px; height: 150px; border-left: 1px solid #efefef;}
@@ -182,7 +182,7 @@
 .comment .c-area .c-sub .np-login .o {color: #999;}
 .comment .c-area .c-sub .subtn {float:right; width: 67px; line-height: 28px; height: 28px; text-align: center; background-color: #4daeff; margin: 6px 10px 0 0; color: #fff; border-radius: 2px;}
 .comment .c-area .c-sub a:hover.subtn {color: #fff;}
-.comment .c-area .c-sub .subtn.loading {font-size: 0; text-indent: -999em; background-color: #fff; background-image: url('/static/images/dots32.gif'); background-repeat: no-repeat; background-position: center;}
+.comment .c-area .c-sub .subtn.loading {font-size: 0; text-indent: -999em; background-color: #fff; background-image: url('https://pic.xiant.ao/static/images/dots32.gif'); background-repeat: no-repeat; background-position: center;}
 .comment .c-content {margin-top: 20px;}
 .comment .c-nav {border-bottom: 1px solid #ddd; height: 40px; line-height: 37px; font-size: 16px; font-family: microsoft yahei;}
 .comment .c-nav li {float: left; margin-right: 20px; position: relative; border-bottom: 3px solid #a8d300; cursor: pointer;}
@@ -196,7 +196,7 @@
 .comment .c-subnav li {float: left; margin-right: 20px; color: #4daeff;}
 .comment .c-subnav li.hot {color: #ff2968;}
 .comment .c-list .empty {line-height: 100px; height: 100px; text-align: center; font-size: 14px;}
-.comment .c-list .loading {width: 80px; height: 8px; display: block; margin: 50px auto; background: url('/static/images/loading_h8.gif') no-repeat;}
+.comment .c-list .loading {width: 80px; height: 8px; display: block; margin: 50px auto; background: url('https://pic.xiant.ao/static/images/loading_h8.gif') no-repeat;}
 .comment .c-list li {position: relative; padding-left: 40px; border-bottom: 1px solid #ddd; vertical-align: top;}
 .comment .c-list li .children li img {width: 35px; height: 35px;}
 .comment .children li li li li {margin-left: -35px;}
@@ -217,7 +217,7 @@
 .comment .c-list li .children li {border-bottom: 0; border-top: 1px dotted #ccc;}
 #loadMore {background-color: #ddd; color: #555; text-align: center; height: 28px; line-height: 28px; border-radius: 2px; cursor: pointer;}
 #loadMore:hover {background-color: #ccc;}
-#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
+#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('https://pic.xiant.ao/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
 .comment .c-list .c-area {display: none; margin: 0 0 10px 0;}
 
 
@@ -230,7 +230,7 @@
 .recon .rc ul {width: 110%;}
 .recon .rc li {float: left; width: 170px; margin-right: 37px;}
 .w1200 .recon .rc li {width: 200px; margin-right: 50px;}
-.recon .rc .pic {width: 168px; height: 168px; display: block; border: 1px solid #eee; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.recon .rc .pic {width: 168px; height: 168px; display: block; border: 1px solid #eee; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center;}
 .w1200 .recon .rc .pic {width: 198px; height: 198px;}
 .recon .rc .pic i {display: inline-block; height: 100%; vertical-align: middle;}
 .recon .rc .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
