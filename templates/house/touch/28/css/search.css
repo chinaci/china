@@ -20,6 +20,6 @@
 .list li {height: 1rem; padding: 0 .25rem; border-bottom: 1px solid #f5f5f5; line-height: 1rem; font-size: .28rem; color: #b3b6be;}
 .list li label {display: inline-block; vertical-align: middle; color: #333; max-width: 4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .list li span {float: right; color: #b3b6be; font-size: .26rem;}
-.list li span.loading {width: 1rem; height: 1rem; font-size: 0; text-indent: -999rem; background: url('/static/images/loadgray.gif') no-repeat center right;}
+.list li span.loading {width: 1rem; height: 1rem; font-size: 0; text-indent: -999rem; background: url('https://pic.xiant.ao/static/images/loadgray.gif') no-repeat center right;}
 
 .huoniao_iOS .list{top:1.26rem;}
