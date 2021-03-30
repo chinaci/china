@@ -19,12 +19,12 @@ a:hover {text-decoration: underline;}
 /* 幻灯 */
 .slide {float: left; width: 430px; position: relative;}
 .slide .bigimg {height: 290px; overflow: hidden;}
-.slide .bigimg li {height: 290px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.slide .bigimg li {height: 290px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center;}
 .slide .bigimg li i {display: inline-block; height: 100%; vertical-align: middle;}
 .slide .bigimg li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .slide .imgctrl {position: relative; height: 60px; padding: 0 20px; margin-top: 10px;}
 .slide .imgctrl ul {height: 60px; overflow: hidden;}
-.slide .imgctrl li {float: left; width: 88px; height: 57px; border: 1px solid #efefef; margin: 0 3px 0 4px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; cursor: pointer;}
+.slide .imgctrl li {float: left; width: 88px; height: 57px; border: 1px solid #efefef; margin: 0 3px 0 4px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center; cursor: pointer;}
 .slide .imgctrl li.on {border-color: #cd0001;}
 .slide .imgctrl li i {display: inline-block; height: 100%; vertical-align: middle;}
 .slide .imgctrl li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
@@ -89,7 +89,7 @@ a:hover {text-decoration: underline;}
 /* 照片 */
 .succesny {position: relative; width: 915px; height: 600px; margin: 20px auto;}
 .control {width: 760px; height: 600px; display: block; position: absolute; top: 0; left: 0; overflow: hidden; background-color: #f7f7f7;}
-.change li .imgWrap a {width: 760px; height: 600px; display: block; text-align: center; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center;}
+.change li .imgWrap a {width: 760px; height: 600px; display: block; text-align: center; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center;}
 .change li .imgWrap a i {display: inline-block; height: 100%; vertical-align: middle;}
 .change li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .change li .textDesc {width: 100%; height: 35px; position: absolute; left: 0; bottom: 0; text-align: left; overflow: hidden;}
@@ -103,7 +103,7 @@ a:hover {text-decoration: underline;}
 .thumbWrap {width: 146px; height: 600px; position: absolute; right: 0; top: 0; background: #f7f7f7; overflow: hidden;}
 .thumbWrap .thumbCont {height: 530px; margin: 35px auto 0; overflow: hidden; position: relative; width: 130px;}
 .thumbWrap ul li {overflow: hidden; padding-bottom: 13px; width: 130px; filter: alpha(opacity=50); opacity: .5;}
-.thumbWrap ul li div {width: 130px; height: 90px; text-align: center; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; cursor: pointer;}
+.thumbWrap ul li div {width: 130px; height: 90px; text-align: center; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; cursor: pointer;}
 .thumbWrap ul li div i {display: inline-block; height: 100%; vertical-align: middle;}
 .thumbWrap ul li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .thumbWrap ul li.cur {filter: alpha(opacity=100); opacity: 1;}
