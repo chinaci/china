@@ -8,7 +8,7 @@ html {background-color: #f4f4f4;}
 .jl {padding:10px 55px;font-size: 14px;color: #444;}
 
 .profile {position: relative; padding-left: 170px; padding-top: 80px; height: 120px; margin-top: 20px;}
-.profile img {position: absolute; left: 0; top: 0; width: 150px; height: 200px; background: #F3F4F3 url('/static/images/default_user.jpg') no-repeat center center;}
+.profile img {position: absolute; left: 0; top: 0; width: 150px; height: 200px; background: #F3F4F3 url('https://pic.xiant.ao/static/images/default_user.jpg') no-repeat center center;}
 
 .jl h2 {margin: 20px 0 8px;font-size: 40px;color: #000;}
 .jl h2 small {font-size: 16px; color: #999;}
