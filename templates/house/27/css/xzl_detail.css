@@ -20,12 +20,12 @@ a:hover {text-decoration: underline;}
 /* 幻灯 */
 .slide {float: left; width: 430px; position: relative;}
 .slide .bigimg {height: 290px; overflow: hidden;}
-.slide .bigimg li {height: 290px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.slide .bigimg li {height: 290px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center;}
 .slide .bigimg li i {display: inline-block; height: 100%; vertical-align: middle;}
 .slide .bigimg li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
 .slide .imgctrl {position: relative; height: 60px; padding: 0 20px; margin-top: 10px;}
 .slide .imgctrl ul {height: 60px; overflow: hidden;}
-.slide .imgctrl li {float: left; width: 88px; height: 57px; border: 1px solid #efefef; margin: 0 3px 0 4px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; cursor: pointer;}
+.slide .imgctrl li {float: left; width: 88px; height: 57px; border: 1px solid #efefef; margin: 0 3px 0 4px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center; cursor: pointer;}
 .slide .imgctrl li.on {border-color: #cd0001;}
 .slide .imgctrl li i {display: inline-block; height: 100%; vertical-align: middle;}
 .slide .imgctrl li img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
@@ -95,7 +95,7 @@ a:hover {text-decoration: underline;}
 .gallery {padding-left: 10px;}
 .gallery li {float: left; width: 450px; height: 350px; overflow: hidden; margin: 0 0 25px 25px; background-color: #ededed;}
 .w1200 .gallery li {width: 540px; height: 400px; margin: 0 0 28px 30px;}
-.gallery li a {display: block; position: relative; height: 350px; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center;}
+.gallery li a {display: block; position: relative; height: 350px; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center;}
 .w1200 .gallery li a {height: 400px;}
 .gallery li a i {display: inline-block; height: 100%; vertical-align: middle;}
 .gallery li a img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%; -ms-interpolation-mode: bicubic;}
