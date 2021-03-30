@@ -33,7 +33,7 @@
 .uploader-list {width: 100%; overflow: hidden;}
 .uploader-list li {float: left; position: relative; width: 70px; height: 70px; margin: 0 10px 10px 0; padding: 4px; background-color: #fff; border: 1px solid #ddd; border-radius: 4px; cursor: move;}
 .uploader-list li.thumbnail {border-color: transparent;}
-.uploader-list li .loading {width: 70px; height: 70px; background: url('/static/images/ajax-loader.gif') no-repeat center center;}
+.uploader-list li .loading {width: 70px; height: 70px; background: url('https://pic.xiant.ao/static/images/ajax-loader.gif') no-repeat center center;}
 .uploader-list li img {width: 70px; height: 70px; display: block;}
 .file-panel {position: absolute; left: 4px; right: 4px; top: 4px; height: 20px;}
 .file-panel .cancel {float: right; width: 20px; height: 20px; background-color: #333; color: #fff; text-align: center; line-height: 17px; font-size: 22px; cursor: pointer;}
