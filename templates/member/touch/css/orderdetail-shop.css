@@ -94,7 +94,7 @@ p.coupon-field-tip{color: #777; margin-bottom: .1rem;}
 .addimg ul{padding: .4rem .2rem;}
 /*.addimg .noimg{margin: 0 auto;}*/
 .addimg li{position: relative; width: 1.6rem; height: 1.6rem; float: left; margin: 0 .17rem .2rem 0; overflow: hidden; }
-.addimg li.item {background:#fff url('/static/images/ajax-loader.gif') center no-repeat;}
+.addimg li.item {background:#fff url('https://pic.xiant.ao/static/images/ajax-loader.gif') center no-repeat;}
 .addimg li img{height: 1.6rem;margin:0 auto; overflow: hidden;}
 .addimg li .cancel{position: absolute; width: .32rem; height: .32rem; background: url(../images/close.png) center center no-repeat; background-size: contain; z-index: 99; top: 0; right: 0;}
 .addimg .add{background: url(../images/add.png) center center no-repeat; background-size: contain;}
