@@ -31,7 +31,7 @@ html, body, .warp {padding:0; margin:0; height:100%; font-family: Arial,Helvetic
 }
 #search {
     pointer-events: auto;
-    background: url(/templates/member/images/gmap_searchbox.png) no-repeat 0 -76px #3385ff;
+    background: url(https://pic.xiant.ao/templates/member/images/gmap_searchbox.png) no-repeat 0 -76px #3385ff;
     width: 57px;
     height: 38px;
     float: left;
