@@ -117,11 +117,11 @@ body{background-color: #F4F4F6; min-height: 100%; padding-top: .88rem; padding-b
 
 @font-face {
 	font-family: impact;
-	src: url('/static/fonts/Impact.otf'),
-		url('/static/fonts/Impact.eot'),
-		url('/static/fonts/Impact.ttf'),
-		url('/static/fonts/Impact.svg'),
-		 url('/static/fonts/Impact.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/Impact.otf'),
+		url('https://pic.xiant.ao/static/fonts/Impact.eot'),
+		url('https://pic.xiant.ao/static/fonts/Impact.ttf'),
+		url('https://pic.xiant.ao/static/fonts/Impact.svg'),
+		 url('https://pic.xiant.ao/static/fonts/Impact.woff'); /* IE9 */
 }
 
 
