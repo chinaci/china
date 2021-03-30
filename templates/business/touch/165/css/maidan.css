@@ -28,7 +28,7 @@ body,html{
 .formbox .inpbox{margin: 0 .3rem; background-color: #F6F6F6; border-radius: .3rem; height: 1.2rem; display: flex; align-items: center; justify-content: space-between; padding: 0 .3rem;margin-bottom: .32rem; border: solid .03rem #F6F6F6; box-sizing: border-box;}
 .formbox .inpbox label{color: #7C7C80; font-size: .3rem; font-weight: bold;}
 .formbox .inpbox label span {position: relative; height: .3rem; display: inline-block; vertical-align: middle; margin: -.1rem 0 0 .1rem; padding: 0 .15rem 0 .1rem; border-radius: .3rem; color: #fff; font-size: .2rem; font-weight: bold; line-height: .32rem; background: linear-gradient(120deg, #FF6B1A 0%, #FF0036 100%); font-family: Core Gothic D; overflow: hidden;}
-.formbox .inpbox label span::before {content: ''; position: absolute; left: 0; top: 0; width: .26rem; height: .3rem; background: url('/static/images/business/maidan_sale.png') no-repeat center; background-size: cover; z-index: 1; border-radius: .3rem;}
+.formbox .inpbox label span::before {content: ''; position: absolute; left: 0; top: 0; width: .26rem; height: .3rem; background: url('https://pic.xiant.ao/static/images/business/maidan_sale.png') no-repeat center; background-size: cover; z-index: 1; border-radius: .3rem;}
 .formbox .inpbox label span i {position: relative; z-index: 2; font-style: italic;}
 .formbox .inpbox input{font-size: .36rem; color: #313233; text-align: right; border: none; background: none; width: 2.5rem;}
 .formbox .inpbox input::placeholder{color: #ADAEB3; font-size: .28rem;}
