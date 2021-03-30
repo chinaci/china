@@ -87,7 +87,7 @@ a:hover {text-decoration: underline;}
 #list li {padding: 26px; position: relative; border-bottom: 1px dotted #e1e1e1;}
 #list li:hover {background-color: #fafafa;}
 #list li .jj {position: absolute; top: 0; right: 0; height: 18px; padding: 0 5px; line-height: 17px; background-color: #ccc; color: #fff; font-size: 12px; font-style: normal; background-color: #000;}
-#list li .pic {position: relative;float: left; width: 173px; height: 130px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
+#list li .pic {position: relative;float: left; width: 173px; height: 130px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
 #list li .pic em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
 #list li .pic i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
 #list li .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%;}
