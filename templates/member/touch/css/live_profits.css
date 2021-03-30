@@ -47,8 +47,8 @@
 /* 字体 */
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
