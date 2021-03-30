@@ -117,7 +117,7 @@
 
 #loadMore {background-color: #ddd; color: #555; text-align: center; height: 28px; line-height: 28px; border-radius: 2px; cursor: pointer;}
 #loadMore:hover {background-color: #ccc;}
-#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
+#loadMore.loading {font-size: 0; text-indent: -999em; background-color: #ccc; background-image: url('https://pic.xiant.ao/static/images/loading-grey.gif'); background-repeat: no-repeat; background-position: center;}
 
 
 /*微信二维码弹出层*/
