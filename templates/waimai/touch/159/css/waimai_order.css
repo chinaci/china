@@ -155,7 +155,7 @@ background: linear-gradient(-41deg,rgba(255,174,0,1) 0%,rgba(252,191,28,1) 100%)
 /* 地图显示 */
 .map {position: relative; display:block;height:2.3rem; margin-top: 0;}
 #map {position: relative; z-index: 1; width: 100%; height: 2.3rem;}
-.map .market {position: absolute; z-index: 2; left: 50%; top: 50%; width: .6rem; height: .6rem; margin: -.4rem 0 0 -.3rem; background: url('/static/images/local.png'); background-size: cover;}
+.map .market {position: absolute; z-index: 2; left: 50%; top: 50%; width: .6rem; height: .6rem; margin: -.4rem 0 0 -.3rem; background: url('https://pic.xiant.ao/static/images/local.png'); background-size: cover;}
 .refresh {width:100%;height:1rem;line-height:1rem;font-size:0.3rem;background:#e95249;text-align:center;color:#fff;position:fixed;bottom:0;left:0;right:0;}
 .refresh:hover {color: #fff;}
 
@@ -226,10 +226,10 @@ background: linear-gradient(-41deg,rgba(255,174,0,1) 0%,rgba(252,191,28,1) 100%)
 
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
 
 /* 20200307新增 开通会员 */
