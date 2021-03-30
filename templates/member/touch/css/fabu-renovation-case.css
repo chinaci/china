@@ -138,6 +138,6 @@ to {opacity:0.5;transform:scale(1);}
 .qjimg_box p{ font-size: .24rem ; width: 100%;  color: #9fa1ab;}
 
 .img .progress {position: absolute; width:auto!important;right: 4px; bottom: 4px!important;  left: 4px; height: 4px; overflow: hidden; z-index: 15; margin:0; padding: 0; border-radius: 0; background: transparent;}
-.img .progress span {display: block; overflow: hidden; width: 0; height: 100%; background: #499c00 url('/static/js/webuploader/progress.png') repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0);}
+.img .progress span {display: block; overflow: hidden; width: 0; height: 100%; background: #499c00 url('https://pic.xiant.ao/static/js/webuploader/progress.png') repeat-x; -webit-transition: width 200ms linear; -moz-transition: width 200ms linear; -o-transition: width 200ms linear; -ms-transition: width 200ms linear; transition: width 200ms linear; -webkit-animation: progressmove 2s linear infinite; -moz-animation: progressmove 2s linear infinite; -o-animation: progressmove 2s linear infinite; -ms-animation: progressmove 2s linear infinite; animation: progressmove 2s linear infinite; -webkit-transform: translateZ(0);}
 
 
