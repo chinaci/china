@@ -161,7 +161,7 @@ a:hover {text-decoration: underline;}
 /* 二手房 */
 .sale li {padding: 26px; border-bottom: 1px dotted #e1e1e1;}
 .sale li:hover {background-color: #fafafa;}
-.sale li .pic {float: left; width: 173px; height: 130px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
+.sale li .pic {float: left; width: 173px; height: 130px; overflow: hidden; background: url('https://pic.xiant.ao/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
 .sale li .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%;}
 .sale li .pic i {display: inline-block; height: 100%; vertical-align: middle;}
 .sale li a:hover.pic {opacity: .8; filter: alpha(opacity=80);}
