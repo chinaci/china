@@ -38,7 +38,7 @@ body{overflow-x: hidden;}
 /* 浮动菜单 */
 .mobile{position: relative;}
 .mobile .pop {display: none; position: absolute; left: -62px; top: 34px; width: 170px; text-align: center; background: #fff; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 10px 0; -moz-box-shadow: 4px 4px 0 rgba(0,0,0,.2); -webkit-box-shadow: 4px 4px 0 rgba(0,0,0,.2); box-shadow: 4px 4px 0 rgba(0,0,0,.2); color: #101010; font-size: 14px; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
-.mobile .pop s {position: absolute; top: -8px; left: 80px; width: 16px; height: 9px; background: url('/static/images/icons.png') -10px -591px;}
+.mobile .pop s {position: absolute; top: -8px; left: 80px; width: 16px; height: 9px; background: url('https://pic.xiant.ao/static/images/icons.png') -10px -591px;}
 .mobile .pop p {line-height: 20px;}
 .mobile .pop p img {display: block; margin: 0 auto;}
 
