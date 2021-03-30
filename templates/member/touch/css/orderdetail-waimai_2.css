@@ -91,13 +91,13 @@ html,body{background-color: #f5f5f5;}
 
 .mapBtn {position: absolute; z-index: 2; left: 0; top: 0; right: 0;}
 .mapBtn button {position: absolute; top: .3rem; width: .8rem; height: .8rem; background-color: #fff; background-position: center; background-repeat: no-repeat; box-shadow: 0 0 5px rgba(0, 0, 0, .2); border: 0; border-radius: 3px; outline: 0;}
-#closeMap {left: .3rem; background-image: url('/static/images/close_2.png'); background-size: .4rem;}
-#refreshMap {right: .3rem; background-image: url('/static/images/refresh.png'); background-size: .4rem;}
+#closeMap {left: .3rem; background-image: url('https://pic.xiant.ao/static/images/close_2.png'); background-size: .4rem;}
+#refreshMap {right: .3rem; background-image: url('https://pic.xiant.ao/static/images/refresh.png'); background-size: .4rem;}
 
 .bubble {-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: background-color .15s ease-in-out; -moz-transition: background-color .15s ease-in-out; -o-transition: background-color .15s ease-in-out; transition: background-color .15s ease-in-out; cursor: pointer; opacity: 0.9; width: 40px; height: 40px; background-size: contain; background-position: center; background-repeat: no-repeat;}
-.bubble.shop {background-image: url('/static/images/shop_local.png?v=1');}
-.bubble.courier {background-image: url('/static/images/courier_local.png?v=1');}
-.bubble.person {background-image: url('/static/images/person_local.png?v=1'); width: 30px; height: 30px;}
+.bubble.shop {background-image: url('https://pic.xiant.ao/static/images/shop_local.png?v=1');}
+.bubble.courier {background-image: url('https://pic.xiant.ao/static/images/courier_local.png?v=1');}
+.bubble.person {background-image: url('https://pic.xiant.ao/static/images/person_local.png?v=1'); width: 30px; height: 30px;}
 
 .ci_list .ci_left {float:left;width:25%;box-sizing:border-box;margin-top:.5rem; padding-bottom: .5rem;}
 .ci_list .ci_left .point {width:1rem;margin:0 auto;}
@@ -134,8 +134,8 @@ html,body{background-color: #f5f5f5;}
 
 @font-face {
 	font-family: moneyNumber;
-	src: url('/static/fonts/coregtd6.otf'),
-		url('/static/fonts/coregtd6.TTF'),
-		url('/static/fonts/coregtd6.svg'),
-		 url('/static/fonts/coregtd6.woff'); /* IE9 */
+	src: url('https://pic.xiant.ao/static/fonts/coregtd6.otf'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.TTF'),
+		url('https://pic.xiant.ao/static/fonts/coregtd6.svg'),
+		 url('https://pic.xiant.ao/static/fonts/coregtd6.woff'); /* IE9 */
 }
