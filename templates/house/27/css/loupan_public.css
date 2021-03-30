@@ -8,7 +8,7 @@ a:hover {text-decoration: underline;}
 /* 楼盘名称信息 */
 .dh {padding: 20px 0;}
 .dh-l {float: left;}
-.qrimg {float: left; width: 87px; height: 87px; background: url('/static/images/loading_16.gif') no-repeat center center;}
+.qrimg {float: left; width: 87px; height: 87px; background: url('https://pic.xiant.ao/static/images/loading_16.gif') no-repeat center center;}
 .name-d {float: left; margin: -5px 0 0 20px;}
 .name-dt {white-space: nowrap;}
 .name-dt .name {font-size: 32px; vertical-align: top; font-weight: normal; display: inline-block;}
