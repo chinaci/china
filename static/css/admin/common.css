@@ -484,7 +484,7 @@ input:radio+span{color:#333;}
 .csyearbox li a {display:block; position:relative; font-size:16px; line-height:45px; color:#333; width:75px; padding:3px; border:1px solid #ccc; margin:0 5px 5px 0; text-align:center; -webkit-transition:none; -moz-transition:none; transition:none;}
 .csyearbox li a:hover {text-decoration:none; border:2px solid #ed6d01; padding:2px;}
 .csyearbox li.on a {border:2px solid #ed6d01; padding:2px;}
-.csyearbox li.on a em {position:absolute; right:-2px; bottom:-2px; width:16px; height:15px; background:url('/static/images/ui/checked_icon.png'); overflow:hidden; padding-top:0;}
+.csyearbox li.on a em {position:absolute; right:-2px; bottom:-2px; width:16px; height:15px; background:url('https://pic.xiant.ao/static/images/ui/checked_icon.png'); overflow:hidden; padding-top:0;}
 
 /* 评分 */
 .pingfen {width:118px; height:22px; font-size:0; overflow:hidden; position:relative; margin-right:10px; top:5px; background:url('../../../static/images/ui/start-ph.jpg') 0 -22px repeat-x; display:inline-block;}
@@ -533,7 +533,7 @@ input:radio+span{color:#333;}
 .editform .mail-item .opera a {margin-left:5px;}
 
 /* 外卖资格认证图标 */
-.cert_icon {width:32px; height:18px; display:inline-block; background:url('/static/images/ui/cert_icon.png') no-repeat; margin-right:5px; font-size:0; text-indent:-999em;}
+.cert_icon {width:32px; height:18px; display:inline-block; background:url('https://pic.xiant.ao/static/images/ui/cert_icon.png') no-repeat; margin-right:5px; font-size:0; text-indent:-999em;}
 .yingyezhizhao0 {background-position:0 0;}
 .yingyezhizhao2 {background-position:-32px 0;}
 .yingyezhizhao1 {background-position:-64px 0;}
@@ -672,7 +672,7 @@ input:radio+span{color:#333;}
 #wechatResource li .mask {display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;}
 #wechatResource li:hover .mask {display: block;}
 #wechatResource li .mask s {position: absolute; z-index: 1; left: 0; top: 0; right: 0; bottom: 0; background: rgba(255,255,255,.5);}
-#wechatResource li .mask i {position: absolute; z-index: 2; left: 50%; top: 50%; margin: -16px 0 0 -16px; width: 32px; height: 32px; background: url('/static/images/admin/pubIcon.png') -72px -37px;}
+#wechatResource li .mask i {position: absolute; z-index: 2; left: 50%; top: 50%; margin: -16px 0 0 -16px; width: 32px; height: 32px; background: url('https://pic.xiant.ao/static/images/admin/pubIcon.png') -72px -37px;}
 
 /* 授权登录会员账号 */
 .authorizedLogin {width: 25px; height: 25px; display: inline-block; vertical-align: middle; margin: 0 3px; text-indent: -999em; background: url(../../../static/images/admin/lIcon.png?v=5) no-repeat -5px -11px;}
