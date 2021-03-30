@@ -368,7 +368,7 @@ p.ptip{ width: 280px;height: 68px;line-height:68px;text-align:center;color:#fff;
 /*列表页分享功能*/
 #shareBtn {position: absolute; top:5px;z-index: 20; width: 95px; padding: 6px 0; border: 1px solid #e2e2e2; background: #fff; box-shadow: 0 3px 15px rgba(0,0,0,.15);}
 #shareBtn li, #shareBtn li a {height: 26px; line-height: 26px; font-size: 12px;margin:2px 0;}
-#shareBtn a {padding-left: 37px; display: block; background: url('/static/images/share_icon.png') no-repeat;}
+#shareBtn a {padding-left: 37px; display: block; background: url('https://pic.xiant.ao/static/images/share_icon.png') no-repeat;}
 #shareBtn a:hover {background-color: #f3f3f3;}
 #shareBtn .tqq a {background-position: 13px -3px;}
 #shareBtn .qzone a {background-position: 13px -30px;}
