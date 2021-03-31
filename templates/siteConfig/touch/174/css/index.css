@@ -563,9 +563,9 @@ background: linear-gradient(90deg, #D320D1 0%, #8228F3 100%);opacity: 0.9;border
 
 @font-face {
   	font-family: "coregtd";
-  	src: url("/static/fonts/coregtd6.woff2"),
-       url("/static/fonts/coregtd6.woff"),
-       url("/static/fonts/coregtd6.ttf"),
-       url("/static/fonts/coregtd6.eot"),
-       url("/static/fonts/coregtd6.otf");
+  	src: url("https://pic.xiant.ao/static/fonts/coregtd6.woff2"),
+       url("https://pic.xiant.ao/static/fonts/coregtd6.woff"),
+       url("https://pic.xiant.ao/static/fonts/coregtd6.ttf"),
+       url("https://pic.xiant.ao/static/fonts/coregtd6.eot"),
+       url("https://pic.xiant.ao/static/fonts/coregtd6.otf");
 }
